@@ -8,8 +8,8 @@ import fr.ensimag.deca.context.EnvironmentExp;
 
 /**
  *
- * @author @AUTHOR@
- * @date @DATE@
+ * @author gl01
+ * @date 01/01/2021
  */
 public class Not extends AbstractUnaryExpr {
 

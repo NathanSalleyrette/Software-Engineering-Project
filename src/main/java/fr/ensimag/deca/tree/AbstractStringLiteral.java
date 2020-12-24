@@ -2,8 +2,8 @@ package fr.ensimag.deca.tree;
 
 /**
  *
- * @author @AUTHOR@
- * @date @DATE@
+ * @author gl01
+ * @date 01/01/2021
  */
 public abstract class AbstractStringLiteral extends AbstractExpr {
 
