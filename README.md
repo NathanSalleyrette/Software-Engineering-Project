@@ -1,3 +1,2 @@
-# gl01
-
-Projet GL équipe gl01
+# Projet Génie Logiciel, Ensimag.
+@AUTHOR@, @DATE@.
