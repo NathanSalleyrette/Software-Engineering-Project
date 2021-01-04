@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
  * manages integer values, +, - and * operators (with correct
  * management of operators precedence).
  */
-class Main {
+public class Main {
 
     public static void main(String[] args) throws Exception {
 

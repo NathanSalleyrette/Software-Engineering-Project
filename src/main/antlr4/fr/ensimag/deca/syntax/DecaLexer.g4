@@ -12,5 +12,115 @@ options {
 }
 
 // Deca lexer rules.
-DUMMY_TOKEN: .; // A FAIRE : Règle bidon qui reconnait tous les caractères.
+
+// Mots réservés
+
+ASM : 'asm';
+CLASS : 'class';
+EXTENDS : 'extends';
+ELSE : 'else';
+FALSE : 'false';
+IF : 'if';
+INSTANCEOF : 'instanceof';
+NEW : 'new';
+NULL : 'null';
+READINT : 'readInt';
+READFLOAT : 'readFloat';
+PRINT : 'print';
+PRINTLN : 'println';
+PRINTLNX : 'printlnx';
+PRINTX : 'printx';
+PROTECTED : 'protected';
+RETURN : 'return';
+THIS : 'this';
+TRUE : 'true';
+WHILE : 'while';
+
+// Identificateurs
+fragment LETTER : 'a' .. 'z' | 'A' .. 'Z';
+
+fragment DIGIT : 'O' .. '9';
+
+IDENT : (LETTER | '$' | '_')(LETTER | DIGIT | '$' | '_')*;
+
+
+// Symboles spéciaux
+INF : '<';
+SUP : '>';
+EQUALS : '=';
+PLUS : '+';
+MINUS : '-';
+TIMES : '*';
+DIVIDE : '/';
+REST : '%';
+POINT : '.';
+OPARENT : '(';
+CPARENT : ')';
+OBRACE : '{';
+CBRACE : '}';
+NOT : '!';
+SEMI : ';';
+SAME : '==';
+DIFFERENT : '!=';
+BEQ : '>=';
+LEQ : '<=';
+AND : '&&';
+OR : '||';
+
+// Littéraux entiers
+fragment POSITIVE_DIGIT : '1' .. '9';
+
+INT : '0' | POSITIVE_DIGIT DIGIT*;
+
+
+// Littéraux flottants
+fragment NUM : DIGIT+;
+
+fragment SIGN : '+' | '-' | '';
+
+fragment EXP : ('E' | 'e') SIGN NUM;
+
+fragment DEC : NUM '.' NUM;
+
+fragment FLOATDEC : (DEC | DEC EXP) ('F' | 'f' | '');
+
+fragment DIGITHEX : '0' .. '9' | 'A' .. 'F' | 'a' .. 'f';
+
+fragment NUMHEX : DIGITHEX+;
+
+fragment FLOATHEX : ('0x' | '0X') NUMHEX '.' NUMHEX ('P' | 'p') SIGN NUM ('F' | 'f' | '');
+
+FLOAT : FLOATDEC | FLOATHEX;
+
+
+// Chaine de caractère
+fragment EOL : '\n' | '\t';
+
+fragment STRING_CAR : . ~('"' | '\\' | EOL);
+
+STRING : '"' (STRING_CAR | '\\"' | '\\\\')* '"';
+
+MULTI_LINE_STRING : '"' (STRING_CAR | EOL | '\\"' | '\\\\')* '"';
+
+
+// Commentaires
+fragment COMMENT_CLASSIC : '/*' .*? '*/';
+
+fragment COMMENT_LINE : '//' .*? (EOL | EOF);
+
+fragment COMMENT : COMMENT_CLASSIC | COMMENT_LINE;
+
+// Séparateurs
+fragment ESPACE  : ' ' | '\t' | '\r' | '\n';
+
+SEPARATEUR : (ESPACE | COMMENT)
+            { skip(); };
+
+
+// Inclusion de fichier
+fragment FILENAME : (LETTER | DIGIT | '.' | '-' | '_')+;
+
+INCLUDE : '#include' (' ')* '"' FILENAME '"';
+
+DUMMY_TOKEN : .; // A FAIRE : Règle bidon qui reconnait tous les caractères.
                 // A FAIRE : Il faut la supprimer et la remplacer par les vraies règles.
