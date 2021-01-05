@@ -166,10 +166,13 @@ if_then_else returns[IfThenElse tree]
 
 list_expr returns[ListExpr tree]
 @init   {
+			$tree = new ListExpr();
         }
     : (e1=expr {
+    	$tree.add($e1.tree)
         }
        (COMMA e2=expr {
+       	$tree.add($e2.tree)
         }
        )* )?
     ;
@@ -275,6 +278,7 @@ sum_expr returns[AbstractExpr tree]
 mult_expr returns[AbstractExpr tree]
     : e=unary_expr {
             assert($e.tree != null);
+            $tree = $e.tree;
         }
     | e1=mult_expr TIMES e2=unary_expr {
             assert($e1.tree != null);                                         
@@ -355,8 +359,10 @@ type returns[AbstractIdentifier tree]
 
 literal returns[AbstractExpr tree]
     : INT {
+    	$tree = new IntLiteral(Integer.parseInt($INT.text));
         }
     | fd=FLOAT {
+    	
         }
     | STRING {
         }
