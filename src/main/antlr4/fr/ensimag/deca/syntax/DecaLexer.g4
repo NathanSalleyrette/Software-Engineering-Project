@@ -39,7 +39,7 @@ WHILE : 'while';
 // Identificateurs
 fragment LETTER : 'a' .. 'z' | 'A' .. 'Z';
 
-fragment DIGIT : 'O' .. '9';
+fragment DIGIT : '0' .. '9';
 
 IDENT : (LETTER | '$' | '_')(LETTER | DIGIT | '$' | '_')*;
 
@@ -76,37 +76,36 @@ INT : '0' | POSITIVE_DIGIT DIGIT*;
 // Littéraux flottants
 fragment NUM : DIGIT+;
 
-fragment SIGN : '+' | '-' | '';
+fragment SIGN : ('+' | '-')? ;
 
 fragment EXP : ('E' | 'e') SIGN NUM;
 
 fragment DEC : NUM '.' NUM;
 
-fragment FLOATDEC : (DEC | DEC EXP) ('F' | 'f' | '');
+fragment FLOATDEC : (DEC | DEC EXP) ('F' | 'f')? ;
 
 fragment DIGITHEX : '0' .. '9' | 'A' .. 'F' | 'a' .. 'f';
 
 fragment NUMHEX : DIGITHEX+;
 
-fragment FLOATHEX : ('0x' | '0X') NUMHEX '.' NUMHEX ('P' | 'p') SIGN NUM ('F' | 'f' | '');
+fragment FLOATHEX : ('0x' | '0X') NUMHEX '.' NUMHEX ('P' | 'p') SIGN NUM ('F' | 'f')? ;
 
 FLOAT : FLOATDEC | FLOATHEX;
 
 
 // Chaine de caractère
-fragment EOL : '\n' | '\t';
 
-fragment STRING_CAR : . ~('"' | '\\' | EOL);
+fragment STRING_CAR : ~('"' | '\\' | '\n');
 
 STRING : '"' (STRING_CAR | '\\"' | '\\\\')* '"';
 
-MULTI_LINE_STRING : '"' (STRING_CAR | EOL | '\\"' | '\\\\')* '"';
+MULTI_LINE_STRING : '"' (STRING_CAR | '\n' | '\\"' | '\\\\')* '"';
 
 
 // Commentaires
 fragment COMMENT_CLASSIC : '/*' .*? '*/';
 
-fragment COMMENT_LINE : '//' .*? (EOL | EOF);
+fragment COMMENT_LINE : '//' .*? ('\n' | EOF);
 
 fragment COMMENT : COMMENT_CLASSIC | COMMENT_LINE;
 
