@@ -45,24 +45,25 @@ IDENT : (LETTER | '$' | '_')(LETTER | DIGIT | '$' | '_')*;
 
 
 // Symboles spéciaux
-INF : '<';
-SUP : '>';
+LT : '<';
+GT : '>';
 EQUALS : '=';
 PLUS : '+';
 MINUS : '-';
 TIMES : '*';
-DIVIDE : '/';
-REST : '%';
-POINT : '.';
+SLASH : '/';
+PERCENT : '%';
+DOT : '.';
+COMMA : ',';
 OPARENT : '(';
 CPARENT : ')';
 OBRACE : '{';
 CBRACE : '}';
-NOT : '!';
+EXCLAM : '!';
 SEMI : ';';
-SAME : '==';
-DIFFERENT : '!=';
-BEQ : '>=';
+EQEQ : '==';
+NEQ : '!=';
+GEQ : '>=';
 LEQ : '<=';
 AND : '&&';
 OR : '||';
