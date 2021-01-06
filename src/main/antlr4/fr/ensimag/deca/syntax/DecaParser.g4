@@ -24,7 +24,7 @@ options {
 
 // which packages should be imported?
 @header {
-    import fr.ensimag.deca.tree.Minus;
+    import fr.ensimag.deca.tree.*;
     import java.io.PrintStream;
 }
 
@@ -88,12 +88,12 @@ decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
 @init   {		
         }
     : i=ident {
-    		$tree = new DeclVar(t, i, new NoInitialisation());
+    		$tree = new DeclVar($t, $i.tree, new NoInitialization());
         }
       (EQUALS e=expr {
         }
       )? {
-      	 	$tree = new DeclVar(t, i, new Initialisation(e));
+      	 	$tree = new DeclVar($t, $i.tree, new Initialization($e.tree));
         }
     ;
 
@@ -119,19 +119,19 @@ inst returns[AbstractInst tree]
         }
     | PRINT OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
-            $tree = new Print(false, $(liste_expr).tree);
+            $tree = new Print(false, $list_expr.tree);
         }
     | PRINTLN OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
-            $tree = new Println(false, liste_expr);
+            $tree = new Println(false, $list_expr.tree);
         }
     | PRINTX OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
-            $tree = new Print(true, liste_expr);
+            $tree = new Print(true, $list_expr.tree);
         }
     | PRINTLNX OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
-            $tree = new Println(true, liste_expr);
+            $tree = new Println(true, $list_expr.tree);
         }
     | if_then_else {
             assert($if_then_else.tree != null);
@@ -140,7 +140,7 @@ inst returns[AbstractInst tree]
     | WHILE OPARENT condition=expr CPARENT OBRACE body=list_inst CBRACE {
             assert($condition.tree != null);
             assert($body.tree != null);
-            $tree = new While(condition, body);
+            $tree = new While($condition.tree, $body.tree);
         }
     | RETURN expr SEMI {
             assert($expr.tree != null);
@@ -150,8 +150,8 @@ inst returns[AbstractInst tree]
 
 if_then_else returns[IfThenElse tree]
 @init {
-	l = new ListInst();
-	IfThenElse k;
+	//l = new ListInst();
+	//IfThenElse k;
 }
     : if1=IF OPARENT condition=expr CPARENT OBRACE li_if=list_inst CBRACE {
     	
