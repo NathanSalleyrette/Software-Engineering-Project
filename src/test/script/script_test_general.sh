@@ -7,68 +7,86 @@
 
 cd "$(dirname "$0")"/../../.. || exit 1
 PATH=./src/test/script/launchers:"$PATH"
-
-tableau_des_tests_echoues=() # va contenur le nom de tout les tests qui ont échoués
-resultat_des_tests_echoues=()
+type_test=$1
+repertoire_test=$2
+tableau_des_tests_echoues=() # va contenir le nom de tout les tests qui ont échoués
+resultat_des_tests_echoues=() # va contenir la sortie des tests qui ont échoués
 # cette fonction permet de vérifier si la sortie correspond à la sortie attendue
-compare_sortie_attendue() {
-  $attendue=$(cat ./src/test/deca/syntax/expected_result/$1.txt)
+compare_sortie_attendue() { # TODO pas fini
+# https://www.cyberciti.biz/faq/bash-get-basename-of-filename-or-directory-name/
+  fichier_resultat_attendu=$(basename --suffix=.deca $1)
+  # https://stackoverflow.com/questions/19482123/extract-part-of-a-string-using-bash-cut-split
+  attendue=$(cat ${1%/*}/expected_result/$fichier_resultat_attendu.txt)
   if [ "$attendue" == "$2" ];then
-    ::
+    echo EGAL
+  else
+    echo DIFFERENT
   fi
+
 }
-# Pour les fichiers qui doivent echoués
-test_synt_invalide () {
+# Pour les fichiers qui doivent echouer
+test_invalide () {
     # $1 = premier argument.
-    sortie=$(test_synt "$1" 2>&1)
+    sortie=$($type_test "$1" 2>&1)
     if [ $? != 0 ]
     then
         tput setaf 2
-        echo "Echec attendu pour test_synt sur $1."
+        echo "Echec attendu pour $type_test sur $1."
         tput sgr0
     else
         # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
         tput setaf 1
-        echo "Succes inattendu de test_synt sur $1."
+        echo "Succes inattendu de $type_test sur $1."
         tput sgr0
         tableau_des_tests_echoues+=($1)
         resultat_des_tests_echoue+=("$sortie")
     fi
 }
-test_synt_valide () {
+test_valide () {
     # $1 = premier argument.
-    sortie=$(test_synt "$1" 2>&1)
+    sortie=$($type_test "$1" 2>&1)
     if [ $? != 0 ]
     then
         tput setaf 1
-        echo "Echec inattendu pour test_synt sur $1."
+        echo "Echec inattendu pour $type_test sur $1."
         tput sgr0
         tableau_des_tests_echoues+=($1)
         # https://stackoverflow.com/questions/29015565/bash-adding-a-string-with-a-space-to-an-array-adds-two-elements
         resultat_des_tests_echoue+=("$sortie")
     else
-        tput setaf 2
-        echo "Succes attendu de test_synt sur $1."
-        tput sgr0
+        resultat_comparaison=$(compare_sortie_attendue $1 "$sortie")
+        if [ $resultat_comparaison == "DIFFERENT" ];then
+          tput setaf 1
+          echo "Le  test $1 s'est déroulé sans eurreur mais résultat n'est pas celui attendu"
+          tput sgr0
+          tableau_des_tests_echoues+=($1)
+          resultat_des_tests_echoue+=("$sortie")
+        else
+          tput setaf 2
+          echo "Succes attendu de $type_test sur $1."
+          tput sgr0
+        fi
+
+
     fi
 }
-for repertoire_de_test in "src/test/deca/syntax/invalid/provided/" "src/test/deca/syntax/invalid/created/" "src/test/deca/syntax/valid/provided/" "src/test/deca/syntax/valid/created/"
+for repertoire_de_test in "$repertoire_test/invalid/provided/" "$repertoire_test/invalid/created/" "$repertoire_test/valid/provided/" "$repertoire_test/valid/created/"
 do
  echo "Test du répertoire : "$repertoire_de_test
  # https://superuser.com/questions/352289/bash-scripting-test-for-empty-directory
  if [ -z "$(ls -A $repertoire_de_test)" ]; then
     echo "Répertoire vide - pas de test"
  else
-   type_test=""
+   mode_test=""
    # https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
    if [[ $repertoire_de_test == *"invalid"* ]]; then
-   type_test="test_synt_invalide"
+   mode_test="test_invalide"
     else
-   type_test="test_synt_valide"
+   mode_test="test_valide"
     fi
    for cas_de_test in $repertoire_de_test*.deca
    do
-       $type_test "$cas_de_test"
+       $mode_test "$cas_de_test"
    done
  fi
 done
