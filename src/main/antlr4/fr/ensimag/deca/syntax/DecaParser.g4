@@ -85,10 +85,10 @@ list_decl_var[ListDeclVar l, AbstractIdentifier t]
     ;
 
 decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
-@init   {
+@init   { 
         }
     : i=ident {
-        }
+    }
       (EQUALS e=expr {
         }
       )? {
@@ -332,6 +332,7 @@ primary_expr returns[AbstractExpr tree]
 type returns[AbstractIdentifier tree]
     : ident {
             assert($ident.tree != null);
+            $tree = 
         }
     ;
 
@@ -354,14 +355,20 @@ literal returns[AbstractExpr tree]
 
 ident returns[AbstractIdentifier tree]
     : IDENT {
+    		$tree = IDENT.tree;
         }
     ;
 
 /****     Class related rules     ****/
 
 list_classes returns[ListDeclClass tree]
+@init {
+	$tree = new ListDeclClass();
+}
     :
       (c1=class_decl {
+      		assert (c1.tree != null);
+      		$tree.add(c1.tree);
         }
       )*
     ;
@@ -373,6 +380,8 @@ class_decl
 
 class_extension returns[AbstractIdentifier tree]
     : EXTENDS ident {
+    		assert (ident.tree != null);
+    		$tree = ident.tree;
         }
     | /* epsilon */ {
         }
@@ -415,7 +424,7 @@ decl_field
 decl_method
 @init {
 }
-    : type ident OPARENT params=list_params CPARENT (block {
+    : type ident OPARENT params=list_params CPARENT (block {s
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
         }
