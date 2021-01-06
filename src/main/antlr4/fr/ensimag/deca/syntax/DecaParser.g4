@@ -112,7 +112,7 @@ list_inst returns[ListInst tree]
 
 inst returns[AbstractInst tree]
     : e1=expr SEMI {
-            assert($e1.tree != null);
+    	    assert($e1.tree != null);
             $tree = $e1.tree;
         }
     | SEMI {
@@ -285,7 +285,6 @@ sum_expr returns[AbstractExpr tree]
 mult_expr returns[AbstractExpr tree]
     : e=unary_expr {
             assert($e.tree != null);
-            $tree = $e.tree;
         }
     | e1=mult_expr TIMES e2=unary_expr {
             assert($e1.tree != null);
@@ -304,12 +303,15 @@ mult_expr returns[AbstractExpr tree]
 unary_expr returns[AbstractExpr tree]
     : op=MINUS e=unary_expr {
             assert($e.tree != null);
+            $tree = new UnaryMinus($e.tree);
         }
     | op=EXCLAM e=unary_expr {
             assert($e.tree != null);
+            $tree = new Not($e.tree);
         }
     | select_expr {
             assert($select_expr.tree != null);
+            $tree = new ConvFloat($select_expr.tree);
         }
     ;
 
@@ -334,7 +336,7 @@ select_expr returns[AbstractExpr tree]
 primary_expr returns[AbstractExpr tree]
     : ident {
             assert($ident.tree != null);
-            $tree = ident.tree;
+            $tree = $ident.tree;
         }
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
@@ -378,16 +380,16 @@ literal returns[AbstractExpr tree]
     	$tree = new IntLiteral(Integer.parseInt($INT.text));
         }
     | fd=FLOAT {
-		$tree = new FloatLiteral($fd);
+		$tree = new FloatLiteral(Float.parseFloat($fd.text));
         }
     | STRING {
     	$tree = new StringLiteral($STRING.text);
         }
     | TRUE {
-    	$tree = new BooleanLiteral(true);
+    	$tree = new BooleanLiteral(Boolean.parseBoolean($TRUE.text));
         }
     | FALSE {
-    	$tree = new BooleanLiteral(false);
+    	$tree = new BooleanLiteral(Boolean.parseBoolean($FALSE.text));
         }
     | THIS {
         }
@@ -396,8 +398,8 @@ literal returns[AbstractExpr tree]
     ;
 
 ident returns[AbstractIdentifier tree]
-    : IDENT {
-    		$tree = new Identifier($IDENT.text);
+    : i=IDENT {
+    		//$tree = $i.text;
         }
     ;
 
@@ -409,7 +411,7 @@ list_classes returns[ListDeclClass tree]
 }
     :
       (c1=class_decl {
-      		$tree.add(c1);
+      		//$tree.add($c1);
         }
       )*
     ;
