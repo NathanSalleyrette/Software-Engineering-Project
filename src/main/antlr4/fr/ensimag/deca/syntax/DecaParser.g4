@@ -24,8 +24,9 @@ options {
 
 // which packages should be imported?
 @header {
-    import fr.ensimag.deca.tree.Minus;
+    import fr.ensimag.deca.tree.*;
     import java.io.PrintStream;
+    import java.util.Scanner;
 }
 
 @members {
@@ -88,12 +89,12 @@ decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
 @init   {
         }
     : i=ident {
-    		$tree = new DeclVar(t, i, new NoInitialisation());
+    		$tree = new DeclVar($t, $i.tree, new NoInitialisation());
         }
       (EQUALS e=expr {
         }
       )? {
-      	 	$tree = new DeclVar(t, i, new Initialisation(e));
+      	 	$tree = new DeclVar($t, $i.tree, new Initialisation(e));
         }
     ;
 
@@ -104,7 +105,7 @@ list_inst returns[ListInst tree]
 	$tree = new ListInst();
 }
     :
-    (e=inst {$tree.add($e.tree)
+    (e=inst {$tree.add($e.tree);
         }
       )*
     ;
@@ -119,19 +120,19 @@ inst returns[AbstractInst tree]
         }
     | PRINT OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
-            $tree = new Print(false, liste_expr);
+            $tree = new Print(false, $list_expr.tree);
         }
     | PRINTLN OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
-            $tree = new Println(false, liste_expr);
+            $tree = new Println(false, $list_expr.tree);
         }
     | PRINTX OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
-            $tree = new Print(true, liste_expr);
+            $tree = new Print(true, $list_expr.tree);
         }
     | PRINTLNX OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
-            $tree = new Println(true, liste_expr);
+            $tree = new Println(true, $list_expr.tree);
         }
     | if_then_else {
             assert($if_then_else.tree != null);
@@ -140,7 +141,7 @@ inst returns[AbstractInst tree]
     | WHILE OPARENT condition=expr CPARENT OBRACE body=list_inst CBRACE {
             assert($condition.tree != null);
             assert($body.tree != null);
-            $tree = new While(condition, body);
+            $tree = new While($condition.tree, $body.tree);
         }
     | RETURN expr SEMI {
             assert($expr.tree != null);
@@ -169,10 +170,10 @@ list_expr returns[ListExpr tree]
 			$tree = new ListExpr();
         }
     : (e1=expr {
-    	$tree.add($e1.tree)
+    	$tree.add($e1.tree);
         }
        (COMMA e2=expr {
-       	$tree.add($e2.tree)
+       	$tree.add($e2.tree);
         }
        )* )?
     ;
@@ -327,6 +328,7 @@ select_expr returns[AbstractExpr tree]
 primary_expr returns[AbstractExpr tree]
     : ident {
             assert($ident.tree != null);
+            $tree = ident.tree;
         }
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
@@ -336,8 +338,14 @@ primary_expr returns[AbstractExpr tree]
             assert($expr.tree != null);
         }
     | READINT OPARENT CPARENT {
+    	Scanner sc = new Scanner(System.in);
+    	$tree = new IntLiteral(sc.nextInt());
+    	sc.close();
         }
     | READFLOAT OPARENT CPARENT {
+    	Scanner sc = new Scanner(System.in);
+    	$tree = new FloatLiteral(sc.nextFloat());
+    	sc.close();
         }
     | NEW ident OPARENT CPARENT {
             assert($ident.tree != null);
@@ -348,13 +356,14 @@ primary_expr returns[AbstractExpr tree]
         }
     | literal {
             assert($literal.tree != null);
+            $tree = $literal.tree;
         }
     ;
 
 type returns[AbstractIdentifier tree]
     : ident {
             assert($ident.tree != null);
-            $tree =
+            $tree = $ident.tree;
         }
     ;
 
@@ -363,13 +372,16 @@ literal returns[AbstractExpr tree]
     	$tree = new IntLiteral(Integer.parseInt($INT.text));
         }
     | fd=FLOAT {
-
+		$tree = new FloatLiteral($fd);
         }
     | STRING {
+    	$tree = new StringLiteral($STRING.text);
         }
     | TRUE {
+    	$tree = new BooleanLiteral(true);
         }
     | FALSE {
+    	$tree = new BooleanLiteral(false);
         }
     | THIS {
         }
@@ -379,7 +391,7 @@ literal returns[AbstractExpr tree]
 
 ident returns[AbstractIdentifier tree]
     : IDENT {
-    		$tree = IDENT.tree;
+    		$tree = new Identifier($IDENT.text);
         }
     ;
 
@@ -391,8 +403,7 @@ list_classes returns[ListDeclClass tree]
 }
     :
       (c1=class_decl {
-      		assert (c1.tree != null);
-      		$tree.add(c1.tree);
+      		$tree.add(c1);
         }
       )*
     ;
@@ -404,8 +415,8 @@ class_decl
 
 class_extension returns[AbstractIdentifier tree]
     : EXTENDS ident {
-    		assert (ident.tree != null);
-    		$tree = ident.tree;
+    		assert ($ident.tree != null);
+    		$tree = $ident.tree;
         }
     | /* epsilon */ {
         }
@@ -448,7 +459,7 @@ decl_field
 decl_method
 @init {
 }
-    : type ident OPARENT params=list_params CPARENT (block {s
+    : type ident OPARENT params=list_params CPARENT (block {
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
         }
