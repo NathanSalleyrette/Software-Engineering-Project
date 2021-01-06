@@ -19,10 +19,6 @@ cd "$(dirname "$0")"/../../.. || exit 1
 PATH=./src/test/script/launchers:"$PATH"
 
 tableau_des_tests_echoues=()
-#    .---------- constant part!
-#    vvvv vvvv-- the code from above
-RED='tput setaf 1'
-NC='tput sgr0' # No Color
 # exemple de définition d'une fonction
 test_synt_invalide () {
     # $1 = premier argument.
@@ -75,7 +71,10 @@ do
 done
 if (( ${#tableau_des_tests_echoues[@]} )); then
   # https://stackoverflow.com/questions/15691942/print-array-elements-on-separate-lines-in-bash
+  tput setaf 1
+  echo "des tests on échoués..."
   printf '%s\n' "${tableau_des_tests_echoues[@]}"
+  tput sgr0 
   exit 1
   else
     tput setaf 2
