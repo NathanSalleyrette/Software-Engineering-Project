@@ -104,7 +104,7 @@ list_inst returns[ListInst tree]
 	$tree = new ListInst();
 }
     : 
-    (e=inst {$tree.add($e.tree)
+    (e=inst {$tree.add($e.tree);
         }
       )*
     ;
@@ -119,7 +119,7 @@ inst returns[AbstractInst tree]
         }
     | PRINT OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
-            $tree = new Print(false, liste_expr);
+            $tree = new Print(false, $(liste_expr).tree);
         }
     | PRINTLN OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
@@ -151,6 +151,7 @@ inst returns[AbstractInst tree]
 if_then_else returns[IfThenElse tree]
 @init {
 	l = new ListInst();
+	IfThenElse k;
 }
     : if1=IF OPARENT condition=expr CPARENT OBRACE li_if=list_inst CBRACE {
     	
@@ -169,10 +170,10 @@ list_expr returns[ListExpr tree]
 			$tree = new ListExpr();
         }
     : (e1=expr {
-    	$tree.add($e1.tree)
+    	$tree.add($e1.tree);
         }
        (COMMA e2=expr {
-       	$tree.add($e2.tree)
+       	$tree.add($e2.tree);
         }
        )* )?
     ;
@@ -180,6 +181,7 @@ list_expr returns[ListExpr tree]
 expr returns[AbstractExpr tree]
     : assign_expr {
             assert($assign_expr.tree != null);
+            $tree = $assign_expr.tree;
         }
     ;
 
@@ -193,9 +195,11 @@ assign_expr returns[AbstractExpr tree]
         EQUALS e2=assign_expr {
             assert($e.tree != null);
             assert($e2.tree != null);
+            $tree = new Equals($e.tree, $e2.tree);
         }
       | /* epsilon */ {
             assert($e.tree != null);
+            $tree = $e.tree;
         }
       )
     ;
@@ -203,10 +207,12 @@ assign_expr returns[AbstractExpr tree]
 or_expr returns[AbstractExpr tree]
     : e=and_expr {
             assert($e.tree != null);
+            $tree = $e.tree;
         }
     | e1=or_expr OR e2=and_expr {
             assert($e1.tree != null);
             assert($e2.tree != null);
+            $tree = new Or($e1.tree, $e2.tree);
        }
     ;
 
