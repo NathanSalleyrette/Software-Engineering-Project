@@ -156,10 +156,8 @@ if_then_else returns[IfThenElse tree]
 
 }
     : if1=IF OPARENT condition=expr CPARENT OBRACE li_if=list_inst CBRACE {
-
     	$tree = new IfThenElse($condition.tree, $li_if.tree, new ListInst());
     	tTete = $tree;
-
         }
       (ELSE elsif=IF OPARENT elsif_cond=expr CPARENT OBRACE elsif_li=list_inst CBRACE {	
       		t2 = new IfThenElse($elsif_cond.tree, $elsif_li.tree, new ListInst());
@@ -436,7 +434,7 @@ list_classes returns[ListDeclClass tree]
 }
     :
       (c1=class_decl {
-      		//$tree.add($c1);
+      		/*$tree.add(c1);*/
         }
       )*
     ;
