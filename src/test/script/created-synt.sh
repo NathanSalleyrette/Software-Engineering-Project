@@ -3,17 +3,7 @@
 # Auteur : gl01
 # Version initiale : 01/01/2021
 
-# Test minimaliste de la syntaxe.
-# On lance test_synt sur un fichier valide, et les tests invalides.
-
-# dans le cas du fichier valide, on teste seulement qu'il n'y a pas eu
-# d'erreur. Il faudrait tester que l'arbre donné est bien le bon. Par
-# exemple, en stoquant la valeur attendue quelque part, et en
-# utilisant la commande unix "diff".
-#
-# Il faudrait aussi lancer ces tests sur tous les fichiers deca
-# automatiquement. Un exemple d'automatisation est donné avec une
-# boucle for sur les tests invalides, il faut aller encore plus loin.
+# Les Tests sur la partie A sont lancés ici
 
 cd "$(dirname "$0")"/../../.. || exit 1
 PATH=./src/test/script/launchers:"$PATH"
@@ -74,7 +64,7 @@ if (( ${#tableau_des_tests_echoues[@]} )); then
   tput setaf 1
   echo "des tests on échoués..."
   printf '%s\n' "${tableau_des_tests_echoues[@]}"
-  tput sgr0 
+  tput sgr0
   exit 1
   else
     tput setaf 2
