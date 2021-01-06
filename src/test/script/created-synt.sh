@@ -8,11 +8,20 @@
 cd "$(dirname "$0")"/../../.. || exit 1
 PATH=./src/test/script/launchers:"$PATH"
 
-tableau_des_tests_echoues=()
-# exemple de définition d'une fonction
+tableau_des_tests_echoues=() # va contenur le nom de tout les tests qui ont échoués
+resultat_des_tests_echoues=()
+# cette fonction permet de vérifier si la sortie correspond à la sortie attendue
+compare_sortie_attendue() {
+  $attendue=$(cat ./src/test/deca/syntax/expected_result/$1.txt)
+  if [ "$attendue" == "$2" ];then
+    ::
+  fi
+}
+# Pour les fichiers qui doivent echoués
 test_synt_invalide () {
     # $1 = premier argument.
-    if test_synt "$1" 2>&1 | grep -q -e "$1:[0-9][0-9]*:"
+    sortie=$(test_synt "$1" 2>&1)
+    if [ $? != 0 ]
     then
         tput setaf 2
         echo "Echec attendu pour test_synt sur $1."
@@ -23,16 +32,20 @@ test_synt_invalide () {
         echo "Succes inattendu de test_synt sur $1."
         tput sgr0
         tableau_des_tests_echoues+=($1)
+        resultat_des_tests_echoue+=("$sortie")
     fi
 }
 test_synt_valide () {
     # $1 = premier argument.
-    if test_synt "$1" 2>&1 | grep -q -e "$1:[0-9][0-9]*:"
+    sortie=$(test_synt "$1" 2>&1)
+    if [ $? != 0 ]
     then
         tput setaf 1
         echo "Echec inattendu pour test_synt sur $1."
         tput sgr0
         tableau_des_tests_echoues+=($1)
+        # https://stackoverflow.com/questions/29015565/bash-adding-a-string-with-a-space-to-an-array-adds-two-elements
+        resultat_des_tests_echoue+=("$sortie")
     else
         tput setaf 2
         echo "Succes attendu de test_synt sur $1."
@@ -63,7 +76,10 @@ if (( ${#tableau_des_tests_echoues[@]} )); then
   # https://stackoverflow.com/questions/15691942/print-array-elements-on-separate-lines-in-bash
   tput setaf 1
   echo "des tests on échoués..."
-  printf '%s\n' "${tableau_des_tests_echoues[@]}"
+  # https://stackoverflow.com/questions/17403498/iterate-over-two-arrays-simultaneously-in-bash/17409966
+  for i in "${!tableau_des_tests_echoues[@]}"; do
+    printf "%s sortie:::\n %s\n" "${tableau_des_tests_echoues[i]}" "${resultat_des_tests_echoue[i]}"
+  done
   tput sgr0
   exit 1
   else
