@@ -16,23 +16,26 @@
 # boucle for sur les tests invalides, il faut aller encore plus loin.
 
 cd "$(dirname "$0")"/../../.. || exit 1
-
 PATH=./src/test/script/launchers:"$PATH"
 
 tableau_des_tests_echoues=()
 #    .---------- constant part!
 #    vvvv vvvv-- the code from above
-RED='\033[0;31m'
-NC='\033[0m' # No Color
+RED='tput setaf 1'
+NC='tput sgr0' # No Color
 # exemple de définition d'une fonction
 test_synt_invalide () {
     # $1 = premier argument.
     if test_synt "$1" 2>&1 | grep -q -e "$1:[0-9][0-9]*:"
     then
-        printf "${GREEN}Echec attendu pour test_synt sur $1.${NC}\n"
+        tput setaf 2
+        echo "Echec attendu pour test_synt sur $1."
+        tput sgr0
     else
         # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
-        printf "${RED}Succes inattendu de test_synt sur $1.{NC}\n"
+        tput setaf 1
+        echo "Succes inattendu de test_synt sur $1."
+        tput sgr0
         tableau_des_tests_echoues+=($1)
     fi
 }
@@ -40,10 +43,14 @@ test_synt_valide () {
     # $1 = premier argument.
     if test_synt "$1" 2>&1 | grep -q -e "$1:[0-9][0-9]*:"
     then
-        printf "${RED}Echec inattendu pour test_synt sur $1${NC}\n"
+        tput setaf 1
+        echo "Echec inattendu pour test_synt sur $1."
+        tput sgr0
         tableau_des_tests_echoues+=($1)
     else
-        printf "${GREEN} Succes attendu de test_synt sur $1.${NC}\n"
+        tput setaf 2
+        echo "Succes attendu de test_synt sur $1."
+        tput sgr0
     fi
 }
 for repertoire_de_test in "src/test/deca/syntax/invalid/provided/" "src/test/deca/syntax/invalid/created/" "src/test/deca/syntax/valid/provided/" "src/test/deca/syntax/valid/created/"
@@ -71,6 +78,8 @@ if (( ${#tableau_des_tests_echoues[@]} )); then
   printf '%s\n' "${tableau_des_tests_echoues[@]}"
   exit 1
   else
-    printf "${GREEN} tout les test sont passés${NC}\n"
+    tput setaf 2
+    echo "tout les test sont passés."
+    tput sgr0
     exit 0
 fi
