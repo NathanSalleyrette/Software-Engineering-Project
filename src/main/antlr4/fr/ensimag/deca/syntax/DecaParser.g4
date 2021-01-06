@@ -25,6 +25,7 @@ options {
 // which packages should be imported?
 @header {
     import fr.ensimag.deca.tree.*;
+    import fr.ensimag.deca.tools.SymbolTable;
     import java.io.PrintStream;
     import java.util.Scanner;
 }
@@ -34,6 +35,7 @@ options {
     protected AbstractProgram parseProgram() {
         return prog().tree;
     }
+    SymbolTable sTable = new SymbolTable();
 }
 
 prog returns[AbstractProgram tree]
@@ -79,7 +81,8 @@ decl_var_set[ListDeclVar l]
 
 list_decl_var[ListDeclVar l, AbstractIdentifier t]
     : dv1=decl_var[$t] {
-        $l.add($dv1.tree);
+    	System.out.println("nvl element dans la liste");
+        $l.add($dv1.tree);   
         } (COMMA dv2=decl_var[$t] {
         }
       )*
@@ -92,9 +95,9 @@ decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
     		$tree = new DeclVar($t, $i.tree, new NoInitialization());
         }
       (EQUALS e=expr {
+      		$tree = new DeclVar($t, $i.tree, new Initialization($e.tree));
         }
       )? {
-      	 	$tree = new DeclVar($t, $i.tree, new Initialization($e.tree));
         }
     ;
 
@@ -201,7 +204,7 @@ assign_expr returns[AbstractExpr tree]
         EQUALS e2=assign_expr {
             assert($e.tree != null);
             assert($e2.tree != null);
-            $tree = new Equals($e.tree, $e2.tree);
+            $tree = new Assign((AbstractLValue)$e.tree, $e2.tree);
         }
       | /* epsilon */ {
             assert($e.tree != null);
@@ -305,6 +308,7 @@ sum_expr returns[AbstractExpr tree]
 mult_expr returns[AbstractExpr tree]
     : e=unary_expr {
             assert($e.tree != null);
+            $tree = $e.tree;
         }
     | e1=mult_expr TIMES e2=unary_expr {
             assert($e1.tree != null);
@@ -334,13 +338,14 @@ unary_expr returns[AbstractExpr tree]
         }
     | select_expr {
             assert($select_expr.tree != null);
-            $tree = new ConvFloat($select_expr.tree);
+            $tree = $select_expr.tree;
         }
     ;
 
 select_expr returns[AbstractExpr tree]
     : e=primary_expr {
             assert($e.tree != null);
+            $tree = $e.tree;
         }
     | e1=select_expr DOT i=ident {
             assert($e1.tree != null);
@@ -367,6 +372,7 @@ primary_expr returns[AbstractExpr tree]
         }
     | OPARENT expr CPARENT {
             assert($expr.tree != null);
+            $tree = $expr.tree;
         }
     | READINT OPARENT CPARENT {
     	Scanner sc = new Scanner(System.in);
@@ -380,6 +386,7 @@ primary_expr returns[AbstractExpr tree]
         }
     | NEW ident OPARENT CPARENT {
             assert($ident.tree != null);
+            $tree = $ident.tree;
         }
     | cast=OPARENT type CPARENT OPARENT expr CPARENT {
             assert($type.tree != null);
@@ -422,7 +429,7 @@ literal returns[AbstractExpr tree]
 
 ident returns[AbstractIdentifier tree]
     : i=IDENT {
-    		//$tree = $i.text;
+    		$tree = new Identifier(sTable.create($i.getText()));
         }
     ;
 
