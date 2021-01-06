@@ -24,7 +24,7 @@ options {
 
 // which packages should be imported?
 @header {
-    import fr.ensimag.deca.tree.*;
+    import fr.ensimag.deca.tree.Minus;
     import java.io.PrintStream;
 }
 
@@ -85,20 +85,26 @@ list_decl_var[ListDeclVar l, AbstractIdentifier t]
     ;
 
 decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
-@init   { 
+@init   {
         }
     : i=ident {
-    }
+    		$tree = new DeclVar(t, i, new NoInitialisation());
+        }
       (EQUALS e=expr {
         }
       )? {
+      	 	$tree = new DeclVar(t, i, new Initialisation(e));
         }
     ;
 
+
+
 list_inst returns[ListInst tree]
 @init {
+	$tree = new ListInst();
 }
-    : (inst {
+    :
+    (e=inst {$tree.add($e.tree)
         }
       )*
     ;
@@ -106,39 +112,51 @@ list_inst returns[ListInst tree]
 inst returns[AbstractInst tree]
     : e1=expr SEMI {
             assert($e1.tree != null);
+            $tree = $e1.tree;
         }
     | SEMI {
+    		$tree = new NoOperation();
         }
     | PRINT OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
+            $tree = new Print(false, liste_expr);
         }
     | PRINTLN OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
+            $tree = new Println(false, liste_expr);
         }
     | PRINTX OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
+            $tree = new Print(true, liste_expr);
         }
     | PRINTLNX OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
+            $tree = new Println(true, liste_expr);
         }
     | if_then_else {
             assert($if_then_else.tree != null);
+            $tree = $if_then_else.tree;
         }
     | WHILE OPARENT condition=expr CPARENT OBRACE body=list_inst CBRACE {
             assert($condition.tree != null);
             assert($body.tree != null);
+            $tree = new While(condition, body);
         }
     | RETURN expr SEMI {
             assert($expr.tree != null);
+            $tree = $expr.tree;
         }
     ;
 
 if_then_else returns[IfThenElse tree]
 @init {
+	l = new ListInst();
 }
     : if1=IF OPARENT condition=expr CPARENT OBRACE li_if=list_inst CBRACE {
+
         }
       (ELSE elsif=IF OPARENT elsif_cond=expr CPARENT OBRACE elsif_li=list_inst CBRACE {
+      		//$tree = new IfThenElse
         }
       )*
       (ELSE OBRACE li_else=list_inst CBRACE {
@@ -148,10 +166,13 @@ if_then_else returns[IfThenElse tree]
 
 list_expr returns[ListExpr tree]
 @init   {
+			$tree = new ListExpr();
         }
     : (e1=expr {
+    	$tree.add($e1.tree)
         }
        (COMMA e2=expr {
+       	$tree.add($e2.tree)
         }
        )* )?
     ;
@@ -194,7 +215,7 @@ and_expr returns[AbstractExpr tree]
             assert($e.tree != null);
         }
     |  e1=and_expr AND e2=eq_neq_expr {
-            assert($e1.tree != null);                         
+            assert($e1.tree != null);
             assert($e2.tree != null);
         }
     ;
@@ -257,17 +278,18 @@ sum_expr returns[AbstractExpr tree]
 mult_expr returns[AbstractExpr tree]
     : e=unary_expr {
             assert($e.tree != null);
+            $tree = $e.tree;
         }
     | e1=mult_expr TIMES e2=unary_expr {
-            assert($e1.tree != null);                                         
+            assert($e1.tree != null);
             assert($e2.tree != null);
         }
     | e1=mult_expr SLASH e2=unary_expr {
-            assert($e1.tree != null);                                         
+            assert($e1.tree != null);
             assert($e2.tree != null);
         }
     | e1=mult_expr PERCENT e2=unary_expr {
-            assert($e1.tree != null);                                                                          
+            assert($e1.tree != null);
             assert($e2.tree != null);
         }
     ;
@@ -332,14 +354,16 @@ primary_expr returns[AbstractExpr tree]
 type returns[AbstractIdentifier tree]
     : ident {
             assert($ident.tree != null);
-            $tree = 
+            $tree =
         }
     ;
 
 literal returns[AbstractExpr tree]
     : INT {
+    	$tree = new IntLiteral(Integer.parseInt($INT.text));
         }
     | fd=FLOAT {
+
         }
     | STRING {
         }
@@ -438,7 +462,7 @@ list_params
         }
       )*)?
     ;
-    
+
 multi_line_string returns[String text, Location location]
     : s=STRING {
             $text = $s.text;
