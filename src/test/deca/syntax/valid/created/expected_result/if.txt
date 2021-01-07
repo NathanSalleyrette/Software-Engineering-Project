@@ -1,0 +1,21 @@
+`> [1, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [1, 0] Main
+      +> ListDeclVar [List with 0 elements]
+      `> ListInst [List with 2 elements]
+         []> IfThenElse
+         ||  +> Equals
+         ||  |  +> Identifier (alpha)
+         ||  |  `> Int (4)
+         ||  +> ListInst [List with 0 elements]
+         ||  `> ListInst [List with 1 elements]
+         ||     []> IfThenElse
+         ||         +> LowerOrEqual
+         ||         |  +> Identifier (alpha)
+         ||         |  `> Identifier (beta)
+         ||         +> ListInst [List with 0 elements]
+         ||         `> ListInst [List with 0 elements]
+         []> IfThenElse
+             +> Identifier (alpha)
+             +> ListInst [List with 0 elements]
+             `> ListInst [List with 0 elements]
