@@ -1,5 +1,8 @@
 package fr.ensimag.deca.context;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 
 /**
@@ -25,6 +28,7 @@ public class EnvironmentExp {
     // d'empilement).
 
     EnvironmentExp parentEnvironment;
+    private Map<Symbol, ExpDefinition> map = new HashMap<Symbol, ExpDefinition>();
     
     public EnvironmentExp(EnvironmentExp parentEnvironment) {
         this.parentEnvironment = parentEnvironment;
@@ -39,7 +43,13 @@ public class EnvironmentExp {
      * symbol is undefined.
      */
     public ExpDefinition get(Symbol key) {
-        throw new UnsupportedOperationException("not yet implemented");
+        ExpDefinition result = map.get(key); // null if no such key
+
+        // Search in the parent dictionary after failure in current one
+        if (result == null && parentEnvironment != null) {
+            return parentEnvironment.get(key);
+        }
+        return result;
     }
 
     /**
@@ -58,7 +68,10 @@ public class EnvironmentExp {
      *
      */
     public void declare(Symbol name, ExpDefinition def) throws DoubleDefException {
-        throw new UnsupportedOperationException("not yet implemented");
+        if (map.containsKey(name)) throw new DoubleDefException();
+        // By adding the definition in the current dictionary we hide the previous ones
+        // Because the getter stops at the first occurrence from the current dictionary downward.
+        else map.put(name, def);
     }
 
 }
