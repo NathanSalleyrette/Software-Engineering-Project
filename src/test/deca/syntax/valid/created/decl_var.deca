@@ -1,0 +1,7 @@
+{
+int a;
+int a = 4;
+float a = 5.5;
+bool b = true;
+bool b = a$_;
+}
