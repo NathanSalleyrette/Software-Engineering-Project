@@ -1,7 +1,10 @@
 package fr.ensimag.deca;
 
+import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.syntax.DecaLexer;
 import fr.ensimag.deca.syntax.DecaParser;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tree.AbstractProgram;
 import fr.ensimag.deca.tree.LocationException;
@@ -17,6 +20,8 @@ import java.io.PrintStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.log4j.Logger;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Decac compiler instance.
@@ -40,13 +45,22 @@ public class DecacCompiler {
      * Portable newline character.
      */
     private static final String nl = System.getProperty("line.separator", "\n");
-
+    
+    private SymbolTable symbTb;
+    
+    private EnvironmentType envType;
+    
     public DecacCompiler(CompilerOptions compilerOptions, File source) {
         super();
         this.compilerOptions = compilerOptions;
         this.source = source;
+        this.symbTb = new SymbolTable();
+        this.envType = new EnvironmentType(this.symbTb);
     }
 
+    public SymbolTable getSymbTb() {
+    	return this.symbTb;
+    }
     /**
      * Source file associated with this compiler instance.
      */
@@ -229,5 +243,69 @@ public class DecacCompiler {
         parser.setDecacCompiler(this);
         return parser.parseProgramAndManageErrors(err);
     }
+    
+    /**
+     * Classe d'environnement des types, interne à DecacCompiler
+     * pour éviter les problèmes d'accès par différents fils
+     */
+    public static class EnvironmentType {
+    	
+    	private EnvironmentType parentEnvironment;
+    	
+    	private SymbolTable sbtb;
+    	
+    	private Map<Symbol, TypeDefinition> map;
+    	
+    	/**
+    	 * Constructeur appelé pour définir env_type_predef
+    	 * par le constructeur du DecacCompiler (il est donc
+    	 * déclaré privé)
+    	 * 
+    	 * @param table
+    	 * 		Table de symboles propre au DecacCompiler, que l'on
+    	 * va garnir
+    	 */
+    	private EnvironmentType(SymbolTable table) {
+    		this.sbtb = table;
+    		Symbol INT = table.create("int");
+    		Symbol FLOAT = table.create("float");
+    		Symbol BOOLEAN = table.create("boolean");
+    		Symbol VOID = table.create("void");
+    		this.map = new HashMap<Symbol, TypeDefinition>();
+    		this.map.put(INT, this.get(INT));
+    		this.map.put(FLOAT, this.get(FLOAT));
+    		this.map.put(BOOLEAN, this.get(BOOLEAN));
+    		this.map.put(VOID, this.get(VOID));
+    		this.parentEnvironment = null; // Dieu que c'est laid
+    		// TODO: ce qui concerne le langage objet
+    	}
+    	
+    	public EnvironmentType(SymbolTable table, EnvironmentType parent) {
+    		this.parentEnvironment = parent;
+    		this.map = parent.getMap(); /* est-ce qu'une deepcopy est 
+    		requise ? A-t-on besoin de conserver la table du parent ?*/
+    		this.sbtb = table;
+    	}
+    	
+    	public Map<Symbol, TypeDefinition> getMap() {
+    		return this.map;
+    	}
+    	
+    	public EnvironmentType getParentEnvironment() {
+    		return this.parentEnvironment;
+    	}
+    	/**
+         * Return the type of the symbol in the environment, or null if the
+         * symbol is undefined.
+         */
+        public TypeDefinition get(Symbol key) {
+            TypeDefinition result = map.get(key); // null if no such key
 
+            // Search in the parent dictionary after failure in current one
+            if (result == null && parentEnvironment != null) {
+                return parentEnvironment.get(key);
+            }
+            return result;
+        }
+    }
 }

@@ -18,6 +18,10 @@ import java.util.Map;
 public class SymbolTable {
     private Map<String, Symbol> map = new HashMap<String, Symbol>();
 
+    public SymbolTable() {
+    	// rien à faire ???
+    }
+    
     /**
      * Create or reuse a symbol.
      * 

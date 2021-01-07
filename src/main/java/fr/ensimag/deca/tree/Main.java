@@ -6,6 +6,9 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
+import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.deca.context.VoidType;
 
 /**
  * @author gl01
@@ -30,6 +33,9 @@ public class Main extends AbstractMain {
         // A FAIRE: Appeler méthodes "verify*" de ListDeclVarSet et ListInst.
         // Vous avez le droit de changer le profil fourni pour ces méthodes
         // (mais ce n'est à priori pas nécessaire).
+        // Passe 3
+        EnvironmentExp emptyEnv = new EnvironmentExp(null); // Arrêtez-moi si je fais une bêtise
+        this.declVariables.verifyListDeclVariable(compiler, emptyEnv, null);
         LOG.debug("verify Main: end");
         throw new UnsupportedOperationException("not yet implemented");
     }
