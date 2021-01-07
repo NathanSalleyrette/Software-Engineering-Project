@@ -121,4 +121,4 @@ SEPARATEUR : (ESPACE | COMMENT)
 fragment FILENAME : (LETTER | DIGIT | '.' | '-' | '_')+;
 
 INCLUDE : '#include' (' ')* '"' FILENAME '"'
-            { doInclude("FILENAME"); };
+            { doInclude(getText()); };
