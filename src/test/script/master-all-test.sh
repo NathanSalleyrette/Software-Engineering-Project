@@ -7,3 +7,4 @@
 
 ./script_test_general.sh test_lex ./src/test/deca/lexer
 ./script_test_general.sh test_synt ./src/test/deca/syntax
+./script_test_general.sh test_context ./src/test/deca/context

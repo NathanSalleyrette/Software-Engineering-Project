@@ -12,7 +12,7 @@ repertoire_test=$2
 tableau_des_tests_echoues=() # va contenir le nom de tout les tests qui ont échoués
 resultat_des_tests_echoues=() # va contenir la sortie des tests qui ont échoués
 # cette fonction permet de vérifier si la sortie correspond à la sortie attendue
-compare_sortie_attendue() { # TODO pas fini
+compare_sortie_attendue() { 
 # https://www.cyberciti.biz/faq/bash-get-basename-of-filename-or-directory-name/
   fichier_resultat_attendu=$(basename --suffix=.deca $1)
   # https://stackoverflow.com/questions/19482123/extract-part-of-a-string-using-bash-cut-split
