@@ -12,7 +12,7 @@ import fr.ensimag.ima.pseudocode.ImmediateString;
 import fr.ensimag.ima.pseudocode.instructions.WSTR;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
-
+import fr.ensimag.deca.context.StringType;
 /**
  * String literal
  *
@@ -39,7 +39,8 @@ public class StringLiteral extends AbstractStringLiteral {
     	Symbol stringSymb = compiler.getSymbTb().create("string");
     	TypeDefinition typeRetour = compiler.getEnvType().get(stringSymb);
     	if (typeRetour == null ) {
-    		compiler.getEnvType().put(stringSymb, currentClass);
+    		TypeDefinition stringDef = new TypeDefinition(new StringType(stringSymb), this.getLocation());
+    		compiler.getEnvType().put(stringSymb, stringDef);
     	}
     	return typeRetour.getType();
     }
