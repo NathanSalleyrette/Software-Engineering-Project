@@ -1,12 +1,17 @@
 package fr.ensimag.deca;
 
 import fr.ensimag.deca.context.TypeDefinition;
+import fr.ensimag.deca.context.IntType;
+import fr.ensimag.deca.context.FloatType;
+import fr.ensimag.deca.context.BooleanType;
+import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.syntax.DecaLexer;
 import fr.ensimag.deca.syntax.DecaParser;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tree.AbstractProgram;
+import fr.ensimag.deca.tree.Location;
 import fr.ensimag.deca.tree.LocationException;
 import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
@@ -60,6 +65,10 @@ public class DecacCompiler {
 
     public SymbolTable getSymbTb() {
     	return this.symbTb;
+    }
+    
+    public EnvironmentType getEnvType() {
+    	return this.envType;
     }
     /**
      * Source file associated with this compiler instance.
@@ -252,8 +261,6 @@ public class DecacCompiler {
     	
     	private EnvironmentType parentEnvironment;
     	
-    	private SymbolTable sbtb;
-    	
     	private Map<Symbol, TypeDefinition> map;
     	
     	/**
@@ -266,25 +273,26 @@ public class DecacCompiler {
     	 * va garnir
     	 */
     	private EnvironmentType(SymbolTable table) {
-    		this.sbtb = table;
     		Symbol INT = table.create("int");
     		Symbol FLOAT = table.create("float");
     		Symbol BOOLEAN = table.create("boolean");
     		Symbol VOID = table.create("void");
+    		TypeDefinition intDef = new TypeDefinition(new IntType(INT), Location.BUILTIN);
+    		TypeDefinition floatDef = new TypeDefinition(new FloatType(FLOAT), Location.BUILTIN);
+    		TypeDefinition booleanDef = new TypeDefinition(new BooleanType(BOOLEAN), Location.BUILTIN);
+    		TypeDefinition voidDef = new TypeDefinition(new VoidType(VOID), Location.BUILTIN);
     		this.map = new HashMap<Symbol, TypeDefinition>();
-    		this.map.put(INT, this.get(INT));
-    		this.map.put(FLOAT, this.get(FLOAT));
-    		this.map.put(BOOLEAN, this.get(BOOLEAN));
-    		this.map.put(VOID, this.get(VOID));
+    		this.map.put(INT, intDef);
+    		this.map.put(FLOAT, floatDef);
+    		this.map.put(BOOLEAN, booleanDef);
+    		this.map.put(VOID, voidDef);
     		this.parentEnvironment = null; // Dieu que c'est laid
     		// TODO: ce qui concerne le langage objet
     	}
     	
     	public EnvironmentType(SymbolTable table, EnvironmentType parent) {
     		this.parentEnvironment = parent;
-    		this.map = parent.getMap(); /* est-ce qu'une deepcopy est 
-    		requise ? A-t-on besoin de conserver la table du parent ?*/
-    		this.sbtb = table;
+    		this.map = new HashMap<Symbol, TypeDefinition>();
     	}
     	
     	public Map<Symbol, TypeDefinition> getMap() {
@@ -306,6 +314,19 @@ public class DecacCompiler {
                 return parentEnvironment.get(key);
             }
             return result;
+        }
+        
+        /**
+         * Insère un nouveau couple (symbole, définition) dans la table
+         * @param key
+         * 		la clef (type Symbol)
+         * @param def
+         * 		la définition (type TypeDefinition)
+         */
+        public void put(Symbol key, TypeDefinition def) {
+        	if (this.get(key) == null) {
+        		this.getMap().put(key,  def);
+        	}
         }
     }
 }

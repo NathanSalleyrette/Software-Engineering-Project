@@ -34,10 +34,13 @@ public class Main extends AbstractMain {
         // Vous avez le droit de changer le profil fourni pour ces méthodes
         // (mais ce n'est à priori pas nécessaire).
         // Passe 3
+        // Les déclarations de variabes d'abord
         EnvironmentExp emptyEnv = new EnvironmentExp(null); // Arrêtez-moi si je fais une bêtise
         this.declVariables.verifyListDeclVariable(compiler, emptyEnv, null);
+        // La liste d'instructions ensuite
+        VoidType voidType = new VoidType(compiler.getSymbTb().create("void"));
+        this.insts.verifyListInst(compiler, emptyEnv, null, voidType);
         LOG.debug("verify Main: end");
-        throw new UnsupportedOperationException("not yet implemented");
     }
 
     @Override
