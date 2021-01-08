@@ -16,8 +16,11 @@ import java.util.Iterator;
 public class ListDeclVar extends TreeList<AbstractDeclVar> {
 
     @Override
-    public void decompile(IndentPrintStream s) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public void decompile(IndentPrintStream s) { // TODO factoriser dans tree decompile ?
+        for (AbstractDeclVar c : getList()) {
+            c.decompile(s);
+            s.println();
+        }
     }
 
     /**
