@@ -1,6 +1,8 @@
 #!/bin/sh
 # créé automatiquement les fichier .txt contenant la sortie attendue pour les tests
 # Permet donc de créer l'oracle de test 
+# Argument 1 chemin du launcher du test, argument repertoire des tests
+# Exemple  ./creation_automatique_des_resultats_pour_non_reg_test.sh launchers/test_synt ../deca/syntax/valid/created/
 pwd
 echo $1 $2
 
