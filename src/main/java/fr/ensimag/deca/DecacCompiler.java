@@ -278,9 +278,9 @@ public class DecacCompiler {
     		Symbol BOOLEAN = table.create("boolean");
     		Symbol VOID = table.create("void");
     		TypeDefinition intDef = new TypeDefinition(new IntType(INT), Location.BUILTIN);
-    		TypeDefinition floatDef = new TypeDefinition(new IntType(FLOAT), Location.BUILTIN);
-    		TypeDefinition booleanDef = new TypeDefinition(new IntType(BOOLEAN), Location.BUILTIN);
-    		TypeDefinition voidDef = new TypeDefinition(new IntType(VOID), Location.BUILTIN);
+    		TypeDefinition floatDef = new TypeDefinition(new FloatType(FLOAT), Location.BUILTIN);
+    		TypeDefinition booleanDef = new TypeDefinition(new BooleanType(BOOLEAN), Location.BUILTIN);
+    		TypeDefinition voidDef = new TypeDefinition(new VoidType(VOID), Location.BUILTIN);
     		this.map = new HashMap<Symbol, TypeDefinition>();
     		this.map.put(INT, intDef);
     		this.map.put(FLOAT, floatDef);
