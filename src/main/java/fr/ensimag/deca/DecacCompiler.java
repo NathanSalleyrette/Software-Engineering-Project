@@ -115,6 +115,16 @@ public class DecacCompiler {
     public void addInstruction(Instruction instruction, String comment) {
         program.addInstruction(instruction, comment);
     }
+
+    /**
+     * add the instructions treating an error
+     */
+    public void addError(Label label) {
+        compiler.addLabel(label);
+        compiler.addInstruction(new WSTR("Erreur : " + label));
+        compiler.addInstruction(new WNL());
+        compiler.addInstruction(new ERROR());
+    }
     
     /**
      * @see 
