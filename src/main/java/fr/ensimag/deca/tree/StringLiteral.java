@@ -41,6 +41,7 @@ public class StringLiteral extends AbstractStringLiteral {
     	if (typeRetour == null ) {
     		TypeDefinition stringDef = new TypeDefinition(new StringType(stringSymb), this.getLocation());
     		compiler.getEnvType().put(stringSymb, stringDef);
+    		typeRetour = compiler.getEnvType().get(stringSymb);
     	}
     	return typeRetour.getType();
     }
