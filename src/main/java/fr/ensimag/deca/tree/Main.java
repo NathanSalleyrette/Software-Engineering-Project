@@ -41,7 +41,6 @@ public class Main extends AbstractMain {
         VoidType voidType = new VoidType(compiler.getSymbTb().create("void"));
         this.insts.verifyListInst(compiler, emptyEnv, null, voidType);
         LOG.debug("verify Main: end");
-        throw new UnsupportedOperationException("not yet implemented");
     }
 
     @Override

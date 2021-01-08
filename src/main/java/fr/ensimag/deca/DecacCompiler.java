@@ -293,7 +293,6 @@ public class DecacCompiler {
     	public EnvironmentType(SymbolTable table, EnvironmentType parent) {
     		this.parentEnvironment = parent;
     		this.map = new HashMap<Symbol, TypeDefinition>();
-    		this.sbtb = table;
     	}
     	
     	public Map<Symbol, TypeDefinition> getMap() {

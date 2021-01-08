@@ -33,7 +33,6 @@ public class ListInst extends TreeList<AbstractInst> {
     		AbstractInst declVar = iter.next();
     		declVar.verifyInst(compiler, localEnv, currentClass, returnType);
     	}
-        throw new UnsupportedOperationException("not yet implemented");
     }
 
     public void codeGenListInst(DecacCompiler compiler) {

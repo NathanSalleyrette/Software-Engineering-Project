@@ -49,7 +49,6 @@ public abstract class AbstractPrint extends AbstractInst {
     			throw new ContextualError("printable instances must be of types int, float or string", this.getLocation());
     		}
     	}
-        throw new UnsupportedOperationException("not yet implemented");
     }
 
     @Override
