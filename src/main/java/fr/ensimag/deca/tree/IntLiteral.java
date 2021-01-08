@@ -7,6 +7,7 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
 
 /**
  * Integer literal
@@ -28,7 +29,8 @@ public class IntLiteral extends AbstractExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+    	Symbol intSymb = compiler.getSymbTb().create("int");
+    	return compiler.getEnvType().get(intSymb).getType();
     }
 
 

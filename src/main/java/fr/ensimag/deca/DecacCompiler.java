@@ -261,8 +261,6 @@ public class DecacCompiler {
     	
     	private EnvironmentType parentEnvironment;
     	
-    	private SymbolTable sbtb;
-    	
     	private Map<Symbol, TypeDefinition> map;
     	
     	/**
@@ -275,7 +273,6 @@ public class DecacCompiler {
     	 * va garnir
     	 */
     	private EnvironmentType(SymbolTable table) {
-    		this.sbtb = table;
     		Symbol INT = table.create("int");
     		Symbol FLOAT = table.create("float");
     		Symbol BOOLEAN = table.create("boolean");
