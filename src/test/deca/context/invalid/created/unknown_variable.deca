@@ -1,0 +1,8 @@
+//Un programme avec une variable non initialisée
+
+{
+int b = 4;
+
+//doit être refusé
+a = b;
+}
