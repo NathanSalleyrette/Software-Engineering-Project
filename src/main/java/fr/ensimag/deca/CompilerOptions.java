@@ -43,7 +43,51 @@ public class CompilerOptions {
 
     
     public void parseArgs(String[] args) throws CLIException {
-        // A FAIRE : parcourir args pour positionner les options correctement.
+        // Gestion des arguments
+        for (int i=0; i < args.length; i++) {
+            if (args[i].charAt(0) == '-') {
+                // Options
+                if (args[i].length() != 2) throw new IllegalArgumentException("Invalid argument " + args[i]);
+                switch (args[i].charAt(1)) {
+                    case 'b' :
+                        if (args.length > 1) throw new IllegalArgumentException("L'option -b doit être utilisée seule");
+                        printBanner = true;
+                        break;
+                    
+                    case 'p' :
+                        throw new UnsupportedOperationException("not yet implemented");
+                        //break;
+                    
+                    case 'v' :
+                        throw new UnsupportedOperationException("not yet implemented");
+                        //break;
+
+                    case 'n' :
+                        throw new UnsupportedOperationException("not yet implemented");
+                        //break;
+
+                    case 'r' :
+                        i++; // l'option -r à un argument
+                        throw new UnsupportedOperationException("not yet implemented");
+                        //break;
+
+                    case 'd' :
+                        debug++;
+                        break;
+
+                    case 'P' :
+                        parallel = true;
+                        break;
+
+                    default :
+                        throw new IllegalArgumentException("Invalid argument " + args[i]);
+                }
+            } else {
+                // Fichiers deca
+                sourceFiles.add(new File(args[i]));
+            }
+        }
+
         Logger logger = Logger.getRootLogger();
         // map command-line debug option to log4j's level.
         switch (getDebug()) {
@@ -66,8 +110,6 @@ public class CompilerOptions {
         } else {
             logger.info("Java assertions disabled");
         }
-
-        throw new UnsupportedOperationException("not yet implemented");
     }
 
     protected void displayUsage() {
