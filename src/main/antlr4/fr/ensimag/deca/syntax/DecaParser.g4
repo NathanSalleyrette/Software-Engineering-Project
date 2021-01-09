@@ -83,8 +83,7 @@ decl_var_set[ListDeclVar l]
 
 list_decl_var[ListDeclVar l, AbstractIdentifier t]
     : dv1=decl_var[$t] {
-    	System.out.println("nvl element dans la liste");
-        $l.add($dv1.tree);   
+        $l.add($dv1.tree);
         } (COMMA dv2=decl_var[$t] {
         }
       )*
@@ -102,6 +101,7 @@ decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
       		setLocation($tree, $i.start);
         }
       )? {
+      	    setLocation($tree, $i.start);
         }
     ;
 
@@ -175,9 +175,10 @@ if_then_else returns[IfThenElse tree]
 }
     : if1=IF OPARENT condition=expr CPARENT OBRACE li_if=list_inst CBRACE {
     	$tree = new IfThenElse($condition.tree, $li_if.tree, new ListInst());
+    	setLocation($tree, $condition.start);
     	tTete = $tree;
         }
-      (ELSE elsif=IF OPARENT elsif_cond=expr CPARENT OBRACE elsif_li=list_inst CBRACE {	
+      (ELSE elsif=IF OPARENT elsif_cond=expr CPARENT OBRACE elsif_li=list_inst CBRACE {
       		t2 = new IfThenElse($elsif_cond.tree, $elsif_li.tree, new ListInst());
       		tTete.getElseBranch().add(t2);
       		tTete = t2;
@@ -269,7 +270,7 @@ eq_neq_expr returns[AbstractExpr tree]
             assert($e.tree != null);
             $tree = $e.tree;
             setLocation($tree, $e.start);
-            
+
         }
     | e1=eq_neq_expr EQEQ e2=inequality_expr {
             assert($e1.tree != null);
@@ -325,6 +326,7 @@ inequality_expr returns[AbstractExpr tree]
             assert($e1.tree != null);
             assert($type.tree != null);
             //$tree = new Lower($e1.tree, $e2.tree);
+            setLocation($tree, $e1.start);
         }
     ;
 
@@ -407,13 +409,16 @@ select_expr returns[AbstractExpr tree]
     | e1=select_expr DOT i=ident {
             assert($e1.tree != null);
             assert($i.tree != null);
+            //TODO
         }
         (o=OPARENT args=list_expr CPARENT {
             // we matched "e1.i(args)"
             assert($args.tree != null);
+            //TODO
         }
         | /* epsilon */ {
             // we matched "e.i"
+            //TODO
         }
         )
     ;
@@ -427,6 +432,7 @@ primary_expr returns[AbstractExpr tree]
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
             assert($m.tree != null);
+            //TODO
         }
     | OPARENT expr CPARENT {
             assert($expr.tree != null);
@@ -453,10 +459,12 @@ primary_expr returns[AbstractExpr tree]
     | cast=OPARENT type CPARENT OPARENT expr CPARENT {
             assert($type.tree != null);
             assert($expr.tree != null);
+            //TODO
         }
     | literal {
             assert($literal.tree != null);
             $tree = $literal.tree;
+            setLocation($tree, $literal.start);
         }
     ;
 
@@ -475,7 +483,8 @@ literal returns[AbstractExpr tree]
         }
     | fd=FLOAT {
 		$tree = new FloatLiteral(Float.parseFloat($fd.text));
-		setLocation($tree, $FLOAT);
+		setLocation($tree, $fd);
+
         }
     | STRING {
     	$tree = new StringLiteral($STRING.text);
@@ -498,7 +507,7 @@ literal returns[AbstractExpr tree]
 ident returns[AbstractIdentifier tree]
     : i=IDENT {
     		$tree = new Identifier(sTable.create($i.getText()));
-    		setLocation($tree, $IDENT);
+    		setLocation($tree, $i);
         }
     ;
 
