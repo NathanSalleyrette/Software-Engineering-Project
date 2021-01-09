@@ -1,6 +1,12 @@
 {
-if (alpha == 4) {}
-else if (alpha <= beta) {}
-else {}
-if(alpha){}
+int a  = 2;
+if (alpha == 4) {
+	}
+else if (alpha <= beta) {
+	}
+else {
+	print("c'est un print");}
+if(alpha){
+
+}
 }

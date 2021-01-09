@@ -29,15 +29,15 @@
     <task id="3" name="suivi 1" note="" work="0" start="20210111T000000Z" end="20210111T000000Z" work-start="20210111T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20210111T000000Z"/>
     </task>
-    <task id="4" name="HelloWord" note="" work="1421100" start="20210105T000000Z" end="20210109T120000Z" work-start="20210105T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="4" name="HelloWord" note="" work="1421100" start="20210105T000000Z" end="20210109T152320Z" work-start="20210105T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <task id="5" name="etape A Hw" note="" work="343800" start="20210105T000000Z" end="20210108T170000Z" work-start="20210105T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="6" name="lexer" note="" work="57600" start="20210105T000000Z" end="20210106T170000Z" work-start="20210105T080000Z" percent-complete="90" priority="0" type="normal" scheduling="fixed-work"/>
-        <task id="7" name="parser" note="" work="171000" start="20210105T000000Z" end="20210107T164500Z" work-start="20210105T080000Z" percent-complete="95" priority="0" type="normal" scheduling="fixed-work"/>
-        <task id="8" name="test lexer (fichiers deca)" note="" work="57600" start="20210105T000000Z" end="20210105T142000Z" work-start="20210105T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
-        <task id="9" name="test parser (fichier deca)" note="" work="28800" start="20210107T000000Z" end="20210107T170000Z" work-start="20210107T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="6" name="lexer" note="" work="57600" start="20210105T000000Z" end="20210106T170000Z" work-start="20210105T080000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="7" name="parser" note="" work="171000" start="20210105T000000Z" end="20210107T164500Z" work-start="20210105T080000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="8" name="test lexer (fichiers deca)" note="" work="57600" start="20210105T000000Z" end="20210105T142000Z" work-start="20210105T080000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="9" name="test parser (fichier deca)" note="" work="28800" start="20210107T000000Z" end="20210107T170000Z" work-start="20210107T080000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-work">
           <constraint type="must-start-on" time="20210107T000000Z"/>
         </task>
-        <task id="10" name="decompilation" note="" work="28800" start="20210108T000000Z" end="20210108T170000Z" work-start="20210108T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="10" name="decompilation" note="" work="28800" start="20210108T000000Z" end="20210108T170000Z" work-start="20210108T080000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-work">
           <constraint type="must-start-on" time="20210108T000000Z"/>
         </task>
       </task>
@@ -51,7 +51,7 @@
         <task id="13" name="D&#xE9;finition de l'environnement " note="" work="57600" start="20210107T000000Z" end="20210108T170000Z" work-start="20210107T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
           <constraint type="must-start-on" time="20210107T000000Z"/>
         </task>
-        <task id="14" name="test context (fichier deca)" note="" work="28800" start="20210107T000000Z" end="20210107T170000Z" work-start="20210107T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="14" name="test context (fichier deca)" note="" work="28800" start="20210107T000000Z" end="20210107T170000Z" work-start="20210107T080000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-work">
           <constraint type="must-start-on" time="20210107T000000Z"/>
         </task>
       </task>
@@ -67,10 +67,10 @@
       <task id="18" name="recherche sur TRIGO" note="" work="72000" start="20210107T000000Z" end="20210109T120000Z" work-start="20210107T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
         <constraint type="must-start-on" time="20210107T000000Z"/>
       </task>
-      <task id="19" name="pr&#xE9;paration suivis" note="" work="115200" start="20210107T000000Z" end="20210107T152320Z" work-start="20210107T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <constraint type="must-start-on" time="20210107T000000Z"/>
+      <task id="19" name="pr&#xE9;paration suivis" note="" work="115200" start="20210109T000000Z" end="20210109T152320Z" work-start="20210109T080000Z" percent-complete="26" priority="0" type="normal" scheduling="fixed-work">
+        <constraint type="must-start-on" time="20210109T000000Z"/>
       </task>
-      <task id="20" name="Charte" note="" work="648000" start="20210105T000000Z" end="20210109T120000Z" work-start="20210105T080000Z" percent-complete="66" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="20" name="Charte" note="" work="648000" start="20210105T000000Z" end="20210109T120000Z" work-start="20210105T080000Z" percent-complete="67" priority="0" type="normal" scheduling="fixed-work"/>
     </task>
     <task id="21" name="Sans objet" note="" work="115200" start="20210107T000000Z" end="20210111T170000Z" work-start="20210107T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="must-start-on" time="20210111T000000Z"/>
@@ -159,6 +159,7 @@
     <allocation task-id="18" resource-id="3" units="100"/>
     <allocation task-id="7" resource-id="3" units="100"/>
     <allocation task-id="20" resource-id="3" units="100"/>
+    <allocation task-id="23" resource-id="4" units="100"/>
     <allocation task-id="10" resource-id="4" units="100"/>
     <allocation task-id="14" resource-id="4" units="100"/>
     <allocation task-id="19" resource-id="4" units="100"/>

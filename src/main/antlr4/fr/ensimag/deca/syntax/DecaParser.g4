@@ -81,7 +81,6 @@ decl_var_set[ListDeclVar l]
 
 list_decl_var[ListDeclVar l, AbstractIdentifier t]
     : dv1=decl_var[$t] {
-    	System.out.println("nvl element dans la liste");
         $l.add($dv1.tree);   
         } (COMMA dv2=decl_var[$t] {
         }
