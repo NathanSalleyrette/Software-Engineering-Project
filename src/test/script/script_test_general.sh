@@ -6,7 +6,7 @@
 # Les Tests sur la partie A sont lancés ici
 tput setaf 6
 echo "Debut des test sur $1"
-tput sgr0 
+tput sgr0
 cd "$(dirname "$0")"/../../.. || exit 1
 PATH=./src/test/script/launchers:"$PATH"
 type_test=$1
@@ -14,7 +14,7 @@ repertoire_test=$2
 tableau_des_tests_echoues=() # va contenir le nom de tout les tests qui ont échoués
 resultat_des_tests_echoues=() # va contenir la sortie des tests qui ont échoués
 # cette fonction permet de vérifier si la sortie correspond à la sortie attendue
-compare_sortie_attendue() { 
+compare_sortie_attendue() {
 # https://www.cyberciti.biz/faq/bash-get-basename-of-filename-or-directory-name/
   fichier_resultat_attendu=$(basename --suffix=.deca $1)
   # https://stackoverflow.com/questions/19482123/extract-part-of-a-string-using-bash-cut-split
@@ -99,6 +99,8 @@ if (( ${#tableau_des_tests_echoues[@]} )); then
   # https://stackoverflow.com/questions/17403498/iterate-over-two-arrays-simultaneously-in-bash/17409966
   for i in "${!tableau_des_tests_echoues[@]}"; do
     printf "%s sortie:::\n %s\n" "${tableau_des_tests_echoues[i]}" "${resultat_des_tests_echoue[i]}"
+    echo ""
+    echo ""
   done
   tput sgr0
   exit 1

@@ -1,0 +1,1 @@
+STRING: [@0,0:22='"ceci à bien été inclu"',<46>,1:0]

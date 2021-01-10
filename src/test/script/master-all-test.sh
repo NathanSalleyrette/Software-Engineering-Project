@@ -4,8 +4,8 @@
 # Version initiale : 01/01/2021
 
 # Lance tout les tests
-tests=("./src/test/script/script_test_general.sh test_lex ./src/test/deca/lexer" "./src/test/script/script_test_general.sh test_synt ./src/test/deca/syntax" "./src/test/script/script_test_general.sh test_context ./src/test/deca/context")
-
+# tests=("./src/test/script/script_test_general.sh test_lex ./src/test/deca/lexer" "./src/test/script/script_test_general.sh test_synt ./src/test/deca/syntax" "./src/test/script/script_test_general.sh test_context ./src/test/deca/context")
+tests=("./src/test/script/script_test_general.sh test_lex ./src/test/deca/lexer")
 test_echoue=false
 
 for test in "${tests[@]}"
