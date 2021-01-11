@@ -18,8 +18,14 @@ public class ListExpr extends TreeList<AbstractExpr> {
 
     @Override
     public void decompile(IndentPrintStream s) {
+    	boolean premier = true;
     	for (AbstractExpr c : getList()) {
-            c.decompile(s);
+    		if (premier) {
+    			premier = false;
+    		} else {
+                s.print(", ");
+    		}
+    		c.decompile(s);
         }
     }
 }
