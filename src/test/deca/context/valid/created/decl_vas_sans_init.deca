@@ -9,5 +9,5 @@
 int a;
 int b;
 float f;
-bool d;
+boolean d;
 }

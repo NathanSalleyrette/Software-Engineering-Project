@@ -6,7 +6,7 @@
 //    	Ligne 11: L’opérande gauche est de type bool, L’opérande droite est de type float. Or les opérandes d’un modulo doivent être de type ‘int’
 
 {
-bool a;
+boolean a;
 float b;
 int c = a % b;
 }

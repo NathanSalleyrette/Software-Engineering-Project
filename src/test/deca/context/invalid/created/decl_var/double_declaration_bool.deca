@@ -6,6 +6,6 @@
 //    	Ligne 10:  La variable a est déjà déclarée.
 
 {
-bool a;
-bool a; // a est déclaré deux fois
+boolean a;
+boolean a; // a est déclaré deux fois
 }

@@ -7,6 +7,6 @@
 
 {
 float a;
-bool b;
+boolean b;
 int c = a % b;
 }

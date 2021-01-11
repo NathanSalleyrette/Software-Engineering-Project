@@ -8,5 +8,5 @@
 {
 int a;
 float a; 
-bool a;
+boolean a;
 }

@@ -6,6 +6,6 @@
 //    	Ligne 9: Types incompatibles pour l’affectation
 
 {
-bool a = 0.5; 
+boolean a = 0.5; 
 //0.5 n'est pas un bool
 }
