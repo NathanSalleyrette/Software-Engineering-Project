@@ -1,0 +1,4 @@
+{
+float a;
+float a; // a est déclaré deux fois
+}

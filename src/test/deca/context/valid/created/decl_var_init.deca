@@ -1,4 +1,4 @@
-//Programme pour tester les affectations
+//Programme pour tester les declarations avec initialisations
 
 {
 int a = 3;
