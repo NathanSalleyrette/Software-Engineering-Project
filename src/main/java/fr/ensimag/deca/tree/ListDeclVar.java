@@ -5,6 +5,7 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import java.util.Iterator;
 
 /**
  * List of declarations (e.g. int x; float y,z).
@@ -15,8 +16,11 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 public class ListDeclVar extends TreeList<AbstractDeclVar> {
 
     @Override
-    public void decompile(IndentPrintStream s) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public void decompile(IndentPrintStream s) { // TODO factoriser dans tree decompile ?
+        for (AbstractDeclVar c : getList()) {
+            c.decompile(s);
+            s.println();
+        }
     }
 
     /**
@@ -33,6 +37,15 @@ public class ListDeclVar extends TreeList<AbstractDeclVar> {
      */    
     void verifyListDeclVariable(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
+    	/* On crée un itérateur grâce à la méthode iterator() de TreeList
+    	 * Il y a sans doute un autre moyen en passant par iterChildren...
+    	 * Mais il faudrait implémenter TreeFunction... non ?
+    	 */
+    	Iterator<AbstractDeclVar> iter = this.iterator();
+    	while (iter.hasNext()) {
+    		AbstractDeclVar declVar = iter.next();
+    		declVar.verifyDeclVar(compiler, localEnv, currentClass);
+    	}
     }
 
 

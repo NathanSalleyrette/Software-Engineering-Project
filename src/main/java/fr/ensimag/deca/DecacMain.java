@@ -26,10 +26,14 @@ public class DecacMain {
             System.exit(1);
         }
         if (options.getPrintBanner()) {
-            throw new UnsupportedOperationException("decac -b not yet implemented");
+            String banner = "Une bannière avec nos noms, à compléter dans DecacMain.java";
+            System.out.println(banner);
+            return;
         }
         if (options.getSourceFiles().isEmpty()) {
-            throw new UnsupportedOperationException("decac without argument not yet implemented");
+            String help = "Message d'aide, à compléter dans DecacMain.java";
+            System.out.println(help);
+            return;
         }
         if (options.getParallel()) {
             // A FAIRE : instancier DecacCompiler pour chaque fichier à

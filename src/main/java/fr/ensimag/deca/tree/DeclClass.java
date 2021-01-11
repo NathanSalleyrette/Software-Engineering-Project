@@ -13,10 +13,41 @@ import java.io.PrintStream;
  * @date 01/01/2021
  */
 public class DeclClass extends AbstractDeclClass {
+	
+	private String nameClass;
+	//private ListDeclField listDeclField;
+	//private ListDeclMethod listDeclMethod;
+	
+	/*
+	public DeclClass(ListDeclField listDeclField, ListDeclMethod listDeclMethod) {
+		this.listDeclField = listDeclField;
+		this.listDeclMethod = listDeclMethod;
+	}
+	*/
+	
+	public String getNameClass() {
+		return this.nameClass;
+	}
+	
+	/*
+	public ListDeclField getListDeclFiled() {
+		return this.listDeclField;
+	}
+	
+	public ListDeclMethod getListDeclMethod() {
+		return this.listDeclMethod;
+	}
+	*/
+	
 
     @Override
     public void decompile(IndentPrintStream s) {
-        s.print("class { ... A FAIRE ... }");
+        s.println("class " + getNameClass() + " {");
+        s.indent();
+        //getlistDeclField().decompile(s);
+        //getlistDeclMethod().decompile(s);
+        s.unindent();
+        s.println("}");
     }
 
     @Override

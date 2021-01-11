@@ -1,0 +1,3 @@
+{
+float a = true; //true n'est pas un float
+}

@@ -1,0 +1,4 @@
+{
+bool a;
+bool a; // a est déclaré deux fois
+}

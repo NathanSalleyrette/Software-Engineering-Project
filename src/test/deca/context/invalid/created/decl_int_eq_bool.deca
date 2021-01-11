@@ -1,0 +1,4 @@
+{
+int a = true; //true n'est pas un int
+
+}

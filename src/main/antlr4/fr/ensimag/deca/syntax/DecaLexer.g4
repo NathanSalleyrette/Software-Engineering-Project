@@ -98,7 +98,9 @@ FLOAT : FLOATDEC | FLOATHEX;
 
 fragment STRING_CAR : ~('"' | '\\' | '\n');
 
-STRING : '"' (STRING_CAR | '\\"' | '\\\\')* '"';
+STRING : '"' (STRING_CAR | '\\"' | '\\\\')* '"'
+            { setText(getText().substring(getText().indexOf('"') + 1,
+            getText().lastIndexOf('"'))); };
 
 MULTI_LINE_STRING : '"' (STRING_CAR | '\n' | '\\"' | '\\\\')* '"';
 
@@ -121,4 +123,4 @@ SEPARATEUR : (ESPACE | COMMENT)
 fragment FILENAME : (LETTER | DIGIT | '.' | '-' | '_')+;
 
 INCLUDE : '#include' (' ')* '"' FILENAME '"'
-            { doInclude("FILENAME"); };
+            { doInclude(getText()); };
