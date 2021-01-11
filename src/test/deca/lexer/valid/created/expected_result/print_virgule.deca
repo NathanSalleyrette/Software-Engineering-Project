@@ -1,0 +1,3 @@
+{
+println("texte1", texte2, "texte3", texte4);
+}

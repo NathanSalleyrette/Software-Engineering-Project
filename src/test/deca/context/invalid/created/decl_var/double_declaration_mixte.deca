@@ -1,0 +1,12 @@
+// Description :
+//    test d'une déclaration de variable de type int déjà existante
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10:  La variable a est déjà déclarée.
+
+{
+int a;
+float a; 
+bool a;
+}

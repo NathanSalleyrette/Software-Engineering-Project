@@ -1,0 +1,10 @@
+// Description :
+//    test affectation incorrect bool = int
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9: Types incompatibles pour l’affectation
+
+{
+bool a = 1; //10 n'est pas un bool
+}

@@ -1,0 +1,11 @@
+// Description :
+//    test affectation incorrect int = float
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9: Types incompatibles pour l’affectation
+
+{
+int a = 0.5; 
+//0.5 n'est pas un int
+}

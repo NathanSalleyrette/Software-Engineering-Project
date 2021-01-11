@@ -1,0 +1,11 @@
+// Description :
+//    test d'une déclaration de variable avec type inconnu
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: Type non reconnu
+
+
+{
+typeInconnu a; 
+}

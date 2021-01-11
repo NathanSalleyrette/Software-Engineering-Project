@@ -1,4 +1,9 @@
-//Programme pour tester les declarations avec initialisations
+// Description :
+//		Programme pour tester les declarations avec initialisations
+//
+// Resultats :
+//		Ok
+
 
 {
 int a = 3;

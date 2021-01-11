@@ -1,3 +1,9 @@
+// Description :
+//		tokens de déclaration et token ; seul
+//
+// Resultats :
+//		Ok
+
 {
 int i = 0;;
 }
