@@ -1,4 +1,0 @@
-{
-int a;
-int a; // a est déclaré deux fois
-}

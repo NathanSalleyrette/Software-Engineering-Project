@@ -1,8 +1,13 @@
-//Programme pour tester les declarations sans initialisations
+// Description :
+//		Programme pour tester les declarations sans initialisations
+//
+// Resultats :
+//		Ok
+
 
 {
 int a;
 int b;
 float f;
-bool d;
+boolean d;
 }

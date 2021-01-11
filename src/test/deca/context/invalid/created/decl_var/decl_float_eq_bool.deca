@@ -1,0 +1,10 @@
+// Description :
+//    test affectation incorrect float = bool;
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9: Types incompatibles pour l’affectation
+
+{
+float a = true; //true n'est pas un float
+}

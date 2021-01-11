@@ -1,0 +1,10 @@
+// Description :
+//    test d'une déclaration de variable déjà existante
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9:  La variable x est déjà déclarée.
+
+{
+	int x, x, x;
+}

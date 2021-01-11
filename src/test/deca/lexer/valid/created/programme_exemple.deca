@@ -1,4 +1,9 @@
-// Un exemple de programme Deca
+// Description :
+//		Un exemple un peu complexe
+//
+// Resultats :
+//		Ok
+
 class A {
 protected int x ;
 int getX() {

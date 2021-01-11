@@ -1,9 +1,14 @@
-//Programme pour tester les declarations avec initialisations
+// Description :
+//		Programme pour tester les declarations avec initialisations
+//
+// Resultats :
+//		Ok
+
 
 {
 int a = 3;
-int b = 2
+int b = 2;
 int c = b;
 float f = 0.2;
-bool d = true;
+boolean d = true;
 }

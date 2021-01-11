@@ -1,1 +1,8 @@
+// Description :
+//    test d'une chaine de caractèere sans aucun sens
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 8:  ?
+
 `@à%$+=&

@@ -1,0 +1,22 @@
+// Description :
+//		Les if en folie
+//
+// Resultats :
+//		Ok
+
+
+{
+if (a){
+	if (a) {
+		print("1");
+	} else {
+		print("2");
+	}
+	
+	if (a) {
+	print("3");
+	} else if (a) { 
+	print("4");
+	}
+	}
+}
