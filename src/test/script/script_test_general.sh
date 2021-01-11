@@ -29,7 +29,8 @@ compare_sortie_attendue() {
 # Pour les fichiers qui doivent echouer
 test_invalide () {
     # $1 = premier argument.
-    sortie=$($type_test "$1" 2>&1)
+    commande="$type_test $1"
+    sortie=$($commande 2>&1)
     if [ $? != 0 ]
     then
         tput setaf 2
@@ -39,6 +40,7 @@ test_invalide () {
         # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
         tput setaf 1
         echo "Succes inattendu de $type_test sur $1."
+        echo "commande utilisée ::: $commande"
         tput sgr0
         tableau_des_tests_echoues+=($1)
         resultat_des_tests_echoue+=("$sortie")
@@ -46,11 +48,13 @@ test_invalide () {
 }
 test_valide () {
     # $1 = premier argument.
-    sortie=$($type_test "$1" 2>&1)
+    commande="$type_test $1"
+    sortie=$($commande 2>&1)
     if [ $? != 0 ]
     then
         tput setaf 1
         echo "Echec inattendu pour $type_test sur $1."
+        echo "commande utilisée ::: $commande"
         tput sgr0
         tableau_des_tests_echoues+=($1)
         # https://stackoverflow.com/questions/29015565/bash-adding-a-string-with-a-space-to-an-array-adds-two-elements
@@ -60,6 +64,7 @@ test_valide () {
         if [ $resultat_comparaison == "DIFFERENT" ];then
           tput setaf 3
           echo "Le  test $1 s'est déroulé sans erreur mais résultat n'est pas celui attendu"
+          echo "commande utilisée ::: $commande"
           tput sgr0
           tableau_des_tests_echoues+=($1)
           resultat_des_tests_echoue+=("$sortie")
