@@ -2,7 +2,7 @@ package fr.ensimag.deca.context;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import fr.ensimag.deca.tree.Location;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 
 /**
@@ -36,6 +36,14 @@ public class EnvironmentExp {
 
     public static class DoubleDefException extends Exception {
         private static final long serialVersionUID = -2733379901827316441L;
+        
+        private String message;
+        private Location location;
+        
+        public DoubleDefException(String message, Location location) {
+        	this.message = message;
+        	this.location = location;
+        }
     }
 
     /**
@@ -67,8 +75,10 @@ public class EnvironmentExp {
      *             if the symbol is already defined at the "current" dictionary
      *
      */
-    public void declare(Symbol name, ExpDefinition def) throws DoubleDefException {
-        if (map.containsKey(name)) throw new DoubleDefException();
+    public void declare(Symbol name, ExpDefinition def, Location location) throws DoubleDefException {
+        if (map.containsKey(name)) {
+        	throw new DoubleDefException(name.getName() + "déjà défini", location);
+        }
         // By adding the definition in the current dictionary we hide the previous ones
         // Because the getter stops at the first occurrence from the current dictionary downward.
         else map.put(name, def);

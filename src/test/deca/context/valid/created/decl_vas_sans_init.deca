@@ -1,0 +1,8 @@
+//Programme pour tester les declarations sans initialisations
+
+{
+int a;
+int b;
+float f;
+bool d;
+}

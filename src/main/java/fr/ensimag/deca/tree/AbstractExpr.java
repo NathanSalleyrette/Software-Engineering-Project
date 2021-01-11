@@ -82,7 +82,14 @@ public abstract class AbstractExpr extends AbstractInst {
             EnvironmentExp localEnv, ClassDefinition currentClass, 
             Type expectedType)
             throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        Type type2 = verifyExpr(compiler, localEnv, currentClass);
+        if (expectedType.sameType(type2)) {
+        	return this;
+        } else if (type2.isSubTypeOf(expectedType, this.getLocation())){
+        	return this;
+        }
+        throw new ContextualError("Les types " + expectedType.toString() +
+        		" et " + type2.toString() + " ne sont pas compatibles", this.getLocation());        
     }
     
     
@@ -90,7 +97,7 @@ public abstract class AbstractExpr extends AbstractInst {
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        verifyExpr(compiler, localEnv, currentClass);
     }
 
     /**

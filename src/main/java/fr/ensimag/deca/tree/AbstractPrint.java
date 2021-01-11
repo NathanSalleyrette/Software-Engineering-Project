@@ -46,7 +46,7 @@ public abstract class AbstractPrint extends AbstractInst {
     		AbstractExpr exprPrint = iter.next();
     		Type returnedType = exprPrint.verifyExpr(compiler, localEnv, currentClass);
     		if ((!returnedType.isInt()) && (!returnedType.isFloat()) && (!returnedType.isString())) {
-    			throw new ContextualError("printable instances must be of types int, float or string", this.getLocation());
+    			throw new ContextualError("Les instances affichables peuvent être de type 'int', 'float' ou 'string'", this.getLocation());
     		}
     	}
     }
