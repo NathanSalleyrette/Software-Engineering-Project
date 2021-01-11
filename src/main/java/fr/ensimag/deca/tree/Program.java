@@ -44,8 +44,6 @@ public class Program extends AbstractProgram {
         // Main
         this.getMain().verifyMain(compiler);
         LOG.debug("verify program: end");
-        throw new UnsupportedOperationException("not yet implemented");
-
     }
 
     @Override

@@ -4,7 +4,9 @@
 # Version initiale : 01/01/2021
 
 # Les Tests sur la partie A sont lancés ici
-
+tput setaf 6
+echo "Debut des test sur $1"
+tput sgr0 
 cd "$(dirname "$0")"/../../.. || exit 1
 PATH=./src/test/script/launchers:"$PATH"
 type_test=$1
@@ -56,8 +58,8 @@ test_valide () {
     else
         resultat_comparaison=$(compare_sortie_attendue $1 "$sortie")
         if [ $resultat_comparaison == "DIFFERENT" ];then
-          tput setaf 1
-          echo "Le  test $1 s'est déroulé sans eurreur mais résultat n'est pas celui attendu"
+          tput setaf 3
+          echo "Le  test $1 s'est déroulé sans erreur mais résultat n'est pas celui attendu"
           tput sgr0
           tableau_des_tests_echoues+=($1)
           resultat_des_tests_echoue+=("$sortie")
