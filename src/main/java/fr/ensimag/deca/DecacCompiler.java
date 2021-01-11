@@ -18,6 +18,8 @@ import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
 import fr.ensimag.ima.pseudocode.Instruction;
 import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.Line;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -55,7 +57,7 @@ public class DecacCompiler {
     private SymbolTable symbTb;
     
     private EnvironmentType envType;
-    
+
     public DecacCompiler(CompilerOptions compilerOptions, File source) {
         super();
         this.compilerOptions = compilerOptions;
@@ -131,6 +133,14 @@ public class DecacCompiler {
      */
     public void addError(Label label) {
         Error.addError(program, label);
+    }
+
+    /**
+     * @see
+     * fr.ensimag.ima.pseudocode.IMAProgram#addFirst(fr.ensimag.ima.pseudocode.Line)
+     */
+    public void addFirst(Line l) {
+        program.addFirst(l);
     }
     
     /**
