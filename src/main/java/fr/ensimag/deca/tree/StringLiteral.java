@@ -37,13 +37,15 @@ public class StringLiteral extends AbstractStringLiteral {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
     	Symbol stringSymb = compiler.getSymbTb().create("string");
-    	TypeDefinition typeRetour = compiler.getEnvType().get(stringSymb);
-    	if (typeRetour == null ) {
-    		TypeDefinition stringDef = new TypeDefinition(new StringType(stringSymb), this.getLocation());
+    	TypeDefinition stringDef = compiler.getEnvType().get(stringSymb);
+    	if (stringDef == null ) {
+    		stringDef = new TypeDefinition(new StringType(stringSymb), this.getLocation());
     		compiler.getEnvType().put(stringSymb, stringDef);
-    		typeRetour = compiler.getEnvType().get(stringSymb);
+    		stringDef = compiler.getEnvType().get(stringSymb);
     	}
-    	return typeRetour.getType();
+    	Type typeString = stringDef.getType();
+    	this.setType(typeString);
+    	return typeString;
     }
 
     @Override
@@ -70,5 +72,7 @@ public class StringLiteral extends AbstractStringLiteral {
     String prettyPrintNode() {
         return "StringLiteral (" + value + ")";
     }
+    
+    
 
 }
