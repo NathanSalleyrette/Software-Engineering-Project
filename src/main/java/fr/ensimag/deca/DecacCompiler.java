@@ -3,6 +3,7 @@ package fr.ensimag.deca;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.IntType;
 import fr.ensimag.deca.context.FloatType;
+import fr.ensimag.deca.codegen.Error;
 import fr.ensimag.deca.context.BooleanType;
 import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.syntax.DecaLexer;
@@ -129,10 +130,7 @@ public class DecacCompiler {
      * add the instructions treating an error
      */
     public void addError(Label label) {
-        compiler.addLabel(label);
-        compiler.addInstruction(new WSTR("Erreur : " + label));
-        compiler.addInstruction(new WNL());
-        compiler.addInstruction(new ERROR());
+        Error.addError(program, label);
     }
     
     /**
