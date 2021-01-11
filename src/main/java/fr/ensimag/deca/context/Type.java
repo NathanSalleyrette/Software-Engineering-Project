@@ -4,7 +4,6 @@ import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tree.Location;
-
 /**
  * Deca Type (internal representation of the compiler)
  *
@@ -78,6 +77,27 @@ public abstract class Type {
     public ClassType asClassType(String errorMessage, Location l)
             throws ContextualError {
         throw new ContextualError(errorMessage, l);
+    }
+    
+    /**
+     * Booléen indiquant si this est un sous-type de type1, ce qui est vrai dans deux cas:
+     * - si type1 = float et this = int
+     * - si type1 est une classe et que this hérite à un certain degré de cette classe
+     * @param envType
+     * @param type1
+     * @return un booléen
+     * @see fr.ensimag.deca.tree.abstractExp.verifyRvalue
+     */
+    public boolean isSubTypeOf(Type type1, Location loc) throws ContextualError{
+    	if ((type1.toString() == "float") && (this.toString() == "int")) {
+    		return true;
+    	} else if ((type1.isClass()) && (this.isClass())){
+    			String nl = " n'est pas une classe";
+    			ClassType type1Class = type1.asClassType(type1.toString() + nl, loc);
+    			ClassType thisClass = this.asClassType(this.toString() + nl, loc);
+        		return thisClass.isSubClassOf(type1Class);
+    	}
+    	return false;
     }
 
 }

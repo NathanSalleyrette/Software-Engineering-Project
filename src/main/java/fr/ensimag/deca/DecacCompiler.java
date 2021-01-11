@@ -5,6 +5,7 @@ import fr.ensimag.deca.context.IntType;
 import fr.ensimag.deca.context.FloatType;
 import fr.ensimag.deca.context.BooleanType;
 import fr.ensimag.deca.context.VoidType;
+import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.syntax.DecaLexer;
 import fr.ensimag.deca.syntax.DecaParser;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
