@@ -1,3 +1,10 @@
+// Description :
+//		test de tout les token sensé être reconnu + test include
+//
+// Resultats :
+//		Ok
+
+
 asm
 class
 extends
@@ -53,7 +60,7 @@ p10
 /* aaaaa */
 100000
 
-//#include "_"
+#include "fichier_include"
 
 2.5
 /* */ blabla*/

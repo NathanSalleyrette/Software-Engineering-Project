@@ -1,5 +1,5 @@
 // Description :
-//		Programme avec quelques instructions
+//		Quelques instructions
 //
 // Resultats :
 //		Ok
@@ -8,5 +8,5 @@
 int a = 3;
 int b = 5;
 b = a + b;
-return b;
+//return b;
 }
