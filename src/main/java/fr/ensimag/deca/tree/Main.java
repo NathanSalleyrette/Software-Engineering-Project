@@ -3,6 +3,8 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.ima.pseudocode.instructions.*;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import java.util.Iterator;
@@ -51,12 +53,12 @@ public class Main extends AbstractMain {
         // Traitement des déclarations de variables.
         setnbGlobVar(declVariables.size());
         Iterator<AbstractDeclVar> iter = declVariables.iterator();
-        int indexGB = 2;
+        int indexGB = 2; // TODO : a modifié pour objet
         while (iter.hasNext()) {
             AbstractDeclVar declVar = iter.next();
             // TODO : initialisation
-            // LOAD dans R2 compiler.addInstruction(new );
-            //compiler.addInstruction(new STORE(getR(2), QQCH.getOperand()));
+            // LOAD dans R2 compiler.addInstruction(new LOAD(val, getR(2)));
+            //compiler.addInstruction(new STORE(getR(2), new RegisterOffset(indexGB, GB)));
             ++indexGB;
         }
         compiler.addComment("Beginning of main instructions:");
