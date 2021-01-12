@@ -14,6 +14,7 @@ repertoire_test=$2
 tableau_des_tests_echoues=() # va contenir le nom de tout les tests qui ont échoués
 resultat_des_tests_echoues=() # va contenir la sortie des tests qui ont échoués
 resultat_attendu_des_tests_echoues=() # va contenir la sortie attendue des tests qui ont échoués
+repertoires=("$repertoire_test/invalid/provided/" "$repertoire_test/valid/provided/")
 obtient_resultat_attendu(){
   # https://www.cyberciti.biz/faq/bash-get-basename-of-filename-or-directory-name/
   fichier_resultat_attendu=$(basename --suffix=.deca $1)
@@ -102,7 +103,25 @@ test_valide () {
 
     fi
 }
-for repertoire_de_test in "$repertoire_test/invalid/provided/" "$repertoire_test/invalid/created/" "$repertoire_test/valid/provided/" "$repertoire_test/valid/created/"
+detecte_sous_repertoire(){
+  if [ -d $1 ];then
+    # https://stackoverflow.com/questions/6781225/how-do-i-check-if-a-directory-has-child-directories
+    if [ $(find $1 -maxdepth 1 -type d -not -name expected_result| wc -l) -eq 1 ];then # le repertoire ne contient pas de sous repertoire
+      repertoires+=("$1")
+      return
+    fi
+    for d in $1/*/; do
+      if [[ "$d" != *"expected_result"* ]];then
+        repertoires+=("$d")
+        detecte_sous_repertoire $d
+      fi
+    done
+  fi
+}
+
+detecte_sous_repertoire "$repertoire_test/invalid/created/"
+detecte_sous_repertoire "$repertoire_test/valid/created/"
+for repertoire_de_test in "${repertoires[@]}"
 do
  echo "Test du répertoire : "$repertoire_de_test
  # https://superuser.com/questions/352289/bash-scripting-test-for-empty-directory
