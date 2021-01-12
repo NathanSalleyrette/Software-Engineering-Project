@@ -1,12 +1,11 @@
 #!/bin/sh
 # créé automatiquement les fichier .txt contenant la sortie attendue pour les tests
 # Permet donc de créer l'oracle de test
-# Argument 1 chemin du launcher du test, argument repertoire des tests
+# Argument 1 chemin du launcher du test, argument 2 repertoire des tests, argument 3 pas de validation de l'oracle (argument no_valid)
 # Exemple  ./creation_automatique_des_resultats_pour_non_reg_test.sh launchers/test_synt ../deca/syntax/valid/created/
-pwd
-echo $1 $2
+# TODO il faut valider les oracles manuellement
 
-if [ -z "$(ls -A $2)" ];then
+if [ -z "$(ls -A $2*.deca)" ];then
 	echo "Il n'y a aucun test à compléter"
 	exit
 fi
@@ -16,7 +15,6 @@ mkdir -p $repertoire/./expected_result
 for fichier_test in $2*.deca
 do
 	tput setaf 6
-
 	echo $fichier_test
 	sortie=$($1 $fichier_test 2>&1)
 
@@ -27,6 +25,11 @@ do
 	tput setaf 6
 
 	while true; do
+		if [ "$3" == "no_valid" ];then
+			echo "Argument no_valid set on ne valide pas la sortie"
+			echo "$sortie" > $repertoire/./expected_result/$nom_fichier.txt
+			break
+		fi
 		read -p "le résultat est il correct ? (Y/N)" yn
 		case $yn in
 		    [Yy]* ) echo "$sortie" > $repertoire/./expected_result/$nom_fichier.txt ;break;;

@@ -2,11 +2,12 @@
 
 # Auteur : gl01
 # Version initiale : 01/01/2021
-
-tput setaf 6
-echo "Debut des test sur $1"
-tput sgr0
 cd "$(dirname "$0")"/../../.. || exit 1
+source ./src/test/script/colors.sh # pour les couleurs
+$bleu
+echo "Debut des test sur $1"
+$reset
+
 PATH=./src/test/script/launchers:"$PATH"
 type_test=$1
 repertoire_test=$2
@@ -50,15 +51,15 @@ test_invalide () {
     sortie=$($commande 2>&1)
     if [ $? != 0 ]
     then
-        tput setaf 2
+        $vert
         echo "Echec attendu pour $type_test sur $1."
-        tput sgr0
+        $reset
     else
         # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
-        tput setaf 1
+        $rouge
         echo "Succes inattendu de $type_test sur $1."
         echo "commande utilisée ::: $commande"
-        tput sgr0
+        $reset
         tableau_des_tests_echoues+=($1)
         resultat_des_tests_echoues+=("$sortie")
         resultat_attendu_des_tests_echoues+=("$(obtient_resultat_attendu $1)")
@@ -70,10 +71,10 @@ test_valide () {
     sortie=$($commande 2>&1)
     if [ $? != 0 ]
     then
-        tput setaf 1
+        $rouge
         echo "Echec inattendu pour $type_test sur $1."
         echo "commande utilisée ::: $commande"
-        tput sgr0
+        $reset
         tableau_des_tests_echoues+=($1)
         # https://stackoverflow.com/questions/29015565/bash-adding-a-string-with-a-space-to-an-array-adds-two-elements
         resultat_des_tests_echoues+=("$sortie")
@@ -81,21 +82,21 @@ test_valide () {
     else
         resultat_comparaison=$(compare_sortie_attendue "$1" "$sortie")
         if [ "$resultat_comparaison" == "DIFFERENT" ];then
-          tput setaf 3
+          $jaune
           echo "Le  test $1 s'est déroulé sans erreur mais résultat n'est pas celui attendu"
           echo "commande utilisée ::: $commande"
-          tput sgr0
+          $reset
           tableau_des_tests_echoues+=($1)
           resultat_des_tests_echoues+=("$sortie")
           resultat_attendu_des_tests_echoues+=("$(obtient_resultat_attendu $1)")
         elif [ $resultat_comparaison == "PAS_DE_FICHIER" ];then
-          tput setaf 5
+          $violet
           echo "Il n'y a pas de fichier de comparaison (pas d'oracle de test). Ce test est considéré comme valide mais veuillez creer un oracle de test"
-          tput sgr0
+          $reset
         else
-          tput setaf 2
+          $vert
           echo "Succes attendu de $type_test sur $1."
-          tput sgr0
+          $reset
         fi
 
 
@@ -123,27 +124,27 @@ do
 done
 if (( ${#tableau_des_tests_echoues[@]} )); then
   # https://stackoverflow.com/questions/15691942/print-array-elements-on-separate-lines-in-bash
-  tput setaf 1
+  $rouge
   echo "des tests on échoués... Voici la liste"
   # https://stackoverflow.com/questions/17403498/iterate-over-two-arrays-simultaneously-in-bash/17409966
   for i in "${!tableau_des_tests_echoues[@]}"; do
-    tput setaf 6
+    $bleu
     printf "%s sortie actuelle:::\n" "${tableau_des_tests_echoues[i]}"
-    tput setaf 1
+    $rouge
     printf "%s\n\n" "${resultat_des_tests_echoues[i]}"
-    tput setaf 2
+    $vert
     printf "sortie attendue:::\n"
     printf "%s\n" "${resultat_attendu_des_tests_echoues[i]}"
     echo ""
     echo ""
   done
-  tput sgr0
+  $reset
   printf "\n\n\n\n"
   exit 1
   else
-    tput setaf 2
+    $vert
     echo "tout les test sont passés."
-    tput sgr0
+    $reset
     printf "\n\n\n\n"
     exit 0
 fi
