@@ -56,4 +56,7 @@ public class IntLiteral extends AbstractExpr {
         // leaf node => nothing to do
     }
 
+    public String toString() {
+    	return "int";
+    }
 }

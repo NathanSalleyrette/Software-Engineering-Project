@@ -1,6 +1,5 @@
 package fr.ensimag.deca.tree;
 
-
 /**
  *
  * @author gl01
@@ -16,5 +15,4 @@ public class Divide extends AbstractOpArith {
     protected String getOperatorName() {
         return "/";
     }
-
 }
