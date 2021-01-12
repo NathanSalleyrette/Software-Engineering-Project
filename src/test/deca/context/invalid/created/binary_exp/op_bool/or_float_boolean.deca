@@ -1,0 +1,13 @@
+// Description :
+//    test or entre un float et un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: Type gauche float. Type droit boolean Type attendu: ‘boolean’
+
+{
+float a;
+boolean b;
+boolean c = a || b;
+}
+

@@ -1,0 +1,18 @@
+// Description :
+//    test de l'opérateur or
+//
+// Resultats :
+//		Ok
+
+{
+bool a;
+//a non initialisé
+bool b;
+b = true || true;
+b = false || false;
+b = false || true;
+b = true || false;
+b = a || a;
+b = b || a;
+b = a || b;
+}
