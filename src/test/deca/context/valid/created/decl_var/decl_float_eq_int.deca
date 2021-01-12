@@ -1,0 +1,9 @@
+// Description :
+//    test affectation float = int
+//
+// Resultats :
+//		Ok
+
+{
+float a = 1; 
+}
