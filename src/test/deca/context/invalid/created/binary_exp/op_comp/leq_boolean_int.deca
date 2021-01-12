@@ -1,0 +1,12 @@
+// Description :
+//    test leq entre un boolean et un int
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: Opérandes de type boolean, int, attendu: ‘int’ ou ‘float’
+
+{
+boolean a;
+int b;
+boolean c = a <= b;
+}

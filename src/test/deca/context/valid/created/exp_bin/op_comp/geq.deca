@@ -1,0 +1,22 @@
+// Description :
+//    test geq 
+//
+// Resultats :
+//		Ok
+
+{
+int a;
+float b;
+boolean c;
+c = 1 >= 2;
+c = 0.1 >= 2;
+c = 1 >= 0.2;
+c = 0.1 >= 0.2;
+c = a >= 1;
+c = a >= 0.1;
+c = 1 >= b;
+c = 0.1 >= b;
+c = a >= b;
+c = a >= a;
+c = b >= b;
+}
