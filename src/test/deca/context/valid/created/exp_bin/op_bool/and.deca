@@ -1,0 +1,17 @@
+// Description :
+//    test de l'opérateur and
+//
+// Resultats :
+//		Ok
+
+{
+bool a;
+bool b;
+b = true && true;
+b = false && false;
+b = false && true;
+b = true && false;
+b = a && a;
+b = b && a;
+b = a && b;
+}

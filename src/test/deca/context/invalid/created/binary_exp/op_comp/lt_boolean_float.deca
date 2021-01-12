@@ -1,0 +1,12 @@
+// Description :
+//    test lt entre un boolean et un float
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: Opérandes de type boolean, float, attendu: ‘int’ ou ‘float’
+
+{
+boolean a;
+float b;
+boolean c = a < b;
+}
