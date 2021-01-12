@@ -62,5 +62,8 @@ public class FloatLiteral extends AbstractExpr {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         // leaf node => nothing to do
     }
-
+    
+    public String toString() {
+    	return "float";
+    }
 }

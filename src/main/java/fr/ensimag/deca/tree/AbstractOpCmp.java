@@ -20,8 +20,21 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+    	AbstractExpr leftOp = this.getLeftOperand();
+    	AbstractExpr rightOp = this.getRightOperand();
+    	leftOp.verifyExpr(compiler, localEnv, currentClass);
+    	rightOp.verifyExpr(compiler, localEnv, currentClass);
+    	leftOp.verifyExpr(compiler, localEnv, currentClass);
+    	rightOp.verifyExpr(compiler, localEnv, currentClass);
+    	Type leftType = leftOp.getType();
+    	Type rightType = rightOp.getType();
+        if (((leftType.isInt()) || (leftType.isFloat())) && ((rightType.isInt()) 
+        		|| rightType.isFloat())) {
+        			// Au moins je suis sûr de récupérer le type Boolean comme ça
+        			return compiler.getEnvType().get(compiler.getSymbTb().create("boolean")).getType();
+        }  	
+        throw new ContextualError("Opérandes de type " + leftType.toString() + ", " +
+        			rightType.toString() + ", attendu: 'int' ou 'float'", this.getLocation());
     }
-
-
 }
+

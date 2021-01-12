@@ -73,6 +73,8 @@ public class StringLiteral extends AbstractStringLiteral {
         return "StringLiteral (" + value + ")";
     }
     
-    
+    public String toString() {
+    	return "string";
+    }
 
 }
