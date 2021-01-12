@@ -22,16 +22,14 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
             ClassDefinition currentClass) throws ContextualError {
     	AbstractExpr leftOp = this.getLeftOperand();
     	AbstractExpr rightOp = this.getRightOperand();
-    	leftOp.verifyExpr(compiler, localEnv, currentClass);
-    	rightOp.verifyExpr(compiler, localEnv, currentClass);
-    	leftOp.verifyExpr(compiler, localEnv, currentClass);
-    	rightOp.verifyExpr(compiler, localEnv, currentClass);
-    	Type leftType = leftOp.getType();
-    	Type rightType = rightOp.getType();
+    	Type leftType = leftOp.verifyExpr(compiler, localEnv, currentClass);
+    	Type rightType = rightOp.verifyExpr(compiler, localEnv, currentClass);
         if (((leftType.isInt()) || (leftType.isFloat())) && ((rightType.isInt()) 
         		|| rightType.isFloat())) {
         			// Au moins je suis sûr de récupérer le type Boolean comme ça
-        			return compiler.getEnvType().get(compiler.getSymbTb().create("boolean")).getType();
+        			Type returnType = compiler.getEnvType().get(compiler.getSymbTb().create("boolean")).getType();
+        			this.setType(returnType);
+        			return returnType;
         }  	
         throw new ContextualError("Opérandes de type " + leftType.toString() + ", " +
         			rightType.toString() + ", attendu: 'int' ou 'float'", this.getLocation());

@@ -22,11 +22,10 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
             ClassDefinition currentClass) throws ContextualError {
     	AbstractExpr leftOp = this.getLeftOperand();
     	AbstractExpr rightOp = this.getRightOperand();
-    	leftOp.verifyExpr(compiler, localEnv, currentClass);
-    	rightOp.verifyExpr(compiler, localEnv, currentClass);
-    	Type leftType = leftOp.getType();
-    	Type rightType = rightOp.getType();
+    	Type leftType = leftOp.verifyExpr(compiler, localEnv, currentClass);
+    	Type rightType = rightOp.verifyExpr(compiler, localEnv, currentClass);
     	if ((leftType.isBoolean()) && (rightType.isBoolean())) {
+    		this.setType(leftType);
     		return leftType;
     	}
     	String coupableGauche = "";

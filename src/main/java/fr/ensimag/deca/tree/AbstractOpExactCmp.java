@@ -26,14 +26,15 @@ public abstract class AbstractOpExactCmp extends AbstractOpCmp {
     	} catch(ContextualError e) {
     		AbstractExpr leftOp = this.getLeftOperand();
         	AbstractExpr rightOp = this.getRightOperand();
-        	leftOp.verifyExpr(compiler, localEnv, currentClass);
-        	rightOp.verifyExpr(compiler, localEnv, currentClass);
-        	Type leftType = leftOp.getType();
-        	Type rightType = rightOp.getType();
+        	Type leftType = leftOp.verifyExpr(compiler, localEnv, currentClass);
+        	Type rightType = rightOp.verifyExpr(compiler, localEnv, currentClass);
     		if (((leftType.isClass()) || (leftType.isNull())) &&
     				((rightType.isClass()) || (rightType.isNull()))) {
-    			return compiler.getEnvType().get(compiler.getSymbTb().create("boolean")).getType();
+    			Type returnType = compiler.getEnvType().get(compiler.getSymbTb().create("boolean")).getType();
+    			this.setType(returnType);
+    			return returnType;
     		} else if ((leftType.isBoolean()) && (leftType.isBoolean())) {
+    			this.setType(leftType);
         		return leftType;
         	}
     		throw new ContextualError("Opérandes de type " + leftType.toString() + ", " +
