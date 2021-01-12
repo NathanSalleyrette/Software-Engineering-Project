@@ -172,6 +172,7 @@ public class Identifier extends AbstractIdentifier {
         if (typeDef == null) {
         	throw new ContextualError("Identificateur " + this.getName() + " non défini", this.getLocation());
         }
+        this.setDefinition(typeDef);
         Type type = typeDef.getType();
         this.setType(type);
         return type;

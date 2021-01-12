@@ -30,17 +30,24 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
             ClassDefinition currentClass) throws ContextualError {
     	AbstractExpr leftOp = this.getLeftOperand();
     	AbstractExpr rightOp = this.getRightOperand();
-    	leftOp.verifyExpr(compiler, localEnv, currentClass);
-    	rightOp.verifyExpr(compiler, localEnv, currentClass);
-    	Type leftType = leftOp.getType();
-    	Type rightType = rightOp.getType();
+    	Type leftType = leftOp.verifyExpr(compiler, localEnv, currentClass);
+    	Type rightType = rightOp.verifyExpr(compiler, localEnv, currentClass);
     	if ((leftType.isInt()) && (rightType.isInt())) {
+    		this.setType(leftType);
     		return leftType;
     	} else if ((leftType.isInt()) && (rightType.isFloat())) {
+    		ConvFloat conv = new ConvFloat(leftOp);
+    		this.setLeftOperand(conv);
+    		this.setType(conv.verifyExpr(compiler, localEnv, currentClass));
     		return rightType;
 	    } else if ((leftType.isFloat()) && (rightType.isInt())) {
+	    	ConvFloat conv = new ConvFloat(rightOp);
+	    	this.setRightOperand(conv);
+    		this.setType(conv.verifyExpr(compiler, localEnv, currentClass));
+	    	this.setType(leftType);
 			return leftType;
 		} else if ((leftType.isFloat()) && (rightType.isFloat())) {
+			this.setType(rightType);
 			return rightType;
 		}
     	String coupableGauche = "";
