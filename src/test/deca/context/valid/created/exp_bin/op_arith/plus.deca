@@ -1,0 +1,22 @@
+// Description :
+//    test de l'addition
+//
+// Resultats :
+//		Ok
+
+{
+int a;
+float b;
+a = 1 + 2;
+a = 3 + a; 
+b = 0.5 + 2; 
+b = 2.0 + 3.0; 
+b = 2 + 0.5; 
+b = a + b; 
+b = b + (a + 2); 
+b = (0.5 + b) + 0.5; 
+a = a + a;
+a = 0.5 + 2;
+a = 2 + 0.5;
+a = b + 0.3;
+}

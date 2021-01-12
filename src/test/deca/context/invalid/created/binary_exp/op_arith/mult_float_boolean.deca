@@ -1,0 +1,12 @@
+// Description :
+//    test mult entre un float et un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: L’opérande gauche est de type float, L’opérande droite est de type boolean. Or les opérandes d’un modulo doivent être de type ‘int’
+
+{
+float a;
+boolean b;
+int c = a * b;
+}
