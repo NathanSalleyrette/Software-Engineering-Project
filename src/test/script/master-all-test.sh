@@ -5,7 +5,7 @@
 
 # Lance tout les tests
 # Commentez / retirez du tableau "tests" les tests qui ne passent pas
-tests=("./src/test/script/script_test_general.sh test_lex ./src/test/deca/lexer" "./src/test/script/script_test_general.sh test_synt ./src/test/deca/syntax" "./src/test/script/script_test_general.sh test_context ./src/test/deca/context" "./src/test/script/script_test_general.sh src/main/bin/decac ./src/test/deca/codegen/")
+tests=("./src/test/script/script_test_general.sh test_lex ./src/test/deca/lexer" "./src/test/script/script_test_general.sh test_synt ./src/test/deca/syntax" "./src/test/script/script_test_general.sh test_context ./src/test/deca/context" "./src/test/script/script_test_general.sh src/test/script/launchers/decac_plus_ima.sh ./src/test/deca/codegen/")
 # tests=("./src/test/script/script_test_general.sh test_lex ./src/test/deca/lexer")
 test_echoue=false
 
