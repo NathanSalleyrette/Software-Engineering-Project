@@ -1,0 +1,12 @@
+// Description :
+//    test d'une déclaration de variable avec type String, non reconnu en Deca
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: Une variable ne peut être de type ‘void’
+
+
+{
+void a; 
+//String n'est pas un type reconnu pour la declaration de variable
+}
