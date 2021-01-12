@@ -1,24 +1,35 @@
+{
+	bool a = false;
+	;
+	print();
+	print("");
+	println("super");
+	while (fibf) {
+	}
+	a;
+	1;
+}
 `> [1, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [1, 0] Main
-      +> ListDeclVar [List with 1 elements]
-      |  []> DeclVar
-      |      +> Identifier (bool)
-      |      +> Identifier (a)
+      +> [2, 1] ListDeclVar [List with 1 elements]
+      |  []> [2, 6] DeclVar
+      |      +> [2, 1] Identifier (bool)
+      |      +> [2, 6] Identifier (a)
       |      `> Initialization
-      |         `> BooleanLiteral (false)
-      `> ListInst [List with 7 elements]
-         []> NoOperation
-         []> Print
+      |         `> [2, 10] BooleanLiteral (false)
+      `> [3, 0] ListInst [List with 7 elements]
+         []> [3, 0] NoOperation
+         []> [4, 6] Print
          ||  `> ListExpr [List with 0 elements]
-         []> Print
-         ||  `> ListExpr [List with 1 elements]
-         ||     []> StringLiteral ("")
-         []> Println
-         ||  `> ListExpr [List with 1 elements]
-         ||     []> StringLiteral ("super")
-         []> While
-         ||  +> Identifier (fibf)
+         []> [5, 6] Print
+         ||  `> [5, 6] ListExpr [List with 1 elements]
+         ||     []> [5, 6] StringLiteral ()
+         []> [6, 8] Println
+         ||  `> [6, 8] ListExpr [List with 1 elements]
+         ||     []> [6, 8] StringLiteral (super)
+         []> [7, 6] While
+         ||  +> [7, 6] Identifier (fibf)
          ||  `> ListInst [List with 0 elements]
-         []> Identifier (a)
-         []> Int (1)
+         []> [8, 7] Identifier (a)
+         []> [9, 7] Int (1)
