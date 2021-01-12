@@ -36,10 +36,15 @@ public class CompilerOptions {
         return Collections.unmodifiableList(sourceFiles);
     }
 
+    public int getRMAX() {
+        return RMAX;
+    }
+
     private int debug = 0;
     private boolean parallel = false;
     private boolean printBanner = false;
     private List<File> sourceFiles = new ArrayList<File>();
+    private int RMAX = 15;
 
     
     public void parseArgs(String[] args) throws CLIException {
@@ -68,8 +73,8 @@ public class CompilerOptions {
 
                     case 'r' :
                         i++; // l'option -r à un argument
-                        throw new UnsupportedOperationException("not yet implemented");
-                        //break;
+                        RMAX = Integer.parseInt(args[i]);
+                        break;
 
                     case 'd' :
                         debug++;

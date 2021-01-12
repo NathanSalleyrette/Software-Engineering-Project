@@ -13,7 +13,14 @@ public abstract class AbstractMain extends Tree {
 
     protected abstract void codeGenMain(DecacCompiler compiler);
 
+    private int nbGlobVar = 0;
+    public int getnbGlobVar() {
+        return nbGlobVar;
+    }
 
+    public void setnbGlobVar(int i) {
+        nbGlobVar = i;
+    }
     /**
      * Implements non-terminal "main" of [SyntaxeContextuelle] in pass 3 
      */

@@ -2,8 +2,11 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
+import fr.ensimag.ima.pseudocode.instructions.*;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
+import java.util.Iterator;
+
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import fr.ensimag.deca.context.EnvironmentExp;
@@ -45,7 +48,17 @@ public class Main extends AbstractMain {
 
     @Override
     protected void codeGenMain(DecacCompiler compiler) {
-        // A FAIRE: traiter les déclarations de variables.
+        // Traitement des déclarations de variables.
+        setnbGlobVar(declVariables.size());
+        Iterator<AbstractDeclVar> iter = declVariables.iterator();
+        int indexGB = 2;
+        while (iter.hasNext()) {
+            AbstractDeclVar declVar = iter.next();
+            // TODO : initialisation
+            // LOAD dans R2 compiler.addInstruction(new );
+            //compiler.addInstruction(new STORE(getR(2), QQCH.getOperand()));
+            ++indexGB;
+        }
         compiler.addComment("Beginning of main instructions:");
         insts.codeGenListInst(compiler);
     }
