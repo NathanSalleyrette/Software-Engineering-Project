@@ -3,7 +3,6 @@
 # Auteur : gl01
 # Version initiale : 01/01/2021
 
-# Les Tests sur la partie A sont lancés ici
 tput setaf 6
 echo "Debut des test sur $1"
 tput sgr0
@@ -13,16 +12,34 @@ type_test=$1
 repertoire_test=$2
 tableau_des_tests_echoues=() # va contenir le nom de tout les tests qui ont échoués
 resultat_des_tests_echoues=() # va contenir la sortie des tests qui ont échoués
-# cette fonction permet de vérifier si la sortie correspond à la sortie attendue
-compare_sortie_attendue() {
-# https://www.cyberciti.biz/faq/bash-get-basename-of-filename-or-directory-name/
+resultat_attendu_des_tests_echoues=() # va contenir la sortie attendue des tests qui ont échoués
+obtient_resultat_attendu(){
+  # https://www.cyberciti.biz/faq/bash-get-basename-of-filename-or-directory-name/
   fichier_resultat_attendu=$(basename --suffix=.deca $1)
   # https://stackoverflow.com/questions/19482123/extract-part-of-a-string-using-bash-cut-split
-  attendue=$(cat ${1%/*}/expected_result/$fichier_resultat_attendu.txt)
-  if [ "$attendue" == "$2" ];then
-    echo EGAL
+  attendu=$(cat ${1%/*}/expected_result/$fichier_resultat_attendu.txt)
+  if [ $? != 0 ];then # s'il n'y a pas de fichier de référence
+    echo "PAS_DE_FICHIER"
+    exit 1
   else
-    echo DIFFERENT
+    echo "$attendu"
+    exit 0
+  fi
+}
+
+# cette fonction permet de vérifier si la sortie correspond à la sortie attendue
+compare_sortie_attendue() {
+
+  attendu="$(obtient_resultat_attendu $1)"
+  if [ $? != 0 ];then
+    echo "$attendu"
+    exit 1
+  else
+    if [ "$attendu" == "$2" ];then
+      echo EGAL
+    else
+      echo DIFFERENT
+    fi
   fi
 
 }
@@ -43,7 +60,8 @@ test_invalide () {
         echo "commande utilisée ::: $commande"
         tput sgr0
         tableau_des_tests_echoues+=($1)
-        resultat_des_tests_echoue+=("$sortie")
+        resultat_des_tests_echoues+=("$sortie")
+        resultat_attendu_des_tests_echoues+=("$(obtient_resultat_attendu $1)")
     fi
 }
 test_valide () {
@@ -58,16 +76,22 @@ test_valide () {
         tput sgr0
         tableau_des_tests_echoues+=($1)
         # https://stackoverflow.com/questions/29015565/bash-adding-a-string-with-a-space-to-an-array-adds-two-elements
-        resultat_des_tests_echoue+=("$sortie")
+        resultat_des_tests_echoues+=("$sortie")
+        resultat_attendu_des_tests_echoues+=("$(obtient_resultat_attendu $1)")
     else
-        resultat_comparaison=$(compare_sortie_attendue $1 "$sortie")
-        if [ $resultat_comparaison == "DIFFERENT" ];then
+        resultat_comparaison=$(compare_sortie_attendue "$1" "$sortie")
+        if [ "$resultat_comparaison" == "DIFFERENT" ];then
           tput setaf 3
           echo "Le  test $1 s'est déroulé sans erreur mais résultat n'est pas celui attendu"
           echo "commande utilisée ::: $commande"
           tput sgr0
           tableau_des_tests_echoues+=($1)
-          resultat_des_tests_echoue+=("$sortie")
+          resultat_des_tests_echoues+=("$sortie")
+          resultat_attendu_des_tests_echoues+=("$(obtient_resultat_attendu $1)")
+        elif [ $resultat_comparaison == "PAS_DE_FICHIER" ];then
+          tput setaf 5
+          echo "Il n'y a pas de fichier de comparaison (pas d'oracle de test). Ce test est considéré comme valide mais veuillez creer un oracle de test"
+          tput sgr0
         else
           tput setaf 2
           echo "Succes attendu de $type_test sur $1."
@@ -100,18 +124,26 @@ done
 if (( ${#tableau_des_tests_echoues[@]} )); then
   # https://stackoverflow.com/questions/15691942/print-array-elements-on-separate-lines-in-bash
   tput setaf 1
-  echo "des tests on échoués..."
+  echo "des tests on échoués... Voici la liste"
   # https://stackoverflow.com/questions/17403498/iterate-over-two-arrays-simultaneously-in-bash/17409966
   for i in "${!tableau_des_tests_echoues[@]}"; do
-    printf "%s sortie:::\n %s\n" "${tableau_des_tests_echoues[i]}" "${resultat_des_tests_echoue[i]}"
+    tput setaf 6
+    printf "%s sortie actuelle:::\n" "${tableau_des_tests_echoues[i]}"
+    tput setaf 1
+    printf "%s\n\n" "${resultat_des_tests_echoues[i]}"
+    tput setaf 2
+    printf "sortie attendue:::\n"
+    printf "%s\n" "${resultat_attendu_des_tests_echoues[i]}"
     echo ""
     echo ""
   done
   tput sgr0
+  printf "\n\n\n\n"
   exit 1
   else
     tput setaf 2
     echo "tout les test sont passés."
     tput sgr0
+    printf "\n\n\n\n"
     exit 0
 fi
