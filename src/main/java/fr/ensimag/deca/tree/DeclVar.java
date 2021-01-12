@@ -1,7 +1,8 @@
 package fr.ensimag.deca.tree;
 
-import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
@@ -41,9 +42,12 @@ public class DeclVar extends AbstractDeclVar {
     	Symbol typeName = varType.getName();
     	// On récupère le symbole du nom de la variable et on crée une ExpDefinition
     	Symbol nameSymb = this.varName.getName();
+    	TypeDefinition typeDef = compiler.getEnvType().get(varType.getName());
+    	type.setDefinition(typeDef);
     	VariableDefinition varDef = new VariableDefinition(varType, this.getLocation());
     	try {
     		localEnv.declare(nameSymb, varDef, getLocation());
+    		varName.setDefinition(varDef);
     	} catch (DoubleDefException e) {
     		throw new ContextualError(" La variable " + this.varName.toString() + " est déjà déclarée", this.getLocation());
     	}

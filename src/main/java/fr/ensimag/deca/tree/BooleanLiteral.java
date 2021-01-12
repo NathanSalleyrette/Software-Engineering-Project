@@ -57,4 +57,7 @@ public class BooleanLiteral extends AbstractExpr {
         return "BooleanLiteral (" + value + ")";
     }
 
+    public String toString() {
+    	return "boolean";
+    }
 }

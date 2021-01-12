@@ -27,7 +27,6 @@ options {
     import fr.ensimag.deca.tree.*;
     import fr.ensimag.deca.tools.SymbolTable;
     import java.io.PrintStream;
-    import java.util.Scanner;
 }
 
 @members {
@@ -443,16 +442,12 @@ primary_expr returns[AbstractExpr tree]
             setLocation($tree, $expr.start);
         }
     | READINT OPARENT CPARENT {
-    	Scanner sc = new Scanner(System.in);
-    	$tree = new IntLiteral(sc.nextInt());
+    	$tree = new ReadInt();
     	setLocation($tree, $READINT);
-    	sc.close();
         }
     | READFLOAT OPARENT CPARENT {
-    	Scanner sc = new Scanner(System.in);
-    	$tree = new FloatLiteral(sc.nextFloat());
+    	$tree = new ReadFloat();
     	setLocation($tree, $READFLOAT);
-    	sc.close();
         }
     | NEW ident OPARENT CPARENT {
             assert($ident.tree != null);
