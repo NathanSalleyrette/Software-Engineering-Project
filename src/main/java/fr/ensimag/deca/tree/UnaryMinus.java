@@ -21,6 +21,7 @@ public class UnaryMinus extends AbstractUnaryExpr {
             ClassDefinition currentClass) throws ContextualError {
         this.getOperand().verifyExpr(compiler, localEnv, currentClass);
         if ((this.getOperand().getType().isFloat()) || (this.getOperand().getType().isInt())) {
+        	this.setType(this.getOperand().getType());
         	return this.getOperand().getType();
         }
         throw new ContextualError("(3.37) Type opérande : " + this.getOperand().getType().toString() +
