@@ -14,9 +14,9 @@ if (a){
 	}
 	
 	if (a) {
-	print("3");
+		print("3");
 	} else if (a) { 
-	print("4");
+		print("4");
 	}
 	}
 }
