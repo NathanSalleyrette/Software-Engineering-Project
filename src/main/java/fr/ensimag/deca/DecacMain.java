@@ -26,7 +26,8 @@ public class DecacMain {
             System.exit(1);
         }
         if (options.getPrintBanner()) {
-            String banner = "Projet de Lucie Fousse, Benjamin Cathelineau, Alan Manic, Nathan Saleyrette et Baudouin Jaubert";
+            String banner = "Lucie Fousse, Benjamin Cathelineau, Baudouin Jaubert," +
+            				"Alan Manic, Nathan Salleyrette";
             System.out.println(banner);
             return;
         }
@@ -52,6 +53,7 @@ public class DecacMain {
                         + "Les options -p et -v sont incompatibles.\n"
                         ;
             System.out.println(help);
+            options.displayUsage();
             return;
         }
         if (options.getParallel()) {

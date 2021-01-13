@@ -62,9 +62,7 @@ public class DeclVar extends AbstractDeclVar {
     	}
     	// On vérifie l'initialisation ensuite
     	this.initialization.verifyInitialization(compiler, varType, localEnv, currentClass);
-    	// On récupère le symbole void
-    	Symbol voidSymb = compiler.getSymbTb().create("void");
-    	if (typeName == voidSymb) {
+    	if (varType.isVoid()) {
     		throw new ContextualError("Le type de l'identificateur ne peut être 'void''", this.getLocation());
     	}
     }
