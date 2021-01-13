@@ -1,0 +1,10 @@
+// Description :
+//    test not avec un float
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.37) Type opérande : float , attendu : boolean pour l’opérateur !
+
+{
+boolean a = !3.2;
+}
