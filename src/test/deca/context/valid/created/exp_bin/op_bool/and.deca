@@ -5,8 +5,8 @@
 //		Ok
 
 {
-bool a;
-bool b;
+boolean a;
+boolean b;
 b = true && true;
 b = false && false;
 b = false && true;

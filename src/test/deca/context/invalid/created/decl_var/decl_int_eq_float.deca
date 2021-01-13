@@ -2,7 +2,8 @@
 //    test affectation int = float
 //
 // Resultats :
-//		Ok
+//		Erreur contextuelle
+//		Ligne 9 : Type int et float incompatible
 
 {
 int a = 0.5; 

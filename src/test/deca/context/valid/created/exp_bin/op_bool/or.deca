@@ -5,9 +5,9 @@
 //		Ok
 
 {
-bool a;
+boolean a;
 //a non initialisé
-bool b;
+boolean b;
 b = true || true;
 b = false || false;
 b = false || true;
