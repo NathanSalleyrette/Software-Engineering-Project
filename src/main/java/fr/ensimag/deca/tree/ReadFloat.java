@@ -8,6 +8,11 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.RFLOAT;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.deca.codegen.Error;
+
 /**
  *
  * @author gl01
@@ -23,6 +28,11 @@ public class ReadFloat extends AbstractReadExpr {
         return floatType;
     }
 
+    protected void codeGenInst(DecacCompiler compiler) {
+        compiler.addInstruction(new RFLOAT());
+        Error.instanceError(compiler, "io_error");
+        compiler.addInstruction(new LOAD(Register.R1, Register.getR(compiler.getCurrentRegister())));
+    }
 
     @Override
     public void decompile(IndentPrintStream s) {

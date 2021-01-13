@@ -40,7 +40,7 @@ public class Assign extends AbstractBinaryExpr {
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
         this.getRightOperand().codeGenInst(compiler);   
-        EvalExpr.mnemo(compiler, this, this.getLeftOperand().dval(), Register.getR(compiler.getCurrentRegister()));
+        EvalExpr.mnemo(compiler, this, this.getLeftOperand().dval(compiler), Register.getR(compiler.getCurrentRegister()));
     }
 
     @Override
