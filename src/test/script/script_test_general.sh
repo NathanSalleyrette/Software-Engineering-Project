@@ -54,7 +54,7 @@ extrait_numero_erreur_fichier() {
 	fi
 }
 extrait_numero_erreur_sortie() {
-	if [[ "$1" != *"Exception"* ]]; then # c'est une erreur java, le programme a crash
+	if [[ "$1" == *"Exception"* ]]; then # c'est une erreur java, le programme a crash
 		echo "ERREUR_JAVA"
 	else
 		numero_erreur=$(echo $1 | cut -d "(" -f2 -s | cut -d ")" -f1 -s)
@@ -72,14 +72,13 @@ test_invalide() {
 	sortie=$($commande 2>&1)
 	if [ $? != 0 ]; then
 		if [ "$type_test" == "test_context" ]; then
-
 			numero_erreur="$(extrait_numero_erreur_fichier $1)"
 			if [ "$numero_erreur" == "PAS_NUMERO" ]; then
 				$violet
 				echo "Il n'y a pas de numéro d'erreur dans le fichier .deca on considère le message d'erreur comme valide, mais veuillez vérifier"
 				$reset
 			else
-				numero_erreur_sortie=$(extrait_numero_erreur_sortie $1)
+				numero_erreur_sortie=$(extrait_numero_erreur_sortie $sortie)
 				if [ "$numero_erreur_sortie" == "ERREUR_JAVA" ]; then
 					$rouge
 					echo "Le test qui devait echoué $type_test sur $1 a crashé et non échoué proprement"
@@ -183,7 +182,9 @@ detecte_sous_repertoire "$repertoire_test/valid/created/"
 # https://stackoverflow.com/questions/13648410/how-can-i-get-unique-values-from-an-array-in-bash
 repertoires=($(echo "${repertoires[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
 for repertoire_de_test in "${repertoires[@]}"; do
+  $bleu
 	echo "Test du répertoire : "$repertoire_de_test
+  $reset
 	# https://superuser.com/questions/352289/bash-scripting-test-for-empty-directory
 	if [ -z "$(ls -A $repertoire_de_test*.deca)" ]; then
 		echo "Répertoire vide - pas de test"
