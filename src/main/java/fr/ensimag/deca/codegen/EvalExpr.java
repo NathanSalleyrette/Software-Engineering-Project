@@ -20,6 +20,7 @@ import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.*;
+import fr.ensimag.deca.tools.DecacInternalError;
 
 /**
  * Class for the evaluation of any expression
@@ -45,17 +46,35 @@ public class EvalExpr {
                 compiler.addInstruction(new MUL(dval, reg));
                 break;
             case "/" :
+                if (op.getType().isInt()) {
+                    compiler.addInstruction(new QUO(dval, reg));
+                    Error.instanceError(compiler, "division_par_zero");
+                } else {
+                    compiler.addInstruction(new DIV(dval, reg));
+                }
                 break;
             case "%" :
+                // Reste entier
+                compiler.addInstruction(new REM(dval, reg));
+                Error.instanceError(compiler, "division_par_zero");
+                break;
+            case "=" :
+                // Assign, le contexte devrait empecher l'exception
+                try {
+                    compiler.addInstruction(new STORE(reg, (DAddr) dval));
+                } catch (ClassCastException e) {
+                    throw new DecacInternalError(
+                            "DVal "
+                                    + dval.toString()
+                                    + " is not a DAddr, you can't assign it");
+                }
                 break;
             default :
                 throw new UnsupportedOperationException("not yet implemented");
         }
         if (op.getType().isFloat()) {
             // Gestion des erreurs liés au calcul flottant
-            Label overflow = new Label("overflow_error");
-            compiler.addInstruction(new BOV(overflow));
-            compiler.addError(overflow);
+            Error.instanceError(compiler, "debordement_flottant");
         }
     }
 }

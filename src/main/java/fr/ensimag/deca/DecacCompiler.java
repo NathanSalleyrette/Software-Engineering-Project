@@ -31,8 +31,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.log4j.Logger;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.HashSet;
 
 /**
  * Decac compiler instance.
@@ -63,7 +61,7 @@ public class DecacCompiler {
 
     private int currentRegister; // X tq tous les registres RY, Y < X sont utilisés
 
-    private Set<Label> errorSet;
+    private Map<String, Label> errorMap;
 
     // Calcul du nombre de valeurs temporaires necessaires
     private int nbTemp;
@@ -76,7 +74,7 @@ public class DecacCompiler {
         this.symbTb = new SymbolTable();
         this.envType = new EnvironmentType(this.symbTb);
         currentRegister = 2;
-        errorSet = new HashSet<Label>();
+        errorMap = new HashMap<String, Label>();
         nbTemp = 0;
         maxTemp = 0;
     }
@@ -111,7 +109,10 @@ public class DecacCompiler {
     }
 
     public void addError(Label label) {
-        errorSet.add(label);
+        String key = label.toString();
+        if (!errorMap.containsKey(key)) {
+            errorMap.put(key, label);
+        }
     }
 
     public SymbolTable getSymbTb() {
@@ -180,7 +181,7 @@ public class DecacCompiler {
      * add the instructions treating an error
      */
     public void writeErrors() {
-        for (Label label : errorSet) {
+        for (Label label : errorMap.values()) {
             Error.writeError(program, label);
         }
     }

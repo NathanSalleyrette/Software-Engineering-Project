@@ -6,6 +6,10 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.deca.codegen.Error;
+import fr.ensimag.ima.pseudocode.instructions.OPP;
+
 /**
  * @author gl01
  * @date 01/01/2021
@@ -27,6 +31,13 @@ public class UnaryMinus extends AbstractUnaryExpr {
         		", attendu : 'int' ou 'float' pour l'opérateur" + this.getOperatorName(), this.getLocation());
     }
 
+    @Override
+    protected void codeGenInst(DecacCompiler compiler) {
+        compiler.addInstruction(new OPP(this.getOperand().dval(), Register.getR(compiler.getCurrentRegister())));
+        if (this.getType().isFloat()) {
+            Error.instanceError(compiler, "debordement_flottant");
+        }
+    }
 
     @Override
     protected String getOperatorName() {

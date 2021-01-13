@@ -7,6 +7,9 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+
+import fr.ensimag.ima.pseudocode.DVal;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
@@ -38,6 +41,20 @@ public class BooleanLiteral extends AbstractExpr {
     	return typeBool;
     	}
 
+        @Override
+        protected void codeGenInst(DecacCompiler compiler) {
+            compiler.addInstruction(new LOAD(this.dval(), Register.getR(compiler.getCurrentRegister())));
+        }
+    
+        @Override
+        public DVal dval() {
+            // false est codé par #0, true par #1 (arbitraire, doit être différent de #0)
+            if (!value) {
+                return new ImmediateInteger(0);
+            } else {
+                return new ImmediateInteger(1);
+            }
+        }
 
     @Override
     public void decompile(IndentPrintStream s) {

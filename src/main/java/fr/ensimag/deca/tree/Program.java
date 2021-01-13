@@ -49,14 +49,14 @@ public class Program extends AbstractProgram {
 
     @Override
     public void codeGenProgram(DecacCompiler compiler) {
-        Label pilePleine = new Label("pile_pleine");
-        compiler.addError(pilePleine);
         compiler.addComment("Main program");
         main.codeGenMain(compiler);
         compiler.addInstruction(new HALT());
         // Entête : TSTO + ADDSP
         int nbGlobVar = main.getnbGlobVar();
         compiler.addFirst(new Line(new ADDSP(nbGlobVar)));
+        Label pilePleine = new Label("pile_pleine");
+        compiler.addError(pilePleine);
         compiler.addFirst(new Line(new BOV(pilePleine)));
         compiler.addFirst(new Line(new TSTO(nbGlobVar + compiler.getMaxTemp())));
         // Messages d'erreurs
