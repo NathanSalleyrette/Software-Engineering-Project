@@ -23,7 +23,7 @@ gen_exp_part () {
 	echo "//" >&3
 	echo "// Resultats :" >&3
 	echo "//		Erreur contextuelle" >&3
-	echo "//    	Ligne 11: Opérandes de type $args2, $args3, attendu: (int|float, int|float) ou (class|null, class|null) ou (bool, bool)" >&3
+	echo "//    	Ligne 11: (3.33) Opérandes de type $args2, $args3, attendu: (int|float, int|float) ou (class|null, class|null) ou (bool, bool)" >&3
 	echo "">&3
 	echo "{" >&3
 	echo "$args2 a;" >&3

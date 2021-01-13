@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 11: L’opérande gauche est de type bool, L’opérande droite est de type float. Or les opérandes d’un modulo doivent être de type ‘int’
+//    	Ligne 11: (3.33) L’opérande gauche est de type bool, L’opérande droite est de type float. Or les opérandes d’un modulo doivent être de type ‘int’
 
 {
 boolean a;

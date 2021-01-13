@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 11: Opérandes de type float, boolean, attendu: (int|float, int|float) ou (class|null, class|null) ou (bool, bool)
+//    	Ligne 11: (3.33) Opérandes de type float, boolean, attendu: (int|float, int|float) ou (class|null, class|null) ou (bool, bool)
 
 {
 float a;
