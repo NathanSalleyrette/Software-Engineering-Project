@@ -33,7 +33,7 @@ public abstract class AbstractOpExactCmp extends AbstractOpCmp {
     			Type returnType = compiler.getEnvType().get(compiler.getSymbTb().create("boolean")).getType();
     			this.setType(returnType);
     			return returnType;
-    		} else if ((leftType.isBoolean()) && (leftType.isBoolean())) {
+    		} else if ((leftType.isBoolean()) && (rightType.isBoolean())) {
     			this.setType(leftType);
         		return leftType;
         	}
