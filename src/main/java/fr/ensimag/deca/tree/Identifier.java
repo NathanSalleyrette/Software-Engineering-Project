@@ -200,11 +200,11 @@ public class Identifier extends AbstractIdentifier {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        compiler.addInstruction(new LOAD(this.dval(), Register.getR(compiler.getCurrentRegister())));
+        compiler.addInstruction(new LOAD(this.dval(compiler), Register.getR(compiler.getCurrentRegister())));
     }
 
     @Override
-    public DVal dval() {
+    public DVal dval(DecacCompiler compiler) {
         return this.getExpDefinition().getOperand();
     }
 

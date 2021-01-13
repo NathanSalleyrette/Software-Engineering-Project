@@ -1,0 +1,16 @@
+// Description :
+//		test minus
+//
+// Resultats :
+//		Ok
+
+{
+int a;
+float b;
+a = -1;
+a = -a;
+b = -1;
+b = -0.2;
+b = -a;
+b = -b;
+}
