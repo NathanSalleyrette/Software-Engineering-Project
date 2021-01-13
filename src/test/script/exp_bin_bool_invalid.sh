@@ -17,13 +17,13 @@ gen_exp_part () {
 	args4=$4
 	filename="$chemin/${args1}_${args2}_${args3}.deca"
 	touch  $filename
-	exec 3<> $filename
+	exec 3> $filename
 	echo "// Description :" >&3
 	echo "//    test $args1 entre un $args2 et un $args3" >&3
 	echo "//" >&3
 	echo "// Resultats :" >&3
 	echo "//		Erreur contextuelle" >&3
-	echo "//    	Ligne 11: Type gauche $args2. Type droit $args3 Type attendu: ‘boolean’" >&3
+	echo "//    	Ligne 11: (3.33) Type gauche $args2. Type droit $args3 Type attendu: ‘boolean’" >&3
 	echo "">&3
 	echo "{" >&3
 	echo "$args2 a;" >&3

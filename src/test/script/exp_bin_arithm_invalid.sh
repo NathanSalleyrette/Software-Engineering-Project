@@ -23,7 +23,7 @@ gen_exp_part () {
 	echo "//" >&3
 	echo "// Resultats :" >&3
 	echo "//		Erreur contextuelle" >&3
-	echo "//    	Ligne 11: L’opérande gauche est de type $args2, L’opérande droite est de type $args3. Or les types des opérandes doivent être ‘int’ ou ‘float’ pour l’opérateur $args4" >&3
+	echo "//    	Ligne 11: (3.33) L’opérande gauche est de type $args2, L’opérande droite est de type $args3. Or les types des opérandes doivent être ‘int’ ou ‘float’ pour l’opérateur $args4" >&3
 	echo "">&3
 	echo "{" >&3
 	echo "$args2 a;" >&3
