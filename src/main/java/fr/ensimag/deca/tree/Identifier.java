@@ -176,7 +176,7 @@ public class Identifier extends AbstractIdentifier {
             ClassDefinition currentClass) throws ContextualError {
     	ExpDefinition typeDef = localEnv.get(this.getName());
         if (typeDef == null) {
-        	throw new ContextualError("Identificateur " + this.getName() + " non défini", this.getLocation());
+        	throw new ContextualError("(0.1) Identificateur " + this.getName() + " non défini", this.getLocation());
         }
         this.setDefinition(typeDef);
         Type type = typeDef.getType();

@@ -27,7 +27,7 @@ public class Modulo extends AbstractOpArith {
     	if ((leftOp.getType().isInt()) && (rightOp.getType().isInt())) {
     		return leftOp.getType();
     	}
-    	String coupableGauche = "";
+    	String coupableGauche = "(3.33) ";
     	if (!leftOp.getType().isInt()) {
     		coupableGauche = "L'opérande gauche est de type " + leftOp.getType().toString() + ".";
     	}

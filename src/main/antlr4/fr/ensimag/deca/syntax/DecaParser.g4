@@ -186,10 +186,12 @@ if_then_else returns[IfThenElse tree]
       		t2 = new IfThenElse($elsif_cond.tree, $elsif_li.tree, new ListInst());
       		tTete.getElseBranch().add(t2);
       		tTete = t2;
+      		setLocation(t2, $elsif_cond.start);
         }
       )*
       (ELSE OBRACE li_else=list_inst CBRACE {
       		tTete.setElseBranch($li_else.tree);
+      		setLocation(tTete, $li_else.start);
         }
       )?
     ;

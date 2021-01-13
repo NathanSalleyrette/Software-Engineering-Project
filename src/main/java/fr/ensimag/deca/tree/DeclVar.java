@@ -48,7 +48,6 @@ public class DeclVar extends AbstractDeclVar {
             throws ContextualError {
     	// On fait la vérification du type et on récupère le type au passage
     	Type varType = this.type.verifyType(compiler);
-    	Symbol typeName = varType.getName();
     	// On récupère le symbole du nom de la variable et on crée une ExpDefinition
     	Symbol nameSymb = this.varName.getName();
     	TypeDefinition typeDef = compiler.getEnvType().get(varType.getName());
@@ -58,12 +57,12 @@ public class DeclVar extends AbstractDeclVar {
     		localEnv.declare(nameSymb, varDef, getLocation());
     		varName.setDefinition(varDef);
     	} catch (DoubleDefException e) {
-    		throw new ContextualError(" La variable " + this.varName.toString() + " est déjà déclarée", this.getLocation());
+    		throw new ContextualError("(3.17) La variable " + this.varName.toString() + " est déjà déclarée", this.getLocation());
     	}
     	// On vérifie l'initialisation ensuite
     	this.initialization.verifyInitialization(compiler, varType, localEnv, currentClass);
     	if (varType.isVoid()) {
-    		throw new ContextualError("Le type de l'identificateur ne peut être 'void''", this.getLocation());
+    		throw new ContextualError("(3.17) Le type de l'identificateur ne peut être 'void''", this.getLocation());
     	}
     }
 

@@ -28,7 +28,7 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
     		this.setType(leftType);
     		return leftType;
     	}
-    	String coupableGauche = "";
+    	String coupableGauche = "(3.33) ";
     	if (!leftType.isBoolean()) {
     		coupableGauche = "Type opérateur gauche " + leftType.toString();
     	}

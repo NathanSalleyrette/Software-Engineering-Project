@@ -93,8 +93,8 @@ public abstract class AbstractExpr extends AbstractInst {
         } else if (type2.isSubTypeOf(expectedType, this.getLocation())){
         	return this;
         }
-        throw new ContextualError("Les types " + expectedType.toString() +
-        		" et " + type2.toString() + " ne sont pas compatibles", this.getLocation());        
+        throw new ContextualError("(3.28) Les types " + expectedType.toString() +
+        		" et " + type2.toString() + " sont incompatibles pour l'affectation", this.getLocation());        
     }
     
     
@@ -119,7 +119,7 @@ public abstract class AbstractExpr extends AbstractInst {
             ClassDefinition currentClass) throws ContextualError {
         Type returnedType = this.verifyExpr(compiler, localEnv, currentClass);
         if (!returnedType.isBoolean()) {
-        	throw new ContextualError("Type de l'expression : " + returnedType.toString() +
+        	throw new ContextualError("(3.29) Type de l'expression : " + returnedType.toString() +
         			", attendu : 'boolean' pour une condition", this.getLocation());
         }
     }

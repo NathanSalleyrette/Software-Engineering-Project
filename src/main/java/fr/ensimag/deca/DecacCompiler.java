@@ -267,9 +267,14 @@ public class DecacCompiler {
             return true;
         }
         assert(prog.checkAllLocations());
-
-
+        if (compilerOptions.getParse()) {
+        	prog.decompile(System.out);
+        	return false;
+        }
         prog.verifyProgram(this);
+        if (compilerOptions.getVerification()) {
+        	return false;
+        }
         assert(prog.checkAllDecorations());
 
         addComment("start main program");
