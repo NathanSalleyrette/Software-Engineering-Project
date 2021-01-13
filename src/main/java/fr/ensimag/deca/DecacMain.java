@@ -26,13 +26,15 @@ public class DecacMain {
             System.exit(1);
         }
         if (options.getPrintBanner()) {
-            String banner = "Une bannière avec nos noms, à compléter dans DecacMain.java";
+            String banner = "Lucie Fousse, Benjamin Cathelineau, Lucie Fousse, Baudouin Jauber," +
+            				"Alan Manic, Nathan Salleyrette";
             System.out.println(banner);
             return;
         }
         if (options.getSourceFiles().isEmpty()) {
-            String help = "Message d'aide, à compléter dans DecacMain.java";
+            String help = "Aucun fichier source";
             System.out.println(help);
+            options.displayUsage();
             return;
         }
         if (options.getParallel()) {

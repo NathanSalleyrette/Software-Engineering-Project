@@ -45,11 +45,11 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        //s.print("(");
+        s.print("(");
         getLeftOperand().decompile(s);
         s.print(" " + getOperatorName() + " ");
         getRightOperand().decompile(s);
-        //s.print(")");
+        s.print(")");
     }
 
     abstract protected String getOperatorName();
