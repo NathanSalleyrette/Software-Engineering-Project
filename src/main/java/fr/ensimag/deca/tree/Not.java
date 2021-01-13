@@ -20,9 +20,8 @@ public class Not extends AbstractUnaryExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        this.getOperand().verifyCondition(compiler, localEnv, currentClass);
-        if (this.getOperand().getType().isBoolean()) {
-        	this.setType(this.getOperand().getType());
+        this.setType(this.getOperand().verifyExpr(compiler, localEnv, currentClass));
+        if (this.getType().isBoolean()) {
         	return this.getOperand().getType();
         }
         throw new ContextualError("(3.37) Type opérande : " + this.getOperand().getType().toString() +
