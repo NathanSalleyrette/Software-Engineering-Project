@@ -32,6 +32,14 @@ public class CompilerOptions {
         return printBanner;
     }
     
+    public boolean getParse() {
+    	return parse;
+    }
+    
+    public boolean getVerification() {
+    	return verification;
+    }
+    
     public List<File> getSourceFiles() {
         return Collections.unmodifiableList(sourceFiles);
     }
@@ -39,6 +47,8 @@ public class CompilerOptions {
     private int debug = 0;
     private boolean parallel = false;
     private boolean printBanner = false;
+    private boolean parse = false;
+    private boolean verification = false;
     private List<File> sourceFiles = new ArrayList<File>();
 
     
@@ -53,14 +63,15 @@ public class CompilerOptions {
                         if (args.length > 1) throw new IllegalArgumentException("L'option -b doit être utilisée seule");
                         printBanner = true;
                         break;
-                    
                     case 'p' :
-                        throw new UnsupportedOperationException("not yet implemented");
-                        //break;
+                    	if (verification == true) throw new IllegalArgumentException("Les options -p et -v sont incompatibles");
+                        parse = true;
+                        break;
                     
                     case 'v' :
-                        throw new UnsupportedOperationException("not yet implemented");
-                        //break;
+                    	if (parse == true) throw new IllegalArgumentException("Les options -p et -v sont incompatibles");
+                        verification = true;
+                    	break;
 
                     case 'n' :
                         throw new UnsupportedOperationException("not yet implemented");
@@ -113,6 +124,6 @@ public class CompilerOptions {
     }
 
     protected void displayUsage() {
-        throw new UnsupportedOperationException("not yet implemented");
+        System.out.println("usage : decac [[-p | -v] [-n] [-r X] [-d]* [-P] [-w] <fichier deca>...] | [-b]");
     }
 }
