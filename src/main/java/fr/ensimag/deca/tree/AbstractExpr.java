@@ -7,7 +7,12 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
+
+import fr.ensimag.ima.pseudocode.DVal;
 import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
@@ -88,8 +93,8 @@ public abstract class AbstractExpr extends AbstractInst {
         } else if (type2.isSubTypeOf(expectedType, this.getLocation())){
         	return this;
         }
-        throw new ContextualError("Les types " + expectedType.toString() +
-        		" et " + type2.toString() + " ne sont pas compatibles", this.getLocation());        
+        throw new ContextualError("(3.28) Les types " + expectedType.toString() +
+        		" et " + type2.toString() + " sont incompatibles pour l'affectation", this.getLocation());        
     }
     
     
@@ -114,7 +119,7 @@ public abstract class AbstractExpr extends AbstractInst {
             ClassDefinition currentClass) throws ContextualError {
         Type returnedType = this.verifyExpr(compiler, localEnv, currentClass);
         if (!returnedType.isBoolean()) {
-        	throw new ContextualError("Type de l'expression : " + returnedType.toString() +
+        	throw new ContextualError("(3.29) Type de l'expression : " + returnedType.toString() +
         			", attendu : 'boolean' pour une condition", this.getLocation());
         }
     }
@@ -125,7 +130,8 @@ public abstract class AbstractExpr extends AbstractInst {
      * @param compiler
      */
     protected void codeGenPrint(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+        this.codeGenInst(compiler);
+        compiler.addInstruction(new LOAD(Register.getR(compiler.getCurrentRegister()), Register.R1));
     }
 
     @Override
@@ -133,6 +139,13 @@ public abstract class AbstractExpr extends AbstractInst {
         throw new UnsupportedOperationException("not yet implemented");
     }
     
+    /**
+     * @return the assembly expression of the atomic expression in argument
+     */
+    public DVal dval() {
+        throw new UnsupportedOperationException("not yet implemented");
+    };
+
 
     @Override
     protected void decompileInst(IndentPrintStream s) {

@@ -2,10 +2,12 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.codegen.EvalExpr;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Definition;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.ima.pseudocode.Register;
 
 /**
  * Assignment, i.e. lvalue = expr.
@@ -35,6 +37,11 @@ public class Assign extends AbstractBinaryExpr {
         return typeAssign;
     }
 
+    @Override
+    protected void codeGenInst(DecacCompiler compiler) {
+        this.getRightOperand().codeGenInst(compiler);   
+        EvalExpr.mnemo(compiler, this, this.getLeftOperand().dval(), Register.getR(compiler.getCurrentRegister()));
+    }
 
     @Override
     protected String getOperatorName() {

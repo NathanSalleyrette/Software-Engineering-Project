@@ -31,7 +31,7 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
         			this.setType(returnType);
         			return returnType;
         }  	
-        throw new ContextualError("Opérandes de type " + leftType.toString() + ", " +
+        throw new ContextualError("(3.33) Opérandes de type " + leftType.toString() + ", " +
         			rightType.toString() + ", attendu: 'int' ou 'float'", this.getLocation());
     }
 }

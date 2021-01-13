@@ -8,6 +8,11 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.DVal;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.deca.codegen.EvalExpr;
 
 /**
  * Integer literal
@@ -35,6 +40,15 @@ public class IntLiteral extends AbstractExpr {
     	return typeInt;
     }
 
+    @Override
+    protected void codeGenInst(DecacCompiler compiler) {
+        compiler.addInstruction(new LOAD(this.dval(), Register.getR(compiler.getCurrentRegister())));
+    }
+
+    @Override
+    public DVal dval() {
+        return new ImmediateInteger(value);
+    }
 
     @Override
     String prettyPrintNode() {

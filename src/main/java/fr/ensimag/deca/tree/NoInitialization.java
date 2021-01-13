@@ -24,6 +24,10 @@ public class NoInitialization extends AbstractInitialization {
         // Rien à faire je crois;
     }
 
+    @Override
+    public AbstractExpr getExpression() {
+        return null;
+    }
 
     /**
      * Node contains no real information, nothing to check.
