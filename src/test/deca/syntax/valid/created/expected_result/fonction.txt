@@ -1,1 +1,11 @@
-`> [1, 0] Program +> ListDeclClass [List with 0 elements] `> [1, 0] Main +> [3, 0] ListDeclVar [List with 0 elements] `> [3, 0] ListInst [List with 1 elements] []> [3, 8] Println `> [3, 8] ListExpr [List with 1 elements] []> [3, 8] StringLiteral ("xxx")
+{
+	println("xxx");
+}
+`> [1, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [1, 0] Main
+      +> [3, 0] ListDeclVar [List with 0 elements]
+      `> [3, 0] ListInst [List with 1 elements]
+         []> [3, 8] Println
+             `> [3, 8] ListExpr [List with 1 elements]
+                []> [3, 8] StringLiteral (xxx)

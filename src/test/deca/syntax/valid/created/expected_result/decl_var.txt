@@ -1,29 +1,70 @@
+{
+	int a;
+	int a = 4;
+	float a = 0x1.6p2;
+	bool b = true;
+	bool b = a$_;
+	type_inconnu a;
+	int a = b;
+	int a = true;
+	float a = int;
+	a a = a;
+	a a;
+}
 `> [1, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [1, 0] Main
-      +> ListDeclVar [List with 5 elements]
-      |  []> DeclVar
-      |  ||  +> Identifier (int)
-      |  ||  +> Identifier (a)
+      +> [2, 0] ListDeclVar [List with 11 elements]
+      |  []> [2, 4] DeclVar
+      |  ||  +> [2, 0] Identifier (int)
+      |  ||  +> [2, 4] Identifier (a)
       |  ||  `> NoInitialization
-      |  []> DeclVar
-      |  ||  +> Identifier (int)
-      |  ||  +> Identifier (a)
+      |  []> [3, 4] DeclVar
+      |  ||  +> [3, 0] Identifier (int)
+      |  ||  +> [3, 4] Identifier (a)
       |  ||  `> Initialization
-      |  ||     `> Int (4)
-      |  []> DeclVar
-      |  ||  +> Identifier (float)
-      |  ||  +> Identifier (a)
+      |  ||     `> [3, 8] Int (4)
+      |  []> [4, 6] DeclVar
+      |  ||  +> [4, 0] Identifier (float)
+      |  ||  +> [4, 6] Identifier (a)
       |  ||  `> Initialization
-      |  ||     `> Float (5.5)
-      |  []> DeclVar
-      |  ||  +> Identifier (bool)
-      |  ||  +> Identifier (b)
+      |  ||     `> [4, 10] Float (5.5)
+      |  []> [5, 5] DeclVar
+      |  ||  +> [5, 0] Identifier (bool)
+      |  ||  +> [5, 5] Identifier (b)
       |  ||  `> Initialization
-      |  ||     `> BooleanLiteral (true)
-      |  []> DeclVar
-      |      +> Identifier (bool)
-      |      +> Identifier (b)
-      |      `> Initialization
-      |         `> Identifier (a$_)
-      `> ListInst [List with 0 elements]
+      |  ||     `> [5, 9] BooleanLiteral (true)
+      |  []> [6, 5] DeclVar
+      |  ||  +> [6, 0] Identifier (bool)
+      |  ||  +> [6, 5] Identifier (b)
+      |  ||  `> Initialization
+      |  ||     `> [6, 9] Identifier (a$_)
+      |  []> [7, 13] DeclVar
+      |  ||  +> [7, 0] Identifier (type_inconnu)
+      |  ||  +> [7, 13] Identifier (a)
+      |  ||  `> NoInitialization
+      |  []> [8, 4] DeclVar
+      |  ||  +> [8, 0] Identifier (int)
+      |  ||  +> [8, 4] Identifier (a)
+      |  ||  `> Initialization
+      |  ||     `> [8, 8] Identifier (b)
+      |  []> [9, 4] DeclVar
+      |  ||  +> [9, 0] Identifier (int)
+      |  ||  +> [9, 4] Identifier (a)
+      |  ||  `> Initialization
+      |  ||     `> [9, 8] BooleanLiteral (true)
+      |  []> [10, 6] DeclVar
+      |  ||  +> [10, 0] Identifier (float)
+      |  ||  +> [10, 6] Identifier (a)
+      |  ||  `> Initialization
+      |  ||     `> [10, 10] Identifier (int)
+      |  []> [11, 2] DeclVar
+      |  ||  +> [11, 0] Identifier (a)
+      |  ||  +> [11, 2] Identifier (a)
+      |  ||  `> Initialization
+      |  ||     `> [11, 6] Identifier (a)
+      |  []> [12, 2] DeclVar
+      |      +> [12, 0] Identifier (a)
+      |      +> [12, 2] Identifier (a)
+      |      `> NoInitialization
+      `> [13, 0] ListInst [List with 0 elements]

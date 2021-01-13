@@ -1,0 +1,31 @@
+{
+	int a = a = b;
+	a = a + b;
+	a = a * b / c % d;
+}
+`> [1, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [1, 0] Main
+      +> [2, 0] ListDeclVar [List with 1 elements]
+      |  []> [2, 4] DeclVar
+      |      +> [2, 0] Identifier (int)
+      |      +> [2, 4] Identifier (a)
+      |      `> Initialization
+      |         `> [2, 8] Assign
+      |            +> [2, 8] Identifier (a)
+      |            `> [2, 12] Identifier (b)
+      `> [3, 0] ListInst [List with 2 elements]
+         []> [3, 0] Assign
+         ||  +> [3, 0] Identifier (a)
+         ||  `> [3, 4] Plus
+         ||     +> [3, 4] Identifier (a)
+         ||     `> [3, 6] Identifier (b)
+         []> [4, 0] Assign
+             +> [4, 0] Identifier (a)
+             `> [4, 4] Modulo
+                +> [4, 8] Divide
+                |  +> [4, 6] Multiply
+                |  |  +> [4, 4] Identifier (a)
+                |  |  `> [4, 6] Identifier (b)
+                |  `> [4, 8] Identifier (c)
+                `> [4, 10] Identifier (d)
