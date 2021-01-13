@@ -19,7 +19,16 @@ import fr.ensimag.deca.context.VariableDefinition;
  */
 public class DeclVar extends AbstractDeclVar {
 
-    
+    @Override
+    public AbstractInitialization getInitialization() {
+        return initialization;
+    }
+
+    @Override
+    public AbstractIdentifier getName() {
+        return varName;
+    }
+
     final private AbstractIdentifier type;
     final private AbstractIdentifier varName;
     final private AbstractInitialization initialization;

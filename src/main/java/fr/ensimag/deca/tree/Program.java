@@ -50,6 +50,7 @@ public class Program extends AbstractProgram {
     @Override
     public void codeGenProgram(DecacCompiler compiler) {
         Label pilePleine = new Label("pile_pleine");
+        compiler.addError(pilePleine);
         compiler.addComment("Main program");
         main.codeGenMain(compiler);
         compiler.addInstruction(new HALT());
@@ -57,10 +58,10 @@ public class Program extends AbstractProgram {
         int nbGlobVar = main.getnbGlobVar();
         compiler.addFirst(new Line(new ADDSP(nbGlobVar)));
         compiler.addFirst(new Line(new BOV(pilePleine)));
-        compiler.addFirst(new Line(new TSTO(nbGlobVar)));
+        compiler.addFirst(new Line(new TSTO(nbGlobVar + compiler.getMaxTemp())));
         // Messages d'erreurs
         compiler.addComment("Erreurs");
-        compiler.addError(pilePleine);
+        compiler.writeErrors();
     }
 
     @Override

@@ -9,7 +9,7 @@ public class Error {
     /**
      * add the instructions treating an error
      */
-    public static void addError(IMAProgram program, Label label) {
+    public static void writeError(IMAProgram program, Label label) {
         program.addLabel(label);
         program.addInstruction(new WSTR("Erreur : " + label));
         program.addInstruction(new WNL());

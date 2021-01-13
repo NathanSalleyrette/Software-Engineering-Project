@@ -2,9 +2,10 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
-import fr.ensimag.ima.pseudocode.instructions.*;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.*;
+import fr.ensimag.deca.codegen.*;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import java.util.Iterator;
@@ -53,13 +54,17 @@ public class Main extends AbstractMain {
         // Traitement des déclarations de variables.
         setnbGlobVar(declVariables.size());
         Iterator<AbstractDeclVar> iter = declVariables.iterator();
-        int indexGB = 2; // TODO : a modifié pour objet
+        int indexGB = 1; // TODO : a modifié pour objet
         while (iter.hasNext()) {
             AbstractDeclVar declVar = iter.next();
-            // TODO : initialisation
-            // LOAD dans R2 compiler.addInstruction(new LOAD(val, getR(2)));
-            //compiler.addInstruction(new STORE(getR(2), new RegisterOffset(indexGB, GB)));
-            ++indexGB;
+            declVar.getName().getVariableDefinition().setOperand(new RegisterOffset(indexGB, Register.GB)); // Attribution de la mémoire dans la pile
+            AbstractExpr expr = declVar.getInitialization().getExpression();
+            if (expr != null) {
+                // Initialization
+                expr.codeGenInst(compiler);
+                EvalExpr.assignVariable(compiler, declVar.getName().getVariableDefinition().getOperand());
+            }
+            indexGB++;
         }
         compiler.addComment("Beginning of main instructions:");
         insts.codeGenListInst(compiler);

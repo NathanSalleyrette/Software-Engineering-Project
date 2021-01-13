@@ -7,6 +7,7 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.DVal;
 import fr.ensimag.ima.pseudocode.Label;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
@@ -133,6 +134,13 @@ public abstract class AbstractExpr extends AbstractInst {
         throw new UnsupportedOperationException("not yet implemented");
     }
     
+    /**
+     * @return the assembly expression of the atomic expression in argument
+     */
+    public DVal dval() {
+        throw new UnsupportedOperationException("not yet implemented");
+    };
+
 
     @Override
     protected void decompileInst(IndentPrintStream s) {

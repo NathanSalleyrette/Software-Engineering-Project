@@ -31,6 +31,8 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.log4j.Logger;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  * Decac compiler instance.
@@ -59,12 +61,57 @@ public class DecacCompiler {
     
     private EnvironmentType envType;
 
+    private int currentRegister; // X tq tous les registres RY, Y < X sont utilisés
+
+    private Set<Label> errorSet;
+
+    // Calcul du nombre de valeurs temporaires necessaires
+    private int nbTemp;
+    private int maxTemp;
+
     public DecacCompiler(CompilerOptions compilerOptions, File source) {
         super();
         this.compilerOptions = compilerOptions;
         this.source = source;
         this.symbTb = new SymbolTable();
         this.envType = new EnvironmentType(this.symbTb);
+        currentRegister = 2;
+        errorSet = new HashSet<Label>();
+        nbTemp = 0;
+        maxTemp = 0;
+    }
+
+    public int getNbTemp() {
+        return nbTemp;
+    }
+
+    public int getMaxTemp() {
+        return maxTemp;
+    }
+
+    public void incrNbTemp() {
+        nbTemp++;
+        if (maxTemp < nbTemp) maxTemp = nbTemp;
+    }
+
+    public void decrNbTemp() {
+        nbTemp--;
+    }
+
+    public int getCurrentRegister() {
+        return currentRegister;
+    }
+
+    public void decrCurrentRegister() {
+        currentRegister--;
+    }
+
+    public void incrCurrentRegister() {
+        currentRegister++;
+    }
+
+    public void addError(Label label) {
+        errorSet.add(label);
     }
 
     public SymbolTable getSymbTb() {
@@ -132,8 +179,10 @@ public class DecacCompiler {
     /**
      * add the instructions treating an error
      */
-    public void addError(Label label) {
-        Error.addError(program, label);
+    public void writeErrors() {
+        for (Label label : errorSet) {
+            Error.writeError(program, label);
+        }
     }
 
     /**
