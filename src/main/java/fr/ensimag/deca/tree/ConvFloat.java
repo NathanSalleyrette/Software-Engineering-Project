@@ -21,6 +21,7 @@ public class ConvFloat extends AbstractUnaryExpr {
             ClassDefinition currentClass) {
     	assert this.getOperand().getType().isInt();
     	Type floatType = compiler.getEnvType().get(compiler.getSymbTb().create("float")).getType();
+    	this.setType(floatType);
     	return floatType;
     }
 
