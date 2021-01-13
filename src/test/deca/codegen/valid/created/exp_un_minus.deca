@@ -1,0 +1,15 @@
+// Description :
+//    test des expressions unaire minus
+//
+// Resultats :
+//		Ok
+
+{
+int a  = 1;
+float b = 2;
+a = -a;
+b = -b;
+b = -20;
+a = -6;
+b = -3.2;
+}

@@ -1,9 +1,8 @@
-	TSTO #4
+	TSTO #0
 	BOV pile_pleine
-	ADDSP #4
+	ADDSP #0
 ; start main program
 ; Main program
-; Beginning of main instructions:
 	HALT
 ; Erreurs
 pile_pleine:
