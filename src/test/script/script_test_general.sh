@@ -112,7 +112,6 @@ detecte_sous_repertoire(){
     fi
     for d in $1/*/; do
       if [[ "$d" != *"expected_result"* ]];then
-        repertoires+=("$d")
         detecte_sous_repertoire $d
       fi
     done
@@ -121,11 +120,13 @@ detecte_sous_repertoire(){
 
 detecte_sous_repertoire "$repertoire_test/invalid/created/"
 detecte_sous_repertoire "$repertoire_test/valid/created/"
+# https://stackoverflow.com/questions/13648410/how-can-i-get-unique-values-from-an-array-in-bash
+repertoires=($(echo "${repertoires[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
 for repertoire_de_test in "${repertoires[@]}"
 do
  echo "Test du répertoire : "$repertoire_de_test
  # https://superuser.com/questions/352289/bash-scripting-test-for-empty-directory
- if [ -z "$(ls -A $repertoire_de_test)" ]; then
+ if [ -z "$(ls -A $repertoire_de_test*.deca)" ]; then
     echo "Répertoire vide - pas de test"
  else
    mode_test=""
