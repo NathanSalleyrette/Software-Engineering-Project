@@ -1,3 +1,10 @@
+// Description :
+//    une instruction
+//
+// Resultats :
+//		Ok
+
+
 {
 
 println("xxx");

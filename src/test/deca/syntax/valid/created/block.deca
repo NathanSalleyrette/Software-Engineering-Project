@@ -1,3 +1,9 @@
+// Description :
+//    test d'un block avec quelque instructions
+//
+// Resultats :
+//		Ok
+
 {
 	bool a = false;
 ;

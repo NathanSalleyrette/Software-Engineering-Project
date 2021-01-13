@@ -1,42 +1,33 @@
-{
-	int a = 2;
-	if (alpha == 4) {
-	} else {
-		if (alpha <= beta) {
-		} else {
-			print("c'est un print");
-		}
-	}
-	if (alpha) {
-	} else {
-	}
-}
-`> [1, 0] Program
+`> [8, 0] Program
    +> ListDeclClass [List with 0 elements]
-   `> [1, 0] Main
-      +> [2, 0] ListDeclVar [List with 1 elements]
-      |  []> [2, 4] DeclVar
-      |      +> [2, 0] Identifier (int)
-      |      +> [2, 4] Identifier (a)
-      |      `> Initialization
-      |         `> [2, 9] Int (2)
-      `> [3, 0] ListInst [List with 2 elements]
-         []> [3, 0] IfThenElse
-         ||  +> [3, 4] Equals
-         ||  |  +> [3, 4] Identifier (alpha)
-         ||  |  `> [3, 13] Int (4)
-         ||  +> ListInst [List with 0 elements]
-         ||  `> ListInst [List with 1 elements]
-         ||     []> IfThenElse
-         ||         +> [5, 9] LowerOrEqual
-         ||         |  +> [5, 9] Identifier (alpha)
-         ||         |  `> [5, 18] Identifier (beta)
-         ||         +> ListInst [List with 0 elements]
-         ||         `> [8, 1] ListInst [List with 1 elements]
-         ||            []> [8, 7] Print
-         ||                `> [8, 7] ListExpr [List with 1 elements]
-         ||                   []> [8, 7] StringLiteral (c'est un print)
+   `> [8, 0] Main
+      +> [9, 0] ListDeclVar [List with 0 elements]
+      `> [9, 0] ListInst [List with 1 elements]
          []> [9, 0] IfThenElse
-             +> [9, 3] Identifier (alpha)
-             +> ListInst [List with 0 elements]
+             +> [9, 4] Identifier (a)
+             +> [16, 1] ListInst [List with 2 elements]
+             |  []> [10, 1] IfThenElse
+             |  ||  +> [10, 5] Identifier (a)
+             |  ||  +> [11, 2] ListInst [List with 1 elements]
+             |  ||  |  []> [11, 8] Print
+             |  ||  |      `> [11, 8] ListExpr [List with 1 elements]
+             |  ||  |         []> [11, 8] StringLiteral (1)
+             |  ||  `> [13, 2] ListInst [List with 1 elements]
+             |  ||     []> [13, 8] Print
+             |  ||         `> [13, 8] ListExpr [List with 1 elements]
+             |  ||            []> [13, 8] StringLiteral (2)
+             |  []> [16, 1] IfThenElse
+             |      +> [16, 5] Identifier (a)
+             |      +> [17, 2] ListInst [List with 1 elements]
+             |      |  []> [17, 8] Print
+             |      |      `> [17, 8] ListExpr [List with 1 elements]
+             |      |         []> [17, 8] StringLiteral (3)
+             |      `> ListInst [List with 1 elements]
+             |         []> [18, 12] IfThenElse
+             |             +> [18, 12] Identifier (a)
+             |             +> [19, 2] ListInst [List with 1 elements]
+             |             |  []> [19, 8] Print
+             |             |      `> [19, 8] ListExpr [List with 1 elements]
+             |             |         []> [19, 8] StringLiteral (4)
+             |             `> ListInst [List with 0 elements]
              `> ListInst [List with 0 elements]
