@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9: Types incompatibles pour l’affectation
+//    	Ligne 9: (3.28) Types incompatibles pour l’affectation
 
 {
 int a = true; //true n'est pas un int
