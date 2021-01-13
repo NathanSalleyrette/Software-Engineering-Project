@@ -24,7 +24,7 @@ public class Not extends AbstractUnaryExpr {
         if (this.getOperand().getType().isBoolean()) {
         	return this.getOperand().getType();
         }
-        throw new ContextualError("Type opérande : " + this.getOperand().getType().toString() +
+        throw new ContextualError("(3.37) Type opérande : " + this.getOperand().getType().toString() +
         		", attendu : 'boolean' pour l'opérateur " + this.getOperatorName(), this.getLocation());
     }
 
