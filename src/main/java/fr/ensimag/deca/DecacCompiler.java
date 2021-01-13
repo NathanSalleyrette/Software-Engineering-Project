@@ -12,6 +12,7 @@ import fr.ensimag.deca.syntax.DecaParser;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.DecacInternalError;
+import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tree.AbstractProgram;
 import fr.ensimag.deca.tree.Location;
 import fr.ensimag.deca.tree.LocationException;
@@ -268,7 +269,7 @@ public class DecacCompiler {
         }
         assert(prog.checkAllLocations());
         if (compilerOptions.getParse()) {
-        	prog.decompile(System.out);
+        	prog.decompile(new IndentPrintStream(System.out));
         	return false;
         }
         prog.verifyProgram(this);
