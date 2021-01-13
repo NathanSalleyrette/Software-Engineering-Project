@@ -3,6 +3,7 @@ package fr.ensimag.deca;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.IntType;
 import fr.ensimag.deca.context.FloatType;
+import fr.ensimag.deca.codegen.Error;
 import fr.ensimag.deca.context.BooleanType;
 import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.context.ContextualError;
@@ -18,6 +19,8 @@ import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
 import fr.ensimag.ima.pseudocode.Instruction;
 import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.Line;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -55,13 +58,61 @@ public class DecacCompiler {
     private SymbolTable symbTb;
     
     private EnvironmentType envType;
-    
+
+    private int currentRegister; // X tq tous les registres RY, Y < X sont utilisés
+
+    private Map<String, Label> errorMap;
+
+    // Calcul du nombre de valeurs temporaires necessaires
+    private int nbTemp;
+    private int maxTemp;
+
     public DecacCompiler(CompilerOptions compilerOptions, File source) {
         super();
         this.compilerOptions = compilerOptions;
         this.source = source;
         this.symbTb = new SymbolTable();
         this.envType = new EnvironmentType(this.symbTb);
+        currentRegister = 2;
+        errorMap = new HashMap<String, Label>();
+        nbTemp = 0;
+        maxTemp = 0;
+    }
+
+    public int getNbTemp() {
+        return nbTemp;
+    }
+
+    public int getMaxTemp() {
+        return maxTemp;
+    }
+
+    public void incrNbTemp() {
+        nbTemp++;
+        if (maxTemp < nbTemp) maxTemp = nbTemp;
+    }
+
+    public void decrNbTemp() {
+        nbTemp--;
+    }
+
+    public int getCurrentRegister() {
+        return currentRegister;
+    }
+
+    public void decrCurrentRegister() {
+        currentRegister--;
+    }
+
+    public void incrCurrentRegister() {
+        currentRegister++;
+    }
+
+    public void addError(Label label) {
+        String key = label.toString();
+        if (!errorMap.containsKey(key)) {
+            errorMap.put(key, label);
+        }
     }
 
     public SymbolTable getSymbTb() {
@@ -124,6 +175,23 @@ public class DecacCompiler {
      */
     public void addInstruction(Instruction instruction, String comment) {
         program.addInstruction(instruction, comment);
+    }
+
+    /**
+     * add the instructions treating an error
+     */
+    public void writeErrors() {
+        for (Label label : errorMap.values()) {
+            Error.writeError(program, label);
+        }
+    }
+
+    /**
+     * @see
+     * fr.ensimag.ima.pseudocode.IMAProgram#addFirst(fr.ensimag.ima.pseudocode.Line)
+     */
+    public void addFirst(Line l) {
+        program.addFirst(l);
     }
     
     /**

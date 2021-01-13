@@ -61,5 +61,5 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
     	throw new ContextualError(coupableGauche + coupableDroit +
     			" Or les types des opérandes doivent être 'int' ou 'float' pour l'opérateur " + 
     			this.getOperatorName(), this.getLocation());
-    }
+	}
 }

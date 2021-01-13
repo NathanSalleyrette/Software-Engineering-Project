@@ -15,6 +15,12 @@ import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.DAddr;
+import fr.ensimag.ima.pseudocode.DVal;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.deca.codegen.EvalExpr;
+
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
@@ -192,6 +198,15 @@ public class Identifier extends AbstractIdentifier {
     
     private Definition definition;
 
+    @Override
+    protected void codeGenInst(DecacCompiler compiler) {
+        compiler.addInstruction(new LOAD(this.dval(), Register.getR(compiler.getCurrentRegister())));
+    }
+
+    @Override
+    public DVal dval() {
+        return this.getExpDefinition().getOperand();
+    }
 
     @Override
     protected void iterChildren(TreeFunction f) {
