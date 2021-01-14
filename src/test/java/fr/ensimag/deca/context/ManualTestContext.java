@@ -11,6 +11,7 @@ import java.io.IOException;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import fr.ensimag.deca.tools.IndentPrintStream;
 
 /**
  * Driver to test the contextual analysis (together with lexer/parser)
@@ -37,6 +38,7 @@ public class ManualTestContext {
             e.display(System.err);
             System.exit(1);
         }
-        prog.prettyPrint(System.out);
+        prog.decompile(new IndentPrintStream(System.out));
+        //prog.prettyPrint(System.out);
     }
 }

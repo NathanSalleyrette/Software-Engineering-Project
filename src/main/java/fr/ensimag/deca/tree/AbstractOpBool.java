@@ -30,7 +30,7 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
     	}
     	String coupableGauche = "(3.33) ";
     	if (!leftType.isBoolean()) {
-    		coupableGauche = "Type opérateur gauche " + leftType.toString();
+    		coupableGauche = coupableGauche + "Type opérateur gauche " + leftType.toString();
     	}
     	String coupableDroit= "";
     	if (!rightType.isBoolean()) {
