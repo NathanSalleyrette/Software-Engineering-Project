@@ -48,7 +48,9 @@ public class EvalExpr {
             case "/" :
                 if (op.getType().isInt()) {
                     compiler.addInstruction(new QUO(dval, reg));
-                    Error.instanceError(compiler, "division_par_zero");
+                    if (!compiler.getCompilerOptions().getNoCheck()) {
+                        Error.instanceError(compiler, "division_par_zero");
+                    }
                 } else {
                     compiler.addInstruction(new DIV(dval, reg));
                 }
@@ -56,7 +58,9 @@ public class EvalExpr {
             case "%" :
                 // Reste entier
                 compiler.addInstruction(new REM(dval, reg));
-                Error.instanceError(compiler, "division_par_zero");
+                if (!compiler.getCompilerOptions().getNoCheck()) {
+                    Error.instanceError(compiler, "division_par_zero");
+                }
                 break;
             case "=" :
                 // Assign, le contexte devrait empecher l'exception
@@ -72,7 +76,7 @@ public class EvalExpr {
             default :
                 throw new UnsupportedOperationException("not yet implemented");
         }
-        if (op.getType().isFloat()) {
+        if (op.getType().isFloat() && !compiler.getCompilerOptions().getNoCheck()) {
             // Gestion des erreurs liés au calcul flottant
             Error.instanceError(compiler, "debordement_flottant");
         }

@@ -48,6 +48,10 @@ public class CompilerOptions {
         return RMAX;
     }
 
+    public boolean getNoCheck() {
+        return noCheck;
+    }
+
     private int debug = 0;
     private boolean parallel = false;
     private boolean printBanner = false;
@@ -55,6 +59,7 @@ public class CompilerOptions {
     private boolean verification = false;
     private List<File> sourceFiles = new ArrayList<File>();
     private int RMAX = 15;
+    private boolean noCheck = false;
 
     
     public void parseArgs(String[] args) throws CLIException {
@@ -79,8 +84,8 @@ public class CompilerOptions {
                     	break;
 
                     case 'n' :
-                        throw new UnsupportedOperationException("not yet implemented");
-                        //break;
+                        noCheck = true;
+                        break;
 
                     case 'r' :
                         i++; // l'option -r à un argument

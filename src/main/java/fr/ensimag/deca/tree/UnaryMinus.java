@@ -36,9 +36,6 @@ public class UnaryMinus extends AbstractUnaryExpr {
     protected void codeGenInst(DecacCompiler compiler) {
         this.getOperand().codeGenInst(compiler);
         compiler.addInstruction(new OPP(this.getOperand().dval(compiler), Register.getR(compiler.getCurrentRegister())));
-        if (this.getType().isFloat()) {
-            Error.instanceError(compiler, "debordement_flottant");
-        }
     }
 
     @Override
