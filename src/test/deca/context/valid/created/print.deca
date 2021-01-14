@@ -9,17 +9,17 @@
 float a;
 println("hello");
 println(3);
-println("a");
+println(a);
 
 print("hello");
 print(3);
-print("a");
+print(a);
 
 printx("hello");
 printx(3);
-printx("a");
+printx(a);
 
 printlnx("hello");
 printlnx(3);
-printlnx("a");
+printlnx(a);
 }
