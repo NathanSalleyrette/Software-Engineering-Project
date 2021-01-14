@@ -38,7 +38,6 @@ public class ManualTestContext {
             e.display(System.err);
             System.exit(1);
         }
-        prog.decompile(new IndentPrintStream(System.out));
-        //prog.prettyPrint(System.out);
+        prog.prettyPrint(System.out);
     }
 }
