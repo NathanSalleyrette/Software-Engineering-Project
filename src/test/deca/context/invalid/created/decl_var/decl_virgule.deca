@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9:  La variable x est déjà déclarée.
+//    	Ligne 9: (3.17)  La variable x est déjà déclarée.
 
 {
 	int x, x, x;

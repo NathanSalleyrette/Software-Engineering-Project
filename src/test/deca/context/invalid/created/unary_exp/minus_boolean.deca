@@ -1,0 +1,10 @@
+// Description :
+//    test minus unaire avec un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.37) Type opérande : boolean , attendu : int pour l’opérateur -
+
+{
+int a = -false;
+}

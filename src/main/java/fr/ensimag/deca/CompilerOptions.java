@@ -84,7 +84,7 @@ public class CompilerOptions {
 
                     case 'r' :
                         i++; // l'option -r à un argument
-                        RMAX = Integer.parseInt(args[i]);
+                        RMAX = Integer.parseInt(args[i]) - 1;
                         break;
 
                     case 'd' :

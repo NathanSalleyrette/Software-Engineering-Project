@@ -15,7 +15,7 @@ gen_exp () {
 	args4=$2
 	filename="$chemin/${args1}.deca"
 	touch  $filename
-	exec 3<> $filename
+	exec 3> $filename
 	echo "// Description :" >&3
 	echo "//    test $args1 " >&3
 	echo "//" >&3

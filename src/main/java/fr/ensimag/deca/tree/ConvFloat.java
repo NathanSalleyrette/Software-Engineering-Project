@@ -30,7 +30,8 @@ public class ConvFloat extends AbstractUnaryExpr {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        compiler.addInstruction(new FLOAT(this.getOperand().dval(), Register.getR(compiler.getCurrentRegister())));
+        this.getOperand().codeGenInst(compiler);
+        compiler.addInstruction(new FLOAT(this.getOperand().dval(compiler), Register.getR(compiler.getCurrentRegister())));
         Error.instanceError(compiler, "debordement_flottant");
     }
 

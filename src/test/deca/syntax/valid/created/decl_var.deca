@@ -1,3 +1,10 @@
+// Description :
+//    declaration en tout genre
+//
+// Resultats :
+//		Ok
+
+
 {
 int a;
 int a = 4;

@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9: Types incompatibles pour l’affectation
+//    	Ligne 9: (3.28) Types incompatibles pour l’affectation
 
 {
 boolean a = 1; //10 n'est pas un bool

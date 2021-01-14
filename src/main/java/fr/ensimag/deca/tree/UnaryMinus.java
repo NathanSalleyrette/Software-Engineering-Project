@@ -23,9 +23,8 @@ public class UnaryMinus extends AbstractUnaryExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        this.getOperand().verifyExpr(compiler, localEnv, currentClass);
-        if ((this.getOperand().getType().isFloat()) || (this.getOperand().getType().isInt())) {
-        	this.setType(this.getOperand().getType());
+        this.setType(this.getOperand().verifyExpr(compiler, localEnv, currentClass));
+        if ((this.getType().isFloat()) || (this.getType().isInt())) {
         	return this.getOperand().getType();
         }
         throw new ContextualError("(3.37) Type opérande : " + this.getOperand().getType().toString() +
@@ -34,7 +33,8 @@ public class UnaryMinus extends AbstractUnaryExpr {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        compiler.addInstruction(new OPP(this.getOperand().dval(), Register.getR(compiler.getCurrentRegister())));
+        this.getOperand().codeGenInst(compiler);
+        compiler.addInstruction(new OPP(this.getOperand().dval(compiler), Register.getR(compiler.getCurrentRegister())));
         if (this.getType().isFloat()) {
             Error.instanceError(compiler, "debordement_flottant");
         }

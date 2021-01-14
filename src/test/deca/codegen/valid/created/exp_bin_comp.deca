@@ -1,0 +1,14 @@
+// Description :
+//    test des expressions binaire de comparaison
+//
+// Resultats :
+//		Ok
+
+{
+boolean a = true;
+a = (1 == 2);
+a = ( 2 < 3);
+a = ( 2 > 3);
+a = (6 <= 0);
+a = (20 >= 2);
+}

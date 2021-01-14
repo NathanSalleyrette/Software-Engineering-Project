@@ -67,12 +67,12 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
 
     @Override
 	protected void codeGenInst(DecacCompiler compiler) {
-		try {
+        DVal dval = this.getRightOperand().dval(compiler);
+		if (dval != Register.getR(compiler.getCurrentRegister())) {
             // Le membre de droite est atomique (Identifier ou Litteral)
-			DVal dval = this.getRightOperand().dval();
 			this.getLeftOperand().codeGenInst(compiler);
 			EvalExpr.mnemo(compiler, this, dval, Register.getR(compiler.getCurrentRegister()));
-		} catch (UnsupportedOperationException e) {
+		} else {
 			// Le membre de droite n'est pas atomique
 			this.getLeftOperand().codeGenInst(compiler);
 			if (compiler.getCurrentRegister() < compiler.getCompilerOptions().getRMAX()) {

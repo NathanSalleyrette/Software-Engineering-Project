@@ -142,8 +142,8 @@ public abstract class AbstractExpr extends AbstractInst {
     /**
      * @return the assembly expression of the atomic expression in argument
      */
-    public DVal dval() {
-        throw new UnsupportedOperationException("not yet implemented");
+    public DVal dval(DecacCompiler compiler) {
+        return Register.getR(compiler.getCurrentRegister());
     };
 
 

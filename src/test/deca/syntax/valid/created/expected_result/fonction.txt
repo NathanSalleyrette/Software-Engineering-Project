@@ -1,11 +1,8 @@
-{
-	println("xxx");
-}
-`> [1, 0] Program
+`> [8, 0] Program
    +> ListDeclClass [List with 0 elements]
-   `> [1, 0] Main
-      +> [3, 0] ListDeclVar [List with 0 elements]
-      `> [3, 0] ListInst [List with 1 elements]
-         []> [3, 8] Println
-             `> [3, 8] ListExpr [List with 1 elements]
-                []> [3, 8] StringLiteral (xxx)
+   `> [8, 0] Main
+      +> [10, 0] ListDeclVar [List with 0 elements]
+      `> [10, 0] ListInst [List with 1 elements]
+         []> [10, 8] Println
+             `> [10, 8] ListExpr [List with 1 elements]
+                []> [10, 8] StringLiteral (xxx)
