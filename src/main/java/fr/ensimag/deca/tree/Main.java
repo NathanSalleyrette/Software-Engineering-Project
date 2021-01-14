@@ -61,8 +61,9 @@ public class Main extends AbstractMain {
             AbstractExpr expr = declVar.getInitialization().getExpression();
             if (expr != null) {
                 // Initialization
-                expr.codeGenInst(compiler);
-                EvalExpr.assignVariable(compiler, declVar.getName().getVariableDefinition().getOperand());
+                AbstractExpr init = new Assign(declVar.getName(), expr);
+                init.setType(expr.getType());
+                init.codeGenInst(compiler);;
             }
             indexGB++;
         }

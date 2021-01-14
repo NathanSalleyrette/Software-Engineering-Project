@@ -136,9 +136,19 @@ public abstract class AbstractExpr extends AbstractInst {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+        if (type.isBoolean()) {
+            this.boolCodeGen(compiler, true, new Label("E")); //TODO : définir le label
+        } else {
+            throw new UnsupportedOperationException("not yet implemented");
+        }
     }
     
+     /**
+     * Write assembley code for boolean expressions
+     */
+    protected void boolCodeGen(DecacCompiler compiler, boolean branch, Label tag) {
+        throw new UnsupportedOperationException("not yet implemented");
+    }
     /**
      * @return the assembly expression of the atomic expression in argument
      */

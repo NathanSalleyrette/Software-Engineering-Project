@@ -68,6 +68,9 @@ public class DecacCompiler {
     private int nbTemp;
     private int maxTemp;
 
+    // Numerotation des labels générés : E_Fonction.nbLabel
+    private int nbLabel;
+
     public DecacCompiler(CompilerOptions compilerOptions, File source) {
         super();
         this.compilerOptions = compilerOptions;
@@ -99,6 +102,14 @@ public class DecacCompiler {
 
     public int getCurrentRegister() {
         return currentRegister;
+    }
+
+    public int getNbLabel() {
+        return nbLabel;
+    }
+
+    public void incrNbLabel() {
+        nbLabel++;
     }
 
     public void decrCurrentRegister() {

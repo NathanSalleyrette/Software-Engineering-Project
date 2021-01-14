@@ -15,10 +15,15 @@ import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+
 import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.DVal;
+import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
 import fr.ensimag.deca.codegen.EvalExpr;
 
 import java.io.PrintStream;
@@ -206,6 +211,17 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public DVal dval(DecacCompiler compiler) {
         return this.getExpDefinition().getOperand();
+    }
+
+    @Override
+    protected void boolCodeGen(DecacCompiler compiler, boolean branch, Label tag) {
+        compiler.addInstruction(new LOAD(this.dval(compiler), Register.R0));
+        compiler.addInstruction(new CMP(0, Register.R0));
+        if (branch) {
+            compiler.addInstruction(new BNE(tag));
+        } else {
+            compiler.addInstruction(new BEQ(tag));
+        }
     }
 
     @Override

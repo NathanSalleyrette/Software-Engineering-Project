@@ -7,6 +7,7 @@ import fr.ensimag.deca.tree.AbstractExpr;
 import fr.ensimag.deca.tree.AbstractInitialization;
 import fr.ensimag.deca.tree.AbstractOpArith;
 import fr.ensimag.deca.tree.Assign;
+import fr.ensimag.deca.tree.BooleanLiteral;
 import fr.ensimag.deca.tree.DeclVar;
 import fr.ensimag.deca.tree.Identifier;
 import fr.ensimag.deca.tree.IntLiteral;

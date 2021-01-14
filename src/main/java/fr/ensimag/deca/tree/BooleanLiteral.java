@@ -11,7 +11,9 @@ import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.ima.pseudocode.DVal;
 import fr.ensimag.ima.pseudocode.ImmediateInteger;
 import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
 
 import java.io.PrintStream;
 
@@ -46,15 +48,24 @@ public class BooleanLiteral extends AbstractExpr {
             compiler.addInstruction(new LOAD(this.dval(compiler), Register.getR(compiler.getCurrentRegister())));
         }
     
-        @Override
-        public DVal dval(DecacCompiler compiler) {
-            // false est codé par #0, true par #1 (arbitraire, doit être différent de #0)
-            if (!value) {
-                return new ImmediateInteger(0);
-            } else {
-                return new ImmediateInteger(1);
-            }
+    @Override
+    public DVal dval(DecacCompiler compiler) {
+        // false est codé par #0, true par #1 (arbitraire, doit être différent de #0)
+        if (!value) {
+            return new ImmediateInteger(0);
+        } else {
+            return new ImmediateInteger(1);
         }
+    }
+
+    @Override
+    protected void boolCodeGen(DecacCompiler compiler, boolean branch, Label tag) {
+        if (value) {
+            if (branch) compiler.addInstruction(new BRA(tag));
+        } else {
+            new Not(new BooleanLiteral(true)).boolCodeGen(compiler, branch, tag);
+        }
+    }
 
     @Override
     public void decompile(IndentPrintStream s) {

@@ -9,6 +9,9 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
+
 /**
  * Full if/else if/else statement.
  *
@@ -49,7 +52,17 @@ public class IfThenElse extends AbstractInst {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+        Label sinon = new Label("E_Sinon." + compiler.getNbLabel());
+        Label fin = new Label("E_Fin." + compiler.getNbLabel());
+        condition.boolCodeGen(compiler, false, sinon);
+        thenBranch.codeGenListInst(compiler);
+        if (!elseBranch.isEmpty()) {
+            // Else Branch
+            compiler.addInstruction(new BRA(fin));
+            compiler.addLabel(sinon);
+            elseBranch.codeGenListInst(compiler);
+        }
+        compiler.addLabel(fin);
     }
 
     @Override
