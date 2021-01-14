@@ -91,6 +91,11 @@ public abstract class AbstractExpr extends AbstractInst {
         if (expectedType.sameType(type2)) {
         	return this;
         } else if (type2.isSubTypeOf(expectedType, this.getLocation())){
+        	if ((expectedType.isFloat()) && (type2.isInt())) {
+        		ConvFloat conv = new ConvFloat(this);
+        		conv.verifyExpr(compiler, localEnv, currentClass);
+        		return conv;
+        	}
         	return this;
         }
         throw new ContextualError("(3.28) Les types " + expectedType.toString() +

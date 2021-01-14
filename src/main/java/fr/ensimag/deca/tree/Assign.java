@@ -38,6 +38,11 @@ public class Assign extends AbstractBinaryExpr {
             ClassDefinition currentClass) throws ContextualError {
         Type typeAssign = this.getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
         this.getRightOperand().verifyRValue(compiler, localEnv, currentClass, typeAssign);
+        if ((this.getLeftOperand().getType().isFloat()) && (this.getRightOperand().getType().isInt())) {
+        	ConvFloat conv = new ConvFloat(this.getRightOperand());
+        	this.setLeftOperand(conv);
+        	conv.verifyExpr(compiler, localEnv, currentClass);
+        }
         this.setType(typeAssign);
         return typeAssign;
     }
