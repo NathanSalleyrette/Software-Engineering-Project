@@ -1,12 +1,12 @@
 // Description :
-//    une instruction
+//		test sur le while
 //
 // Resultats :
 //		Ok
 
 
 {
-
-println("xxx");
-
+boolean a;
+while (a){
+}
 }

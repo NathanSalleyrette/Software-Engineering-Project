@@ -29,7 +29,7 @@ public class Modulo extends AbstractOpArith {
     	}
     	String coupableGauche = "(3.33) ";
     	if (!leftOp.getType().isInt()) {
-    		coupableGauche = "L'opérande gauche est de type " + leftOp.getType().toString() + ".";
+    		coupableGauche = coupableGauche + "L'opérande gauche est de type " + leftOp.getType().toString() + ".";
     	}
     	String coupableDroit = "";
     	if (!rightOp.getType().isInt()) {

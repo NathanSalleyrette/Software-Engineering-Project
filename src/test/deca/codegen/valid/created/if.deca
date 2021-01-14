@@ -1,0 +1,23 @@
+// Description :
+//		Les if en folie
+//
+// Resultats :
+//		Ok
+
+
+{
+boolean a = true;
+if (a){
+	if (a) {
+		print("1");
+	} else {
+		print("2");
+	}
+	
+a = false;
+	if (a) {
+		print("1");
+	} else {
+		print("2");
+	}
+}

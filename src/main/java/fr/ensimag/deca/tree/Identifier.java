@@ -196,6 +196,10 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
     	Symbol name = compiler.getSymbTb().create(this.getName().toString());
+    	if (compiler.getEnvType().get(name) == null) {
+    		throw new ContextualError("(0.2) Type " + this.getName().toString() +
+    				" non reconnu", this.getLocation());
+    	}
     	this.setType(compiler.getEnvType().get(name).getType());
         return this.getType();
     }
