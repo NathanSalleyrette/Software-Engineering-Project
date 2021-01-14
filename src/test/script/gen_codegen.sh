@@ -25,6 +25,7 @@ gen_exp_part () {
 	echo "">&3
 	echo "{" >&3
 	echo "$args2 a = true ""$args3"" false;" >&3
+	echo "if (a) {print(\"true\");} else {print(\"false\");}" >&3
 	echo "}" >&3
 	exec 3>&-
 }

@@ -7,8 +7,13 @@
 {
 boolean a = true;
 a = (1 == 2);
+if (a) {print("t");} else {print("f");}
 a = ( 2 < 3);
+if (a) {print("t");} else {print("f");}
 a = ( 2 > 3);
+if (a) {print("t");} else {print("f");}
 a = (6 <= 0);
+if (a) {print("t");} else {print("f");}
 a = (20 >= 2);
+if (a) {print("t");} else {print("f");}
 }

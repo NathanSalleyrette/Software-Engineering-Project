@@ -5,6 +5,7 @@
 ; Main program
 	LOAD #0x1.99999ap-2, R2
 	STORE R2, 1(GB)
+	BOV debordement_flottant
 ; Beginning of main instructions:
 	WSTR "hello"
 	WNL
@@ -45,6 +46,10 @@
 ; Erreurs
 pile_pleine:
 	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+debordement_flottant:
+	WSTR "Erreur : debordement_flottant"
 	WNL
 	ERROR
 ; end main program

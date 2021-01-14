@@ -1,0 +1,110 @@
+	TSTO #1
+	BOV pile_pleine
+	ADDSP #1
+; start main program
+; Main program
+	LOAD #1, R2
+	STORE R2, 1(GB)
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+	STORE R2, 1(GB)
+Assign_Fin.0:
+; Beginning of main instructions:
+	LOAD #1, R2
+	CMP #2, R2
+	BNE Assign_False.1
+	LOAD #1, R2
+	STORE R2, 1(GB)
+	BRA Assign_Fin.1
+Assign_False.1:
+	LOAD #0, R2
+	STORE R2, 1(GB)
+Assign_Fin.1:
+	LOAD 1(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.2
+	WSTR "t"
+	BRA E_Fin.2
+E_Sinon.2:
+	WSTR "f"
+E_Fin.2:
+	LOAD #2, R2
+	CMP #3, R2
+	BGE Assign_False.3
+	LOAD #1, R2
+	STORE R2, 1(GB)
+	BRA Assign_Fin.3
+Assign_False.3:
+	LOAD #0, R2
+	STORE R2, 1(GB)
+Assign_Fin.3:
+	LOAD 1(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.4
+	WSTR "t"
+	BRA E_Fin.4
+E_Sinon.4:
+	WSTR "f"
+E_Fin.4:
+	LOAD #2, R2
+	CMP #3, R2
+	BLE Assign_False.5
+	LOAD #1, R2
+	STORE R2, 1(GB)
+	BRA Assign_Fin.5
+Assign_False.5:
+	LOAD #0, R2
+	STORE R2, 1(GB)
+Assign_Fin.5:
+	LOAD 1(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.6
+	WSTR "t"
+	BRA E_Fin.6
+E_Sinon.6:
+	WSTR "f"
+E_Fin.6:
+	LOAD #6, R2
+	CMP #0, R2
+	BGT Assign_False.7
+	LOAD #1, R2
+	STORE R2, 1(GB)
+	BRA Assign_Fin.7
+Assign_False.7:
+	LOAD #0, R2
+	STORE R2, 1(GB)
+Assign_Fin.7:
+	LOAD 1(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.8
+	WSTR "t"
+	BRA E_Fin.8
+E_Sinon.8:
+	WSTR "f"
+E_Fin.8:
+	LOAD #20, R2
+	CMP #2, R2
+	BLT Assign_False.9
+	LOAD #1, R2
+	STORE R2, 1(GB)
+	BRA Assign_Fin.9
+Assign_False.9:
+	LOAD #0, R2
+	STORE R2, 1(GB)
+Assign_Fin.9:
+	LOAD 1(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.10
+	WSTR "t"
+	BRA E_Fin.10
+E_Sinon.10:
+	WSTR "f"
+E_Fin.10:
+	HALT
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program

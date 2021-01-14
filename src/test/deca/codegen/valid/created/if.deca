@@ -14,10 +14,11 @@ if (a){
 		print("2");
 	}
 	
-a = false;
+	a = false;
 	if (a) {
 		print("1");
 	} else {
 		print("2");
+	}
 	}
 }
