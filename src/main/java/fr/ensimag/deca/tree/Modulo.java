@@ -25,6 +25,7 @@ public class Modulo extends AbstractOpArith {
     	leftOp.verifyExpr(compiler, localEnv, currentClass);
     	rightOp.verifyExpr(compiler, localEnv, currentClass);
     	if ((leftOp.getType().isInt()) && (rightOp.getType().isInt())) {
+    		this.setType(leftOp.getType());
     		return leftOp.getType();
     	}
     	String coupableGauche = "(3.33) ";
