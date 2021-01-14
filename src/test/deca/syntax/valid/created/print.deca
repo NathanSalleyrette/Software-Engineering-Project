@@ -1,0 +1,28 @@
+// Description :
+//    une instruction
+//
+// Resultats :
+//		Ok
+
+
+{
+float a;
+println("hello");
+println(3);
+println("a");
+print(true);
+
+print("hello");
+print(3);
+print("a");
+
+printx("hello");
+printx(3);
+printx("a");
+
+printlnx("hello");
+printlnx(3);
+printlnx("a");
+printlnx("a", a, "a", a);
+
+}

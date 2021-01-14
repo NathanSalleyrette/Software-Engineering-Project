@@ -55,10 +55,12 @@ public class Program extends AbstractProgram {
         // Entête : TSTO + ADDSP
         int nbGlobVar = main.getnbGlobVar();
         compiler.addFirst(new Line(new ADDSP(nbGlobVar)));
-        Label pilePleine = new Label("pile_pleine");
-        compiler.addError(pilePleine);
-        compiler.addFirst(new Line(new BOV(pilePleine)));
-        compiler.addFirst(new Line(new TSTO(nbGlobVar + compiler.getMaxTemp())));
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            Label pilePleine = new Label("pile_pleine");
+            compiler.addError(pilePleine);
+            compiler.addFirst(new Line(new BOV(pilePleine)));
+            compiler.addFirst(new Line(new TSTO(nbGlobVar + compiler.getMaxTemp())));
+        }
         // Messages d'erreurs
         compiler.addComment("Erreurs");
         compiler.writeErrors();

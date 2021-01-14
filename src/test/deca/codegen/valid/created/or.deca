@@ -1,0 +1,9 @@
+// Description :
+//    test du or seul pour codegen
+//
+// Resultats :
+//    	Ok
+
+{
+boolean a = true || false;
+}
