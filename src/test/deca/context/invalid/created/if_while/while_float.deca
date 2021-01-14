@@ -1,0 +1,11 @@
+// Description :
+//    test du while avec condition float 
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.29) Type de l’expression : float, attendu : ‘boolean’ pour une condition
+
+{
+float a;
+while (a) {}
+}

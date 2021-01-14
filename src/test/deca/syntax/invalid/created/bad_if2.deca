@@ -1,9 +1,10 @@
 // Description :
-//    manque le point virgule
+//    if pas fermé
 //
 // Resultats :
 //		Syntaxe error
 
 {
-int i=0
+if () {
+
 }

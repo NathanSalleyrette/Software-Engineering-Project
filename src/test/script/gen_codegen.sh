@@ -3,7 +3,7 @@
 # Auteur : lucie
 # Version initiale : 12/01/2021
 
-# Generation automatique des tests pour les opération binaires (< <= > >=)
+# Generateyr automatique des tests codegen pour les opérateur binaire
 cd "$(dirname "$0")"/../../.. || exit 1
 
 PATH=./src/test/script/launchers:"$PATH"

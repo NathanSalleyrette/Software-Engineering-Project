@@ -1,3 +1,9 @@
+// Description :
+//    deux operateurs binaires à la suite
+//
+// Resultats :
+//		Syntaxe error
+
 {
 a = a && || b;
 }

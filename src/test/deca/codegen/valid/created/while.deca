@@ -1,0 +1,14 @@
+// Description :
+//    petit programme avec un while
+//
+// Resultats :
+//		Ok
+
+
+{
+int a = 0;
+while (a < 2){
+println(a);
+a = a + 1;
+}
+}

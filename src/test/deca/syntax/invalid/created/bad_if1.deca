@@ -1,9 +1,10 @@
 // Description :
-//    manque le point virgule
+//    if sans les parenthèse de la condition
 //
 // Resultats :
 //		Syntaxe error
 
 {
-int i=0
+if {
+}
 }

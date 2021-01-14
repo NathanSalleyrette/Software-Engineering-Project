@@ -1,0 +1,10 @@
+// Description :
+//    test or pour une opérande manquante
+//
+// Resultats :
+//		Erreur syntaxique
+//    	Ligne 11: operante manquante
+
+{
+c = a || ;
+}

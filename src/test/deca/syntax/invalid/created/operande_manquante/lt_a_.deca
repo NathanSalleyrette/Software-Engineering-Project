@@ -1,0 +1,10 @@
+// Description :
+//    test lt pour une opérande manquante
+//
+// Resultats :
+//		Erreur syntaxique
+//    	Ligne 11: operante manquante
+
+{
+c = a < ;
+}

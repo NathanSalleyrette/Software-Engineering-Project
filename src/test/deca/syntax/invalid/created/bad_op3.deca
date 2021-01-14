@@ -1,9 +1,9 @@
 // Description :
-//    manque le point virgule
+//    manque une operande
 //
 // Resultats :
 //		Syntaxe error
 
 {
-int i=0
+a = a + ;
 }

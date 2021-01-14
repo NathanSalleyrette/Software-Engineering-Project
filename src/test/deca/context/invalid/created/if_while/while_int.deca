@@ -1,0 +1,11 @@
+// Description :
+//    test du while avec condition int 
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.29) Type de l’expression : int, attendu : ‘boolean’ pour une condition
+
+{
+int a;
+while (a) {}
+}
