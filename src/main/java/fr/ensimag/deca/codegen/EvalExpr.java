@@ -74,8 +74,26 @@ public class EvalExpr {
                                     + " is not a DAddr, you can't assign it");
                 }
                 break;
+            case "==" :
+                compiler.addInstruction(new CMP(dval, reg));
+                break;
+            case "!=" :
+                compiler.addInstruction(new CMP(dval, reg));
+                break;
+            case ">" :
+                compiler.addInstruction(new CMP(dval, reg));
+                break;
+            case "<" :
+                compiler.addInstruction(new CMP(dval, reg));
+                break;
+            case ">=" :
+                compiler.addInstruction(new CMP(dval, reg));
+                break;
+            case "<=" :
+                compiler.addInstruction(new CMP(dval, reg));
+                break;
             default :
-                throw new UnsupportedOperationException("not yet implemented");
+                throw new UnsupportedOperationException("unsupported operation");
         }
         if (op.getType().isFloat() && !compiler.getCompilerOptions().getNoCheck()) {
             // Gestion des erreurs liés au calcul flottant

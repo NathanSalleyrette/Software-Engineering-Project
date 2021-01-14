@@ -54,7 +54,12 @@ public class IfThenElse extends AbstractInst {
     protected void codeGenInst(DecacCompiler compiler) {
         Label sinon = new Label("E_Sinon." + compiler.getNbLabel());
         Label fin = new Label("E_Fin." + compiler.getNbLabel());
-        condition.boolCodeGen(compiler, false, sinon);
+        compiler.incrNbLabel();
+        if (!elseBranch.isEmpty()) {
+            condition.boolCodeGen(compiler, false, sinon);
+        } else {
+            condition.boolCodeGen(compiler, false, fin);
+        } 
         thenBranch.codeGenListInst(compiler);
         if (!elseBranch.isEmpty()) {
             // Else Branch
