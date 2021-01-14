@@ -52,7 +52,7 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
 		}
     	String coupableGauche = "(3.33) ";
     	if ((!leftType.isFloat()) && (!leftType.isInt())) {
-    		coupableGauche = "L'opérande gauche est de type " + leftType.toString() + ".";
+    		coupableGauche = coupableGauche + "L'opérande gauche est de type " + leftType.toString() + ".";
     	}
     	String coupableDroit = "";
     	if ((!rightType.isFloat()) && (!rightType.isInt())) {
