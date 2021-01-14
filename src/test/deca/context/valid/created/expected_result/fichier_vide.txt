@@ -1,0 +1,5 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:39) - verify program: start
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify program: end
+`> [5, 6] Program
+   +> ListDeclClass [List with 0 elements]
+   `> EmptyMain

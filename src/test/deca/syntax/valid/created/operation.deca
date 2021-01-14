@@ -1,3 +1,10 @@
+// Description :
+//		quelques operateurs binaire et une instruction etrange mais valide
+//
+// Resultats :
+//		Ok
+
+
 {
 int a = a = b;
 a = a+b;

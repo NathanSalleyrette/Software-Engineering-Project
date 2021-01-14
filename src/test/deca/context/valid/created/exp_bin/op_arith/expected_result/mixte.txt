@@ -1,0 +1,367 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:39) - verify program: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify program: end
+`> [7, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [7, 0] Main
+      +> [8, 0] ListDeclVar [List with 2 elements]
+      |  []> [8, 4] DeclVar
+      |  ||  +> [8, 0] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [8, 4] Identifier (a)
+      |  ||  |  definition: variable defined at [8, 4], type=int
+      |  ||  `> NoInitialization
+      |  []> [9, 6] DeclVar
+      |      +> [9, 0] Identifier (float)
+      |      |  definition: type (builtin), type=float
+      |      +> [9, 6] Identifier (b)
+      |      |  definition: variable defined at [9, 6], type=float
+      |      `> NoInitialization
+      `> [10, 0] ListInst [List with 15 elements]
+         []> [10, 0] Assign
+         ||  type: int
+         ||  +> [10, 0] Identifier (a)
+         ||  |  definition: variable defined at [8, 4], type=int
+         ||  `> [10, 4] Minus
+         ||     type: int
+         ||     +> [10, 8] Plus
+         ||     |  type: int
+         ||     |  +> [10, 4] Int (1)
+         ||     |  |  type: int
+         ||     |  `> [10, 8] Int (2)
+         ||     |     type: int
+         ||     `> [10, 24] Modulo
+         ||        +> [10, 20] Divide
+         ||        |  type: int
+         ||        |  +> [10, 16] Multiply
+         ||        |  |  type: int
+         ||        |  |  +> [10, 12] Int (3)
+         ||        |  |  |  type: int
+         ||        |  |  `> [10, 16] Int (4)
+         ||        |  |     type: int
+         ||        |  `> [10, 20] Int (5)
+         ||        |     type: int
+         ||        `> [10, 24] Int (6)
+         ||           type: int
+         []> [11, 0] Assign
+         ||  type: float
+         ||  +> [11, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> [11, 4] Minus
+         ||     type: int
+         ||     +> [11, 8] Plus
+         ||     |  type: int
+         ||     |  +> [11, 4] Int (1)
+         ||     |  |  type: int
+         ||     |  `> [11, 8] Int (2)
+         ||     |     type: int
+         ||     `> [11, 24] Modulo
+         ||        +> [11, 20] Divide
+         ||        |  type: int
+         ||        |  +> [11, 16] Multiply
+         ||        |  |  type: int
+         ||        |  |  +> [11, 12] Int (3)
+         ||        |  |  |  type: int
+         ||        |  |  `> [11, 16] Int (4)
+         ||        |  |     type: int
+         ||        |  `> [11, 20] Int (5)
+         ||        |     type: int
+         ||        `> [11, 24] Int (6)
+         ||           type: int
+         []> [12, 0] Assign
+         ||  type: int
+         ||  +> [12, 0] Identifier (a)
+         ||  |  definition: variable defined at [8, 4], type=int
+         ||  `> [12, 4] Minus
+         ||     type: int
+         ||     +> [12, 12] Plus
+         ||     |  type: int
+         ||     |  +> [12, 4] Multiply
+         ||     |  |  type: int
+         ||     |  |  +> [12, 4] Int (1)
+         ||     |  |  |  type: int
+         ||     |  |  `> [12, 8] Int (2)
+         ||     |  |     type: int
+         ||     |  `> [12, 16] Divide
+         ||     |     type: int
+         ||     |     +> [12, 12] Int (3)
+         ||     |     |  type: int
+         ||     |     `> [12, 16] Int (4)
+         ||     |        type: int
+         ||     `> [12, 20] Int (5)
+         ||        type: int
+         []> [13, 0] Assign
+         ||  type: float
+         ||  +> [13, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> [13, 4] Minus
+         ||     type: int
+         ||     +> [13, 12] Plus
+         ||     |  type: int
+         ||     |  +> [13, 4] Multiply
+         ||     |  |  type: int
+         ||     |  |  +> [13, 4] Int (1)
+         ||     |  |  |  type: int
+         ||     |  |  `> [13, 8] Int (2)
+         ||     |  |     type: int
+         ||     |  `> [13, 16] Divide
+         ||     |     type: int
+         ||     |     +> [13, 12] Int (3)
+         ||     |     |  type: int
+         ||     |     `> [13, 16] Int (4)
+         ||     |        type: int
+         ||     `> [13, 20] Int (5)
+         ||        type: int
+         []> [14, 0] Assign
+         ||  type: int
+         ||  +> [14, 0] Identifier (a)
+         ||  |  definition: variable defined at [8, 4], type=int
+         ||  `> [14, 4] Plus
+         ||     type: int
+         ||     +> [14, 8] Minus
+         ||     |  type: int
+         ||     |  +> [14, 4] Int (1)
+         ||     |  |  type: int
+         ||     |  `> [14, 16] Multiply
+         ||     |     type: int
+         ||     |     +> [14, 12] Divide
+         ||     |     |  type: int
+         ||     |     |  +> [14, 8] Int (2)
+         ||     |     |  |  type: int
+         ||     |     |  `> [14, 12] Int (3)
+         ||     |     |     type: int
+         ||     |     `> [14, 16] Int (4)
+         ||     |        type: int
+         ||     `> [14, 20] Int (5)
+         ||        type: int
+         []> [15, 0] Assign
+         ||  type: float
+         ||  +> [15, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> [15, 4] Plus
+         ||     type: int
+         ||     +> [15, 8] Minus
+         ||     |  type: int
+         ||     |  +> [15, 4] Int (1)
+         ||     |  |  type: int
+         ||     |  `> [15, 16] Multiply
+         ||     |     type: int
+         ||     |     +> [15, 12] Divide
+         ||     |     |  type: int
+         ||     |     |  +> [15, 8] Int (2)
+         ||     |     |  |  type: int
+         ||     |     |  `> [15, 12] Int (3)
+         ||     |     |     type: int
+         ||     |     `> [15, 16] Int (4)
+         ||     |        type: int
+         ||     `> [15, 20] Int (5)
+         ||        type: int
+         []> [16, 0] Assign
+         ||  type: int
+         ||  +> [16, 0] Identifier (a)
+         ||  |  definition: variable defined at [8, 4], type=int
+         ||  `> [16, 4] Minus
+         ||     type: int
+         ||     +> [16, 16] Plus
+         ||     |  type: int
+         ||     |  +> [16, 4] Modulo
+         ||     |  |  +> [16, 8] Divide
+         ||     |  |  |  type: int
+         ||     |  |  |  +> [16, 4] Int (1)
+         ||     |  |  |  |  type: int
+         ||     |  |  |  `> [16, 8] Int (2)
+         ||     |  |  |     type: int
+         ||     |  |  `> [16, 12] Int (6)
+         ||     |  |     type: int
+         ||     |  `> [16, 20] Multiply
+         ||     |     type: int
+         ||     |     +> [16, 16] Int (3)
+         ||     |     |  type: int
+         ||     |     `> [16, 20] Int (4)
+         ||     |        type: int
+         ||     `> [16, 24] Int (5)
+         ||        type: int
+         []> [17, 0] Assign
+         ||  type: float
+         ||  +> [17, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> [17, 4] Minus
+         ||     type: int
+         ||     +> [17, 16] Plus
+         ||     |  type: int
+         ||     |  +> [17, 4] Modulo
+         ||     |  |  +> [17, 8] Divide
+         ||     |  |  |  type: int
+         ||     |  |  |  +> [17, 4] Int (1)
+         ||     |  |  |  |  type: int
+         ||     |  |  |  `> [17, 8] Int (2)
+         ||     |  |  |     type: int
+         ||     |  |  `> [17, 12] Int (6)
+         ||     |  |     type: int
+         ||     |  `> [17, 20] Multiply
+         ||     |     type: int
+         ||     |     +> [17, 16] Int (3)
+         ||     |     |  type: int
+         ||     |     `> [17, 20] Int (4)
+         ||     |        type: int
+         ||     `> [17, 24] Int (5)
+         ||        type: int
+         []> [18, 0] Assign
+         ||  type: int
+         ||  +> [18, 0] Identifier (a)
+         ||  |  definition: variable defined at [8, 4], type=int
+         ||  `> [18, 4] Plus
+         ||     type: int
+         ||     +> [18, 8] Minus
+         ||     |  type: int
+         ||     |  +> [18, 4] Int (1)
+         ||     |  |  type: int
+         ||     |  `> [18, 8] Int (5)
+         ||     |     type: int
+         ||     `> [18, 12] Int (3)
+         ||        type: int
+         []> [19, 0] Assign
+         ||  type: float
+         ||  +> [19, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> [19, 4] Plus
+         ||     type: int
+         ||     +> [19, 8] Minus
+         ||     |  type: int
+         ||     |  +> [19, 4] Int (1)
+         ||     |  |  type: int
+         ||     |  `> [19, 8] Int (5)
+         ||     |     type: int
+         ||     `> [19, 12] Int (3)
+         ||        type: int
+         []> [22, 0] Assign
+         ||  type: float
+         ||  +> [22, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> [22, 4] Minus
+         ||     type: float
+         ||     +> [22, 8] Plus
+         ||     |  type: float
+         ||     |  +> ConvFloat
+         ||     |  |  type: float
+         ||     |  |  `> [22, 4] Int (1)
+         ||     |  |     type: int
+         ||     |  `> [22, 8] Float (0.2)
+         ||     |     type: float
+         ||     `> ConvFloat
+         ||        type: float
+         ||        `> [22, 22] Divide
+         ||           type: int
+         ||           +> [22, 18] Multiply
+         ||           |  type: int
+         ||           |  +> [22, 14] Int (3)
+         ||           |  |  type: int
+         ||           |  `> [22, 18] Int (4)
+         ||           |     type: int
+         ||           `> [22, 22] Int (5)
+         ||              type: int
+         []> [24, 0] Assign
+         ||  type: float
+         ||  +> [24, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> [24, 4] Minus
+         ||     type: float
+         ||     +> [24, 14] Plus
+         ||     |  type: float
+         ||     |  +> [24, 4] Multiply
+         ||     |  |  type: float
+         ||     |  |  +> ConvFloat
+         ||     |  |  |  type: float
+         ||     |  |  |  `> [24, 4] Int (1)
+         ||     |  |  |     type: int
+         ||     |  |  `> [24, 8] Float (0.2)
+         ||     |  |     type: float
+         ||     |  `> ConvFloat
+         ||     |     type: float
+         ||     |     `> [24, 18] Divide
+         ||     |        type: int
+         ||     |        +> [24, 14] Int (3)
+         ||     |        |  type: int
+         ||     |        `> [24, 18] Int (4)
+         ||     |           type: int
+         ||     `> ConvFloat
+         ||        type: float
+         ||        `> [24, 22] Int (5)
+         ||           type: int
+         []> [26, 0] Assign
+         ||  type: float
+         ||  +> [26, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> [26, 4] Plus
+         ||     type: float
+         ||     +> [26, 8] Minus
+         ||     |  type: float
+         ||     |  +> ConvFloat
+         ||     |  |  type: float
+         ||     |  |  `> [26, 4] Int (1)
+         ||     |  |     type: int
+         ||     |  `> [26, 18] Multiply
+         ||     |     type: float
+         ||     |     +> [26, 14] Divide
+         ||     |     |  type: float
+         ||     |     |  +> [26, 8] Float (0.2)
+         ||     |     |  |  type: float
+         ||     |     |  `> ConvFloat
+         ||     |     |     type: float
+         ||     |     |     `> [26, 14] Int (3)
+         ||     |     |        type: int
+         ||     |     `> ConvFloat
+         ||     |        type: float
+         ||     |        `> [26, 18] Int (4)
+         ||     |           type: int
+         ||     `> ConvFloat
+         ||        type: float
+         ||        `> [26, 22] Int (5)
+         ||           type: int
+         []> [28, 0] Assign
+         ||  type: float
+         ||  +> [28, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> [28, 4] Minus
+         ||     type: float
+         ||     +> [28, 14] Plus
+         ||     |  type: float
+         ||     |  +> [28, 4] Divide
+         ||     |  |  type: float
+         ||     |  |  +> ConvFloat
+         ||     |  |  |  type: float
+         ||     |  |  |  `> [28, 4] Int (1)
+         ||     |  |  |     type: int
+         ||     |  |  `> [28, 8] Float (0.2)
+         ||     |  |     type: float
+         ||     |  `> ConvFloat
+         ||     |     type: float
+         ||     |     `> [28, 18] Multiply
+         ||     |        type: int
+         ||     |        +> [28, 14] Int (3)
+         ||     |        |  type: int
+         ||     |        `> [28, 18] Int (4)
+         ||     |           type: int
+         ||     `> ConvFloat
+         ||        type: float
+         ||        `> [28, 22] Int (5)
+         ||           type: int
+         []> [30, 0] Assign
+             type: float
+             +> [30, 0] Identifier (b)
+             |  definition: variable defined at [9, 6], type=float
+             `> [30, 4] Plus
+                type: float
+                +> [30, 8] Minus
+                |  type: float
+                |  +> ConvFloat
+                |  |  type: float
+                |  |  `> [30, 4] Int (1)
+                |  |     type: int
+                |  `> [30, 8] Float (0.5)
+                |     type: float
+                `> ConvFloat
+                   type: float
+                   `> [30, 14] Int (3)
+                      type: int

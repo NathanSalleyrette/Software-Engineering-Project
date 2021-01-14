@@ -1,0 +1,20 @@
+// Description :
+//    test des expressions binaire boolean
+//
+// Resultats :
+//		Ok
+
+{
+boolean a = true;
+a = a && false;
+a = a || true;
+a = true || false;
+a = false || true;
+a = false || false;
+a = true || true;
+
+a = true && false;
+a = false && true;
+a = false && false;
+a = true && true;
+}
