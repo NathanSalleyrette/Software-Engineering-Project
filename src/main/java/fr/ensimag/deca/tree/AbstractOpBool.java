@@ -34,10 +34,10 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
     	}
     	String coupableDroit= "";
     	if (!rightType.isBoolean()) {
-    		coupableGauche = " Type opérateur droit " + rightType.toString();
+    		coupableDroit = " Type opérateur droit " + rightType.toString();
     	}
     	throw new ContextualError(coupableGauche + coupableDroit +
-    			" Type attendu: 'boolean'", this.getLocation());
+    			", Type attendu: 'boolean'", this.getLocation());
     }
 
 }
