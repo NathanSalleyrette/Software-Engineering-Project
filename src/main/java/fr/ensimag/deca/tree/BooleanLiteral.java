@@ -37,7 +37,7 @@ public class BooleanLiteral extends AbstractExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-    	Symbol boolSymb = compiler.getSymbTb().create("boolean");
+    	Symbol boolSymb = compiler.getSymbTb().create(this.toString());
     	Type typeBool = compiler.getEnvType().get(boolSymb).getType();
     	this.setType(typeBool);
     	return typeBool;
@@ -51,7 +51,7 @@ public class BooleanLiteral extends AbstractExpr {
     @Override
     public DVal dval(DecacCompiler compiler) {
         // false est codé par #0, true par #1 (arbitraire, doit être différent de #0)
-        if (!value) {
+        if (!this.getValue()) {
             return new ImmediateInteger(0);
         } else {
             return new ImmediateInteger(1);
@@ -60,7 +60,7 @@ public class BooleanLiteral extends AbstractExpr {
 
     @Override
     protected void boolCodeGen(DecacCompiler compiler, boolean branch, Label tag) {
-        if (value) {
+        if (this.getValue()) {
             if (branch) compiler.addInstruction(new BRA(tag));
         } else {
             new Not(new BooleanLiteral(true)).boolCodeGen(compiler, branch, tag);
@@ -69,7 +69,7 @@ public class BooleanLiteral extends AbstractExpr {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        s.print(Boolean.toString(value));
+        s.print(Boolean.toString(this.getValue()));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class BooleanLiteral extends AbstractExpr {
 
     @Override
     String prettyPrintNode() {
-        return "BooleanLiteral (" + value + ")";
+        return "BooleanLiteral (" + this.getValue() + ")";
     }
 
     public String toString() {
