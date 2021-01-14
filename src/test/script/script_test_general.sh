@@ -54,15 +54,23 @@ extrait_numero_erreur_fichier() {
 	fi
 }
 extrait_numero_erreur_sortie() {
-	if [[ "$1" == *"Exception"* ]]; then # c'est une erreur java, le programme a crash
-		echo "ERREUR_JAVA"
-	else
+
 		numero_erreur="$(echo "$1" | cut -d "(" -f2 -s | cut -d ")" -f1 -s)"
 		if [ "$numero_erreur" == "" ]; then
 			echo "PAS_NUMERO"
 		else
 			echo "$numero_erreur"
 		fi
+
+}
+
+detecte_erreur_java(){
+	# https://stackoverflow.com/questions/2440414/how-to-retrieve-the-first-word-of-the-output-of-a-command-in-bash
+	set -- $1
+	if [ "$1" == "Exception" ] || [ "$1" == "FATAL" ]; then # c'est une erreur java, le programme a crash
+		echo "ERREUR_JAVA"
+	else
+		echo "PAS_ERREUR_JAVA"
 	fi
 }
 # Pour les fichiers qui doivent echouer
@@ -71,6 +79,15 @@ test_invalide() {
 	commande="$type_test $1"
 	sortie=$($commande 2>&1)
 	if [ $? != 0 ]; then
+		erreur_java=$(detecte_erreur_java "$sortie")
+		if [ "$erreur_java" == "ERREUR_JAVA" ]; then
+			$rouge
+			echo "Le test qui devait echoué $type_test sur $1 a crashé et non échoué proprement"
+			echo "commande utilisée ::: $commande"
+			tableau_des_tests_echoues+=($1)
+			resultat_des_tests_echoues+=("$sortie")
+			resultat_attendu_des_tests_echoues+=("$(obtient_resultat_attendu $1)")
+		else
 		if [ "$type_test" == "test_context" ]; then
 			numero_erreur="$(extrait_numero_erreur_fichier $1)"
 			if [ "$numero_erreur" == "PAS_NUMERO" ]; then
@@ -80,15 +97,8 @@ test_invalide() {
 			else
 				# https://stackoverflow.com/questions/39615142/bash-get-last-line-from-a-variable
 				numero_erreur_sortie=$(extrait_numero_erreur_sortie "${sortie##*$'\n'}")
-				if [ "$numero_erreur_sortie" == "ERREUR_JAVA" ]; then
-					$rouge
-					echo "Le test qui devait echoué $type_test sur $1 a crashé et non échoué proprement"
-					echo "commande utilisée ::: $commande"
-					tableau_des_tests_echoues+=($1)
-					resultat_des_tests_echoues+=("$sortie")
-					resultat_attendu_des_tests_echoues+=("$(obtient_resultat_attendu $1)")
 					$reset
-				elif [ "$numero_erreur_sortie" == "PAS_NUMERO" ]; then
+				if [ "$numero_erreur_sortie" == "PAS_NUMERO" ]; then
 					$jaune
 					echo "Le test qui devait echoué $type_test sur $1 n'a pas de numéro d'erreur dans sa sortie"
 					echo "commande utilisée ::: $commande"
@@ -115,7 +125,7 @@ test_invalide() {
 			echo "Echec attendu pour $type_test sur $1."
 			$reset
 		fi
-
+	fi
 	else
 		# https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
 		$rouge
