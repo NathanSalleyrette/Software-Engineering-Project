@@ -9,7 +9,7 @@
 ; Beginning of main instructions:
 	WSTR "hello"
 	WNL
-	LOAD #3, R2
+	LOAD #10, R2
 	LOAD R2, R1
 	WINT
 	WNL
@@ -17,24 +17,29 @@
 	LOAD R2, R1
 	WFLOAT
 	WNL
+	WNL
 	WSTR "hello"
-	LOAD #3, R2
+	LOAD #10, R2
 	LOAD R2, R1
 	WINT
 	WSTR "a"
 	LOAD 1(GB), R2
 	LOAD R2, R1
 	WFLOAT
+	WNL
+	WNL
 	WSTR "hello"
-	LOAD #3, R2
+	LOAD #10, R2
 	LOAD R2, R1
 	WINT
 	LOAD 1(GB), R2
 	LOAD R2, R1
 	WFLOATX
+	WNL
+	WNL
 	WSTR "hello"
 	WNL
-	LOAD #3, R2
+	LOAD #60, R2
 	LOAD R2, R1
 	WINT
 	WNL
