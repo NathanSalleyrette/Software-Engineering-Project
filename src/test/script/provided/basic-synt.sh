@@ -15,7 +15,7 @@
 # automatiquement. Un exemple d'automatisation est donné avec une
 # boucle for sur les tests invalides, il faut aller encore plus loin.
 
-cd "$(dirname "$0")"/../../.. || exit 1
+cd "$(dirname "$0")"/../../../.. || exit 1
 
 PATH=./src/test/script/launchers:"$PATH"
 
@@ -42,23 +42,9 @@ test_synt_valide () {
     fi
 }   
 
-for cas_de_test in src/test/deca/syntax/invalid/created/*.deca
-do
-    test_synt_invalide "$cas_de_test"
-done
-
 for cas_de_test in src/test/deca/syntax/invalid/provided/*.deca
 do
     test_synt_invalide "$cas_de_test"
 done
 
-for cas_de_test in src/test/deca/syntax/valid/created/*.deca
-do
-    test_synt_valide "$cas_de_test"
-done
-
-for cas_de_test in src/test/deca/syntax/valid/provided/*.deca
-do
-    test_synt_valide "$cas_de_test"
-done
 

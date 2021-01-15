@@ -108,7 +108,7 @@ test_invalide() {
 					$reset
 				elif [ "$numero_erreur_sortie" == "$numero_erreur" ]; then
 					$vert
-					echo "Echec attendu pour $type_test sur $1, Les numéro d'erreur correspondent"
+					echo "Echec attendu pour $type_test sur $1, Les numéros d'erreur correspondent"
 					$reset
 				else
 					$jaune

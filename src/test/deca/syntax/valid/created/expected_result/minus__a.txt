@@ -1,0 +1,9 @@
+`> [8, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [8, 0] Main
+      +> [9, 0] ListDeclVar [List with 0 elements]
+      `> [9, 0] ListInst [List with 1 elements]
+         []> [9, 0] Assign
+             +> [9, 0] Identifier (c)
+             `> [9, 5] UnaryMinus
+                `> [9, 7] Identifier (a)

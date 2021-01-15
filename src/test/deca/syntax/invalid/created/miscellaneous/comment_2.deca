@@ -1,1 +1,8 @@
+// Description :
+//    juste un commentaire, verifie que le lexer ne cherche pas la plus grande chaine possible
+//
+// Resultats :
+//		Syntaxe error
+
+
 /* un commentaire */ */

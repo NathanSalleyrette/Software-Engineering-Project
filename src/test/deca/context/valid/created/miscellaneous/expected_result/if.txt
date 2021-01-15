@@ -1,0 +1,51 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:39) - verify program: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify program: end
+`> [8, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [8, 0] Main
+      +> [9, 0] ListDeclVar [List with 1 elements]
+      |  []> [9, 8] DeclVar
+      |      +> [9, 0] Identifier (boolean)
+      |      |  definition: type (builtin), type=boolean
+      |      +> [9, 8] Identifier (a)
+      |      |  definition: variable defined at [9, 8], type=boolean
+      |      `> NoInitialization
+      `> [10, 0] ListInst [List with 1 elements]
+         []> [10, 0] IfThenElse
+             +> [10, 4] Identifier (a)
+             |  definition: variable defined at [9, 8], type=boolean
+             +> [17, 1] ListInst [List with 2 elements]
+             |  []> [11, 1] IfThenElse
+             |  ||  +> [11, 5] Identifier (a)
+             |  ||  |  definition: variable defined at [9, 8], type=boolean
+             |  ||  +> [12, 2] ListInst [List with 1 elements]
+             |  ||  |  []> [12, 8] Print
+             |  ||  |      `> [12, 8] ListExpr [List with 1 elements]
+             |  ||  |         []> [12, 8] StringLiteral (1)
+             |  ||  |             type: string
+             |  ||  `> [14, 2] ListInst [List with 1 elements]
+             |  ||     []> [14, 8] Print
+             |  ||         `> [14, 8] ListExpr [List with 1 elements]
+             |  ||            []> [14, 8] StringLiteral (2)
+             |  ||                type: string
+             |  []> [17, 1] IfThenElse
+             |      +> [17, 5] Identifier (a)
+             |      |  definition: variable defined at [9, 8], type=boolean
+             |      +> [18, 2] ListInst [List with 1 elements]
+             |      |  []> [18, 8] Print
+             |      |      `> [18, 8] ListExpr [List with 1 elements]
+             |      |         []> [18, 8] StringLiteral (3)
+             |      |             type: string
+             |      `> ListInst [List with 1 elements]
+             |         []> [19, 12] IfThenElse
+             |             +> [19, 12] Identifier (a)
+             |             |  definition: variable defined at [9, 8], type=boolean
+             |             +> [20, 2] ListInst [List with 1 elements]
+             |             |  []> [20, 8] Print
+             |             |      `> [20, 8] ListExpr [List with 1 elements]
+             |             |         []> [20, 8] StringLiteral (4)
+             |             |             type: string
+             |             `> ListInst [List with 0 elements]
+             `> ListInst [List with 0 elements]

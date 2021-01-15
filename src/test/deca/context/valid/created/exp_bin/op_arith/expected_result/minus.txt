@@ -43,12 +43,14 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||  type: float
          ||  +> [12, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [12, 4] Minus
-         ||     type: int
-         ||     +> [12, 4] Int (1)
-         ||     |  type: int
-         ||     `> [12, 8] Int (1)
+         ||  `> ConvFloat
+         ||     type: float
+         ||     `> [12, 4] Minus
          ||        type: int
+         ||        +> [12, 4] Int (1)
+         ||        |  type: int
+         ||        `> [12, 8] Int (1)
+         ||           type: int
          []> [13, 0] Assign
          ||  type: float
          ||  +> [13, 0] Identifier (b)

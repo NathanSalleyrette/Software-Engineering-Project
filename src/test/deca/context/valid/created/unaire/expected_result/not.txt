@@ -1,0 +1,51 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:39) - verify program: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify program: end
+`> [7, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [7, 0] Main
+      +> [8, 0] ListDeclVar [List with 1 elements]
+      |  []> [8, 8] DeclVar
+      |      +> [8, 0] Identifier (boolean)
+      |      |  definition: type (builtin), type=boolean
+      |      +> [8, 8] Identifier (b)
+      |      |  definition: variable defined at [8, 8], type=boolean
+      |      `> NoInitialization
+      `> [9, 0] ListInst [List with 4 elements]
+         []> [9, 0] Assign
+         ||  type: boolean
+         ||  +> [9, 0] Identifier (b)
+         ||  |  definition: variable defined at [8, 8], type=boolean
+         ||  `> [9, 4] Not
+         ||     type: boolean
+         ||     `> [9, 5] BooleanLiteral (true)
+         ||        type: boolean
+         []> [10, 0] Assign
+         ||  type: boolean
+         ||  +> [10, 0] Identifier (b)
+         ||  |  definition: variable defined at [8, 8], type=boolean
+         ||  `> [10, 4] Not
+         ||     type: boolean
+         ||     `> [10, 5] BooleanLiteral (false)
+         ||        type: boolean
+         []> [11, 0] Assign
+         ||  type: boolean
+         ||  +> [11, 0] Identifier (b)
+         ||  |  definition: variable defined at [8, 8], type=boolean
+         ||  `> [11, 4] Not
+         ||     type: boolean
+         ||     `> [11, 5] Identifier (b)
+         ||        definition: variable defined at [8, 8], type=boolean
+         []> [12, 0] Assign
+             type: boolean
+             +> [12, 0] Identifier (b)
+             |  definition: variable defined at [8, 8], type=boolean
+             `> [12, 4] Not
+                type: boolean
+                `> [12, 5] Equals
+                   type: boolean
+                   +> [12, 6] Identifier (b)
+                   |  definition: variable defined at [8, 8], type=boolean
+                   `> [12, 11] Identifier (b)
+                      definition: variable defined at [8, 8], type=boolean

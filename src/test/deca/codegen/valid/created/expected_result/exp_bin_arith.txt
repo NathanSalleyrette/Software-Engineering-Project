@@ -1,4 +1,5 @@
-	TSTO #3
+---CODE_ASSEMBLEUR---
+	TSTO #2
 	BOV pile_pleine
 	ADDSP #2
 ; start main program
@@ -181,19 +182,13 @@
 	LOAD #1, R2
 	FLOAT #1, R2
 	LOAD #0x1.99999ap-3, R3
-	PUSH R3
-	LOAD #3, R3
-	FLOAT #3, R3
-	LOAD R3, R0
-	POP R3
-	DIV R0, R3
+	LOAD #3, R4
+	FLOAT #3, R4
+	DIV R4, R3
 	BOV debordement_flottant
-	PUSH R3
-	LOAD #4, R3
-	FLOAT #4, R3
-	LOAD R3, R0
-	POP R3
-	MUL R0, R3
+	LOAD #4, R4
+	FLOAT #4, R4
+	MUL R4, R3
 	BOV debordement_flottant
 	SUB R3, R2
 	BOV debordement_flottant
@@ -258,3 +253,28 @@ debordement_flottant:
 	WNL
 	ERROR
 ; end main program
+---SORTIE MACHINE IMA---
+1
+1.00000e+00
+
+-3
+-3.00000e+00
+
+6
+6.00000e+00
+
+7
+7.00000e+00
+
+-1
+-1.00000e+00
+
+-8.00000e-01
+
+-4.80000e+00
+
+5.73333e+00
+
+1.20000e+01
+
+3.50000e+00

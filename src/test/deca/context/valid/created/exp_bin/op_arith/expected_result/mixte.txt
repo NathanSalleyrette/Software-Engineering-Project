@@ -32,6 +32,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||     |  `> [10, 8] Int (2)
          ||     |     type: int
          ||     `> [10, 24] Modulo
+         ||        type: int
          ||        +> [10, 20] Divide
          ||        |  type: int
          ||        |  +> [10, 16] Multiply
@@ -48,27 +49,30 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||  type: float
          ||  +> [11, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [11, 4] Minus
-         ||     type: int
-         ||     +> [11, 8] Plus
-         ||     |  type: int
-         ||     |  +> [11, 4] Int (1)
-         ||     |  |  type: int
-         ||     |  `> [11, 8] Int (2)
-         ||     |     type: int
-         ||     `> [11, 24] Modulo
-         ||        +> [11, 20] Divide
+         ||  `> ConvFloat
+         ||     type: float
+         ||     `> [11, 4] Minus
+         ||        type: int
+         ||        +> [11, 8] Plus
          ||        |  type: int
-         ||        |  +> [11, 16] Multiply
+         ||        |  +> [11, 4] Int (1)
          ||        |  |  type: int
-         ||        |  |  +> [11, 12] Int (3)
-         ||        |  |  |  type: int
-         ||        |  |  `> [11, 16] Int (4)
-         ||        |  |     type: int
-         ||        |  `> [11, 20] Int (5)
+         ||        |  `> [11, 8] Int (2)
          ||        |     type: int
-         ||        `> [11, 24] Int (6)
+         ||        `> [11, 24] Modulo
          ||           type: int
+         ||           +> [11, 20] Divide
+         ||           |  type: int
+         ||           |  +> [11, 16] Multiply
+         ||           |  |  type: int
+         ||           |  |  +> [11, 12] Int (3)
+         ||           |  |  |  type: int
+         ||           |  |  `> [11, 16] Int (4)
+         ||           |  |     type: int
+         ||           |  `> [11, 20] Int (5)
+         ||           |     type: int
+         ||           `> [11, 24] Int (6)
+         ||              type: int
          []> [12, 0] Assign
          ||  type: int
          ||  +> [12, 0] Identifier (a)
@@ -95,24 +99,26 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||  type: float
          ||  +> [13, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [13, 4] Minus
-         ||     type: int
-         ||     +> [13, 12] Plus
-         ||     |  type: int
-         ||     |  +> [13, 4] Multiply
-         ||     |  |  type: int
-         ||     |  |  +> [13, 4] Int (1)
-         ||     |  |  |  type: int
-         ||     |  |  `> [13, 8] Int (2)
-         ||     |  |     type: int
-         ||     |  `> [13, 16] Divide
-         ||     |     type: int
-         ||     |     +> [13, 12] Int (3)
-         ||     |     |  type: int
-         ||     |     `> [13, 16] Int (4)
-         ||     |        type: int
-         ||     `> [13, 20] Int (5)
+         ||  `> ConvFloat
+         ||     type: float
+         ||     `> [13, 4] Minus
          ||        type: int
+         ||        +> [13, 12] Plus
+         ||        |  type: int
+         ||        |  +> [13, 4] Multiply
+         ||        |  |  type: int
+         ||        |  |  +> [13, 4] Int (1)
+         ||        |  |  |  type: int
+         ||        |  |  `> [13, 8] Int (2)
+         ||        |  |     type: int
+         ||        |  `> [13, 16] Divide
+         ||        |     type: int
+         ||        |     +> [13, 12] Int (3)
+         ||        |     |  type: int
+         ||        |     `> [13, 16] Int (4)
+         ||        |        type: int
+         ||        `> [13, 20] Int (5)
+         ||           type: int
          []> [14, 0] Assign
          ||  type: int
          ||  +> [14, 0] Identifier (a)
@@ -139,24 +145,26 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||  type: float
          ||  +> [15, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [15, 4] Plus
-         ||     type: int
-         ||     +> [15, 8] Minus
-         ||     |  type: int
-         ||     |  +> [15, 4] Int (1)
-         ||     |  |  type: int
-         ||     |  `> [15, 16] Multiply
-         ||     |     type: int
-         ||     |     +> [15, 12] Divide
-         ||     |     |  type: int
-         ||     |     |  +> [15, 8] Int (2)
-         ||     |     |  |  type: int
-         ||     |     |  `> [15, 12] Int (3)
-         ||     |     |     type: int
-         ||     |     `> [15, 16] Int (4)
-         ||     |        type: int
-         ||     `> [15, 20] Int (5)
+         ||  `> ConvFloat
+         ||     type: float
+         ||     `> [15, 4] Plus
          ||        type: int
+         ||        +> [15, 8] Minus
+         ||        |  type: int
+         ||        |  +> [15, 4] Int (1)
+         ||        |  |  type: int
+         ||        |  `> [15, 16] Multiply
+         ||        |     type: int
+         ||        |     +> [15, 12] Divide
+         ||        |     |  type: int
+         ||        |     |  +> [15, 8] Int (2)
+         ||        |     |  |  type: int
+         ||        |     |  `> [15, 12] Int (3)
+         ||        |     |     type: int
+         ||        |     `> [15, 16] Int (4)
+         ||        |        type: int
+         ||        `> [15, 20] Int (5)
+         ||           type: int
          []> [16, 0] Assign
          ||  type: int
          ||  +> [16, 0] Identifier (a)
@@ -166,6 +174,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||     +> [16, 16] Plus
          ||     |  type: int
          ||     |  +> [16, 4] Modulo
+         ||     |  |  type: int
          ||     |  |  +> [16, 8] Divide
          ||     |  |  |  type: int
          ||     |  |  |  +> [16, 4] Int (1)
@@ -186,27 +195,30 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||  type: float
          ||  +> [17, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [17, 4] Minus
-         ||     type: int
-         ||     +> [17, 16] Plus
-         ||     |  type: int
-         ||     |  +> [17, 4] Modulo
-         ||     |  |  +> [17, 8] Divide
-         ||     |  |  |  type: int
-         ||     |  |  |  +> [17, 4] Int (1)
-         ||     |  |  |  |  type: int
-         ||     |  |  |  `> [17, 8] Int (2)
-         ||     |  |  |     type: int
-         ||     |  |  `> [17, 12] Int (6)
-         ||     |  |     type: int
-         ||     |  `> [17, 20] Multiply
-         ||     |     type: int
-         ||     |     +> [17, 16] Int (3)
-         ||     |     |  type: int
-         ||     |     `> [17, 20] Int (4)
-         ||     |        type: int
-         ||     `> [17, 24] Int (5)
+         ||  `> ConvFloat
+         ||     type: float
+         ||     `> [17, 4] Minus
          ||        type: int
+         ||        +> [17, 16] Plus
+         ||        |  type: int
+         ||        |  +> [17, 4] Modulo
+         ||        |  |  type: int
+         ||        |  |  +> [17, 8] Divide
+         ||        |  |  |  type: int
+         ||        |  |  |  +> [17, 4] Int (1)
+         ||        |  |  |  |  type: int
+         ||        |  |  |  `> [17, 8] Int (2)
+         ||        |  |  |     type: int
+         ||        |  |  `> [17, 12] Int (6)
+         ||        |  |     type: int
+         ||        |  `> [17, 20] Multiply
+         ||        |     type: int
+         ||        |     +> [17, 16] Int (3)
+         ||        |     |  type: int
+         ||        |     `> [17, 20] Int (4)
+         ||        |        type: int
+         ||        `> [17, 24] Int (5)
+         ||           type: int
          []> [18, 0] Assign
          ||  type: int
          ||  +> [18, 0] Identifier (a)
@@ -225,16 +237,18 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||  type: float
          ||  +> [19, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [19, 4] Plus
-         ||     type: int
-         ||     +> [19, 8] Minus
-         ||     |  type: int
-         ||     |  +> [19, 4] Int (1)
-         ||     |  |  type: int
-         ||     |  `> [19, 8] Int (5)
-         ||     |     type: int
-         ||     `> [19, 12] Int (3)
+         ||  `> ConvFloat
+         ||     type: float
+         ||     `> [19, 4] Plus
          ||        type: int
+         ||        +> [19, 8] Minus
+         ||        |  type: int
+         ||        |  +> [19, 4] Int (1)
+         ||        |  |  type: int
+         ||        |  `> [19, 8] Int (5)
+         ||        |     type: int
+         ||        `> [19, 12] Int (3)
+         ||           type: int
          []> [22, 0] Assign
          ||  type: float
          ||  +> [22, 0] Identifier (b)

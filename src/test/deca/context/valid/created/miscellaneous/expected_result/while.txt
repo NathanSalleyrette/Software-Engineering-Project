@@ -1,0 +1,19 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:39) - verify program: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify program: end
+`> [8, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [8, 0] Main
+      +> [9, 0] ListDeclVar [List with 1 elements]
+      |  []> [9, 8] DeclVar
+      |      +> [9, 0] Identifier (boolean)
+      |      |  definition: type (builtin), type=boolean
+      |      +> [9, 8] Identifier (a)
+      |      |  definition: variable defined at [9, 8], type=boolean
+      |      `> NoInitialization
+      `> [10, 0] ListInst [List with 1 elements]
+         []> [10, 7] While
+             +> [10, 7] Identifier (a)
+             |  definition: variable defined at [9, 8], type=boolean
+             `> ListInst [List with 0 elements]

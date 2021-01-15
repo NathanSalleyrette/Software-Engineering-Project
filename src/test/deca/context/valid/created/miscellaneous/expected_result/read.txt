@@ -1,0 +1,25 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:39) - verify program: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify program: end
+`> [7, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [7, 0] Main
+      +> [8, 0] ListDeclVar [List with 2 elements]
+      |  []> [8, 4] DeclVar
+      |  ||  +> [8, 0] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [8, 4] Identifier (a)
+      |  ||  |  definition: variable defined at [8, 4], type=int
+      |  ||  `> [8, 6] Initialization
+      |  ||     `> [8, 8] ReadInt
+      |  ||        type: int
+      |  []> [9, 6] DeclVar
+      |      +> [9, 0] Identifier (float)
+      |      |  definition: type (builtin), type=float
+      |      +> [9, 6] Identifier (b)
+      |      |  definition: variable defined at [9, 6], type=float
+      |      `> [9, 8] Initialization
+      |         `> [9, 10] ReadFloat
+      |            type: float
+      `> [10, 0] ListInst [List with 0 elements]

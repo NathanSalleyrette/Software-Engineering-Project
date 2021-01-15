@@ -13,7 +13,7 @@
 
 # On se place dans le répertoire du projet (quel que soit le
 # répertoire d'où est lancé le script) :
-cd "$(dirname "$0")"/../../.. || exit 1
+cd "$(dirname "$0")"/../../../.. || exit 1
 
 PATH=./src/test/script/launchers:"$PATH"
 

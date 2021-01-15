@@ -1,0 +1,52 @@
+`> [8, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [8, 0] Main
+      +> [9, 0] ListDeclVar [List with 1 elements]
+      |  []> [9, 6] DeclVar
+      |      +> [9, 0] Identifier (float)
+      |      +> [9, 6] Identifier (a)
+      |      `> NoInitialization
+      `> [10, 0] ListInst [List with 14 elements]
+         []> [10, 8] Println
+         ||  `> [10, 8] ListExpr [List with 1 elements]
+         ||     []> [10, 8] StringLiteral (hello)
+         []> [11, 8] Println
+         ||  `> [11, 8] ListExpr [List with 1 elements]
+         ||     []> [11, 8] Int (3)
+         []> [12, 8] Println
+         ||  `> [12, 8] ListExpr [List with 1 elements]
+         ||     []> [12, 8] Identifier (a)
+         []> [13, 6] Print
+         ||  `> [13, 6] ListExpr [List with 1 elements]
+         ||     []> [13, 6] BooleanLiteral (true)
+         []> [15, 6] Print
+         ||  `> [15, 6] ListExpr [List with 1 elements]
+         ||     []> [15, 6] StringLiteral (hello)
+         []> [16, 6] Print
+         ||  `> [16, 6] ListExpr [List with 1 elements]
+         ||     []> [16, 6] Int (3)
+         []> [17, 6] Print
+         ||  `> [17, 6] ListExpr [List with 1 elements]
+         ||     []> [17, 6] Identifier (a)
+         []> [19, 7] Print
+         ||  `> [19, 7] ListExpr [List with 1 elements]
+         ||     []> [19, 7] StringLiteral (hello)
+         []> [20, 7] Print
+         ||  `> [20, 7] ListExpr [List with 1 elements]
+         ||     []> [20, 7] Int (3)
+         []> [21, 7] Print
+         ||  `> [21, 7] ListExpr [List with 1 elements]
+         ||     []> [21, 7] Identifier (a)
+         []> [23, 9] Println
+         ||  `> [23, 9] ListExpr [List with 1 elements]
+         ||     []> [23, 9] StringLiteral (hello)
+         []> [24, 9] Println
+         ||  `> [24, 9] ListExpr [List with 1 elements]
+         ||     []> [24, 9] Int (3)
+         []> [25, 9] Println
+         ||  `> [25, 9] ListExpr [List with 1 elements]
+         ||     []> [25, 9] Identifier (a)
+         []> [26, 9] Println
+             `> [26, 14] ListExpr [List with 2 elements]
+                []> [26, 9] StringLiteral (a)
+                []> [26, 14] Identifier (a)
