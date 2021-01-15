@@ -3,7 +3,8 @@
 # Auteur : gl01
 # Version initiale : 01/01/2021
 cd "$(dirname "$0")"/../../.. || exit 1
-source ./src/test/script/colors.sh # pour les couleurs
+source ./src/test/script/functions/colors.sh # pour les couleurs
+source ./src/test/script/functions/obtient_resultat_attendu.sh
 $bleu
 echo "Debut des test sur $1"
 $reset
@@ -15,19 +16,6 @@ tableau_des_tests_echoues=()          # va contenir le nom de tout les tests qui
 resultat_des_tests_echoues=()         # va contenir la sortie des tests qui ont échoués
 resultat_attendu_des_tests_echoues=() # va contenir la sortie attendue des tests qui ont échoués
 repertoires=("$repertoire_test/invalid/provided/" "$repertoire_test/valid/provided/")
-obtient_resultat_attendu() {
-	# https://www.cyberciti.biz/faq/bash-get-basename-of-filename-or-directory-name/
-	fichier_resultat_attendu=$(basename --suffix=.deca $1)
-	# https://stackoverflow.com/questions/19482123/extract-part-of-a-string-using-bash-cut-split
-	attendu="$(cat ${1%/*}/expected_result/$fichier_resultat_attendu.txt 2>/dev/null)"
-	if [ $? != 0 ]; then # s'il n'y a pas de fichier de référence
-		echo "PAS_DE_FICHIER"
-		exit 1
-	else
-		echo "$attendu"
-		exit 0
-	fi
-}
 
 # cette fonction permet de vérifier si la sortie correspond à la sortie attendue
 compare_sortie_attendue() {
