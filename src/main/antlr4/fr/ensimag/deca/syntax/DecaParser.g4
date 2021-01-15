@@ -64,7 +64,7 @@ block returns[ListDeclVar decls, ListInst insts]
             assert($list_inst.tree != null);
             $decls = $list_decl.tree;
             $insts = $list_inst.tree;
-            setLocation($decls, $list_decl.start);
+            //setLocation($decls, $list_decl.start);
             //setLocation($insts, $list_inst.start);
         }
     ;
@@ -523,7 +523,7 @@ class_decl returns[DeclClass tree]
 }
     : CLASS name=ident superclass=class_extension OBRACE class_body CBRACE {
     		assert($name.tree != null);
-    		$tree = new DeclClass($name.name);
+    		$tree = new DeclClass($name.tree);
     		setLocation($tree, $CLASS);
     		//TODO : class_body ?
         }
