@@ -18,7 +18,7 @@ a = false || false;
 if (a) {println("t");} else {println("f");}
 a = true || true;
 if (a) {println("t");} else {println("f");}
-
+println();
 a = true && false;
 if (a) {println("t");} else {println("f");}
 a = false && true;

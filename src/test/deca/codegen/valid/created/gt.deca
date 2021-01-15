@@ -1,9 +1,0 @@
-// Description :
-//    test du gt seul pour codegen
-//
-// Resultats :
-//    	Ok
-
-{
-boolean a = 3 > 4;
-}
