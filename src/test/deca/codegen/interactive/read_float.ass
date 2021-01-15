@@ -1,0 +1,34 @@
+	TSTO #1
+	BOV pile_pleine
+	ADDSP #1
+; start main program
+; Main program
+; Beginning of main instructions:
+	WSTR "entrez une valeur pour x:"
+	WNL
+	RFLOAT
+	BOV io_error
+	LOAD R1, R2
+	STORE R2, 1(GB)
+	BOV debordement_flottant
+	WSTR "valeur entrée: "
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR ", tres bon choix !"
+	WNL
+	HALT
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+debordement_flottant:
+	WSTR "Erreur : debordement_flottant"
+	WNL
+	ERROR
+io_error:
+	WSTR "Erreur : io_error"
+	WNL
+	ERROR
+; end main program

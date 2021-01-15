@@ -19,18 +19,23 @@ Assign_False.0:
 	STORE R2, 4(GB)
 Assign_Fin.0:
 ; Beginning of main instructions:
-	LOAD 3(GB), R2
-	LOAD R2, R1
-	WFLOAT
-	WNL
-	LOAD 3(GB), R2
-	LOAD R2, R1
-	WFLOATX
-	WNL
 	LOAD 1(GB), R2
 	LOAD R2, R1
 	WINT
 	WNL
+	LOAD 2(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 3(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	LOAD 4(GB), R0
+	CMP #0, R0
+	BEQ E_Fin.1
+	WSTR "ok"
+E_Fin.1:
 	HALT
 ; Erreurs
 pile_pleine:

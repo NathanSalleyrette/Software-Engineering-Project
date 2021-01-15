@@ -1,9 +1,0 @@
-// Description :
-//    test du minus seul pour codegen
-//
-// Resultats :
-//    	Ok
-
-{
-int a = 3 - 4;
-}

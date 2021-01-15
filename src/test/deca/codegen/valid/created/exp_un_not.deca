@@ -7,6 +7,9 @@
 {
 boolean a;
 a = !false;
+if (a) {println("a=true");} else {println("a=false");}
 a = !a;
+if (a) {println("a=true");} else {println("a=false");}
 a = !true;
+if (a) {println("a=true");} else {println("a=false");}
 }

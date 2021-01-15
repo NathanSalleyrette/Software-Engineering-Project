@@ -32,7 +32,7 @@ public class DecacMain {
             return;
         }
         if (options.getSourceFiles().isEmpty()) {
-            String help = "La syntaxe d'utilisation de l'exécutable decac est ;\n"
+            String help = "La syntaxe d'utilisation de l'exécutable decac est :\n"
                         + "decac [[-p | -v] [-n] [-r X] [-d]* [-P] [-w] <fichier deca>...] | [-b]\n\n"
                         + "La commande decac, sans argument, affiche les options disponibles. On peut appeler la commande\n"
                         + "decac avec un ou plusieurs fichiers sources Deca.\n\n"
@@ -53,7 +53,6 @@ public class DecacMain {
                         + "Les options -p et -v sont incompatibles.\n"
                         ;
             System.out.println(help);
-            options.displayUsage();
             return;
         }
         if (options.getParallel()) {

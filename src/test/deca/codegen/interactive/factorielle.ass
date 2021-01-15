@@ -1,0 +1,43 @@
+	TSTO #2
+	BOV pile_pleine
+	ADDSP #2
+; start main program
+; Main program
+; Beginning of main instructions:
+	WSTR "Entrez une valeur maintenant!"
+	WNL
+	RINT
+	BOV io_error
+	LOAD R1, R2
+	STORE R2, 1(GB)
+	LOAD 1(GB), R2
+	SUB #1, R2
+	STORE R2, 2(GB)
+	BRA E_Cond.0
+E_Debut.0:
+	LOAD 1(GB), R2
+	MUL 2(GB), R2
+	STORE R2, 1(GB)
+	LOAD 2(GB), R2
+	SUB #1, R2
+	STORE R2, 2(GB)
+E_Cond.0:
+	LOAD 2(GB), R2
+	CMP #0, R2
+	BGT E_Debut.0
+	WSTR "Sa factorielle est : "
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	HALT
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+io_error:
+	WSTR "Erreur : io_error"
+	WNL
+	ERROR
+; end main program

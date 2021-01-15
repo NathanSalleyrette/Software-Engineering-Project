@@ -10,4 +10,9 @@ int a;
 int b;
 float f;
 boolean d;
+println(a);
+println(b);
+println(f);
+if (d) {print("ok");}
+
 }
