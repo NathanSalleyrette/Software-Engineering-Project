@@ -230,8 +230,7 @@ assign_expr returns[AbstractExpr tree]
             assert($e.tree != null);
             assert($e2.tree != null);
             $tree = new Assign((AbstractLValue)$e.tree, $e2.tree);
-            setLocation($tree, $e.start);
-            setLocation($tree, $e2.start);
+            setLocation($tree, $EQUALS);
         }
       | /* epsilon */ {
             assert($e.tree != null);
@@ -415,12 +414,14 @@ select_expr returns[AbstractExpr tree]
     | e1=select_expr DOT i=ident {
             assert($e1.tree != null);
             assert($i.tree != null);
-            //TODO
+            $tree = $e1.tree;
+            setLocation($tree, $e1.start);
+            setLocation($i.tree, $i.start);
         }
         (o=OPARENT args=list_expr CPARENT {
             // we matched "e1.i(args)"
             assert($args.tree != null);
-            //TODO
+            setLocation($args.tree, $args.start);
         }
         | /* epsilon */ {
             // we matched "e.i"
@@ -438,7 +439,8 @@ primary_expr returns[AbstractExpr tree]
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
             assert($m.tree != null);
-            //TODO
+            $tree = $m.tree;
+            setLocation($tree, $m.start);
         }
     | OPARENT expr CPARENT {
             assert($expr.tree != null);
@@ -506,8 +508,9 @@ literal returns[AbstractExpr tree]
         }
     ;
 
-ident returns[AbstractIdentifier tree]
+ident returns[AbstractIdentifier tree, String name]
     : i=IDENT {
+    		$name = $i.getText();
     		$tree = new Identifier(sTable.create($i.getText()));
     		setLocation($tree, $i);
         }
@@ -521,13 +524,23 @@ list_classes returns[ListDeclClass tree]
 }
     :
       (c1=class_decl {
-      		/*$tree.add(c1);*/
+      		assert($c1.tree != null);
+      		$tree.add($c1.tree);
+      		setLocation($tree, $c1.start);
         }
       )*
     ;
 
-class_decl
+class_decl returns[AbstractDeclClass tree]
+@init {
+}
     : CLASS name=ident superclass=class_extension OBRACE class_body CBRACE {
+    		$tree = new DeclClass($name.name);
+    		setLocation($tree, $name.start);
+    		if ($superclass.tree != null) {
+    			setLocation($tree, $superclass.start);
+    		}
+    		//TODO: pour class_body aussi ?
         }
     ;
 
