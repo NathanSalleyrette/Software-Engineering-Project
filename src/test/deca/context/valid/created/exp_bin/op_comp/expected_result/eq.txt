@@ -36,7 +36,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
       |            |  type: int
       |            `> [11, 17] Int (2)
       |               type: int
-      `> [12, 0] ListInst [List with 14 elements]
+      `> [12, 0] ListInst [List with 23 elements]
          []> [12, 0] Assign
          ||  type: boolean
          ||  +> [12, 0] Identifier (c)
@@ -168,12 +168,102 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||     `> [24, 9] Identifier (b)
          ||        definition: variable defined at [9, 6], type=float
          []> [25, 0] Assign
+         ||  type: boolean
+         ||  +> [25, 0] Identifier (c)
+         ||  |  definition: variable defined at [11, 8], type=boolean
+         ||  `> [25, 4] Equals
+         ||     type: boolean
+         ||     +> [25, 4] Identifier (a)
+         ||     |  definition: variable defined at [8, 4], type=int
+         ||     `> [25, 9] Identifier (b)
+         ||        definition: variable defined at [9, 6], type=float
+         []> [27, 0] Assign
+         ||  type: boolean
+         ||  +> [27, 0] Identifier (c)
+         ||  |  definition: variable defined at [11, 8], type=boolean
+         ||  `> [27, 4] Equals
+         ||     type: boolean
+         ||     +> [27, 4] BooleanLiteral (false)
+         ||     |  type: boolean
+         ||     `> [27, 13] BooleanLiteral (true)
+         ||        type: boolean
+         []> [28, 0] Assign
+         ||  type: boolean
+         ||  +> [28, 0] Identifier (c)
+         ||  |  definition: variable defined at [11, 8], type=boolean
+         ||  `> [28, 4] Equals
+         ||     type: boolean
+         ||     +> [28, 4] BooleanLiteral (false)
+         ||     |  type: boolean
+         ||     `> [28, 13] BooleanLiteral (false)
+         ||        type: boolean
+         []> [29, 0] Assign
+         ||  type: boolean
+         ||  +> [29, 0] Identifier (c)
+         ||  |  definition: variable defined at [11, 8], type=boolean
+         ||  `> [29, 4] Equals
+         ||     type: boolean
+         ||     +> [29, 4] BooleanLiteral (true)
+         ||     |  type: boolean
+         ||     `> [29, 12] BooleanLiteral (false)
+         ||        type: boolean
+         []> [30, 0] Assign
+         ||  type: boolean
+         ||  +> [30, 0] Identifier (c)
+         ||  |  definition: variable defined at [11, 8], type=boolean
+         ||  `> [30, 4] Equals
+         ||     type: boolean
+         ||     +> [30, 4] BooleanLiteral (true)
+         ||     |  type: boolean
+         ||     `> [30, 12] BooleanLiteral (true)
+         ||        type: boolean
+         []> [31, 0] Assign
+         ||  type: boolean
+         ||  +> [31, 0] Identifier (c)
+         ||  |  definition: variable defined at [11, 8], type=boolean
+         ||  `> [31, 4] Equals
+         ||     type: boolean
+         ||     +> [31, 4] Identifier (d)
+         ||     |  definition: variable defined at [10, 8], type=boolean
+         ||     `> [31, 9] BooleanLiteral (true)
+         ||        type: boolean
+         []> [32, 0] Assign
+         ||  type: boolean
+         ||  +> [32, 0] Identifier (c)
+         ||  |  definition: variable defined at [11, 8], type=boolean
+         ||  `> [32, 4] Equals
+         ||     type: boolean
+         ||     +> [32, 4] Identifier (d)
+         ||     |  definition: variable defined at [10, 8], type=boolean
+         ||     `> [32, 9] BooleanLiteral (false)
+         ||        type: boolean
+         []> [33, 0] Assign
+         ||  type: boolean
+         ||  +> [33, 0] Identifier (c)
+         ||  |  definition: variable defined at [11, 8], type=boolean
+         ||  `> [33, 4] Equals
+         ||     type: boolean
+         ||     +> [33, 4] BooleanLiteral (true)
+         ||     |  type: boolean
+         ||     `> [33, 12] Identifier (d)
+         ||        definition: variable defined at [10, 8], type=boolean
+         []> [34, 0] Assign
+         ||  type: boolean
+         ||  +> [34, 0] Identifier (c)
+         ||  |  definition: variable defined at [11, 8], type=boolean
+         ||  `> [34, 4] Equals
+         ||     type: boolean
+         ||     +> [34, 4] BooleanLiteral (false)
+         ||     |  type: boolean
+         ||     `> [34, 13] Identifier (d)
+         ||        definition: variable defined at [10, 8], type=boolean
+         []> [35, 0] Assign
              type: boolean
-             +> [25, 0] Identifier (c)
+             +> [35, 0] Identifier (c)
              |  definition: variable defined at [11, 8], type=boolean
-             `> [25, 4] Equals
+             `> [35, 4] Equals
                 type: boolean
-                +> [25, 4] Identifier (a)
-                |  definition: variable defined at [8, 4], type=int
-                `> [25, 9] Identifier (b)
-                   definition: variable defined at [9, 6], type=float
+                +> [35, 4] Identifier (d)
+                |  definition: variable defined at [10, 8], type=boolean
+                `> [35, 9] Identifier (d)
+                   definition: variable defined at [10, 8], type=boolean
