@@ -1,0 +1,78 @@
+`> [7, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [7, 0] Main
+      +> [8, 0] ListDeclVar [List with 0 elements]
+      `> [8, 0] ListInst [List with 15 elements]
+         []> [8, 0] Assign
+         ||  +> [8, 0] Identifier (a)
+         ||  `> [8, 4] Plus
+         ||     +> [8, 4] Int (1)
+         ||     `> [8, 8] Int (2)
+         []> [9, 0] Assign
+         ||  +> [9, 0] Identifier (a)
+         ||  `> [9, 4] Multiply
+         ||     +> [9, 4] Int (1)
+         ||     `> [9, 8] Int (2)
+         []> [10, 0] Assign
+         ||  +> [10, 0] Identifier (a)
+         ||  `> [10, 4] Minus
+         ||     +> [10, 4] Int (1)
+         ||     `> [10, 8] Int (2)
+         []> [11, 0] Assign
+         ||  +> [11, 0] Identifier (a)
+         ||  `> [11, 4] Divide
+         ||     +> [11, 4] Int (1)
+         ||     `> [11, 8] Int (2)
+         []> [12, 0] Assign
+         ||  +> [12, 0] Identifier (a)
+         ||  `> [12, 4] Modulo
+         ||     +> [12, 4] Int (1)
+         ||     `> [12, 8] Int (2)
+         []> [13, 0] Assign
+         ||  +> [13, 0] Identifier (a)
+         ||  `> [13, 4] Lower
+         ||     +> [13, 4] Int (1)
+         ||     `> [13, 8] Int (2)
+         []> [14, 0] Assign
+         ||  +> [14, 0] Identifier (a)
+         ||  `> [14, 4] LowerOrEqual
+         ||     +> [14, 4] Int (1)
+         ||     `> [14, 9] Int (2)
+         []> [15, 0] Assign
+         ||  +> [15, 0] Identifier (a)
+         ||  `> [15, 4] Greater
+         ||     +> [15, 4] Int (1)
+         ||     `> [15, 8] Int (2)
+         []> [16, 0] Assign
+         ||  +> [16, 0] Identifier (a)
+         ||  `> [16, 4] GreaterOrEqual
+         ||     +> [16, 4] Int (1)
+         ||     `> [16, 9] Int (2)
+         []> [17, 0] Assign
+         ||  +> [17, 0] Identifier (a)
+         ||  `> [17, 4] Equals
+         ||     +> [17, 4] Int (1)
+         ||     `> [17, 9] Int (2)
+         []> [18, 0] Assign
+         ||  +> [18, 0] Identifier (a)
+         ||  `> [18, 4] NotEquals
+         ||     +> [18, 4] Int (1)
+         ||     `> [18, 9] Int (2)
+         []> [19, 0] Assign
+         ||  +> [19, 0] Identifier (a)
+         ||  `> [19, 4] And
+         ||     +> [19, 4] Int (1)
+         ||     `> [19, 9] Int (2)
+         []> [20, 0] Assign
+         ||  +> [20, 0] Identifier (a)
+         ||  `> [20, 4] Or
+         ||     +> [20, 4] Int (1)
+         ||     `> [20, 9] Int (2)
+         []> [21, 0] Assign
+         ||  +> [21, 0] Identifier (a)
+         ||  `> [21, 4] Not
+         ||     `> [21, 5] Int (1)
+         []> [22, 0] Assign
+             +> [22, 0] Identifier (a)
+             `> [22, 4] UnaryMinus
+                `> [22, 5] Int (2)

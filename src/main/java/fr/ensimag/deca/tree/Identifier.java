@@ -15,6 +15,17 @@ import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+
+import fr.ensimag.ima.pseudocode.DAddr;
+import fr.ensimag.ima.pseudocode.DVal;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.deca.codegen.EvalExpr;
+
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
@@ -168,11 +179,13 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-    	TypeDefinition typeDef = compiler.getEnvType().get(getName());
+    	ExpDefinition typeDef = localEnv.get(this.getName());
         if (typeDef == null) {
-        	throw new ContextualError("Type de " + this.toString() + " non défini", this.getLocation());
+        	throw new ContextualError("(0.1) Identificateur " + this.getName() + " non défini", this.getLocation());
         }
+        this.setDefinition(typeDef);
         Type type = typeDef.getType();
+        this.setType(type);
         return type;
     }
 
@@ -182,12 +195,38 @@ public class Identifier extends AbstractIdentifier {
      */
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+    	Symbol name = compiler.getSymbTb().create(this.getName().toString());
+    	if (compiler.getEnvType().get(name) == null) {
+    		throw new ContextualError("(0.2) Type " + this.getName().toString() +
+    				" non reconnu", this.getLocation());
+    	}
+    	this.setType(compiler.getEnvType().get(name).getType());
+        return this.getType();
     }
     
     
     private Definition definition;
 
+    @Override
+    protected void codeGenInst(DecacCompiler compiler) {
+        compiler.addInstruction(new LOAD(this.dval(compiler), Register.getR(compiler.getCurrentRegister())));
+    }
+
+    @Override
+    public DVal dval(DecacCompiler compiler) {
+        return this.getExpDefinition().getOperand();
+    }
+
+    @Override
+    protected void boolCodeGen(DecacCompiler compiler, boolean branch, Label tag) {
+        compiler.addInstruction(new LOAD(this.dval(compiler), Register.R0));
+        compiler.addInstruction(new CMP(0, Register.R0));
+        if (branch) {
+            compiler.addInstruction(new BNE(tag));
+        } else {
+            compiler.addInstruction(new BEQ(tag));
+        }
+    }
 
     @Override
     protected void iterChildren(TreeFunction f) {

@@ -9,6 +9,9 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
+
 /**
  * Full if/else if/else statement.
  *
@@ -42,23 +45,40 @@ public class IfThenElse extends AbstractInst {
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
+    	this.condition.verifyCondition(compiler, localEnv, currentClass);
+    	this.thenBranch.verifyListInst(compiler, localEnv, currentClass, returnType);
+    	this.getElseBranch().verifyListInst(compiler, localEnv, currentClass, returnType);
     }
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+        Label sinon = new Label("E_Sinon." + compiler.getNbLabel());
+        Label fin = new Label("E_Fin." + compiler.getNbLabel());
+        compiler.incrNbLabel();
+        if (!elseBranch.isEmpty()) {
+            condition.boolCodeGen(compiler, false, sinon);
+        } else {
+            condition.boolCodeGen(compiler, false, fin);
+        } 
+        thenBranch.codeGenListInst(compiler);
+        if (!elseBranch.isEmpty()) {
+            // Else Branch
+            compiler.addInstruction(new BRA(fin));
+            compiler.addLabel(sinon);
+            elseBranch.codeGenListInst(compiler);
+        }
+        compiler.addLabel(fin);
     }
 
     @Override
     public void decompile(IndentPrintStream s) {
-       s.print("if ("); 
+       s.print("if("); 
        condition.decompile(s); 
-       s.println(") {"); 
+       s.println("){"); 
        s.indent();
        thenBranch.decompile(s);
-       s.unindent();
-       s.print("}"); 
-       s.println(" else {");
+       s.unindent(); 
+       s.println("} else {");
        s.indent();
        elseBranch.decompile(s);
        s.unindent();

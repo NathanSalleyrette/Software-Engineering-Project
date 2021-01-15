@@ -1,15 +1,17 @@
 package fr.ensimag.deca.tree;
 
-import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
-
+import fr.ensimag.deca.context.VariableDefinition;
 
 /**
  * @author gl01
@@ -17,7 +19,16 @@ import fr.ensimag.deca.tools.SymbolTable.Symbol;
  */
 public class DeclVar extends AbstractDeclVar {
 
-    
+    @Override
+    public AbstractInitialization getInitialization() {
+        return initialization;
+    }
+
+    @Override
+    public AbstractIdentifier getName() {
+        return varName;
+    }
+
     final private AbstractIdentifier type;
     final private AbstractIdentifier varName;
     final private AbstractInitialization initialization;
@@ -35,15 +46,23 @@ public class DeclVar extends AbstractDeclVar {
     protected void verifyDeclVar(DecacCompiler compiler,
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-    	// On fait la vérification et on récupère le type au passage
+    	// On fait la vérification du type et on récupère le type au passage
     	Type varType = this.type.verifyType(compiler);
-    	Symbol typeName = varType.getName();
+    	// On récupère le symbole du nom de la variable et on crée une ExpDefinition
+    	Symbol nameSymb = this.varName.getName();
+    	TypeDefinition typeDef = compiler.getEnvType().get(varType.getName());
+    	type.setDefinition(typeDef);
+    	VariableDefinition varDef = new VariableDefinition(varType, this.getLocation());
+    	try {
+    		localEnv.declare(nameSymb, varDef, getLocation());
+    		varName.setDefinition(varDef);
+    	} catch (DoubleDefException e) {
+    		throw new ContextualError("(3.17) La variable " + this.varName.toString() + " est déjà déclarée", this.getLocation());
+    	}
     	// On vérifie l'initialisation ensuite
     	this.initialization.verifyInitialization(compiler, varType, localEnv, currentClass);
-    	// On récupère le symbole void
-    	Symbol voidSymb = compiler.getSymbTb().create("void");
-    	if (typeName == voidSymb) {
-    		throw new ContextualError("Identifier type can't be 'void'", this.getLocation());
+    	if (varType.isVoid()) {
+    		throw new ContextualError("(3.17) Le type de l'identificateur ne peut être 'void''", this.getLocation());
     	}
     }
 

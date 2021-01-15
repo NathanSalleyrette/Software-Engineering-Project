@@ -36,7 +36,7 @@ public class StringLiteral extends AbstractStringLiteral {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-    	Symbol stringSymb = compiler.getSymbTb().create("string");
+    	Symbol stringSymb = compiler.getSymbTb().create(this.toString());
     	TypeDefinition stringDef = compiler.getEnvType().get(stringSymb);
     	if (stringDef == null ) {
     		stringDef = new TypeDefinition(new StringType(stringSymb), this.getLocation());
@@ -55,7 +55,7 @@ public class StringLiteral extends AbstractStringLiteral {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        s.print(value);
+        s.print("\"" + value +"\"");
     }
 
     @Override
@@ -73,6 +73,8 @@ public class StringLiteral extends AbstractStringLiteral {
         return "StringLiteral (" + value + ")";
     }
     
-    
+    public String toString() {
+    	return "string";
+    }
 
 }

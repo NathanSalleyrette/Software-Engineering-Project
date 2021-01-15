@@ -1,0 +1,11 @@
+// Description :
+//    test printlnx avec un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.31) Les instances affichables peuvent être de type ‘int’, ‘float’, ‘string’
+
+{
+boolean a;
+printlnx(a);
+}

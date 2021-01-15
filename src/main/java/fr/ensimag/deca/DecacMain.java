@@ -26,13 +26,34 @@ public class DecacMain {
             System.exit(1);
         }
         if (options.getPrintBanner()) {
-            String banner = "Une bannière avec nos noms, à compléter dans DecacMain.java";
+            String banner = "Lucie Fousse, Benjamin Cathelineau, Baudouin Jaubert," +
+            				"Alan Manic, Nathan Salleyrette";
             System.out.println(banner);
             return;
         }
         if (options.getSourceFiles().isEmpty()) {
-            String help = "Message d'aide, à compléter dans DecacMain.java";
+            String help = "La syntaxe d'utilisation de l'exécutable decac est ;\n"
+                        + "decac [[-p | -v] [-n] [-r X] [-d]* [-P] [-w] <fichier deca>...] | [-b]\n\n"
+                        + "La commande decac, sans argument, affiche les options disponibles. On peut appeler la commande\n"
+                        + "decac avec un ou plusieurs fichiers sources Deca.\n\n"
+                        + "Les options :\n"
+                        + ". -b (banner) : affiche une bannière indiquant le nom de l’équipe\n"
+                        + ". -p (parse) : arrête decac après l’étape de construction de\n"
+                        + "\t\tl’arbre, et affiche la décompilation de ce dernier\n"
+                        + ". -v (verification) : arrête decac après l’étape de vérifications\n"
+                        + ". -n (no check) : supprime les tests à l’exécution \n"
+                        + ". -r X (registers) : limite les registres banalisés disponibles à\n"
+                        + "\t\tR0 ... R{X-1}, avec 4 <= X <= 16\n"
+                        + ". -d (debug) : active les traces de debug. Répéter\n"
+                        + "\t\tl’option plusieurs fois pour avoir plus de\n"
+                        + "\t\ttraces.\n"
+                        + ". -P (parallel) : s’il y a plusieurs fichiers sources,\n"
+                        + "\t\tlance la compilation des fichiers en\n"
+                        + "\t\tparallèle (pour accélérer la compilation)\n\n"
+                        + "Les options -p et -v sont incompatibles.\n"
+                        ;
             System.out.println(help);
+            options.displayUsage();
             return;
         }
         if (options.getParallel()) {

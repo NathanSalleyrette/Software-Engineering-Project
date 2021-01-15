@@ -1,0 +1,10 @@
+// Description :
+//    test du and seul pour codegen
+//
+// Resultats :
+//    	Ok
+
+{
+boolean a = true && false;
+if (a) {print("true");} else {print("false");}
+}

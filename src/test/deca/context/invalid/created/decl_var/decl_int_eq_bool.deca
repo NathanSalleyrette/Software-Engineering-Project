@@ -1,0 +1,11 @@
+// Description :
+//    test affectation incorrect int = bool
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9: (3.28) Types incompatibles pour l’affectation
+
+{
+int a = true; //true n'est pas un int
+
+}

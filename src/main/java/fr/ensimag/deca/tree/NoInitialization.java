@@ -21,9 +21,13 @@ public class NoInitialization extends AbstractInitialization {
     protected void verifyInitialization(DecacCompiler compiler, Type t,
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // Rien à faire je crois;
     }
 
+    @Override
+    public AbstractExpr getExpression() {
+        return null;
+    }
 
     /**
      * Node contains no real information, nothing to check.

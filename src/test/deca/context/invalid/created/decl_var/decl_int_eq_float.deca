@@ -1,0 +1,10 @@
+// Description :
+//    test affectation int = float
+//
+// Resultats :
+//		Erreur contextuelle
+//		Ligne 9 : (3.28) Type int et float incompatible
+
+{
+int a = 0.5; 
+}

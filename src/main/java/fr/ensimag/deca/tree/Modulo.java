@@ -20,7 +20,24 @@ public class Modulo extends AbstractOpArith {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+    	AbstractExpr leftOp = this.getLeftOperand();
+    	AbstractExpr rightOp = this.getRightOperand();
+    	leftOp.verifyExpr(compiler, localEnv, currentClass);
+    	rightOp.verifyExpr(compiler, localEnv, currentClass);
+    	if ((leftOp.getType().isInt()) && (rightOp.getType().isInt())) {
+    		this.setType(leftOp.getType());
+    		return leftOp.getType();
+    	}
+    	String coupableGauche = "(3.33) ";
+    	if (!leftOp.getType().isInt()) {
+    		coupableGauche = coupableGauche + "L'opérande gauche est de type " + leftOp.getType().toString() + ".";
+    	}
+    	String coupableDroit = "";
+    	if (!rightOp.getType().isInt()) {
+    		coupableDroit = "L'opérande droite est de type " + rightOp.getType().toString() + ".";
+    	}
+    	throw new ContextualError(coupableGauche + coupableDroit + 
+    			" Or les opérandes d'un modulo doivent être de type 'int'", this.getLocation());
     }
 
 
@@ -28,5 +45,4 @@ public class Modulo extends AbstractOpArith {
     protected String getOperatorName() {
         return "%";
     }
-
 }

@@ -1,1 +1,11 @@
-nvl element dans la liste `> [1, 0] Program +> ListDeclClass [List with 0 elements] `> [1, 0] Main +> ListDeclVar [List with 1 elements] | []> DeclVar | +> Identifier (int) | +> Identifier (i) | `> Initialization | `> Int (0) `> ListInst [List with 1 elements] []> NoOperation
+`> [8, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [8, 0] Main
+      +> [9, 0] ListDeclVar [List with 1 elements]
+      |  []> [9, 4] DeclVar
+      |      +> [9, 0] Identifier (int)
+      |      +> [9, 4] Identifier (i)
+      |      `> [9, 6] Initialization
+      |         `> [9, 8] Int (0)
+      `> [9, 10] ListInst [List with 1 elements]
+         []> [9, 10] NoOperation

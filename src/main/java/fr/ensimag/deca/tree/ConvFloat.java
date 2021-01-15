@@ -5,6 +5,9 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.EnvironmentExp;
 
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.deca.codegen.Error;
+import fr.ensimag.ima.pseudocode.instructions.FLOAT;
 /**
  * Conversion of an int into a float. Used for implicit conversions.
  * 
@@ -19,9 +22,17 @@ public class ConvFloat extends AbstractUnaryExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) {
-        throw new UnsupportedOperationException("not yet implemented");
+    	assert this.getOperand().getType().isInt();
+    	Type floatType = compiler.getEnvType().get(compiler.getSymbTb().create("float")).getType();
+    	this.setType(floatType);
+    	return floatType;
     }
 
+    @Override
+    protected void codeGenInst(DecacCompiler compiler) {
+        this.getOperand().codeGenInst(compiler);
+        compiler.addInstruction(new FLOAT(this.getOperand().dval(compiler), Register.getR(compiler.getCurrentRegister())));
+    }
 
     @Override
     protected String getOperatorName() {

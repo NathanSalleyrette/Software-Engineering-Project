@@ -27,7 +27,6 @@ options {
     import fr.ensimag.deca.tree.*;
     import fr.ensimag.deca.tools.SymbolTable;
     import java.io.PrintStream;
-    import java.util.Scanner;
 }
 
 @members {
@@ -87,6 +86,7 @@ list_decl_var[ListDeclVar l, AbstractIdentifier t]
         $l.add($dv1.tree);   
 
         } (COMMA dv2=decl_var[$t] {
+        	$l.add($dv2.tree);  
         }
       )*
     ;
@@ -99,7 +99,9 @@ decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
     		setLocation($tree, $i.start);
         }
       (EQUALS e=expr {
-      		$tree = new DeclVar($t, $i.tree, new Initialization($e.tree));
+      		Initialization init = new Initialization($e.tree);
+      		setLocation(init, $EQUALS);
+      		$tree = new DeclVar($t, $i.tree, init);
       		setLocation($tree, $i.start);
         }
       )? {
@@ -184,10 +186,12 @@ if_then_else returns[IfThenElse tree]
       		t2 = new IfThenElse($elsif_cond.tree, $elsif_li.tree, new ListInst());
       		tTete.getElseBranch().add(t2);
       		tTete = t2;
+      		setLocation(t2, $elsif_cond.start);
         }
       )*
       (ELSE OBRACE li_else=list_inst CBRACE {
       		tTete.setElseBranch($li_else.tree);
+      		setLocation(tTete, $li_else.start);
         }
       )?
     ;
@@ -443,16 +447,12 @@ primary_expr returns[AbstractExpr tree]
             setLocation($tree, $expr.start);
         }
     | READINT OPARENT CPARENT {
-    	Scanner sc = new Scanner(System.in);
-    	$tree = new IntLiteral(sc.nextInt());
+    	$tree = new ReadInt();
     	setLocation($tree, $READINT);
-    	sc.close();
         }
     | READFLOAT OPARENT CPARENT {
-    	Scanner sc = new Scanner(System.in);
-    	$tree = new FloatLiteral(sc.nextFloat());
+    	$tree = new ReadFloat();
     	setLocation($tree, $READFLOAT);
-    	sc.close();
         }
     | NEW ident OPARENT CPARENT {
             assert($ident.tree != null);

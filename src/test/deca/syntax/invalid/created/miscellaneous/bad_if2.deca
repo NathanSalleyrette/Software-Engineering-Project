@@ -1,0 +1,10 @@
+// Description :
+//    if pas fermé
+//
+// Resultats :
+//		Syntaxe error
+
+{
+if () {
+
+}

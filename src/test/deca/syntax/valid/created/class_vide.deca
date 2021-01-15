@@ -1,2 +1,8 @@
+// Description :
+//    test d'une classe vide
+//
+// Resultats :
+//		Ok
+
 class A{
 }

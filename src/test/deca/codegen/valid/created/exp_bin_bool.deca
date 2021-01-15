@@ -1,0 +1,30 @@
+// Description :
+//    test des expressions binaire boolean
+//
+// Resultats :
+//		Ok
+
+{
+boolean a = true;
+a = a && false;
+if (a) {println("t");} else {println("f");}
+a = a || true;
+if (a) {println("t");} else {println("f");}
+a = true || false;
+if (a) {println("t");} else {println("f");}
+a = false || true;
+if (a) {println("t");} else {println("f");}
+a = false || false;
+if (a) {println("t");} else {println("f");}
+a = true || true;
+if (a) {println("t");} else {println("f");}
+
+a = true && false;
+if (a) {println("t");} else {println("f");}
+a = false && true;
+if (a) {println("t");} else {println("f");}
+a = false && false;
+if (a) {println("t");} else {println("f");}
+a = true && true;
+if (a) {println("t");} else {println("f");}
+}

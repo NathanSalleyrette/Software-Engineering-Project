@@ -1,0 +1,9 @@
+// Description :
+//    manque le point virgule
+//
+// Resultats :
+//		Syntaxe error
+
+{
+int i=0
+}

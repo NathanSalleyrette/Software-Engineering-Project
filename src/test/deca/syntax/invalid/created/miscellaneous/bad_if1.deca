@@ -1,0 +1,10 @@
+// Description :
+//    if sans les parenthèse de la condition
+//
+// Resultats :
+//		Syntaxe error
+
+{
+if {
+}
+}

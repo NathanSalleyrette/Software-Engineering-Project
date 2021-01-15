@@ -1,0 +1,15 @@
+// Description :
+//		Programme pour tester les declarations avec initialisations
+//
+// Resultats :
+//		Ok
+
+
+{
+int a = 3;
+int b = 2;
+int c = b;
+float f = 0.2;
+float k = 1;
+boolean d = true;
+}

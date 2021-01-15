@@ -1,0 +1,9 @@
+// Description :
+//    test du geq seul pour codegen
+//
+// Resultats :
+//    	Ok
+
+{
+boolean a = 3 >= 4;
+}

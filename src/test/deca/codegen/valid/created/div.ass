@@ -1,0 +1,21 @@
+	TSTO #1
+	BOV pile_pleine
+	ADDSP #1
+; start main program
+; Main program
+	LOAD #3, R2
+	QUO #4, R2
+	BOV division_par_zero
+	STORE R2, 1(GB)
+; Beginning of main instructions:
+	HALT
+; Erreurs
+division_par_zero:
+	WSTR "Erreur : division_par_zero"
+	WNL
+	ERROR
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program

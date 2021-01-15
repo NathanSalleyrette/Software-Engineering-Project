@@ -1,0 +1,7 @@
+// Description :
+//    inclusion circulaire
+//
+// Resultats :
+//		Syntaxe error
+
+#include "include_circular_2.deca"

@@ -1,0 +1,12 @@
+// Description :
+//    test or entre un int et un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.33) Type gauche int. Type droit boolean Type attendu: ‘boolean’
+
+{
+int a;
+boolean b;
+boolean c = a || b;
+}

@@ -10,6 +10,9 @@ import fr.ensimag.ima.pseudocode.Label;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
+import fr.ensimag.ima.pseudocode.instructions.BRA;
+import fr.ensimag.ima.pseudocode.Label;
+
 /**
  *
  * @author gl01
@@ -36,13 +39,22 @@ public class While extends AbstractInst {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+        Label debut = new Label("E_Debut." + compiler.getNbLabel());
+        Label cond = new Label("E_Cond." + compiler.getNbLabel());
+        compiler.incrNbLabel();
+        compiler.addInstruction(new BRA(cond));
+        compiler.addLabel(debut);
+        body.codeGenListInst(compiler);
+        compiler.addLabel(cond);
+        condition.boolCodeGen(compiler, true, debut);
     }
 
     @Override
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
+    	this.getCondition().verifyCondition(compiler, localEnv, currentClass);
+    	this.getBody().verifyListInst(compiler, localEnv, currentClass, returnType);    	
     }
 
     @Override

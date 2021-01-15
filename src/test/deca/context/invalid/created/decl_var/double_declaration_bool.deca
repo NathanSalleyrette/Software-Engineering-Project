@@ -1,0 +1,11 @@
+// Description :
+//    test d'une déclaration de variable de type bool déjà existante
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.17) La variable a est déjà déclarée.
+
+{
+boolean a;
+boolean a; // a est déclaré deux fois
+}

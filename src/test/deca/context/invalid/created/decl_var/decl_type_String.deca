@@ -1,0 +1,12 @@
+// Description :
+//    test d'une déclaration de variable avec type String, non reconnu en Deca
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (0.2) Type non reconnu
+
+
+{
+String a; 
+//String n'est pas un type reconnu pour la declaration de variable
+}

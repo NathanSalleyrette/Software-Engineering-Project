@@ -1,0 +1,9 @@
+// Description :
+//    manque une operande
+//
+// Resultats :
+//		Syntaxe error
+
+{
+a = a + ;
+}

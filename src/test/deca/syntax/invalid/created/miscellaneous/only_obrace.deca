@@ -1,0 +1,7 @@
+// Description :
+//    brace ouvrante jamais fermée
+//
+// Resultats :
+//		Syntaxe error
+
+{

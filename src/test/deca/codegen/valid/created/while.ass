@@ -1,0 +1,28 @@
+	TSTO #1
+	BOV pile_pleine
+	ADDSP #1
+; start main program
+; Main program
+	LOAD #0, R2
+	STORE R2, 1(GB)
+; Beginning of main instructions:
+	BRA E_Cond.0
+E_Debut.0:
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 1(GB), R2
+	ADD #1, R2
+	STORE R2, 1(GB)
+E_Cond.0:
+	LOAD 1(GB), R2
+	CMP #2, R2
+	BLT E_Debut.0
+	HALT
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program

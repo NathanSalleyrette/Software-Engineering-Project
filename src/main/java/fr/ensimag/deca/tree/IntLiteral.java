@@ -8,6 +8,11 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.DVal;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.deca.codegen.EvalExpr;
 
 /**
  * Integer literal
@@ -29,12 +34,21 @@ public class IntLiteral extends AbstractExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-    	Symbol intSymb = compiler.getSymbTb().create("int");
+    	Symbol intSymb = compiler.getSymbTb().create(this.toString());
     	Type typeInt = compiler.getEnvType().get(intSymb).getType();
     	this.setType(typeInt);
     	return typeInt;
     }
 
+    @Override
+    protected void codeGenInst(DecacCompiler compiler) {
+        compiler.addInstruction(new LOAD(this.dval(compiler), Register.getR(compiler.getCurrentRegister())));
+    }
+
+    @Override
+    public DVal dval(DecacCompiler compiler) {
+        return new ImmediateInteger(value);
+    }
 
     @Override
     String prettyPrintNode() {
@@ -56,4 +70,7 @@ public class IntLiteral extends AbstractExpr {
         // leaf node => nothing to do
     }
 
+    public String toString() {
+    	return "int";
+    }
 }

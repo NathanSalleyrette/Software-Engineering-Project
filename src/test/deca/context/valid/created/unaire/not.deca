@@ -1,0 +1,13 @@
+// Description :
+//		test minus
+//
+// Resultats :
+//		Ok
+
+{
+boolean b;
+b = !true;
+b = !false;
+b = !b;
+b = !(b == b);
+}

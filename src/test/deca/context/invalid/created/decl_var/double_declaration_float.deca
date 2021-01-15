@@ -1,0 +1,11 @@
+// Description :
+//    test d'une déclaration de variable de type float déjà existante
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.17) La variable a est déjà déclarée.
+
+{
+float a;
+float a; // a est déclaré deux fois
+}

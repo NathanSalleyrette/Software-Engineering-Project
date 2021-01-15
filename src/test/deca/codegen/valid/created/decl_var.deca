@@ -1,0 +1,18 @@
+// Description :
+//		Programme pour tester les declarations
+//
+// Resultats :
+//		Ok
+
+
+{
+int a = 2;
+int b = 3;
+float f = 2;
+boolean d = true;
+print(f);
+println();
+printx(f);
+println();
+println(a);
+}

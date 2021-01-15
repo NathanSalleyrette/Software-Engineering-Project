@@ -1,0 +1,44 @@
+	TSTO #4
+	BOV pile_pleine
+	ADDSP #4
+; start main program
+; Main program
+	LOAD #2, R2
+	STORE R2, 1(GB)
+	LOAD #3, R2
+	STORE R2, 2(GB)
+	LOAD #2, R2
+	FLOAT #2, R2
+	STORE R2, 3(GB)
+	BOV debordement_flottant
+	LOAD #1, R2
+	STORE R2, 4(GB)
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+	STORE R2, 4(GB)
+Assign_Fin.0:
+; Beginning of main instructions:
+	LOAD 3(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	LOAD 3(GB), R2
+	LOAD R2, R1
+	WFLOATX
+	WNL
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	HALT
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+debordement_flottant:
+	WSTR "Erreur : debordement_flottant"
+	WNL
+	ERROR
+; end main program

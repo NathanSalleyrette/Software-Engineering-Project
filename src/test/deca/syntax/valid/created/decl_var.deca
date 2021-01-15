@@ -1,7 +1,20 @@
+// Description :
+//    declaration en tout genre
+//
+// Resultats :
+//		Ok
+
+
 {
 int a;
 int a = 4;
 float a = 5.5;
 bool b = true;
 bool b = a$_;
+type_inconnu a;
+int a = b;
+int a = true;
+float a = int;
+a a = a;
+a a;
 }

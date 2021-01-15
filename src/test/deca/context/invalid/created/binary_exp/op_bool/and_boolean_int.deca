@@ -1,0 +1,12 @@
+// Description :
+//    test and entre un boolean et un int
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.33) Type gauche boolean. Type droit int Type attendu: ‘boolean’
+
+{
+boolean a;
+int b;
+boolean c = a && b;
+}
