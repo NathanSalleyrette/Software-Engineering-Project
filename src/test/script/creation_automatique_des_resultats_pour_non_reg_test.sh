@@ -4,7 +4,7 @@
 # Argument 1 chemin du launcher du test, argument 2 repertoire des tests, argument 3 pas de validation de l'oracle (argument no_valid)
 # Exemple  ./creation_automatique_des_resultats_pour_non_reg_test.sh launchers/test_synt ../deca/syntax/valid/created/
 # TODO il faut valider les oracles manuellement
-source ./src/test/script/colors.sh # pour les couleurs
+source ./src/test/script/functions/colors.sh # pour les couleurs
 if [ -z "$(ls -A $2*.deca)" ];then
 	$rouge
 	echo "Il n'y a aucun test à compléter"
