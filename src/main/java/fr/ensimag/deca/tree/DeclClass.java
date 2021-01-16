@@ -6,6 +6,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
+import fr.ensimag.deca.tree.AbstractIdentifier;
 
 /**
  * Declaration of a class (<code>class name extends superClass {members}<code>).
@@ -23,15 +24,15 @@ public class DeclClass extends AbstractDeclClass {
 	 */
 	private AbstractIdentifier className;
 
-	private ClassDefinition superClass;
+	private AbstractIdentifier superClass;
 	//private ListDeclField listDeclField;
 	//private ListDeclMethod listDeclMethod;
 
 
-	public DeclClass(AbstractIdentifier className, ClassDefinition superClass) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
+	public DeclClass(AbstractIdentifier className, AbstractIdentifier superClass) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
 		this.className = className;
 		// Potentiellement nul
-		this.superClass = superClass;
+		//this.superClass = superClass;
 		//this.listDeclField = listDeclField;
 		//this.listDeclMethod = listDeclMethod;
 	}
@@ -44,7 +45,7 @@ public class DeclClass extends AbstractDeclClass {
 		return this.className;
 	}
 
-	public ClassDefinition getSuperClass() {
+	public AbstractIdentifier getSuperClass() {
 		return this.superClass;
 	}
 
@@ -72,9 +73,9 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
     	// Rajout dans l'environnement des types
-    	ClassType classType = new ClassType(className.getName(), this.getLocation(), this.getSuperClass());
-    	ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), this.getSuperClass());
-    	compiler.getEnvType().put(className.getName(), classDef);
+    	//ClassType classType = new ClassType(className.getName(), this.getLocation(), this.getSuperClass());
+    	//ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), this.getSuperClass());
+    	//compiler.getEnvType().put(className.getName(), classDef);
     	/* Ajout dans l'environnement des définitions
     	 * (dans l'environnement GLOBAL, si c'est faux, à changer)
     	 */

@@ -499,7 +499,6 @@ literal returns[AbstractExpr tree]
 ident returns[AbstractIdentifier tree]
     : i=IDENT {
     		$tree = new Identifier(sTable.create($i.getText()));
-    		$name = $i.getText();
     		setLocation($tree, $i);
         }
     ;
@@ -523,7 +522,7 @@ class_decl returns[DeclClass tree]
 }
     : CLASS name=ident superclass=class_extension OBRACE class_body CBRACE {
     		assert($name.tree != null);
-    		$tree = new DeclClass($name.tree);
+    		$tree = new DeclClass($name.tree, $superclass.tree);
     		setLocation($tree, $CLASS);
     		//TODO : class_body ?
         }

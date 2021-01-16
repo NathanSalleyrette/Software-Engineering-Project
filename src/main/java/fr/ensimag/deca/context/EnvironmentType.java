@@ -30,7 +30,7 @@ public class EnvironmentType {
 	 * 		Table de symboles propre au DecacCompiler, que l'on
 	 * va garnir
 	 */
-	public EnvironmentType(SymbolTable table) throws ContextualError {
+	public EnvironmentType(SymbolTable table) {
 		this.envTypePredef = this.initEnvType(table);
 		this.parentEnvironment = this.envTypePredef;
 		this.envExpObject = initEnvExpObject(table, this.envTypePredef);
@@ -68,7 +68,7 @@ public class EnvironmentType {
 	 * @return
 	 * @throws ContextualError
 	 */
-	public EnvironmentExp initEnvExpObject(SymbolTable table, EnvironmentType envType) throws ContextualError{
+	public EnvironmentExp initEnvExpObject(SymbolTable table, EnvironmentType envType){
 		EnvironmentExp envObject = new EnvironmentExp(null);
 		Symbol equalsMethod = table.create("equals");
 		Symbol OBJECT = table.create("Object"); // Attention ! avec une majuscule
@@ -81,7 +81,6 @@ public class EnvironmentType {
 			MethodDefinition equalsDef = new MethodDefinition(boolType, Location.BUILTIN, equalsSig, 0);
 			envObject.declare(equalsMethod, equalsDef, Location.BUILTIN);
 		} catch (Exception e) {
-			throw new ContextualError("Méthode equals de Object déjà déclarée", Location.BUILTIN);
 		}
 		// A présent on peut ajouter dans les types
 		ClassType objectType = new ClassType(table.create("object"), Location.BUILTIN, null);
