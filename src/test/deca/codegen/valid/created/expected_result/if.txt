@@ -1,0 +1,51 @@
+---CODE_ASSEMBLEUR---
+	TSTO #1
+	BOV pile_pleine
+	ADDSP #1
+; start main program
+; Main program
+	LOAD #1, R2
+	STORE R2, 1(GB)
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+	STORE R2, 1(GB)
+Assign_Fin.0:
+; Beginning of main instructions:
+	LOAD 1(GB), R0
+	CMP #0, R0
+	BEQ E_Fin.1
+	LOAD 1(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.2
+	WSTR "1"
+	BRA E_Fin.2
+E_Sinon.2:
+	WSTR "2"
+E_Fin.2:
+	BRA Assign_False.3
+	LOAD #1, R2
+	STORE R2, 1(GB)
+	BRA Assign_Fin.3
+Assign_False.3:
+	LOAD #0, R2
+	STORE R2, 1(GB)
+Assign_Fin.3:
+	LOAD 1(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.4
+	WSTR "1"
+	BRA E_Fin.4
+E_Sinon.4:
+	WSTR "2"
+E_Fin.4:
+E_Fin.1:
+	HALT
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program
+---SORTIE MACHINE IMA---
+12

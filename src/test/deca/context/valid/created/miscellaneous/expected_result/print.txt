@@ -1,0 +1,63 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:39) - verify program: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify program: end
+`> [8, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [8, 0] Main
+      +> ListDeclVar [List with 1 elements]
+      |  []> [9, 6] DeclVar
+      |      +> [9, 0] Identifier (float)
+      |      |  definition: type (builtin), type=float
+      |      +> [9, 6] Identifier (a)
+      |      |  definition: variable defined at [9, 6], type=float
+      |      `> NoInitialization
+      `> ListInst [List with 12 elements]
+         []> [10, 0] Println
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [10, 8] StringLiteral (hello)
+         ||         type: string
+         []> [11, 0] Println
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [11, 8] Int (3)
+         ||         type: int
+         []> [12, 0] Println
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [12, 8] Identifier (a)
+         ||         definition: variable defined at [9, 6], type=float
+         []> [14, 0] Print
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [14, 6] StringLiteral (hello)
+         ||         type: string
+         []> [15, 0] Print
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [15, 6] Int (3)
+         ||         type: int
+         []> [16, 0] Print
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [16, 6] Identifier (a)
+         ||         definition: variable defined at [9, 6], type=float
+         []> [18, 0] Print
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [18, 7] StringLiteral (hello)
+         ||         type: string
+         []> [19, 0] Print
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [19, 7] Int (3)
+         ||         type: int
+         []> [20, 0] Print
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [20, 7] Identifier (a)
+         ||         definition: variable defined at [9, 6], type=float
+         []> [22, 0] Println
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [22, 9] StringLiteral (hello)
+         ||         type: string
+         []> [23, 0] Println
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [23, 9] Int (3)
+         ||         type: int
+         []> [24, 0] Println
+             `> ListExpr [List with 1 elements]
+                []> [24, 9] Identifier (a)
+                    definition: variable defined at [9, 6], type=float

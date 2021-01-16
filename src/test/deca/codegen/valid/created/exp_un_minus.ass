@@ -10,6 +10,16 @@
 	STORE R2, 2(GB)
 	BOV debordement_flottant
 ; Beginning of main instructions:
+	WSTR "a="
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "b="
+	LOAD 2(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
 	LOAD 1(GB), R2
 	OPP 1(GB), R2
 	STORE R2, 1(GB)
@@ -17,6 +27,16 @@
 	OPP 2(GB), R2
 	STORE R2, 2(GB)
 	BOV debordement_flottant
+	WSTR "a="
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "b="
+	LOAD 2(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
 	LOAD #20, R2
 	OPP #20, R2
 	FLOAT R2, R2
@@ -25,10 +45,25 @@
 	LOAD #6, R2
 	OPP #6, R2
 	STORE R2, 1(GB)
+	WSTR "a="
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "b="
+	LOAD 2(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
 	LOAD #0x1.99999ap1, R2
 	OPP #0x1.99999ap1, R2
 	STORE R2, 2(GB)
 	BOV debordement_flottant
+	WSTR "b="
+	LOAD 2(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
 	HALT
 ; Erreurs
 pile_pleine:

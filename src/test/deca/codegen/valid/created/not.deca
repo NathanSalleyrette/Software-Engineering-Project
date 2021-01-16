@@ -1,9 +1,0 @@
-// Description :
-//    test du not seul pour codegen
-//
-// Resultats :
-//    	Ok
-
-{
-boolean a = !true;
-}

@@ -14,8 +14,9 @@ sortie+="$(cat ${1%/*}/$nom_fichier.ass)"
 sortie+=$'\n'
 sortie+=$'---SORTIE MACHINE IMA---\n'
 sortie_ima="$(ima ${1%/*}/$nom_fichier.ass)"
-if [ $? != 0 ];then
-  exit 1
-fi
+erreur_ima=$?
 sortie+="$sortie_ima"
 echo "$sortie"
+if [ $erreur_ima != 0 ];then
+    exit 1
+fi

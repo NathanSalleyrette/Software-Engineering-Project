@@ -1,0 +1,86 @@
+---CODE_ASSEMBLEUR---
+	TSTO #2
+	BOV pile_pleine
+	ADDSP #2
+; start main program
+; Main program
+	LOAD #1, R2
+	STORE R2, 1(GB)
+	LOAD #2, R2
+	FLOAT #2, R2
+	STORE R2, 2(GB)
+	BOV debordement_flottant
+; Beginning of main instructions:
+	WSTR "a="
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "b="
+	LOAD 2(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	LOAD 1(GB), R2
+	OPP 1(GB), R2
+	STORE R2, 1(GB)
+	LOAD 2(GB), R2
+	OPP 2(GB), R2
+	STORE R2, 2(GB)
+	BOV debordement_flottant
+	WSTR "a="
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "b="
+	LOAD 2(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	LOAD #20, R2
+	OPP #20, R2
+	FLOAT R2, R2
+	STORE R2, 2(GB)
+	BOV debordement_flottant
+	LOAD #6, R2
+	OPP #6, R2
+	STORE R2, 1(GB)
+	WSTR "a="
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "b="
+	LOAD 2(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	LOAD #0x1.99999ap1, R2
+	OPP #0x1.99999ap1, R2
+	STORE R2, 2(GB)
+	BOV debordement_flottant
+	WSTR "b="
+	LOAD 2(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	HALT
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+debordement_flottant:
+	WSTR "Erreur : debordement_flottant"
+	WNL
+	ERROR
+; end main program
+---SORTIE MACHINE IMA---
+a=1
+b=2.00000e+00
+a=-1
+b=-2.00000e+00
+a=-6
+b=-2.00000e+01
+b=-3.20000e+00

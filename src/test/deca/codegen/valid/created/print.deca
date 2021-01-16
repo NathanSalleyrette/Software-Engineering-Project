@@ -8,18 +8,25 @@
 {
 float a = 0.4;
 println("hello");
-println(3);
+println(10);
 println(a);
 
+println();
+
 print("hello");
-print(3);
+print(10);
 print("a", a);
 
+println();
+
+
 printx("hello");
-printx(3);
+printx(10);
 printx(a);
 
+println();println();
+
 printlnx("hello");
-printlnx(3);
+printlnx(60);
 printlnx(a);
 }

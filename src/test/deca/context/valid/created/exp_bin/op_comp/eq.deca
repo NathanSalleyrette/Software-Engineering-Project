@@ -23,4 +23,14 @@ c = 2 == b;
 c = 0.2 == b;
 c = b == b;
 c = a == b;
+
+c = false == true;
+c = false == false;
+c = true == false;
+c = true == true;
+c = d == true;
+c = d == false;
+c = true == d;
+c = false == d;
+c = d == d;
 }

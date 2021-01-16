@@ -108,7 +108,7 @@ test_invalide() {
 					$reset
 				elif [ "$numero_erreur_sortie" == "$numero_erreur" ]; then
 					$vert
-					echo "Echec attendu pour $type_test sur $1, Les numéro d'erreur correspondent"
+					echo "Echec attendu pour $type_test sur $1, Les numéros d'erreur correspondent"
 					$reset
 				else
 					$jaune
@@ -190,6 +190,8 @@ detecte_sous_repertoire() {
 
 detecte_sous_repertoire "$repertoire_test/invalid/created/"
 detecte_sous_repertoire "$repertoire_test/valid/created/"
+# detecte_sous_repertoire "$repertoire_test/interactive/"
+# detecte_sous_repertoire "$repertoire_test/perf/"
 # https://stackoverflow.com/questions/13648410/how-can-i-get-unique-values-from-an-array-in-bash
 repertoires=($(echo "${repertoires[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
 for repertoire_de_test in "${repertoires[@]}"; do

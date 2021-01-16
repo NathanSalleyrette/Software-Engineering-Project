@@ -7,9 +7,13 @@
 {
 int a  = 1;
 float b = 2;
+println("a=",a); println("b=",b);
 a = -a;
 b = -b;
+println("a=",a); println("b=",b);
 b = -20;
 a = -6;
+println("a=",a); println("b=",b);
 b = -3.2;
+println("b=",b);
 }

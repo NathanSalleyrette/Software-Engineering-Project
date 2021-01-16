@@ -5,46 +5,50 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
 `> [7, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [7, 0] Main
-      +> [8, 0] ListDeclVar [List with 1 elements]
+      +> ListDeclVar [List with 1 elements]
       |  []> [8, 4] DeclVar
       |      +> [8, 0] Identifier (int)
       |      |  definition: type (builtin), type=int
       |      +> [8, 4] Identifier (a)
       |      |  definition: variable defined at [8, 4], type=int
       |      `> NoInitialization
-      `> [9, 0] ListInst [List with 4 elements]
-         []> [9, 0] Assign
+      `> ListInst [List with 4 elements]
+         []> [9, 2] Assign
          ||  type: int
          ||  +> [9, 0] Identifier (a)
          ||  |  definition: variable defined at [8, 4], type=int
-         ||  `> [9, 4] Modulo
+         ||  `> [9, 6] Modulo
+         ||     type: int
          ||     +> [9, 4] Int (1)
          ||     |  type: int
          ||     `> [9, 8] Int (2)
          ||        type: int
-         []> [10, 0] Assign
+         []> [10, 2] Assign
          ||  type: int
          ||  +> [10, 0] Identifier (a)
          ||  |  definition: variable defined at [8, 4], type=int
-         ||  `> [10, 4] Modulo
+         ||  `> [10, 6] Modulo
+         ||     type: int
          ||     +> [10, 4] Int (3)
          ||     |  type: int
          ||     `> [10, 8] Identifier (a)
          ||        definition: variable defined at [8, 4], type=int
-         []> [11, 0] Assign
+         []> [11, 2] Assign
          ||  type: int
          ||  +> [11, 0] Identifier (a)
          ||  |  definition: variable defined at [8, 4], type=int
-         ||  `> [11, 4] Modulo
+         ||  `> [11, 6] Modulo
+         ||     type: int
          ||     +> [11, 4] Identifier (a)
          ||     |  definition: variable defined at [8, 4], type=int
          ||     `> [11, 8] Identifier (a)
          ||        definition: variable defined at [8, 4], type=int
-         []> [12, 0] Assign
+         []> [12, 2] Assign
              type: int
              +> [12, 0] Identifier (a)
              |  definition: variable defined at [8, 4], type=int
-             `> [12, 4] Modulo
+             `> [12, 6] Modulo
+                type: int
                 +> [12, 4] Identifier (a)
                 |  definition: variable defined at [8, 4], type=int
                 `> [12, 8] Int (6)

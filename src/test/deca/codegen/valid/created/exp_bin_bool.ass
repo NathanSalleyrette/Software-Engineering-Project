@@ -129,6 +129,7 @@ E_Sinon.17:
 	WSTR "f"
 	WNL
 E_Fin.17:
+	WNL
 	BRA Assign_False.18
 	LOAD #1, R2
 	STORE R2, 1(GB)
