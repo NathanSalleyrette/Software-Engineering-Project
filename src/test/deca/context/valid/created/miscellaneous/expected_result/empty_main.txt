@@ -5,5 +5,5 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
 `> [8, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [8, 0] Main
-      +> [9, 0] ListDeclVar [List with 0 elements]
-      `> [9, 0] ListInst [List with 0 elements]
+      +> ListDeclVar [List with 0 elements]
+      `> ListInst [List with 0 elements]

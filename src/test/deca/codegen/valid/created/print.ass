@@ -27,7 +27,6 @@
 	LOAD R2, R1
 	WFLOAT
 	WNL
-	WNL
 	WSTR "hello"
 	LOAD #10, R2
 	LOAD R2, R1

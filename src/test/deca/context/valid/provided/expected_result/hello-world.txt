@@ -5,9 +5,9 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
 `> [10, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [10, 0] Main
-      +> [11, 8] ListDeclVar [List with 0 elements]
-      `> [11, 8] ListInst [List with 1 elements]
-         []> [11, 16] Println
-             `> [11, 16] ListExpr [List with 1 elements]
+      +> ListDeclVar [List with 0 elements]
+      `> ListInst [List with 1 elements]
+         []> [11, 8] Println
+             `> ListExpr [List with 1 elements]
                 []> [11, 16] StringLiteral (Hello, world!)
                     type: string

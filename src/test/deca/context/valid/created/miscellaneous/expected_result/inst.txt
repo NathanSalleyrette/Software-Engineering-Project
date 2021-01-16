@@ -5,7 +5,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
 `> [7, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [7, 0] Main
-      +> [8, 0] ListDeclVar [List with 2 elements]
+      +> ListDeclVar [List with 2 elements]
       |  []> [8, 4] DeclVar
       |  ||  +> [8, 0] Identifier (int)
       |  ||  |  definition: type (builtin), type=int
@@ -22,16 +22,16 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
       |      `> [9, 6] Initialization
       |         `> [9, 8] Int (5)
       |            type: int
-      `> [10, 0] ListInst [List with 2 elements]
-         []> [10, 0] Assign
+      `> ListInst [List with 2 elements]
+         []> [10, 2] Assign
          ||  type: int
          ||  +> [10, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 4], type=int
-         ||  `> [10, 4] Plus
+         ||  `> [10, 6] Plus
          ||     type: int
          ||     +> [10, 4] Identifier (a)
          ||     |  definition: variable defined at [8, 4], type=int
          ||     `> [10, 8] Identifier (b)
          ||        definition: variable defined at [9, 4], type=int
-         []> [11, 7] Identifier (b)
+         []> [11, 0] Identifier (b)
              definition: variable defined at [9, 4], type=int

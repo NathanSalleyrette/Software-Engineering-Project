@@ -5,7 +5,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
 `> [7, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [7, 0] Main
-      +> [8, 0] ListDeclVar [List with 4 elements]
+      +> ListDeclVar [List with 4 elements]
       |  []> [8, 4] DeclVar
       |  ||  +> [8, 0] Identifier (int)
       |  ||  |  definition: type (builtin), type=int
@@ -30,238 +30,238 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
       |      +> [11, 8] Identifier (c)
       |      |  definition: variable defined at [11, 8], type=boolean
       |      `> [11, 10] Initialization
-      |         `> [11, 12] NotEquals
+      |         `> [11, 14] NotEquals
       |            type: boolean
       |            +> [11, 12] Int (1)
       |            |  type: int
       |            `> [11, 17] Int (2)
       |               type: int
-      `> [12, 0] ListInst [List with 23 elements]
-         []> [12, 0] Assign
+      `> ListInst [List with 23 elements]
+         []> [12, 2] Assign
          ||  type: boolean
          ||  +> [12, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [12, 4] NotEquals
+         ||  `> [12, 8] NotEquals
          ||     type: boolean
          ||     +> [12, 4] Float (0.5)
          ||     |  type: float
          ||     `> [12, 11] Int (2)
          ||        type: int
-         []> [13, 0] Assign
+         []> [13, 2] Assign
          ||  type: boolean
          ||  +> [13, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [13, 4] NotEquals
+         ||  `> [13, 6] NotEquals
          ||     type: boolean
          ||     +> [13, 4] Int (1)
          ||     |  type: int
          ||     `> [13, 9] Float (0.2)
          ||        type: float
-         []> [14, 0] Assign
+         []> [14, 2] Assign
          ||  type: boolean
          ||  +> [14, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [14, 4] NotEquals
+         ||  `> [14, 8] NotEquals
          ||     type: boolean
          ||     +> [14, 4] Float (0.1)
          ||     |  type: float
          ||     `> [14, 11] Float (0.1)
          ||        type: float
-         []> [15, 0] Assign
+         []> [15, 2] Assign
          ||  type: boolean
          ||  +> [15, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [15, 4] NotEquals
+         ||  `> [15, 6] NotEquals
          ||     type: boolean
          ||     +> [15, 4] Identifier (a)
          ||     |  definition: variable defined at [8, 4], type=int
          ||     `> [15, 9] Int (2)
          ||        type: int
-         []> [16, 0] Assign
+         []> [16, 2] Assign
          ||  type: boolean
          ||  +> [16, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [16, 4] NotEquals
+         ||  `> [16, 6] NotEquals
          ||     type: boolean
          ||     +> [16, 4] Identifier (a)
          ||     |  definition: variable defined at [8, 4], type=int
          ||     `> [16, 9] Float (0.2)
          ||        type: float
-         []> [17, 0] Assign
+         []> [17, 2] Assign
          ||  type: boolean
          ||  +> [17, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [17, 4] NotEquals
+         ||  `> [17, 6] NotEquals
          ||     type: boolean
          ||     +> [17, 4] Int (2)
          ||     |  type: int
          ||     `> [17, 9] Identifier (a)
          ||        definition: variable defined at [8, 4], type=int
-         []> [18, 0] Assign
+         []> [18, 2] Assign
          ||  type: boolean
          ||  +> [18, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [18, 4] NotEquals
+         ||  `> [18, 8] NotEquals
          ||     type: boolean
          ||     +> [18, 4] Float (0.2)
          ||     |  type: float
          ||     `> [18, 11] Identifier (a)
          ||        definition: variable defined at [8, 4], type=int
-         []> [19, 0] Assign
+         []> [19, 2] Assign
          ||  type: boolean
          ||  +> [19, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [19, 4] NotEquals
+         ||  `> [19, 6] NotEquals
          ||     type: boolean
          ||     +> [19, 4] Identifier (a)
          ||     |  definition: variable defined at [8, 4], type=int
          ||     `> [19, 9] Identifier (a)
          ||        definition: variable defined at [8, 4], type=int
-         []> [20, 0] Assign
+         []> [20, 2] Assign
          ||  type: boolean
          ||  +> [20, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [20, 4] NotEquals
+         ||  `> [20, 6] NotEquals
          ||     type: boolean
          ||     +> [20, 4] Identifier (b)
          ||     |  definition: variable defined at [9, 6], type=float
          ||     `> [20, 9] Int (2)
          ||        type: int
-         []> [21, 0] Assign
+         []> [21, 2] Assign
          ||  type: boolean
          ||  +> [21, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [21, 4] NotEquals
+         ||  `> [21, 6] NotEquals
          ||     type: boolean
          ||     +> [21, 4] Identifier (b)
          ||     |  definition: variable defined at [9, 6], type=float
          ||     `> [21, 9] Float (0.2)
          ||        type: float
-         []> [22, 0] Assign
+         []> [22, 2] Assign
          ||  type: boolean
          ||  +> [22, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [22, 4] NotEquals
+         ||  `> [22, 6] NotEquals
          ||     type: boolean
          ||     +> [22, 4] Int (2)
          ||     |  type: int
          ||     `> [22, 9] Identifier (b)
          ||        definition: variable defined at [9, 6], type=float
-         []> [23, 0] Assign
+         []> [23, 2] Assign
          ||  type: boolean
          ||  +> [23, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [23, 4] NotEquals
+         ||  `> [23, 8] NotEquals
          ||     type: boolean
          ||     +> [23, 4] Float (0.2)
          ||     |  type: float
          ||     `> [23, 11] Identifier (b)
          ||        definition: variable defined at [9, 6], type=float
-         []> [24, 0] Assign
+         []> [24, 2] Assign
          ||  type: boolean
          ||  +> [24, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [24, 4] NotEquals
+         ||  `> [24, 6] NotEquals
          ||     type: boolean
          ||     +> [24, 4] Identifier (b)
          ||     |  definition: variable defined at [9, 6], type=float
          ||     `> [24, 9] Identifier (b)
          ||        definition: variable defined at [9, 6], type=float
-         []> [25, 0] Assign
+         []> [25, 2] Assign
          ||  type: boolean
          ||  +> [25, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [25, 4] NotEquals
+         ||  `> [25, 6] NotEquals
          ||     type: boolean
          ||     +> [25, 4] Identifier (a)
          ||     |  definition: variable defined at [8, 4], type=int
          ||     `> [25, 9] Identifier (b)
          ||        definition: variable defined at [9, 6], type=float
-         []> [27, 0] Assign
+         []> [27, 2] Assign
          ||  type: boolean
          ||  +> [27, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [27, 4] NotEquals
+         ||  `> [27, 10] NotEquals
          ||     type: boolean
          ||     +> [27, 4] BooleanLiteral (false)
          ||     |  type: boolean
          ||     `> [27, 13] BooleanLiteral (true)
          ||        type: boolean
-         []> [28, 0] Assign
+         []> [28, 2] Assign
          ||  type: boolean
          ||  +> [28, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [28, 4] NotEquals
+         ||  `> [28, 10] NotEquals
          ||     type: boolean
          ||     +> [28, 4] BooleanLiteral (false)
          ||     |  type: boolean
          ||     `> [28, 13] BooleanLiteral (false)
          ||        type: boolean
-         []> [29, 0] Assign
+         []> [29, 2] Assign
          ||  type: boolean
          ||  +> [29, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [29, 4] NotEquals
+         ||  `> [29, 9] NotEquals
          ||     type: boolean
          ||     +> [29, 4] BooleanLiteral (true)
          ||     |  type: boolean
          ||     `> [29, 12] BooleanLiteral (false)
          ||        type: boolean
-         []> [30, 0] Assign
+         []> [30, 2] Assign
          ||  type: boolean
          ||  +> [30, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [30, 4] NotEquals
+         ||  `> [30, 9] NotEquals
          ||     type: boolean
          ||     +> [30, 4] BooleanLiteral (true)
          ||     |  type: boolean
          ||     `> [30, 12] BooleanLiteral (true)
          ||        type: boolean
-         []> [31, 0] Assign
+         []> [31, 2] Assign
          ||  type: boolean
          ||  +> [31, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [31, 4] NotEquals
+         ||  `> [31, 6] NotEquals
          ||     type: boolean
          ||     +> [31, 4] Identifier (d)
          ||     |  definition: variable defined at [10, 8], type=boolean
          ||     `> [31, 9] BooleanLiteral (true)
          ||        type: boolean
-         []> [32, 0] Assign
+         []> [32, 2] Assign
          ||  type: boolean
          ||  +> [32, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [32, 4] NotEquals
+         ||  `> [32, 6] NotEquals
          ||     type: boolean
          ||     +> [32, 4] Identifier (d)
          ||     |  definition: variable defined at [10, 8], type=boolean
          ||     `> [32, 9] BooleanLiteral (false)
          ||        type: boolean
-         []> [33, 0] Assign
+         []> [33, 2] Assign
          ||  type: boolean
          ||  +> [33, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [33, 4] NotEquals
+         ||  `> [33, 9] NotEquals
          ||     type: boolean
          ||     +> [33, 4] BooleanLiteral (true)
          ||     |  type: boolean
          ||     `> [33, 12] Identifier (d)
          ||        definition: variable defined at [10, 8], type=boolean
-         []> [34, 0] Assign
+         []> [34, 2] Assign
          ||  type: boolean
          ||  +> [34, 0] Identifier (c)
          ||  |  definition: variable defined at [11, 8], type=boolean
-         ||  `> [34, 4] NotEquals
+         ||  `> [34, 10] NotEquals
          ||     type: boolean
          ||     +> [34, 4] BooleanLiteral (false)
          ||     |  type: boolean
          ||     `> [34, 13] Identifier (d)
          ||        definition: variable defined at [10, 8], type=boolean
-         []> [35, 0] Assign
+         []> [35, 2] Assign
              type: boolean
              +> [35, 0] Identifier (c)
              |  definition: variable defined at [11, 8], type=boolean
-             `> [35, 4] NotEquals
+             `> [35, 6] NotEquals
                 type: boolean
                 +> [35, 4] Identifier (d)
                 |  definition: variable defined at [10, 8], type=boolean

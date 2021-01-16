@@ -5,7 +5,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
 `> [7, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [7, 0] Main
-      +> [8, 0] ListDeclVar [List with 1 elements]
+      +> ListDeclVar [List with 1 elements]
       |  []> [8, 6] DeclVar
       |      +> [8, 0] Identifier (float)
       |      |  definition: type (builtin), type=float
@@ -16,4 +16,4 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
       |            type: float
       |            `> [8, 10] Int (1)
       |               type: int
-      `> [9, 0] ListInst [List with 0 elements]
+      `> ListInst [List with 0 elements]

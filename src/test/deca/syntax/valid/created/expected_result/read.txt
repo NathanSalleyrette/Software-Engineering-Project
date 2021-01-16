@@ -1,7 +1,7 @@
 `> [7, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [7, 0] Main
-      +> [8, 0] ListDeclVar [List with 2 elements]
+      +> ListDeclVar [List with 2 elements]
       |  []> [8, 4] DeclVar
       |  ||  +> [8, 0] Identifier (int)
       |  ||  +> [8, 4] Identifier (a)
@@ -12,4 +12,4 @@
       |      +> [9, 6] Identifier (b)
       |      `> [9, 8] Initialization
       |         `> [9, 10] ReadFloat
-      `> [10, 0] ListInst [List with 0 elements]
+      `> ListInst [List with 0 elements]
