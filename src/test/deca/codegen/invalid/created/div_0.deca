@@ -1,0 +1,10 @@
+// Description :
+//		Programme pour tester la division par zero
+//
+// Resultats :
+//		Erreur de compilation
+//		div par zero
+
+{
+int a = 1/0;
+}

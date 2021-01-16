@@ -499,6 +499,7 @@ literal returns[AbstractExpr tree]
 ident returns[AbstractIdentifier tree]
     : i=IDENT {
     		$tree = new Identifier(sTable.create($i.getText()));
+    		$name = $i.getText();
     		setLocation($tree, $i);
         }
     ;

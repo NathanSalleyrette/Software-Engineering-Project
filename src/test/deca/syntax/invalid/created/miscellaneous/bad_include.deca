@@ -1,0 +1,11 @@
+// Description :
+//    include inconnu
+//
+// Resultats :
+//		Syntaxe error
+
+#include "file_inconnu"
+{
+
+
+}

@@ -7,9 +7,10 @@
 # Generation automatique des tests pour les opération binaires (< <= > >=)
 cd "$(dirname "$0")"/../../.. || exit 1
 
-source ./src/test/script/colors.sh # pour les couleurs
+source ./src/test/script/functions/colors.sh # pour les couleurs
 
 PATH=./src/test/script/launchers:"$PATH"
+PATH=./src/main/bin:"$PATH"
 succes=1
 
 
@@ -37,9 +38,8 @@ decompile () {
 	done
 	rm $f1
 	rm $f2
-	if [ succes = 1 ]
+	if [ $succes -eq 1 ]
 	then
-		echo "ouais"
 		exit 0
 	else
 		exit 1

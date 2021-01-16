@@ -41,7 +41,7 @@ import java.util.Map;
  * @author gl01
  * @date 01/01/2021
  */
-public class DecacCompiler {
+public class DecacCompiler implements Runnable{
     private static final Logger LOG = Logger.getLogger(DecacCompiler.class);
     
     /**
@@ -215,6 +215,7 @@ public class DecacCompiler {
     private final IMAProgram program = new IMAProgram();
  
 
+    public void run() {this.compile();}
     /**
      * Run the compiler (parse source file, generate code)
      *

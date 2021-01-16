@@ -1,0 +1,26 @@
+---CODE_ASSEMBLEUR---
+	TSTO #0
+	BOV pile_pleine
+	ADDSP #0
+; start main program
+; Main program
+; Beginning of main instructions:
+	LOAD #1, R2
+	CMP #0, R2
+	BLT E_Sinon.0
+	WSTR "ok"
+	WNL
+	BRA E_Fin.0
+E_Sinon.0:
+	WSTR "erreur"
+	WNL
+E_Fin.0:
+	HALT
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program
+---SORTIE MACHINE IMA---
+ok

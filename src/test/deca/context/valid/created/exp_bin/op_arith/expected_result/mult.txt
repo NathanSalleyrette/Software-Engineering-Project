@@ -5,7 +5,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
 `> [7, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [7, 0] Main
-      +> [8, 0] ListDeclVar [List with 2 elements]
+      +> ListDeclVar [List with 2 elements]
       |  []> [8, 4] DeclVar
       |  ||  +> [8, 0] Identifier (int)
       |  ||  |  definition: type (builtin), type=int
@@ -18,32 +18,32 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
       |      +> [9, 6] Identifier (b)
       |      |  definition: variable defined at [9, 6], type=float
       |      `> NoInitialization
-      `> [10, 0] ListInst [List with 9 elements]
-         []> [10, 0] Assign
+      `> ListInst [List with 9 elements]
+         []> [10, 2] Assign
          ||  type: int
          ||  +> [10, 0] Identifier (a)
          ||  |  definition: variable defined at [8, 4], type=int
-         ||  `> [10, 4] Multiply
+         ||  `> [10, 6] Multiply
          ||     type: int
          ||     +> [10, 4] Int (1)
          ||     |  type: int
          ||     `> [10, 8] Int (2)
          ||        type: int
-         []> [11, 0] Assign
+         []> [11, 2] Assign
          ||  type: int
          ||  +> [11, 0] Identifier (a)
          ||  |  definition: variable defined at [8, 4], type=int
-         ||  `> [11, 4] Multiply
+         ||  `> [11, 6] Multiply
          ||     type: int
          ||     +> [11, 4] Int (2)
          ||     |  type: int
          ||     `> [11, 8] Identifier (a)
          ||        definition: variable defined at [8, 4], type=int
-         []> [12, 0] Assign
+         []> [12, 2] Assign
          ||  type: float
          ||  +> [12, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [12, 4] Multiply
+         ||  `> [12, 8] Multiply
          ||     type: float
          ||     +> [12, 4] Float (0.5)
          ||     |  type: float
@@ -51,21 +51,21 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||        type: float
          ||        `> [12, 10] Int (2)
          ||           type: int
-         []> [13, 0] Assign
+         []> [13, 2] Assign
          ||  type: float
          ||  +> [13, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [13, 4] Multiply
+         ||  `> [13, 8] Multiply
          ||     type: float
          ||     +> [13, 4] Float (2.0)
          ||     |  type: float
          ||     `> [13, 10] Float (3.0)
          ||        type: float
-         []> [14, 0] Assign
+         []> [14, 2] Assign
          ||  type: float
          ||  +> [14, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [14, 4] Multiply
+         ||  `> [14, 6] Multiply
          ||     type: float
          ||     +> ConvFloat
          ||     |  type: float
@@ -73,11 +73,11 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||     |     type: int
          ||     `> [14, 8] Float (2.5)
          ||        type: float
-         []> [15, 0] Assign
+         []> [15, 2] Assign
          ||  type: float
          ||  +> [15, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [15, 4] Multiply
+         ||  `> [15, 6] Multiply
          ||     type: float
          ||     +> ConvFloat
          ||     |  type: float
@@ -85,11 +85,11 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||     |     definition: variable defined at [8, 4], type=int
          ||     `> [15, 8] Identifier (b)
          ||        definition: variable defined at [9, 6], type=float
-         []> [16, 0] Assign
+         []> [16, 2] Assign
          ||  type: float
          ||  +> [16, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [16, 4] Multiply
+         ||  `> [16, 6] Multiply
          ||     type: float
          ||     +> [16, 4] Identifier (b)
          ||     |  definition: variable defined at [9, 6], type=float
@@ -101,11 +101,11 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||           |  definition: variable defined at [8, 4], type=int
          ||           `> [16, 13] Int (2)
          ||              type: int
-         []> [17, 0] Assign
+         []> [17, 2] Assign
          ||  type: float
          ||  +> [17, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 6], type=float
-         ||  `> [17, 4] Multiply
+         ||  `> [17, 14] Multiply
          ||     type: float
          ||     +> [17, 4] Multiply
          ||     |  type: float
@@ -115,11 +115,11 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
          ||     |     definition: variable defined at [9, 6], type=float
          ||     `> [17, 16] Float (0.5)
          ||        type: float
-         []> [18, 0] Assign
+         []> [18, 2] Assign
              type: int
              +> [18, 0] Identifier (a)
              |  definition: variable defined at [8, 4], type=int
-             `> [18, 4] Multiply
+             `> [18, 6] Multiply
                 type: int
                 +> [18, 4] Identifier (a)
                 |  definition: variable defined at [8, 4], type=int

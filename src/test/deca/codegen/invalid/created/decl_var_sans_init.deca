@@ -2,7 +2,8 @@
 //		Programme pour tester les declarations sans initialisations
 //
 // Resultats :
-//		Ok
+//		Erreur de compilation
+//		variable non defini
 
 
 {

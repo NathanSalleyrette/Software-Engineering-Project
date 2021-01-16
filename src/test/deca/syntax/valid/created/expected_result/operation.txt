@@ -1,25 +1,25 @@
 `> [8, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [8, 0] Main
-      +> [9, 0] ListDeclVar [List with 1 elements]
+      +> ListDeclVar [List with 1 elements]
       |  []> [9, 4] DeclVar
       |      +> [9, 0] Identifier (int)
       |      +> [9, 4] Identifier (a)
       |      `> [9, 6] Initialization
-      |         `> [9, 8] Assign
+      |         `> [9, 10] Assign
       |            +> [9, 8] Identifier (a)
       |            `> [9, 12] Identifier (b)
-      `> [10, 0] ListInst [List with 2 elements]
-         []> [10, 0] Assign
+      `> ListInst [List with 2 elements]
+         []> [10, 2] Assign
          ||  +> [10, 0] Identifier (a)
-         ||  `> [10, 4] Plus
+         ||  `> [10, 5] Plus
          ||     +> [10, 4] Identifier (a)
          ||     `> [10, 6] Identifier (b)
-         []> [11, 0] Assign
+         []> [11, 2] Assign
              +> [11, 0] Identifier (a)
-             `> [11, 4] Modulo
-                +> [11, 8] Divide
-                |  +> [11, 6] Multiply
+             `> [11, 9] Modulo
+                +> [11, 7] Divide
+                |  +> [11, 5] Multiply
                 |  |  +> [11, 4] Identifier (a)
                 |  |  `> [11, 6] Identifier (b)
                 |  `> [11, 8] Identifier (c)

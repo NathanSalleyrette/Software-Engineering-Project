@@ -9,25 +9,25 @@ import java.io.PrintStream;
 
 /**
  * Declaration of a class (<code>class name extends superClass {members}<code>).
- * 
+ *
  * @author gl01
  * @date 01/01/2021
  */
 public class DeclClass extends AbstractDeclClass {
-	
+
 	private String nameClass;
-	
+
 	/* L'attribut au-dessus était déjà fourni,
 	 * donc je le laisse même si j'aimerais bien le ramplacer
 	 * par celui-ci après avoir regardé le poly:
 	 */
 	private AbstractIdentifier className;
-	
+
 	private ClassDefinition superClass;
 	//private ListDeclField listDeclField;
 	//private ListDeclMethod listDeclMethod;
-	
-	
+
+
 	public DeclClass(AbstractIdentifier className, ClassDefinition superClass) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
 		this.className = className;
 		// Potentiellement nul
@@ -35,29 +35,29 @@ public class DeclClass extends AbstractDeclClass {
 		//this.listDeclField = listDeclField;
 		//this.listDeclMethod = listDeclMethod;
 	}
-	
+
 	public String getNameClass() {
 		return this.nameClass;
 	}
-	
+
 	public AbstractIdentifier getClassName() {
 		return this.className;
 	}
-	
+
 	public ClassDefinition getSuperClass() {
 		return this.superClass;
 	}
-	
+
 	/*
 	public ListDeclField getListDeclFiled() {
 		return this.listDeclField;
 	}
-	
+
 	public ListDeclMethod getListDeclMethod() {
 		return this.listDeclMethod;
 	}
 	*/
-	
+
 
     @Override
     public void decompile(IndentPrintStream s) {
@@ -78,7 +78,7 @@ public class DeclClass extends AbstractDeclClass {
     	/* Ajout dans l'environnement des définitions
     	 * (dans l'environnement GLOBAL, si c'est faux, à changer)
     	 */
-    	
+
     	//TODO: poursuivre
     }
 
@@ -87,7 +87,7 @@ public class DeclClass extends AbstractDeclClass {
             throws ContextualError {
         throw new UnsupportedOperationException("not yet implemented");
     }
-    
+
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
         throw new UnsupportedOperationException("not yet implemented");

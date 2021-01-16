@@ -1,0 +1,7 @@
+// Description :
+//		Programme pour tester un affection d'une variable indefinie
+
+{
+int a;
+int b = a;
+}

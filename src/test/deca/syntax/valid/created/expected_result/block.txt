@@ -1,24 +1,22 @@
 `> [7, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [7, 0] Main
-      +> [8, 1] ListDeclVar [List with 1 elements]
+      +> ListDeclVar [List with 1 elements]
       |  []> [8, 6] DeclVar
       |      +> [8, 1] Identifier (bool)
       |      +> [8, 6] Identifier (a)
       |      `> [8, 8] Initialization
       |         `> [8, 10] BooleanLiteral (false)
-      `> [9, 0] ListInst [List with 7 elements]
+      `> ListInst [List with 5 elements]
          []> [9, 0] NoOperation
-         []> [10, 6] Print
+         []> [10, 0] Print
          ||  `> ListExpr [List with 0 elements]
-         []> [11, 6] Print
-         ||  `> [11, 6] ListExpr [List with 1 elements]
+         []> [11, 0] Print
+         ||  `> ListExpr [List with 1 elements]
          ||     []> [11, 6] StringLiteral ()
-         []> [12, 8] Println
-         ||  `> [12, 8] ListExpr [List with 1 elements]
+         []> [12, 0] Println
+         ||  `> ListExpr [List with 1 elements]
          ||     []> [12, 8] StringLiteral (super)
-         []> [13, 6] While
-         ||  +> [13, 6] Identifier (fibf)
-         ||  `> ListInst [List with 0 elements]
-         []> [14, 7] Identifier (a)
-         []> [15, 7] Int (1)
+         []> [13, 0] While
+             +> [13, 6] Identifier (fibf)
+             `> ListInst [List with 0 elements]

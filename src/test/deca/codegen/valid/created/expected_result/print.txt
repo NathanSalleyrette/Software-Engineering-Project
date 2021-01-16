@@ -28,7 +28,6 @@
 	LOAD R2, R1
 	WFLOAT
 	WNL
-	WNL
 	WSTR "hello"
 	LOAD #10, R2
 	LOAD R2, R1
@@ -65,7 +64,6 @@ hello
 4.00000e-01
 
 hello10a4.00000e-01
-
 hello100x1.99999ap-2
 
 hello
