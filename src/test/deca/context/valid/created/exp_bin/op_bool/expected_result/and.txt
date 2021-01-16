@@ -5,7 +5,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
 `> [7, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [7, 0] Main
-      +> [8, 0] ListDeclVar [List with 2 elements]
+      +> ListDeclVar [List with 2 elements]
       |  []> [8, 8] DeclVar
       |  ||  +> [8, 0] Identifier (boolean)
       |  ||  |  definition: type (builtin), type=boolean
@@ -18,72 +18,72 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
       |      +> [9, 8] Identifier (b)
       |      |  definition: variable defined at [9, 8], type=boolean
       |      `> NoInitialization
-      `> [10, 0] ListInst [List with 7 elements]
-         []> [10, 0] Assign
+      `> ListInst [List with 7 elements]
+         []> [10, 2] Assign
          ||  type: boolean
          ||  +> [10, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 8], type=boolean
-         ||  `> [10, 4] And
+         ||  `> [10, 9] And
          ||     type: boolean
          ||     +> [10, 4] BooleanLiteral (true)
          ||     |  type: boolean
          ||     `> [10, 12] BooleanLiteral (true)
          ||        type: boolean
-         []> [11, 0] Assign
+         []> [11, 2] Assign
          ||  type: boolean
          ||  +> [11, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 8], type=boolean
-         ||  `> [11, 4] And
+         ||  `> [11, 10] And
          ||     type: boolean
          ||     +> [11, 4] BooleanLiteral (false)
          ||     |  type: boolean
          ||     `> [11, 13] BooleanLiteral (false)
          ||        type: boolean
-         []> [12, 0] Assign
+         []> [12, 2] Assign
          ||  type: boolean
          ||  +> [12, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 8], type=boolean
-         ||  `> [12, 4] And
+         ||  `> [12, 10] And
          ||     type: boolean
          ||     +> [12, 4] BooleanLiteral (false)
          ||     |  type: boolean
          ||     `> [12, 13] BooleanLiteral (true)
          ||        type: boolean
-         []> [13, 0] Assign
+         []> [13, 2] Assign
          ||  type: boolean
          ||  +> [13, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 8], type=boolean
-         ||  `> [13, 4] And
+         ||  `> [13, 9] And
          ||     type: boolean
          ||     +> [13, 4] BooleanLiteral (true)
          ||     |  type: boolean
          ||     `> [13, 12] BooleanLiteral (false)
          ||        type: boolean
-         []> [14, 0] Assign
+         []> [14, 2] Assign
          ||  type: boolean
          ||  +> [14, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 8], type=boolean
-         ||  `> [14, 4] And
+         ||  `> [14, 6] And
          ||     type: boolean
          ||     +> [14, 4] Identifier (a)
          ||     |  definition: variable defined at [8, 8], type=boolean
          ||     `> [14, 9] Identifier (a)
          ||        definition: variable defined at [8, 8], type=boolean
-         []> [15, 0] Assign
+         []> [15, 2] Assign
          ||  type: boolean
          ||  +> [15, 0] Identifier (b)
          ||  |  definition: variable defined at [9, 8], type=boolean
-         ||  `> [15, 4] And
+         ||  `> [15, 6] And
          ||     type: boolean
          ||     +> [15, 4] Identifier (b)
          ||     |  definition: variable defined at [9, 8], type=boolean
          ||     `> [15, 9] Identifier (a)
          ||        definition: variable defined at [8, 8], type=boolean
-         []> [16, 0] Assign
+         []> [16, 2] Assign
              type: boolean
              +> [16, 0] Identifier (b)
              |  definition: variable defined at [9, 8], type=boolean
-             `> [16, 4] And
+             `> [16, 6] And
                 type: boolean
                 +> [16, 4] Identifier (a)
                 |  definition: variable defined at [8, 8], type=boolean

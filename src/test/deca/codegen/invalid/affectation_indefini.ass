@@ -1,0 +1,19 @@
+	TSTO #2
+	BOV pile_pleine
+	ADDSP #2
+; start main program
+; Main program
+	LOAD 1(GB), R2
+	STORE R2, 2(GB)
+; Beginning of main instructions:
+	LOAD 2(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	HALT
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program

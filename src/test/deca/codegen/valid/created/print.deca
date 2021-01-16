@@ -18,7 +18,7 @@ print(10);
 print("a", a);
 
 println();
-println();
+
 
 printx("hello");
 printx(10);

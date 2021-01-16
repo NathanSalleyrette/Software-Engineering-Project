@@ -15,18 +15,34 @@ import java.io.PrintStream;
 public class DeclClass extends AbstractDeclClass {
 	
 	private String nameClass;
+	
+	/* L'attribut au-dessus était déjà fourni,
+	 * donc je le laisse même si j'aimerais bien le ramplacer
+	 * par celui-ci après avoir regardé le poly:
+	 */
+	private AbstractIdentifier className;
+	
+	private String superClass;
 	//private ListDeclField listDeclField;
 	//private ListDeclMethod listDeclMethod;
 	
-	/*
-	public DeclClass(ListDeclField listDeclField, ListDeclMethod listDeclMethod) {
-		this.listDeclField = listDeclField;
-		this.listDeclMethod = listDeclMethod;
+	
+	public DeclClass(AbstractIdentifier className) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
+		this.className = className;
+		//this.listDeclField = listDeclField;
+		//this.listDeclMethod = listDeclMethod;
 	}
-	*/
 	
 	public String getNameClass() {
 		return this.nameClass;
+	}
+	
+	public AbstractIdentifier getClassName() {
+		return this.className;
+	}
+	
+	public String getSuperClass() {
+		return this.getSuperClass();
 	}
 	
 	/*
@@ -69,12 +85,15 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        throw new UnsupportedOperationException("Not yet supported");
+    	this.getClassName().prettyPrintType(s, prefix);
+        //listDeclField.prettyPrint(s, prefix, false);
+    	//listDeclMethod.prettyPrint(s, prefix, false);
     }
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        throw new UnsupportedOperationException("Not yet supported");
+        //listDeclField.iter();
+        //listDeclMethod.iter();
     }
 
 }

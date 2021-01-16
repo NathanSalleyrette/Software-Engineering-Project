@@ -1,0 +1,9 @@
+// Description :
+//    l'operande de gauche n'est pas une lvalue
+//
+// Resultats :
+//		Syntaxe error
+
+{
+(a > b) = a;
+}

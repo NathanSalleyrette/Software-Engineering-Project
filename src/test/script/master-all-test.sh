@@ -17,7 +17,7 @@ do
   $test
   if [ $? != 0 ];then
     echo "un ou plusieurs test ont echoues"
-    test_echoue=false # pour faire passer # test_echoue = true
+    test_echoue=true # pour faire passer # test_echoue = true
   fi
 done
 

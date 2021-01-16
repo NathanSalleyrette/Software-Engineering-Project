@@ -55,7 +55,7 @@ public class StringLiteral extends AbstractStringLiteral {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        s.print("\"" + value +"\"");
+        s.print("\"" + this.getValue() +"\"");
     }
 
     @Override
@@ -70,7 +70,7 @@ public class StringLiteral extends AbstractStringLiteral {
     
     @Override
     String prettyPrintNode() {
-        return "StringLiteral (" + value + ")";
+        return "StringLiteral (" + this.getValue() + ")";
     }
     
     public String toString() {

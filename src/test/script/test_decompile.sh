@@ -37,9 +37,8 @@ decompile () {
 	done
 	rm $f1
 	rm $f2
-	if [ succes = 1 ]
+	if [ $succes -eq 1 ]
 	then
-		echo "ouais"
 		exit 0
 	else
 		exit 1
