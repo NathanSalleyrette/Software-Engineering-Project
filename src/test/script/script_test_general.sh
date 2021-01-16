@@ -163,9 +163,9 @@ test_valide() {
 }
 detecte_sous_repertoire() {
 	if [ -d $1 ]; then
+		repertoires+=("$1")
 		# https://stackoverflow.com/questions/6781225/how-do-i-check-if-a-directory-has-child-directories
 		if [ $(find $1 -maxdepth 1 -type d -not -name expected_result | wc -l) -eq 1 ]; then # le repertoire ne contient pas de sous repertoire
-			repertoires+=("$1")
 			return
 		fi
 		for d in $1/*/; do
