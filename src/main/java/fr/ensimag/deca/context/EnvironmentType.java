@@ -18,7 +18,7 @@ public class EnvironmentType {
 	private EnvironmentType envTypePredef;
 	private EnvironmentExp envExpObject;
 	
-	private Map<Symbol, TypeDefinition> map;
+	private Map<Symbol, TypeDefinition> map = new HashMap<Symbol, TypeDefinition>();
 	
 	/**
 	 * Constructeur appelé pour définir env_type_predef
@@ -38,7 +38,6 @@ public class EnvironmentType {
 	
 	public EnvironmentType(SymbolTable table, EnvironmentType parent) {
 		this.parentEnvironment = parent;
-		this.map = new HashMap<Symbol, TypeDefinition>();
 	}
 	
 	/**

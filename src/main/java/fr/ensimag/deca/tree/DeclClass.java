@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.ClassType;
+import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
@@ -31,8 +32,9 @@ public class DeclClass extends AbstractDeclClass {
 
 	public DeclClass(AbstractIdentifier className, AbstractIdentifier superClass) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
 		this.className = className;
+		this.nameClass = className.getName().toString();
 		// Potentiellement nul
-		//this.superClass = superClass;
+		this.superClass = superClass;
 		//this.listDeclField = listDeclField;
 		//this.listDeclMethod = listDeclMethod;
 	}
@@ -73,9 +75,11 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
     	// Rajout dans l'environnement des types
-    	//ClassType classType = new ClassType(className.getName(), this.getLocation(), this.getSuperClass());
-    	//ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), this.getSuperClass());
-    	//compiler.getEnvType().put(className.getName(), classDef);
+    	ClassDefinition superClassDef = this.getSuperClass().getClassDefinition();
+    	ClassType classType = new ClassType(className.getName(), this.getLocation(), superClassDef);
+    	ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), superClassDef);
+    	compiler.getEnvType().put(className.getName(), classDef);
+    	this.getClassName().setDefinition(classDef);
     	/* Ajout dans l'environnement des définitions
     	 * (dans l'environnement GLOBAL, si c'est faux, à changer)
     	 */
