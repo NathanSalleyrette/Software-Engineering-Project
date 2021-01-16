@@ -1,20 +1,13 @@
 package fr.ensimag.deca;
 
-import fr.ensimag.deca.context.TypeDefinition;
-import fr.ensimag.deca.context.IntType;
-import fr.ensimag.deca.context.FloatType;
 import fr.ensimag.deca.codegen.Error;
-import fr.ensimag.deca.context.BooleanType;
-import fr.ensimag.deca.context.VoidType;
-import fr.ensimag.deca.context.ContextualError;
+import fr.ensimag.deca.context.EnvironmentType;
 import fr.ensimag.deca.syntax.DecaLexer;
 import fr.ensimag.deca.syntax.DecaParser;
-import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tree.AbstractProgram;
-import fr.ensimag.deca.tree.Location;
 import fr.ensimag.deca.tree.LocationException;
 import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
@@ -335,82 +328,5 @@ public class DecacCompiler {
         DecaParser parser = new DecaParser(tokens);
         parser.setDecacCompiler(this);
         return parser.parseProgramAndManageErrors(err);
-    }
-    
-    /**
-     * Classe d'environnement des types, interne à DecacCompiler
-     * pour éviter les problèmes d'accès par différents fils
-     */
-    public static class EnvironmentType {
-    	
-    	private EnvironmentType parentEnvironment;
-    	
-    	private Map<Symbol, TypeDefinition> map;
-    	
-    	/**
-    	 * Constructeur appelé pour définir env_type_predef
-    	 * par le constructeur du DecacCompiler (il est donc
-    	 * déclaré privé)
-    	 * 
-    	 * @param table
-    	 * 		Table de symboles propre au DecacCompiler, que l'on
-    	 * va garnir
-    	 */
-    	private EnvironmentType(SymbolTable table) {
-    		Symbol INT = table.create("int");
-    		Symbol FLOAT = table.create("float");
-    		Symbol BOOLEAN = table.create("boolean");
-    		Symbol VOID = table.create("void");
-    		TypeDefinition intDef = new TypeDefinition(new IntType(INT), Location.BUILTIN);
-    		TypeDefinition floatDef = new TypeDefinition(new FloatType(FLOAT), Location.BUILTIN);
-    		TypeDefinition booleanDef = new TypeDefinition(new BooleanType(BOOLEAN), Location.BUILTIN);
-    		TypeDefinition voidDef = new TypeDefinition(new VoidType(VOID), Location.BUILTIN);
-    		this.map = new HashMap<Symbol, TypeDefinition>();
-    		this.map.put(INT, intDef);
-    		this.map.put(FLOAT, floatDef);
-    		this.map.put(BOOLEAN, booleanDef);
-    		this.map.put(VOID, voidDef);
-    		this.parentEnvironment = null; // Dieu que c'est laid
-    		// TODO: ce qui concerne le langage objet
-    	}
-    	
-    	public EnvironmentType(SymbolTable table, EnvironmentType parent) {
-    		this.parentEnvironment = parent;
-    		this.map = new HashMap<Symbol, TypeDefinition>();
-    	}
-    	
-    	public Map<Symbol, TypeDefinition> getMap() {
-    		return this.map;
-    	}
-    	
-    	public EnvironmentType getParentEnvironment() {
-    		return this.parentEnvironment;
-    	}
-    	/**
-         * Return the type of the symbol in the environment, or null if the
-         * symbol is undefined.
-         */
-        public TypeDefinition get(Symbol key) {
-            TypeDefinition result = map.get(key); // null if no such key
-
-            // Search in the parent dictionary after failure in current one
-            if (result == null && parentEnvironment != null) {
-                return parentEnvironment.get(key);
-            }
-            return result;
-        }
-        
-        /**
-         * Insère un nouveau couple (symbole, définition) dans la table
-         * @param key
-         * 		la clef (type Symbol)
-         * @param def
-         * 		la définition (type TypeDefinition)
-         */
-        public void put(Symbol key, TypeDefinition def) {
-        	if (this.get(key) == null) {
-        		this.getMap().put(key,  def);
-        	}
-        }
     }
 }

@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.ClassType;
+import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -15,18 +16,36 @@ import java.io.PrintStream;
 public class DeclClass extends AbstractDeclClass {
 	
 	private String nameClass;
+	
+	/* L'attribut au-dessus était déjà fourni,
+	 * donc je le laisse même si j'aimerais bien le ramplacer
+	 * par celui-ci après avoir regardé le poly:
+	 */
+	private AbstractIdentifier className;
+	
+	private ClassDefinition superClass;
 	//private ListDeclField listDeclField;
 	//private ListDeclMethod listDeclMethod;
 	
-	/*
-	public DeclClass(ListDeclField listDeclField, ListDeclMethod listDeclMethod) {
-		this.listDeclField = listDeclField;
-		this.listDeclMethod = listDeclMethod;
+	
+	public DeclClass(AbstractIdentifier className, ClassDefinition superClass) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
+		this.className = className;
+		// Potentiellement nul
+		this.superClass = superClass;
+		//this.listDeclField = listDeclField;
+		//this.listDeclMethod = listDeclMethod;
 	}
-	*/
 	
 	public String getNameClass() {
 		return this.nameClass;
+	}
+	
+	public AbstractIdentifier getClassName() {
+		return this.className;
+	}
+	
+	public ClassDefinition getSuperClass() {
+		return this.superClass;
 	}
 	
 	/*
@@ -52,7 +71,15 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+    	// Rajout dans l'environnement des types
+    	ClassType classType = new ClassType(className.getName(), this.getLocation(), this.getSuperClass());
+    	ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), this.getSuperClass());
+    	compiler.getEnvType().put(className.getName(), classDef);
+    	/* Ajout dans l'environnement des définitions
+    	 * (dans l'environnement GLOBAL, si c'est faux, à changer)
+    	 */
+    	
+    	//TODO: poursuivre
     }
 
     @Override
@@ -69,12 +96,15 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        throw new UnsupportedOperationException("Not yet supported");
+    	this.getClassName().prettyPrint(s, prefix, false);
+        //listDeclField.prettyPrint(s, prefix, false);
+    	//listDeclMethod.prettyPrint(s, prefix, false);
     }
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        throw new UnsupportedOperationException("Not yet supported");
+        //listDeclField.iter();
+        //listDeclMethod.iter();
     }
 
 }
