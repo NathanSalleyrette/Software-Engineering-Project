@@ -50,6 +50,17 @@ public class DeclClass extends AbstractDeclClass {
 	public AbstractIdentifier getSuperClass() {
 		return this.superClass;
 	}
+	
+	/** Le setter de la superclass est invoqué dans 
+	 * la vérification de la déclaration de classe.
+	 * Il est utilisé pour définir la classe Object
+	 * comme super class si aucune super class n'avait
+	 * été précisée. C'est le moyen que j'ai trouvé pour 
+	 * récupérer Object, définie dans le compilateur.
+	 */
+	public void setSuperClass(AbstractIdentifier superClass) {
+		this.superClass = superClass;
+	}
 
 	/*
 	public ListDeclField getListDeclFiled() {
@@ -75,6 +86,14 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
     	// Rajout dans l'environnement des types
+    	if (this.getSuperClass() == null) {
+    		AbstractIdentifier classObject = new Identifier(compiler.getSymbTb().create("Object"));
+    		this.setSuperClass(classObject);
+    		// Pour éviter une boucle if, on met à jour la localisation ici
+    		this.getSuperClass().setLocation(Location.BUILTIN);
+    	}
+    	// L'identifier superClass n'a pas de définition, on la met à jour ici:
+    	this.getSuperClass().setDefinition(compiler.getEnvType().get(this.getSuperClass().getName()));
     	ClassDefinition superClassDef = this.getSuperClass().getClassDefinition();
     	ClassType classType = new ClassType(className.getName(), this.getLocation(), superClassDef);
     	ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), superClassDef);
@@ -102,6 +121,7 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
     	this.getClassName().prettyPrint(s, prefix, false);
+    	this.getSuperClass().prettyPrint(s, prefix, false);
         //listDeclField.prettyPrint(s, prefix, false);
     	//listDeclMethod.prettyPrint(s, prefix, false);
     }

@@ -535,6 +535,8 @@ class_extension returns[AbstractIdentifier tree]
     		setLocation($tree, $EXTENDS);
         }
     | /* epsilon */ {
+    	// rajouter le extends Object est fait dans
+    	// DeclClass.java, mais peut-être faut-il le faire ici ?
         }
     ;
 

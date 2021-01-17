@@ -92,14 +92,14 @@ public abstract class Type {
     public boolean isSubTypeOf(Type type1, Location loc) throws ContextualError{
     	if ((type1.isFloat()) && (this.isInt())) {
     		return true;
-    	} else if (type1.isClass()){
-    		if  (this.isClass()) {
-    			String nl = " n'est pas une classe";
-    			ClassType type1Class = type1.asClassType(type1.toString() + nl, loc);
-    			ClassType thisClass = this.asClassType(this.toString() + nl, loc);
-        		return thisClass.isSubClassOf(type1Class);
-    		} else if (this.isNull()) {
+    	} else if (type1.isClassOrNull()){
+    		if (this.isNull()) {
     			return true;
+    		} else if (this.isClass()) {
+	    		String nl = " n'est pas une classe";
+	    		ClassType type1Class = type1.asClassType(type1.toString() + nl, loc);
+	    		ClassType thisClass = this.asClassType(this.toString() + nl, loc);
+	        	return thisClass.isSubClassOf(type1Class);
     		}
     	}
     	return false;

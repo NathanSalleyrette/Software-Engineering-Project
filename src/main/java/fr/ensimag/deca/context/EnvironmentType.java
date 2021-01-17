@@ -82,7 +82,7 @@ public class EnvironmentType {
 		} catch (Exception e) {
 		}
 		// A présent on peut ajouter dans les types
-		ClassType objectType = new ClassType(table.create("object"), Location.BUILTIN, null);
+		ClassType objectType = new ClassType(table.create("Object"), Location.BUILTIN, null);
 		ClassDefinition objectDef = new ClassDefinition(objectType, Location.BUILTIN, null);
 		envType.put(OBJECT, objectDef);
 		return envObject;
