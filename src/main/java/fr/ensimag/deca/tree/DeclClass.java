@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.ClassType;
+import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
@@ -29,10 +30,10 @@ public class DeclClass extends AbstractDeclClass {
 	//private ListDeclMethod listDeclMethod;
 
 
-	public DeclClass(AbstractIdentifier className, AbstractIdentifier superClass) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
-		this.className = className;
+	public DeclClass(String nameClass, AbstractIdentifier superClass) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
+		this.nameClass = nameClass;
 		// Potentiellement nul
-		//this.superClass = superClass;
+		this.superClass = superClass;
 		//this.listDeclField = listDeclField;
 		//this.listDeclMethod = listDeclMethod;
 	}
@@ -47,6 +48,17 @@ public class DeclClass extends AbstractDeclClass {
 
 	public AbstractIdentifier getSuperClass() {
 		return this.superClass;
+	}
+	
+	/** Le setter de la superclass est invoqué dans 
+	 * la vérification de la déclaration de classe.
+	 * Il est utilisé pour définir la classe Object
+	 * comme super class si aucune super class n'avait
+	 * été précisée. C'est le moyen que j'ai trouvé pour 
+	 * récupérer Object, définie dans le compilateur.
+	 */
+	public void setSuperClass(AbstractIdentifier superClass) {
+		this.superClass = superClass;
 	}
 
 	/*
@@ -72,14 +84,22 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
+    	// Initialisation de className
+    	this.className = new Identifier(compiler.getSymbTb().create(nameClass));
     	// Rajout dans l'environnement des types
-    	//ClassType classType = new ClassType(className.getName(), this.getLocation(), this.getSuperClass());
-    	//ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), this.getSuperClass());
-    	//compiler.getEnvType().put(className.getName(), classDef);
-    	/* Ajout dans l'environnement des définitions
-    	 * (dans l'environnement GLOBAL, si c'est faux, à changer)
-    	 */
-
+    	if (this.getSuperClass() == null) {
+    		AbstractIdentifier classObject = new Identifier(compiler.getSymbTb().create("Object"));
+    		this.setSuperClass(classObject);
+    		// Pour éviter une boucle if, on met à jour la localisation ici
+    		this.getSuperClass().setLocation(Location.BUILTIN);
+    	}
+    	// L'identifier superClass n'a pas de définition, on la met à jour ici, ainsi que celle de la classe:
+    	this.getSuperClass().setDefinition(compiler.getEnvType().get(this.getSuperClass().getName()));
+    	ClassDefinition superClassDef = this.getSuperClass().getClassDefinition();
+    	ClassType classType = new ClassType(className.getName(), this.getLocation(), superClassDef);
+    	ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), superClassDef);
+    	compiler.getEnvType().put(className.getName(), classDef);
+    	this.getClassName().setDefinition(classDef);
     	//TODO: poursuivre
     }
 
@@ -98,6 +118,7 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
     	this.getClassName().prettyPrint(s, prefix, false);
+    	this.getSuperClass().prettyPrint(s, prefix, false);
         //listDeclField.prettyPrint(s, prefix, false);
     	//listDeclMethod.prettyPrint(s, prefix, false);
     }

@@ -496,9 +496,10 @@ literal returns[AbstractExpr tree]
         }
     ;
 
-ident returns[AbstractIdentifier tree]
+ident returns[AbstractIdentifier tree, String name]
     : i=IDENT {
     		$tree = new Identifier(sTable.create($i.getText()));
+    		$name = $i.getText();
     		setLocation($tree, $i);
         }
     ;
@@ -522,7 +523,7 @@ class_decl returns[DeclClass tree]
 }
     : CLASS name=ident superclass=class_extension OBRACE class_body CBRACE {
     		assert($name.tree != null);
-    		$tree = new DeclClass($name.tree, $superclass.tree);
+    		$tree = new DeclClass($name.name, $superclass.tree);
     		setLocation($tree, $CLASS);
     		//TODO : class_body ?
         }
@@ -535,6 +536,8 @@ class_extension returns[AbstractIdentifier tree]
     		setLocation($tree, $EXTENDS);
         }
     | /* epsilon */ {
+    	// rajouter le extends Object est fait dans
+    	// DeclClass.java, mais peut-être faut-il le faire ici ?
         }
     ;
 

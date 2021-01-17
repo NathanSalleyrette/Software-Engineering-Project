@@ -2,7 +2,6 @@ package fr.ensimag.deca;
 
 import fr.ensimag.deca.codegen.Error;
 import fr.ensimag.deca.context.EnvironmentType;
-import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.syntax.DecaLexer;
 import fr.ensimag.deca.syntax.DecaParser;
 import fr.ensimag.deca.tools.SymbolTable;

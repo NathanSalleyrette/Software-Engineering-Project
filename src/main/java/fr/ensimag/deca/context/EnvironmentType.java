@@ -5,6 +5,7 @@ import java.util.Map;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tree.Location;
+import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 
 /**
  * Classe d'environnement des types
@@ -18,7 +19,7 @@ public class EnvironmentType {
 	private EnvironmentType envTypePredef;
 	private EnvironmentExp envExpObject;
 	
-	private Map<Symbol, TypeDefinition> map;
+	private Map<Symbol, TypeDefinition> map = new HashMap<Symbol, TypeDefinition>();
 	
 	/**
 	 * Constructeur appelé pour définir env_type_predef
@@ -38,7 +39,6 @@ public class EnvironmentType {
 	
 	public EnvironmentType(SymbolTable table, EnvironmentType parent) {
 		this.parentEnvironment = parent;
-		this.map = new HashMap<Symbol, TypeDefinition>();
 	}
 	
 	/**
@@ -54,11 +54,11 @@ public class EnvironmentType {
 		TypeDefinition floatDef = new TypeDefinition(new FloatType(FLOAT), Location.BUILTIN);
 		TypeDefinition booleanDef = new TypeDefinition(new BooleanType(BOOLEAN), Location.BUILTIN);
 		TypeDefinition voidDef = new TypeDefinition(new VoidType(VOID), Location.BUILTIN);
-		this.put(INT, intDef);
-		this.put(FLOAT, floatDef);
-		this.put(BOOLEAN, booleanDef);
-		this.put(VOID, voidDef);
-		this.parentEnvironment = null;
+		envTypePredef.put(INT, intDef);
+		envTypePredef.put(FLOAT, floatDef);
+		envTypePredef.put(BOOLEAN, booleanDef);
+		envTypePredef.put(VOID, voidDef);
+		envTypePredef.parentEnvironment = null;
 		return envTypePredef;
 	}
 
@@ -80,10 +80,10 @@ public class EnvironmentType {
 			equalsSig.add(classType); equalsSig.add(classType);
 			MethodDefinition equalsDef = new MethodDefinition(boolType, Location.BUILTIN, equalsSig, 0);
 			envObject.declare(equalsMethod, equalsDef, Location.BUILTIN);
-		} catch (Exception e) {
+		} catch (DoubleDefException e) {
 		}
 		// A présent on peut ajouter dans les types
-		ClassType objectType = new ClassType(table.create("object"), Location.BUILTIN, null);
+		ClassType objectType = new ClassType(table.create("Object"), Location.BUILTIN, null);
 		ClassDefinition objectDef = new ClassDefinition(objectType, Location.BUILTIN, null);
 		envType.put(OBJECT, objectDef);
 		return envObject;
