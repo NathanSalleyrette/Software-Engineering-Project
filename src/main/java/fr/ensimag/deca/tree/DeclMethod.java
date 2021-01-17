@@ -74,7 +74,15 @@ public class DeclMethod extends AbstractDeclMethod  {
     	this.type.decompile(s);
     	s.print(" ");
     	this.varName.decompile(s);
-    	s.print(";");
+    	s.print("(");
+    	this.params.decompile(s);
+    	s.print(")");
+    	s.println("{");
+        s.indent();
+        body.decompile(s);
+        s.unindent();
+        s.println("}");
+
     }
 
     @Override

@@ -14,10 +14,16 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 public class ListDeclParam extends TreeList<AbstractDeclParam>{
 
 	@Override
-    public void decompile(IndentPrintStream s) { // TODO factoriser dans tree decompile ?
+    public void decompile(IndentPrintStream s) {
+		boolean first = true;
         for (AbstractDeclParam c : getList()) {
+        	if (!first) {
+        		s.print(", ");
+        	} else {
+        		first = false;
+        	}
             c.decompile(s);
-            s.println();
+            
         }
     }
 

@@ -62,23 +62,27 @@ public class DeclClass extends AbstractDeclClass {
 		this.superClass = superClass;
 	}
 
-	/*
-	public ListDeclField getListDeclFiled() {
+	
+	public ListDeclField getListDeclField() {
 		return this.listDeclField;
 	}
 
 	public ListDeclMethod getListDeclMethod() {
 		return this.listDeclMethod;
 	}
-	*/
+	
 
 
     @Override
     public void decompile(IndentPrintStream s) {
-        s.println("class " + className.toString() + " {");
+        s.print("class ") ;
+        this.className.decompile(s);
+        s.print(" extends ");
+        this.superClass.decompile(s);
+        s.println(" {");   
         s.indent();
-        //getlistDeclField().decompile(s);
-        //getlistDeclMethod().decompile(s);
+        getListDeclField().decompile(s);
+        getListDeclMethod().decompile(s);
         s.unindent();
         s.println("}");
     }
