@@ -1,13 +1,11 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.ClassType;
-import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
-import fr.ensimag.deca.tree.AbstractIdentifier;
 
 /**
  * Declaration of a class (<code>class name extends superClass {members}<code>).
@@ -20,7 +18,7 @@ public class DeclClass extends AbstractDeclClass {
 	private String nameClass;
 
 	/* L'attribut au-dessus était déjà fourni,
-	 * donc je le laisse même si j'aimerais bien le ramplacer
+	 * donc je le laisse même si j'aimerais bien le remplacer
 	 * par celui-ci après avoir regardé le poly:
 	 */
 	private AbstractIdentifier className;

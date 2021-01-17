@@ -102,7 +102,6 @@ public abstract class AbstractExpr extends AbstractInst {
         		" et " + type2.toString() + " sont incompatibles pour l'affectation", this.getLocation());        
     }
     
-    
     @Override
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)

@@ -179,6 +179,7 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
+    	// Si c'est une classe
     	ExpDefinition typeDef = localEnv.get(this.getName());
         if (typeDef == null) {
         	throw new ContextualError("(0.1) Identificateur " + this.getName() + " non défini", this.getLocation());
