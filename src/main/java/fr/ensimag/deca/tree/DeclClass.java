@@ -91,9 +91,22 @@ public class DeclClass extends AbstractDeclClass {
     		// Pour éviter une boucle if, on met à jour la localisation ici
     		this.getSuperClass().setLocation(Location.BUILTIN);
     	}
-    	// L'identifier superClass n'a pas de définition, on la met à jour ici, ainsi que celle de la classe:
+    	// On empêche de déclarer deux fois la classe
+    	if (compiler.getEnvType().get(className.getName()) != null) {
+    		throw new ContextualError("(1.3) La classe est déjà définie", this.getLocation());
+    	}
+    	// On empêche d'avoir une super classe non déclarée
+    	if (compiler.getEnvType().get(superClass.getName()) == null) {
+    		throw new ContextualError("(1.3) Identificateur " + superClass.getName().toString()
+    				+ " non déclaré", this.getLocation());
+    	}
+    	// L'identificateur superClass n'a pas de définition, on la met à jour ici, ainsi que celle de la classe:
     	this.getSuperClass().setDefinition(compiler.getEnvType().get(this.getSuperClass().getName()));
     	ClassDefinition superClassDef = this.getSuperClass().getClassDefinition();
+    	// L'identificateur de super classe doit désigner une classe
+    	if (superClassDef == null) {
+    		throw new ContextualError("(1.3) Identificateur de classe attendu", this.getLocation());
+    	}
     	ClassType classType = new ClassType(className.getName(), this.getLocation(), superClassDef);
     	ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), superClassDef);
     	compiler.getEnvType().put(className.getName(), classDef);
