@@ -30,9 +30,8 @@ public class DeclClass extends AbstractDeclClass {
 	//private ListDeclMethod listDeclMethod;
 
 
-	public DeclClass(AbstractIdentifier className, AbstractIdentifier superClass) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
-		this.className = className;
-		this.nameClass = className.getName().toString();
+	public DeclClass(String nameClass, AbstractIdentifier superClass) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
+		this.nameClass = nameClass;
 		// Potentiellement nul
 		this.superClass = superClass;
 		//this.listDeclField = listDeclField;
@@ -85,6 +84,8 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
+    	// Initialisation de className
+    	this.className = new Identifier(compiler.getSymbTb().create(nameClass));
     	// Rajout dans l'environnement des types
     	if (this.getSuperClass() == null) {
     		AbstractIdentifier classObject = new Identifier(compiler.getSymbTb().create("Object"));
@@ -92,17 +93,13 @@ public class DeclClass extends AbstractDeclClass {
     		// Pour éviter une boucle if, on met à jour la localisation ici
     		this.getSuperClass().setLocation(Location.BUILTIN);
     	}
-    	// L'identifier superClass n'a pas de définition, on la met à jour ici:
+    	// L'identifier superClass n'a pas de définition, on la met à jour ici, ainsi que celle de la classe:
     	this.getSuperClass().setDefinition(compiler.getEnvType().get(this.getSuperClass().getName()));
     	ClassDefinition superClassDef = this.getSuperClass().getClassDefinition();
     	ClassType classType = new ClassType(className.getName(), this.getLocation(), superClassDef);
     	ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), superClassDef);
     	compiler.getEnvType().put(className.getName(), classDef);
     	this.getClassName().setDefinition(classDef);
-    	/* Ajout dans l'environnement des définitions
-    	 * (dans l'environnement GLOBAL, si c'est faux, à changer)
-    	 */
-
     	//TODO: poursuivre
     }
 
