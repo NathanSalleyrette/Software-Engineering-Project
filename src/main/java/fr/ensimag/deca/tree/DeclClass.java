@@ -7,6 +7,7 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 
+
 /**
  * Declaration of a class (<code>class name extends superClass {members}<code>).
  *
@@ -15,7 +16,7 @@ import java.io.PrintStream;
  */
 public class DeclClass extends AbstractDeclClass {
 
-	private String nameClass;
+	//private String nameClass;
 
 	/* L'attribut au-dessus était déjà fourni,
 	 * donc je le laisse même si j'aimerais bien le remplacer
@@ -24,21 +25,23 @@ public class DeclClass extends AbstractDeclClass {
 	private AbstractIdentifier className;
 
 	private AbstractIdentifier superClass;
-	//private ListDeclField listDeclField;
-	//private ListDeclMethod listDeclMethod;
+	private ListDeclField listDeclField;
+	private ListDeclMethod listDeclMethod;
 
 
-	public DeclClass(String nameClass, AbstractIdentifier superClass) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
-		this.nameClass = nameClass;
+	public DeclClass(AbstractIdentifier nameClass, AbstractIdentifier superClass, ListDeclField listDeclField, ListDeclMethod listDeclMethod) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
+		this.className = nameClass;
 		// Potentiellement nul
 		this.superClass = superClass;
-		//this.listDeclField = listDeclField;
-		//this.listDeclMethod = listDeclMethod;
+		this.listDeclField = listDeclField;
+		this.listDeclMethod = listDeclMethod;
 	}
 
+	/*
 	public String getNameClass() {
 		return this.nameClass;
 	}
+	*/
 
 	public AbstractIdentifier getClassName() {
 		return this.className;
@@ -72,7 +75,7 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        s.println("class " + getNameClass() + " {");
+        s.println("class " + className.toString() + " {");
         s.indent();
         //getlistDeclField().decompile(s);
         //getlistDeclMethod().decompile(s);
@@ -83,7 +86,7 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
     	// Initialisation de className
-    	this.className = new Identifier(compiler.getSymbTb().create(nameClass));
+    	this.className = new Identifier(compiler.getSymbTb().create(className.toString()));
     	// Rajout dans l'environnement des types
     	if (this.getSuperClass() == null) {
     		AbstractIdentifier classObject = new Identifier(compiler.getSymbTb().create("Object"));
@@ -129,9 +132,11 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
     	this.getClassName().prettyPrint(s, prefix, false);
-    	this.getSuperClass().prettyPrint(s, prefix, false);
-        //listDeclField.prettyPrint(s, prefix, false);
-    	//listDeclMethod.prettyPrint(s, prefix, false);
+    	if (this.getSuperClass() != null) {
+	    	this.getSuperClass().prettyPrint(s, prefix, false);
+    	}
+	    this.listDeclField.prettyPrint(s, prefix, false);
+	    this.listDeclMethod.prettyPrint(s, prefix, false);
     }
 
     @Override

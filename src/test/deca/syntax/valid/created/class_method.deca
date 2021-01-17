@@ -1,0 +1,19 @@
+// Description :
+//		Une classe avec une methode sans arguments
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	int field1 = 3;
+	bool field2;
+	int met(int param1, bool param2){
+	}
+	
+	int met2(){
+	bool var1;
+	bool var2;
+	var2 = true && true;
+	}
+}
