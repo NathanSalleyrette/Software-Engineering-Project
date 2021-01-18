@@ -134,8 +134,8 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        listDeclField.iter();
-        listDeclMethod.iter();
+        listDeclField.iter(f);
+        listDeclMethod.iter(f);
     }
 
 }
