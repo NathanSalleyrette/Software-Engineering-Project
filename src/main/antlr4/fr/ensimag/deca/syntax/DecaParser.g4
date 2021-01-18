@@ -445,7 +445,7 @@ primary_expr returns[AbstractExpr tree]
         }
     | NEW ident OPARENT CPARENT {
             assert($ident.tree != null);
-            $tree = new New($ident.name);
+            $tree = new New($ident.tree);
             setLocation($tree, $NEW);
         }
     | cast=OPARENT type CPARENT OPARENT expr CPARENT {
@@ -496,10 +496,9 @@ literal returns[AbstractExpr tree]
         }
     ;
 
-ident returns[AbstractIdentifier tree, String name]
+ident returns[AbstractIdentifier tree]
     : i=IDENT {
     		$tree = new Identifier(sTable.create($i.getText()));
-    		$name = $i.getText();
     		setLocation($tree, $i);
         }
     ;
@@ -535,7 +534,7 @@ class_extension returns[AbstractIdentifier tree]
     		setLocation($tree, $EXTENDS);
         }
     | /* epsilon */ {
-    	$tree = new Identifier(sTable.create("Object"));
+    	//$tree = new Identifier(sTable.create("Object"));
         }
     ;
 

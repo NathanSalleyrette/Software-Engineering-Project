@@ -16,12 +16,6 @@ import java.io.PrintStream;
  */
 public class DeclClass extends AbstractDeclClass {
 
-	//private String nameClass;
-
-	/* L'attribut au-dessus était déjà fourni,
-	 * donc je le laisse même si j'aimerais bien le remplacer
-	 * par celui-ci après avoir regardé le poly:
-	 */
 	private AbstractIdentifier className;
 
 	private AbstractIdentifier superClass;
@@ -29,19 +23,13 @@ public class DeclClass extends AbstractDeclClass {
 	private ListDeclMethod listDeclMethod;
 
 
-	public DeclClass(AbstractIdentifier nameClass, AbstractIdentifier superClass, ListDeclField listDeclField, ListDeclMethod listDeclMethod) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
-		this.className = nameClass;
+	public DeclClass(AbstractIdentifier className, AbstractIdentifier superClass, ListDeclField listDeclField, ListDeclMethod listDeclMethod) { //, ListDeclField listDeclField, ListDeclMethod listDeclMethod)
+		this.className = className;
 		// Potentiellement nul
 		this.superClass = superClass;
 		this.listDeclField = listDeclField;
 		this.listDeclMethod = listDeclMethod;
 	}
-
-	/*
-	public String getNameClass() {
-		return this.nameClass;
-	}
-	*/
 
 	public AbstractIdentifier getClassName() {
 		return this.className;
@@ -89,8 +77,10 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
-    	// Initialisation de className
-    	this.className = new Identifier(compiler.getSymbTb().create(className.toString()));
+    	/* Initialisation de className, nécessaire car className.name 
+    	 * a été créé par une table de symboles externe au compilateur
+    	 */
+    	this.className = new Identifier(compiler.getSymbTb().create(className.getName().toString()));
     	// Rajout dans l'environnement des types
     	if (this.getSuperClass() == null) {
     		AbstractIdentifier classObject = new Identifier(compiler.getSymbTb().create("Object"));
@@ -118,7 +108,6 @@ public class DeclClass extends AbstractDeclClass {
     	ClassDefinition classDef = new ClassDefinition(classType, this.getLocation(), superClassDef);
     	compiler.getEnvType().put(className.getName(), classDef);
     	this.getClassName().setDefinition(classDef);
-    	//TODO: poursuivre
     }
 
     @Override
@@ -145,8 +134,8 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        //listDeclField.iter();
-        //listDeclMethod.iter();
+        listDeclField.iter();
+        listDeclMethod.iter();
     }
 
 }

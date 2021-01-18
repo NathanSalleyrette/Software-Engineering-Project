@@ -41,7 +41,7 @@ public class Initialization extends AbstractInitialization {
     		"(3.42) " + newClass.toString() + " n'est pas une sous-classe de " + t.toString(),
     		this.getLocation());*/
     		if (t.getName() != newClass.getName()) throw new ContextualError(
-    				"La classe crée ne corespond pas à la classe déclarée !", 
+    				"La classe créée ne corespond pas à la classe déclarée !", 
     				this.getLocation());
     	} else {
     		this.setExpression(getExpression().verifyRValue(compiler, localEnv, currentClass, t));

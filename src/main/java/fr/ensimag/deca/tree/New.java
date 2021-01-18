@@ -9,30 +9,23 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 
 public class New extends AbstractExpr {
-
-	private String newClassName;
 	
 	private AbstractIdentifier newClass;
 		
-	public New(String newClassName) {
-		this.newClassName = newClassName;
-	}
-	
-	public String getNewClassName() {
-		return this.newClassName;
+	public New(AbstractIdentifier newClass) {
+		this.newClass = newClass;
 	}
 	
 	public AbstractIdentifier getNewClass() {
 		return this.newClass;
 	}
 	
-	public void setNewClass(String name, DecacCompiler compiler) {
-		this.newClass = new Identifier(compiler.getSymbTb().create(name));
+	public void setNewClass(AbstractIdentifier newClass) {
+		this.newClass = newClass;
 	}
 	
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp envExp,
 			ClassDefinition currentCLass) throws ContextualError{
-		this.setNewClass(this.newClassName, compiler);
 		this.setType(getNewClass().verifyType(compiler));
 		this.getNewClass().setDefinition(compiler.getEnvType().get(this.getNewClass().getName()));
 		return this.getType();
