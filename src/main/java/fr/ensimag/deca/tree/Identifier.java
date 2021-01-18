@@ -2,7 +2,6 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.TypeDefinition;
-import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -182,7 +181,7 @@ public class Identifier extends AbstractIdentifier {
     	// Si c'est une classe
     	ExpDefinition typeDef = localEnv.get(this.getName());
         if (typeDef == null) {
-        	throw new ContextualError("(0.1) Identificateur " + this.getName() + " non défini", this.getLocation());
+        	throw new ContextualError("(0.1) Identificateur " + this.getName().toString() + " non défini", this.getLocation());
         }
         this.setDefinition(typeDef);
         Type type = typeDef.getType();

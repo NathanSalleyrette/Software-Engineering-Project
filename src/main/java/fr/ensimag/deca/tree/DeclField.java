@@ -7,7 +7,6 @@ import org.apache.commons.lang.Validate;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
-import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
@@ -23,7 +22,7 @@ public class DeclField extends AbstractDeclField{
 
     final private Visibility v;
     final private AbstractIdentifier type;
-    final private AbstractIdentifier fieldName;
+    private AbstractIdentifier fieldName; //avant c'était final mais du coup je pouvais pas le modfier
     final private AbstractInitialization initialization;
 
     public DeclField(Visibility v, AbstractIdentifier type, AbstractIdentifier fieldName, AbstractInitialization initialization) {
@@ -35,11 +34,17 @@ public class DeclField extends AbstractDeclField{
         this.initialization = initialization;
 
     }
+    
+    public void setFieldName(AbstractIdentifier fieldName) {
+    	this.fieldName = fieldName;
+    }
 
     @Override
     protected void verifyDeclField(DecacCompiler compiler,
             ClassDefinition currentClass)
             throws ContextualError {
+    	// On change le symbole avec celui de la table de symboles du compilateur
+    	//this.setFieldName(new Identifier(compiler.getSymbTb().create(fieldName.getName().toString())));
     	//On récupère le type en décorant
     	Type fieldType = this.type.verifyType(compiler);
     	// On interdit qu'il soit void
