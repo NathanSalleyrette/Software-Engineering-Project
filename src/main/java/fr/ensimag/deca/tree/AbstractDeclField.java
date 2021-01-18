@@ -15,7 +15,7 @@ import fr.ensimag.deca.context.EnvironmentExp;
 public abstract class AbstractDeclField extends Tree {
     
     /**
-     * Implements non-terminal "decl_var" of [SyntaxeContextuelle] in pass 3
+     * Implements non-terminal "decl_field" of [SyntaxeContextuelle] in pass 3
      * @param compiler contains "env_types" attribute
      * @param localEnv 
      *   its "parentEnvironment" corresponds to the "env_exp_sup" attribute

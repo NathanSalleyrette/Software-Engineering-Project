@@ -38,19 +38,19 @@ public class DeclClass extends AbstractDeclClass {
 	public AbstractIdentifier getSuperClass() {
 		return this.superClass;
 	}
-	
-	/** Le setter de la superclass est invoqué dans 
+
+	/** Le setter de la superclass est invoqué dans
 	 * la vérification de la déclaration de classe.
 	 * Il est utilisé pour définir la classe Object
 	 * comme super class si aucune super class n'avait
-	 * été précisée. C'est le moyen que j'ai trouvé pour 
+	 * été précisée. C'est le moyen que j'ai trouvé pour
 	 * récupérer Object, définie dans le compilateur.
 	 */
 	public void setSuperClass(AbstractIdentifier superClass) {
 		this.superClass = superClass;
 	}
 
-	
+
 	public ListDeclField getListDeclField() {
 		return this.listDeclField;
 	}
@@ -58,7 +58,7 @@ public class DeclClass extends AbstractDeclClass {
 	public ListDeclMethod getListDeclMethod() {
 		return this.listDeclMethod;
 	}
-	
+
 
 
     @Override
@@ -67,7 +67,7 @@ public class DeclClass extends AbstractDeclClass {
         this.className.decompile(s);
         s.print(" extends ");
         this.superClass.decompile(s);
-        s.println(" {");   
+        s.println(" {");
         s.indent();
         getListDeclField().decompile(s);
         getListDeclMethod().decompile(s);
@@ -77,7 +77,7 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
-    	/* Initialisations de className et de la super classe, nécessaires car className.name 
+    	/* Initialisations de className et de la super classe, nécessaires car className.name
     	 * a été créé par une table de symboles externe au compilateur
     	 */
     	this.className = new Identifier(compiler.getSymbTb().create(className.getName().toString()));
@@ -138,8 +138,8 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        //listDeclField.iter();
-        //listDeclMethod.iter();
+        listDeclField.iter(f);
+        listDeclMethod.iter(f);
     }
 
 }
