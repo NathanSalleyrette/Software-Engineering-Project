@@ -166,7 +166,7 @@ inst returns[AbstractInst tree]
         }
     | RETURN expr SEMI {
             assert($expr.tree != null);
-            $tree = $expr.tree;
+            $tree = new Return($expr.tree);
             setLocation($tree, $RETURN);
         }
     ;
@@ -591,6 +591,7 @@ decl_method returns[AbstractDeclMethod tree]
     : type ident OPARENT params=list_params CPARENT (block {
     	
     	$tree = new DeclMethod($type.tree, $ident.tree, $list_params.tree, new MethodBody($block.decls, $block.insts));
+        setLocation($tree, $type.start);
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
         }
@@ -624,5 +625,6 @@ multi_line_string returns[String text, Location location]
 param returns[AbstractDeclParam tree]
     : type ident {
     	$tree = new DeclParam($type.tree, $ident.tree);
+    	setLocation($tree, $type.start);
         }
     ;

@@ -6,7 +6,7 @@
 
 
 class A{
-	int field1;
+	int field1 = 1;
 	float field1;
 	bool field2;
 	a a = a;
@@ -14,9 +14,10 @@ class A{
 	}
 	
 	int met2(){
-	bool var1;
+	bool var1 = true;
 	bool var2;
 	var2 = true && true;
+	return 1;
 	}
 	
 }
@@ -27,5 +28,6 @@ class B extends A{
 	}
 	protected type field3, field4 = 3, field5 = a;
 	int met3(){
+	return a==b;
 	}
 }
