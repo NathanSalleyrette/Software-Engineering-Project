@@ -22,7 +22,7 @@ class A{
 	
 }
 
-class B extends A{
+class B {
 	int met2(){
 	println("redefinition de met2 dans A");
 	}

@@ -1,0 +1,14 @@
+// Description :
+//    utilisation de this
+//
+// Resultats :
+//		Ok
+
+{
+this.a;
+this.a();
+a();
+a;
+a.a;
+a.a();
+}
