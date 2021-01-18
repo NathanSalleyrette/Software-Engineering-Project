@@ -77,12 +77,16 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
-    	/* Initialisation de className, nécessaire car className.name 
+    	/* Initialisations de className et de la super classe, nécessaires car className.name 
     	 * a été créé par une table de symboles externe au compilateur
     	 */
     	this.className = new Identifier(compiler.getSymbTb().create(className.getName().toString()));
+    	this.setSuperClass(new Identifier(compiler.getSymbTb().create(superClass.getName().toString())));
     	// Rajout dans l'environnement des types
-    	if (this.getSuperClass() == null) {
+    	/* La superclasse par défaut est Object. Elle a déjà été définie pour des besoins de
+    	 * décompilation, mais il faut la refaire ici car ce n'est pas le même symbole.
+    	 */
+    	if (this.getSuperClass().getName().toString() == "Object") {
     		AbstractIdentifier classObject = new Identifier(compiler.getSymbTb().create("Object"));
     		this.setSuperClass(classObject);
     		// Pour éviter une boucle if, on met à jour la localisation ici
@@ -113,7 +117,7 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        this.getListDeclField().verifyListDeclField(compiler, this.getClassName());;
     }
 
     @Override
@@ -134,8 +138,8 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        listDeclField.iter();
-        listDeclMethod.iter();
+        //listDeclField.iter();
+        //listDeclMethod.iter();
     }
 
 }

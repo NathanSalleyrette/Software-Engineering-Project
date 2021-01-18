@@ -57,7 +57,7 @@ public class DeclVar extends AbstractDeclVar {
     		localEnv.declare(nameSymb, varDef, getLocation());
     		varName.setDefinition(varDef);
     	} catch (DoubleDefException e) {
-    		throw new ContextualError("(3.17) La variable " + this.varName.toString() + " est déjà déclarée", this.getLocation());
+    		throw new ContextualError("(3.17) La variable " + this.varName.getName().toString() + " est déjà déclarée", this.getLocation());
     	}
     	// On vérifie l'initialisation ensuite
     	this.initialization.verifyInitialization(compiler, varType, localEnv, currentClass);

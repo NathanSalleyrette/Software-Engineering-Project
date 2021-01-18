@@ -26,8 +26,7 @@ public abstract class AbstractDeclField extends Tree {
      * @param currentClass 
      *          corresponds to the "class" attribute (null in the main bloc).
      */    
-    protected abstract void verifyDeclField(DecacCompiler compiler,
-            EnvironmentExp localEnv, ClassDefinition currentClass)
+    protected abstract void verifyDeclField(DecacCompiler compiler, ClassDefinition currentClass)
             throws ContextualError;
     
     public abstract AbstractIdentifier getName();

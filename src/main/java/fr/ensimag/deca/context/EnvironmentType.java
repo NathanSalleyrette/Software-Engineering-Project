@@ -17,7 +17,6 @@ public class EnvironmentType {
 	
 	private EnvironmentType parentEnvironment;
 	private EnvironmentType envTypePredef;
-	private EnvironmentExp envExpObject;
 	
 	private Map<Symbol, TypeDefinition> map = new HashMap<Symbol, TypeDefinition>();
 	
@@ -34,7 +33,7 @@ public class EnvironmentType {
 	public EnvironmentType(SymbolTable table) {
 		this.envTypePredef = this.initEnvType(table);
 		this.parentEnvironment = this.envTypePredef;
-		this.envExpObject = initEnvExpObject(table, this.envTypePredef);
+		initObject(table, this.envTypePredef);
 	}
 	
 	public EnvironmentType(SymbolTable table, EnvironmentType parent) {
@@ -68,25 +67,24 @@ public class EnvironmentType {
 	 * @return
 	 * @throws ContextualError
 	 */
-	public EnvironmentExp initEnvExpObject(SymbolTable table, EnvironmentType envType){
-		EnvironmentExp envObject = new EnvironmentExp(null);
-		Symbol equalsMethod = table.create("equals");
+	public void initObject(SymbolTable table, EnvironmentType envType){
 		Symbol OBJECT = table.create("Object"); // Attention ! avec une majuscule
+		// On ajoute dans les types
+		ClassType objectType = new ClassType(table.create("Object"), Location.BUILTIN, null);
+		ClassDefinition objectDef = new ClassDefinition(objectType, Location.BUILTIN, null);
+		envType.put(OBJECT, objectDef);
+		// A présent on crée l'environment des expressions de Object qui n'a que equals
 		try {
+			Symbol equalsMethod = table.create("equals");
 			Type boolType = envType.get(table.create("boolean")).getType();
 			Signature equalsSig = new Signature();
 			// On a besoin d'un type class indéfini
 			Type classType = new ClassType(null, Location.BUILTIN, null); // Je sens que ça va poser des problèmes...
 			equalsSig.add(classType); equalsSig.add(classType);
 			MethodDefinition equalsDef = new MethodDefinition(boolType, Location.BUILTIN, equalsSig, 0);
-			envObject.declare(equalsMethod, equalsDef, Location.BUILTIN);
+			objectDef.getMembers().declare(equalsMethod, equalsDef, Location.BUILTIN);
 		} catch (DoubleDefException e) {
 		}
-		// A présent on peut ajouter dans les types
-		ClassType objectType = new ClassType(table.create("Object"), Location.BUILTIN, null);
-		ClassDefinition objectDef = new ClassDefinition(objectType, Location.BUILTIN, null);
-		envType.put(OBJECT, objectDef);
-		return envObject;
 	}
 	
 	public Map<Symbol, TypeDefinition> getMap() {

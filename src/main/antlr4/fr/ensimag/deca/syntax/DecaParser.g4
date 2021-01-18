@@ -534,7 +534,7 @@ class_extension returns[AbstractIdentifier tree]
     		setLocation($tree, $EXTENDS);
         }
     | /* epsilon */ {
-    	//$tree = new Identifier(sTable.create("Object"));
+    	$tree = new Identifier(sTable.create("Object"));
         }
     ;
 

@@ -21,20 +21,17 @@ public class ListDeclField extends TreeList<AbstractDeclField >{
         }
     }
 
-    /**
-     * Implements non-terminal "list_decl_var" of [SyntaxeContextuelle] in pass 3
-     * @param compiler contains the "env_types" attribute
-     * @param localEnv 
-     *   its "parentEnvironment" corresponds to "env_exp_sup" attribute
-     *   in precondition, its "current" dictionary corresponds to 
-     *      the "env_exp" attribute
-     *   in postcondition, its "current" dictionary corresponds to 
-     *      the "env_exp_r" attribute
-     * @param currentClass 
-     *          corresponds to "class" attribute (null in the main bloc).
-     */    
-    void verifyListDeclField(DecacCompiler compiler, EnvironmentExp localEnv,
-            ClassDefinition currentClass) throws ContextualError {
+	/** Implémente la passe 2
+	 * 
+	 * @param compiler
+	 * @param className
+	 * 					nom de la classe courante
+	 * @param superClass
+	 * 					nom de la super classe
+	 * @throws ContextualError
+	 */
+    void verifyListDeclField(DecacCompiler compiler, AbstractIdentifier className
+    		) throws ContextualError {
     	/* On crée un itérateur grâce à la méthode iterator() de TreeList
     	 * Il y a sans doute un autre moyen en passant par iterChildren...
     	 * Mais il faudrait implémenter TreeFunction... non ?
@@ -42,7 +39,7 @@ public class ListDeclField extends TreeList<AbstractDeclField >{
     	Iterator<AbstractDeclField> iter = this.iterator();
     	while (iter.hasNext()) {
     		AbstractDeclField  declField = iter.next();
-    		declField.verifyDeclField (compiler, localEnv, currentClass);
+    		declField.verifyDeclField (compiler, className.getClassDefinition());
     	}
     }
 }
