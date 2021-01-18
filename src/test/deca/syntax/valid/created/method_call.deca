@@ -1,0 +1,13 @@
+// Description :
+//		un main vide
+//
+// Resultats :
+//		Ok
+
+
+{
+a a = a;
+a = a;
+a.meth;
+a.met();
+}
