@@ -581,7 +581,9 @@ decl_field[Visibility v, AbstractIdentifier t, ListDeclField li_field]
       	init = new Initialization($e.tree);
         }
       )? {
-      	$li_field.add(new DeclField($v, $t, $i.tree, init));
+      	DeclField newField = new DeclField($v, $t, $i.tree, init);
+      	setLocation(newField, $i.start);
+      	$li_field.add(newField);
         }
     ;
 
