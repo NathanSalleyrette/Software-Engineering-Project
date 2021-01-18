@@ -1,0 +1,11 @@
+// Description :
+//		field protected, field public
+//
+// Resultats :
+//		Ok
+
+
+class B{
+	protected type field3;
+	type f;
+}

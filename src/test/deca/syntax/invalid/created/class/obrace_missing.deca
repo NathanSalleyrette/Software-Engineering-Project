@@ -1,0 +1,8 @@
+// Description :
+//    decl class { manquant
+//
+// Resultats :
+//		Syntaxe error
+
+class A 
+}

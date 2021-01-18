@@ -1,0 +1,9 @@
+// Description :
+//    decl class extends vide
+//
+// Resultats :
+//		Syntaxe error
+
+class A extends {
+
+}

@@ -1,0 +1,11 @@
+// Description :
+//    decl method, manque indent du param
+//
+// Resultats :
+//		Syntaxe error
+
+class A {
+
+	a a(a){
+	}
+}
