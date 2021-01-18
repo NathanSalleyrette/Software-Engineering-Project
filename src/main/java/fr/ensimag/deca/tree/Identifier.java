@@ -201,7 +201,10 @@ public class Identifier extends AbstractIdentifier {
     		throw new ContextualError("(0.2) Type " + this.getName().toString() +
     				" non reconnu", this.getLocation());
     	}
-    	this.setType(compiler.getEnvType().get(name).getType());
+    	Type varType = compiler.getEnvType().get(name).getType();
+    	this.setType(varType);
+    	TypeDefinition typeDef = compiler.getEnvType().get(varType.getName());
+    	this.setDefinition(typeDef);
         return this.getType();
     }
     
