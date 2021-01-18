@@ -69,6 +69,7 @@ public class DeclField extends AbstractDeclField{
     	this.type.decompile(s);
     	s.print(" ");
     	this.fieldName.decompile(s);
+    	this.initialization.decompile(s);
     	s.print(";");
     }
 

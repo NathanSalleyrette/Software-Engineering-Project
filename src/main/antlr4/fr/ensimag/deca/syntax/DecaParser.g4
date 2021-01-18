@@ -166,7 +166,7 @@ inst returns[AbstractInst tree]
         }
     | RETURN expr SEMI {
             assert($expr.tree != null);
-            $tree = $expr.tree;
+            $tree = new Return($expr.tree);
             setLocation($tree, $RETURN);
         }
     ;
@@ -401,18 +401,18 @@ select_expr returns[AbstractExpr tree]
     | e1=select_expr DOT i=ident {
             assert($e1.tree != null);
             assert($i.tree != null);
-            $tree = $e1.tree;
-            setLocation($tree, $DOT);
         }
         (o=OPARENT args=list_expr CPARENT {
             // we matched "e1.i(args)"
             assert($args.tree != null);
-            setLocation($args.tree, $args.start);
-            // Est-ce qu'il faut plutôt le localiser sur la parenthèse ouvrante ?
+            $tree = new MethodCall($e1.tree, $i.tree, $args.tree);
+            setLocation($tree, $e1.start);
+            
         }
         | /* epsilon */ {
             // we matched "e.i"
-            //TODO
+            $tree = new Selection($e1.tree, $i.tree);
+            setLocation($tree, $e1.start);
         }
         )
     ;
@@ -593,10 +593,13 @@ decl_method returns[AbstractDeclMethod tree]
     : type ident OPARENT params=list_params CPARENT (block {
     	
     	$tree = new DeclMethod($type.tree, $ident.tree, $list_params.tree, new MethodBody($block.decls, $block.insts));
+        setLocation($tree, $type.start);
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
+      	// TODO
         }
       ) {
+      	// TODO
         }
     ;
 
@@ -626,5 +629,6 @@ multi_line_string returns[String text, Location location]
 param returns[AbstractDeclParam tree]
     : type ident {
     	$tree = new DeclParam($type.tree, $ident.tree);
+    	setLocation($tree, $type.start);
         }
     ;

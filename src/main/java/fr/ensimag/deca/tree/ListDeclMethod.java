@@ -17,7 +17,6 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod>{
     public void decompile(IndentPrintStream s) { // TODO factoriser dans tree decompile ?
         for (AbstractDeclMethod c : getList()) {
             c.decompile(s);
-            s.println();
         }
     }
 

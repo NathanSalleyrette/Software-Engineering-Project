@@ -9,10 +9,7 @@ import fr.ensimag.deca.context.EnvironmentExp;
 public abstract class AbstractMethodBody extends Tree {
 	
 
-	protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
-			throws ContextualError {
-		// TODO Auto-generated method stub
-		
-	}
+	abstract protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
+			throws ContextualError;
 
 }
