@@ -24,13 +24,14 @@
 	float Y = 0;
 	float epsilon = 0.0000000000001;
 	while(angle2 >= epsilon) {
-		if(angle2 < curr.contenu)
-				curr = curr.suivant;
-			float res = X;
-			X = X - (curr.valeur_k * Y);
-			Y = Y + (curr.valeur_k * res);
-			angle2 = angle2 - curr.contenu;
+		if(angle2 < curr.contenu){
+			curr = curr.suivant;
 		}
-		float hop = Y / X;
-		println(hop);
+		float res = X;
+		X = X - (curr.valeur_k * Y);
+		Y = Y + (curr.valeur_k * res);
+		angle2 = angle2 - curr.contenu;
+	}
+	float hop = Y / X;
+	println(hop);
 }
