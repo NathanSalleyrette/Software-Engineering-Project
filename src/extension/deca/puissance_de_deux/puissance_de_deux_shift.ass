@@ -1,0 +1,23 @@
+	TSTO #1
+	BOV pile_pleine
+	ADDSP #1
+; start main program
+; Main program
+	LOAD #2, R2
+	STORE R2, 1(GB)
+; Beginning of main instructions:
+	LOAD 1(GB), R2
+	LOAD R2, R1
+    ; on calcule les puissance de 2 ici 2 puissance 4 car on shift 3 fois
+    SHL R1
+    SHL R1
+    SHL R1
+	WINT
+	WNL
+	HALT
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program
