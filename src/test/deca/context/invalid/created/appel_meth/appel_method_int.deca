@@ -2,9 +2,9 @@
 //   	appel d'une methode sur un int
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9 :(3.42) <type> n’est pas un type de classe
+//    	Ligne 9 : (3.71) Le membre gauche n'est pas de type 'class'
 
 {
 int a;
-a();
+a.b();
 }
