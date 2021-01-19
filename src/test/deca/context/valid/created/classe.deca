@@ -1,0 +1,15 @@
+// Description :
+//		une classe simple
+//
+// Resultats :
+//		Ok
+
+
+class A{
+int x;
+int y;
+int met(){
+}
+float met2(){
+}
+}
