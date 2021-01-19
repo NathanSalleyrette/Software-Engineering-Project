@@ -1,0 +1,14 @@
+// Description :
+//    return un void
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9: (3.24) Le type de retour ne peut être ‘void’
+
+
+class A {
+	void met(){}
+	void met2(){
+		return met();
+	}
+}

@@ -1,0 +1,17 @@
+// Description :
+//    utilisation d'un champ défini dans une super classe
+// Resultats :
+//		Ok
+
+class C{
+int x = 2;
+}
+
+class B extends C{
+}
+class A extends B{
+}
+{
+A a = new A();
+int i = a.x;
+}
