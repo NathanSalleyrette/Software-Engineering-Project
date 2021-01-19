@@ -1,15 +1,19 @@
 // Description :
-//    acces à un field protegé
+//    acces à un field protegé à l'intérieur d'un methode
 //
 // Resultats :
 //		Erreur contextuelle
 //    	Ligne 12 :(3.65) L’attribut est protégé
 
+
+
 class A{
  protected int x;
 }
 
-{
-A a = new A();
-int b = a.x;
+class B extends A{
+	void met(A a){
+		a.x;
+	}
 }
+

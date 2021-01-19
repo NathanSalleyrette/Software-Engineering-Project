@@ -1,5 +1,6 @@
 // Description :
 //    acces à un field sur un void (qui n'est pas une classe)
+//
 // Resultats :
 //		Erreur contextuelle
 //    	Ligne 9 :(3.65) Le membre gauche n’est pas de type ‘classe’

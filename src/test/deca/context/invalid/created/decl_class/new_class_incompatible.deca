@@ -1,5 +1,6 @@
 // Description :
 //    creation d'un objet incompatible avec le type
+//
 // Resultats :
 //		Erreur contextuelle
 //    	Ligne 13 :(3.9) La classe créée ne correspond pas à la classe déclarée

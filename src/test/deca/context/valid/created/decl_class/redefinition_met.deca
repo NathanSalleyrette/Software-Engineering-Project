@@ -1,5 +1,6 @@
 // Description :
 //    redéfinition d'un champ et d'une methode
+//
 // Resultats :
 //		Ok
 
@@ -10,7 +11,7 @@ class A {
 A_prime met(){return new A_prime();}
 }
 
-class A extends A{
+class B extends A{
 B_prime met(){return new B_prime();}
 }
 {

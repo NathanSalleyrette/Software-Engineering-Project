@@ -1,0 +1,16 @@
+// Description :
+//    appel à une methode sur un void
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 :(3.71) Le membre gauche n’est pas de type ‘classe’
+
+
+class A {
+void met(){
+}
+}
+{
+A a = new A();
+(a.met()).x();
+}

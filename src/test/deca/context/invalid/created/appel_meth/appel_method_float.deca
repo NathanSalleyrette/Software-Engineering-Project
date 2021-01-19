@@ -1,11 +1,11 @@
 // Description :
-//   	appel d'une methode sur un int
+//   	appel d'une methode sur un float
 //
 // Resultats :
 //		Erreur contextuelle
 //    	Ligne 9 : (3.71) Le membre gauche n'est pas de type 'class'
 
 {
-int a;
+float a;
 a.b();
 }

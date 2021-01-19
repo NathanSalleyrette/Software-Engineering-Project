@@ -1,5 +1,6 @@
 // Description :
 //    redéfinition d'un champ et d'une methode
+//
 // Resultats :
 //		Ok
 
@@ -19,6 +20,6 @@ C c = new C();
 B b = new B();
 
 boolean j = a.x;
-float f = c.x;
-int i = b.x;
+float f = b.x;
+int i = c.x;
 }

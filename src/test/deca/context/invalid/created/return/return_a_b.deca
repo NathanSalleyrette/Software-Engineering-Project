@@ -1,8 +1,9 @@
 // Description :
 //    return mauvais type : B, demandé A
+//
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 14: ?? 
+//    	Ligne 14:  (2.7) Type de retour effectif : B, déclaré : A
 
 class A{}
 

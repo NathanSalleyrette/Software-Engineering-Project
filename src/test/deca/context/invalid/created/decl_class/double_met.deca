@@ -1,5 +1,6 @@
 // Description :
 //    met declarée deux fois
+//
 // Resultats :
 //		Erreur contextuelle
 //    	Ligne 9 :(2.5) L’identificateur a est déjà défini

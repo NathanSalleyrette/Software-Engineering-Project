@@ -1,8 +1,9 @@
 // Description :
 //    return mauvais type : boolean, demandé void
+//
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9: ?? 
+//    	Ligne 9: (2.7) Type de retour effectif : boolean, déclaré : void
 
 class A{
 void met(){

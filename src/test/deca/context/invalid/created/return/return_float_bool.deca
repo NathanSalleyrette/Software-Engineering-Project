@@ -1,11 +1,12 @@
 // Description :
-//    return mauvais type : bool, demandé int
+//    return mauvais type : bool, demandé float
+//
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9: ?? 
+//    	Ligne 9: (2.7) Type de retour effectif : boolean déclaré : float
 
 class A{
-int met(){
+float met(){
 return true;
 }
 }

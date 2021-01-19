@@ -1,8 +1,9 @@
 // Description :
 //    return mauvais type : float, demandé int
+//
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9: ?? 
+//    	Ligne 9: (2.7) Type de retour effectif : float, déclaré : int
 
 class A{
 int met(){
