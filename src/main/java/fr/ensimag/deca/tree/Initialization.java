@@ -39,7 +39,7 @@ public class Initialization extends AbstractInitialization {
     		Type newClass = getExpression().verifyExpr(compiler, localEnv, currentClass);
     		if ((!newClass.isSubTypeOf(t, getLocation())) && (t.getName() != newClass.getName()))
     			throw new ContextualError(
-    					"(3.42) " + newClass.toString() + " n'est ni la même classe ni une sous-classe de " 
+    					"(3.9) " + newClass.toString() + " n'est ni la même classe ni une sous-classe de " 
     							+ t.toString(), this.getLocation());
     	} else {
     		this.setExpression(getExpression().verifyRValue(compiler, localEnv, currentClass, t));
