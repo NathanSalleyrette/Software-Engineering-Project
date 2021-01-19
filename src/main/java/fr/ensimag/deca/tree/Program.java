@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.codegen.ClassCodeGen;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.Label;
@@ -51,17 +52,19 @@ public class Program extends AbstractProgram {
 
     @Override
     public void codeGenProgram(DecacCompiler compiler) {
+        compiler.addComment("Construction des tables des méthodes");
+        ClassCodeGen.buildTable(compiler, classes);
         compiler.addComment("Main program");
         main.codeGenMain(compiler);
         compiler.addInstruction(new HALT());
         // Entête : TSTO + ADDSP
-        int nbGlobVar = main.getnbGlobVar();
-        compiler.addFirst(new Line(new ADDSP(nbGlobVar)));
+        int stackSize = main.getnbGlobVar() + compiler.getMethTableSize();
+        compiler.addFirst(new Line(new ADDSP(stackSize)));
         if (!compiler.getCompilerOptions().getNoCheck()) {
             Label pilePleine = new Label("pile_pleine");
             compiler.addError(pilePleine);
             compiler.addFirst(new Line(new BOV(pilePleine)));
-            compiler.addFirst(new Line(new TSTO(nbGlobVar + compiler.getMaxTemp())));
+            compiler.addFirst(new Line(new TSTO(stackSize + compiler.getMaxTemp())));
         }
         // Messages d'erreurs
         compiler.addComment("Erreurs");

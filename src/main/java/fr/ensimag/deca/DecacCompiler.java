@@ -64,6 +64,9 @@ public class DecacCompiler implements Runnable{
     // Numerotation des labels générés : E_Fonction.nbLabel
     private int nbLabel;
 
+    // Taille de la table des méthodes dans la pile, utilisé pour y ajouter des éléments
+    private int methTableSize;
+
     public DecacCompiler(CompilerOptions compilerOptions, File source) {
         super();
         this.compilerOptions = compilerOptions;
@@ -74,6 +77,7 @@ public class DecacCompiler implements Runnable{
         errorMap = new HashMap<String, Label>();
         nbTemp = 0;
         maxTemp = 0;
+        methTableSize = 0;
     }
 
     public int getNbTemp() {
@@ -93,16 +97,18 @@ public class DecacCompiler implements Runnable{
         nbTemp--;
     }
 
-    public int getCurrentRegister() {
-        return currentRegister;
-    }
-
+    //
     public int getNbLabel() {
         return nbLabel;
     }
 
     public void incrNbLabel() {
         nbLabel++;
+    }
+
+    //
+    public int getCurrentRegister() {
+        return currentRegister;
     }
 
     public void decrCurrentRegister() {
@@ -113,6 +119,7 @@ public class DecacCompiler implements Runnable{
         currentRegister++;
     }
 
+    //
     public void addError(Label label) {
         String key = label.toString();
         if (!errorMap.containsKey(key)) {
@@ -120,6 +127,16 @@ public class DecacCompiler implements Runnable{
         }
     }
 
+    //
+    public int getMethTableSize() {
+        return methTableSize;
+    }
+
+    public void incrMethTableSize() {
+        methTableSize++;
+    }
+
+    //
     public SymbolTable getSymbTb() {
     	return this.symbTb;
     }
