@@ -20,7 +20,7 @@ decompile () {
 	f1="/tmp/f1.txt"
 	touch "/tmp/f2.txt"
 	f2="/tmp/fichier2.txt"
-	for fichier in $chemin/*.deca 
+	for fichier in $chemin/*.deca
 	do
 		decac -p $fichier > $f1
 		decac -p $f1 > $f2
@@ -33,7 +33,7 @@ decompile () {
 			$rouge
 			echo "$fichier decompilation echec"
 			$reset
-			$succes=0
+			succes=0
 		fi
 	done
 	rm $f1
@@ -44,10 +44,7 @@ decompile () {
 	else
 		exit 1
 	fi
-	fin 
+	fin
 }
 
 decompile "./src/test/deca/syntax/valid/created/"
-
-
-

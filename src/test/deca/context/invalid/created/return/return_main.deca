@@ -1,0 +1,10 @@
+// Description :
+//    return dans un main
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: ?? 
+
+{
+return a;
+}

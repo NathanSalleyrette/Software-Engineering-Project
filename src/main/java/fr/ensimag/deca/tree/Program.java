@@ -42,7 +42,7 @@ public class Program extends AbstractProgram {
         // Liste de déclaration de classes
         this.getClasses().verifyListClass(compiler);
         // Passe 2
-        //this.getClasses().verifyListClassMembers(compiler);
+        this.getClasses().verifyListClassMembers(compiler);
         //this.getClasses().verifyListClassBody(compiler);
         // Passe 3
         // Main

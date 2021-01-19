@@ -1,0 +1,11 @@
+// Description :
+//    return mauvais type : bool, demandé int
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: ?? 
+
+class A{
+int met(){
+return true;
+}
+}

@@ -1,0 +1,15 @@
+// Description :
+//    les read, normalement à ce stade pas besoin d'interaction
+//
+// Resultats :
+//		Ok
+
+class a {
+
+int met(){
+}
+}
+
+{
+ int a = a.met();
+}

@@ -50,8 +50,6 @@ public class DeclVar extends AbstractDeclVar {
     	Type varType = this.type.verifyType(compiler);
     	// On récupère le symbole du nom de la variable et on crée une ExpDefinition
     	Symbol nameSymb = this.varName.getName();
-    	TypeDefinition typeDef = compiler.getEnvType().get(varType.getName());
-    	type.setDefinition(typeDef);
     	VariableDefinition varDef = new VariableDefinition(varType, this.getLocation());
     	try {
     		localEnv.declare(nameSymb, varDef, getLocation());

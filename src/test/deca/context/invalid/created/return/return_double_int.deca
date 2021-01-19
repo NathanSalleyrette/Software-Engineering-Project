@@ -1,0 +1,12 @@
+// Description :
+//    test double return avec int
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 12: 
+
+class a{
+int met(){
+int a = 1;
+return a;return a;}
+}
