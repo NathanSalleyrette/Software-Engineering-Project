@@ -1,0 +1,10 @@
+// Description :
+//    declaration d'une méthode avec un paramètre de type void
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 13 : (3.17) Le type de l'identificateur ne peut être 'void'
+
+class A{
+void met(void a){}
+}
