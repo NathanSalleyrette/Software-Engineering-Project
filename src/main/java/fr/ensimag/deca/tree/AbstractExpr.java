@@ -173,4 +173,14 @@ public abstract class AbstractExpr extends AbstractInst {
             s.println();
         }
     }
+    
+    /**
+     * Regarde si l'identifiant est dans la première profondeur,
+     * pour me permettre de regarder à l'intérieur d'un méthode uniquement...
+     * Réécrit dans Identifier et dans Selection (et peut-être dans this)
+     * Vaut false par défaut
+     */
+    public boolean isShallow(EnvironmentExp localEnv) {
+    	return false;
+    }
 }

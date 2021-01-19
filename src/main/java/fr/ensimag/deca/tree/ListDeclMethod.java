@@ -41,7 +41,7 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod>{
     		AbstractDeclMethod declMethod = iter.next();
     		// TODO: nécessiterait un traitement d'erreur, quoique qu'elle n'échoie jamais
     		ClassDefinition currentClass = (ClassDefinition) compiler.getEnvType().get(className.getName());
-    		EnvironmentExp localEnv = currentClass.getMembers();
+    		EnvironmentExp localEnv = new EnvironmentExp(currentClass.getMembers());
     		declMethod.verifyDeclMethod(compiler, localEnv, currentClass);
     	}
     }

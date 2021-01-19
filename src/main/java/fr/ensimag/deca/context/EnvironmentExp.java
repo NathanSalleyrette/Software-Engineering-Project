@@ -61,6 +61,14 @@ public class EnvironmentExp {
         return result;
     }
 
+    /** Retourne la définition du symbole dans l'environnement direct,
+     * ou null sinon
+     * @param key
+     * @return
+     */
+    public ExpDefinition getShallow(Symbol key) {
+    	return map.get(key);
+    }
     /**
      * Add the definition def associated to the symbol name in the environment.
      * 

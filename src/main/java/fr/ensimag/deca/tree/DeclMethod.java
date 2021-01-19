@@ -78,7 +78,6 @@ public class DeclMethod extends AbstractDeclMethod  {
     			}
     		} sig = superMethod.getSignature();
     	}
-    	this.body.verifyMethodBody(compiler, localEnv, currentClass, methodType);
     	// On initialise la signature si ce n'est pas déjà fait
     	if (sig.size() == 0) {
     		for(AbstractDeclParam param : params.getList()) {
@@ -102,6 +101,7 @@ public class DeclMethod extends AbstractDeclMethod  {
     		throw new ContextualError("(2.6) La méthode " + this.getName().getName().toString() +
     				" est déjà définie", this.getLocation());
     	}
+    	this.body.verifyMethodBody(compiler, localEnv, currentClass, methodType);
     }
 
     

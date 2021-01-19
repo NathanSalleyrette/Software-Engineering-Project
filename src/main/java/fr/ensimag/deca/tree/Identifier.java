@@ -262,4 +262,11 @@ public class Identifier extends AbstractIdentifier {
         }
     }
 
+    @Override
+    public boolean isShallow(EnvironmentExp localEnv) {
+    	if (localEnv.getShallow(name) !=null) {
+    		return true;
+    	}
+    	return false;
+    }
 }
