@@ -79,6 +79,9 @@ public class MethodCall extends AbstractExpr{
 				objDef.getMembers().get(this.meth.getName()).asMethodDefinition(
 					"(3.71) Le champ n'est pas une méthode", this.getLocation());
 		Signature sig = methodDef.getSignature();
+		if (this.params.getList().size() != sig.size()) throw new ContextualError(
+				"(3.74) Le nombre de paramètres de correspond pas à celui de la méthode",
+				this.getLocation());
 		for (int i = 0; i < sig.size(); i++) {
 			AbstractExpr param = this.params.getList().get(i);
 			param.verifyExpr(compiler, localEnv, currentClass);
