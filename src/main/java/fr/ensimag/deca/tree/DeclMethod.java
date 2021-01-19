@@ -59,7 +59,7 @@ public class DeclMethod extends AbstractDeclMethod  {
     	MethodDefinition superMethod;
     	if (potentialSuperDef != null) {
     		superMethod = potentialSuperDef.asMethodDefinition(
-    				potentialSuperDef.toString() + " n'est pas une super méthode", getLocation());
+    				potentialSuperDef.toString() + " définit un champ", getLocation());
     		if (methodType != superMethod.getType()) {
     			throw new ContextualError("(2.7) La méthode retourne le type " + methodType.toString() +
     					" mais devrait retourner le type de sa super méthode " + 
