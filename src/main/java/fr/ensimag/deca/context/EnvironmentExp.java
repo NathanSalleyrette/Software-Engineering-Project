@@ -1,5 +1,6 @@
 package fr.ensimag.deca.context;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import fr.ensimag.deca.tree.Location;
@@ -84,4 +85,7 @@ public class EnvironmentExp {
         else map.put(name, def);
     }
 
+    public Collection<ExpDefinition> getValues() {
+        return map.values();
+    }
 }

@@ -9,6 +9,7 @@ import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.Signature;
+import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 
@@ -84,12 +85,16 @@ public class DeclMethod extends AbstractDeclMethod  {
     			sig.add(param.getType());
     		}
     	}
-    	// On met à jour la définition de la méthode
-    	int index = currentClass.getNumberOfMethods();
+		// On met à jour la définition de la méthode et Mise à jour du nombre de méthodes
+		int index = 0;
+		if (potentialSuperDef == null) {
+			index = currentClass.incNumberOfMethods();
+		} else { // Redéfinition
+			index = potentialSuperDef.asMethodDefinition(null, null).getIndex();
+		}
     	MethodDefinition methodDef = new MethodDefinition(methodType, this.getLocation(),
-    			sig, index);
-    	// Mise à jour du nombre de méthodes
-    	currentClass.setNumberOfMethods(index + 1);
+				sig, index);
+		methodDef.setLabel(new Label("code." + currentClass.getType().toString() + "." + methodName.getName().toString()));
     	this.getName().setDefinition(methodDef);
     	try {
     		localEnv.declare(this.getName().getName(), methodDef, getLocation());

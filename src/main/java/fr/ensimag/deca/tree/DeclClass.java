@@ -122,6 +122,7 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
+		this.getClassName().getClassDefinition().setNumberOfMethods(this.superClass.getClassDefinition().getNumberOfMethods());
         this.getListDeclMethod().verifyListDeclMethod(compiler, this.getClassName());;
     }
 
