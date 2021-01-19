@@ -7,12 +7,9 @@
 
 
 
-class A{
- protected int x;
-}
-
-class B extends A{
-	void met(A a){
+class B{
+	protected int x;
+	void met(B a){
 		a.x;
 	}
 }

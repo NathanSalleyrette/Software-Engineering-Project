@@ -1,0 +1,28 @@
+// Description :
+//   	appel d'une methode sur un int
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 1 : ?? <méthode> définit un champ
+
+class A {
+int met;
+}
+
+class B extends A {
+int met(){}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
