@@ -1,0 +1,10 @@
+// Description :
+//    return mauvais type : void, demandé bool
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9: ?? 
+
+class A{
+boolean met(){
+}
+}

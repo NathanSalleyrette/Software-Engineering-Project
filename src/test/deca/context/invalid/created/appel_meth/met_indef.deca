@@ -1,0 +1,11 @@
+// Description :
+//   	appel d'une methode indefinie dans la classe
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne  :
+class A {
+}
+{
+A a = new A();
+a.met();
+}

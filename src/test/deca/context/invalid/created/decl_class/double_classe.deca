@@ -1,0 +1,10 @@
+// Description :
+//    super classe non déclarée
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 :(1.3) Identificateur <superclasse> non déclaré
+
+class A{
+}
+class A{
+}

@@ -1,0 +1,10 @@
+// Description :
+//    return mauvais type : void, demandé float
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9: ?? 
+
+class A{
+float met(){
+}
+}

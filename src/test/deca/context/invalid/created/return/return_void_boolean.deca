@@ -1,0 +1,11 @@
+// Description :
+//    return mauvais type : boolean, demandé void
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9: ?? 
+
+class A{
+void met(){
+return true;
+}
+}

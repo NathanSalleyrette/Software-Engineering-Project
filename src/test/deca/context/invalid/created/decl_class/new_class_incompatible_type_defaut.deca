@@ -1,0 +1,12 @@
+// Description :
+//    creation d'un objet incompatible avec le type int
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11 :(3.28) Les types int et A sont incompatibles pour l’affectation
+
+class A{
+}
+
+{
+int a = new A();
+}

@@ -1,0 +1,9 @@
+// Description :
+//    field de type void
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 :(2.5) Un attribut ne peut être de type ‘void’
+
+class A{
+void a;
+}

@@ -1,0 +1,16 @@
+// Description :
+//    return mauvais type : B, demandé A
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 14: ?? 
+
+class A{}
+
+class B{}
+
+class c{
+A met(){
+	B b = new B();
+	return b; 
+}
+}

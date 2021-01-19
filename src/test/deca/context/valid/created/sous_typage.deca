@@ -1,0 +1,11 @@
+// Description :
+//    affectation d'une sous_classe
+// Resultats :
+//		Ok
+
+class B{}
+class A extends B{
+}
+{
+B b = new A();
+}

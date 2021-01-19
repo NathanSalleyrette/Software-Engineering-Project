@@ -1,0 +1,10 @@
+// Description :
+//    acces à un field sur une variable boolean (qui n'est pas une classe)
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 :(3.65) Le membre gauche n’est pas de type ‘classe’
+
+{
+boolean b = 3;
+b.x;
+}

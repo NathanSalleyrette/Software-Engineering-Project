@@ -1,0 +1,10 @@
+// Description :
+//   	appel d'une methode sur un int
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 :(3.42) <type> n’est pas un type de classe
+
+{
+int a;
+a();
+}
