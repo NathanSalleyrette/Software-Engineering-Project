@@ -93,7 +93,7 @@ public class DeclMethod extends AbstractDeclMethod  {
 		}
     	MethodDefinition methodDef = new MethodDefinition(methodType, this.getLocation(),
 				sig, index);
-		methodDef.setLabel(new Label(methodName.getName().toString()));
+		methodDef.setLabel(new Label("code." + currentClass.getType().toString() + "." + methodName.getName().toString()));
     	this.getName().setDefinition(methodDef);
     	try {
     		localEnv.declare(this.getName().getName(), methodDef, getLocation());
