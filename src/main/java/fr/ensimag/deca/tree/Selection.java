@@ -48,7 +48,9 @@ public class Selection extends AbstractLValue{
 	@Override
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
 			throws ContextualError {
-		ClassType objType = this.getObj().verifyExpr(compiler, localEnv, currentClass).asClassType(
+		Type leftType = this.getObj().verifyExpr(compiler, localEnv, currentClass);
+		if (leftType == null) throw new ContextualError("(3.65) Le membre gauche n'a pas de type", this.getLocation());
+		ClassType objType = leftType.asClassType(
 				"(3.65) Le membre gauche n'est pas de type 'class'", this.getLocation());
 		ClassDefinition objDef = (ClassDefinition) compiler.getEnvType().get(objType.getName());
 		if (objDef.getMembers().get(this.getField().getName()) == null) {
