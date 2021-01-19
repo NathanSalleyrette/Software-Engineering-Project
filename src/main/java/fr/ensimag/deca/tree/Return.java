@@ -37,6 +37,8 @@ public class Return extends AbstractInst {
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
+    	if (returnType.isVoid()) throw new ContextualError("(3.24) On ne peut retourner un type 'void'",
+    			this.getLocation());
     	Type instType = this.getValeurRetour().verifyExpr(compiler, localEnv, currentClass);
     	// On vérifie la compatibilité du type de retour
     	if (instType != returnType) {

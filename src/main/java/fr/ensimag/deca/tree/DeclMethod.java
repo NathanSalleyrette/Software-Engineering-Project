@@ -59,10 +59,11 @@ public class DeclMethod extends AbstractDeclMethod  {
     	if (potentialSuperDef != null) {
     		superMethod = potentialSuperDef.asMethodDefinition(
     				potentialSuperDef.toString() + " définit un champ", getLocation());
-    		if (methodType != superMethod.getType()) {
+    		if ((methodType != superMethod.getType()) && 
+    				(!methodType.isSubTypeOf(superMethod.getType(), getLocation()))) {
     			throw new ContextualError("(2.7) La méthode retourne le type " + methodType.toString() +
     					" mais devrait retourner le type de sa super méthode " + 
-    					superMethod.getType().toString(), this.getLocation());
+    					superMethod.getType().toString() +" ou un sous-type", this.getLocation());
     		}
     		if (this.params.size() != superMethod.getSignature().size()) {
     			throw new ContextualError("(2.7) La signature diffère de la méthode redéfinie",
