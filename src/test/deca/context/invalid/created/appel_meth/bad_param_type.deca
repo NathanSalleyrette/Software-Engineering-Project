@@ -1,0 +1,13 @@
+// Description :
+//   	appel d'une methode param mauvais type
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 12 : (3.74) La signature ne correspond pas aux paramètres
+
+class A {
+void met(int param1, boolean param2){}
+}
+{
+A a = new A();
+a.met(1, 0.5);
+}

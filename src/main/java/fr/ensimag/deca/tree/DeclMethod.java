@@ -60,6 +60,11 @@ public class DeclMethod extends AbstractDeclMethod  {
     	if (potentialSuperDef != null) {
     		superMethod = potentialSuperDef.asMethodDefinition(
     				potentialSuperDef.toString() + " n'est pas une super méthode", getLocation());
+    		if (methodType != superMethod.getType()) {
+    			throw new ContextualError("(2.7) La méthode retourne le type " + methodType.toString() +
+    					" mais devrait retourner le type de sa super méthode " + 
+    					superMethod.getType().toString(), this.getLocation());
+    		}
     		if (this.params.size() != superMethod.getSignature().size()) {
     			throw new ContextualError("(2.7) La signature diffère de la méthode redéfinie",
     					this.getLocation());
@@ -93,7 +98,7 @@ public class DeclMethod extends AbstractDeclMethod  {
     	try {
     		localEnv.declare(this.getName().getName(), methodDef, getLocation());
     	} catch(DoubleDefException e) {
-    		throw new ContextualError("(2.7) La méthode " + this.getName().getName().toString() +
+    		throw new ContextualError("(2.6) La méthode " + this.getName().getName().toString() +
     				" est déjà définie", this.getLocation());
     	}
     }

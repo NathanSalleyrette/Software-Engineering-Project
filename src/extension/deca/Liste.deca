@@ -1,0 +1,11 @@
+class Liste {
+	float contenu;
+	Liste suivant;
+	float valeur_k;
+
+	Liste(double x, Liste a, double k) {
+		contenu = x;
+		suivant = a;
+		valeur_k = k;
+	}
+}

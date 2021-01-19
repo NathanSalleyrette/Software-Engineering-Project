@@ -11,5 +11,5 @@ void meth(){}
 
 {
 A a = new A();
-a.meth
+a.meth;
 }
