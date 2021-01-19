@@ -56,7 +56,7 @@ public class DeclField extends AbstractDeclField{
     	try {
     		currentClass.getMembers().declare(this.fieldName.getName(), fieldDef, this.getLocation());
     	} catch (DoubleDefException e) {
-    		throw new ContextualError("(2.5) L'identificateur " + this.getName().getName().toString() +
+    		throw new ContextualError("(2.4) L'identificateur " + this.getName().getName().toString() +
     				" est déjà défini", this.getLocation());
     	}
     	// On incrémente le nombre de champs de la classe
