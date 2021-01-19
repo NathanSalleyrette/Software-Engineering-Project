@@ -48,7 +48,9 @@ public class Selection extends AbstractLValue{
 	@Override
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
 			throws ContextualError {
-		ClassType objType = this.getObj().verifyExpr(compiler, localEnv, currentClass).asClassType(
+		Type leftType = this.getObj().verifyExpr(compiler, localEnv, currentClass);
+		if (leftType == null) throw new ContextualError("(3.65) Le membre gauche n'a pas de type", this.getLocation());
+		ClassType objType = leftType.asClassType(
 				"(3.65) Le membre gauche n'est pas de type 'class'", this.getLocation());
 		ClassDefinition objDef = (ClassDefinition) compiler.getEnvType().get(objType.getName());
 		if (objDef.getMembers().get(this.getField().getName()) == null) {
@@ -58,7 +60,7 @@ public class Selection extends AbstractLValue{
 		}
 		FieldDefinition fieldDef = 
 				objDef.getMembers().get(this.getField().getName()).asFieldDefinition(
-					"le champ n'est pas un attribut de classe", this.getLocation());
+					"(3.65) le champ n'est pas un attribut de classe", this.getLocation());
 		/* Si l'attribut est protégé, il faut qu'on soit dans la classe qui le contient
 		 * ou une de ses filles
 		 */
