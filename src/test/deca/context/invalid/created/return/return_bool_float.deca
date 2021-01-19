@@ -2,7 +2,7 @@
 //    return mauvais type : float, demandé bool
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 10: ?? 
+//    	Ligne 9: ?? 
 
 class A{
 boolean met(){

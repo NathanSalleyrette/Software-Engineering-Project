@@ -1,0 +1,11 @@
+// Description :
+//    return mauvais type : float, demandé int
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9: ?? 
+
+class A{
+boolean met(){
+return 1;
+}
+}

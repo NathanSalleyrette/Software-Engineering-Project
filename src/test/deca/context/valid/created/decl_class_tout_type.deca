@@ -1,0 +1,35 @@
+// Description :
+//		une classe simple avec des methodes qui renvoient de tout
+//
+// Resultats :
+//		Ok
+
+class B{
+}
+
+class A{
+
+int met(){
+return 1;
+}
+
+float met2(){
+return 0.5;
+}
+
+boolean met3(){
+return true;
+}
+
+void met4(){
+}
+
+A met5(){
+return new A();
+}
+
+B met6(){
+return new B();
+}
+
+}

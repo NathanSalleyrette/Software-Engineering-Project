@@ -2,7 +2,7 @@
 //    return mauvais type : bool, demandé int
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 10: ?? 
+//    	Ligne 9: ?? 
 
 class A{
 int met(){

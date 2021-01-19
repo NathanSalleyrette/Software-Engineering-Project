@@ -48,7 +48,7 @@ public class DeclField extends AbstractDeclField{
     	//On récupère le type en décorant
     	Type fieldType = this.type.verifyType(compiler);
     	// On interdit qu'il soit void
-    	if (fieldType.isVoid()) throw new ContextualError("(2.7) Un attribut ne peut être de type 'void'",
+    	if (fieldType.isVoid()) throw new ContextualError("(2.5) Un attribut ne peut être de type 'void'",
     			this.getLocation());
     	// On ajoute à l'environnement local
     	FieldDefinition fieldDef = new FieldDefinition(fieldType, this.getLocation(), this.v, currentClass,
@@ -56,7 +56,7 @@ public class DeclField extends AbstractDeclField{
     	try {
     		currentClass.getMembers().declare(this.fieldName.getName(), fieldDef, this.getLocation());
     	} catch (DoubleDefException e) {
-    		throw new ContextualError("(2.7) L'identificateur " + this.getName().getName().toString() +
+    		throw new ContextualError("(2.5) L'identificateur " + this.getName().getName().toString() +
     				" est déjà défini", this.getLocation());
     	}
     	// On incrémente le nombre de champs de la classe

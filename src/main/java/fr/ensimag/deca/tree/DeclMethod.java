@@ -1,16 +1,15 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.DecacCompiler;
-import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
-import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
-import fr.ensimag.deca.context.TypeDefinition;
-import fr.ensimag.deca.context.VariableDefinition;
+import fr.ensimag.deca.context.Definition;
+import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
+import fr.ensimag.deca.context.MethodDefinition;
+import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.Signature;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.deca.tools.SymbolTable.Symbol;
-
 import java.io.PrintStream;
 
 import org.apache.commons.lang.Validate;
@@ -25,46 +24,72 @@ public class DeclMethod extends AbstractDeclMethod  {
     
     @Override
     public AbstractIdentifier getName() {
-        return varName;
+        return methodName;
     }
 
     final private AbstractIdentifier type;
-    final private AbstractIdentifier varName;
+    final private AbstractIdentifier methodName;
     final private ListDeclParam params;
     final private MethodBody body;
 
 
-    public DeclMethod(AbstractIdentifier type, AbstractIdentifier varName, ListDeclParam params, MethodBody body) {
+    public DeclMethod(AbstractIdentifier type, AbstractIdentifier methodName, ListDeclParam params, MethodBody body) {
         Validate.notNull(type);
-        Validate.notNull(varName);
+        Validate.notNull(methodName);
         Validate.notNull(params);
         Validate.notNull(body);
         this.type = type;
-        this.varName = varName;
+        this.methodName = methodName;
         this.params = params;
         this.body = body;
     }
 
     @Override
-    protected void verifyDeclMethod(DecacCompiler compiler,
-            EnvironmentExp localEnv, ClassDefinition currentClass)
+    protected void verifyDeclMethod(DecacCompiler compiler, 
+    		EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-    	// On fait la vérification du type et on récupère le type au passage
-    	Type varType = this.type.verifyType(compiler);
-    	// On récupère le symbole du nom de la variable et on crée une ExpDefinition
-    	Symbol nameSymb = this.varName.getName();
-    	TypeDefinition typeDef = compiler.getEnvType().get(varType.getName());
-    	type.setDefinition(typeDef);
-    	VariableDefinition varDef = new VariableDefinition(varType, this.getLocation());
-    	try {
-    		localEnv.declare(nameSymb, varDef, getLocation());
-    		varName.setDefinition(varDef);
-    	} catch (DoubleDefException e) {
-    		throw new ContextualError("(3.17) La variable " + this.varName.toString() + " est déjà déclarée", this.getLocation());
+    	// Type de la méthode
+    	Type methodType = this.type.verifyType(compiler);
+    	// Déclaration de sa signature
+    	Signature sig = new Signature();
+    	this.params.verifyListDeclParam(compiler, localEnv, currentClass);
+    	// Verification de la signature en cas de redéfinition
+    	Definition potentialSuperDef = localEnv.get(methodName.getName());
+    	MethodDefinition superMethod;
+    	if (potentialSuperDef != null) {
+    		superMethod = potentialSuperDef.asMethodDefinition(
+    				potentialSuperDef.toString() + " n'est pas une super méthode", getLocation());
+    		if (this.params.size() != superMethod.getSignature().size()) {
+    			throw new ContextualError("(2.7) La signature diffère de la méthode redéfinie",
+    					this.getLocation());
+    		} else {
+    			for (int i = 0; i < this.params.size(); i++) {
+    				if (superMethod.getSignature().paramNumber(i) != params.getList().get(i).getType()) {
+    					throw new ContextualError("(2.7) La signature diffère de la méthode redéfinie",
+    	    					this.getLocation());
+    				}
+    			}
+    		} sig = superMethod.getSignature();
     	}
-    	// On vérifie l'initialisation ensuite
-    	if (varType.isVoid()) {
-    		throw new ContextualError("(3.17) Le type de l'identificateur ne peut être 'void''", this.getLocation());
+    	this.body.verifyMethodBody(compiler, localEnv, currentClass, methodType);
+    	// On initialise la signature si ce n'est pas déjà fait
+    	if (sig.size() == 0) {
+    		for(AbstractDeclParam param : params.getList()) {
+    			sig.add(param.getType());
+    		}
+    	}
+    	// On met à jour la définition de la méthode
+    	int index = currentClass.getNumberOfMethods();
+    	MethodDefinition methodDef = new MethodDefinition(methodType, this.getLocation(),
+    			sig, index);
+    	// Mise à jour du nombre de méthodes
+    	currentClass.setNumberOfMethods(index + 1);
+    	this.getName().setDefinition(methodDef);
+    	try {
+    		localEnv.declare(this.getName().getName(), methodDef, getLocation());
+    	} catch(DoubleDefException e) {
+    		throw new ContextualError("(2.7) La méthode " + this.getName().getName().toString() +
+    				" est déjà définie", this.getLocation());
     	}
     }
 
@@ -73,7 +98,7 @@ public class DeclMethod extends AbstractDeclMethod  {
     public void decompile(IndentPrintStream s) {
     	this.type.decompile(s);
     	s.print(" ");
-    	this.varName.decompile(s);
+    	this.methodName.decompile(s);
     	s.print("(");
     	this.params.decompile(s);
     	s.print(")");
@@ -89,15 +114,15 @@ public class DeclMethod extends AbstractDeclMethod  {
     protected
     void iterChildren(TreeFunction f) {
         type.iter(f);
-        varName.iter(f);
+        methodName.iter(f);
     }
     
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         type.prettyPrint(s, prefix, false);
-        varName.prettyPrint(s, prefix, false);
+        methodName.prettyPrint(s, prefix, false);
         params.prettyPrint(s, prefix, false);
-        body.prettyPrint(s, prefix, false);
+        body.prettyPrint(s, prefix, true);
     }
 
 }

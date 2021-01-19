@@ -51,13 +51,15 @@ public class DeclParam extends AbstractDeclParam{
     	} catch (DoubleDefException e) {
     		throw new ContextualError("(3.17) La variable " + this.paramName.toString() + " est déjà déclarée", this.getLocation());
     	}
-    	// On vérifie l'initialisation ensuite
     	if (varType.isVoid()) {
     		throw new ContextualError("(3.17) Le type de l'identificateur ne peut être 'void''", this.getLocation());
     	}
     }
-
     
+    public Type getType() {
+    	return this.type.getType();
+    }
+
     @Override
     public void decompile(IndentPrintStream s) {
     	this.type.decompile(s);

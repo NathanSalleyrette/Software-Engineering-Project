@@ -4,12 +4,13 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
-
+import fr.ensimag.deca.context.Type;
 
 public abstract class AbstractMethodBody extends Tree {
 	
 
-	abstract protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
+	abstract protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv,
+			ClassDefinition currentClass, Type returnType)
 			throws ContextualError;
 
 }

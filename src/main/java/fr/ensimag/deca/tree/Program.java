@@ -43,7 +43,7 @@ public class Program extends AbstractProgram {
         this.getClasses().verifyListClass(compiler);
         // Passe 2
         this.getClasses().verifyListClassMembers(compiler);
-        //this.getClasses().verifyListClassBody(compiler);
+        this.getClasses().verifyListClassBody(compiler);
         // Passe 3
         // Main
         this.getMain().verifyMain(compiler);

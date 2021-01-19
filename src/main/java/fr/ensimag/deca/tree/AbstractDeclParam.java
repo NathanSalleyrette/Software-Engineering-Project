@@ -4,6 +4,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.Type;
 
 public abstract class AbstractDeclParam extends Tree{
 	
@@ -25,5 +26,5 @@ public abstract class AbstractDeclParam extends Tree{
     
     public abstract AbstractIdentifier getParamName();
 
-
+    public abstract Type getType();
 }

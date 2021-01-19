@@ -11,6 +11,7 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.VoidType;
+import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
@@ -29,16 +30,9 @@ public class MethodBody extends AbstractMethodBody{
 
     @Override
     protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv,
-            ClassDefinition currentClass) throws ContextualError {
-        // A FAIRE: Appeler méthodes "verify*" de ListDeclVarSet et ListInst.
-        // Vous avez le droit de changer le profil fourni pour ces méthodes
-        // (mais ce n'est à priori pas nécessaire).
-        // Passe 3
-        // Les déclarations de variabes d'abord
-        this.declVariables.verifyListDeclVariable(compiler, localEnv, currentClass);
-        // La liste d'instructions ensuite
-        VoidType voidType = new VoidType(compiler.getSymbTb().create("void"));
-        this.insts.verifyListInst(compiler, localEnv, currentClass, voidType);
+            ClassDefinition currentClass, Type returnType) throws ContextualError {
+    	this.declVariables.verifyListDeclVariable(compiler, localEnv, currentClass);
+    	this.insts.verifyListInst(compiler, localEnv, currentClass, returnType);
     }
 
     
