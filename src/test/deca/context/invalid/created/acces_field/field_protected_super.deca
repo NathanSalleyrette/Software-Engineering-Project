@@ -1,0 +1,19 @@
+// Description :
+//    acces à un field protegé, le meme field public existe dans une super class
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 17 :(3.65) L’attribut est protégé
+
+class A{
+ int x;
+}
+
+class B extends A{
+protected int x;
+}
+
+{
+B a = new B();
+int b = a.x;
+}

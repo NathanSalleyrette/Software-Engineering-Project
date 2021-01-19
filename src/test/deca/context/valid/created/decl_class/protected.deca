@@ -1,0 +1,29 @@
+// Description :
+//		test des acces
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	int x;
+}
+
+class B extends A{
+	protected int x;
+}
+
+class C {
+	protected int x;
+	int met(){
+		return x;
+	}
+}
+
+{
+A a = new B();
+C c = new C();
+a.x;
+c.met();
+
+}

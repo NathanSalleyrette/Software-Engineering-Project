@@ -1,0 +1,26 @@
+// Description :
+//		on peut faire des allouement dynamique
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	int x;
+}
+
+class B extends A{
+	int y;
+}
+
+{
+A a = new A();
+A b = new B();
+B c = new B();
+a.x;
+b.x;
+//b.y;
+c.x;
+c.y;
+
+}

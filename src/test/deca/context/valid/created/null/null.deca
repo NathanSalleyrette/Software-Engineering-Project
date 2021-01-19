@@ -1,0 +1,12 @@
+// Description :
+//		test utilisation null
+//
+// Resultats :
+//		Ok
+
+class B{
+}
+
+{
+B b = null;
+}
