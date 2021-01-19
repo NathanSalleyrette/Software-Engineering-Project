@@ -27,6 +27,8 @@ public class New extends AbstractExpr {
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp envExp,
 			ClassDefinition currentCLass) throws ContextualError{
 		this.setType(getNewClass().verifyType(compiler));
+		if (!this.getType().isClass()) throw new ContextualError("(3.42) " + 
+				this.getType().toString() + " n'est pas un type de classe", this.getLocation());
 		return this.getType();
 	}
 	

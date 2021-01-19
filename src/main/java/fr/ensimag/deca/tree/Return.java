@@ -37,7 +37,12 @@ public class Return extends AbstractInst {
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
-    	this.getValeurRetour().verifyCondition(compiler, localEnv, currentClass);
+    	Type instType = this.getValeurRetour().verifyExpr(compiler, localEnv, currentClass);
+    	// On vérifie la compatibilité du type de retour
+    	if (instType != returnType) {
+    		throw new ContextualError("(2.7) Type de retour effectif : " + instType.toString()+
+    				", déclaré : " + returnType.toString(), this.getLocation());
+    	}
     }
 
     @Override
@@ -54,7 +59,7 @@ public class Return extends AbstractInst {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        valeurRetour.prettyPrint(s, prefix, false);
+        valeurRetour.prettyPrint(s, prefix, true);
     }
 
 }
