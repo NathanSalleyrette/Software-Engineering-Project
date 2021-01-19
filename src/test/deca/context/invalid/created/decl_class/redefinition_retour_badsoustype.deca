@@ -1,0 +1,13 @@
+// Description :
+//    redéfinition type retour pas sous_type
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 12
+
+class A{
+int meth(){ return 1;}
+}
+
+class B extends A{
+boolean meth(){return true;}
+}

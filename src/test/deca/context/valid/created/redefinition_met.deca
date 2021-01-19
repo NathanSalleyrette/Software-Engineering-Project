@@ -1,0 +1,22 @@
+// Description :
+//    redéfinition d'un champ et d'une methode
+// Resultats :
+//		Ok
+
+class A_prime {}
+class B_prime extends A_prime{}
+
+class A {
+A_prime met(){return new A_prime();}
+}
+
+class A extends A{
+B_prime met(){return new B_prime();}
+}
+{
+A a = new A();
+B b = new B();
+
+A_prime j = a.met();
+A_prime f = b.met();
+}

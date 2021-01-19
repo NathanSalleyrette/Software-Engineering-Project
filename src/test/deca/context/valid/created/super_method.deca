@@ -1,0 +1,17 @@
+// Description :
+//    utilisation d'une methode défini dans une super classe
+// Resultats :
+//		Ok
+
+class C{
+int met(){}
+}
+
+class B extends C{
+}
+class A extends B{
+}
+{
+A a = new A();
+a.met();
+}
