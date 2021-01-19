@@ -60,7 +60,7 @@ public class Selection extends AbstractLValue{
 		}
 		FieldDefinition fieldDef = 
 				objDef.getMembers().get(this.getField().getName()).asFieldDefinition(
-					"le champ n'est pas un attribut de classe", this.getLocation());
+					"(3.65) le champ n'est pas un attribut de classe", this.getLocation());
 		/* Si l'attribut est protégé, il faut qu'on soit dans la classe qui le contient
 		 * ou une de ses filles
 		 */
