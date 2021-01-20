@@ -1,5 +1,8 @@
 // Description :
-//		Programme pour tester un affection d'une variable indefinie
+//		Programme pour tester une affectation d'une variable indefinie
+//
+// Resultats :
+//		Ok
 
 {
 int a;

@@ -1,0 +1,14 @@
+// Description :
+//    test  assign entre une classe A et une classe B
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.28) Les types A et B sont incompatibles pour l’affectation
+
+class A {}
+class B extends A{}
+{
+A a = new A();
+B b;
+b = a;
+}

@@ -1,0 +1,13 @@
+// Description :
+//		Programme pour tester un affectation d'une variable indefinie
+//
+// Resultats :
+//		Ok
+
+class A{
+int a;
+boolean b;
+float c;
+
+void met(int a, boolean b, float c){}
+}

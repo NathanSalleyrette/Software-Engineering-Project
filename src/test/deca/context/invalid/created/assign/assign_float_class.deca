@@ -1,0 +1,13 @@
+// Description :
+//    test  assign entre un int et une classe
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.28) Les types A et float sont incompatibles pour l’affectation
+
+class A{}
+{
+float a = 0.5;
+A b;
+b = a;
+}

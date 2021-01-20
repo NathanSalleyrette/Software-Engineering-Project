@@ -1,0 +1,13 @@
+// Description :
+//    test  assign entre une classe et un float
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.28) Les types A et float sont incompatibles pour l’affectation
+
+class A {}
+{
+A a = new A();;
+float b;
+b = a;
+}

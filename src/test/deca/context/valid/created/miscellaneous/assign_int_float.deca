@@ -1,0 +1,12 @@
+// Description :
+//    test  assign entre un int et un float
+//
+// Resultats :
+//		Ok
+
+
+{
+int a = 1;
+float b;
+b = a;
+}

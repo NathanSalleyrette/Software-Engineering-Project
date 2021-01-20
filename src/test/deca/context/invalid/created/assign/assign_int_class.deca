@@ -1,0 +1,13 @@
+// Description :
+//    test  assign entre un int et une classe
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.28) Les types A et int sont incompatibles pour l’affectation
+
+class A{}
+{
+int a = 1;
+A b;
+b = a;
+}

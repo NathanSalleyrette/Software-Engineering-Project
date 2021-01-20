@@ -1,0 +1,11 @@
+// Description :
+//    test  assign entre un boolean et un boolean
+//
+// Resultats :
+//		Ok
+
+{
+boolean a = true;
+boolean b;
+b = a;
+}
