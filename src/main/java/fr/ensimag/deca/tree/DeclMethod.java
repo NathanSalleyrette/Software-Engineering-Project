@@ -54,36 +54,13 @@ public class DeclMethod extends AbstractDeclMethod  {
     	// Déclaration de sa signature
     	Signature sig = new Signature();
     	this.params.verifyListDeclParam(compiler, localEnv, currentClass);
-    	// Verification de la signature en cas de redéfinition
-    	Definition potentialSuperDef = localEnv.get(methodName.getName());
-    	MethodDefinition superMethod;
-    	if (potentialSuperDef != null) {
-    		superMethod = potentialSuperDef.asMethodDefinition(
-    				potentialSuperDef.toString() + " définit un champ", getLocation());
-    		if ((methodType != superMethod.getType()) && 
-    				(!methodType.isSubTypeOf(superMethod.getType(), getLocation()))) {
-    			throw new ContextualError("(2.7) La méthode retourne le type " + methodType.toString() +
-    					" mais devrait retourner le type de sa super méthode " + 
-    					superMethod.getType().toString() +" ou un sous-type", this.getLocation());
-    		}
-    		if (this.params.size() != superMethod.getSignature().size()) {
-    			throw new ContextualError("(2.7) La signature diffère de la méthode redéfinie",
-    					this.getLocation());
-    		} else {
-    			for (int i = 0; i < this.params.size(); i++) {
-    				if (superMethod.getSignature().paramNumber(i) != params.getList().get(i).getType()) {
-    					throw new ContextualError("(2.7) La signature diffère de la méthode redéfinie",
-    	    					this.getLocation());
-    				}
-    			}
-    		} sig = superMethod.getSignature();
-    	}
     	// On initialise la signature si ce n'est pas déjà fait
     	if (sig.size() == 0) {
     		for(AbstractDeclParam param : params.getList()) {
     			sig.add(param.getType());
     		}
     	}
+    	Definition potentialSuperDef = localEnv.get(methodName.getName());
 		// On met à jour la définition de la méthode et le nombre de méthodes
 		int index = 0;
 		if (potentialSuperDef == null) {
@@ -102,6 +79,30 @@ public class DeclMethod extends AbstractDeclMethod  {
     				" est déjà définie", this.getLocation());
     	}
     	this.body.verifyMethodBody(compiler, localEnv, currentClass, methodType);
+    	
+    	// Verification de la signature en cas de redéfinition
+    	MethodDefinition superMethod;
+    	if (potentialSuperDef != null) {
+    		superMethod = potentialSuperDef.asMethodDefinition(
+    				methodName.getName().toString() + " définit déjà un champ", getLocation());
+    		if ((methodType != superMethod.getType()) && 
+    				(!methodType.isSubTypeOf(superMethod.getType(), getLocation()))) {
+    			throw new ContextualError("(2.7) La méthode retourne le type " + methodType.toString() +
+    					" mais devrait retourner le type de sa super méthode " + 
+    					superMethod.getType().toString() +" ou un sous-type", this.getLocation());
+    		}
+    		if (this.params.size() != superMethod.getSignature().size()) {
+    			throw new ContextualError("(2.7) La signature diffère de la méthode redéfinie",
+    					this.getLocation());
+    		} else {
+    			for (int i = 0; i < this.params.size(); i++) {
+    				if (superMethod.getSignature().paramNumber(i) != params.getList().get(i).getType()) {
+    					throw new ContextualError("(2.7) La signature diffère de la méthode redéfinie",
+    	    					this.getLocation());
+    				}
+    			}
+    		}
+    	}
     }
 
     

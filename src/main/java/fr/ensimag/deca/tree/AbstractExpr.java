@@ -72,6 +72,13 @@ public abstract class AbstractExpr extends AbstractInst {
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError;
 
+    public boolean assignCompatible(Type typeLeft, Type typeRight) throws ContextualError{
+    	if ((typeLeft.sameType(typeRight)) ||
+    			(typeLeft.isSubTypeOf(typeRight, getLocation()))) {
+    		return true;
+    	}
+    	return false;
+    }
     /**
      * Verify the expression in right hand-side of (implicit) assignments 
      * 
@@ -88,9 +95,7 @@ public abstract class AbstractExpr extends AbstractInst {
             Type expectedType)
             throws ContextualError {
         Type type2 = verifyExpr(compiler, localEnv, currentClass);
-        if (expectedType.sameType(type2)) {
-        	return this;
-        } else if (type2.isSubTypeOf(expectedType, this.getLocation())){
+        if (assignCompatible(expectedType, type2)){
         	if ((expectedType.isFloat()) && (type2.isInt())) {
         		ConvFloat conv = new ConvFloat(this);
         		conv.verifyExpr(compiler, localEnv, currentClass);
