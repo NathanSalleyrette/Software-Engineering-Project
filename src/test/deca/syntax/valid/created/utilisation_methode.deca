@@ -1,15 +1,24 @@
 // Description :
-//    les read, normalement à ce stade pas besoin d'interaction
+//    untilisation d'une methode
 //
 // Resultats :
 //		Ok
 
+class B {
+int met(){
+this.a = null;
+a = this + this;}
+}
 class a {
 
-int met(){
+int met(B b){
+	met();
+	b.met();
+	this.met();
 }
 }
 
 {
- int a = a.met();
+a A = new a();
+ int b = A.met();
 }

@@ -1,0 +1,12 @@
+// Description :
+//    test and entre un float et un A
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 12: (3.33) Type gauche float. Type droit A Type attendu: ‘boolean’
+class A{}
+{
+float a;
+A b;
+boolean c = a && b;
+}
