@@ -73,8 +73,17 @@ public abstract class AbstractExpr extends AbstractInst {
             throws ContextualError;
 
     public boolean assignCompatible(Type typeLeft, Type typeRight) throws ContextualError{
-    	if ((typeLeft.sameType(typeRight)) ||
-    			(typeRight.isSubTypeOf(typeLeft, getLocation()))) {
+    	if (typeRight.isSubTypeOf(typeLeft, getLocation())) {
+    		return true;
+    	}
+    	if ((typeLeft.isClass()) && (typeRight.isClass())) {
+    		if (typeLeft == typeRight) {
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	}
+    	if (typeLeft.sameType(typeRight)) {
     		return true;
     	}
     	return false;

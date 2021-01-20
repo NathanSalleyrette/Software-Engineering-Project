@@ -101,6 +101,11 @@ public class DeclClass extends AbstractDeclClass {
     		throw new ContextualError("(1.3) Identificateur " + superClass.getName().toString()
     				+ " non déclaré", this.getLocation());
     	}
+    	// On vérifie que la super classe est bien de type class
+    	if (!compiler.getEnvType().get(this.getSuperClass().getName()).getType().isClass()) {
+    		throw new ContextualError("(1.3) " + this.getSuperClass().getName().toString() +
+    				" n'est pas un identificateur de classe", this.getLocation());
+    	}
     	// L'identificateur superClass n'a pas de définition, on la met à jour ici, ainsi que celle de la classe:
     	this.getSuperClass().setDefinition(compiler.getEnvType().get(this.getSuperClass().getName()));
     	ClassDefinition superClassDef = this.getSuperClass().getClassDefinition();

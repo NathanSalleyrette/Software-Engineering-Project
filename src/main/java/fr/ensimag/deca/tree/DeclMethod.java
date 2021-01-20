@@ -3,7 +3,7 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Type;
-import fr.ensimag.deca.context.Definition;
+import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.context.MethodDefinition;
@@ -60,13 +60,14 @@ public class DeclMethod extends AbstractDeclMethod  {
     			sig.add(param.getType());
     		}
     	}
-    	Definition potentialSuperDef = localEnv.get(methodName.getName());
+    	ExpDefinition potentialSuperDef = localEnv.get(methodName.getName());
 		// On met à jour la définition de la méthode et le nombre de méthodes
 		int index = 0;
 		if (potentialSuperDef == null) {
 			index = currentClass.incNumberOfMethods();
 		} else { // Redéfinition
-			index = potentialSuperDef.asMethodDefinition(null, null).getIndex();
+			index = potentialSuperDef.asMethodDefinition("(2.6) " +
+				methodName.getName().toString() + " définit déjà un champ", this.getLocation()).getIndex();
 		}
     	MethodDefinition methodDef = new MethodDefinition(methodType, this.getLocation(),
 				sig, index);
@@ -83,7 +84,7 @@ public class DeclMethod extends AbstractDeclMethod  {
     	// Verification de la signature en cas de redéfinition
     	MethodDefinition superMethod;
     	if (potentialSuperDef != null) {
-    		superMethod = potentialSuperDef.asMethodDefinition(
+    		superMethod = potentialSuperDef.asMethodDefinition("(2.6) " +
     				methodName.getName().toString() + " définit déjà un champ", getLocation());
     		if ((methodType != superMethod.getType()) && 
     				(!methodType.isSubTypeOf(superMethod.getType(), getLocation()))) {
