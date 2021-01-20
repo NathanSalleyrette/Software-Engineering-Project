@@ -10,14 +10,30 @@ import java.io.PrintStream;
 
 public class Cast extends AbstractExpr {
 	
-	AbstractIdentifier type;
-	AbstractExpr expr;
+	private AbstractIdentifier type;
+	private AbstractExpr expr;
 	
 	public Cast(AbstractIdentifier type, AbstractExpr expr) {
 		this.type = type;
 		this.expr = expr;
 	}
 	
+	public AbstractIdentifier getTypeIdentifier() {
+		return this.type;
+	}
+	
+	public void setType(AbstractIdentifier type) {
+		this.type = type;
+	}
+
+	public AbstractExpr getExpr() {
+		return expr;
+	}
+
+	public void setExpr(AbstractExpr expr) {
+		this.expr = expr;
+	}
+
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
 			ClassDefinition currentClass) throws ContextualError {
 		this.type.verifyType(compiler);
@@ -34,8 +50,9 @@ public class Cast extends AbstractExpr {
 	public void decompile(IndentPrintStream s) {
 		s.print("(");
 		this.type.decompile();
-		s.print(") ");
+		s.print(")(");
 		this.expr.decompile();
+		s.print(")");
 	}
 	
 	public void iterChildren(TreeFunction f) {
