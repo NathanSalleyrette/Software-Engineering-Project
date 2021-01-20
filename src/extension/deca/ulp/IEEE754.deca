@@ -1,0 +1,7 @@
+#include "BooleanLinkedList.deca"
+class IEEE754{
+    int taillePartieFractionnaire=23;
+    boolean sign;
+    int exponent;
+    BooleanLinkedList fractionPart;
+}
