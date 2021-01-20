@@ -4,7 +4,7 @@
 // Resultats :
 //		Ok
 
-class b {}
+class B {}
 class A extends B {}
 
 {
