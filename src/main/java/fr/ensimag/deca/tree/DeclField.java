@@ -36,6 +36,10 @@ public class DeclField extends AbstractDeclField{
 
     }
     
+    public AbstractInitialization getInitialization() {
+        return initialization;
+    }
+
     public void setFieldName(AbstractIdentifier fieldName) {
     	this.fieldName = fieldName;
     }
@@ -58,7 +62,7 @@ public class DeclField extends AbstractDeclField{
     			this.getLocation());
     	// On ajoute à l'environnement local
     	FieldDefinition fieldDef = new FieldDefinition(fieldType, this.getLocation(), this.v, currentClass,
-    			currentClass.getNumberOfFields());
+    			currentClass.getNumberOfFields() + 1);
     	try {
     		currentClass.getMembers().declare(this.fieldName.getName(), fieldDef, this.getLocation());
     	} catch (DoubleDefException e) {

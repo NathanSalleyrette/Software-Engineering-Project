@@ -13,6 +13,15 @@ import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.DVal;
+
 public class Selection extends AbstractLValue{
 	
 	private AbstractExpr obj;
@@ -98,5 +107,26 @@ public class Selection extends AbstractLValue{
 	@Override
 	public boolean isShallow(EnvironmentExp localEnv) {
 		return this.obj.isShallow(localEnv);
+	}
+
+	@Override
+    protected void codeGenInst(DecacCompiler compiler) {
+		compiler.addInstruction(new LOAD(this.dval(compiler), Register.getR(compiler.getCurrentRegister())));
+    }
+
+    @Override
+    public DVal dval(DecacCompiler compiler) {
+		obj.codeGenInst(compiler);
+		// L'adresse dans le tas de obj est stocké dans le registre courrant
+		compiler.addInstruction(new CMP(new NullOperand(), Register.getR(compiler.getCurrentRegister())));
+		Label label = new Label("dereferencement.null");
+        compiler.addInstruction(new BEQ(label));
+		compiler.addError(label);
+        return new RegisterOffset(field.getFieldDefinition().getIndex(), Register.getR(compiler.getCurrentRegister()));
+	}
+	
+	@Override
+	public boolean isSelection() {
+		return true;
 	}
 }
