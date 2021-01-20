@@ -1,0 +1,9 @@
+// Description :
+//    new sur autre chose qu'un ident
+//
+// Resultats :
+//		Syntaxe error
+
+{
+new null();
+}
