@@ -4,6 +4,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.Type;
 
 /**
  * Class declaration.
@@ -30,5 +31,9 @@ public abstract class AbstractDeclMethod extends Tree{
             throws ContextualError;
     
     public abstract AbstractIdentifier getName();
-
+    
+    public abstract Type getType();
+    
+    public abstract void verifyBody(DecacCompiler compiler, EnvironmentExp localEnv,
+    		ClassDefinition currentClass, Type methodType) throws ContextualError;
 }

@@ -79,7 +79,6 @@ public class DeclMethod extends AbstractDeclMethod  {
     		throw new ContextualError("(2.6) La méthode " + this.getName().getName().toString() +
     				" est déjà définie", this.getLocation());
     	}
-    	this.body.verifyMethodBody(compiler, localEnv, currentClass, methodType);
     	
     	// Verification de la signature en cas de redéfinition
     	MethodDefinition superMethod;
@@ -106,7 +105,10 @@ public class DeclMethod extends AbstractDeclMethod  {
     	}
     }
 
-    
+    public void verifyBody(DecacCompiler compiler, EnvironmentExp localEnv,
+    		ClassDefinition currentClass, Type methodType) throws ContextualError {
+    	this.body.verifyMethodBody(compiler, localEnv, currentClass, methodType);
+    }
     @Override
     public void decompile(IndentPrintStream s) {
     	this.type.decompile(s);
@@ -123,6 +125,10 @@ public class DeclMethod extends AbstractDeclMethod  {
 
     }
 
+    public Type getType() {
+    	return this.type.getType();
+    }
+    
     @Override
     protected
     void iterChildren(TreeFunction f) {
