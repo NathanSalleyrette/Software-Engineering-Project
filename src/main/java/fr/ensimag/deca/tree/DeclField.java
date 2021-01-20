@@ -10,6 +10,7 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
+import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
 public class DeclField extends AbstractDeclField{
@@ -43,9 +44,14 @@ public class DeclField extends AbstractDeclField{
     protected void verifyDeclField(DecacCompiler compiler,
             ClassDefinition currentClass)
             throws ContextualError {
-    	// On change le symbole avec celui de la table de symboles du compilateur
-    	//this.setFieldName(new Identifier(compiler.getSymbTb().create(fieldName.getName().toString())));
-    	//On récupère le type en décorant
+    	// On regarde si une méthode déjà définie ne porte pas le même nom
+    	ExpDefinition homonyme = currentClass.getMembers().get(fieldName.getName());
+    	if ((homonyme != null)) {
+    		FieldDefinition homofield = homonyme.asFieldDefinition("(2.3) " +
+    				fieldName.getName().toString() +
+    				" désigne une classe déjà définie", getLocation());
+    	}
+    	// On récupère le type en décorant
     	Type fieldType = this.type.verifyType(compiler);
     	// On interdit qu'il soit void
     	if (fieldType.isVoid()) throw new ContextualError("(2.5) Un attribut ne peut être de type 'void'",
