@@ -53,7 +53,9 @@ public class Program extends AbstractProgram {
     @Override
     public void codeGenProgram(DecacCompiler compiler) {
         compiler.addComment("Construction des tables des méthodes");
+        // Passe 1
         ClassCodeGen.buildTable(compiler, classes);
+        // Passe 2
         compiler.addComment("Main program");
         main.codeGenMain(compiler);
         compiler.addInstruction(new HALT());

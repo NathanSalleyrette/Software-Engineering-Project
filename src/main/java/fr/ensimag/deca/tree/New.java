@@ -8,6 +8,19 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 
+import fr.ensimag.ima.pseudocode.instructions.NEW;
+import fr.ensimag.ima.pseudocode.instructions.LEA;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
+import fr.ensimag.ima.pseudocode.instructions.PUSH;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.BSR;
+import fr.ensimag.ima.pseudocode.instructions.POP;
+import fr.ensimag.deca.codegen.Error;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.LabelOperand;
+
 public class New extends AbstractExpr {
 	
 	private AbstractIdentifier newClass;
@@ -44,5 +57,22 @@ public class New extends AbstractExpr {
 		s.print(" new ");
 		newClass.decompile(s);
 		s.print("();");
+	}
+
+	@Override
+	protected void codeGenInst(DecacCompiler compiler) {
+		compiler.addComment("new ligne " + this.getLocation().getLine());
+		GPRegister reg = Register.getR(compiler.getCurrentRegister());
+		compiler.addInstruction(new NEW(1 + newClass.getClassDefinition().getNumberOfFields(), reg));
+		Error.instanceError(compiler, "tas_plein");
+		// Adresse de la table des méthodes
+		compiler.addInstruction(new LEA(newClass.getClassDefinition().getAddress(), Register.R0));
+		compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(0, reg)));
+		// Sauvegarde du registre
+		compiler.addInstruction(new PUSH(reg));
+		// Initialisation des champs
+		compiler.addInstruction(new BSR(new LabelOperand(new Label("init." + newClass.getName()))));
+		// Restauration du registre
+		compiler.addInstruction(new POP(reg));
 	}
 }

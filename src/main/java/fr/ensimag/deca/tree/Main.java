@@ -54,7 +54,7 @@ public class Main extends AbstractMain {
         // Traitement des déclarations de variables.
         setnbGlobVar(declVariables.size());
         Iterator<AbstractDeclVar> iter = declVariables.iterator();
-        int indexGB = 1; // TODO : a modifié pour objet
+        int indexGB = 1 + compiler.getMethTableSize();
         while (iter.hasNext()) {
             AbstractDeclVar declVar = iter.next();
             declVar.getName().getVariableDefinition().setOperand(new RegisterOffset(indexGB, Register.GB)); // Attribution de la mémoire dans la pile
