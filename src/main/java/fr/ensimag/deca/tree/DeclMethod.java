@@ -84,7 +84,7 @@ public class DeclMethod extends AbstractDeclMethod  {
     			sig.add(param.getType());
     		}
     	}
-		// On met à jour la définition de la méthode et Mise à jour du nombre de méthodes
+		// On met à jour la définition de la méthode et le nombre de méthodes
 		int index = 0;
 		if (potentialSuperDef == null) {
 			index = currentClass.incNumberOfMethods();
@@ -96,7 +96,7 @@ public class DeclMethod extends AbstractDeclMethod  {
 		methodDef.setLabel(new Label("code." + currentClass.getType().toString() + "." + methodName.getName().toString()));
     	this.getName().setDefinition(methodDef);
     	try {
-    		localEnv.declare(this.getName().getName(), methodDef, getLocation());
+    		currentClass.getMembers().declare(this.getName().getName(), methodDef, getLocation());
     	} catch(DoubleDefException e) {
     		throw new ContextualError("(2.6) La méthode " + this.getName().getName().toString() +
     				" est déjà définie", this.getLocation());
