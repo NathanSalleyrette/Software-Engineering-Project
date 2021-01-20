@@ -81,7 +81,7 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
 				EvalExpr.mnemo(compiler, this, Register.getR(compiler.getCurrentRegister()), Register.getR(compiler.getCurrentRegister()-1));
 				compiler.decrCurrentRegister();
 			} else {
-                // Plus de assez registre libre
+                // Plus assez de registres libres
                 compiler.incrNbTemp();
                 compiler.addInstruction(new PUSH(Register.getR(compiler.getCurrentRegister()))); // sauvegarde
                 this.getRightOperand().codeGenInst(compiler);
