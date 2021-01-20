@@ -1,0 +1,21 @@
+// Description :
+//    test du cast
+//
+// Resultats :
+//		Ok
+
+
+class A{}
+class B extends A{}
+{
+int a;
+B type_dyn_B = new B();
+A type_dyn_A = new A();
+A type_stat_A = type_dyn_B;
+B caster_en_B;
+A caster_en_A;
+caster_en_B = (B)(type_stat_A);
+caster_en_A = (A)(type_stat_A);
+caster_en_A = (A)(type_dyn_B);
+int a = (int)(0.5);
+}

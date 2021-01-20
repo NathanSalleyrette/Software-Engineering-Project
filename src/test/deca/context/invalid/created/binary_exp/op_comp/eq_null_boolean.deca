@@ -1,0 +1,12 @@
+// Description :
+//    test eq entre un null et un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.33) Opérandes de type null, boolean, attendu: (int|float, int|float) ou (class|null, class|null) ou (bool, bool)
+
+{
+
+boolean b;
+boolean c = null == b;
+}

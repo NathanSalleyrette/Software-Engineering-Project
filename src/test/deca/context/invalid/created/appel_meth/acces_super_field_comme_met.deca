@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 1 : ?? <méthode> définit un champ
+//    	Ligne 1 : (2.6) met définit déjà un champ
 
 class A {
 int met;

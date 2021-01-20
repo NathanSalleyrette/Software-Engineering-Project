@@ -1,0 +1,12 @@
+// Description :
+//    test cast entre un float et boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.39) Cast impossible de <type1> vers <type2>
+	
+
+class A {}
+{
+(float)(true);
+}

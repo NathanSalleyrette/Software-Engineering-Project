@@ -1,0 +1,12 @@
+// Description :
+//    test cast entre un void et float
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.39) Cast impossible de <type1> vers <type2>
+	
+
+class A {}
+{
+(void)(0.5);
+}

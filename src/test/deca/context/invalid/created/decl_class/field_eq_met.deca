@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9 : (2.4) L’identificateur met est déjà défini
+//    	Ligne 9 : (2.6) meth définit un champ
 
 
 class A{
