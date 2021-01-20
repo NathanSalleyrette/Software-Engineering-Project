@@ -1,0 +1,12 @@
+// Description :
+//		Programme pour tester le cast entre int et float
+//
+// Resultats :
+//		Ok
+
+{
+int a;
+float b = 2.5;
+a = (int)(b);
+b = (float)(a);
+}

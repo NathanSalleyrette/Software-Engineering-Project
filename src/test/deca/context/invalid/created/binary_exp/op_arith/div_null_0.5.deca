@@ -1,0 +1,11 @@
+// Description :
+//    test div entre un null et un 0.5
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.33) L’opérande gauche est de type null, L’opérande droite est de type 0.5. Or les types des opérandes doivent être ‘int’ ou ‘float’ pour l’opérateur /
+class A{}
+{
+A a = new A();
+int c = null / 0.5;
+}

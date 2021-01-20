@@ -5,8 +5,14 @@
 //		Ok
 
 class B{
+B b = null;
+B met(B b){
+return null;
+}
 }
 
 {
 B b = null;
+B vrai_b = B();
+b = vrai_b.met(null);
 }
