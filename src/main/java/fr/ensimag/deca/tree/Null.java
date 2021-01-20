@@ -3,10 +3,13 @@ package fr.ensimag.deca.tree;
 import java.io.PrintStream;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.TypeDefinition;
+import fr.ensimag.deca.context.NullType;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
 public class Null extends AbstractExpr{
@@ -14,8 +17,19 @@ public class Null extends AbstractExpr{
 	@Override
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
 			throws ContextualError {
-		// TODO Auto-generated method stub
-		return null;
+		/* Comme pour les string, ce n'est pas un type prédéfini.
+		 * On regarde donc s'il existe déjà à chaque fois qu'on
+		 * crée une instance null, et on le crée si ce n'es pas
+		 * le cas.
+		 */
+		Symbol nullSymb = compiler.getSymbTb().create("null");
+		Type nullType = new NullType(nullSymb);
+		TypeDefinition nullDef = compiler.getEnvType().get(nullSymb);
+		if (nullDef == null) {
+			compiler.getEnvType().put(nullSymb, new TypeDefinition(nullType, this.getLocation()));
+		}
+		this.setType(nullType);
+		return nullType;
 	}
 
 	@Override
