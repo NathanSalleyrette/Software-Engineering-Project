@@ -80,7 +80,7 @@ test_invalide() {
 			numero_erreur="$(extrait_numero_erreur_fichier $1)"
 			if [ "$numero_erreur" == "PAS_NUMERO" ]; then
 				$violet
-				echo "Il n'y a pas de numéro d'erreur dans le fichier .deca on considère le message d'erreur comme valide, mais veuillez vérifier"
+				echo "Pour le test $1, Il n'y a pas de numéro d'erreur dans le fichier .deca on considère le message d'erreur comme valide, mais veuillez vérifier"
 				$reset
 			else
 				# https://stackoverflow.com/questions/39615142/bash-get-last-line-from-a-variable
