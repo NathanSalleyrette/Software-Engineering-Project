@@ -2,8 +2,7 @@
 //    test cast entre un A et null
 //
 // Resultats :
-//		Erreur contextuelle
-//    	Ligne 10: (3.39) Cast impossible de <type1> vers <type2>
+//		Ok
 	
 
 class A {}

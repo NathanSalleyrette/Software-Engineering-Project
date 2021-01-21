@@ -3,12 +3,8 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 13 : ??
+//    	Ligne 9 : ??
 
-class A {
-int met;
-}
 {
-A a = null;
-a.met;
+null.met;
 }

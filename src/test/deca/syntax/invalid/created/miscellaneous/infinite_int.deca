@@ -1,0 +1,10 @@
+// Description :
+//    test d'un int infinite
+//
+// Resultats :
+//		Erreur lexicographique
+//    	Ligne 8:  ?
+
+{
+int a = 1e+99;
+}
