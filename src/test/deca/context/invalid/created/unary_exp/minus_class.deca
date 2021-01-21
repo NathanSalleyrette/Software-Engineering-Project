@@ -1,0 +1,11 @@
+// Description :
+//    test minus unaire avec un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.37) Type opérande : A , attendu : int pour l’opérateur -
+
+class A{}
+{
+int a = -new A();
+}
