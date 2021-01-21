@@ -1,5 +1,0 @@
-class BooleanLinkedList{
-    boolean valeur;
-    BooleanLinkedList suivant;
-}
-
