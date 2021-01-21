@@ -6,11 +6,7 @@
 
 {
 boolean a = true;
-int i = 2;
-i + i - i / i % i * i;
--i;
-!a;
+
 a && a || a;
 a == a != a;
-
 }
