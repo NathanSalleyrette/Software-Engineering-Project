@@ -6,6 +6,11 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.FLOAT;
+import fr.ensimag.ima.pseudocode.instructions.INT;
+
 import java.io.PrintStream;
 
 public class Cast extends AbstractExpr {
@@ -54,6 +59,32 @@ public class Cast extends AbstractExpr {
 		s.print(")(");
 		this.expr.decompile(s);
 		s.print(")");
+	}
+	@Override
+	protected void codeGenInst(DecacCompiler compiler) {
+
+		compiler.addComment("Debut Cast  " + this.expr.getType() + " vers " + this.getType());
+		if(this.type.getType().sameType(this.expr.getType())) {//On cast vers le même type, on ne fait rien
+			this.expr.codeGenInst(compiler);
+		}
+		
+		else {
+			GPRegister r= Register.getR(2);
+			if(this.type.getType().isInt() && this.expr.getType().isFloat()) {
+				this.expr.codeGenInst(compiler);
+				
+				compiler.addInstruction(new INT(r, r));
+			}else 
+			if(this.type.getType().isFloat() && this.expr.getType().isInt()) {
+				this.expr.codeGenInst(compiler);
+				compiler.addInstruction(new FLOAT(r, r));
+			}
+			else 
+			{
+				throw new UnsupportedOperationException("Cast impossible");
+			}
+		}
+		compiler.addComment("Fin cast");;
 	}
 	
 	public void iterChildren(TreeFunction f) {
