@@ -1,6 +1,6 @@
-	TSTO #6
+	TSTO #7
 	BOV pile_pleine
-	ADDSP #6
+	ADDSP #7
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -28,6 +28,18 @@
 	BEQ dereferencement.null
 	LOAD 1(R2), R2
 	STORE R2, 6(GB)
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 2(R2), R0
+	CMP #0, R0
+	BEQ Assign_False.0
+	LOAD #1, R2
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+Assign_Fin.0:
+	STORE R2, 7(GB)
 ; Beginning of main instructions:
 	HALT
 ; Classe Object
@@ -46,12 +58,12 @@ init.A:
 	LOAD #0, R0
 	STORE R0, 2(R1)
 	LOAD -2(LB), R1
-	BRA Assign_False.0
+	BRA Assign_False.1
 	LOAD #1, R2
-	BRA Assign_Fin.0
-Assign_False.0:
+	BRA Assign_Fin.1
+Assign_False.1:
 	LOAD #0, R2
-Assign_Fin.0:
+Assign_Fin.1:
 	STORE R2, 2(R1)
 	POP R2
 	RTS

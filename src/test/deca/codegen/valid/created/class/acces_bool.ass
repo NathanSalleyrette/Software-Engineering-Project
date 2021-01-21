@@ -38,6 +38,13 @@
 	BEQ dereferencement.null
 	LOAD 2(R2), R2
 	CMP #1, R2
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 2(R2), R0
+	CMP #0, R0
+	BEQ E_Fin.0
+E_Fin.0:
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)
@@ -55,12 +62,12 @@ init.A:
 	LOAD #0, R0
 	STORE R0, 2(R1)
 	LOAD -2(LB), R1
-	BRA Assign_False.0
+	BRA Assign_False.1
 	LOAD #1, R2
-	BRA Assign_Fin.0
-Assign_False.0:
+	BRA Assign_Fin.1
+Assign_False.1:
 	LOAD #0, R2
-Assign_Fin.0:
+Assign_Fin.1:
 	STORE R2, 2(R1)
 	POP R2
 	RTS

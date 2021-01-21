@@ -24,9 +24,9 @@ println(a.x, " ", a.y, " ", a.c);
 if (a.x == 0 && a.y == 0.0 && a.c == 0.0 && !a.b && a.z == 0){println("ok");}
 else {println("bouuuh");}
 println(b.x, " ", b.y, " ", b.c);
-if (b.x == 0 && b.y == 0 && b.c == 0.0 && b.b == false){println("ok");}
+if (b.x == 0 && b.y == 0 && b.c == 0.0 && !b.b){println("ok");}
 else {println("bouuuh");}
 println(c.x, " ", c.y, " ", c.c);
-if (c.x == 0 && c.y == 0 && c.c == 0.0 && c.b == false){println("ok");}
+if (c.x == 0 && c.y == 0 && c.c == 0.0 && !c.b){println("ok");}
 else {println("bouuuh");}
 }
