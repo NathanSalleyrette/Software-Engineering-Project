@@ -132,6 +132,7 @@ public class MethodCall extends AbstractExpr{
 			compiler.addInstruction(new CMP(new NullOperand(), reg));
 			Label dereference = new Label("dereferencement.null");
 			compiler.addInstruction(new BEQ(dereference));
+			compiler.addError(dereference);
 		}
 		// On récupère l'adresse de la table des méthodes
 		compiler.addInstruction(new LOAD(new RegisterOffset(0, reg), reg));
