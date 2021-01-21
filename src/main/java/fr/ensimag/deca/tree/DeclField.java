@@ -51,9 +51,9 @@ public class DeclField extends AbstractDeclField{
     	// On regarde si une méthode déjà définie ne porte pas le même nom
     	ExpDefinition homonyme = currentClass.getMembers().get(fieldName.getName());
     	if ((homonyme != null)) {
-    		FieldDefinition homofield = homonyme.asFieldDefinition("(2.3) " +
+    		FieldDefinition homofield = homonyme.asFieldDefinition("(2.4) " +
     				fieldName.getName().toString() +
-    				" désigne une métthode déjà définie", getLocation());
+    				" désigne une méthode déjà définie", getLocation());
     	}
     	// On récupère le type en décorant
     	Type fieldType = this.type.verifyType(compiler);
