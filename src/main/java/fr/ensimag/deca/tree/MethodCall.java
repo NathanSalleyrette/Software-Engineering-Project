@@ -104,6 +104,7 @@ public class MethodCall extends AbstractExpr{
 				throw new ContextualError(
 					"(3.74) La signature ne correspond pas aux paramètres", this.getLocation());
 		}
+		this.meth.setDefinition(methodDef);
 		this.setType(methodDef.getType());
 		return this.getType();
 	}
