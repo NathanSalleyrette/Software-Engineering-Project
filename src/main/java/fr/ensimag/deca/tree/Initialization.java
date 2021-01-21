@@ -35,7 +35,7 @@ public class Initialization extends AbstractInitialization {
     protected void verifyInitialization(DecacCompiler compiler, Type t,
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-    	if (t.isClass()) {
+    	if (t.isClassOrNull()) {
     		Type newClass = getExpression().verifyExpr(compiler, localEnv, currentClass);
     		if ((!newClass.isSubTypeOf(t, getLocation())) && (t.getName() != newClass.getName()))
     			throw new ContextualError(
