@@ -21,7 +21,7 @@ A a = new A();
 B b = new B();
 B c = a;
 println(a.x, " ", a.y, " ", a.c);
-if (a.x == 0 && a.y == 0.0 && a.c == 0.0 && a.b == false && a.z == 0){println("ok");}
+if (a.x == 0 && a.y == 0.0 && a.c == 0.0 && !a.b && a.z == 0){println("ok");}
 else {println("bouuuh");}
 println(b.x, " ", b.y, " ", b.c);
 if (b.x == 0 && b.y == 0 && b.c == 0.0 && b.b == false){println("ok");}

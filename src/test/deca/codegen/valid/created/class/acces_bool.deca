@@ -13,6 +13,8 @@ boolean b2 = false;
 {
 A a = new A();
 int c = a.a;
-boolean b = a.b2;
+a.b2;
+a.b2 == true;
+if (a.b2){};
 
 }
