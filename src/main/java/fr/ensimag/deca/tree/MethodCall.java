@@ -137,5 +137,6 @@ public class MethodCall extends AbstractExpr{
 		compiler.addInstruction(new LOAD(new RegisterOffset(0, reg), reg));
 		compiler.addInstruction(new BSR(new RegisterOffset(meth.getMethodDefinition().getIndex(), reg)));
 		compiler.addInstruction(new SUBSP(stackShift));
+		compiler.addInstruction(new LOAD(Register.R0, reg));
 	}
 }
