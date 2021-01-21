@@ -38,8 +38,9 @@ public class Cast extends AbstractExpr {
 			ClassDefinition currentClass) throws ContextualError {
 		this.type.verifyType(compiler);
 		Type typeExpr = this.expr.verifyExpr(compiler, localEnv, currentClass);
-		if ((this.assignCompatible(typeExpr, type.getType())) ||
-				this.assignCompatible(type.getType(), typeExpr)) {
+		if (((this.assignCompatible(typeExpr, type.getType())) ||
+				this.assignCompatible(type.getType(), typeExpr)) &&
+				(!type.getType().isVoid())) {
 			this.setType(type.getType());
 			return this.getType();
 		}
