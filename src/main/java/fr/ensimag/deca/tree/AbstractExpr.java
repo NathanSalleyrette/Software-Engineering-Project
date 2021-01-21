@@ -170,6 +170,18 @@ public abstract class AbstractExpr extends AbstractInst {
         return Register.getR(compiler.getCurrentRegister());
     };
 
+    /**
+     * Generate code to put the result of the expression in the current register
+     * @param compiler
+     */
+    public void codeGenExpr(DecacCompiler compiler) {
+        this.codeGenInst(compiler);
+    }
+
+    public void boolCodeExpr(DecacCompiler compiler, boolean branch, Label tag) {
+        this.boolCodeGen(compiler, branch, tag);
+    }
+
 
     @Override
     protected void decompileInst(IndentPrintStream s) {
@@ -196,5 +208,12 @@ public abstract class AbstractExpr extends AbstractInst {
      */
     public boolean isShallow(EnvironmentExp localEnv) {
     	return false;
+    }
+
+    /**
+     * @return true if this is a Literal or an Identifier
+     */
+    public boolean isAtomic() {
+        return false;
     }
 }

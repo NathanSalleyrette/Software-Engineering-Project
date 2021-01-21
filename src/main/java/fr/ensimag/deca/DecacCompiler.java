@@ -97,6 +97,12 @@ public class DecacCompiler implements Runnable{
         nbTemp--;
     }
 
+    public void reinitCounts() {
+        nbTemp = 0;
+        maxTemp = 0;
+        maxRegister = getCurrentRegister();
+    }
+
     //
     public int getNbLabel() {
         return nbLabel;
@@ -117,6 +123,16 @@ public class DecacCompiler implements Runnable{
 
     public void incrCurrentRegister() {
         currentRegister++;
+        if (currentRegister > maxRegister) maxRegister++;
+    }
+
+    /**
+     * Maximum index of used registers
+     * Used to save registers in methods
+     */
+    private int maxRegister = getCurrentRegister();
+    public int getMaxRegister() {
+        return maxRegister;
     }
 
     //
@@ -171,7 +187,8 @@ public class DecacCompiler implements Runnable{
      * @see fr.ensimag.ima.pseudocode.IMAProgram#addComment(java.lang.String)
      */
     public void addComment(String comment) {
-        program.addComment(comment);
+        if (!inMethod) program.addComment(comment);
+        else programBis.addComment(comment);
     }
 
     /**
@@ -179,7 +196,8 @@ public class DecacCompiler implements Runnable{
      * fr.ensimag.ima.pseudocode.IMAProgram#addLabel(fr.ensimag.ima.pseudocode.Label)
      */
     public void addLabel(Label label) {
-        program.addLabel(label);
+        if (!inMethod) program.addLabel(label);
+        else programBis.addLabel(label);
     }
 
     /**
@@ -187,7 +205,8 @@ public class DecacCompiler implements Runnable{
      * fr.ensimag.ima.pseudocode.IMAProgram#addInstruction(fr.ensimag.ima.pseudocode.Instruction)
      */
     public void addInstruction(Instruction instruction) {
-        program.addInstruction(instruction);
+        if (!inMethod) program.addInstruction(instruction);
+        else programBis.addInstruction(instruction);
     }
 
     /**
@@ -196,7 +215,8 @@ public class DecacCompiler implements Runnable{
      * java.lang.String)
      */
     public void addInstruction(Instruction instruction, String comment) {
-        program.addInstruction(instruction, comment);
+        if (!inMethod) program.addInstruction(instruction, comment);
+        else programBis.addInstruction(instruction, comment);
     }
 
     /**
@@ -213,7 +233,12 @@ public class DecacCompiler implements Runnable{
      * fr.ensimag.ima.pseudocode.IMAProgram#addFirst(fr.ensimag.ima.pseudocode.Line)
      */
     public void addFirst(Line l) {
-        program.addFirst(l);
+        if (!inMethod) program.addFirst(l);
+        else programBis.addFirst(l);
+    }
+
+    public void append(IMAProgram p) {
+        program.append(p);
     }
     
     /**
@@ -231,6 +256,22 @@ public class DecacCompiler implements Runnable{
      */
     private final IMAProgram program = new IMAProgram();
  
+    /**
+     * A program for the instructions of methods
+     */
+    private IMAProgram programBis = new IMAProgram();
+
+    public void doneProgramBis() {
+        program.append(programBis);
+        inMethod = false;
+        programBis = new IMAProgram();
+    }
+
+    private boolean inMethod = false;
+
+    public void setInMethod(boolean bool) {
+        inMethod = bool;
+    }
 
     public void run() {this.compile();}
     /**

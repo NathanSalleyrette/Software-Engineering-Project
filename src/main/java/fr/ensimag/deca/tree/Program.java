@@ -59,7 +59,6 @@ public class Program extends AbstractProgram {
         compiler.addComment("Main program");
         main.codeGenMain(compiler);
         compiler.addInstruction(new HALT());
-        ClassCodeGen.buildMethodsAndFields(compiler, classes);
         // Entête : TSTO + ADDSP
         int stackSize = main.getnbGlobVar() + compiler.getMethTableSize();
         compiler.addFirst(new Line(new ADDSP(stackSize)));
@@ -69,6 +68,8 @@ public class Program extends AbstractProgram {
             compiler.addFirst(new Line(new BOV(pilePleine)));
             compiler.addFirst(new Line(new TSTO(stackSize + compiler.getMaxTemp())));
         }
+        compiler.reinitCounts();
+        ClassCodeGen.buildMethodsAndFields(compiler, classes);
         // Messages d'erreurs
         compiler.addComment("Erreurs");
         compiler.writeErrors();

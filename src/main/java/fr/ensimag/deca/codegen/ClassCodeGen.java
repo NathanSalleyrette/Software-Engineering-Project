@@ -26,11 +26,13 @@ import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.DVal;
+import fr.ensimag.ima.pseudocode.IMAProgram;
 import fr.ensimag.ima.pseudocode.ImmediateInteger;
 import fr.ensimag.ima.pseudocode.ImmediateFloat;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.LabelOperand;
 import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.Line;
 import fr.ensimag.ima.pseudocode.instructions.*;
 
 public class ClassCodeGen {
@@ -134,8 +136,10 @@ public class ClassCodeGen {
 
         // Initialisation des champs
         if (classDef.getNumberOfFields() > 0) {
+            compiler.reinitCounts();
             compiler.addComment("---------- Initialisation des champs de " + className);
             compiler.addLabel(new Label("init." + className));
+            compiler.setInMethod(true);
             Iterator<AbstractDeclField> iterFields = class1.getListDeclField().iterator();
             DAddr thisAddress = new RegisterOffset(-2, Register.LB);
             // Initialisation des nouveaux champs à zéro
@@ -157,33 +161,71 @@ public class ClassCodeGen {
                     throw new UnsupportedOperationException("AbstractDeclField should be a DeclField");
                 }
             }
+            int nbTSTO = 0;
             // Initialisation des champs hérités
             if (classDef.getSuperClass().getNumberOfFields() > 0) {
+                nbTSTO += 2;
                 compiler.addInstruction(new PUSH(Register.R1));
                 compiler.addInstruction(new BSR(new LabelOperand(new Label("init." + class1.getSuperClass().getName()))));
                 compiler.addInstruction(new SUBSP(1));
             }
             // Initialisation explicite des nouveaux champs
+            isFirst = true; // Passe a false si il y a une initialisation explicite
             iterFields = class1.getListDeclField().iterator();
-            if (iterFields.hasNext()) {
-                compiler.addInstruction(new LOAD(thisAddress, Register.R1));
-            }
             while (iterFields.hasNext()) {
                 try {
                     DeclField f = (DeclField) iterFields.next();
                     AbstractExpr expr = f.getInitialization().getExpression();
                     if (expr != null) {
+                        if (isFirst) {
+                            compiler.addInstruction(new LOAD(thisAddress, Register.R1));
+                            isFirst = false;
+                        }
                         // Initialization
-                        // TODO : sauvegarde des registres + TSTO
-                        //expr.codeGenInst(compiler);
-                        //DAddr fieldAddress = new RegisterOffset(f.getName().getFieldDefinition().getIndex(), Register.R1);
-                        //compiler.addInstruction(new STORE(Register.getR(compiler.getCurrentRegister()), fieldAddress));
+                        if (!expr.getType().isBoolean()) {
+                            expr.codeGenExpr(compiler);
+                        } else {
+                            Label faux = new Label("Assign_False." + compiler.getNbLabel());
+                            Label fin = new Label("Assign_Fin." + compiler.getNbLabel());
+                            expr.boolCodeExpr(compiler, false, faux);
+                            // L'expression est vrai
+                            compiler.addInstruction(new LOAD(1, Register.getR(compiler.getCurrentRegister())));
+                            compiler.addInstruction(new BRA(fin));
+                            // L'expression est fausse
+                            compiler.addLabel(faux);
+                            compiler.addInstruction(new LOAD(0, Register.getR(compiler.getCurrentRegister())));
+                            compiler.addLabel(fin);
+                            compiler.incrNbLabel();
+                        }
+                        DAddr fieldAddress = new RegisterOffset(f.getName().getFieldDefinition().getIndex(), Register.R1);
+                        compiler.addInstruction(new STORE(Register.getR(compiler.getCurrentRegister()), fieldAddress));
                     }
                 } catch (ClassCastException e) {
                     throw new UnsupportedOperationException("AbstractDeclField should be a DeclField");
                 }
             }
+            // POPS
+            if (!isFirst) {
+                for (int i = compiler.getMaxRegister(); i >= compiler.getCurrentRegister(); i--) {
+                    compiler.addInstruction(new POP(Register.getR(i)));;
+                }
+            }
             compiler.addInstruction(new RTS());
+            // PUSHS
+            if (!isFirst){
+                for (int i = compiler.getMaxRegister(); i >= compiler.getCurrentRegister(); i--) {
+                    compiler.addFirst(new Line(new PUSH(Register.getR(i))));;
+                    nbTSTO++;
+                }
+            }
+            nbTSTO += compiler.getMaxTemp();
+            if ((nbTSTO != 0) && !compiler.getCompilerOptions().getNoCheck()) {
+                Label pilePleine = new Label("pile_pleine");
+                compiler.addError(pilePleine);
+                compiler.addFirst(new Line(new BOV(pilePleine)));
+                compiler.addFirst(new Line(new TSTO(nbTSTO)));
+            }
+            compiler.doneProgramBis();
         }
 
         // Corps des méthodes
@@ -192,9 +234,12 @@ public class ClassCodeGen {
             if (def.isMethod()) {
                 try {
                 MethodDefinition method = def.asMethodDefinition(null, null);
+                compiler.reinitCounts();
+                compiler.setInMethod(true);
                 compiler.addComment("---------- Code de la methode " + method.toString() + " dans la classe " + className + "ligne " + method.getLocation().getLine());
                 compiler.addLabel(method.getLabel());
                 compiler.addInstruction(new RTS());
+                compiler.doneProgramBis();
                 } catch (ContextualError e) {}
             }
         }

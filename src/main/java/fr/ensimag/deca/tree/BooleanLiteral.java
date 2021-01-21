@@ -90,4 +90,9 @@ public class BooleanLiteral extends AbstractExpr {
     public String toString() {
     	return "boolean";
     }
+
+    @Override
+    public boolean isAtomic() {
+        return true;
+    }
 }

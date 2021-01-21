@@ -269,4 +269,9 @@ public class Identifier extends AbstractIdentifier {
     	}
     	return false;
     }
+
+    @Override
+    public boolean isAtomic() {
+        return true;
+    }
 }
