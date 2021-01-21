@@ -118,6 +118,108 @@ Assign_Fin.11:
 E_Sinon.12:
 	WSTR "f"
 E_Fin.12:
+	LOAD #0x1.8p1, R2
+	CMP #3, R2
+	BNE Assign_False.13
+	LOAD #1, R2
+	BRA Assign_Fin.13
+Assign_False.13:
+	LOAD #0, R2
+Assign_Fin.13:
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.14
+	WSTR "t"
+	BRA E_Fin.14
+E_Sinon.14:
+	WSTR "f"
+E_Fin.14:
+	LOAD #0x1.8p1, R2
+	CMP #3, R2
+	BEQ Assign_False.15
+	LOAD #1, R2
+	BRA Assign_Fin.15
+Assign_False.15:
+	LOAD #0, R2
+Assign_Fin.15:
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.16
+	WSTR "t"
+	BRA E_Fin.16
+E_Sinon.16:
+	WSTR "f"
+E_Fin.16:
+	LOAD #0x1.8p1, R2
+	CMP #3, R2
+	BGT Assign_False.17
+	LOAD #1, R2
+	BRA Assign_Fin.17
+Assign_False.17:
+	LOAD #0, R2
+Assign_Fin.17:
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.18
+	WSTR "t"
+	BRA E_Fin.18
+E_Sinon.18:
+	WSTR "f"
+E_Fin.18:
+	LOAD #0x1.8p1, R2
+	CMP #3, R2
+	BLT Assign_False.19
+	LOAD #1, R2
+	BRA Assign_Fin.19
+Assign_False.19:
+	LOAD #0, R2
+Assign_Fin.19:
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.20
+	WSTR "t"
+	BRA E_Fin.20
+E_Sinon.20:
+	WSTR "f"
+E_Fin.20:
+	LOAD #0x1.8p1, R2
+	CMP #3, R2
+	BGE Assign_False.21
+	LOAD #1, R2
+	BRA Assign_Fin.21
+Assign_False.21:
+	LOAD #0, R2
+Assign_Fin.21:
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.22
+	WSTR "t"
+	BRA E_Fin.22
+E_Sinon.22:
+	WSTR "f"
+E_Fin.22:
+	LOAD #0x1.8p1, R2
+	CMP #3, R2
+	BLE Assign_False.23
+	LOAD #1, R2
+	BRA Assign_Fin.23
+Assign_False.23:
+	LOAD #0, R2
+Assign_Fin.23:
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.24
+	WSTR "t"
+	BRA E_Fin.24
+E_Sinon.24:
+	WSTR "f"
+E_Fin.24:
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)

@@ -1,0 +1,21 @@
+// Description :
+//    juste des expression, le programme ne fait rien
+//
+// Resultats :
+//		Ok
+
+{
+boolean a;
+int i;
+i + i - i / i % i * i;
+-i;
+!a;
+a && a || a;
+a == a != a;
+i == i;
+i != i;
+i <= i; 
+i <i;
+i >= i; 
+i>i;
+}

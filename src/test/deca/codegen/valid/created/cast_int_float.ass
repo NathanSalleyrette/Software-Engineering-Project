@@ -1,0 +1,93 @@
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Main program
+	LOAD #5, R2
+	STORE R2, 3(GB)
+	LOAD #5, R2
+	OPP #5, R2
+	STORE R2, 4(GB)
+	LOAD #0x1.ccccccp1, R2
+	STORE R2, 5(GB)
+	BOV debordement_flottant
+	LOAD #0x1.ccccccp1, R2
+	OPP #0x1.ccccccp1, R2
+	STORE R2, 6(GB)
+	BOV debordement_flottant
+; Beginning of main instructions:
+	LOAD 3(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 4(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 5(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	LOAD 6(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+; Debut Cast  float vers int
+	LOAD 5(GB), R2
+	INT R2, R2
+; Fin cast
+	STORE R2, 3(GB)
+; Debut Cast  float vers int
+	LOAD 6(GB), R2
+	INT R2, R2
+; Fin cast
+	STORE R2, 4(GB)
+	LOAD 3(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 4(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+; Debut Cast  int vers float
+	LOAD 3(GB), R2
+	FLOAT R2, R2
+; Fin cast
+	STORE R2, 5(GB)
+	BOV debordement_flottant
+; Debut Cast  int vers float
+	LOAD 4(GB), R2
+	FLOAT R2, R2
+; Fin cast
+	STORE R2, 6(GB)
+	BOV debordement_flottant
+	LOAD 5(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	LOAD 6(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+debordement_flottant:
+	WSTR "Erreur : debordement_flottant"
+	WNL
+	ERROR
+; end main program

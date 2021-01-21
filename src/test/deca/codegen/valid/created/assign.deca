@@ -1,0 +1,19 @@
+// Description :
+//    test  assign int/int, float/float, bool/bool, int/float, class/class, class/null
+//
+// Resultats :
+//		Ok
+
+class A{}
+{
+int i;
+float b;
+boolean c;
+A a;
+b = 1;
+i = 1;
+b = 1;
+c = true;
+a = new A();
+a = null;
+}

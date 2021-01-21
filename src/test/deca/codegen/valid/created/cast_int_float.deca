@@ -5,8 +5,20 @@
 //		Ok
 
 {
-int a;
-float b = 2.5;
+int a = 5;
+int a2 = -5;
+float b = 3.6;
+float n = -3.6;
+println(a);
+println(a2);
+println(b);
+println(n);
 a = (int)(b);
+a2 = (int)(n);
+println(a);
+println(a2);
 b = (float)(a);
+n = (float)(a2);
+println(b);
+println(n);
 }

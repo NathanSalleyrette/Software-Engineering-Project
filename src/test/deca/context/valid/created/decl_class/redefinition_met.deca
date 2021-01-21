@@ -8,11 +8,15 @@ class A_prime {}
 class B_prime extends A_prime{}
 
 class A {
-A_prime met(){return new A_prime();}
+A_prime met(){
+return new A_prime();
+return new B_prine();
+}
 }
 
 class B extends A{
-B_prime met(){return new B_prime();}
+B_prime met()
+{return new B_prime();}
 }
 {
 A a = new A();
