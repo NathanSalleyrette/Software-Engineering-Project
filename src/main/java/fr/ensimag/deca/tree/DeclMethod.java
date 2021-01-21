@@ -154,7 +154,7 @@ public class DeclMethod extends AbstractDeclMethod  {
 
 	public void codeGenBody(DecacCompiler compiler) {
 		Iterator<AbstractDeclParam> iterParam = params.iterator();
-		int indexParam = 2;
+		int indexParam = -2;
 		while (iterParam.hasNext()) {
 			try {
 				DeclParam param = (DeclParam) iterParam.next();

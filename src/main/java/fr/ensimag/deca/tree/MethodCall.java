@@ -135,7 +135,7 @@ public class MethodCall extends AbstractExpr{
 		}
 		// On récupère l'adresse de la table des méthodes
 		compiler.addInstruction(new LOAD(new RegisterOffset(0, reg), reg));
-		compiler.addInstruction(new BSR(new RegisterOffset(indexMethod, reg)));
+		compiler.addInstruction(new BSR(new RegisterOffset(meth.getMethodDefinition().getIndex(), reg)));
 		compiler.addInstruction(new SUBSP(stackShift));
 	}
 }
