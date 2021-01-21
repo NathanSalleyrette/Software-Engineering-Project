@@ -1,144 +1,65 @@
-#include "IEEE754.deca"
 class ULP {
-    void test(){
 
-    }
-    IEEE754 creeEtInitNombre(){//Il n'y a pas de constructeur en deca donc on est obligé de faire comme ça
-//Autre particularité, il faut déclarer tout variable avant l'execution du code
-        IEEE754 nombre=new IEEE754();
-	int i =0;
-	BooleanLinkedList courrant;
-	BooleanLinkedList suivant;
-        nombre.fractionPart = new BooleanLinkedList();
-	courrant=nombre.fractionPart;
-        while (i<(nombre.taillePartieFractionnaire -1)) {
-        	suivant=new BooleanLinkedList();
-        	courrant.suivant=suivant;
-        	courrant.valeur=false;
-        	courrant=suivant;
-        	i = i +1;
+   float abs(float entree){
+        if (entree < 0.0){
+            return -entree;
+        }else {
+            return entree;
         }
-        courrant.suivant=null; //Possible en deca ?
-        return nombre;
+    }
+    float puissanceDe2(int exponent){//faire avec des shifts pour les positifs (asm) ? pour l'instant avec des multiplications répétés
+        float puissance = 1 ;
+        int i = 0;
+        if(exponent >= 0){
+
+            while(i< exponent){
+                puissance=puissance*2;
+                i = i + 1 ;
+            }
+        }else{
+            while(i> exponent){
+                puissance=puissance/2;
+                i = i - 1 ;
+            }
+        }
+
+        return puissance;
+    }
+    int trouveExposant(float a, ULP u) {
+        float fractionPart;
+        int exponent;
+        if(a >= 1.0) {
+            exponent =0;
+            fractionPart =a/u.puissanceDe2(exponent);
+            while(fractionPart>=2.0){
+                exponent = exponent +1 ;
+                fractionPart =a/u.puissanceDe2(exponent);	
+            }
+        }else {
+            exponent =-1;
+            fractionPart =a/u.puissanceDe2(exponent);
+            while(fractionPart<1.0){
+                exponent = exponent -1 ;
+                fractionPart =a/u.puissanceDe2(exponent);
+            }
+
+        }
+        return exponent;
     }
     float monUlp(float entree,ULP u){
-	IEEE754 number;
-	float entreeSwitch;
-	entree=u.abs(entree);
-	number=u.ieee745Compute(entree);
-	entreeSwitch=convertBackAndSwitch(number.exponent,number.fractionPart);
-       return u.abs(entree-entreeSwitch);
+        int exponent;
+        float ulp;
+        entree=u.abs(entree);
+        if(entree == 0.0){
+            return 0.0;
+        }
+        exponent=trouveExposant(entree, u);
+        ulp=puissanceDe2(exponent-23);
+        return ulp; 
     }
-float abs(float entree){
-if (entree < 0){
-return -entree;
-}else {
-return entree;
-}
-}
-	float puissanceDe2(int exponent){//faire avec des shifts pour les positifs (asm) ? pour l'instant avec des multiplications répétés
-		float puissance = 1 ;
-		int i = 0;
-		if(exponent >= 0){
 
-		while(i< exponent){
-		puissance=puissance*2;
-		i = i + 1 ;
-		}
-		}else{
-		while(i> exponent){
-			puissance=puissance/2;
-		i = i - 1 ;
-		}
-		}
-	
-		return puissance;
-	}
-	IEEE754 ieee745Compute(float a, ULP u) {
-		IEEE754 formatedNumber=new IEEE754();
-		float fractionPart;
-		float oldfractionPart;
-		int exponent;
-		int i =1;
-		BooleanLinkedList courrant=formatedNumber.fractionPart;
-		if(a<0.0) {
-			formatedNumber.sign=true;
-		}else {
-			formatedNumber.sign=false;
-		}
-		if(a >= 1) {
-			exponent =0;
-			fractionPart =a/u.puissanceDe2(exponent);
-			while(fractionPart>=2){
-				exponent = exponent +1 ;
-				fractionPart =a/u.puissanceDe2(exponent);	
-			}
-		}else {
-			exponent =-1;
-			fractionPart =a/u.puissanceDe2(exponent);
-			while(fractionPart<1){
-				exponent = exponent -1 ;
-				fractionPart =a/u.puissanceDe2(exponent);
-			}
-
-		}
-		fractionPart=fractionPart-1;
-		formatedNumber.exponent=exponent;
-		while(i<=formatedNumber.taillePartieFractionnaire) {
-			oldfractionPart=fractionPart;
-			fractionPart=fractionPart - a/u.puissanceDe2(-i);
-
-			if( fractionPart < 0) {
-				fractionPart=oldfractionPart;
-				courrant.valeur=false;
-			}else {
-				courrant.valeur=true;
-			}
-			courrant=courrant.suivant;
-			i = i + 1;
-		}
-		return formatedNumber;
-	}
-	BooleanLinkedList dernierElement (BooleanLinkedList premierElement) {
-		BooleanLinkedList courrant=premierElement;
-		BooleanLinkedList precedent=premierElement;
-		while(courrant != null) {//Possible en deca ?
-			precedent=courrant;
-			courrant=courrant.suivant;
-		}
-		return precedent;
-	}
-	float convertBackAndSwitch(int exponent,BooleanLinkedList fractionPart, ULP u) {
-		float value=0.0;
-		BooleanLinkedList courrant=fractionPart;
-		int i = 0;		
-		BooleanLinkedList dernierElement=dernierElement(fractionPart);
-
-		if(dernierElement.valeur) {//Switch le dernier bit
-			dernierElement.valeur=false;
-		}else {
-			dernierElement.valeur=true;
-		}
-		while(courrant != null) {//Possible en deca ?
-			if(courrant.valeur) {
-				value = value + u.puissanceDe2(-(i+1));
-			}
-			courrant=courrant.suivant;
-			i = i +1;
-		}
-		value= value + 1;
-		value=value*u.puissanceDe2(exponent);
-		return value;
-	}
 }
 {
-ULP u = new ULP();
-println(u.puissanceDe2(0));
-println(u.puissanceDe2(1));
-println(u.puissanceDe2(2));
-println(u.puissanceDe2(3));
-println(u.puissanceDe2(0));
-println(u.puissanceDe2(-1));
-println(u.puissanceDe2(-2));
-println(u.puissanceDe2(-3));
+    ULP u = new ULP();
+    u.monUlp(1,u);
 }
