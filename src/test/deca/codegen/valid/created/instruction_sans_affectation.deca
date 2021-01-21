@@ -12,5 +12,10 @@ i + i - i / i % i * i;
 !a;
 a && a || a;
 a == a != a;
-
+i == i;
+i != i;
+i <= i; 
+i <i;
+i >= i; 
+i>i;
 }

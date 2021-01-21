@@ -1,6 +1,6 @@
-	TSTO #9
+	TSTO #6
 	BOV pile_pleine
-	ADDSP #9
+	ADDSP #6
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -8,176 +8,51 @@
 	STORE R0, 1(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 2(GB)
-; Construction de la table des méthodes de B
+; Construction de la table des méthodes de A
 	LEA 1(GB), R0
 	STORE R0, 3(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
-; Construction de la table des méthodes de A
-	LEA 3(GB), R0
-	STORE R0, 5(GB)
-	LOAD code.Object.equals, R0
-	STORE R0, 6(GB)
 ; Main program
-; new ligne 24
-	NEW #12, R2
+; new ligne 14
+	NEW #3, R2
 	BOV tas_plein
-	LEA 5(GB), R0
+	LEA 3(GB), R0
 	STORE R0, 0(R2)
 	PUSH R2
 	BSR init.A
 	POP R2
-	STORE R2, 7(GB)
-; new ligne 25
-	NEW #7, R2
-	BOV tas_plein
-	LEA 3(GB), R0
-	STORE R0, 0(R2)
-	PUSH R2
-	BSR init.B
-	POP R2
-	STORE R2, 8(GB)
-	LOAD 7(GB), R2
-	STORE R2, 9(GB)
+	STORE R2, 5(GB)
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	STORE R2, 6(GB)
 ; Beginning of main instructions:
-	LOAD 7(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 7(R2), R2
-	LOAD R2, R1
-	WINT
-	WSTR " "
-	LOAD 7(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 8(R2), R2
-	LOAD R2, R1
-	WFLOAT
-	WSTR " "
-	LOAD 7(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 5(R2), R2
-	LOAD R2, R1
-	WFLOAT
-	WNL
-	LOAD 7(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 7(R2), R2
-	CMP #3, R2
-	BNE E_Sinon.0
-	LOAD 7(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 8(R2), R2
-	CMP #0x1.333334p-1, R2
-	BNE E_Sinon.0
-	LOAD 7(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 5(R2), R2
-	CMP #0x1.0p-1, R2
-	BNE E_Sinon.0
-	LOAD 7(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 3(R2), R2
-	CMP #1, R2
-	BNE E_Sinon.0
-	LOAD 7(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 9(R2), R2
-	CMP #42, R2
-	BNE E_Sinon.0
-	WSTR "ok"
-	WNL
-	BRA E_Fin.0
-E_Sinon.0:
-	WSTR "bouuuh"
-	WNL
-E_Fin.0:
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)
 code.Object.equals:
 	RTS
-; Classe B
-; ---------- Initialisation des champs de B
-init.B:
+; Classe A
+; ---------- Initialisation des champs de A
+init.A:
 	TSTO #1
 	BOV pile_pleine
 	PUSH R2
 	LOAD -2(LB), R1
 	LOAD #0, R0
 	STORE R0, 1(R1)
+	LOAD #0, R0
 	STORE R0, 2(R1)
-	LOAD #0, R0
-	STORE R0, 3(R1)
-	STORE R0, 4(R1)
-	LOAD #0x0.0p0, R0
-	STORE R0, 5(R1)
-	STORE R0, 6(R1)
 	LOAD -2(LB), R1
+	BRA Assign_False.0
 	LOAD #1, R2
-	STORE R2, 1(R1)
-	LOAD #2, R2
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+Assign_Fin.0:
 	STORE R2, 2(R1)
-	LOAD #1, R2
-	BRA Assign_Fin.1
-Assign_False.1:
-	LOAD #0, R2
-Assign_Fin.1:
-	STORE R2, 3(R1)
-	LOAD #1, R2
-	BRA Assign_Fin.2
-Assign_False.2:
-	LOAD #0, R2
-Assign_Fin.2:
-	STORE R2, 4(R1)
-	LOAD #0x1.0p-1, R2
-	STORE R2, 5(R1)
-	LOAD #0x1.0p-1, R2
-	STORE R2, 6(R1)
-	POP R2
-	RTS
-; Classe A
-; ---------- Initialisation des champs de A
-init.A:
-	TSTO #3
-	BOV pile_pleine
-	PUSH R2
-	LOAD -2(LB), R1
-	LOAD #0, R0
-	STORE R0, 7(R1)
-	LOAD #0x0.0p0, R0
-	STORE R0, 8(R1)
-	LOAD #0, R0
-	STORE R0, 9(R1)
-	LOAD #0, R0
-	STORE R0, 10(R1)
-	LOAD #0x0.0p0, R0
-	STORE R0, 11(R1)
-	PUSH R1
-	BSR init.B
-	SUBSP #1
-	LOAD -2(LB), R1
-	LOAD #3, R2
-	STORE R2, 7(R1)
-	LOAD #0x1.333334p-1, R2
-	STORE R2, 8(R1)
-	LOAD #42, R2
-	STORE R2, 9(R1)
-	BRA Assign_False.3
-	LOAD #1, R2
-	BRA Assign_Fin.3
-Assign_False.3:
-	LOAD #0, R2
-Assign_Fin.3:
-	STORE R2, 10(R1)
-	LOAD #0x1.ae147ap-2, R2
-	STORE R2, 11(R1)
 	POP R2
 	RTS
 ; Erreurs
