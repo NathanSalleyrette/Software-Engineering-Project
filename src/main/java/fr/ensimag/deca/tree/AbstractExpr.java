@@ -154,7 +154,9 @@ public abstract class AbstractExpr extends AbstractInst {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+        if (!type.isBoolean()) { // Pour un booleen l'appel de cette fonction est inutile (expression orpheline)
+            throw new UnsupportedOperationException("not yet implemented");
+        }
     }
     
      /**

@@ -229,18 +229,39 @@ public class ClassCodeGen {
         }
 
         // Corps des méthodes
-        Collection<ExpDefinition> members = classDef.getMembers().getValues();
-        for (ExpDefinition def : members) {
-            if (def.isMethod()) {
-                try {
-                MethodDefinition method = def.asMethodDefinition(null, null);
+        Iterator<AbstractDeclMethod> iterMethods = class1.getListDeclMethod().iterator();
+        while (iterMethods.hasNext()) {
+            try {
+                DeclMethod method = (DeclMethod) iterMethods.next();
                 compiler.reinitCounts();
                 compiler.setInMethod(true);
-                compiler.addComment("---------- Code de la methode " + method.toString() + " dans la classe " + className + "ligne " + method.getLocation().getLine());
-                compiler.addLabel(method.getLabel());
+                int nbTSTO = 0;
+                compiler.addComment("---------- Code de la methode " + method.getName().getName() + " dans la classe " + className + " ligne " + method.getLocation().getLine());
+                compiler.addLabel(method.getName().getMethodDefinition().getLabel());
+                // TODO : corps
+                //method.getBody().
+
+
+                compiler.addLabel(new Label(method.getName().getMethodDefinition().getLabel().toString().replaceFirst("code", "fin")));
+                // POPS
+                for (int i = compiler.getMaxRegister(); i >= compiler.getCurrentRegister(); i--) {
+                    compiler.addInstruction(new POP(Register.getR(i)));;
+                }
                 compiler.addInstruction(new RTS());
+                // PUSHS
+                for (int i = compiler.getMaxRegister(); i >= compiler.getCurrentRegister(); i--) {
+                    compiler.addFirst(new Line(new PUSH(Register.getR(i))));;
+                    nbTSTO++;
+                }
+                if ((nbTSTO != 0) && !compiler.getCompilerOptions().getNoCheck()) {
+                    Label pilePleine = new Label("pile_pleine");
+                    compiler.addError(pilePleine);
+                    compiler.addFirst(new Line(new BOV(pilePleine)));
+                    compiler.addFirst(new Line(new TSTO(nbTSTO)));
+                }
                 compiler.doneProgramBis();
-                } catch (ContextualError e) {}
+            } catch (ClassCastException e) {
+                throw new UnsupportedOperationException("AbstractDeclMethod should be a DeclMethod");
             }
         }
     }
