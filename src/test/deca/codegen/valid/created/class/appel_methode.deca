@@ -1,0 +1,43 @@
+// Description :
+//		verification des methodes
+//
+// Resultats :
+//		Ok
+
+
+class B{
+	float f = 42.0;
+	int metint(){
+return 1;
+}
+
+float metfloat(){
+return 0.5;
+}
+
+boolean metbool(){
+return true;
+}
+
+void metvoid(){
+	println("yeah !");
+}
+
+B metB(){
+return new B();
+}
+
+}
+
+
+
+{
+B a = new B();
+int i = a.metint();
+float f = a.metfloat();
+a.metvoid();
+boolean b = a.metbool();
+B c = a.metB();
+println(i, " ", f, " ", c.f);
+if (b){print("true");} else {println("false");}
+}

@@ -119,7 +119,9 @@ E_Sinon.12:
 	WSTR "f"
 E_Fin.12:
 	LOAD #0x1.8p1, R2
-	CMP #3, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
 	BNE Assign_False.13
 	LOAD #1, R2
 	BRA Assign_Fin.13
@@ -136,7 +138,9 @@ E_Sinon.14:
 	WSTR "f"
 E_Fin.14:
 	LOAD #0x1.8p1, R2
-	CMP #3, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
 	BEQ Assign_False.15
 	LOAD #1, R2
 	BRA Assign_Fin.15
@@ -153,7 +157,9 @@ E_Sinon.16:
 	WSTR "f"
 E_Fin.16:
 	LOAD #0x1.8p1, R2
-	CMP #3, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
 	BGT Assign_False.17
 	LOAD #1, R2
 	BRA Assign_Fin.17
@@ -170,7 +176,9 @@ E_Sinon.18:
 	WSTR "f"
 E_Fin.18:
 	LOAD #0x1.8p1, R2
-	CMP #3, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
 	BLT Assign_False.19
 	LOAD #1, R2
 	BRA Assign_Fin.19
@@ -187,7 +195,9 @@ E_Sinon.20:
 	WSTR "f"
 E_Fin.20:
 	LOAD #0x1.8p1, R2
-	CMP #3, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
 	BGE Assign_False.21
 	LOAD #1, R2
 	BRA Assign_Fin.21
@@ -204,7 +214,9 @@ E_Sinon.22:
 	WSTR "f"
 E_Fin.22:
 	LOAD #0x1.8p1, R2
-	CMP #3, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
 	BLE Assign_False.23
 	LOAD #1, R2
 	BRA Assign_Fin.23

@@ -1,0 +1,14 @@
+// Description :
+//    test x = a = b
+//
+// Resultats :
+//		Ok
+	
+
+{
+int x = 3;
+int a;
+int b;
+b = a = x;
+println("3 = ", a, b, x);
+}

@@ -1,0 +1,38 @@
+// Description :
+//		verification des methodes, mais tout simple
+//
+// Resultats :
+//		Ok
+
+class B{
+	int met(){
+	return
+}
+
+class A extends B{
+	int x = 2;
+	void setx(int y){
+	this.y = y;
+	}
+}
+
+
+
+{
+A a = new A();
+B b = new B();
+B c = new A();
+println("2 = ", a.getx());
+println("1 = ", b.getx());
+println("1 = ", c.getx());
+println("0 = ", a.y, b.y, c.y);
+a.setx(42);
+println("0 = ", b.y, c.y);
+println("42 = ", a.y);
+b.setx(3);
+c.setx(3);
+println("3 = ", b.getx(), c.getx());
+println("2 = ", a.getx());
+c = a;
+println("c = 142 =",c.getx(), c.y);
+}
