@@ -1,0 +1,126 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
+`> [7, 0] Program
+   +> ListDeclClass [List with 3 elements]
+   |  []> [7, 0] DeclClass
+   |  ||  +> Identifier (C)
+   |  ||  |  definition: type defined at [7, 0], type=C
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 1 elements]
+   |  ||  |  []> [8, 4] [visibility=PUBLIC] DeclField
+   |  ||  |      +> [8, 0] Identifier (int)
+   |  ||  |      |  definition: type (builtin), type=int
+   |  ||  |      +> [8, 4] Identifier (x)
+   |  ||  |      |  definition: field defined at [8, 4], type=int
+   |  ||  |      `> Initialization
+   |  ||  |         `> [8, 8] Int (2)
+   |  ||  |            type: int
+   |  ||  +> ListDeclMethod [List with 0 elements]
+   |  []> [11, 0] DeclClass
+   |  ||  +> Identifier (B)
+   |  ||  |  definition: type defined at [11, 0], type=B
+   |  ||  +> Identifier (C)
+   |  ||  |  definition: type defined at [7, 0], type=C
+   |  ||  +> ListDeclField [List with 1 elements]
+   |  ||  |  []> [12, 6] [visibility=PUBLIC] DeclField
+   |  ||  |      +> [12, 0] Identifier (float)
+   |  ||  |      |  definition: type (builtin), type=float
+   |  ||  |      +> [12, 6] Identifier (x)
+   |  ||  |      |  definition: field defined at [12, 6], type=float
+   |  ||  |      `> Initialization
+   |  ||  |         `> [12, 10] Float (0.5)
+   |  ||  |            type: float
+   |  ||  +> ListDeclMethod [List with 0 elements]
+   |  []> [14, 0] DeclClass
+   |      +> Identifier (A)
+   |      |  definition: type defined at [14, 0], type=A
+   |      +> Identifier (B)
+   |      |  definition: type defined at [11, 0], type=B
+   |      +> ListDeclField [List with 1 elements]
+   |      |  []> [15, 8] [visibility=PUBLIC] DeclField
+   |      |      +> [15, 0] Identifier (boolean)
+   |      |      |  definition: type (builtin), type=boolean
+   |      |      +> [15, 8] Identifier (x)
+   |      |      |  definition: field defined at [15, 8], type=boolean
+   |      |      `> Initialization
+   |      |         `> [15, 11] BooleanLiteral (true)
+   |      |            type: boolean
+   |      +> ListDeclMethod [List with 0 elements]
+   `> [17, 0] Main
+      +> ListDeclVar [List with 6 elements]
+      |  []> [18, 2] DeclVar
+      |  ||  +> [18, 0] Identifier (A)
+      |  ||  |  definition: type defined at [14, 0], type=A
+      |  ||  +> [18, 2] Identifier (a)
+      |  ||  |  definition: variable defined at [18, 2], type=A
+      |  ||  `> [18, 4] Initialization
+      |  ||     `> [18, 6] New
+      |  ||        type: A
+      |  ||        `> [18, 10] Identifier (A)
+      |  ||           definition: type defined at [14, 0], type=A
+      |  []> [19, 2] DeclVar
+      |  ||  +> [19, 0] Identifier (C)
+      |  ||  |  definition: type defined at [7, 0], type=C
+      |  ||  +> [19, 2] Identifier (c)
+      |  ||  |  definition: variable defined at [19, 2], type=C
+      |  ||  `> [19, 4] Initialization
+      |  ||     `> [19, 6] New
+      |  ||        type: C
+      |  ||        `> [19, 10] Identifier (C)
+      |  ||           definition: type defined at [7, 0], type=C
+      |  []> [20, 2] DeclVar
+      |  ||  +> [20, 0] Identifier (B)
+      |  ||  |  definition: type defined at [11, 0], type=B
+      |  ||  +> [20, 2] Identifier (b)
+      |  ||  |  definition: variable defined at [20, 2], type=B
+      |  ||  `> [20, 4] Initialization
+      |  ||     `> [20, 6] New
+      |  ||        type: B
+      |  ||        `> [20, 10] Identifier (B)
+      |  ||           definition: type defined at [11, 0], type=B
+      |  []> [22, 8] DeclVar
+      |  ||  +> [22, 0] Identifier (boolean)
+      |  ||  |  definition: type (builtin), type=boolean
+      |  ||  +> [22, 8] Identifier (j)
+      |  ||  |  definition: variable defined at [22, 8], type=boolean
+      |  ||  `> [22, 10] Initialization
+      |  ||     `> [22, 12] Selection
+      |  ||        type: boolean
+      |  ||        +> [22, 12] Identifier (a)
+      |  ||        |  definition: variable defined at [18, 2], type=A
+      |  ||        `> [22, 14] Identifier (x)
+      |  ||           definition: field defined at [15, 8], type=boolean
+      |  []> [23, 6] DeclVar
+      |  ||  +> [23, 0] Identifier (float)
+      |  ||  |  definition: type (builtin), type=float
+      |  ||  +> [23, 6] Identifier (f)
+      |  ||  |  definition: variable defined at [23, 6], type=float
+      |  ||  `> [23, 8] Initialization
+      |  ||     `> [23, 10] Selection
+      |  ||        type: float
+      |  ||        +> [23, 10] Identifier (b)
+      |  ||        |  definition: variable defined at [20, 2], type=B
+      |  ||        `> [23, 12] Identifier (x)
+      |  ||           definition: field defined at [12, 6], type=float
+      |  []> [24, 4] DeclVar
+      |      +> [24, 0] Identifier (int)
+      |      |  definition: type (builtin), type=int
+      |      +> [24, 4] Identifier (i)
+      |      |  definition: variable defined at [24, 4], type=int
+      |      `> [24, 6] Initialization
+      |         `> [24, 8] Selection
+      |            type: int
+      |            +> [24, 8] Identifier (c)
+      |            |  definition: variable defined at [19, 2], type=C
+      |            `> [24, 10] Identifier (x)
+      |               definition: field defined at [8, 4], type=int
+      `> ListInst [List with 0 elements]

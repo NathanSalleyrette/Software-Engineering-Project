@@ -1,0 +1,16 @@
+// Description :
+//    On met des x = y partout
+//
+// Resultats :
+//		Ok
+	
+
+{
+int x;
+int y = 3;
+boolean a;
+boolean b = false;
+print(x =y);
+if (a = b) {}
+while(a = b) {}
+}

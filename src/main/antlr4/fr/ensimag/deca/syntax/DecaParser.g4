@@ -601,7 +601,7 @@ decl_field[Visibility v, AbstractIdentifier t, ListDeclField li_field]
     ;
 
 decl_method returns[AbstractDeclMethod tree]
-@init {
+@init { AbstractMethodBody instructions;
 }
     : type ident OPARENT params=list_params CPARENT (block {
     	
@@ -609,7 +609,10 @@ decl_method returns[AbstractDeclMethod tree]
         setLocation($tree, $type.start);
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
-      	// TODO
+		StringLiteral s = new StringLiteral($code.text);
+		setLocation(s,$code.location);
+		instructions= new Asm(s);
+		setLocation(instructions,$code.location);
         }
       ) {
       	// TODO

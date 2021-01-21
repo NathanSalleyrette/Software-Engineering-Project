@@ -16,6 +16,7 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.NullOperand;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
@@ -112,7 +113,18 @@ public class Selection extends AbstractLValue{
 	@Override
     protected void codeGenInst(DecacCompiler compiler) {
 		compiler.addInstruction(new LOAD(this.dval(compiler), Register.getR(compiler.getCurrentRegister())));
-    }
+	}
+	
+	@Override
+	protected void boolCodeGen(DecacCompiler compiler, boolean branch, Label tag) {
+		compiler.addInstruction(new LOAD(this.dval(compiler), Register.R0));
+        compiler.addInstruction(new CMP(0, Register.R0));
+        if (branch) {
+            compiler.addInstruction(new BNE(tag));
+        } else {
+            compiler.addInstruction(new BEQ(tag));
+        }
+	}
 
     @Override
     public DVal dval(DecacCompiler compiler) {

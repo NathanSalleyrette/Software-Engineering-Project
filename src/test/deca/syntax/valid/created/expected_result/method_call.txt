@@ -1,0 +1,20 @@
+`> [8, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [8, 0] Main
+      +> ListDeclVar [List with 1 elements]
+      |  []> [9, 2] DeclVar
+      |      +> [9, 0] Identifier (a)
+      |      +> [9, 2] Identifier (a)
+      |      `> [9, 4] Initialization
+      |         `> [9, 6] Identifier (a)
+      `> ListInst [List with 3 elements]
+         []> [10, 2] Assign
+         ||  +> [10, 0] Identifier (a)
+         ||  `> [10, 4] Identifier (a)
+         []> [11, 0] Selection
+         ||  +> [11, 0] Identifier (a)
+         ||  `> [11, 2] Identifier (meth)
+         []> [12, 0] MethodCall
+             +> [12, 0] Identifier (a)
+             +> [12, 2] Identifier (met)
+             `> ListExpr [List with 0 elements]

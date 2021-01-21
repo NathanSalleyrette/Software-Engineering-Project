@@ -82,8 +82,8 @@
 	LOAD 7(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
-	LOAD 3(R2), R2
-	CMP #0, R2
+	LOAD 3(R2), R0
+	CMP #0, R0
 	BNE E_Sinon.0
 	LOAD 7(GB), R2
 	CMP #null, R2
@@ -140,8 +140,8 @@ E_Fin.0:
 	LOAD 8(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
-	LOAD 3(R2), R2
-	CMP #0, R2
+	LOAD 3(R2), R0
+	CMP #0, R0
 	BNE E_Sinon.1
 	WSTR "ok"
 	WNL
@@ -192,8 +192,8 @@ E_Fin.1:
 	LOAD 9(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
-	LOAD 3(R2), R2
-	CMP #0, R2
+	LOAD 3(R2), R0
+	CMP #0, R0
 	BNE E_Sinon.2
 	WSTR "ok"
 	WNL

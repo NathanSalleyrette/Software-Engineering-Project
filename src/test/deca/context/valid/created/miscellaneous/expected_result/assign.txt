@@ -1,0 +1,84 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
+`> [7, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [7, 0] DeclClass
+   |      +> Identifier (A)
+   |      |  definition: type defined at [7, 0], type=A
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 0 elements]
+   |      +> ListDeclMethod [List with 0 elements]
+   `> [8, 0] Main
+      +> ListDeclVar [List with 4 elements]
+      |  []> [9, 4] DeclVar
+      |  ||  +> [9, 0] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [9, 4] Identifier (i)
+      |  ||  |  definition: variable defined at [9, 4], type=int
+      |  ||  `> NoInitialization
+      |  []> [10, 6] DeclVar
+      |  ||  +> [10, 0] Identifier (float)
+      |  ||  |  definition: type (builtin), type=float
+      |  ||  +> [10, 6] Identifier (b)
+      |  ||  |  definition: variable defined at [10, 6], type=float
+      |  ||  `> NoInitialization
+      |  []> [11, 8] DeclVar
+      |  ||  +> [11, 0] Identifier (boolean)
+      |  ||  |  definition: type (builtin), type=boolean
+      |  ||  +> [11, 8] Identifier (c)
+      |  ||  |  definition: variable defined at [11, 8], type=boolean
+      |  ||  `> NoInitialization
+      |  []> [12, 2] DeclVar
+      |      +> [12, 0] Identifier (A)
+      |      |  definition: type defined at [7, 0], type=A
+      |      +> [12, 2] Identifier (a)
+      |      |  definition: variable defined at [12, 2], type=A
+      |      `> NoInitialization
+      `> ListInst [List with 6 elements]
+         []> [13, 2] Assign
+         ||  type: float
+         ||  +> [13, 0] Identifier (b)
+         ||  |  definition: variable defined at [10, 6], type=float
+         ||  `> ConvFloat
+         ||     type: float
+         ||     `> [13, 4] Identifier (i)
+         ||        definition: variable defined at [9, 4], type=int
+         []> [14, 2] Assign
+         ||  type: int
+         ||  +> [14, 0] Identifier (i)
+         ||  |  definition: variable defined at [9, 4], type=int
+         ||  `> [14, 4] Identifier (i)
+         ||     definition: variable defined at [9, 4], type=int
+         []> [15, 2] Assign
+         ||  type: float
+         ||  +> [15, 0] Identifier (b)
+         ||  |  definition: variable defined at [10, 6], type=float
+         ||  `> [15, 4] Identifier (b)
+         ||     definition: variable defined at [10, 6], type=float
+         []> [16, 2] Assign
+         ||  type: boolean
+         ||  +> [16, 0] Identifier (c)
+         ||  |  definition: variable defined at [11, 8], type=boolean
+         ||  `> [16, 4] Identifier (c)
+         ||     definition: variable defined at [11, 8], type=boolean
+         []> [17, 2] Assign
+         ||  type: A
+         ||  +> [17, 0] Identifier (a)
+         ||  |  definition: variable defined at [12, 2], type=A
+         ||  `> [17, 4] Identifier (a)
+         ||     definition: variable defined at [12, 2], type=A
+         []> [18, 2] Assign
+             type: A
+             +> [18, 0] Identifier (a)
+             |  definition: variable defined at [12, 2], type=A
+             `> [18, 4] Null
+                type: null

@@ -1,0 +1,20 @@
+// Description :
+//		Programme pour tester les fields des classes avec type statique et dynamiqye
+//
+// Resultats :
+//		Ok
+
+
+class A{
+int a;
+boolean b2 = false;
+}
+
+{
+A a = new A();
+int c = a.a;
+a.b2;
+a.b2 == true;
+if (a.b2){};
+
+}

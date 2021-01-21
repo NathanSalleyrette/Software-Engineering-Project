@@ -4,28 +4,15 @@
 // Resultats :
 //		Ok
 
-class B {
-int x = 1;
-int y = 2;
-boolean b = true;
-boolean b2 = true;
-float c = 0.5;
-float c2 = 0.5;
-}
-class A extends B {
-int x = 3;
-float y = 0.6;
-int z = 42;
+
+class A{
+int a;
 boolean b2 = false;
-float c2 = 0.42;
 }
 
 {
 A a = new A();
-B b = new B();
-B c = a;
-println(a.x, " ", a.y, " ", a.c);
-if (!a.b2){println("ok");}
-else {println("bouuuh");}
+int c = a.a;
+boolean b = a.b2;
 
 }

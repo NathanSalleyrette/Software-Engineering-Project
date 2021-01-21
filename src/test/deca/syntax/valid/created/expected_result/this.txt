@@ -1,0 +1,24 @@
+`> [7, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [7, 0] Main
+      +> ListDeclVar [List with 0 elements]
+      `> ListInst [List with 6 elements]
+         []> [8, 0] Selection
+         ||  +> [8, 0] This
+         ||  `> [8, 5] Identifier (a)
+         []> [9, 0] MethodCall
+         ||  +> [9, 0] This
+         ||  +> [9, 5] Identifier (a)
+         ||  `> ListExpr [List with 0 elements]
+         []> [10, 0] MethodCall
+         ||  +> [10, 0] This
+         ||  +> [10, 0] Identifier (a)
+         ||  `> ListExpr [List with 0 elements]
+         []> [11, 0] Identifier (a)
+         []> [12, 0] Selection
+         ||  +> [12, 0] Identifier (a)
+         ||  `> [12, 2] Identifier (a)
+         []> [13, 0] MethodCall
+             +> [13, 0] Identifier (a)
+             +> [13, 2] Identifier (a)
+             `> ListExpr [List with 0 elements]
