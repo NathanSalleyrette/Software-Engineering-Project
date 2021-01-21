@@ -1,0 +1,28 @@
+// Description :
+//		verification de la redéfinition
+//
+// Resultats :
+//		Ok
+
+class B{
+	int x = 1;
+	B met(){
+	println("vous venez d'utiliser la methode de la classe B");
+	return new B();
+	}
+}
+
+class A extends B{
+	int x = 2;
+	A met(){
+	println("vous venez d'utiliser la methode de la classe A");
+	return new A();
+	}
+}
+
+
+
+{
+println("1 =", ((new A()).met()).x);
+println("2 =", ((new B()).met()).x);
+}

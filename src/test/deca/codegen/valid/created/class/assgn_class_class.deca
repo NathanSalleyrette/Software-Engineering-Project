@@ -1,0 +1,61 @@
+// Description :
+//		verification que les champs sont bien copié
+//
+// Resultats :
+//		Ok
+
+class B{
+	int a;
+	int a1;
+	boolean b;
+	boolean b1;
+	float c;
+	float c1;
+}
+
+class A extends B{
+	int a1;
+	int a2;
+	boolean b1;
+	boolean b2;
+	float c1;
+	float c2;
+}
+
+
+{
+A a = new A();
+A b;
+B c;
+a.a = 1;
+a.a1 = 2;
+a.a2 = 3;
+a.b = true;
+a.b1 = true;
+a.b2 = true;
+a.c = 0.1;
+a.c1 = 0.2;
+a.c2 = 0.3;
+b = a;
+c = a;
+println(a.a, " ",a.a1, " ", a.a2);
+println(b.a, " ",b.a1, " ", b.a2);
+println();
+println(a.c, " ",a.c1, " ", a.c2);
+println(b.c, " ",b.c1, " ", b.c2);
+println();
+if (a.b && a.b2 && a.b3) {println("ok");} else {println("bouuh");}
+if (b.b && b.b2 && b.b3) {println("ok");} else {println("bouuh");}
+println();
+println();
+println(a.a, " ",a.a1);
+println(c.a, " ",c.a1);
+println();
+println(a.c, " ",a.c1);
+println(c.c, " ",c.c1);
+println();
+if (a.b && a.b2) {println("ok");} else {println("bouuh");}
+if (b.b && b.b2) {println("ok");} else {println("bouuh");}
+
+
+}
