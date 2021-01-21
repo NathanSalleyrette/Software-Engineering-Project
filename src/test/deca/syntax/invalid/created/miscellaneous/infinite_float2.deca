@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur lexicographique
-//    	Ligne 8:  ?
+//    	Ligne 9:  float trop grand
 
 {
 float a = 1.0e99

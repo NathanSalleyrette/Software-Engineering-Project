@@ -3,8 +3,8 @@
 //
 // Resultats :
 //		Erreur lexicographique
-//    	Ligne 8:  ?
+//    	Ligne 9:  int trop grand
 
 {
-int a = 1e+99;
+int a = -1e+99;
 }

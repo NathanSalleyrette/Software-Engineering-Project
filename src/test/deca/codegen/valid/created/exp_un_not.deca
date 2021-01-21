@@ -6,6 +6,7 @@
 
 {
 boolean a;
+!false;
 a = !false;
 if (a) {println("a=true");} else {println("a=false");}
 a = !a;

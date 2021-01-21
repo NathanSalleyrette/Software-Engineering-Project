@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9 : ??
+//    	Ligne 9 : (3.71) Le membre gauche n'est pas de type 'class'
 
 {
 null.met();

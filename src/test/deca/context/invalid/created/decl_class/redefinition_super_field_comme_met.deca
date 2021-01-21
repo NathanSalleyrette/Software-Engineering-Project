@@ -1,9 +1,9 @@
 // Description :
-//   	appel d'une methode sur un int
+//   	redefinition 
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 1 : (2.6) met définit déjà un champ
+//    	Ligne 13 : (2.6) met définit déjà un champ
 
 class A {
 int met;

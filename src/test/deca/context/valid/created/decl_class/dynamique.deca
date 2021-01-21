@@ -1,5 +1,5 @@
 // Description :
-//		on peut faire des allouement dynamique
+//		on peut faire des allouement dynamique, A = B est possible mais pas B = A
 //
 // Resultats :
 //		Ok
@@ -14,13 +14,17 @@ class B extends A{
 }
 
 {
-A a = new A();
-A b = new B();
-B c = new B();
-a.x;
-b.x;
-//b.y;
-c.x;
-c.y;
+A vrai_a_typeA = new A();
+A vrai_b_typeA = new B();
+B vrai_b_typeB = new B();
+A vrai_b_typeA_anc_typeB = vrai_b_typeB;
+
+vrai_a_typeA.x;
+vrai_b_typeA.x;
+//vrai_b_typeA.y;
+vrai_b_typeB.x;
+vrai_b_typeB.y;
+vrai_b_typeA_anc_typeB.x;
+//vrai_b_typeA_anc_typeB.y;
 
 }

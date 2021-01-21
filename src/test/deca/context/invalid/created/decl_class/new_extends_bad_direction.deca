@@ -1,0 +1,15 @@
+// Description :
+//    creation d'un objet incompatible avec le type
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 13 :
+
+class A{
+}
+class B extends A{
+}
+
+{
+B a = new A();
+}

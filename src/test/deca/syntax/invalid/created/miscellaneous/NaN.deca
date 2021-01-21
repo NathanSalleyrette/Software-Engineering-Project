@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur lexicographique
-//    	Ligne 8:  float trop petit
+//    	Ligne 9:  float trop petit
 
 {
 float a = 1.00000e-99;

@@ -1,5 +1,5 @@
 // Description :
-//		Programme pour tester les classes
+//		Programme pour tester les fields des classes avec type statique et dynamiqye
 //
 // Resultats :
 //		Ok
@@ -8,12 +8,16 @@ class B {
 int x = 1;
 int y = 2;
 boolean b = true;
+boolean b2 = true;
 float c = 0.5;
+float c2 = 0.5;
 }
 class A extends B {
 int x = 3;
 float y = 0.6;
 int z = 42;
+boolean b2 = false;
+float c2 = 0.42;
 }
 
 {
@@ -21,6 +25,12 @@ A a = new A();
 B b = new B();
 B c = a;
 println(a.x, " ", a.y, " ", a.c);
+if (a.x == 3 && a.y == 0.6 && a.c == 0.5 && a.b == true && a.z == 42 && !a.b2 && a.c2 == 0.42){println("ok");}
+else {println("bouuuh");}
 println(b.x, " ", b.y, " ", b.c);
+if (b.x == 1 && b.y == 2 && b.c == 0.5 && b.b == true && a.b2 && a.c2 == 0.5){println("ok");}
+else {println("bouuuh");}
 println(c.x, " ", c.y, " ", c.c);
+if (c.x == 1 && c.y == 2 && c.c == 0.5 && c.b == true && a.b2 && a.c2 == 0.5){println("ok");}
+else {println("bouuuh");}
 }

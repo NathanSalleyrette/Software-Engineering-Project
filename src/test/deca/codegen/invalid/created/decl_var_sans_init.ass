@@ -1,27 +1,37 @@
-	TSTO #4
+	TSTO #6
 	BOV pile_pleine
-	ADDSP #4
+	ADDSP #6
 ; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
 ; Main program
 ; Beginning of main instructions:
-	LOAD 1(GB), R2
-	LOAD R2, R1
-	WINT
-	WNL
-	LOAD 2(GB), R2
-	LOAD R2, R1
-	WINT
-	WNL
 	LOAD 3(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 4(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 5(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
-	LOAD 4(GB), R0
+	LOAD 6(GB), R0
 	CMP #0, R0
 	BEQ E_Fin.0
 	WSTR "ok"
 E_Fin.0:
 	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	RTS
 ; Erreurs
 pile_pleine:
 	WSTR "Erreur : pile_pleine"

@@ -1,0 +1,17 @@
+// Description :
+//   	acces champs sur sous_type avec changement de type static
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 
+
+class A {}
+
+class B extends A {
+int x;
+}
+
+{
+A a = new B();
+a.x;
+}
