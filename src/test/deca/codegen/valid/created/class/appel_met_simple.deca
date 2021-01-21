@@ -5,8 +5,13 @@
 //		Ok
 
 class B{
-	int met(){
-	return
+	int y = 1;
+	protected int x = 1;
+	int getx(){
+	return x;}
+	void setx(int x){
+	this.x = x;
+	}
 }
 
 class A extends B{

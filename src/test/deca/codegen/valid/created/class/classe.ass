@@ -20,6 +20,14 @@
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)
 code.Object.equals:
+	LOAD -2(LB), R1
+	CMP 1(LB), R1
+	BEQ Object.equals.true
+	LOAD #0, R0
+	BRA fin.Object.equals
+Object.equals.true:
+	LOAD #1, R0
+fin.Object.equals:
 	RTS
 ; Classe A
 ; ---------- Initialisation des champs de A
@@ -32,11 +40,12 @@ init.A:
 	LOAD #0x0.0p0, R0
 	STORE R0, 3(R1)
 	RTS
-	TSTO #1
-	BOV pile_pleine
-	PUSH R2
 ; ---------- Code de la methode met dans la classe A ligne 12
 code.A.met:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
 fin.A.met:
 	POP R2
 	RTS

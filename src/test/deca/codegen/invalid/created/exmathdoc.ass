@@ -1,0 +1,142 @@
+	TSTO #10
+	BOV pile_pleine
+	ADDSP #10
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de Math
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+	LOAD code.Math.sin, R0
+	STORE R0, 5(GB)
+	LOAD code.Math.cos, R0
+	STORE R0, 6(GB)
+	LOAD code.Math.asin, R0
+	STORE R0, 7(GB)
+	LOAD code.Math.atan, R0
+	STORE R0, 8(GB)
+	LOAD code.Math.ulp, R0
+	STORE R0, 9(GB)
+; Main program
+; new ligne 14
+	NEW #1, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	STORE R2, 10(GB)
+; Beginning of main instructions:
+	WSTR "cos(0.0) = "
+	ADDSP #2
+	LOAD 10(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x0.0p0, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP 1(LB), R1
+	BEQ Object.equals.true
+	LOAD #0, R0
+	BRA fin.Object.equals
+Object.equals.true:
+	LOAD #1, R0
+fin.Object.equals:
+	RTS
+; Classe Math
+; ---------- Code de la methode sin dans la classe Math ligne 5
+code.Math.sin:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "sin(f) not yet implemented"
+	WNL
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.Math.sin:
+	POP R2
+	RTS
+; ---------- Code de la methode cos dans la classe Math ligne 8
+code.Math.cos:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "cos(f) not yet implemented"
+	WNL
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.Math.cos:
+	POP R2
+	RTS
+; ---------- Code de la methode asin dans la classe Math ligne 11
+code.Math.asin:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "asin(f) not yet implemented"
+	WNL
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.Math.asin:
+	POP R2
+	RTS
+; ---------- Code de la methode atan dans la classe Math ligne 14
+code.Math.atan:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "atan(f) not yet implemented"
+	WNL
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.Math.atan:
+	POP R2
+	RTS
+; ---------- Code de la methode ulp dans la classe Math ligne 17
+code.Math.ulp:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "ulp(f) not yet implemented"
+	WNL
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.Math.ulp:
+	POP R2
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Erreur : tas_plein"
+	WNL
+	ERROR
+; end main program
