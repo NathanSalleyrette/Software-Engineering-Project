@@ -13,6 +13,11 @@ return null;
 
 {
 B b = null;
-B vrai_b = B();
+B vrai_b = new B();
+b = vrai_b.met(b);
 b = vrai_b.met(null);
+b.met(b);
+b.met(null);
+null.met(b);
+null.met(null);
 }
