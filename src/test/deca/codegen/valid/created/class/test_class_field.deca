@@ -1,0 +1,26 @@
+// Description :
+//		Programme pour tester les classes
+//
+// Resultats :
+//		Ok
+
+class B {
+int x = 1;
+int y = 2;
+boolean b = true;
+float c = 0.5;
+}
+class A extends B {
+int x = 3;
+float y = 0.6;
+int z = 42;
+}
+
+{
+A a = new A();
+B b = new B();
+B c = a;
+println(a.x, " ", a.y, " ", a.c);
+println(b.x, " ", b.y, " ", b.c);
+println(c.x, " ", c.y, " ", c.c);
+}

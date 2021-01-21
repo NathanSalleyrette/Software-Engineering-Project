@@ -1,0 +1,10 @@
+// Description :
+//   	appel d'une methode sur un null
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 : ??
+
+{
+null.met;
+}

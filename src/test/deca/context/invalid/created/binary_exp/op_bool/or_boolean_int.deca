@@ -3,8 +3,8 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 11: (3.33) Type gauche boolean. Type droit int Type attendu: ‘boolean’
-
+//    	Ligne 12: (3.33) Type gauche boolean. Type droit int Type attendu: ‘boolean’
+class A{}
 {
 boolean a;
 int b;

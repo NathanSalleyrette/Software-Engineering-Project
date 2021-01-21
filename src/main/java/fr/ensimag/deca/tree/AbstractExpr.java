@@ -76,7 +76,7 @@ public abstract class AbstractExpr extends AbstractInst {
     	if (typeRight.isSubTypeOf(typeLeft, getLocation())) {
     		return true;
     	}
-    	if ((typeLeft.isClass()) && (typeRight.isClass())) {
+    	if (typeLeft.isClass()) {
     		if (typeLeft == typeRight) {
     			return true;
     		} else {

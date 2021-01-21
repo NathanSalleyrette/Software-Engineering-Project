@@ -39,7 +39,7 @@ public class InstanceOf extends AbstractExpr{
 			ClassDefinition currenClass) throws ContextualError {
 		Type exprType = expr.verifyExpr(compiler, localEnv, currenClass);
 		Type comparedType = type.verifyType(compiler);
-		if ((!exprType.isClass()) && (!exprType.isNull())) {
+		if (!exprType.isClassOrNull()) {
 			throw new ContextualError("(3.40) Type gauche : " + exprType.toString() +
 					", attendu : 'class' ou 'null'", this.getLocation());
 		}

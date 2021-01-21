@@ -1,0 +1,12 @@
+// Description :
+//    test mult entre un A et un A
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.33) L’opérande gauche est de type A, L’opérande droite est de type A. Or les types des opérandes doivent être ‘int’ ou ‘float’ pour l’opérateur *
+class A{}
+{
+A a;
+A b;
+int c = a * b;
+}

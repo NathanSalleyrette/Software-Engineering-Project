@@ -1,0 +1,11 @@
+// Description :
+//    test minus entre un null et un true
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.33) L’opérande gauche est de type null, L’opérande droite est de type true. Or les types des opérandes doivent être ‘int’ ou ‘float’ pour l’opérateur -
+class A{}
+{
+A a = new A();
+int c = null - true;
+}

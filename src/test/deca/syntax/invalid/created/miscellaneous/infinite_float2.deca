@@ -1,0 +1,10 @@
+// Description :
+//    test d'un float infinite
+//
+// Resultats :
+//		Erreur lexicographique
+//    	Ligne 8:  ?
+
+{
+float a = 1.0e99
+}

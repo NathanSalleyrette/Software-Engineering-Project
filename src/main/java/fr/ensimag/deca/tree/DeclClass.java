@@ -122,14 +122,15 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
+    	this.getClassName().getClassDefinition().setNumberOfMethods(superClass.getClassDefinition().getNumberOfMethods());
+        this.getListDeclMethod().verifyListDeclMethod(compiler, this.getClassName());
 		this.getClassName().getClassDefinition().setNumberOfFields(superClass.getClassDefinition().getNumberOfFields());
-        this.getListDeclField().verifyListDeclField(compiler, this.getClassName());;
+        this.getListDeclField().verifyListDeclField(compiler, this.getClassName());
     }
 
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
-		this.getClassName().getClassDefinition().setNumberOfMethods(superClass.getClassDefinition().getNumberOfMethods());
-        this.getListDeclMethod().verifyListDeclMethod(compiler, this.getClassName());;
+		this.getListDeclMethod().verifyListMethodBody(compiler, className);
     }
 
 

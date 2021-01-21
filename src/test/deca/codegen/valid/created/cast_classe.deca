@@ -1,0 +1,15 @@
+// Description :
+//		Programme pour tester le cast entre int et float
+//
+// Resultats :
+//		Ok
+
+class B {}
+class A extends B {}
+
+{
+A a = new A();
+B b;
+a = (A)(b);
+b = (B)(a);
+}
