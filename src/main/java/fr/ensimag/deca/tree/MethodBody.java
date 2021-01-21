@@ -16,6 +16,8 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 
+import fr.ensimag.ima.pseudocode.instructions.ADDSP;
+
 public class MethodBody extends AbstractMethodBody{
     
     private ListDeclVar declVariables;
@@ -26,6 +28,14 @@ public class MethodBody extends AbstractMethodBody{
         Validate.notNull(insts);
         this.declVariables = declVariables;
         this.insts = insts;
+    }
+
+    public ListDeclVar getListDeclVar() {
+        return declVariables;
+    }
+
+    public ListInst getListInst() {
+        return insts;
     }
 
     @Override
@@ -52,5 +62,23 @@ public class MethodBody extends AbstractMethodBody{
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         declVariables.prettyPrint(s, prefix, false);
         insts.prettyPrint(s, prefix, true);
+    }
+
+    public void codeGenBody(DecacCompiler compiler) {
+        // Declaration des variables locales
+        Iterator<AbstractDeclVar> iterVar = declVariables.iterator();
+        int indexLocalVar = 0;
+        while (iterVar.hasNext()) {
+            AbstractDeclVar declVar = iterVar.next();
+            declVar.getName().getVariableDefinition().setOperand(new RegisterOffset(++indexLocalVar, Register.LB)); // Attribution de la mémoire dans la pile
+            AbstractExpr expr = declVar.getInitialization().getExpression();
+            if (expr != null) {
+                // Initialization
+                AbstractExpr init = new Assign(declVar.getName(), expr);
+                init.setType(expr.getType());
+                init.codeGenInst(compiler);;
+            }
+        }
+        insts.codeGenListInst(compiler);
     }
 }

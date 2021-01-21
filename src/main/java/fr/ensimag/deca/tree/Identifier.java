@@ -217,7 +217,12 @@ public class Identifier extends AbstractIdentifier {
 
     @Override
     public DVal dval(DecacCompiler compiler) {
-        return this.getExpDefinition().getOperand();
+        DVal dVal = this.getExpDefinition().getOperand();
+        if (dVal == null) {
+            // This is a field, or the context check whould have stop it
+            dVal = new Selection(new This(true), this).dval(compiler);
+        }
+        return dVal;
     }
 
     @Override
@@ -273,5 +278,15 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public boolean isAtomic() {
         return true;
+    }
+
+    @Override
+    public AbstractLValue checkSelection() {
+        DVal dVal = this.getExpDefinition().getOperand();
+        if (dVal == null) {
+            // This is a field, or the context check whould have stop it
+            return new Selection(new This(true), this);
+        }
+        return this;
     }
 }

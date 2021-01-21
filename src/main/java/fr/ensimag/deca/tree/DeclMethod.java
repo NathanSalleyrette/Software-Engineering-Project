@@ -10,8 +10,12 @@ import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.Signature;
 import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
+import java.util.Iterator;
 
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
@@ -148,4 +152,21 @@ public class DeclMethod extends AbstractDeclMethod  {
         body.prettyPrint(s, prefix, true);
     }
 
+	public void codeGenBody(DecacCompiler compiler) {
+		Iterator<AbstractDeclParam> iterParam = params.iterator();
+		int indexParam = 2;
+		while (iterParam.hasNext()) {
+			try {
+				DeclParam param = (DeclParam) iterParam.next();
+				param.getParamName().getExpDefinition().setOperand(new RegisterOffset(--indexParam, Register.LB));
+			} catch (ClassCastException e) {
+				throw new UnsupportedOperationException("AbstractDeclParam should be a DeclParam");
+			}
+		}
+		body.codeGenBody(compiler);
+		if (compiler.hasReturn()) {
+			compiler.addInstruction(new BRA(new Label(this.getName().getMethodDefinition().getLabel().toString().replaceFirst("code", "fin"))));
+			compiler.setReturn(false);
+		}
+	}
 }

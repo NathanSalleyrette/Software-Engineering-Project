@@ -22,4 +22,12 @@ public abstract class AbstractLValue extends AbstractExpr {
     public boolean isSelection() {
         return false;
     }
+
+    /**
+     * Utile dans les méthodes, lors de l'assignation d'une variable
+     * permet de la convertir en selection si c'est un champ
+     */
+    public AbstractLValue checkSelection() {
+        return this;
+    }
 }

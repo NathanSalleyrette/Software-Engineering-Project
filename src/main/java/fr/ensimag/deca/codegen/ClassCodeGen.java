@@ -110,7 +110,15 @@ public class ClassCodeGen {
         compiler.addComment("Classe Object");
         compiler.addComment("---------- Code de la méthode equals dans la classe Object (built in)");
         compiler.addLabel(new Label("code.Object.equals"));
-        // TODO : Corps de equals
+        // Corps de equals
+        compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
+        compiler.addInstruction(new CMP(new RegisterOffset(1, Register.LB), Register.R1));
+        compiler.addInstruction(new BEQ(new Label("Object.equals.true")));
+        compiler.addInstruction(new LOAD(0, Register.R0));
+        compiler.addInstruction(new BRA(new Label("fin.Object.equals")));
+        compiler.addLabel(new Label("Object.equals.true"));
+        compiler.addInstruction(new LOAD(1, Register.R0));
+        compiler.addLabel(new Label("fin.Object.equals"));
         compiler.addInstruction(new RTS());
 
         Iterator<AbstractDeclClass> iter = classes.iterator();
@@ -234,13 +242,20 @@ public class ClassCodeGen {
             try {
                 DeclMethod method = (DeclMethod) iterMethods.next();
                 compiler.reinitCounts();
-                compiler.setInMethod(true);
                 int nbTSTO = 0;
+                int nbVariables = method.getBody().getListDeclVar().size();
                 compiler.addComment("---------- Code de la methode " + method.getName().getName() + " dans la classe " + className + " ligne " + method.getLocation().getLine());
                 compiler.addLabel(method.getName().getMethodDefinition().getLabel());
-                // TODO : corps
-                //method.getBody().
+                compiler.setInMethod(true);
 
+                method.codeGenBody(compiler);
+
+                // Erreur si il n'y a pas de return alors qu'on attend un type non void en sortie
+                if (!method.getType().isVoid()) {
+                    compiler.addInstruction(new WSTR("Erreur : sortie de la méthode sans return"));
+                    compiler.addInstruction(new WNL());
+                    compiler.addInstruction(new ERROR());
+                }
 
                 compiler.addLabel(new Label(method.getName().getMethodDefinition().getLabel().toString().replaceFirst("code", "fin")));
                 // POPS
@@ -252,6 +267,10 @@ public class ClassCodeGen {
                 for (int i = compiler.getMaxRegister(); i >= compiler.getCurrentRegister(); i--) {
                     compiler.addFirst(new Line(new PUSH(Register.getR(i))));;
                     nbTSTO++;
+                }
+                compiler.addFirst(new Line("Sauvegarde des registres"));
+                if (nbVariables > 0) {
+                    compiler.addFirst(new Line(new ADDSP(nbVariables)));
                 }
                 if ((nbTSTO != 0) && !compiler.getCompilerOptions().getNoCheck()) {
                     Label pilePleine = new Label("pile_pleine");

@@ -67,7 +67,7 @@ public class Assign extends AbstractBinaryExpr {
         } else {
             this.getRightOperand().codeGenInst(compiler);   
         }
-
+        this.setLeftOperand(this.getLeftOperand().checkSelection());
         if (!this.getLeftOperand().isSelection()) {
             EvalExpr.mnemo(compiler, this, this.getLeftOperand().dval(compiler), Register.getR(compiler.getCurrentRegister()));
         } else {

@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
+import java.util.Iterator;
 
 import org.apache.commons.lang.Validate;
 
@@ -12,6 +13,19 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.DAddr;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.ADDSP;
+import fr.ensimag.ima.pseudocode.instructions.SUBSP;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BSR;
 
 public class MethodCall extends AbstractExpr{
     
@@ -92,5 +106,35 @@ public class MethodCall extends AbstractExpr{
 		}
 		this.setType(methodDef.getType());
 		return this.getType();
+	}
+
+	@Override
+	protected void codeGenInst(DecacCompiler compiler) {
+		int stackShift = params.size() + 1;
+		GPRegister reg = Register.getR(compiler.getCurrentRegister());
+		compiler.addInstruction(new ADDSP(stackShift));
+		// On empile le paramètre implicite
+		obj.codeGenInst(compiler);
+		DAddr addrImplicit = new RegisterOffset(0, Register.SP);
+		compiler.addInstruction(new STORE(reg, addrImplicit));
+		// On empile les paramètres explicites
+		int index = 0;
+		Iterator<AbstractExpr> iterParam = params.iterator();
+		while (iterParam.hasNext()) {
+			AbstractExpr param = iterParam.next();
+			param.codeGenInst(compiler);
+			compiler.addInstruction(new STORE(reg, new RegisterOffset(--index, Register.SP)));
+		}
+		// On récupère le paramètre implicite
+		compiler.addInstruction(new LOAD(addrImplicit, reg));
+		if (!compiler.getCompilerOptions().getNoCheck()) {
+			compiler.addInstruction(new CMP(new NullOperand(), reg));
+			Label dereference = new Label("dereferencement.null");
+			compiler.addInstruction(new BEQ(dereference));
+		}
+		// On récupère l'adresse de la table des méthodes
+		compiler.addInstruction(new LOAD(new RegisterOffset(0, reg), reg));
+		compiler.addInstruction(new BSR(new RegisterOffset(indexMethod, reg)));
+		compiler.addInstruction(new SUBSP(stackShift));
 	}
 }

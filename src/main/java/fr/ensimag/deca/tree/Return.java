@@ -7,8 +7,12 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
-import org.apache.commons.lang.Validate;
 
+import org.apache.commons.lang.Validate;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
 
 /**
  *
@@ -30,7 +34,23 @@ public class Return extends AbstractInst {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-
+        if (valeurRetour.getType().isBoolean()) {
+            Label faux = new Label("Assign_False." + compiler.getNbLabel());
+            Label fin = new Label("Assign_Fin." + compiler.getNbLabel());
+            valeurRetour.boolCodeGen(compiler, false, faux);
+            // L'expression est vrai
+            compiler.addInstruction(new LOAD(1, Register.getR(compiler.getCurrentRegister())));
+            compiler.addInstruction(new BRA(fin));
+            // L'expression est fausse
+            compiler.addLabel(faux);
+            compiler.addInstruction(new LOAD(0, Register.getR(compiler.getCurrentRegister())));
+            compiler.addLabel(fin);
+            compiler.incrNbLabel();
+        } else {
+            valeurRetour.codeGenInst(compiler);
+        }
+        compiler.addInstruction(new LOAD(Register.getR(compiler.getCurrentRegister()), Register.R0));
+        compiler.setReturn(true);
     }
 
     @Override

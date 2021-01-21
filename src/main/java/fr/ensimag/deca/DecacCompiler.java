@@ -153,6 +153,20 @@ public class DecacCompiler implements Runnable{
     }
 
     //
+    /**
+     * Boolean showing if the the method body being written has a return instruction
+     */
+    private boolean hasReturn = false;
+
+	public boolean hasReturn() {
+		return hasReturn;
+	}
+
+	public void setReturn(boolean bool) {
+		hasReturn = bool;
+    }
+    
+    //
     public SymbolTable getSymbTb() {
     	return this.symbTb;
     }
