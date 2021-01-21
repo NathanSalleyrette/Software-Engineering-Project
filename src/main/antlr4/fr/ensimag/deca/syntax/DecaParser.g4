@@ -473,7 +473,13 @@ type returns[AbstractIdentifier tree]
 
 literal returns[AbstractExpr tree]
     : INT {
-    	$tree = new IntLiteral(Integer.parseInt($INT.text));
+    	int entier = 0;
+    	try {
+    		entier = Integer.parseInt($INT.text);
+    	} catch (NumberFormatException e) {
+    		//throw new DecaRecognitionException();
+    	}
+    	$tree = new IntLiteral(entier);
     	setLocation($tree, $INT);
         }
     | fd=FLOAT {
