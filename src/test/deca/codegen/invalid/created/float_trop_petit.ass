@@ -1,0 +1,73 @@
+	TSTO #4
+	BOV pile_pleine
+	ADDSP #4
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Main program
+	LOAD #0x1.f4p9, R2
+	STORE R2, 3(GB)
+	BOV debordement_flottant
+	LOAD #0x1.0p0, R2
+	LOAD 3(GB), R3
+	MUL 3(GB), R3
+	BOV debordement_flottant
+	MUL 3(GB), R3
+	BOV debordement_flottant
+	MUL 3(GB), R3
+	BOV debordement_flottant
+	MUL 3(GB), R3
+	BOV debordement_flottant
+	MUL 3(GB), R3
+	BOV debordement_flottant
+	MUL 3(GB), R3
+	BOV debordement_flottant
+	MUL 3(GB), R3
+	BOV debordement_flottant
+	DIV R3, R2
+	BOV debordement_flottant
+	LOAD #0x1.0p0, R3
+	LOAD 3(GB), R4
+	MUL 3(GB), R4
+	BOV debordement_flottant
+	MUL 3(GB), R4
+	BOV debordement_flottant
+	MUL 3(GB), R4
+	BOV debordement_flottant
+	MUL 3(GB), R4
+	BOV debordement_flottant
+	MUL 3(GB), R4
+	BOV debordement_flottant
+	MUL 3(GB), R4
+	BOV debordement_flottant
+	MUL 3(GB), R4
+	BOV debordement_flottant
+	DIV R4, R3
+	BOV debordement_flottant
+	MUL R3, R2
+	BOV debordement_flottant
+	STORE R2, 4(GB)
+	BOV debordement_flottant
+; Beginning of main instructions:
+	LOAD 4(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+debordement_flottant:
+	WSTR "Erreur : debordement_flottant"
+	WNL
+	ERROR
+; end main program
