@@ -53,7 +53,7 @@ public class DeclField extends AbstractDeclField{
     	if ((homonyme != null)) {
     		FieldDefinition homofield = homonyme.asFieldDefinition("(2.3) " +
     				fieldName.getName().toString() +
-    				" désigne une classe déjà définie", getLocation());
+    				" désigne une métthode déjà définie", getLocation());
     	}
     	// On récupère le type en décorant
     	Type fieldType = this.type.verifyType(compiler);

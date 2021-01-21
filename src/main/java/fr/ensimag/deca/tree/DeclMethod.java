@@ -107,6 +107,7 @@ public class DeclMethod extends AbstractDeclMethod  {
 
     public void verifyBody(DecacCompiler compiler, EnvironmentExp localEnv,
     		ClassDefinition currentClass, Type methodType) throws ContextualError {
+    	this.params.verifyListDeclParam(compiler, localEnv, currentClass);
     	this.body.verifyMethodBody(compiler, localEnv, currentClass, methodType);
     }
     @Override

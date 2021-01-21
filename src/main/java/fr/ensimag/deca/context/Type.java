@@ -92,7 +92,7 @@ public abstract class Type {
     public boolean isSubTypeOf(Type type1, Location loc) throws ContextualError{
     	if ((type1.isFloat()) && (this.isInt())) {
     		return true;
-    	} else if (type1.isClassOrNull()){
+    	} else if (type1.isClass()){
     		if (this.isNull()) {
     			return true;
     		} else if (this.isClass()) {
