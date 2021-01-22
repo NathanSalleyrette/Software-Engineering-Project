@@ -10,7 +10,7 @@ class B_prime extends A_prime{}
 class A {
 A_prime met(){
 return new A_prime();
-return new B_prine();
+return new B_prime();
 }
 }
 

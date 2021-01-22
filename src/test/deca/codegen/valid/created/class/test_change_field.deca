@@ -7,9 +7,8 @@
 class B {
 int x;
 int y;
-boolean b;
-
 float f;
+boolean b;
 }
 
 {

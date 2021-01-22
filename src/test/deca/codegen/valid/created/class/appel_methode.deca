@@ -35,9 +35,9 @@ return new B();
 B a = new B();
 int i = a.metint();
 float f = a.metfloat();
-a.metvoid();
 boolean b = a.metbool();
 B c = a.metB();
+a.metvoid();
 println(i, " ", f, " ", c.f);
 if (b){print("true");} else {println("false");}
 }

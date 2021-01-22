@@ -23,6 +23,6 @@ class A extends B{
 
 
 {
-println("1 =", ((new A()).met()).x);
-println("2 =", ((new B()).met()).x);
+println("2 =", ((new A()).met()).x);
+println("1 =", ((new B()).met()).x);
 }
