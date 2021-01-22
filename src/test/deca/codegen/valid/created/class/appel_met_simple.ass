@@ -1,6 +1,6 @@
-	TSTO #13
+	TSTO #14
 	BOV pile_pleine
-	ADDSP #13
+	ADDSP #14
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -26,25 +26,9 @@
 	STORE R0, 9(GB)
 	LOAD code.A.setx, R0
 	STORE R0, 10(GB)
+	LOAD code.A.getxbis, R0
+	STORE R0, 11(GB)
 ; Main program
-; new ligne 27
-	NEW #4, R2
-	BOV tas_plein
-	LEA 7(GB), R0
-	STORE R0, 0(R2)
-	PUSH R2
-	BSR init.A
-	POP R2
-	STORE R2, 11(GB)
-; new ligne 28
-	NEW #3, R2
-	BOV tas_plein
-	LEA 3(GB), R0
-	STORE R0, 0(R2)
-	PUSH R2
-	BSR init.B
-	POP R2
-	STORE R2, 12(GB)
 ; new ligne 29
 	NEW #4, R2
 	BOV tas_plein
@@ -53,22 +37,27 @@
 	PUSH R2
 	BSR init.A
 	POP R2
+	STORE R2, 12(GB)
+; new ligne 30
+	NEW #3, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.B
+	POP R2
 	STORE R2, 13(GB)
+; new ligne 31
+	NEW #4, R2
+	BOV tas_plein
+	LEA 7(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 14(GB)
 ; Beginning of main instructions:
-	WSTR "2 = "
-	ADDSP #1
-	LOAD 11(GB), R2
-	STORE R2, 0(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #1
-	LOAD R2, R1
-	WINT
-	WNL
-	WSTR "1 = "
+	WSTR "111 = "
 	ADDSP #1
 	LOAD 12(GB), R2
 	STORE R2, 0(SP)
@@ -78,10 +67,9 @@
 	LOAD 0(R2), R2
 	BSR 2(R2)
 	SUBSP #1
+	LOAD R0, R2
 	LOAD R2, R1
 	WINT
-	WNL
-	WSTR "1 = "
 	ADDSP #1
 	LOAD 13(GB), R2
 	STORE R2, 0(SP)
@@ -91,16 +79,23 @@
 	LOAD 0(R2), R2
 	BSR 2(R2)
 	SUBSP #1
+	LOAD R0, R2
+	LOAD R2, R1
+	WINT
+	ADDSP #1
+	LOAD 14(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
+	LOAD R0, R2
 	LOAD R2, R1
 	WINT
 	WNL
-	WSTR "0 = "
-	LOAD 11(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 1(R2), R2
-	LOAD R2, R1
-	WINT
+	WSTR "000 = "
 	LOAD 12(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
@@ -113,34 +108,7 @@
 	LOAD 1(R2), R2
 	LOAD R2, R1
 	WINT
-	WNL
-	ADDSP #2
-	LOAD 11(GB), R2
-	STORE R2, 0(SP)
-	LOAD #42, R2
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 3(R2)
-	SUBSP #2
-	WSTR "0 = "
-	LOAD 12(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 1(R2), R2
-	LOAD R2, R1
-	WINT
-	LOAD 13(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 1(R2), R2
-	LOAD R2, R1
-	WINT
-	WNL
-	WSTR "42 = "
-	LOAD 11(GB), R2
+	LOAD 14(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 1(R2), R2
@@ -150,7 +118,7 @@
 	ADDSP #2
 	LOAD 12(GB), R2
 	STORE R2, 0(SP)
-	LOAD #3, R2
+	LOAD #4, R2
 	STORE R2, -1(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -158,10 +126,11 @@
 	LOAD 0(R2), R2
 	BSR 3(R2)
 	SUBSP #2
+	LOAD R0, R2
 	ADDSP #2
 	LOAD 13(GB), R2
 	STORE R2, 0(SP)
-	LOAD #3, R2
+	LOAD #4, R2
 	STORE R2, -1(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -169,7 +138,64 @@
 	LOAD 0(R2), R2
 	BSR 3(R2)
 	SUBSP #2
-	WSTR "3 = "
+	LOAD R0, R2
+	ADDSP #2
+	LOAD 14(GB), R2
+	STORE R2, 0(SP)
+	LOAD #4, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
+	WSTR "044 = "
+	LOAD 13(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	LOAD 14(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	LOAD 12(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "411 = "
+	ADDSP #1
+	LOAD 13(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
+	LOAD R0, R2
+	LOAD R2, R1
+	WINT
+	ADDSP #1
+	LOAD 14(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
+	LOAD R0, R2
+	LOAD R2, R1
+	WINT
 	ADDSP #1
 	LOAD 12(GB), R2
 	STORE R2, 0(SP)
@@ -179,23 +205,15 @@
 	LOAD 0(R2), R2
 	BSR 2(R2)
 	SUBSP #1
-	LOAD R2, R1
-	WINT
-	ADDSP #1
-	LOAD 13(GB), R2
-	STORE R2, 0(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #1
+	LOAD R0, R2
 	LOAD R2, R1
 	WINT
 	WNL
-	WSTR "2 = "
+	LOAD 12(GB), R2
+	STORE R2, 14(GB)
+	WSTR "c = 14 ="
 	ADDSP #1
-	LOAD 11(GB), R2
+	LOAD 14(GB), R2
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -203,24 +221,10 @@
 	LOAD 0(R2), R2
 	BSR 2(R2)
 	SUBSP #1
+	LOAD R0, R2
 	LOAD R2, R1
 	WINT
-	WNL
-	LOAD 11(GB), R2
-	STORE R2, 13(GB)
-	WSTR "c = 142 ="
-	ADDSP #1
-	LOAD 13(GB), R2
-	STORE R2, 0(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #1
-	LOAD R2, R1
-	WINT
-	LOAD 13(GB), R2
+	LOAD 14(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 1(R2), R2
@@ -251,7 +255,7 @@ init.B:
 	STORE R0, 1(R1)
 	STORE R0, 2(R1)
 	LOAD -2(LB), R1
-	LOAD #1, R2
+	LOAD #0, R2
 	STORE R2, 1(R1)
 	LOAD #1, R2
 	STORE R2, 2(R1)
@@ -322,6 +326,24 @@ code.A.setx:
 	STORE R2, 1(R3)
 fin.A.setx:
 	POP R3
+	POP R2
+	RTS
+; ---------- Code de la methode getxbis dans la classe A ligne 22
+code.A.getxbis:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 3(R2), R2
+	LOAD R2, R0
+	BRA fin.A.getxbis
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.A.getxbis:
 	POP R2
 	RTS
 ; Erreurs

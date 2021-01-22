@@ -14,7 +14,7 @@
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
 ; Main program
-; new ligne 16
+; new ligne 15
 	NEW #5, R2
 	BOV tas_plein
 	LEA 3(GB), R0
@@ -41,14 +41,14 @@
 	LOAD 5(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
-	LOAD 4(R2), R2
+	LOAD 3(R2), R2
 	LOAD R2, R1
 	WFLOAT
 	WSTR " "
 	LOAD 5(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
-	LOAD 3(R2), R0
+	LOAD 4(R2), R0
 	CMP #0, R0
 	BEQ E_Sinon.0
 	WSTR "true"
@@ -76,12 +76,12 @@ Assign_Fin.1:
 	LOAD 5(GB), R3
 	CMP #null, R3
 	BEQ dereferencement.null
-	STORE R2, 3(R3)
+	STORE R2, 4(R3)
 	LOAD #0x1.0p-1, R2
 	LOAD 5(GB), R3
 	CMP #null, R3
 	BEQ dereferencement.null
-	STORE R2, 4(R3)
+	STORE R2, 3(R3)
 	BOV debordement_flottant
 	LOAD 5(GB), R2
 	CMP #null, R2
@@ -100,14 +100,14 @@ Assign_Fin.1:
 	LOAD 5(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
-	LOAD 4(R2), R2
+	LOAD 3(R2), R2
 	LOAD R2, R1
 	WFLOAT
 	WSTR " "
 	LOAD 5(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
-	LOAD 3(R2), R0
+	LOAD 4(R2), R0
 	CMP #0, R0
 	BEQ E_Sinon.2
 	WSTR "true"
@@ -137,9 +137,9 @@ init.B:
 	LOAD #0, R0
 	STORE R0, 1(R1)
 	STORE R0, 2(R1)
-	LOAD #0, R0
-	STORE R0, 3(R1)
 	LOAD #0x0.0p0, R0
+	STORE R0, 3(R1)
+	LOAD #0, R0
 	STORE R0, 4(R1)
 	RTS
 ; Erreurs

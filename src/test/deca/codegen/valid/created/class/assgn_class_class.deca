@@ -44,8 +44,8 @@ println();
 println(a.c, " ",a.c1, " ", a.c2);
 println(b.c, " ",b.c1, " ", b.c2);
 println();
-if (a.b && a.b2 && a.b3) {println("ok");} else {println("bouuh");}
-if (b.b && b.b2 && b.b3) {println("ok");} else {println("bouuh");}
+if (a.b && a.b1 && a.b2) {println("ok");} else {println("bouuh");}
+if (b.b && b.b1 && b.b2) {println("ok");} else {println("bouuh");}
 println();
 println();
 println(a.a, " ",a.a1);
@@ -54,8 +54,8 @@ println();
 println(a.c, " ",a.c1);
 println(c.c, " ",c.c1);
 println();
-if (a.b && a.b2) {println("ok");} else {println("bouuh");}
-if (b.b && b.b2) {println("ok");} else {println("bouuh");}
+if (a.b && a.b1) {println("ok");} else {println("bouuh");}
+if (b.b && b.b1) {println("ok");} else {println("bouuh");}
 
 
 }
