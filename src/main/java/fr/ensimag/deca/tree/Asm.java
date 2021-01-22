@@ -9,7 +9,7 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.Instruction;
-import fr.ensimag.ima.pseudocode.insutrctionStringLine;
+import fr.ensimag.ima.pseudocode.InstructionStringLine;
 
 public class Asm extends AbstractMethodBody{
 	private StringLiteral listeInstructions;
