@@ -1,0 +1,105 @@
+#include "Liste.deca"
+{
+/*    Liste aq = new Liste((float)0.00001525878906, null, (float)0.00001525878906);
+    Liste ap = new Liste((float)0.00003051757812, aq, (float)0.00003051757813);
+    Liste ao = new Liste((float)0.00006103515617, ap, (float)0.00006103515625);
+    Liste an = new Liste((float)0.0001220703119, ao, (float)0.0001220703125);
+    Liste am = new Liste((float)0.0002441406201, an, (float)0.000244140625);
+    Liste al = new Liste((float)0.0004882812112, am, (float)0.00048828125);
+    Liste ak = new Liste((float)0.0009765621896, al, (float)0.0009765625);
+    Liste aj = new Liste((float)0.001953122516, ak, (float)0.001953125);
+    Liste ai = new Liste((float)0.003906230132, aj, (float)0.00390625);
+    Liste ah = new Liste((float)0.00781234106, ai, (float)0.0078125);
+    Liste ag = new Liste((float)0.01562372862, ah, (float)0.015625);
+    Liste af = new Liste((float)0.03123983343, ag, (float)0.03125);
+    Liste ae = new Liste((float)0.06241881, af, (float)0.0625);
+    Liste ad = new Liste((float)0.1243549945, ae, (float)0.125);
+    Liste ac = new Liste((float)0.2449786631, ad, (float)0.25);
+    Liste ab = new Liste((float)0.463647609, ac, (float)0.5);
+    Liste aa = new Liste((float)0.78539816339, ab, (float)1);
+    Liste aaa = new Liste((float)1, aa, (float)1);*/
+
+    float nombre;
+    Liste aa;
+    Liste ab;
+    Liste ac;
+    Liste aaa;
+    Liste curr;
+    int signe;
+    int signe2;
+    float res;
+    float X;
+    float Y;
+    float angle_ajoute;
+    float epsilon;
+    float pi;
+    float grosse_somme;
+
+    aa = new Liste();
+    ab = new Liste();
+    ac = new Liste();
+    aaa = new Liste();
+    ac.init(0.2449786631, null, 0.0625);
+    ab.init(0.463647609, ac, 0.25);
+    aa.init(0.78539816339, ab, 1.0);
+    aaa.init(1.0,aa,1.0);
+    
+    epsilon= 0.5;
+    X = 1.0;
+    pi = 3.141592653589793238;
+    nombre = -0.64;
+    curr = aaa;
+    if(nombre < 0.0){
+        nombre = -nombre;
+        signe = 1;
+        X = 1.0;
+        Y = nombre * signe;
+        grosse_somme = -(pi / 2);
+        res = X;
+        X = Y;
+        Y = -res;
+        while((Y >= 0.0 && Y >= epsilon) || (Y <= 0.0 && Y <= epsilon)){
+            curr = curr.suivant;
+            if(Y > 0.0){
+                signe2 = -1;
+            }
+            else{
+                signe2 = 1;
+            }
+            angle_ajoute = signe2 * curr.contenu;
+            grosse_somme = grosse_somme + angle_ajoute;
+            res = X;
+            X = X - (signe2 * (curr.valeur_k) * Y);
+            Y = Y + (signe2 * (curr.valeur_k) * res);
+        }
+        println(grosse_somme * signe);
+    }
+    else if(nombre > 0.0){
+        signe = 1;
+        X = 1.0;
+        Y = nombre;
+        grosse_somme = -(pi / 2);
+        res = X;
+        X = Y;
+        Y = -res;
+        while((Y >= 0.0 && Y >= epsilon) || (Y <= 0.0 && Y <= epsilon)){
+            curr = curr.suivant;
+
+            if(Y > 0.0){
+                signe2 = -1;
+            }
+            else{
+                signe2 = 1;
+            }
+            angle_ajoute = signe2 * curr.contenu;
+            grosse_somme = grosse_somme + angle_ajoute;
+            res = X;
+            X = X - (signe2 * (curr.valeur_k) * Y);
+            Y = Y + (signe2 * (curr.valeur_k) * res);
+        }
+        println(grosse_somme * -signe);
+    }
+    else{
+        println(0.0);
+    }
+}
