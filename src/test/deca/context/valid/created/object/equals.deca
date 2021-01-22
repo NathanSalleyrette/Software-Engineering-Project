@@ -11,6 +11,4 @@ class A{
 A a;
 a.equals(a);
 a.equals(null);
-//null.equals(a);
-//null.equals(null);
 } 
