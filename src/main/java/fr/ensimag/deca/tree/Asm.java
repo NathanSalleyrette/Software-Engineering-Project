@@ -21,16 +21,16 @@ public class Asm extends AbstractMethodBody{
 
 	@Override
 	public void decompile(IndentPrintStream s) {
-		s.print("asm");
-		s.print("(");
-		listeInstructions.decompile(s);
-		s.print(")");
-		s.print(";");
+		
+		s.print("asm(");
+		s.print(listeInstructions.getValue());
+		s.print(");");
 	}
 
 	@Override
 	protected void prettyPrintChildren(PrintStream s, String prefix) {
 		// Il n'y a pas d'enfant
+		this.listeInstructions.prettyPrint(s,prefix,Boolean.TRUE);
 		
 	}
 
@@ -41,6 +41,11 @@ public class Asm extends AbstractMethodBody{
 	@Override
 	protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass,
 			Type returnType) throws ContextualError {
+		this.listeInstructions.verifyExpr(compiler, localEnv, currentClass);
+		
+	}
+	@Override
+	protected void codeGenBody(DecacCompiler compiler) {
 		// TODO Auto-generated method stub
 		
 	}

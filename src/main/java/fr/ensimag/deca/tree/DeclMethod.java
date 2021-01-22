@@ -35,13 +35,14 @@ public class DeclMethod extends AbstractDeclMethod  {
     final private AbstractIdentifier type;
     final private AbstractIdentifier methodName;
     final private ListDeclParam params;
-    final private MethodBody body;
+    final private AbstractMethodBody body;
+    final private Asm asmBody;
 
-	public MethodBody getBody() {
+	public AbstractMethodBody getBody() {
 		return body;
 	}
 
-    public DeclMethod(AbstractIdentifier type, AbstractIdentifier methodName, ListDeclParam params, MethodBody body) {
+    public DeclMethod(AbstractIdentifier type, AbstractIdentifier methodName, ListDeclParam params, AbstractMethodBody body, Asm asmBody) {
         Validate.notNull(type);
         Validate.notNull(methodName);
         Validate.notNull(params);
@@ -50,6 +51,7 @@ public class DeclMethod extends AbstractDeclMethod  {
         this.methodName = methodName;
         this.params = params;
         this.body = body;
+		this.asmBody = asmBody;
     }
 
     @Override
@@ -125,11 +127,15 @@ public class DeclMethod extends AbstractDeclMethod  {
     	s.print("(");
     	this.params.decompile(s);
     	s.print(")");
-    	s.println("{");
+    	if(asmBody == null) {
+    		s.println("{");
+    	}
         s.indent();
         body.decompile(s);
         s.unindent();
-        s.println("}");
+        if(asmBody == null ) {
+        	s.println("}");
+        }
 
     }
 

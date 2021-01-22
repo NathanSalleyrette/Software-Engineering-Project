@@ -604,18 +604,16 @@ decl_method returns[AbstractDeclMethod tree]
 @init { AbstractMethodBody instructions;
 }
     : type ident OPARENT params=list_params CPARENT (block {
-    	
-    	$tree = new DeclMethod($type.tree, $ident.tree, $list_params.tree, new MethodBody($block.decls, $block.insts));
-        setLocation($tree, $type.start);
+    	$tree = new DeclMethod($type.tree, $ident.tree, $list_params.tree, new MethodBody($block.decls, $block.insts), null);
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
 		StringLiteral s = new StringLiteral($code.text);
-		setLocation(s,$code.location);
-		instructions= new Asm(s);
-		setLocation(instructions,$code.location);
+		Asm a = new Asm(s);
+		$tree= new DeclMethod($type.tree, $ident.tree, $list_params.tree, a,a);
+		
         }
       ) {
-      	// TODO
+      	setLocation($tree, $type.start);
         }
     ;
 

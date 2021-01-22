@@ -12,5 +12,6 @@ public abstract class AbstractMethodBody extends Tree {
 	abstract protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv,
 			ClassDefinition currentClass, Type returnType)
 			throws ContextualError;
+	abstract protected void codeGenBody(DecacCompiler compiler);
 
 }
