@@ -25,6 +25,7 @@ import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.BSR;
 
 public class MethodCall extends AbstractExpr{
@@ -138,6 +139,19 @@ public class MethodCall extends AbstractExpr{
 		compiler.addInstruction(new LOAD(new RegisterOffset(0, reg), reg));
 		compiler.addInstruction(new BSR(new RegisterOffset(meth.getMethodDefinition().getIndex(), reg)));
 		compiler.addInstruction(new SUBSP(stackShift));
-		compiler.addInstruction(new LOAD(Register.R0, reg));
+		if (!meth.getMethodDefinition().getType().isBoolean()) { // Si cela renvoie un booleen sa valeur dans R0 suffit
+			compiler.addInstruction(new LOAD(Register.R0, reg));
+		}
+	}
+
+	@Override
+	protected void boolCodeGen(DecacCompiler compiler, boolean branch, Label tag) {
+		this.codeGenInst(compiler);
+		compiler.addInstruction(new CMP(0, Register.R0));
+        if (branch) {
+            compiler.addInstruction(new BNE(tag));
+        } else {
+            compiler.addInstruction(new BEQ(tag));
+        }
 	}
 }
