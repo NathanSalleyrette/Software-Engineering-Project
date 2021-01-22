@@ -65,18 +65,8 @@
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
-	ADDSP #2
 	LOAD 12(GB), R2
-	STORE R2, 0(SP)
-	LOAD 14(GB), R2
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 1(R2)
-	SUBSP #2
-	CMP #0, R0
+	CMP 14(GB), R2
 	BEQ Assign_False.0
 	LOAD #1, R2
 	BRA Assign_Fin.0
@@ -88,24 +78,15 @@ Assign_Fin.0:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 3(R2)
+	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
-	ADDSP #2
 	LOAD 12(GB), R2
-	STORE R2, 0(SP)
-	LOAD 13(GB), R2
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 1(R2)
-	SUBSP #2
-	CMP #0, R0
+	LOAD #null, R3
+	CMP R3, R2
 	BEQ Assign_False.1
 	LOAD #1, R2
 	BRA Assign_Fin.1
@@ -117,24 +98,14 @@ Assign_Fin.1:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 3(R2)
+	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
-	ADDSP #2
-	LOAD 14(GB), R2
-	STORE R2, 0(SP)
 	LOAD 12(GB), R2
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 1(R2)
-	SUBSP #2
-	CMP #0, R0
+	CMP 13(GB), R2
 	BEQ Assign_False.2
 	LOAD #1, R2
 	BRA Assign_Fin.2
@@ -146,24 +117,14 @@ Assign_Fin.2:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 3(R2)
+	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
-	ADDSP #2
 	LOAD 14(GB), R2
-	STORE R2, 0(SP)
-	LOAD 13(GB), R2
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 1(R2)
-	SUBSP #2
-	CMP #0, R0
+	CMP 12(GB), R2
 	BEQ Assign_False.3
 	LOAD #1, R2
 	BRA Assign_Fin.3
@@ -175,24 +136,14 @@ Assign_Fin.3:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 3(R2)
+	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
-	ADDSP #2
-	LOAD 13(GB), R2
-	STORE R2, 0(SP)
-	LOAD 12(GB), R2
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 1(R2)
-	SUBSP #2
-	CMP #0, R0
+	LOAD 14(GB), R2
+	CMP 13(GB), R2
 	BEQ Assign_False.4
 	LOAD #1, R2
 	BRA Assign_Fin.4
@@ -204,24 +155,15 @@ Assign_Fin.4:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 3(R2)
+	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
-	ADDSP #2
-	LOAD 13(GB), R2
-	STORE R2, 0(SP)
 	LOAD 14(GB), R2
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 1(R2)
-	SUBSP #2
-	CMP #0, R0
+	LOAD #null, R3
+	CMP R3, R2
 	BEQ Assign_False.5
 	LOAD #1, R2
 	BRA Assign_Fin.5
@@ -233,24 +175,14 @@ Assign_Fin.5:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 3(R2)
+	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
-	ADDSP #2
-	LOAD 12(GB), R2
-	STORE R2, 0(SP)
-	LOAD 12(GB), R2
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 1(R2)
-	SUBSP #2
-	CMP #0, R0
+	LOAD 13(GB), R2
+	CMP 12(GB), R2
 	BEQ Assign_False.6
 	LOAD #1, R2
 	BRA Assign_Fin.6
@@ -268,18 +200,8 @@ Assign_Fin.6:
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
-	ADDSP #2
 	LOAD 13(GB), R2
-	STORE R2, 0(SP)
-	LOAD 13(GB), R2
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 1(R2)
-	SUBSP #2
-	CMP #0, R0
+	CMP 14(GB), R2
 	BEQ Assign_False.7
 	LOAD #1, R2
 	BRA Assign_Fin.7
@@ -297,18 +219,9 @@ Assign_Fin.7:
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
-	ADDSP #2
-	LOAD 14(GB), R2
-	STORE R2, 0(SP)
-	LOAD 14(GB), R2
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 1(R2)
-	SUBSP #2
-	CMP #0, R0
+	LOAD 13(GB), R2
+	LOAD #null, R3
+	CMP R3, R2
 	BEQ Assign_False.8
 	LOAD #1, R2
 	BRA Assign_Fin.8
@@ -323,12 +236,89 @@ Assign_Fin.8:
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+	LOAD #null, R2
+	LOAD #null, R3
+	CMP R3, R2
+	BEQ Assign_False.9
+	LOAD #1, R2
+	BRA Assign_Fin.9
+Assign_False.9:
+	LOAD #0, R2
+Assign_Fin.9:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+	LOAD 12(GB), R2
+	CMP 12(GB), R2
+	BEQ Assign_False.10
+	LOAD #1, R2
+	BRA Assign_Fin.10
+Assign_False.10:
+	LOAD #0, R2
+Assign_Fin.10:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+	LOAD 13(GB), R2
+	CMP 13(GB), R2
+	BEQ Assign_False.11
+	LOAD #1, R2
+	BRA Assign_Fin.11
+Assign_False.11:
+	LOAD #0, R2
+Assign_Fin.11:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+	LOAD 14(GB), R2
+	CMP 14(GB), R2
+	BEQ Assign_False.12
+	LOAD #1, R2
+	BRA Assign_Fin.12
+Assign_False.12:
+	LOAD #0, R2
+Assign_Fin.12:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)
 code.Object.equals:
 	LOAD -2(LB), R1
-	CMP -3(LB), R1
+	CMP 1(LB), R1
 	BEQ Object.equals.true
 	LOAD #0, R0
 	BRA fin.Object.equals
@@ -377,14 +367,14 @@ code.U.t:
 	WSTR "t="
 	LOAD -3(LB), R0
 	CMP #0, R0
-	BEQ E_Sinon.9
+	BEQ E_Sinon.13
 	WSTR "t"
 	WNL
-	BRA E_Fin.9
-E_Sinon.9:
+	BRA E_Fin.13
+E_Sinon.13:
 	WSTR "f"
 	WNL
-E_Fin.9:
+E_Fin.13:
 fin.U.t:
 	POP R2
 	RTS
@@ -397,14 +387,14 @@ code.U.f:
 	WSTR "f="
 	LOAD -3(LB), R0
 	CMP #0, R0
-	BEQ E_Sinon.10
+	BEQ E_Sinon.14
 	WSTR "t"
 	WNL
-	BRA E_Fin.10
-E_Sinon.10:
+	BRA E_Fin.14
+E_Sinon.14:
 	WSTR "f"
 	WNL
-E_Fin.10:
+E_Fin.14:
 fin.U.f:
 	POP R2
 	RTS
