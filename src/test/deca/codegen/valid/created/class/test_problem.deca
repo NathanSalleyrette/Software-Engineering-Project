@@ -1,16 +1,25 @@
 // Description :
-//		Programme pour tester les classes
+//		on peut faire des allouement dynamique, A = B est possible mais pas B = A
 //
 // Resultats :
 //		Ok
 
-class B {
-float c;
+
+class A{}
+
+class B{}
+
+class U {
+	void f(boolean b){
+		if (b) {}
+	}
 }
 
 {
-B b = new B();
-if (b.c == 0.0){println("ok");}
-else {println("bouuuh");}
+U u = new U();
 
+A a = new A();
+B b = new B();
+
+u.f(a == b);
 }
