@@ -485,7 +485,7 @@ literal returns[AbstractExpr tree]
         }
     | fd=FLOAT {
     	double flottant = Double.parseDouble($fd.text);
-    	if ((0 < flottant) && (flottant < Float.MIN_VALUE)) {
+    	if (flottant < Float.MIN_VALUE) {
     		throw new FloatPrecisionException(
     			this, $fd
     		);

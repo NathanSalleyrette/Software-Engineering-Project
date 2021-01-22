@@ -83,8 +83,8 @@ public class DeclMethod extends AbstractDeclMethod  {
     	try {
     		currentClass.getMembers().declare(this.getName().getName(), methodDef, getLocation());
     	} catch(DoubleDefException e) {
-    		throw new ContextualError("(2.6) La méthode " + this.getName().getName().toString() +
-    				" est déjà définie", this.getLocation());
+    		throw new ContextualError("(2.6) L'identificateur " + this.getName().getName().toString() +
+    				" est déjà défini", this.getLocation());
     	}
     	
     	// Verification de la signature en cas de redéfinition
