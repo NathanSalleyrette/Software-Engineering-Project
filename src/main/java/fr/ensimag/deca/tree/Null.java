@@ -10,6 +10,10 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.NullType;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.DVal;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
 public class Null extends AbstractExpr{
@@ -50,4 +54,13 @@ public class Null extends AbstractExpr{
 		
 	}
 
+	@Override
+    protected void codeGenInst(DecacCompiler compiler) {
+        compiler.addInstruction(new LOAD(this.dval(compiler), Register.getR(compiler.getCurrentRegister())));
+    }
+
+    @Override
+    public DVal dval(DecacCompiler compiler) {
+        return new NullOperand();
+    }
 }
