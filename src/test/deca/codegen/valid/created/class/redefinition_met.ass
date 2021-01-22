@@ -24,7 +24,7 @@
 	STORE R0, 8(GB)
 ; Main program
 ; Beginning of main instructions:
-	WSTR "1 ="
+	WSTR "2 ="
 	ADDSP #1
 ; new ligne 26
 	NEW #3, R2
@@ -41,13 +41,14 @@
 	LOAD 0(R2), R2
 	BSR 2(R2)
 	SUBSP #1
+	LOAD R0, R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 2(R2), R2
 	LOAD R2, R1
 	WINT
 	WNL
-	WSTR "2 ="
+	WSTR "1 ="
 	ADDSP #1
 ; new ligne 27
 	NEW #2, R2
@@ -64,6 +65,7 @@
 	LOAD 0(R2), R2
 	BSR 2(R2)
 	SUBSP #1
+	LOAD R0, R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 1(R2), R2

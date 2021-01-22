@@ -5,7 +5,7 @@
 //		Ok
 
 class B{
-	int y = 1;
+	int y = 0;
 	protected int x = 1;
 	int getx(){
 	return x;}
@@ -19,6 +19,8 @@ class A extends B{
 	void setx(int y){
 	this.y = y;
 	}
+	int getxbis(){
+	return x;}
 }
 
 
@@ -27,17 +29,14 @@ class A extends B{
 A a = new A();
 B b = new B();
 B c = new A();
-println("2 = ", a.getx());
-println("1 = ", b.getx());
-println("1 = ", c.getx());
-println("0 = ", a.y, b.y, c.y);
-a.setx(42);
-println("0 = ", b.y, c.y);
-println("42 = ", a.y);
-b.setx(3);
-c.setx(3);
-println("3 = ", b.getx(), c.getx());
-println("2 = ", a.getx());
+println("111 = ", a.getx(), b.getx(),c.getx());
+println("000 = ", a.y, b.y, c.y);
+a.setx(4);
+b.setx(4);
+c.setx(4);
+println("044 = ", b.y, c.y, a.y);
+
+println("411 = ", b.getx(), c.getx(), a.getx());
 c = a;
-println("c = 142 =",c.getx(), c.y);
+println("c = 14 =",c.getx(), c.y);
 }
