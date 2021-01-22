@@ -6,6 +6,7 @@ import java.util.Iterator;
 import org.apache.commons.lang.Validate;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.codegen.EvalExpr;
 import fr.ensimag.deca.context.Signature;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.MethodDefinition;
@@ -124,7 +125,11 @@ public class MethodCall extends AbstractExpr{
 		Iterator<AbstractExpr> iterParam = params.iterator();
 		while (iterParam.hasNext()) {
 			AbstractExpr param = iterParam.next();
-			param.codeGenInst(compiler);
+			if (!param.getType().isBoolean()) {
+				param.codeGenInst(compiler);
+			} else {
+				EvalExpr.boolInRegister(compiler, param);
+			}
 			compiler.addInstruction(new STORE(reg, new RegisterOffset(--index, Register.SP)));
 		}
 		// On récupère le paramètre implicite

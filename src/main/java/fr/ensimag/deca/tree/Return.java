@@ -2,6 +2,7 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.codegen.EvalExpr;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
@@ -35,17 +36,7 @@ public class Return extends AbstractInst {
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
         if (valeurRetour.getType().isBoolean()) {
-            Label faux = new Label("Assign_False." + compiler.getNbLabel());
-            Label fin = new Label("Assign_Fin." + compiler.getNbLabel());
-            valeurRetour.boolCodeGen(compiler, false, faux);
-            // L'expression est vrai
-            compiler.addInstruction(new LOAD(1, Register.getR(compiler.getCurrentRegister())));
-            compiler.addInstruction(new BRA(fin));
-            // L'expression est fausse
-            compiler.addLabel(faux);
-            compiler.addInstruction(new LOAD(0, Register.getR(compiler.getCurrentRegister())));
-            compiler.addLabel(fin);
-            compiler.incrNbLabel();
+            EvalExpr.boolInRegister(compiler, valeurRetour);
         } else {
             valeurRetour.codeGenInst(compiler);
         }

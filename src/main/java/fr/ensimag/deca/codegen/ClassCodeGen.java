@@ -193,17 +193,7 @@ public class ClassCodeGen {
                         if (!expr.getType().isBoolean()) {
                             expr.codeGenExpr(compiler);
                         } else {
-                            Label faux = new Label("Assign_False." + compiler.getNbLabel());
-                            Label fin = new Label("Assign_Fin." + compiler.getNbLabel());
-                            expr.boolCodeExpr(compiler, false, faux);
-                            // L'expression est vrai
-                            compiler.addInstruction(new LOAD(1, Register.getR(compiler.getCurrentRegister())));
-                            compiler.addInstruction(new BRA(fin));
-                            // L'expression est fausse
-                            compiler.addLabel(faux);
-                            compiler.addInstruction(new LOAD(0, Register.getR(compiler.getCurrentRegister())));
-                            compiler.addLabel(fin);
-                            compiler.incrNbLabel();
+                            EvalExpr.boolInRegister(compiler, expr);
                         }
                         DAddr fieldAddress = new RegisterOffset(f.getName().getFieldDefinition().getIndex(), Register.R1);
                         compiler.addInstruction(new STORE(Register.getR(compiler.getCurrentRegister()), fieldAddress));

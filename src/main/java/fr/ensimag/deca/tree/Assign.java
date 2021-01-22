@@ -56,17 +56,7 @@ public class Assign extends AbstractBinaryExpr {
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
         if (this.getType().isBoolean()) {
-            Label faux = new Label("Assign_False." + compiler.getNbLabel());
-            Label fin = new Label("Assign_Fin." + compiler.getNbLabel());
-            this.getRightOperand().boolCodeGen(compiler, false, faux);
-            // L'expression est vrai
-            compiler.addInstruction(new LOAD(1, Register.getR(compiler.getCurrentRegister())));
-            compiler.addInstruction(new BRA(fin));
-            // L'expression est fausse
-            compiler.addLabel(faux);
-            compiler.addInstruction(new LOAD(0, Register.getR(compiler.getCurrentRegister())));
-            compiler.addLabel(fin);
-            compiler.incrNbLabel();
+            EvalExpr.boolInRegister(compiler, this.getRightOperand());
         } else {
             this.getRightOperand().codeGenInst(compiler);   
         }
