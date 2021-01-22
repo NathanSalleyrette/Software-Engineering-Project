@@ -111,16 +111,7 @@ public class ClassCodeGen {
         compiler.addComment("---------- Code de la méthode equals dans la classe Object (built in)");
         compiler.addLabel(new Label("code.Object.equals"));
         // Corps de equals
-        compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
-        compiler.addInstruction(new CMP(new RegisterOffset(1, Register.LB), Register.R1));
-        compiler.addInstruction(new BEQ(new Label("Object.equals.true")));
-        compiler.addInstruction(new LOAD(0, Register.R0));
-        compiler.addInstruction(new BRA(new Label("fin.Object.equals")));
-        compiler.addLabel(new Label("Object.equals.true"));
-        compiler.addInstruction(new LOAD(1, Register.R0));
-        compiler.addLabel(new Label("fin.Object.equals"));
-        compiler.addInstruction(new RTS());
-
+        equalsCodeGen(compiler);
         Iterator<AbstractDeclClass> iter = classes.iterator();
         while (iter.hasNext()) {
             try {
@@ -288,5 +279,21 @@ public class ClassCodeGen {
         } else {
             return new NullOperand();
         }
+    }
+
+    /**
+     * Génère le code du corps de la méthode Object.equals
+     * @param compiler
+     */
+    public static void equalsCodeGen(DecacCompiler compiler) {
+        compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
+        compiler.addInstruction(new CMP(new RegisterOffset(-3, Register.LB), Register.R1));
+        compiler.addInstruction(new BEQ(new Label("Object.equals.true")));
+        compiler.addInstruction(new LOAD(0, Register.R0));
+        compiler.addInstruction(new BRA(new Label("fin.Object.equals")));
+        compiler.addLabel(new Label("Object.equals.true"));
+        compiler.addInstruction(new LOAD(1, Register.R0));
+        compiler.addLabel(new Label("fin.Object.equals"));
+        compiler.addInstruction(new RTS());
     }
 }
