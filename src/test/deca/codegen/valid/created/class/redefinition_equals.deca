@@ -1,0 +1,53 @@
+// Description :
+//		on redefinit equals 
+//
+// Resultats :
+//		Ok
+
+class B{
+	int getx() { return 1;}
+	int gety() { return 0;}
+	boolean equals(Object o){
+	A a = (A)(o);
+	return a.getx() == getx();}
+}
+
+class A extends B{
+	int getx() { return 1;}
+	int gety() { return 1;}
+	boolean equals(Object o){
+	A a = (A)(o);
+	return a.gety() == gety();}
+}
+
+class U {
+void t(boolean b){
+	print("t=");
+	if (b) {println("t");} else {println("f");}
+}
+void f(boolean b){
+	print("f=");
+	if (b) {println("t");} else {println("f");}
+}
+}
+
+
+
+{
+U u = new U();
+A a = new A();
+B b = new B();
+B c = new A();
+
+
+u.f(a.equals(b));
+u.t(a.equals(c));
+u.t(a.equals(a));
+u.t(b.equals(a));
+u.t(b.equals(c));
+u.t(b.equals(b));
+u.t(c.equals(a));
+u.t(c.equals(c));
+u.f(c.equals(b));
+u.t(c.equals(c));
+}

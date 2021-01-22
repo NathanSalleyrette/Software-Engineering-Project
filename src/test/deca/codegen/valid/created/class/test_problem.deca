@@ -1,28 +1,17 @@
 // Description :
-//		on peut faire des allouement dynamique, A = B est possible mais pas B = A
+//		Programme pour tester le cast entre int et float
 //
 // Resultats :
 //		Ok
 
-
-class A{}
-
-class B{}
-
-class U {
-
-	void f(boolean b){
-		if (b) {}
-	}
-}
+class B {
+boolean x;}
+class A extends B {
+boolean y;}
 
 {
-U u = new U();
-
 A a = new A();
 B b = new B();
-
-u.f(null == null);
-
-
+a = (A)(b);
+a.y;
 }

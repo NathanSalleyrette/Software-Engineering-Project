@@ -4,12 +4,16 @@
 // Resultats :
 //		Ok
 
-class B {}
-class A extends B {}
+class B {
+boolean x;}
+class A extends B {
+boolean y;}
 
 {
 A a = new A();
-B b;
+B b = new B();
 a = (A)(b);
+a.y;
 b = (B)(a);
+
 }
