@@ -40,4 +40,8 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
     			", Type attendu: 'boolean'", this.getLocation());
     }
 
+	@Override
+	protected void codeGenInst(DecacCompiler compiler) {
+		// Vide, l'expression est appelée dans le vide
+	}
 }
