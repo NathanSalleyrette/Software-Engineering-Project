@@ -1,0 +1,101 @@
+#include "Liste.deca"
+
+    {
+    /*Liste aq = new Liste((float)0.00001525878906, null, (float)0.0000000002328);
+        Liste ap = new Liste((float)0.00003051757812, aq, (float)0.0000000009313);
+        Liste ao = new Liste((float)0.00006103515617, ap, (float)0.000000003725);
+        Liste an = new Liste((float)0.0001220703119, ao, (float)0.00000001490);
+        Liste am = new Liste((float)0.0002441406201, an, (float)0.00000005960);
+        Liste al = new Liste((float)0.0004882812112, am, (float)0.00000023842);
+        Liste ak = new Liste((float)0.0009765621896, al, (float)0.00000095367);
+        Liste aj = new Liste((float)0.001953122516, ak, (float)0.000003814697);
+        Liste ai = new Liste((float)0.003906230132, aj, (float)0.00001525879);
+        Liste ah = new Liste((float)0.00781234106, ai, (float)0.000061035156);
+        Liste ag = new Liste((float)0.01562372862, ah, (float)0.000244140625);
+        Liste af = new Liste((float)0.03123983343, ag, (float)0.0009765625);
+        Liste ae = new Liste((float)0.06241881, af, (float)0.00390625);
+        Liste ad = new Liste((float)0.1243549945, ae, (float)0.015625);
+        Liste ac = new Liste((float)0.2449786631, ad, (float)0.0625);
+        Liste ab = new Liste((float)0.463647609, ac, (float)0.25);
+        Liste aa = new Liste((float)0.78539816339, ab, (float)1);*/
+        float nombre;
+        float x;
+        float y;
+        float z;
+        float w;
+        float p2i;
+        float di;
+        int signx;
+        int sgn;
+        int i;
+        int r;
+        float ox;
+        Liste ac;
+        Liste ab;
+        Liste aa;
+        Liste curr;
+        aa=new Liste();
+        ab=new Liste();
+        ac = new Liste();
+        ac.init(0.2449786631, null, 0.0625);
+        ab.init(0.463647609, ac, 0.25);
+        aa.init(0.78539816339, ab, 1.0);
+
+        nombre = 1.0;
+
+        curr = aa;
+        x = 1.0;
+        y = 0.0;
+        z = 0.0;
+        w = nombre;
+        p2i = 1.0;
+        if((nombre > 0 && nombre > 1) || (nombre < 0 && nombre < -1)){
+            println("Erreur de domaine (le nombre doit appartenir à [-1, 1]");
+        }
+        i = 0;
+        while(i<3){
+            if(i < 16){
+                di = curr.contenu;
+            }
+            else{
+                di = 1 / p2i;
+            }
+            if(x < 0){
+                signx = -1;
+            }
+            else{
+                signx = 1;
+            }
+            if(y <= w){
+                sgn = signx;
+            }
+            else{
+                sgn = -signx;
+            }
+            if(sgn > 0){
+            r = 1;
+                while(r<3){
+                    ox =x;
+                    x = x - (y / p2i);
+                    y = y + (ox / p2i);
+                    z = z + di;
+                    r = r + 1;
+                }
+            }
+            else{
+            r = 1;
+                while(r<3){
+                    ox = x;
+                    x = x + (y / p2i);
+                    y = y - (ox / p2i);
+                    z = z - di;
+                    r = r  +1;
+                }
+            }
+            w = w + (w * curr.valeur_k);
+            p2i = 2 * p2i;
+            curr = curr.suivant;
+            i = i + 1;
+        }
+        println(z);
+    }
