@@ -129,7 +129,7 @@ public class Selection extends AbstractLValue{
     @Override
     public DVal dval(DecacCompiler compiler) {
 		obj.codeGenInst(compiler);
-		// L'adresse dans le tas de obj est stockée dans le registre courrant
+		// L'adresse dans le tas de obj est stockée dans le registre courant
 		if (!compiler.getCompilerOptions().getNoCheck()) {
 			compiler.addInstruction(new CMP(new NullOperand(), Register.getR(compiler.getCurrentRegister())));
 			Label label = new Label("dereferencement.null");
