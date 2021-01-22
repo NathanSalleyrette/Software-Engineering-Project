@@ -47,7 +47,8 @@ public class InstanceOf extends AbstractExpr{
 			throw new ContextualError("(3.40) Type droit : " + comparedType.toString() +
 					", attendu : 'class'", this.getLocation());
 		}
-		return compiler.getEnvType().get(compiler.getSymbTb().create("boolean")).getType();
+		this.setType(compiler.getEnvType().get(compiler.getSymbTb().create("boolean")).getType());
+		return this.getType();
 	}
 	
 	public void decompile(IndentPrintStream s) {
