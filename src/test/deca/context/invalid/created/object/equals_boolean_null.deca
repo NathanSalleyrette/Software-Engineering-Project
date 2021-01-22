@@ -1,0 +1,12 @@
+// Description :
+//    test equals entre un boolean et un null
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: 
+class A{}
+{
+boolean a;
+null b;
+int c = a.equal(b);
+}

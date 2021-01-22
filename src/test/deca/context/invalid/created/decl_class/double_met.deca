@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9 :(2.6) La méthode meth est déjà définie
+//    	Ligne 10 :(2.6) La méthode meth est déjà définie
 
 class A{
 void meth(){}

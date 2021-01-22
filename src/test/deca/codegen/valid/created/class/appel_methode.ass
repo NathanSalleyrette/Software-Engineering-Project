@@ -1,0 +1,248 @@
+	TSTO #14
+	BOV pile_pleine
+	ADDSP #14
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de B
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+	LOAD code.B.metint, R0
+	STORE R0, 5(GB)
+	LOAD code.B.metfloat, R0
+	STORE R0, 6(GB)
+	LOAD code.B.metbool, R0
+	STORE R0, 7(GB)
+	LOAD code.B.metvoid, R0
+	STORE R0, 8(GB)
+	LOAD code.B.metB, R0
+	STORE R0, 9(GB)
+; Main program
+; new ligne 35
+	NEW #2, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.B
+	POP R2
+	STORE R2, 10(GB)
+	ADDSP #1
+	LOAD 10(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
+	LOAD R0, R2
+	STORE R2, 11(GB)
+	ADDSP #1
+	LOAD 10(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #1
+	LOAD R0, R2
+	STORE R2, 12(GB)
+	BOV debordement_flottant
+	ADDSP #1
+	LOAD 10(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #1
+	CMP #0, R0
+	BEQ Assign_False.0
+	LOAD #1, R2
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+Assign_Fin.0:
+	STORE R2, 13(GB)
+	ADDSP #1
+	LOAD 10(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 6(R2)
+	SUBSP #1
+	LOAD R0, R2
+	STORE R2, 14(GB)
+; Beginning of main instructions:
+	ADDSP #1
+	LOAD 10(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 5(R2)
+	SUBSP #1
+	LOAD R0, R2
+	LOAD 11(GB), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 12(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " "
+	LOAD 14(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	LOAD 13(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.1
+	WSTR "true"
+	BRA E_Fin.1
+E_Sinon.1:
+	WSTR "false"
+	WNL
+E_Fin.1:
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP 1(LB), R1
+	BEQ Object.equals.true
+	LOAD #0, R0
+	BRA fin.Object.equals
+Object.equals.true:
+	LOAD #1, R0
+fin.Object.equals:
+	RTS
+; Classe B
+; ---------- Initialisation des champs de B
+init.B:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R1
+	LOAD #0x0.0p0, R0
+	STORE R0, 1(R1)
+	LOAD -2(LB), R1
+	LOAD #0x1.5p5, R2
+	STORE R2, 1(R1)
+	POP R2
+	RTS
+; ---------- Code de la methode metint dans la classe B ligne 10
+code.B.metint:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA fin.B.metint
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.B.metint:
+	POP R2
+	RTS
+; ---------- Code de la methode metfloat dans la classe B ligne 14
+code.B.metfloat:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD #0x1.0p-1, R2
+	LOAD R2, R0
+	BRA fin.B.metfloat
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.B.metfloat:
+	POP R2
+	RTS
+; ---------- Code de la methode metbool dans la classe B ligne 18
+code.B.metbool:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD #1, R2
+	BRA Assign_Fin.2
+Assign_False.2:
+	LOAD #0, R2
+Assign_Fin.2:
+	LOAD R2, R0
+	BRA fin.B.metbool
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.B.metbool:
+	POP R2
+	RTS
+; ---------- Code de la methode metvoid dans la classe B ligne 22
+code.B.metvoid:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "yeah !"
+	WNL
+fin.B.metvoid:
+	POP R2
+	RTS
+; ---------- Code de la methode metB dans la classe B ligne 26
+code.B.metB:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+; new ligne 27
+	NEW #2, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.B
+	POP R2
+	LOAD R2, R0
+	BRA fin.B.metB
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.B.metB:
+	POP R2
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+dereferencement.null:
+	WSTR "Erreur : dereferencement.null"
+	WNL
+	ERROR
+debordement_flottant:
+	WSTR "Erreur : debordement_flottant"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Erreur : tas_plein"
+	WNL
+	ERROR
+; end main program

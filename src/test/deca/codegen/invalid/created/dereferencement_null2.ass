@@ -14,29 +14,13 @@
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
 ; Main program
-; new ligne 12
-	NEW #2, R2
-	BOV tas_plein
-	LEA 3(GB), R0
-	STORE R0, 0(R2)
-	PUSH R2
-	BSR init.B
-	POP R2
+	LOAD #null, R2
 	STORE R2, 5(GB)
 ; Beginning of main instructions:
 	LOAD 5(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 1(R2), R2
-	CMP #0x0.0p0, R2
-	BNE E_Sinon.0
-	WSTR "ok"
-	WNL
-	BRA E_Fin.0
-E_Sinon.0:
-	WSTR "bouuuh"
-	WNL
-E_Fin.0:
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)
@@ -54,7 +38,7 @@ fin.Object.equals:
 ; ---------- Initialisation des champs de B
 init.B:
 	LOAD -2(LB), R1
-	LOAD #0x0.0p0, R0
+	LOAD #0, R0
 	STORE R0, 1(R1)
 	RTS
 ; Erreurs
@@ -64,10 +48,6 @@ pile_pleine:
 	ERROR
 dereferencement.null:
 	WSTR "Erreur : dereferencement.null"
-	WNL
-	ERROR
-tas_plein:
-	WSTR "Erreur : tas_plein"
 	WNL
 	ERROR
 ; end main program

@@ -1,0 +1,14 @@
+// Description :
+//   pas de return alors que type non void demandé
+//
+// Resultats :
+//		Erreur : sortie de la méthode sans return
+
+class A{
+boolean met2(){
+}
+}
+{
+A a = new A();
+a.met2();
+}

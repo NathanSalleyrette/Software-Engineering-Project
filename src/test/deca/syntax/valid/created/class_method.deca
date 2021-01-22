@@ -12,6 +12,9 @@ class A{
 	a a = a;
 	int met(int param1, bool param2, b b){
 	}
+	void met() asm("bla
+	bla");
+	
 	
 	int met2(){
 	bool var1 = true;

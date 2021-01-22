@@ -1,0 +1,36 @@
+// Description :
+//		verification de la conversion implicite dans les parametre
+//
+// Resultats :
+//		Ok
+
+class C{
+boolean b(){return true;}
+int x(){ return 0;
+}
+}
+class D extends C{
+boolean b(){return false;}
+int x(){ return 1;
+}
+}
+
+class A{
+ 	int getx(C c){
+ 	return c.x();
+ 	}
+ 	boolean getb(C c){
+ 	return c.b();
+ 	}
+}
+
+
+{
+A a = new A();
+D d = new D();
+C c = new C();
+println("1 = ", a.getx(d));
+println("0 = ", a.getx(c));
+if (a.getb(c) && !a.getb(d)) {println("ok");} else {println("bouuh!");}
+
+}

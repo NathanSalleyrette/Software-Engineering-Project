@@ -1,0 +1,32 @@
+// Description :
+//		on peut faire des allouement dynamique, A = B est possible mais pas B = A
+//
+// Resultats :
+//		Ok
+
+class C{
+boolean b() {return true;}
+int x(){return 0;}
+}
+class D extends C{
+boolean b() {return false;}
+int x(){return 1;}
+}
+
+class A{
+ 	C getc(){
+ 	return new C();
+ 	}
+ 	C getd(){
+ 	return new D();
+ 	}
+}
+
+
+{
+A a = new A();
+println("0 = ", a.getc().x());
+println("1 = ", a.getd().x());
+if (a.getc().b() && !a.getd().b()) {println("ok");} else {println("bouuh!");}
+
+}
