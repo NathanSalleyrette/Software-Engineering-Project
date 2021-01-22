@@ -33,15 +33,18 @@
 	float petit_tan;
 	float pre_resultat;
 	float resultat;
+    aa=new Liste();
+    ab=new Liste();
+    ac = new Liste();
 	ac.init(0.0099996666, null, 0.01);
 	ab.init(0.0996686525, ac, 0.1);
-	aa.init(0.78539816339, ab, 1);
+	aa.init(0.78539816339, ab, 1.0);
 	curr=aa;
 	angle = 1.047197551; /* l'angle en argument */
 	pi = 3.141592653589793238;
 
 
-	epsilon = 0.5;
+	epsilon = 0.1;
 	oppose = 1;
 
 	if(angle < -pi){
@@ -73,18 +76,19 @@
 	angle = angle / 2;
 	X = 1;
 	Y = 0;
-	epsilon = 0.5; /* 10**-2 */
-	while(angle >= epsilon) {
-		while(angle < curr.contenu){
-			curr = curr.suivant;
-		}
-		res = X;
-		X = X - (curr.valeur_k * Y);
-		Y = Y + (curr.valeur_k * res);
-		angle = angle - curr.contenu;
-	}
-	petit_tan = Y / X;
-	pre_resultat = (2 * petit_tan) / (1 + ((petit_tan) * (petit_tan)));
-	resultat = oppose * resultat;
-	println(resultat);
+	epsilon = 0.1; /* 10**-2 */
+    while(angle >= epsilon) {
+
+        while(angle < curr.contenu){
+            curr = curr.suivant;
+        }
+        res = X;
+        X = X - (curr.valeur_k * Y);
+        Y = Y + (curr.valeur_k * res);
+        angle = angle - curr.contenu;
+    }
+    petit_tan = Y / X;
+    pre_resultat = (2 * petit_tan) / (1 + ((petit_tan) * (petit_tan)));
+    resultat = oppose * pre_resultat;
+    println(resultat);
 }
