@@ -10,6 +10,7 @@ class A{}
 class B{}
 
 class U {
+
 	void f(boolean b){
 		if (b) {}
 	}
@@ -21,5 +22,7 @@ U u = new U();
 A a = new A();
 B b = new B();
 
-u.f(a == b);
+u.f(null == null);
+
+
 }

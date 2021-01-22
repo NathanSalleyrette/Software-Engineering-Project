@@ -3,10 +3,10 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 11: 
+//    	Ligne 11:  (3.74) La signature ne correspond pas aux paramètres
 class A{}
 {
 A a;
 float b;
-int c = a.equal(b);
+int c = a.equals(b);
 }
