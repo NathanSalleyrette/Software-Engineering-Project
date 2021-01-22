@@ -14,6 +14,7 @@ import fr.ensimag.ima.pseudocode.IMAProgram;
 import fr.ensimag.ima.pseudocode.Instruction;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Line;
+import fr.ensimag.ima.pseudocode.InstructionStringLine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -250,6 +251,14 @@ public class DecacCompiler implements Runnable{
         if (!inMethod) program.addFirst(l);
         else programBis.addFirst(l);
     }
+    /**
+     * @see
+     * fr.ensimag.ima.pseudocode.IMAProgram#addFirst(fr.ensimag.ima.pseudocode.Line)
+     */
+    public void addInstructionString(String instruction) {
+        if (!inMethod) program.add(new InstructionStringLine(instruction));
+        else programBis.add(new InstructionStringLine(instruction));
+    }
 
     public void append(IMAProgram p) {
         program.append(p);
@@ -283,7 +292,8 @@ public class DecacCompiler implements Runnable{
 
     private boolean inMethod = false;
 
-    public void setInMethod(boolean bool) {
+
+	public void setInMethod(boolean bool) {
         inMethod = bool;
     }
 

@@ -8,6 +8,8 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.Instruction;
+import fr.ensimag.ima.pseudocode.InstructionStringLine;
 
 public class Asm extends AbstractMethodBody{
 	private StringLiteral listeInstructions;
@@ -46,13 +48,15 @@ public class Asm extends AbstractMethodBody{
 	}
 	@Override
 	protected void codeGenBody(DecacCompiler compiler) {
-		// TODO Auto-generated method stub
-		
+		String[] lignes = this.listeInstructions.getValue().split("\\n");//chaque ligne est une instruction
+		for(int i = 0 ; i<lignes.length;++i) {
+			compiler.addInstructionString(lignes[i]);
+		}
 	}
 
 	@Override
 	public ListDeclVar getListDeclVar() {
-		return null;
+		return new ListDeclVar();
 	}
 	
 	@Override

@@ -3,9 +3,15 @@ class Liste {
 	Liste suivant;
 	float valeur_k;
 
-	Liste(double x, Liste a, double k) {
-		contenu = x;
-		suivant = a;
-		valeur_k = k;
+	void init(float contenu, Liste suivant, float valeur_k){
+		this.contenu = contenu;
+		this.suivant = suivant;
+		this.valeur_k = valeur_k;
 	}
+}
+
+{
+	Liste l = new Liste();
+	l.init(0.0, null, 1.4);
+	println(l.contenu);
 }

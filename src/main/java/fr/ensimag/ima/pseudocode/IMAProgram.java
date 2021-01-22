@@ -45,7 +45,7 @@ public class IMAProgram {
     /**
      * Add a line at the front of the program.
      */
-    public void addFirst(Line l) {
+    public void addFirst(AbstractLine l) {
         lines.addFirst(l);
     }
 
