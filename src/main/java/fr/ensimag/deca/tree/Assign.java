@@ -16,6 +16,9 @@ import fr.ensimag.ima.pseudocode.instructions.STORE;
 import fr.ensimag.ima.pseudocode.instructions.BRA;
 import fr.ensimag.ima.pseudocode.instructions.PUSH;
 import fr.ensimag.ima.pseudocode.instructions.POP;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
 
 /**
  * Assignment, i.e. lvalue = expr.
@@ -85,6 +88,18 @@ public class Assign extends AbstractBinaryExpr {
                 compiler.decrNbTemp();                         // Celà nous empêchait de faire un LOAD au lieu de PUSH/POP
 				EvalExpr.mnemo(compiler, this, dVal, Register.R0);
             }
+        }
+    }
+
+    @Override
+    protected void boolCodeGen(DecacCompiler compiler, boolean branch, Label tag) {
+        this.codeGenInst(compiler);
+        compiler.addInstruction(new LOAD(this.getLeftOperand().dval(compiler), Register.R0));
+        compiler.addInstruction(new CMP(0, Register.R0));
+        if (branch) {
+            compiler.addInstruction(new BNE(tag));
+        } else {
+            compiler.addInstruction(new BEQ(tag));
         }
     }
 
