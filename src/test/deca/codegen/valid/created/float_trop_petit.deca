@@ -2,8 +2,7 @@
 //		Programme pour tester le debordement de flottant
 //
 // Resultats :
-//		Erreur de compilation
-//		floattant trop petit
+//		Ok
 
 
 {

@@ -1,6 +1,6 @@
-	TSTO #5
+	TSTO #6
 	BOV pile_pleine
-	ADDSP #5
+	ADDSP #6
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -8,35 +8,30 @@
 	STORE R0, 1(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 2(GB)
-; Construction de la table des méthodes de B
+; Construction de la table des méthodes de A
 	LEA 1(GB), R0
 	STORE R0, 3(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
+	LOAD code.A.met2, R0
+	STORE R0, 5(GB)
 ; Main program
 ; new ligne 12
-	NEW #2, R2
+	NEW #1, R2
 	BOV tas_plein
 	LEA 3(GB), R0
 	STORE R0, 0(R2)
-	PUSH R2
-	BSR init.B
-	POP R2
-	STORE R2, 5(GB)
+	STORE R2, 6(GB)
 ; Beginning of main instructions:
-	LOAD 5(GB), R2
+	ADDSP #1
+	LOAD 6(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
 	CMP #null, R2
 	BEQ dereferencement.null
-	LOAD 1(R2), R2
-	CMP #0x0.0p0, R2
-	BNE E_Sinon.0
-	WSTR "ok"
-	WNL
-	BRA E_Fin.0
-E_Sinon.0:
-	WSTR "bouuuh"
-	WNL
-E_Fin.0:
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)
@@ -50,12 +45,18 @@ Object.equals.true:
 	LOAD #1, R0
 fin.Object.equals:
 	RTS
-; Classe B
-; ---------- Initialisation des champs de B
-init.B:
-	LOAD -2(LB), R1
-	LOAD #0x0.0p0, R0
-	STORE R0, 1(R1)
+; Classe A
+; ---------- Code de la methode met2 dans la classe A ligne 8
+code.A.met2:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.A.met2:
+	POP R2
 	RTS
 ; Erreurs
 pile_pleine:

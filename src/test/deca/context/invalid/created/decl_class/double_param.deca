@@ -1,0 +1,10 @@
+// Description :
+//    deux parametre de meme nom dans une même methode
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 : (3.17) La variable x est déjà déclarée
+
+class A{
+void meth(int x, boolean x){}
+}
