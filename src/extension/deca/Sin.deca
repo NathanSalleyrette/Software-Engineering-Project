@@ -1,0 +1,90 @@
+#include "Liste.deca"
+
+{
+	/* Liste ap = new Liste(0.000000000000001, aq, 0.000000000000001);
+	Liste ao = new Liste(0.00000000000001, ap, 0.00000000000001);
+	Liste an = new Liste(0.0000000000001, ao, 0.0000000000001);
+	Liste am = new Liste(0.000000000001, an, 0.000000000001);
+	Liste al = new Liste(0.00000000001, am, 0.00000000001);
+	Liste ak = new Liste(0.0000000001, al, 0.0000000001);
+	Liste aj = new Liste(0.000000001, ak, 0.000000001);
+	Liste ai = new Liste(0.00000001, aj, 0.00000001);
+	Liste ah = new Liste(0.0000001, ai, 0.0000001);
+	Liste ag = new Liste(0.0000009999999, ah, 0.000001);
+	Liste af = new Liste(0.000009999999, ag, 0.00001);
+	Liste ae = new Liste(0.00009999999, af, 0.0001);
+	Liste ad = new Liste(0.0009999996, ae, 0.001);
+	Liste ac = new Liste(0.0099996666, ad, 0.01);
+	Liste ab = new Liste(0.0996686525, ac, 0.1);
+	Liste aa = new Liste(0.78539816339, ab, 1);
+	Liste curr = aa; */
+
+	float angle;
+	float pi;
+	Liste ac;
+	Liste ab;
+	Liste aa;
+	Liste curr;
+	float res;
+	float X;
+	float Y;
+	float epsilon;
+	int oppose;
+	float petit_tan;
+	float pre_resultat;
+	float resultat;
+	ac.init(0.0099996666, null, 0.01);
+	ab.init(0.0996686525, ac, 0.1);
+	aa.init(0.78539816339, ab, 1);
+	curr=aa;
+	angle = 1.047197551; /* l'angle en argument */
+	pi = 3.141592653589793238;
+
+
+	epsilon = 0.5;
+	oppose = 1;
+
+	if(angle < -pi){
+		while(angle < -pi){
+			angle = angle + (2 * pi);
+		}
+	}
+	if(angle > pi){
+		while(angle > pi) {
+			angle = angle - (2 * pi);
+		}
+	}
+	/* angle est désormais dans [-pi, pi] */
+	if(-(pi / 2) < angle && angle < 0){
+		angle = -angle;
+	    oppose = -1;
+	}
+	else if(-pi < angle && angle < -(pi / 2)){
+		angle = angle + pi;
+	    oppose = -1;
+	}
+	else if(angle < pi && (pi / 2) < angle){
+		angle = pi - angle;
+	    oppose = 1;
+	}
+	else{
+		oppose = 1;
+	}
+	angle = angle / 2;
+	X = 1;
+	Y = 0;
+	epsilon = 0.5; /* 10**-2 */
+	while(angle >= epsilon) {
+		while(angle < curr.contenu){
+			curr = curr.suivant;
+		}
+		res = X;
+		X = X - (curr.valeur_k * Y);
+		Y = Y + (curr.valeur_k * res);
+		angle = angle - curr.contenu;
+	}
+	petit_tan = Y / X;
+	pre_resultat = (2 * petit_tan) / (1 + ((petit_tan) * (petit_tan)));
+	resultat = oppose * resultat;
+	println(resultat);
+}

@@ -1,6 +1,6 @@
-	TSTO #6
+	TSTO #9
 	BOV pile_pleine
-	ADDSP #6
+	ADDSP #9
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -16,15 +16,6 @@
 	LOAD code.Liste.init, R0
 	STORE R0, 5(GB)
 ; Main program
-; new ligne 14
-	NEW #4, R2
-	BOV tas_plein
-	LEA 3(GB), R0
-	STORE R0, 0(R2)
-	PUSH R2
-	BSR init.Liste
-	POP R2
-	STORE R2, 6(GB)
 ; Beginning of main instructions:
 	ADDSP #4
 	LOAD 6(GB), R2
@@ -33,7 +24,7 @@
 	STORE R2, -1(SP)
 	LOAD #null, R2
 	STORE R2, -2(SP)
-	LOAD #0x1.666666p0, R2
+	LOAD #0x0.0p0, R2
 	STORE R2, -3(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -42,13 +33,59 @@
 	BSR 2(R2)
 	SUBSP #4
 	LOAD R0, R2
+	ADDSP #4
+	LOAD 7(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x0.0p0, R2
+	STORE R2, -1(SP)
 	LOAD 6(GB), R2
+	STORE R2, -2(SP)
+	LOAD #0x0.0p0, R2
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #4
+	LOAD R0, R2
+	ADDSP #4
+	LOAD 8(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x0.0p0, R2
+	STORE R2, -1(SP)
+	LOAD 7(GB), R2
+	STORE R2, -2(SP)
+	LOAD #0x0.0p0, R2
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #4
+	LOAD R0, R2
+	LOAD 8(GB), R2
+	STORE R2, 9(GB)
+	BRA E_Cond.0
+E_Debut.0:
+	LOAD 9(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 1(R2), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
+	LOAD 9(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 2(R2), R2
+	STORE R2, 9(GB)
+E_Cond.0:
+	LOAD 9(GB), R2
+	LOAD #null, R3
+	CMP R3, R2
+	BNE E_Debut.0
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)
@@ -112,10 +149,6 @@ dereferencement.null:
 	ERROR
 debordement_flottant:
 	WSTR "Erreur : debordement_flottant"
-	WNL
-	ERROR
-tas_plein:
-	WSTR "Erreur : tas_plein"
 	WNL
 	ERROR
 ; end main program

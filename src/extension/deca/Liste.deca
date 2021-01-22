@@ -9,9 +9,21 @@ class Liste {
 		this.valeur_k = valeur_k;
 	}
 }
-
 {
-	Liste l = new Liste();
-	l.init(0.0, null, 1.4);
-	println(l.contenu);
+	Liste ac;
+	Liste ab;
+	Liste aa;
+	Liste curr;
+	
+
+
+	ac.init(0.0,null,0.0);
+	ab.init(0.0,ac,0.0);
+	aa.init(0.0,ab,0.0);
+	
+	curr=aa;
+	while(curr != null){
+		println(curr.contenu);
+		curr=curr.suivant;
+	}
 }
