@@ -13,6 +13,7 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.NullOperand;
@@ -85,13 +86,21 @@ public class MethodCall extends AbstractExpr{
 		if (!objType.isClass()) throw new ContextualError("(3.71) Le membre gauche n'est pas de type 'class'",
 				this.getLocation());
 		ClassDefinition objDef = (ClassDefinition) compiler.getEnvType().get(objType.getName());
-		if (objDef.getMembers().get(this.meth.getName()) == null) {
-			throw new ContextualError("(3.71) " + this.meth.getName().toString() + 
+		Symbol methodName = this.meth.getName();
+		if (objDef.getMembers().get(methodName) == null) {
+			/* Comme equals n'est pas inscrite avec la même table de symboles que
+			 * le parser, on est obligé de passer par la condition ci-dessous
+			 */
+			if (methodName.getName().equals("equals")) {
+					methodName = compiler.getSymbTb().create("equals");
+			} else {
+				throw new ContextualError("(3.71) " + this.meth.getName().toString() + 
 					" n'est pas une méthode de la classe " + objType.toString(),
 					this.getLocation());
+			}
 		}
 		MethodDefinition methodDef = 
-				objDef.getMembers().get(this.meth.getName()).asMethodDefinition(
+				objDef.getMembers().get(methodName).asMethodDefinition(
 					"(3.71) Le champ n'est pas une méthode", this.getLocation());
 		Signature sig = methodDef.getSignature();
 		if (this.params.getList().size() != sig.size()) throw new ContextualError(
@@ -101,9 +110,15 @@ public class MethodCall extends AbstractExpr{
 			AbstractExpr param = this.params.getList().get(i);
 			param.verifyExpr(compiler, localEnv, currentClass);
 			if ((sig.paramNumber(i) != param.getType()) && 
-					(!param.getType().isSubTypeOf(sig.paramNumber(i), getLocation()))) 
+					(!param.getType().isSubTypeOf(sig.paramNumber(i), getLocation()))) {
 				throw new ContextualError(
 					"(3.74) La signature ne correspond pas aux paramètres", this.getLocation());
+			}
+			if ((sig.paramNumber(i).isFloat()) && (param.getType().isInt())) {
+				param = new ConvFloat(param);
+				param.verifyExpr(compiler, localEnv, currentClass);
+				params.set(i, param);
+			}
 		}
 		this.meth.setDefinition(methodDef);
 		this.setType(methodDef.getType());

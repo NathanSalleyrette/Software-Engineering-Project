@@ -49,7 +49,7 @@ public class DeclParam extends AbstractDeclParam{
     		localEnv.declare(nameSymb, varDef, getLocation());
     		paramName.setDefinition(varDef);
     	} catch (DoubleDefException e) {
-    		throw new ContextualError("(3.17) La variable " + this.paramName.toString() + " est déjà déclarée", this.getLocation());
+    		throw new ContextualError("(3.17) La variable " + this.paramName.getName().toString() + " est déjà déclarée", this.getLocation());
     	}
     	if (varType.isVoid()) {
     		throw new ContextualError("(3.17) Le type de l'identificateur ne peut être 'void''", this.getLocation());
