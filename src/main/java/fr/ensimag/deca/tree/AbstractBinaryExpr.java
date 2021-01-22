@@ -104,5 +104,10 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
         leftOperand.prettyPrint(s, prefix, false);
         rightOperand.prettyPrint(s, prefix, true);
     }
-
+    
+    public String typesOp() {
+    	return "(3.33) Types des opérandes : " +
+    			this.getLeftOperand().getType().toString() + ", " +
+    			this.getRightOperand().getType().toString();
+    }
 }

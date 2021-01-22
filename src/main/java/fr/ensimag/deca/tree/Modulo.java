@@ -28,16 +28,8 @@ public class Modulo extends AbstractOpArith {
     		this.setType(leftOp.getType());
     		return leftOp.getType();
     	}
-    	String coupableGauche = "(3.33) ";
-    	if (!leftOp.getType().isInt()) {
-    		coupableGauche = coupableGauche + "L'opérande gauche est de type " + leftOp.getType().toString() + ".";
-    	}
-    	String coupableDroit = "";
-    	if (!rightOp.getType().isInt()) {
-    		coupableDroit = "L'opérande droite est de type " + rightOp.getType().toString() + ".";
-    	}
-    	throw new ContextualError(coupableGauche + coupableDroit + 
-    			" Or les opérandes d'un modulo doivent être de type 'int'", this.getLocation());
+    	throw new ContextualError(this.typesOp() + 
+    			". Attendu : 'int' pour l'opérateur %", this.getLocation());
     }
 
 
