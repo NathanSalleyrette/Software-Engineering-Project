@@ -23,13 +23,13 @@ public class Asm extends AbstractMethodBody{
 	public void decompile(IndentPrintStream s) {
 		
 		s.print("asm(");
-		s.print(listeInstructions.getValue());
+		listeInstructions.decompile(s);
+		//s.print(listeInstructions.getValue());
 		s.print(");");
 	}
 
 	@Override
 	protected void prettyPrintChildren(PrintStream s, String prefix) {
-		// Il n'y a pas d'enfant
 		this.listeInstructions.prettyPrint(s,prefix,Boolean.TRUE);
 		
 	}
@@ -50,9 +50,13 @@ public class Asm extends AbstractMethodBody{
 		
 	}
 
+	@Override
+	public ListDeclVar getListDeclVar() {
+		return null;
+	}
 	
-
-
-
-
+	@Override
+	public boolean isASM() {
+		return true;
+	}
 }

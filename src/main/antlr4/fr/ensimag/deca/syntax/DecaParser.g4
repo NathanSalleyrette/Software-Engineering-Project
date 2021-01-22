@@ -485,7 +485,7 @@ literal returns[AbstractExpr tree]
         }
     | fd=FLOAT {
     	double flottant = Double.parseDouble($fd.text);
-    	if (flottant < Float.MIN_VALUE) {
+    	if ((flottant < Float.MIN_VALUE) && (flottant != 0)) {
     		throw new FloatPrecisionException(
     			this, $fd
     		);
@@ -617,12 +617,12 @@ decl_method returns[AbstractDeclMethod tree]
 @init { AbstractMethodBody instructions;
 }
     : type ident OPARENT params=list_params CPARENT (block {
-    	$tree = new DeclMethod($type.tree, $ident.tree, $list_params.tree, new MethodBody($block.decls, $block.insts), null);
+    	$tree = new DeclMethod($type.tree, $ident.tree, $list_params.tree, new MethodBody($block.decls, $block.insts));
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
 		StringLiteral s = new StringLiteral($code.text);
 		Asm a = new Asm(s);
-		$tree= new DeclMethod($type.tree, $ident.tree, $list_params.tree, a,a);
+		$tree= new DeclMethod($type.tree, $ident.tree, $list_params.tree, a);
 		
         }
       ) {

@@ -10,7 +10,6 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
-import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.Register;
@@ -80,5 +79,9 @@ public class MethodBody extends AbstractMethodBody{
             }
         }
         insts.codeGenListInst(compiler);
+    }
+    
+    public boolean isASM() {
+    	return false;
     }
 }

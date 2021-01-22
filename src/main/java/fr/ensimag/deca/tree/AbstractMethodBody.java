@@ -13,5 +13,6 @@ public abstract class AbstractMethodBody extends Tree {
 			ClassDefinition currentClass, Type returnType)
 			throws ContextualError;
 	abstract protected void codeGenBody(DecacCompiler compiler);
-
+	abstract public ListDeclVar getListDeclVar();
+	abstract public boolean isASM();
 }
