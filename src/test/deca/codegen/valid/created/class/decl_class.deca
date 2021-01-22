@@ -9,10 +9,10 @@ int a;
 boolean b;
 float c;
 
-void set(int a, boolean b, float c){
-	this.a = a;
-	this.b = b;
-	this.c = c;
+void set(int a1, boolean b1, float c1){
+	a = a1;
+	b = b1;
+	c = c1;
 	}
 }
 

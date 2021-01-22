@@ -43,6 +43,7 @@
 	LOAD 0(R2), R2
 	BSR 3(R2)
 	SUBSP #2
+	LOAD R0, R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
@@ -133,6 +134,10 @@ fin.Math.ulp:
 ; Erreurs
 pile_pleine:
 	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+dereferencement.null:
+	WSTR "Erreur : dereferencement.null"
 	WNL
 	ERROR
 tas_plein:

@@ -1,7 +1,7 @@
 ---CODE_ASSEMBLEUR---
-	TSTO #3
+	TSTO #6
 	BOV pile_pleine
-	ADDSP #3
+	ADDSP #6
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -10,48 +10,72 @@
 	LOAD code.Object.equals, R0
 	STORE R0, 2(GB)
 ; Main program
-	LOAD #0x1.99999ap-2, R2
+	LOAD #5, R2
 	STORE R2, 3(GB)
+	LOAD #5, R2
+	OPP #5, R2
+	STORE R2, 4(GB)
+	LOAD #0x1.ccccccp1, R2
+	STORE R2, 5(GB)
+	BOV debordement_flottant
+	LOAD #0x1.ccccccp1, R2
+	OPP #0x1.ccccccp1, R2
+	STORE R2, 6(GB)
 	BOV debordement_flottant
 ; Beginning of main instructions:
-	WSTR "hello"
-	WNL
-	LOAD #10, R2
+	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
 	WNL
-	LOAD 3(GB), R2
+	LOAD 4(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 5(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
-	WNL
-	WSTR "hello"
-	LOAD #10, R2
-	LOAD R2, R1
-	WINT
-	WSTR "a"
-	LOAD 3(GB), R2
+	LOAD 6(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
-	WSTR "hello"
-	LOAD #10, R2
-	LOAD R2, R1
-	WINT
+; Debut Cast  float vers int
+	LOAD 5(GB), R2
+	INT R2, R2
+; Fin cast
+	STORE R2, 3(GB)
+; Debut Cast  float vers int
+	LOAD 6(GB), R2
+	INT R2, R2
+; Fin cast
+	STORE R2, 4(GB)
 	LOAD 3(GB), R2
 	LOAD R2, R1
-	WFLOATX
+	WINT
 	WNL
-	WNL
-	WSTR "hello"
-	WNL
-	LOAD #60, R2
+	LOAD 4(GB), R2
 	LOAD R2, R1
 	WINT
 	WNL
+; Debut Cast  int vers float
 	LOAD 3(GB), R2
+	FLOAT R2, R2
+; Fin cast
+	STORE R2, 5(GB)
+	BOV debordement_flottant
+; Debut Cast  int vers float
+	LOAD 4(GB), R2
+	FLOAT R2, R2
+; Fin cast
+	STORE R2, 6(GB)
+	BOV debordement_flottant
+	LOAD 5(GB), R2
 	LOAD R2, R1
-	WFLOATX
+	WFLOAT
+	WNL
+	LOAD 6(GB), R2
+	LOAD R2, R1
+	WFLOAT
 	WNL
 	HALT
 ; Classe Object
@@ -77,13 +101,11 @@ debordement_flottant:
 	ERROR
 ; end main program
 ---SORTIE MACHINE IMA---
-hello
-10
-4.00000e-01
-
-hello10a4.00000e-01
-hello100x1.99999ap-2
-
-hello
-60
-0x1.99999ap-2
+5
+-5
+3.60000e+00
+-3.60000e+00
+3
+-3
+3.00000e+00
+-3.00000e+00

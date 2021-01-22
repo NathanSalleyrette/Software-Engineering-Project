@@ -477,13 +477,26 @@ literal returns[AbstractExpr tree]
     	try {
     		entier = Integer.parseInt($INT.text);
     	} catch (NumberFormatException e) {
-    		//throw new DecaRecognitionException();
+    		throw new IntMagnitudeTooLargeException(
+    		this, $INT);
     	}
     	$tree = new IntLiteral(entier);
     	setLocation($tree, $INT);
         }
     | fd=FLOAT {
-		$tree = new FloatLiteral(Float.parseFloat($fd.text));
+    	double flottant = Double.parseDouble($fd.text);
+    	if (flottant < Float.MIN_VALUE) {
+    		throw new FloatPrecisionException(
+    			this, $fd
+    		);
+    	} else if ((flottant < -Float.MAX_VALUE) ||
+    				(flottant > Float.MAX_VALUE)) {
+    		throw new FloatMagnitudeTooLargeException(
+    			this, $fd
+    		);
+    	}
+    	float vraiFlottant = (float)flottant;
+		$tree = new FloatLiteral(vraiFlottant);
 		setLocation($tree, $fd);
 
         }
