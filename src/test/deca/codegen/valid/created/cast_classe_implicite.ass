@@ -96,6 +96,7 @@ Assign_Fin.1:
 	LOAD 14(GB), R2
 	CMP #null, R2
 	BEQ Cast_Fin.2
+	PUSH R2
 ; instanceof ligne 31
 	LOAD 14(GB), R2
 	LEA 5(GB), R0
@@ -113,6 +114,7 @@ InstanceOf_True.3:
 InstanceOf_Fin.3:
 	BRA cast_impossible
 Cast_Fin.2:
+	POP R2
 	STORE R2, 13(GB)
 ; Appel de méthode ligne 32
 	ADDSP #2

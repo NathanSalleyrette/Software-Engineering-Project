@@ -338,6 +338,7 @@ code.B.equals:
 	LOAD -3(LB), R2
 	CMP #null, R2
 	BEQ Cast_Fin.7
+	PUSH R2
 ; instanceof ligne 11
 	LOAD -3(LB), R2
 	LEA 8(GB), R0
@@ -355,6 +356,7 @@ InstanceOf_True.8:
 InstanceOf_Fin.8:
 	BRA cast_impossible
 Cast_Fin.7:
+	POP R2
 	STORE R2, 1(LB)
 ; Appel de méthode ligne 12
 	ADDSP #1
@@ -437,6 +439,7 @@ code.A.equals:
 	LOAD -3(LB), R2
 	CMP #null, R2
 	BEQ Cast_Fin.10
+	PUSH R2
 ; instanceof ligne 19
 	LOAD -3(LB), R2
 	LEA 8(GB), R0
@@ -454,6 +457,7 @@ InstanceOf_True.11:
 InstanceOf_Fin.11:
 	BRA cast_impossible
 Cast_Fin.10:
+	POP R2
 	STORE R2, 1(LB)
 ; Appel de méthode ligne 20
 	ADDSP #1

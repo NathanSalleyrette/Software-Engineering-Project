@@ -34,7 +34,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |      +> [12, 4] Identifier (met)
    |      |      |  definition: method defined at [12, 0], type=int
    |      |      +> ListDeclParam [List with 0 elements]
-   |      |      `> MethodBody
+   |      |      `> [12, 9] MethodBody
    |      |         +> ListDeclVar [List with 0 elements]
    |      |         `> ListInst [List with 1 elements]
    |      |            []> [13, 1] Return

@@ -85,16 +85,20 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
          ||     type: boolean
          ||     +> [16, 4] Float (0.5)
          ||     |  type: float
-         ||     `> [16, 11] Int (2)
-         ||        type: int
+         ||     `> ConvFloat
+         ||        type: float
+         ||        `> [16, 11] Int (2)
+         ||           type: int
          []> [17, 2] Assign
          ||  type: boolean
          ||  +> [17, 0] Identifier (c)
          ||  |  definition: variable defined at [15, 8], type=boolean
          ||  `> [17, 6] Equals
          ||     type: boolean
-         ||     +> [17, 4] Int (1)
-         ||     |  type: int
+         ||     +> ConvFloat
+         ||     |  type: float
+         ||     |  `> [17, 4] Int (1)
+         ||     |     type: int
          ||     `> [17, 9] Float (0.2)
          ||        type: float
          []> [18, 2] Assign
@@ -123,8 +127,10 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
          ||  |  definition: variable defined at [15, 8], type=boolean
          ||  `> [20, 6] Equals
          ||     type: boolean
-         ||     +> [20, 4] Identifier (a)
-         ||     |  definition: variable defined at [10, 4], type=int
+         ||     +> ConvFloat
+         ||     |  type: float
+         ||     |  `> [20, 4] Identifier (a)
+         ||     |     definition: variable defined at [10, 4], type=int
          ||     `> [20, 9] Float (0.2)
          ||        type: float
          []> [21, 2] Assign
@@ -145,8 +151,10 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
          ||     type: boolean
          ||     +> [22, 4] Float (0.2)
          ||     |  type: float
-         ||     `> [22, 11] Identifier (a)
-         ||        definition: variable defined at [10, 4], type=int
+         ||     `> ConvFloat
+         ||        type: float
+         ||        `> [22, 11] Identifier (a)
+         ||           definition: variable defined at [10, 4], type=int
          []> [23, 2] Assign
          ||  type: boolean
          ||  +> [23, 0] Identifier (c)
@@ -165,8 +173,10 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
          ||     type: boolean
          ||     +> [24, 4] Identifier (b)
          ||     |  definition: variable defined at [11, 6], type=float
-         ||     `> [24, 9] Int (2)
-         ||        type: int
+         ||     `> ConvFloat
+         ||        type: float
+         ||        `> [24, 9] Int (2)
+         ||           type: int
          []> [25, 2] Assign
          ||  type: boolean
          ||  +> [25, 0] Identifier (c)
@@ -183,8 +193,10 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
          ||  |  definition: variable defined at [15, 8], type=boolean
          ||  `> [26, 6] Equals
          ||     type: boolean
-         ||     +> [26, 4] Int (2)
-         ||     |  type: int
+         ||     +> ConvFloat
+         ||     |  type: float
+         ||     |  `> [26, 4] Int (2)
+         ||     |     type: int
          ||     `> [26, 9] Identifier (b)
          ||        definition: variable defined at [11, 6], type=float
          []> [27, 2] Assign
@@ -213,8 +225,10 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
          ||  |  definition: variable defined at [15, 8], type=boolean
          ||  `> [29, 6] Equals
          ||     type: boolean
-         ||     +> [29, 4] Identifier (a)
-         ||     |  definition: variable defined at [10, 4], type=int
+         ||     +> ConvFloat
+         ||     |  type: float
+         ||     |  `> [29, 4] Identifier (a)
+         ||     |     definition: variable defined at [10, 4], type=int
          ||     `> [29, 9] Identifier (b)
          ||        definition: variable defined at [11, 6], type=float
          []> [31, 2] Assign

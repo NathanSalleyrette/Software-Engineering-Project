@@ -1,0 +1,15 @@
+// Description :
+//    acces à un field protegé à l'intérieur d'un methode
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 13 :(3.65) L’attribut est protégé
+
+
+class C {protected int x;}
+class B{
+	C c;
+	void met(){
+		this.c.x;
+	}
+}

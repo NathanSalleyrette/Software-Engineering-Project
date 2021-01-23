@@ -25,6 +25,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |            +> [9, 9] This
    |      |            |  type: A
    |      |            +> [9, 9] Identifier (met)
+   |      |            |  definition: method defined at [10, 1], type=int
    |      |            `> ListExpr [List with 0 elements]
    |      +> ListDeclMethod [List with 1 elements]
    |      |  []> [10, 1] DeclMethod
@@ -33,7 +34,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |      +> [10, 5] Identifier (met)
    |      |      |  definition: method defined at [10, 1], type=int
    |      |      +> ListDeclParam [List with 0 elements]
-   |      |      `> MethodBody
+   |      |      `> [10, 10] MethodBody
    |      |         +> ListDeclVar [List with 0 elements]
    |      |         `> ListInst [List with 1 elements]
    |      |            []> [11, 1] Return

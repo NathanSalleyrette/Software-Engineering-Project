@@ -39,15 +39,13 @@
 	LOAD R2, R1
 	WFLOAT
 	WNL
-; Debut Cast  float vers int
+; cast  float vers int ligne 16
 	LOAD 5(GB), R2
 	INT R2, R2
-; Fin cast
 	STORE R2, 3(GB)
-; Debut Cast  float vers int
+; cast  float vers int ligne 17
 	LOAD 6(GB), R2
 	INT R2, R2
-; Fin cast
 	STORE R2, 4(GB)
 	LOAD 3(GB), R2
 	LOAD R2, R1
@@ -57,16 +55,14 @@
 	LOAD R2, R1
 	WINT
 	WNL
-; Debut Cast  int vers float
+; cast  int vers float ligne 20
 	LOAD 3(GB), R2
 	FLOAT R2, R2
-; Fin cast
 	STORE R2, 5(GB)
 	BOV debordement_flottant
-; Debut Cast  int vers float
+; cast  int vers float ligne 21
 	LOAD 4(GB), R2
 	FLOAT R2, R2
-; Fin cast
 	STORE R2, 6(GB)
 	BOV debordement_flottant
 	LOAD 5(GB), R2
@@ -82,7 +78,7 @@
 ; ---------- Code de la méthode equals dans la classe Object (built in)
 code.Object.equals:
 	LOAD -2(LB), R1
-	CMP 1(LB), R1
+	CMP -3(LB), R1
 	BEQ Object.equals.true
 	LOAD #0, R0
 	BRA fin.Object.equals

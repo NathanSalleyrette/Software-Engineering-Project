@@ -32,7 +32,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |      |      |  definition: type (builtin), type=int
    |      |      |      +> [11, 14] Identifier (x)
    |      |      |      |  definition: variable defined at [11, 10], type=int
-   |      |      `> MethodBody
+   |      |      `> [11, 16] MethodBody
    |      |         +> ListDeclVar [List with 0 elements]
    |      |         `> ListInst [List with 1 elements]
    |      |            []> [12, 2] Assign

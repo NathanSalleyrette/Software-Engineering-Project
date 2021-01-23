@@ -1,6 +1,6 @@
-	TSTO #14
+	TSTO #13
 	BOV pile_pleine
-	ADDSP #11
+	ADDSP #10
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -29,17 +29,12 @@
 	LEA 6(GB), R0
 	STORE R0, 0(R2)
 	STORE R2, 9(GB)
-; new ligne 20
-	NEW #1, R2
-	BOV tas_plein
-	LEA 3(GB), R0
-	STORE R0, 0(R2)
-	STORE R2, 10(GB)
-; cast  A vers B ligne 22
+; cast  A vers B ligne 20
 	LOAD 9(GB), R2
 	CMP #null, R2
 	BEQ Cast_Fin.0
-; instanceof ligne 22
+	PUSH R2
+; instanceof ligne 20
 	LOAD 9(GB), R2
 	LEA 3(GB), R0
 	BRA InstanceOf_Cond.1
@@ -56,25 +51,12 @@ InstanceOf_True.1:
 InstanceOf_Fin.1:
 	BRA cast_impossible
 Cast_Fin.0:
-	STORE R2, 11(GB)
+	POP R2
+	STORE R2, 10(GB)
 ; Beginning of main instructions:
-; Appel de méthode ligne 23
+; Appel de méthode ligne 22
 	ADDSP #1
 	LOAD 10(GB), R2
-	STORE R2, 0(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #1
-	LOAD R0, R2
-	LOAD R2, R1
-	WINT
-	WNL
-; Appel de méthode ligne 24
-	ADDSP #1
-	LOAD 11(GB), R2
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2

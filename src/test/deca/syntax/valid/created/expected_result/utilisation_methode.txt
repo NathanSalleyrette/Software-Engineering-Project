@@ -9,7 +9,7 @@
    |  ||  |      +> [8, 0] Identifier (int)
    |  ||  |      +> [8, 4] Identifier (met)
    |  ||  |      +> ListDeclParam [List with 0 elements]
-   |  ||  |      `> MethodBody
+   |  ||  |      `> [8, 9] MethodBody
    |  ||  |         +> ListDeclVar [List with 0 elements]
    |  ||  |         `> ListInst [List with 2 elements]
    |  ||  |            []> [9, 7] Assign
@@ -34,7 +34,7 @@
    |      |      |  []> [14, 8] DeclParam
    |      |      |      +> [14, 8] Identifier (B)
    |      |      |      +> [14, 10] Identifier (b)
-   |      |      `> MethodBody
+   |      |      `> [14, 12] MethodBody
    |      |         +> ListDeclVar [List with 0 elements]
    |      |         `> ListInst [List with 3 elements]
    |      |            []> [15, 1] MethodCall

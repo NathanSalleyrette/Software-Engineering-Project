@@ -21,7 +21,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |  ||  +> [8, 8] Identifier (met)
    |      |  ||  |  definition: method defined at [8, 0], type=boolean
    |      |  ||  +> ListDeclParam [List with 0 elements]
-   |      |  ||  `> MethodBody
+   |      |  ||  `> [8, 13] MethodBody
    |      |  ||     +> ListDeclVar [List with 0 elements]
    |      |  ||     `> ListInst [List with 0 elements]
    |      |  []> [10, 0] DeclMethod
@@ -30,7 +30,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |  ||  +> [10, 6] Identifier (met1)
    |      |  ||  |  definition: method defined at [10, 0], type=float
    |      |  ||  +> ListDeclParam [List with 0 elements]
-   |      |  ||  `> MethodBody
+   |      |  ||  `> [10, 12] MethodBody
    |      |  ||     +> ListDeclVar [List with 0 elements]
    |      |  ||     `> ListInst [List with 0 elements]
    |      |  []> [12, 0] DeclMethod
@@ -39,7 +39,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |      +> [12, 4] Identifier (met2)
    |      |      |  definition: method defined at [12, 0], type=int
    |      |      +> ListDeclParam [List with 0 elements]
-   |      |      `> MethodBody
+   |      |      `> [12, 10] MethodBody
    |      |         +> ListDeclVar [List with 0 elements]
    |      |         `> ListInst [List with 0 elements]
    `> EmptyMain

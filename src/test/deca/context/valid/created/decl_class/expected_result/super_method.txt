@@ -23,7 +23,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |  ||  |      +> [8, 4] Identifier (met)
    |  ||  |      |  definition: method defined at [8, 0], type=int
    |  ||  |      +> ListDeclParam [List with 0 elements]
-   |  ||  |      `> MethodBody
+   |  ||  |      `> [8, 9] MethodBody
    |  ||  |         +> ListDeclVar [List with 0 elements]
    |  ||  |         `> ListInst [List with 0 elements]
    |  []> [11, 0] DeclClass
@@ -58,4 +58,5 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
              +> [17, 0] Identifier (a)
              |  definition: variable defined at [16, 2], type=A
              +> [17, 2] Identifier (met)
+             |  definition: method defined at [8, 0], type=int
              `> ListExpr [List with 0 elements]

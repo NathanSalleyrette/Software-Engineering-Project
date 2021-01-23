@@ -1,0 +1,422 @@
+---CODE_ASSEMBLEUR---
+	TSTO #12
+	BOV pile_pleine
+	ADDSP #9
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de B
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+; Construction de la table des méthodes de A
+	LEA 3(GB), R0
+	STORE R0, 5(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 6(GB)
+; Main program
+; new ligne 27
+	NEW #13, R2
+	BOV tas_plein
+	LEA 5(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 7(GB)
+; Beginning of main instructions:
+	LOAD #1, R2
+	LOAD 7(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 1(R3)
+	LOAD 1(R3), R2
+	LOAD #2, R2
+	LOAD 7(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 7(R3)
+	LOAD 7(R3), R2
+	LOAD #3, R2
+	LOAD 7(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 8(R3)
+	LOAD 8(R3), R2
+	LOAD #1, R2
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+Assign_Fin.0:
+	LOAD 7(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 3(R3)
+	LOAD 3(R3), R2
+	LOAD #1, R2
+	BRA Assign_Fin.1
+Assign_False.1:
+	LOAD #0, R2
+Assign_Fin.1:
+	LOAD 7(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 9(R3)
+	LOAD 9(R3), R2
+	LOAD #1, R2
+	BRA Assign_Fin.2
+Assign_False.2:
+	LOAD #0, R2
+Assign_Fin.2:
+	LOAD 7(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 10(R3)
+	LOAD 10(R3), R2
+	LOAD #0x1.99999ap-4, R2
+	LOAD 7(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 5(R3)
+	BOV debordement_flottant
+	LOAD 5(R3), R2
+	LOAD #0x1.99999ap-3, R2
+	LOAD 7(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 11(R3)
+	BOV debordement_flottant
+	LOAD 11(R3), R2
+	LOAD #0x1.333334p-2, R2
+	LOAD 7(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 12(R3)
+	BOV debordement_flottant
+	LOAD 12(R3), R2
+	LOAD 7(GB), R2
+	STORE R2, 8(GB)
+	LOAD 7(GB), R2
+	STORE R2, 9(GB)
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 7(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 8(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 7(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 8(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WNL
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 5(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " "
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 11(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " "
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 12(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 5(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " "
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 11(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " "
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 12(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	WNL
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 3(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.3
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 9(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.3
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 10(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.3
+	WSTR "ok"
+	WNL
+	BRA E_Fin.3
+E_Sinon.3:
+	WSTR "bouuh"
+	WNL
+E_Fin.3:
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 3(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.4
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 9(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.4
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 10(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.4
+	WSTR "ok"
+	WNL
+	BRA E_Fin.4
+E_Sinon.4:
+	WSTR "bouuh"
+	WNL
+E_Fin.4:
+	WNL
+	WNL
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 7(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 9(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 9(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 2(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WNL
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 5(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " "
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 11(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	LOAD 9(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 5(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " "
+	LOAD 9(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 6(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	WNL
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 3(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.5
+	LOAD 7(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 9(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.5
+	WSTR "ok"
+	WNL
+	BRA E_Fin.5
+E_Sinon.5:
+	WSTR "bouuh"
+	WNL
+E_Fin.5:
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 3(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.6
+	LOAD 8(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 9(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.6
+	WSTR "ok"
+	WNL
+	BRA E_Fin.6
+E_Sinon.6:
+	WSTR "bouuh"
+	WNL
+E_Fin.6:
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	BEQ Object.equals.true
+	LOAD #0, R0
+	BRA fin.Object.equals
+Object.equals.true:
+	LOAD #1, R0
+fin.Object.equals:
+	RTS
+; Classe B
+; ---------- Initialisation des champs de B
+init.B:
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 1(R1)
+	STORE R0, 2(R1)
+	LOAD #0, R0
+	STORE R0, 3(R1)
+	STORE R0, 4(R1)
+	LOAD #0x0.0p0, R0
+	STORE R0, 5(R1)
+	STORE R0, 6(R1)
+	RTS
+; Classe A
+; ---------- Initialisation des champs de A
+init.A:
+	TSTO #3
+	BOV pile_pleine
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 7(R1)
+	STORE R0, 8(R1)
+	LOAD #0, R0
+	STORE R0, 9(R1)
+	STORE R0, 10(R1)
+	LOAD #0x0.0p0, R0
+	STORE R0, 11(R1)
+	STORE R0, 12(R1)
+	PUSH R1
+	BSR init.B
+	SUBSP #1
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+dereferencement.null:
+	WSTR "Erreur : dereferencement.null"
+	WNL
+	ERROR
+debordement_flottant:
+	WSTR "Erreur : debordement_flottant"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Erreur : tas_plein"
+	WNL
+	ERROR
+; end main program
+---SORTIE MACHINE IMA---
+1 2 3
+1 2 3
+
+1.00000e-01 2.00000e-01 3.00000e-01
+1.00000e-01 2.00000e-01 3.00000e-01
+
+ok
+ok
+
+
+1 2
+1 0
+
+1.00000e-01 2.00000e-01
+1.00000e-01 0.00000e+00
+
+ok
+ok

@@ -26,7 +26,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |  ||  |      |      |  definition: type (builtin), type=int
    |  ||  |      |      +> [8, 14] Identifier (x)
    |  ||  |      |      |  definition: variable defined at [8, 10], type=int
-   |  ||  |      `> MethodBody
+   |  ||  |      `> [8, 16] MethodBody
    |  ||  |         +> ListDeclVar [List with 0 elements]
    |  ||  |         `> ListInst [List with 0 elements]
    |  []> [11, 0] DeclClass
@@ -47,7 +47,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |      |      |  definition: type (builtin), type=int
    |      |      |      +> [12, 14] Identifier (y)
    |      |      |      |  definition: variable defined at [12, 10], type=int
-   |      |      `> MethodBody
+   |      |      `> [12, 16] MethodBody
    |      |         +> ListDeclVar [List with 0 elements]
    |      |         `> ListInst [List with 0 elements]
    `> EmptyMain

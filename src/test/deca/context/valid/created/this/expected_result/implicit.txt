@@ -27,7 +27,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |  ||  |      +> [9, 6] Identifier (met)
    |  ||  |      |  definition: method defined at [9, 1], type=void
    |  ||  |      +> ListDeclParam [List with 0 elements]
-   |  ||  |      `> MethodBody
+   |  ||  |      `> [9, 11] MethodBody
    |  ||  |         +> ListDeclVar [List with 0 elements]
    |  ||  |         `> ListInst [List with 0 elements]
    |  []> [12, 0] DeclClass
@@ -49,7 +49,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |  ||  +> [14, 5] Identifier (met2)
    |      |  ||  |  definition: method defined at [14, 0], type=void
    |      |  ||  +> ListDeclParam [List with 0 elements]
-   |      |  ||  `> MethodBody
+   |      |  ||  `> [14, 11] MethodBody
    |      |  ||     +> ListDeclVar [List with 0 elements]
    |      |  ||     `> ListInst [List with 0 elements]
    |      |  []> [15, 0] DeclMethod
@@ -58,7 +58,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |      +> [15, 5] Identifier (setX)
    |      |      |  definition: method defined at [15, 0], type=void
    |      |      +> ListDeclParam [List with 0 elements]
-   |      |      `> MethodBody
+   |      |      `> [15, 11] MethodBody
    |      |         +> ListDeclVar [List with 4 elements]
    |      |         |  []> [16, 5] DeclVar
    |      |         |  ||  +> [16, 1] Identifier (int)
@@ -106,23 +106,27 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |            ||  +> [20, 1] This
    |      |            ||  |  type: A
    |      |            ||  +> [20, 1] Identifier (met)
+   |      |            ||  |  definition: method defined at [9, 1], type=void
    |      |            ||  `> ListExpr [List with 0 elements]
    |      |            []> [21, 1] MethodCall
    |      |            ||  type: void
    |      |            ||  +> [21, 1] This
    |      |            ||  |  type: A
    |      |            ||  +> [21, 6] Identifier (met)
+   |      |            ||  |  definition: method defined at [9, 1], type=void
    |      |            ||  `> ListExpr [List with 0 elements]
    |      |            []> [22, 1] MethodCall
    |      |            ||  type: void
    |      |            ||  +> [22, 1] This
    |      |            ||  |  type: A
    |      |            ||  +> [22, 1] Identifier (met2)
+   |      |            ||  |  definition: method defined at [14, 0], type=void
    |      |            ||  `> ListExpr [List with 0 elements]
    |      |            []> [23, 1] MethodCall
    |      |                type: void
    |      |                +> [23, 1] This
    |      |                |  type: A
    |      |                +> [23, 6] Identifier (met2)
+   |      |                |  definition: method defined at [14, 0], type=void
    |      |                `> ListExpr [List with 0 elements]
    `> EmptyMain

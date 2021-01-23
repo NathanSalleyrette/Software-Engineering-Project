@@ -7,7 +7,7 @@
 
 class A{
 	int x;
-	protected y;
+	protected int  y;
 }
 
 class B extends A{

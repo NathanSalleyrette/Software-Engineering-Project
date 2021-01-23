@@ -14,8 +14,8 @@ if (a){
 		print("2");
 	}
 	
-	a = false;
-	if (a) {
+
+	if (false) {
 		print("1");
 	} else {
 		print("2");

@@ -21,7 +21,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify progr
    |      |      +> [8, 6] Identifier (met)
    |      |      |  definition: method defined at [8, 0], type=float
    |      |      +> ListDeclParam [List with 0 elements]
-   |      |      `> MethodBody
+   |      |      `> [8, 11] MethodBody
    |      |         +> ListDeclVar [List with 0 elements]
    |      |         `> ListInst [List with 1 elements]
    |      |            []> [9, 0] Return
