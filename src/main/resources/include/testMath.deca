@@ -1,6 +1,7 @@
 #include "Math.decah"
 {
+    float f2;
     Math m = new Math();
-    float f= m.ulp(1.0);
-    println(f);
+    f2 = m.sin(-67865.0);
+    println(f2);
 }
