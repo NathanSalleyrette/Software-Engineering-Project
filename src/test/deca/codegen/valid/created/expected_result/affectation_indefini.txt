@@ -1,15 +1,4 @@
----CODE_ASSEMBLEUR---
-<<<<<<< HEAD
-	TSTO #2
-	BOV pile_pleine
-	ADDSP #2
-; start main program
-; Main program
-	LOAD 1(GB), R2
-	STORE R2, 2(GB)
-; Beginning of main instructions:
-	HALT
-=======
+ANTLR Tool version 4.4 used for code generation does not match the current runtime version 4.7.2ANTLR Tool version 4.4 used for code generation does not match the current runtime version 4.7.2---CODE_ASSEMBLEUR---
 	TSTO #4
 	BOV pile_pleine
 	ADDSP #4
@@ -37,7 +26,6 @@ Object.equals.true:
 	LOAD #1, R0
 fin.Object.equals:
 	RTS
->>>>>>> dev
 ; Erreurs
 pile_pleine:
 	WSTR "Erreur : pile_pleine"
