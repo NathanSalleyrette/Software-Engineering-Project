@@ -83,8 +83,8 @@ public class Selection extends AbstractLValue{
 		}
 		*/
 		if ((fieldDef.getVisibility() == Visibility.PROTECTED) && ((currentClass == null) ||
-				(currentClass.getType().isSubClassOf(fieldDef.getContainingClass().getType())
-						&& (objType.isSubClassOf(currentClass.getType()))))) {
+				(!currentClass.getType().isSubClassOf(fieldDef.getContainingClass().getType())
+						|| (!objType.isSubClassOf(currentClass.getType()))))) {
 			throw new ContextualError("(3.65) L'attribut est protégé", this.getLocation());
 		}
  		Type fieldType = this.getField().verifyExpr(compiler, objDef.getMembers(), objDef);
