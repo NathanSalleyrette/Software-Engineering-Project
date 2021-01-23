@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9: (2.7) Type de retour effectif : int, déclaré : boolean
+//    	Ligne 10: (2.7) Type de retour effectif : int, déclaré : boolean
 
 class A{
 boolean met(){

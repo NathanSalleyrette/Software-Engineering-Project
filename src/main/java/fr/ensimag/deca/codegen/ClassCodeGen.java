@@ -176,16 +176,14 @@ public class ClassCodeGen {
                     DeclField f = (DeclField) iterFields.next();
                     AbstractExpr expr = f.getInitialization().getExpression();
                     if (expr != null) {
-                        if (isFirst) {
-                            compiler.addInstruction(new LOAD(thisAddress, Register.R1));
-                            isFirst = false;
-                        }
+                        if (!isFirst) isFirst = false;
                         // Initialization
                         if (!expr.getType().isBoolean()) {
                             expr.codeGenExpr(compiler);
                         } else {
                             EvalExpr.boolInRegister(compiler, expr);
                         }
+                        compiler.addInstruction(new LOAD(thisAddress, Register.R1));
                         DAddr fieldAddress = new RegisterOffset(f.getName().getFieldDefinition().getIndex(), Register.R1);
                         compiler.addInstruction(new STORE(Register.getR(compiler.getCurrentRegister()), fieldAddress));
                     }

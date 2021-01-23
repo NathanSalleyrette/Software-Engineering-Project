@@ -56,7 +56,7 @@ Assign_Fin.4:
 ; ---------- Code de la méthode equals dans la classe Object (built in)
 code.Object.equals:
 	LOAD -2(LB), R1
-	CMP 1(LB), R1
+	CMP -3(LB), R1
 	BEQ Object.equals.true
 	LOAD #0, R0
 	BRA fin.Object.equals

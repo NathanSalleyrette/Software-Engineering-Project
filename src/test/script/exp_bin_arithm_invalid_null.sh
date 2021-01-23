@@ -37,13 +37,8 @@ gen_exp() {
 	op=$2
 	gen_exp_part $nom "1" "null" "$op"
 	gen_exp_part $nom "0.5" "null" "$op"
-	gen_exp_part $nom "true" "null" "$op"
-	gen_exp_part $nom "a" "null" "$op"
 	gen_exp_part $nom "null" "1" "$op"
-	gen_exp_part $nom "null" "0.5" "$op"
-	gen_exp_part $nom "null" "true" "$op"
-	gen_exp_part $nom "null" "a" "$op"
-	gen_exp_part $nom "null" "null" "$op"
+
 }
 
 

@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 14 : (3.71) Le champ n'est pas une méthode
+//    	Ligne 15 : (3.71) Le champ n'est pas une méthode
 
 class A {
 int x;

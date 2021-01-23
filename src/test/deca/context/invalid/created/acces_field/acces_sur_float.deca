@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9 :(3.65) Le membre gauche n’est pas de type ‘classe’
+//    	Ligne 10 :(3.65) Le membre gauche n’est pas de type ‘classe’
 
 {
 float b = 0.5;

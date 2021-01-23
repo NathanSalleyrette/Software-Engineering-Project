@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 17 :(3.65) L’attribut est protégé
+//    	Ligne 18 :(3.65) L’attribut est protégé
 
 class A{
  int x;

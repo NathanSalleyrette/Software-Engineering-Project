@@ -6,5 +6,5 @@
 //    	Ligne 9:  float trop grand
 
 {
-float a = 1.0e99
+float a = 1.0e99;
 }

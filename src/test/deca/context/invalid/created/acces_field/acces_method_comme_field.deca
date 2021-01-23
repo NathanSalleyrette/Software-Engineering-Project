@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9 :(3.65) Le champ n’est pas un attribut de classe
+//    	Ligne 15 :(3.65) Le champ n’est pas un attribut de classe
 
 
 class A {

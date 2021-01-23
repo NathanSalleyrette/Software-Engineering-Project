@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 12 :(3.65) x n’est pas un attribut de la classe A
+//    	Ligne 13 :(3.65) x n’est pas un attribut de la classe A
 
 class A{
 }

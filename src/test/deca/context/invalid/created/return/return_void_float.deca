@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9: (2.7) Type de retour effectif : boolean, déclaré : void
+//    	Ligne 10: (2.7) Type de retour effectif : float, déclaré : void
 
 class A{
 void met(){

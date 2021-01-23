@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne  : (3.71) met n'est pas une méthode de la classe A
+//    	Ligne 12 : (3.71) met n'est pas une méthode de la classe A
 
 class A {
 }

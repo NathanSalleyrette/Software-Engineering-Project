@@ -33,9 +33,6 @@ public class New extends AbstractExpr {
 		return this.newClass;
 	}
 	
-	public void setNewClass(AbstractIdentifier newClass) {
-		this.newClass = newClass;
-	}
 	
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp envExp,
 			ClassDefinition currentCLass) throws ContextualError{

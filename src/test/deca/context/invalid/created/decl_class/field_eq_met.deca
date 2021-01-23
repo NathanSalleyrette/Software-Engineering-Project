@@ -3,9 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9 : (2.4) L’identificateur neth est déjà défini
-
-
+//    	Ligne 10 : (2.4) L’identificateur neth est déjà défini
 
 class A{
 void meth(){}

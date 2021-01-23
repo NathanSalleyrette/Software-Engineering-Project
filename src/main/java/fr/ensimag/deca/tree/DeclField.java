@@ -40,9 +40,6 @@ public class DeclField extends AbstractDeclField{
         return initialization;
     }
 
-    public void setFieldName(AbstractIdentifier fieldName) {
-    	this.fieldName = fieldName;
-    }
 
     @Override
     protected void verifyDeclField(DecacCompiler compiler,

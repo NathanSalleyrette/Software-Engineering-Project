@@ -1,6 +1,6 @@
-	TSTO #12
+	TSTO #45
 	BOV pile_pleine
-	ADDSP #12
+	ADDSP #32
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -13,64 +13,169 @@
 	STORE R0, 3(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
-; Construction de la table des méthodes de B
-	LEA 1(GB), R0
-	STORE R0, 5(GB)
-	LOAD code.Object.equals, R0
-	STORE R0, 6(GB)
-; Construction de la table des méthodes de U
-	LEA 1(GB), R0
-	STORE R0, 7(GB)
-	LOAD code.Object.equals, R0
-	STORE R0, 8(GB)
-	LOAD code.U.f, R0
-	STORE R0, 9(GB)
 ; Main program
-; new ligne 20
-	NEW #1, R2
-	BOV tas_plein
-	LEA 7(GB), R0
-	STORE R0, 0(R2)
-	STORE R2, 10(GB)
-; new ligne 22
-	NEW #1, R2
+; new ligne 8
+	NEW #2, R2
 	BOV tas_plein
 	LEA 3(GB), R0
 	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 5(GB)
+	LOAD #2, R2
+	STORE R2, 6(GB)
+	LOAD #2, R2
+	STORE R2, 7(GB)
+	LOAD #2, R2
+	STORE R2, 8(GB)
+	LOAD #2, R2
+	STORE R2, 9(GB)
+	LOAD #2, R2
+	STORE R2, 10(GB)
+	LOAD #2, R2
 	STORE R2, 11(GB)
-; new ligne 23
-	NEW #1, R2
-	BOV tas_plein
-	LEA 5(GB), R0
-	STORE R0, 0(R2)
+	LOAD #2, R2
 	STORE R2, 12(GB)
-; Beginning of main instructions:
-	ADDSP #2
-	LOAD 10(GB), R2
-	STORE R2, 0(SP)
-	LOAD 11(GB), R2
-	LOAD #null, R3
-	CMP R3, R2
-	BNE Assign_False.0
-	LOAD #1, R2
-	BRA Assign_Fin.0
-Assign_False.0:
-	LOAD #0, R2
-Assign_Fin.0:
-	STORE R2, -1(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
+	LOAD #2, R2
+	STORE R2, 13(GB)
+	LOAD #2, R2
+	STORE R2, 14(GB)
+	LOAD #2, R2
+	STORE R2, 15(GB)
+	LOAD #2, R2
+	STORE R2, 16(GB)
+	LOAD #2, R2
+	STORE R2, 17(GB)
+	LOAD #2, R2
+	STORE R2, 18(GB)
+	LOAD #2, R2
+	STORE R2, 19(GB)
+	LOAD #2, R2
+	STORE R2, 20(GB)
+	LOAD #2, R2
+	STORE R2, 21(GB)
+	LOAD #2, R2
+	STORE R2, 22(GB)
+	LOAD #2, R2
+	STORE R2, 23(GB)
+	LOAD #2, R2
+	STORE R2, 24(GB)
+	LOAD #2, R2
+	STORE R2, 25(GB)
+	LOAD #2, R2
+	STORE R2, 26(GB)
+	LOAD #2, R2
+	STORE R2, 27(GB)
+	LOAD #2, R2
+	STORE R2, 28(GB)
+	LOAD #2, R2
+	STORE R2, 29(GB)
+	LOAD #2, R2
+	STORE R2, 30(GB)
+	LOAD #2, R2
+	STORE R2, 31(GB)
+	LOAD 6(GB), R2
+	LOAD 7(GB), R3
+	LOAD 8(GB), R4
+	LOAD 9(GB), R5
+	LOAD 10(GB), R6
+	LOAD 11(GB), R7
+	LOAD 12(GB), R8
+	LOAD 13(GB), R9
+	LOAD 14(GB), R10
+	LOAD 15(GB), R11
+	LOAD 16(GB), R12
+	LOAD 17(GB), R13
+	LOAD 18(GB), R14
+	LOAD 19(GB), R15
+	PUSH R15
+	LOAD 20(GB), R15
+	PUSH R15
+	LOAD 21(GB), R15
+	PUSH R15
+	LOAD 22(GB), R15
+	PUSH R15
+	LOAD 23(GB), R15
+	PUSH R15
+	LOAD 24(GB), R15
+	PUSH R15
+	LOAD 25(GB), R15
+	PUSH R15
+	LOAD 26(GB), R15
+	PUSH R15
+	LOAD 27(GB), R15
+	PUSH R15
+	LOAD 28(GB), R15
+	PUSH R15
+	LOAD 29(GB), R15
+	PUSH R15
+	LOAD 30(GB), R15
+	PUSH R15
+	LOAD 31(GB), R15
+	PUSH R15
+	LOAD 5(GB), R15
+	CMP #null, R15
 	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #2
-	LOAD R0, R2
+	POP R0
+	STORE R0, 1(R15)
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	LOAD R15, R0
+	POP R15
+	ADD R0, R15
+	ADD R15, R14
+	ADD R14, R13
+	ADD R13, R12
+	ADD R12, R11
+	ADD R11, R10
+	ADD R10, R9
+	ADD R9, R8
+	ADD R8, R7
+	ADD R7, R6
+	ADD R6, R5
+	ADD R5, R4
+	ADD R4, R3
+	ADD R3, R2
+	STORE R2, 32(GB)
+; Beginning of main instructions:
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)
 code.Object.equals:
 	LOAD -2(LB), R1
-	CMP 1(LB), R1
+	CMP -3(LB), R1
 	BEQ Object.equals.true
 	LOAD #0, R0
 	BRA fin.Object.equals
@@ -79,20 +184,14 @@ Object.equals.true:
 fin.Object.equals:
 	RTS
 ; Classe A
-; Classe B
-; Classe U
-; ---------- Code de la methode f dans la classe U ligne 14
-code.U.f:
-	TSTO #1
-	BOV pile_pleine
-; Sauvegarde des registres
-	PUSH R2
-	LOAD -3(LB), R0
-	CMP #0, R0
-	BEQ E_Fin.1
-E_Fin.1:
-fin.U.f:
-	POP R2
+; ---------- Initialisation des champs de A
+init.A:
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 1(R1)
+	LOAD #2, R2
+	LOAD -2(LB), R1
+	STORE R2, 1(R1)
 	RTS
 ; Erreurs
 pile_pleine:

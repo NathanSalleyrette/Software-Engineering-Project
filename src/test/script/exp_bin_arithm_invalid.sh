@@ -36,18 +36,12 @@ gen_exp_part () {
 gen_exp() {
 	nom=$1
 	op=$2
-	gen_exp_part $nom "boolean" "boolean" "$op"
 	gen_exp_part $nom "A" "boolean" "$op"
 	gen_exp_part $nom "boolean" "A" "$op"
-	gen_exp_part $nom "boolean" "float" "$op"
-	gen_exp_part $nom "A" "float" "$op"
-	gen_exp_part $nom "boolean" "int" "$op"
-	gen_exp_part $nom "A" "int" "$op"
 	gen_exp_part $nom "float" "boolean" "$op"
 	gen_exp_part $nom "float" "A" "$op"
 	gen_exp_part $nom "int" "boolean" "$op"
 	gen_exp_part $nom "int" "A" "$op"
-	gen_exp_part $nom "A" "A" "$op"
 }
 
 

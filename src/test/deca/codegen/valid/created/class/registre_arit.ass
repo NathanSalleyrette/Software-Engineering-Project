@@ -1,0 +1,155 @@
+	TSTO #32
+	BOV pile_pleine
+	ADDSP #32
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de A
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+; Main program
+; new ligne 8
+	NEW #2, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 5(GB)
+	LOAD #2, R2
+	STORE R2, 6(GB)
+	LOAD #2, R2
+	STORE R2, 7(GB)
+	LOAD #2, R2
+	STORE R2, 8(GB)
+	LOAD #2, R2
+	STORE R2, 9(GB)
+	LOAD #2, R2
+	STORE R2, 10(GB)
+	LOAD #2, R2
+	STORE R2, 11(GB)
+	LOAD #2, R2
+	STORE R2, 12(GB)
+	LOAD #2, R2
+	STORE R2, 13(GB)
+	LOAD #2, R2
+	STORE R2, 14(GB)
+	LOAD #2, R2
+	STORE R2, 15(GB)
+	LOAD #2, R2
+	STORE R2, 16(GB)
+	LOAD #2, R2
+	STORE R2, 17(GB)
+	LOAD #2, R2
+	STORE R2, 18(GB)
+	LOAD #2, R2
+	STORE R2, 19(GB)
+	LOAD #2, R2
+	STORE R2, 20(GB)
+	LOAD #2, R2
+	STORE R2, 21(GB)
+	LOAD #2, R2
+	STORE R2, 22(GB)
+	LOAD #2, R2
+	STORE R2, 23(GB)
+	LOAD #2, R2
+	STORE R2, 24(GB)
+	LOAD #2, R2
+	STORE R2, 25(GB)
+	LOAD #2, R2
+	STORE R2, 26(GB)
+	LOAD #2, R2
+	STORE R2, 27(GB)
+	LOAD #2, R2
+	STORE R2, 28(GB)
+	LOAD #2, R2
+	STORE R2, 29(GB)
+	LOAD #2, R2
+	STORE R2, 30(GB)
+	LOAD #2, R2
+	STORE R2, 31(GB)
+	LOAD 6(GB), R2
+	ADD 7(GB), R2
+	ADD 8(GB), R2
+	ADD 9(GB), R2
+	ADD 10(GB), R2
+	ADD 11(GB), R2
+	ADD 12(GB), R2
+	ADD 13(GB), R2
+	ADD 14(GB), R2
+	ADD 15(GB), R2
+	ADD 16(GB), R2
+	ADD 17(GB), R2
+	ADD 18(GB), R2
+	ADD 19(GB), R2
+	ADD 20(GB), R2
+	ADD 21(GB), R2
+	ADD 22(GB), R2
+	ADD 23(GB), R2
+	ADD 24(GB), R2
+	ADD 25(GB), R2
+	ADD 26(GB), R2
+	ADD 27(GB), R2
+	ADD 28(GB), R2
+	ADD 29(GB), R2
+	ADD 30(GB), R2
+	ADD 31(GB), R2
+	STORE R2, 32(GB)
+; Beginning of main instructions:
+	LOAD 30(GB), R2
+	LOAD 31(GB), R3
+	LOAD 5(GB), R4
+	CMP #null, R4
+	BEQ dereferencement.null
+	STORE R3, 1(R4)
+	ADD R3, R2
+	STORE R2, 32(GB)
+	WSTR "52="
+	LOAD 32(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	BEQ Object.equals.true
+	LOAD #0, R0
+	BRA fin.Object.equals
+Object.equals.true:
+	LOAD #1, R0
+fin.Object.equals:
+	RTS
+; Classe A
+; ---------- Initialisation des champs de A
+init.A:
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 1(R1)
+	LOAD #2, R2
+	LOAD -2(LB), R1
+	STORE R2, 1(R1)
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+dereferencement.null:
+	WSTR "Erreur : dereferencement.null"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Erreur : tas_plein"
+	WNL
+	ERROR
+; end main program
