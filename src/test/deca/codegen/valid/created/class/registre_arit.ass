@@ -76,16 +76,46 @@
 	LOAD #2, R2
 	STORE R2, 31(GB)
 	LOAD 6(GB), R2
-	LOAD 30(GB), R3
-	LOAD 31(GB), R4
-	LOAD 5(GB), R5
-	CMP #null, R5
-	BEQ dereferencement.null
-	STORE R4, 1(R5)
-	ADD R4, R3
-	ADD R3, R2
+	ADD 7(GB), R2
+	ADD 8(GB), R2
+	ADD 9(GB), R2
+	ADD 10(GB), R2
+	ADD 11(GB), R2
+	ADD 12(GB), R2
+	ADD 13(GB), R2
+	ADD 14(GB), R2
+	ADD 15(GB), R2
+	ADD 16(GB), R2
+	ADD 17(GB), R2
+	ADD 18(GB), R2
+	ADD 19(GB), R2
+	ADD 20(GB), R2
+	ADD 21(GB), R2
+	ADD 22(GB), R2
+	ADD 23(GB), R2
+	ADD 24(GB), R2
+	ADD 25(GB), R2
+	ADD 26(GB), R2
+	ADD 27(GB), R2
+	ADD 28(GB), R2
+	ADD 29(GB), R2
+	ADD 30(GB), R2
+	ADD 31(GB), R2
 	STORE R2, 32(GB)
 ; Beginning of main instructions:
+	LOAD 30(GB), R2
+	LOAD 31(GB), R3
+	LOAD 5(GB), R4
+	CMP #null, R4
+	BEQ dereferencement.null
+	STORE R3, 1(R4)
+	ADD R3, R2
+	STORE R2, 32(GB)
+	WSTR "52="
+	LOAD 32(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)

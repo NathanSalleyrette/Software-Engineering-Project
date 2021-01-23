@@ -1,0 +1,14 @@
+// Description :
+//		on essai de boucher les registre pendant l'operation arith
+//
+// Resultats :
+//		Ok
+
+{
+int a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v, w,x,y,z = 2;
+int res =a=b=c=d=e=f=g=h=i=j=k=l=m=n=o=p=q=r=s=t=u=v=w=x=y=z;
+(res =a)=b=c=d=e=f=g=h=i=j=k=l=m=n=o=p=q=r=s=t=u=v=w=x=y=z;
+
+println(res);
+
+}
