@@ -79,10 +79,7 @@ public class EnvironmentType {
 			Symbol equalsMethod = table.create("equals");
 			Type boolType = envType.get(table.create("boolean")).getType();
 			Signature equalsSig = new Signature();
-			// On a besoin d'un type class indéfini
-			Type classType = new ClassType(
-					OBJECT, Location.BUILTIN, null); // Je sens que ça va poser des problèmes...
-			equalsSig.add(classType);
+			equalsSig.add(objectType);
 			MethodDefinition equalsDef = new MethodDefinition(boolType, Location.BUILTIN, equalsSig, 1);
 			equalsDef.setLabel(new Label("code.Object.equals"));
 			objectDef.getMembers().declare(equalsMethod, equalsDef, Location.BUILTIN);
