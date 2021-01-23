@@ -1,0 +1,65 @@
+// Description :
+//		test sur this dans une methode
+//
+// Resultats :
+//		Ok
+
+class A{
+int x = 0;
+A getthis(){return this;}
+void add(int x){
+	this.x = this.x + x;
+}
+void rec(){
+	rec2();
+}
+
+void rec2(){
+println("A !");
+}
+void rec3(){
+println("B !");
+}
+
+void callrec3(){
+this.rec3();
+}
+}
+
+class B extends A{
+int x = 1;
+B getB(){return this;}
+void rec(){
+	rec3();
+}
+}
+
+
+{
+A a = new A();
+B b = new B();
+B c;
+A d;
+println("0=", a.getthis().x);
+println("0=", b.getthis().x);
+println("1=", b.getB().x);
+a.add(5);
+b.add(5);
+println("5=", a.getthis().x);
+println("5=", b.getthis().x);
+println("1=", b.getB().x);
+c = b;
+println("5=", c.getthis().x);
+println("1=", c.getB().x);
+d = b;
+println("5=", d.getthis().x);
+
+print("A=");
+a.rec();
+print("B=");
+b.callrec3();
+print("B=");
+b.rec();
+print("B=");
+d.rec();
+}

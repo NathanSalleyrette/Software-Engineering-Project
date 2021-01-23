@@ -1,0 +1,9 @@
+// Description :
+//    appel methode avec l'identificateur de classe manquant
+//
+// Resultats :
+//		Syntaxe error
+
+{
+int a = .b();
+}

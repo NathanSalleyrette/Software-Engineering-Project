@@ -1,0 +1,91 @@
+	TSTO #7
+	BOV pile_pleine
+	ADDSP #7
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Main program
+	LOAD #3, R2
+	STORE R2, 4(GB)
+	BRA Assign_False.0
+	LOAD #1, R2
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+Assign_Fin.0:
+	STORE R2, 6(GB)
+	BRA Assign_False.1
+	LOAD #1, R2
+	BRA Assign_Fin.1
+Assign_False.1:
+	LOAD #0, R2
+Assign_Fin.1:
+	STORE R2, 7(GB)
+; Beginning of main instructions:
+	LOAD 4(GB), R2
+	STORE R2, 3(GB)
+	LOAD R2, R1
+	WINT
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ Assign_False.3
+	LOAD #1, R2
+	BRA Assign_Fin.3
+Assign_False.3:
+	LOAD #0, R2
+Assign_Fin.3:
+	STORE R2, 5(GB)
+	LOAD 5(GB), R0
+	CMP #0, R0
+	BEQ E_Fin.2
+E_Fin.2:
+	LOAD #1, R2
+	BRA Assign_Fin.5
+Assign_False.5:
+	LOAD #0, R2
+Assign_Fin.5:
+	STORE R2, 7(GB)
+	LOAD 7(GB), R0
+	CMP #0, R0
+	BEQ E_Fin.4
+	WSTR "ok"
+	WNL
+E_Fin.4:
+	BRA E_Cond.6
+E_Debut.6:
+E_Cond.6:
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ Assign_False.7
+	LOAD #1, R2
+	BRA Assign_Fin.7
+Assign_False.7:
+	LOAD #0, R2
+Assign_Fin.7:
+	STORE R2, 5(GB)
+	LOAD 5(GB), R0
+	CMP #0, R0
+	BNE E_Debut.6
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	BEQ Object.equals.true
+	LOAD #0, R0
+	BRA fin.Object.equals
+Object.equals.true:
+	LOAD #1, R0
+fin.Object.equals:
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program

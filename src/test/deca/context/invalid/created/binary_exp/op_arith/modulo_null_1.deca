@@ -1,0 +1,12 @@
+// Description :
+//    test modulo entre un null et un 1
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.33) les opérandes d’un modulo doivent être de type ‘int’
+class A{}
+{
+A a = new A();
+int c = null % 1;
+}
+

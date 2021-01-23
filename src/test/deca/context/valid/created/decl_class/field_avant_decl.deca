@@ -1,0 +1,14 @@
+// Description :
+//		on fait un appel a un field avant sa declaration
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	
+	int met(){
+	return x;
+	}
+	int x;
+}

@@ -1,0 +1,23 @@
+// Description :
+//		test utilisation null
+//
+// Resultats :
+//		Ok
+
+class B{
+B b = null;
+B met(B b){
+return null;
+}
+}
+
+{
+B b = null;
+B vrai_b = new B();
+vrai_b.met(b);
+vrai_b.met(null);
+vrai_b.met(vrai_b);
+b.met(b);
+b.met(null);
+b.met(vrai_b);
+}

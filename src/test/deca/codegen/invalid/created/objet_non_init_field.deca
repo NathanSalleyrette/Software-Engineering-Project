@@ -1,0 +1,13 @@
+// Description :
+//		Programme pour tester le modulo par zero
+//
+// Resultats :
+//		indefini
+
+class A {
+int x = 1;
+}
+{
+A a;
+a.x;
+}

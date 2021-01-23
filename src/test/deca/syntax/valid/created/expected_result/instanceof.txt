@@ -1,0 +1,13 @@
+`> [7, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [7, 0] DeclClass
+   |      +> [7, 6] Identifier (a)
+   |      +> Identifier (Object)
+   |      +> ListDeclField [List with 0 elements]
+   |      +> ListDeclMethod [List with 0 elements]
+   `> [10, 0] Main
+      +> ListDeclVar [List with 0 elements]
+      `> ListInst [List with 1 elements]
+         []> [11, 3] InstanceOf
+             +> [11, 1] Identifier (a)
+             `> [11, 14] Identifier (b)

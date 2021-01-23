@@ -1,0 +1,13 @@
+// Description :
+//    test  assign entre un boolean et un int
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 12: (3.28) Les types boolean et int sont incompatibles pour l’affectation
+
+
+{
+boolean a = true;
+int b;
+b = a;
+}

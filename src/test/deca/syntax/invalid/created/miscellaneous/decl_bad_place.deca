@@ -1,0 +1,10 @@
+// Description :
+//    la declaration de variable ne peut se faire après une inst
+//
+// Resultats :
+//		Syntaxe error
+
+{
+a = a + 1;
+int b;
+}

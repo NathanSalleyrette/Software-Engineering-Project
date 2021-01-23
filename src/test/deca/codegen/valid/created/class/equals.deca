@@ -1,0 +1,42 @@
+// Description :
+//		test equald 
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	int x = 1;
+}
+
+class B extends A{
+	int x = 1;
+}
+
+class U {
+void t(boolean b){
+	print("t=");
+	if (b) {println("t");} else {println("f");}
+}
+void f(boolean b){
+	print("f=");
+	if (b) {println("t");} else {println("f");}
+}
+}
+
+{
+U u = new U();
+A a = new A();
+A faux_a = new B();
+B b = new B();
+u.f(a.equals(b));
+u.f(a.equals(faux_a));
+u.f(b.equals(a));
+u.f(b.equals(faux_a));
+u.f(faux_a.equals(a));
+u.f(faux_a.equals(b));
+u.t(a.equals(a));
+u.t(faux_a.equals(faux_a));
+u.t(b.equals(b));
+
+}

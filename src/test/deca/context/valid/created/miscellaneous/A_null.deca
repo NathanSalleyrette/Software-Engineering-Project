@@ -1,0 +1,11 @@
+// Description :
+//    test cast entre un A et null
+//
+// Resultats :
+//		Ok
+	
+
+class A {}
+{
+(A)(null);
+}

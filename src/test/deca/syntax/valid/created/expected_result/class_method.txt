@@ -1,0 +1,112 @@
+`> [8, 0] Program
+   +> ListDeclClass [List with 2 elements]
+   |  []> [8, 0] DeclClass
+   |  ||  +> [8, 6] Identifier (A)
+   |  ||  +> Identifier (Object)
+   |  ||  +> ListDeclField [List with 4 elements]
+   |  ||  |  []> [9, 5] [visibility=PUBLIC] DeclField
+   |  ||  |  ||  +> [9, 1] Identifier (int)
+   |  ||  |  ||  +> [9, 5] Identifier (field1)
+   |  ||  |  ||  `> Initialization
+   |  ||  |  ||     `> [9, 14] Int (1)
+   |  ||  |  []> [10, 7] [visibility=PUBLIC] DeclField
+   |  ||  |  ||  +> [10, 1] Identifier (float)
+   |  ||  |  ||  +> [10, 7] Identifier (field1)
+   |  ||  |  ||  `> NoInitialization
+   |  ||  |  []> [11, 6] [visibility=PUBLIC] DeclField
+   |  ||  |  ||  +> [11, 1] Identifier (bool)
+   |  ||  |  ||  +> [11, 6] Identifier (field2)
+   |  ||  |  ||  `> NoInitialization
+   |  ||  |  []> [12, 3] [visibility=PUBLIC] DeclField
+   |  ||  |      +> [12, 1] Identifier (a)
+   |  ||  |      +> [12, 3] Identifier (a)
+   |  ||  |      `> Initialization
+   |  ||  |         `> [12, 7] Identifier (a)
+   |  ||  +> ListDeclMethod [List with 3 elements]
+   |  ||  |  []> [13, 1] DeclMethod
+   |  ||  |  ||  +> [13, 1] Identifier (int)
+   |  ||  |  ||  +> [13, 5] Identifier (met)
+   |  ||  |  ||  +> ListDeclParam [List with 3 elements]
+   |  ||  |  ||  |  []> [13, 9] DeclParam
+   |  ||  |  ||  |  ||  +> [13, 9] Identifier (int)
+   |  ||  |  ||  |  ||  +> [13, 13] Identifier (param1)
+   |  ||  |  ||  |  []> [13, 21] DeclParam
+   |  ||  |  ||  |  ||  +> [13, 21] Identifier (bool)
+   |  ||  |  ||  |  ||  +> [13, 26] Identifier (param2)
+   |  ||  |  ||  |  []> [13, 34] DeclParam
+   |  ||  |  ||  |      +> [13, 34] Identifier (b)
+   |  ||  |  ||  |      +> [13, 36] Identifier (b)
+   |  ||  |  ||  `> [13, 38] MethodBody
+   |  ||  |  ||     +> ListDeclVar [List with 0 elements]
+   |  ||  |  ||     `> ListInst [List with 0 elements]
+   |  ||  |  []> [15, 1] DeclMethod
+   |  ||  |  ||  +> [15, 1] Identifier (void)
+   |  ||  |  ||  +> [15, 6] Identifier (met)
+   |  ||  |  ||  +> ListDeclParam [List with 0 elements]
+   |  ||  |  ||  `> [15, 12] Asm
+   |  ||  |  ||     `> [15, 16] StringLiteral (bla
+	bla)
+   |  ||  |  []> [19, 1] DeclMethod
+   |  ||  |      +> [19, 1] Identifier (int)
+   |  ||  |      +> [19, 5] Identifier (met2)
+   |  ||  |      +> ListDeclParam [List with 0 elements]
+   |  ||  |      `> [19, 11] MethodBody
+   |  ||  |         +> ListDeclVar [List with 2 elements]
+   |  ||  |         |  []> [20, 6] DeclVar
+   |  ||  |         |  ||  +> [20, 1] Identifier (bool)
+   |  ||  |         |  ||  +> [20, 6] Identifier (var1)
+   |  ||  |         |  ||  `> [20, 11] Initialization
+   |  ||  |         |  ||     `> [20, 13] BooleanLiteral (true)
+   |  ||  |         |  []> [21, 6] DeclVar
+   |  ||  |         |      +> [21, 1] Identifier (bool)
+   |  ||  |         |      +> [21, 6] Identifier (var2)
+   |  ||  |         |      `> NoInitialization
+   |  ||  |         `> ListInst [List with 2 elements]
+   |  ||  |            []> [22, 6] Assign
+   |  ||  |            ||  +> [22, 1] Identifier (var2)
+   |  ||  |            ||  `> [22, 13] And
+   |  ||  |            ||     +> [22, 8] BooleanLiteral (true)
+   |  ||  |            ||     `> [22, 16] BooleanLiteral (true)
+   |  ||  |            []> [23, 1] Return
+   |  ||  |                `> [23, 8] Int (1)
+   |  []> [28, 0] DeclClass
+   |      +> [28, 6] Identifier (B)
+   |      +> Identifier (Object)
+   |      +> ListDeclField [List with 3 elements]
+   |      |  []> [32, 16] [visibility=PROTECTED] DeclField
+   |      |  ||  +> [32, 11] Identifier (type)
+   |      |  ||  +> [32, 16] Identifier (field3)
+   |      |  ||  `> NoInitialization
+   |      |  []> [32, 24] [visibility=PROTECTED] DeclField
+   |      |  ||  +> [32, 11] Identifier (type)
+   |      |  ||  +> [32, 24] Identifier (field4)
+   |      |  ||  `> Initialization
+   |      |  ||     `> [32, 33] Int (3)
+   |      |  []> [32, 36] [visibility=PROTECTED] DeclField
+   |      |      +> [32, 11] Identifier (type)
+   |      |      +> [32, 36] Identifier (field5)
+   |      |      `> Initialization
+   |      |         `> [32, 45] Identifier (a)
+   |      +> ListDeclMethod [List with 2 elements]
+   |      |  []> [29, 1] DeclMethod
+   |      |  ||  +> [29, 1] Identifier (int)
+   |      |  ||  +> [29, 5] Identifier (met2)
+   |      |  ||  +> ListDeclParam [List with 0 elements]
+   |      |  ||  `> [29, 11] MethodBody
+   |      |  ||     +> ListDeclVar [List with 0 elements]
+   |      |  ||     `> ListInst [List with 1 elements]
+   |      |  ||        []> [30, 1] Println
+   |      |  ||            `> ListExpr [List with 1 elements]
+   |      |  ||               []> [30, 9] StringLiteral (redefinition de met2 dans A)
+   |      |  []> [33, 1] DeclMethod
+   |      |      +> [33, 1] Identifier (int)
+   |      |      +> [33, 5] Identifier (met3)
+   |      |      +> ListDeclParam [List with 0 elements]
+   |      |      `> [33, 11] MethodBody
+   |      |         +> ListDeclVar [List with 0 elements]
+   |      |         `> ListInst [List with 1 elements]
+   |      |            []> [34, 1] Return
+   |      |                `> [34, 9] Equals
+   |      |                   +> [34, 8] Identifier (a)
+   |      |                   `> [34, 11] Identifier (b)
+   `> EmptyMain

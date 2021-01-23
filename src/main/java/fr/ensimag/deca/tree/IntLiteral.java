@@ -73,4 +73,9 @@ public class IntLiteral extends AbstractExpr {
     public String toString() {
     	return "int";
     }
+
+    @Override
+    public boolean isAtomic() {
+        return true;
+    }
 }

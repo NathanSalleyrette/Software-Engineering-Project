@@ -1,0 +1,43 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
+`> [7, 0] Program
+   +> ListDeclClass [List with 2 elements]
+   |  []> [7, 0] DeclClass
+   |  ||  +> Identifier (C)
+   |  ||  |  definition: type defined at [7, 0], type=C
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 1 elements]
+   |  ||  |  []> [8, 14] [visibility=PROTECTED] DeclField
+   |  ||  |      +> [8, 10] Identifier (int)
+   |  ||  |      |  definition: type (builtin), type=int
+   |  ||  |      +> [8, 14] Identifier (a)
+   |  ||  |      |  definition: field defined at [8, 14], type=int
+   |  ||  |      `> NoInitialization
+   |  ||  +> ListDeclMethod [List with 0 elements]
+   |  []> [11, 0] DeclClass
+   |      +> Identifier (B)
+   |      |  definition: type defined at [11, 0], type=B
+   |      +> Identifier (C)
+   |      |  definition: type defined at [7, 0], type=C
+   |      +> ListDeclField [List with 0 elements]
+   |      +> ListDeclMethod [List with 1 elements]
+   |      |  []> [12, 0] DeclMethod
+   |      |      +> [12, 0] Identifier (int)
+   |      |      |  definition: type (builtin), type=int
+   |      |      +> [12, 4] Identifier (met)
+   |      |      |  definition: method defined at [12, 0], type=int
+   |      |      +> ListDeclParam [List with 0 elements]
+   |      |      `> [12, 9] MethodBody
+   |      |         +> ListDeclVar [List with 0 elements]
+   |      |         `> ListInst [List with 1 elements]
+   |      |            []> [13, 1] Return
+   |      |                `> [13, 8] Identifier (a)
+   |      |                   definition: field defined at [8, 14], type=int
+   `> EmptyMain

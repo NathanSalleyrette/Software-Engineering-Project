@@ -1,0 +1,11 @@
+// Description :
+//    met declarée deux fois
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10 :(2.6) La méthode meth est déjà définie
+
+class A{
+void meth(){}
+int meth(){}
+}

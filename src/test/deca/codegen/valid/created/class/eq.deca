@@ -1,0 +1,46 @@
+// Description :
+//		test ==
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	int x = 1;
+}
+
+class B extends A{
+	int x = 1;
+}
+
+class U {
+void t(boolean b){
+	print("t=");
+	if (b) {println("t");} else {println("f");}
+}
+void f(boolean b){
+	print("f=");
+	if (b) {println("t");} else {println("f");}
+}
+}
+
+{
+U u = new U();
+A a = new A();
+A faux_a = new B();
+B b = new B();
+u.f(a == b);
+u.f(a == null);
+u.f(a == faux_a);
+u.f(b == a);
+u.f(b == faux_a);
+u.f(b == null);
+u.f(faux_a == a);
+u.f(faux_a == b);
+u.f(faux_a == null);
+u.t(null == null);
+u.t(a==a);
+u.t(faux_a == faux_a);
+u.t(b == b);
+
+}

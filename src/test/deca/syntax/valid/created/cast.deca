@@ -1,0 +1,9 @@
+// Description :
+//    test de la syntaxe du cast
+//
+// Resultats :
+//		Ok
+
+{
+(a)(a);
+}

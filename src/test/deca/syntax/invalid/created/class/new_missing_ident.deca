@@ -1,0 +1,9 @@
+// Description :
+//    new identificateur de classe manquant
+//
+// Resultats :
+//		Syntaxe error
+
+{
+new ();
+}

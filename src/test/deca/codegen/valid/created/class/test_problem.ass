@@ -1,0 +1,133 @@
+	TSTO #13
+	BOV pile_pleine
+	ADDSP #10
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de B
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+	LOAD code.B.getx, R0
+	STORE R0, 5(GB)
+; Construction de la table des méthodes de A
+	LEA 3(GB), R0
+	STORE R0, 6(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 7(GB)
+	LOAD code.A.getx, R0
+	STORE R0, 8(GB)
+; Main program
+; new ligne 19
+	NEW #1, R2
+	BOV tas_plein
+	LEA 6(GB), R0
+	STORE R0, 0(R2)
+	STORE R2, 9(GB)
+; cast  A vers B ligne 20
+	LOAD 9(GB), R2
+	CMP #null, R2
+	BEQ Cast_Fin.0
+	PUSH R2
+; instanceof ligne 20
+	LOAD 9(GB), R2
+	LEA 3(GB), R0
+	BRA InstanceOf_Cond.1
+InstanceOf_Debut.1:
+	LOAD 0(R2), R2
+	CMP R0, R2
+	BEQ InstanceOf_True.1
+InstanceOf_Cond.1:
+	CMP #null, R2
+	BNE InstanceOf_Debut.1
+	BRA InstanceOf_Fin.1
+InstanceOf_True.1:
+	BRA Cast_Fin.0
+InstanceOf_Fin.1:
+	BRA cast_impossible
+Cast_Fin.0:
+	POP R2
+	STORE R2, 10(GB)
+; Beginning of main instructions:
+; Appel de méthode ligne 22
+	ADDSP #1
+	LOAD 10(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
+	LOAD R0, R2
+	LOAD R2, R1
+	WINT
+	WNL
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	BEQ Object.equals.true
+	LOAD #0, R0
+	BRA fin.Object.equals
+Object.equals.true:
+	LOAD #1, R0
+fin.Object.equals:
+	RTS
+; Classe B
+; ---------- Code de la methode getx dans la classe B ligne 8
+code.B.getx:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA fin.B.getx
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.B.getx:
+	POP R2
+	RTS
+; Classe A
+; ---------- Code de la methode getx dans la classe A ligne 12
+code.A.getx:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA fin.A.getx
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.A.getx:
+	POP R2
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+dereferencement.null:
+	WSTR "Erreur : dereferencement.null"
+	WNL
+	ERROR
+cast_impossible:
+	WSTR "Erreur : cast_impossible"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Erreur : tas_plein"
+	WNL
+	ERROR
+; end main program

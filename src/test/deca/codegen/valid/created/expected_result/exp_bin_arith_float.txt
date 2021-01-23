@@ -1,63 +1,81 @@
 ---CODE_ASSEMBLEUR---
-	TSTO #1
+	TSTO #3
 	BOV pile_pleine
-	ADDSP #1
+	ADDSP #3
 ; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
 ; Main program
 	LOAD #10, R2
 	FLOAT #10, R2
-	STORE R2, 1(GB)
+	STORE R2, 3(GB)
 	BOV debordement_flottant
 ; Beginning of main instructions:
-	LOAD 1(GB), R2
+	LOAD 3(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
-	LOAD 1(GB), R2
+	LOAD 3(GB), R2
 	LOAD #3, R3
 	FLOAT #3, R3
 	ADD R3, R2
 	BOV debordement_flottant
-	STORE R2, 1(GB)
+	STORE R2, 3(GB)
 	BOV debordement_flottant
-	LOAD 1(GB), R2
+	LOAD 3(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
-	LOAD 1(GB), R2
+	LOAD 3(GB), R2
 	LOAD #5, R3
 	FLOAT #5, R3
 	MUL R3, R2
 	BOV debordement_flottant
-	STORE R2, 1(GB)
+	STORE R2, 3(GB)
 	BOV debordement_flottant
-	LOAD 1(GB), R2
+	LOAD 3(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
-	LOAD 1(GB), R2
+	LOAD 3(GB), R2
 	LOAD #2, R3
 	FLOAT #2, R3
 	DIV R3, R2
 	BOV debordement_flottant
-	STORE R2, 1(GB)
+	STORE R2, 3(GB)
 	BOV debordement_flottant
-	LOAD 1(GB), R2
+	LOAD 3(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
-	LOAD 1(GB), R2
+	LOAD 3(GB), R2
 	LOAD #25, R3
 	FLOAT #25, R3
 	SUB R3, R2
 	BOV debordement_flottant
-	STORE R2, 1(GB)
+	STORE R2, 3(GB)
 	BOV debordement_flottant
-	LOAD 1(GB), R2
+	LOAD 3(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
 	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	BEQ Object.equals.true
+	LOAD #0, R0
+	BRA fin.Object.equals
+Object.equals.true:
+	LOAD #1, R0
+fin.Object.equals:
+	RTS
 ; Erreurs
 pile_pleine:
 	WSTR "Erreur : pile_pleine"

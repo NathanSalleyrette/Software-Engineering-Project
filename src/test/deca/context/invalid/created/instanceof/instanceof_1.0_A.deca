@@ -1,0 +1,11 @@
+// Description :
+//    test instanceof entre un 1.0 et un A
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10 : (3.40) Type gauche : <>, attendu : 'class' ou 'null',  Type droit : <>, attendu : 'class'
+class A{}
+{
+A a;
+boolean c = 1.0 instanceof A;
+}

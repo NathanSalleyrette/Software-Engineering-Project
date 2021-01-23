@@ -80,4 +80,9 @@ public class FloatLiteral extends AbstractExpr {
     public String toString() {
     	return "float";
     }
+
+    @Override
+    public boolean isAtomic() {
+        return true;
+    }
 }

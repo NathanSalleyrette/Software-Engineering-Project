@@ -1,22 +1,989 @@
 // Grenoble INP - Ensimag projet GL -*- mode: java -*-
 // Library for class Math of Deca, coded in Deca
+class _Liste{
+    float contenu;
+    _Liste suivant;
+    float valeur_k;
 
+    void init(float contenu, _Liste suivant, float valeur_k){
+        this.contenu = contenu;
+        this.suivant = suivant;
+        this.valeur_k = valeur_k;
+    }
+
+}
+
+class _ULP{
+    int _trouveExposant(float a, Math m) {
+        float fractionPart;
+        int exponent;
+        if(a >= 1.0) {
+            exponent =0;
+            fractionPart =a/m._puissanceDe2(exponent);
+            while(fractionPart>=2.0){
+                exponent = exponent +1 ;
+                fractionPart =a/m._puissanceDe2(exponent);
+            }
+        }else {
+            exponent =-1;
+            fractionPart =a/m._puissanceDe2(exponent);
+            while(fractionPart<1.0){
+                exponent = exponent -1 ;
+                fractionPart =a/m._puissanceDe2(exponent);
+            }
+
+        }
+        return exponent;
+    }
+
+}
+class _ListeRemplie {
+    _Liste a0;
+    _Liste a1;
+    _Liste a2;
+    _Liste a3;
+    _Liste a4;
+    _Liste a5;
+    _Liste a6;
+    _Liste a7;
+    _Liste a8;
+    _Liste a9;
+    _Liste a10;
+    _Liste a11;
+    _Liste a12;
+    _Liste a13;
+    _Liste a14;
+    _Liste a15;
+    _Liste a16;
+    _Liste a17;
+    _Liste a18;
+    _Liste a19;
+    _Liste a20;
+    _Liste a21;
+    _Liste a22;
+    _Liste a23;
+    _Liste a24;
+    _Liste a25;
+    _Liste a26;
+    _Liste a27;
+    _Liste a28;
+    _Liste a29;
+    _Liste a30;
+    _Liste a31;
+    _Liste a32;
+    _Liste a33;
+    _Liste a34;
+    _Liste a35;
+    _Liste a36;
+    _Liste a37;
+    _Liste a38;
+    _Liste a39;
+    _Liste a40;
+    _Liste a41;
+    _Liste a42;
+    _Liste a43;
+    _Liste a44;
+    _Liste a45;
+    _Liste a46;
+    _Liste a47;
+    _Liste a48;
+    _Liste a49;
+    _Liste a50;
+    _Liste a51;
+    _Liste a52;
+    _Liste a53;
+    _Liste a54;
+    _Liste a55;
+    _Liste a56;
+    _Liste a57;
+    _Liste a58;
+    _Liste a59;
+    _Liste a60;
+    _Liste a61;
+    _Liste a62;
+    _Liste a63;
+    _Liste a64;
+    _Liste a65;
+    _Liste a66;
+    _Liste a67;
+    _Liste a68;
+    _Liste a69;
+    _Liste a70;
+    _Liste a71;
+    _Liste a72;
+    _Liste a73;
+    _Liste a74;
+    _Liste a75;
+    _Liste a76;
+    _Liste a77;
+    _Liste a78;
+    _Liste a79;
+    _Liste a80;
+    _Liste a81;
+    _Liste a82;
+    _Liste a83;
+    _Liste a84;
+    _Liste a85;
+    _Liste a86;
+    _Liste a87;
+    _Liste a88;
+    _Liste a89;
+    _Liste a90;
+    _Liste a91;
+    _Liste a92;
+    _Liste a93;
+    _Liste a94;
+    _Liste a95;
+    _Liste a96;
+    _Liste a97;
+    _Liste a98;
+    _Liste a99;
+    _Liste a100;
+    _Liste a101;
+    _Liste a102;
+    _Liste a103;
+    _Liste a104;
+    _Liste a105;
+    _Liste a106;
+    _Liste a107;
+    _Liste a108;
+    _Liste a109;
+    _Liste a110;
+    _Liste a111;
+    _Liste a112;
+    _Liste a113;
+    _Liste a114;
+    _Liste a115;
+    _Liste a116;
+    _Liste a117;
+    _Liste a118;
+    _Liste a119;
+    _Liste a120;
+    _Liste a121;
+    _Liste a122;
+    _Liste a123;
+    _Liste a124;
+    _Liste a125;
+    _Liste a126;
+    _Liste a127;
+    _Liste a128;
+    _Liste a129;
+    _Liste a130;
+    _Liste a131;
+    _Liste a132;
+    _Liste a133;
+    _Liste a134;
+    _Liste a135;
+    _Liste a136;
+    _Liste a137;
+    _Liste a138;
+    _Liste a139;
+    _Liste a140;
+    _Liste a141;
+    _Liste a142;
+    _Liste a143;
+    _Liste a144;
+    _Liste a145;
+
+
+    void initListe(){//TODO different pour chaque fonction ??
+        a0 = new _Liste();
+        a1 = new _Liste();
+        a2 = new _Liste();
+        a3 = new _Liste();
+        a4 = new _Liste();
+        a5 = new _Liste();
+        a6 = new _Liste();
+        a7 = new _Liste();
+        a8 = new _Liste();
+        a9 = new _Liste();
+        a10 = new _Liste();
+        a11 = new _Liste();
+        a12 = new _Liste();
+        a13 = new _Liste();
+        a14 = new _Liste();
+        a15 = new _Liste();
+        a16 = new _Liste();
+        a17 = new _Liste();
+        a18 = new _Liste();
+        a19 = new _Liste();
+        a20 = new _Liste();
+        a21 = new _Liste();
+        a22 = new _Liste();
+        a23 = new _Liste();
+        a24 = new _Liste();
+        a25 = new _Liste();
+        a26 = new _Liste();
+        a27 = new _Liste();
+        a28 = new _Liste();
+        a29 = new _Liste();
+        a30 = new _Liste();
+        a31 = new _Liste();
+        a32 = new _Liste();
+        a33 = new _Liste();
+        a34 = new _Liste();
+        a35 = new _Liste();
+        a36 = new _Liste();
+        a37 = new _Liste();
+        a38 = new _Liste();
+        a39 = new _Liste();
+        a40 = new _Liste();
+        a41 = new _Liste();
+        a42 = new _Liste();
+        a43 = new _Liste();
+        a44 = new _Liste();
+        a45 = new _Liste();
+        a46 = new _Liste();
+        a47 = new _Liste();
+        a48 = new _Liste();
+        a49 = new _Liste();
+        a50 = new _Liste();
+        a51 = new _Liste();
+        a52 = new _Liste();
+        a53 = new _Liste();
+        a54 = new _Liste();
+        a55 = new _Liste();
+        a56 = new _Liste();
+        a57 = new _Liste();
+        a58 = new _Liste();
+        a59 = new _Liste();
+        a60 = new _Liste();
+        a61 = new _Liste();
+        a62 = new _Liste();
+        a63 = new _Liste();
+        a64 = new _Liste();
+        a65 = new _Liste();
+        a66 = new _Liste();
+        a67 = new _Liste();
+        a68 = new _Liste();
+        a69 = new _Liste();
+        a70 = new _Liste();
+        a71 = new _Liste();
+        a72 = new _Liste();
+        a73 = new _Liste();
+        a74 = new _Liste();
+        a75 = new _Liste();
+        a76 = new _Liste();
+        a77 = new _Liste();
+        a78 = new _Liste();
+        a79 = new _Liste();
+        a80 = new _Liste();
+        a81 = new _Liste();
+        a82 = new _Liste();
+        a83 = new _Liste();
+        a84 = new _Liste();
+        a85 = new _Liste();
+        a86 = new _Liste();
+        a87 = new _Liste();
+        a88 = new _Liste();
+        a89 = new _Liste();
+        a90 = new _Liste();
+        a91 = new _Liste();
+        a92 = new _Liste();
+        a93 = new _Liste();
+        a94 = new _Liste();
+        a95 = new _Liste();
+        a96 = new _Liste();
+        a97 = new _Liste();
+        a98 = new _Liste();
+        a99 = new _Liste();
+        a100 = new _Liste();
+        a101 = new _Liste();
+        a102 = new _Liste();
+        a103 = new _Liste();
+        a104 = new _Liste();
+        a105 = new _Liste();
+        a106 = new _Liste();
+        a107 = new _Liste();
+        a108 = new _Liste();
+        a109 = new _Liste();
+        a110 = new _Liste();
+        a111 = new _Liste();
+        a112 = new _Liste();
+        a113 = new _Liste();
+        a114 = new _Liste();
+        a115 = new _Liste();
+        a116 = new _Liste();
+        a117 = new _Liste();
+        a118 = new _Liste();
+        a119 = new _Liste();
+        a120 = new _Liste();
+        a121 = new _Liste();
+        a122 = new _Liste();
+        a123 = new _Liste();
+        a124 = new _Liste();
+        a125 = new _Liste();
+        a126 = new _Liste();
+        a127 = new _Liste();
+        a128 = new _Liste();
+        a129 = new _Liste();
+        a130 = new _Liste();
+        a131 = new _Liste();
+        a132 = new _Liste();
+        a133 = new _Liste();
+        a134 = new _Liste();
+        a135 = new _Liste();
+        a136 = new _Liste();
+        a137 = new _Liste();
+        a138 = new _Liste();
+        a139 = new _Liste();
+        a140 = new _Liste();
+        a141 = new _Liste();
+        a142 = new _Liste();
+        a143 = new _Liste();
+        a144 = new _Liste();
+        a145 = new _Liste();
+    }
+
+    void sinCosRemplissage(){
+        a44.init(1.0e-44, null, 1.0e-44);
+        a43.init(1.0e-43, a44, 1.0e-43);
+        a42.init(1.0e-42, a43, 1.0e-42);
+        a41.init(1.0e-41, a42, 1.0e-41);
+        a40.init(1.0e-40, a41, 1.0e-40);
+        a39.init(1.0e-39, a40, 1.0e-39);
+        a38.init(1.0e-38, a39, 1.0e-38);
+        a37.init(1.0e-37, a38, 1.0e-37);
+        a36.init(1.0e-36, a37, 1.0e-36);
+        a35.init(1.0e-35, a36, 1.0e-35);
+        a34.init(1.0e-34, a35, 1.0e-34);
+        a33.init(1.0e-33, a34, 1.0e-33);
+        a32.init(1.0e-32, a33, 1.0e-32);
+        a31.init(1.0e-31, a32, 1.0e-31);
+        a30.init(1.0e-30, a31, 1.0e-30);
+        a29.init(1.0e-29, a30, 1.0e-29);
+        a28.init(1.0e-28, a29, 1.0e-28);
+        a27.init(1.0e-27, a28, 1.0e-27);
+        a26.init(1.0e-26, a27, 1.0e-26);
+        a25.init(1.0e-25, a26, 1.0e-25);
+        a24.init(1.0e-24, a25, 1.0e-24);
+        a23.init(1.0e-23, a24, 1.0e-23);
+        a22.init(1.0e-22, a23, 1.0e-22);
+        a21.init(1.0e-21, a22, 1.0e-21);
+        a20.init(1.0e-20, a21, 1.0e-20);
+        a19.init(1.0e-19, a20, 1.0e-19);
+        a18.init(1.0e-18, a19, 1.0e-18);
+        a17.init(1.0e-17, a18, 1.0e-17);
+        a16.init(1.0e-16, a17, 1.0e-16);
+        a15.init(1.0e-15, a16, 1.0e-15);
+        a14.init(1.0e-14, a15, 1.0e-14);
+        a13.init(1.0e-13, a14, 1.0e-13);
+        a12.init(1.0e-12, a13, 1.0e-12);
+        a11.init(1.0e-11, a12, 1.0e-11);
+        a10.init(1.0e-10, a11, 1.0e-10);
+        a9.init(1.0e-09, a10, 1.0e-09);
+        a8.init(1.0e-08, a9, 1.0e-08);
+        a7.init(9.999999999999966e-08, a8, 1.0e-07);
+        a6.init(9.999999999996666e-07, a7, 1.0e-06);
+        a5.init(9.999999999666668e-06, a6, 1.0e-05);
+        a4.init(9.999999966666667e-05, a5, 0.0001);
+        a3.init(0.0009999996666668668, a4, 0.001);
+        a2.init(0.009999666686665238, a3, 0.01);
+        a1.init(0.09966865249116204, a2, 0.1);
+        a0.init(0.7853981633974483, a1, 1.0);
+    }
+    void arcSinRemplissage(){
+        a73.init(1.0587911840678754e-22, null, 1.1210387714598537e-44);
+        a72.init(2.117582368135751e-22, a73, 4.484155085839415e-44);
+        a71.init(4.235164736271502e-22, a72, 1.793662034335766e-43);
+        a70.init(8.470329472543003e-22, a71, 7.174648137343064e-43);
+        a69.init(1.6940658945086007e-21, a70, 2.8698592549372254e-42);
+        a68.init(3.3881317890172014e-21, a69, 1.1479437019748901e-41);
+        a67.init(6.776263578034403e-21, a68, 4.591774807899561e-41);
+        a66.init(1.3552527156068805e-20, a67, 1.8367099231598242e-40);
+        a65.init(2.710505431213761e-20, a66, 7.346839692639297e-40);
+        a64.init(5.421010862427522e-20, a65, 2.938735877055719e-39);
+        a63.init(1.0842021724855044e-19, a64, 1.1754943508222875e-38);
+        a62.init(2.168404344971009e-19, a63, 4.70197740328915e-38);
+        a61.init(4.336808689942018e-19, a62, 1.88079096131566e-37);
+        a60.init(8.673617379884035e-19, a61, 7.52316384526264e-37);
+        a59.init(1.734723475976807e-18, a60, 3.009265538105056e-36);
+        a58.init(3.469446951953614e-18, a59, 1.2037062152420224e-35);
+        a57.init(6.938893903907228e-18, a58, 4.81482486096809e-35);
+        a56.init(1.3877787807814457e-17, a57, 1.925929944387236e-34);
+        a55.init(2.7755575615628914e-17, a56, 7.703719777548943e-34);
+        a54.init(5.551115123125783e-17, a55, 3.0814879110195774e-33);
+        a53.init(1.1102230246251565e-16, a54, 1.232595164407831e-32);
+        a52.init(2.220446049250313e-16, a53, 4.930380657631324e-32);
+        a51.init(4.440892098500626e-16, a52, 1.9721522630525295e-31);
+        a50.init(8.881784197001252e-16, a51, 7.888609052210118e-31);
+        a49.init(1.7763568394002505e-15, a50, 3.1554436208840472e-30);
+        a48.init(3.552713678800501e-15, a49, 1.262177448353619e-29);
+        a47.init(7.105427357601002e-15, a48, 5.048709793414476e-29);
+        a46.init(1.4210854715202004e-14, a47, 2.0194839173657902e-28);
+        a45.init(2.842170943040401e-14, a46, 8.077935669463161e-28);
+        a44.init(5.684341886080802e-14, a45, 3.2311742677852644e-27);
+        a43.init(1.1368683772161603e-13, a44, 1.2924697071141057e-26);
+        a42.init(2.2737367544323206e-13, a43, 5.169878828456423e-26);
+        a41.init(4.547473508864641e-13, a42, 2.0679515313825692e-25);
+        a40.init(9.094947017729282e-13, a41, 8.271806125530277e-25);
+        a39.init(1.8189894035458565e-12, a40, 3.308722450212111e-24);
+        a38.init(3.637978807091713e-12, a39, 1.3234889800848443e-23);
+        a37.init(7.275957614183426e-12, a38, 5.293955920339377e-23);
+        a36.init(1.4551915228366852e-11, a37, 2.117582368135751e-22);
+        a35.init(2.9103830456733704e-11, a36, 8.470329472543003e-22);
+        a34.init(5.820766091346741e-11, a35, 3.3881317890172014e-21);
+        a33.init(1.1641532182693481e-10, a34, 1.3552527156068805e-20);
+        a32.init(2.3283064365386963e-10, a33, 5.421010862427522e-20);
+        a31.init(4.656612873077393e-10, a32, 2.168404344971009e-19);
+        a30.init(9.313225746154785e-10, a31, 8.673617379884035e-19);
+        a29.init(1.862645149230957e-09, a30, 3.469446951953614e-18);
+        a28.init(3.725290298461914e-09, a29, 1.3877787807814457e-17);
+        a27.init(7.450580596923828e-09, a28, 5.551115123125783e-17);
+        a26.init(1.4901161193847655e-08, a27, 2.220446049250313e-16);
+        a25.init(2.9802322387695303e-08, a26, 8.881784197001252e-16);
+        a24.init(5.960464477539055e-08, a25, 3.552713678800501e-15);
+        a23.init(1.1920928955078068e-07, a24, 1.4210854715202004e-14);
+        a22.init(2.3841857910155797e-07, a23, 5.684341886080802e-14);
+        a21.init(4.7683715820308884e-07, a22, 2.2737367544323206e-13);
+        a20.init(9.536743164059608e-07, a21, 9.094947017729282e-13);
+        a19.init(1.907348632810187e-06, a20, 3.637978807091713e-12);
+        a18.init(3.814697265606496e-06, a19, 1.4551915228366852e-11);
+        a17.init(7.62939453110197e-06, a18, 5.820766091346741e-11);
+        a16.init(1.5258789061315762e-05, a17, 2.3283064365386963e-10);
+        a15.init(3.0517578115526096e-05, a16, 9.313225746154785e-10);
+        a14.init(6.103515617420877e-05, a15, 3.725290298461914e-09);
+        a13.init(0.00012207031189367021, a14, 1.4901161193847656e-08);
+        a12.init(0.00024414062014936177, a13, 5.960464477539063e-08);
+        a11.init(0.0004882812111948983, a12, 2.384185791015625e-07);
+        a10.init(0.0009765621895593195, a11, 9.5367431640625e-07);
+        a9.init(0.0019531225164788188, a10, 3.814697265625e-06);
+        a8.init(0.0039062301319669718, a9, 1.52587890625e-05);
+        a7.init(0.007812341060101111, a8, 6.103515625e-05);
+        a6.init(0.015623728620476831, a7, 0.000244140625);
+        a5.init(0.031239833430268277, a6, 0.0009765625);
+        a4.init(0.06241880999595735, a5, 0.00390625);
+        a3.init(0.12435499454676144, a4, 0.015625);
+        a2.init(0.24497866312686414, a3, 0.0625);
+        a1.init(0.4636476090008061, a2, 0.25);
+        a0.init(0.7853981633974483, a1, 1);
+    }
+    void arcTanRemplissage(){
+        a145.init(2.2420775429197073e-44, null, 2.2420775429197073e-44);
+        a144.init(4.484155085839415e-44, a145, 4.484155085839415e-44);
+        a143.init(8.96831017167883e-44, a144, 8.96831017167883e-44);
+        a142.init(1.793662034335766e-43, a143, 1.793662034335766e-43);
+        a141.init(3.587324068671532e-43, a142, 3.587324068671532e-43);
+        a140.init(7.174648137343064e-43, a141, 7.174648137343064e-43);
+        a139.init(1.4349296274686127e-42, a140, 1.4349296274686127e-42);
+        a138.init(2.8698592549372254e-42, a139, 2.8698592549372254e-42);
+        a137.init(5.739718509874451e-42, a138, 5.739718509874451e-42);
+        a136.init(1.1479437019748901e-41, a137, 1.1479437019748901e-41);
+        a135.init(2.2958874039497803e-41, a136, 2.2958874039497803e-41);
+        a134.init(4.591774807899561e-41, a135, 4.591774807899561e-41);
+        a133.init(9.183549615799121e-41, a134, 9.183549615799121e-41);
+        a132.init(1.8367099231598242e-40, a133, 1.8367099231598242e-40);
+        a131.init(3.6734198463196485e-40, a132, 3.6734198463196485e-40);
+        a130.init(7.346839692639297e-40, a131, 7.346839692639297e-40);
+        a129.init(1.4693679385278594e-39, a130, 1.4693679385278594e-39);
+        a128.init(2.938735877055719e-39, a129, 2.938735877055719e-39);
+        a127.init(5.877471754111438e-39, a128, 5.877471754111438e-39);
+        a126.init(1.1754943508222875e-38, a127, 1.1754943508222875e-38);
+        a125.init(2.350988701644575e-38, a126, 2.350988701644575e-38);
+        a124.init(4.70197740328915e-38, a125, 4.70197740328915e-38);
+        a123.init(9.4039548065783e-38, a124, 9.4039548065783e-38);
+        a122.init(1.88079096131566e-37, a123, 1.88079096131566e-37);
+        a121.init(3.76158192263132e-37, a122, 3.76158192263132e-37);
+        a120.init(7.52316384526264e-37, a121, 7.52316384526264e-37);
+        a119.init(1.504632769052528e-36, a120, 1.504632769052528e-36);
+        a118.init(3.009265538105056e-36, a119, 3.009265538105056e-36);
+        a117.init(6.018531076210112e-36, a118, 6.018531076210112e-36);
+        a116.init(1.2037062152420224e-35, a117, 1.2037062152420224e-35);
+        a115.init(2.407412430484045e-35, a116, 2.407412430484045e-35);
+        a114.init(4.81482486096809e-35, a115, 4.81482486096809e-35);
+        a113.init(9.62964972193618e-35, a114, 9.62964972193618e-35);
+        a112.init(1.925929944387236e-34, a113, 1.925929944387236e-34);
+        a111.init(3.851859888774472e-34, a112, 3.851859888774472e-34);
+        a110.init(7.703719777548943e-34, a111, 7.703719777548943e-34);
+        a109.init(1.5407439555097887e-33, a110, 1.5407439555097887e-33);
+        a108.init(3.0814879110195774e-33, a109, 3.0814879110195774e-33);
+        a107.init(6.162975822039155e-33, a108, 6.162975822039155e-33);
+        a106.init(1.232595164407831e-32, a107, 1.232595164407831e-32);
+        a105.init(2.465190328815662e-32, a106, 2.465190328815662e-32);
+        a104.init(4.930380657631324e-32, a105, 4.930380657631324e-32);
+        a103.init(9.860761315262648e-32, a104, 9.860761315262648e-32);
+        a102.init(1.9721522630525295e-31, a103, 1.9721522630525295e-31);
+        a101.init(3.944304526105059e-31, a102, 3.944304526105059e-31);
+        a100.init(7.888609052210118e-31, a101, 7.888609052210118e-31);
+        a99.init(1.5777218104420236e-30, a100, 1.5777218104420236e-30);
+        a98.init(3.1554436208840472e-30, a99, 3.1554436208840472e-30);
+        a97.init(6.310887241768095e-30, a98, 6.310887241768095e-30);
+        a96.init(1.262177448353619e-29, a97, 1.262177448353619e-29);
+        a95.init(2.524354896707238e-29, a96, 2.524354896707238e-29);
+        a94.init(5.048709793414476e-29, a95, 5.048709793414476e-29);
+        a93.init(1.0097419586828951e-28, a94, 1.0097419586828951e-28);
+        a92.init(2.0194839173657902e-28, a93, 2.0194839173657902e-28);
+        a91.init(4.0389678347315804e-28, a92, 4.0389678347315804e-28);
+        a90.init(8.077935669463161e-28, a91, 8.077935669463161e-28);
+        a89.init(1.6155871338926322e-27, a90, 1.6155871338926322e-27);
+        a88.init(3.2311742677852644e-27, a89, 3.2311742677852644e-27);
+        a87.init(6.462348535570529e-27, a88, 6.462348535570529e-27);
+        a86.init(1.2924697071141057e-26, a87, 1.2924697071141057e-26);
+        a85.init(2.5849394142282115e-26, a86, 2.5849394142282115e-26);
+        a84.init(5.169878828456423e-26, a85, 5.169878828456423e-26);
+        a83.init(1.0339757656912846e-25, a84, 1.0339757656912846e-25);
+        a82.init(2.0679515313825692e-25, a83, 2.0679515313825692e-25);
+        a81.init(4.1359030627651384e-25, a82, 4.1359030627651384e-25);
+        a80.init(8.271806125530277e-25, a81, 8.271806125530277e-25);
+        a79.init(1.6543612251060553e-24, a80, 1.6543612251060553e-24);
+        a78.init(3.308722450212111e-24, a79, 3.308722450212111e-24);
+        a77.init(6.617444900424222e-24, a78, 6.617444900424222e-24);
+        a76.init(1.3234889800848443e-23, a77, 1.3234889800848443e-23);
+        a75.init(2.6469779601696886e-23, a76, 2.6469779601696886e-23);
+        a74.init(5.293955920339377e-23, a75, 5.293955920339377e-23);
+        a73.init(1.0587911840678754e-22, a74, 1.0587911840678754e-22);
+        a72.init(2.117582368135751e-22, a73, 2.117582368135751e-22);
+        a71.init(4.235164736271502e-22, a72, 4.235164736271502e-22);
+        a70.init(8.470329472543003e-22, a71, 8.470329472543003e-22);
+        a69.init(1.6940658945086007e-21, a70, 1.6940658945086007e-21);
+        a68.init(3.3881317890172014e-21, a69, 3.3881317890172014e-21);
+        a67.init(6.776263578034403e-21, a68, 6.776263578034403e-21);
+        a66.init(1.3552527156068805e-20, a67, 1.3552527156068805e-20);
+        a65.init(2.710505431213761e-20, a66, 2.710505431213761e-20);
+        a64.init(5.421010862427522e-20, a65, 5.421010862427522e-20);
+        a63.init(1.0842021724855044e-19, a64, 1.0842021724855044e-19);
+        a62.init(2.168404344971009e-19, a63, 2.168404344971009e-19);
+        a61.init(4.336808689942018e-19, a62, 4.336808689942018e-19);
+        a60.init(8.673617379884035e-19, a61, 8.673617379884035e-19);
+        a59.init(1.734723475976807e-18, a60, 1.734723475976807e-18);
+        a58.init(3.469446951953614e-18, a59, 3.469446951953614e-18);
+        a57.init(6.938893903907228e-18, a58, 6.938893903907228e-18);
+        a56.init(1.3877787807814457e-17, a57, 1.3877787807814457e-17);
+        a55.init(2.7755575615628914e-17, a56, 2.7755575615628914e-17);
+        a54.init(5.551115123125783e-17, a55, 5.551115123125783e-17);
+        a53.init(1.1102230246251565e-16, a54, 1.1102230246251565e-16);
+        a52.init(2.220446049250313e-16, a53, 2.220446049250313e-16);
+        a51.init(4.440892098500626e-16, a52, 4.440892098500626e-16);
+        a50.init(8.881784197001252e-16, a51, 8.881784197001252e-16);
+        a49.init(1.7763568394002505e-15, a50, 1.7763568394002505e-15);
+        a48.init(3.552713678800501e-15, a49, 3.552713678800501e-15);
+        a47.init(7.105427357601002e-15, a48, 7.105427357601002e-15);
+        a46.init(1.4210854715202004e-14, a47, 1.4210854715202004e-14);
+        a45.init(2.842170943040401e-14, a46, 2.842170943040401e-14);
+        a44.init(5.684341886080802e-14, a45, 5.684341886080802e-14);
+        a43.init(1.1368683772161603e-13, a44, 1.1368683772161603e-13);
+        a42.init(2.2737367544323206e-13, a43, 2.2737367544323206e-13);
+        a41.init(4.547473508864641e-13, a42, 4.547473508864641e-13);
+        a40.init(9.094947017729282e-13, a41, 9.094947017729282e-13);
+        a39.init(1.8189894035458565e-12, a40, 1.8189894035458565e-12);
+        a38.init(3.637978807091713e-12, a39, 3.637978807091713e-12);
+        a37.init(7.275957614183426e-12, a38, 7.275957614183426e-12);
+        a36.init(1.4551915228366852e-11, a37, 1.4551915228366852e-11);
+        a35.init(2.9103830456733704e-11, a36, 2.9103830456733704e-11);
+        a34.init(5.820766091346741e-11, a35, 5.820766091346741e-11);
+        a33.init(1.1641532182693481e-10, a34, 1.1641532182693481e-10);
+        a32.init(2.3283064365386963e-10, a33, 2.3283064365386963e-10);
+        a31.init(4.656612873077393e-10, a32, 4.656612873077393e-10);
+        a30.init(9.313225746154785e-10, a31, 9.313225746154785e-10);
+        a29.init(1.862645149230957e-09, a30, 1.862645149230957e-09);
+        a28.init(3.725290298461914e-09, a29, 3.725290298461914e-09);
+        a27.init(7.450580596923828e-09, a28, 7.450580596923828e-09);
+        a26.init(1.4901161193847655e-08, a27, 1.4901161193847656e-08);
+        a25.init(2.9802322387695303e-08, a26, 2.9802322387695312e-08);
+        a24.init(5.960464477539055e-08, a25, 5.960464477539063e-08);
+        a23.init(1.1920928955078068e-07, a24, 1.1920928955078125e-07);
+        a22.init(2.3841857910155797e-07, a23, 2.384185791015625e-07);
+        a21.init(4.7683715820308884e-07, a22, 4.76837158203125e-07);
+        a20.init(9.536743164059608e-07, a21, 9.5367431640625e-07);
+        a19.init(1.907348632810187e-06, a20, 1.9073486328125e-06);
+        a18.init(3.814697265606496e-06, a19, 3.814697265625e-06);
+        a17.init(7.62939453110197e-06, a18, 7.62939453125e-06);
+        a16.init(1.5258789061315762e-05, a17, 1.52587890625e-05);
+        a15.init(3.0517578115526096e-05, a16, 3.0517578125e-05);
+        a14.init(6.103515617420877e-05, a15, 6.103515625e-05);
+        a13.init(0.00012207031189367021, a14, 0.0001220703125);
+        a12.init(0.00024414062014936177, a13, 0.000244140625);
+        a11.init(0.0004882812111948983, a12, 0.00048828125);
+        a10.init(0.0009765621895593195, a11, 0.0009765625);
+        a9.init(0.0019531225164788188, a10, 0.001953125);
+        a8.init(0.0039062301319669718, a9, 0.00390625);
+        a7.init(0.007812341060101111, a8, 0.0078125);
+        a6.init(0.015623728620476831, a7, 0.015625);
+        a5.init(0.031239833430268277, a6, 0.03125);
+        a4.init(0.06241880999595735, a5, 0.0625);
+        a3.init(0.12435499454676144, a4, 0.125);
+        a2.init(0.24497866312686414, a3, 0.25);
+        a1.init(0.4636476090008061, a2, 0.5);
+        a0.init(0.7853981633974483, a1, 1);
+    }
+
+    _Liste getA0(){
+        return this.a0;
+    }
+}
+class _Epsilon{
+    float epsilon=1.0e-44;
+    float getEpsilon(){
+        return this.epsilon;
+    }
+}
+class _Pi{
+    float pi = 3.14159265358979323846264338327950288419716939937510;
+    float getPi(){
+        return this.pi;
+    }
+}
 class Math {
     float sin(float f) {
-        println("sin(f) not yet implemented");
+        float angle;
+        float pi;
+        _ListeRemplie liste;
+        _Pi piClass;
+        _Epsilon epsilonClass;
+        _Liste curr;
+        float res;
+        float X;
+        float Y;
+        float epsilon;
+        int oppose;
+        float petit_tan;
+        float pre_resultat;
+        float resultat;
+        piClass=new _Pi();
+        epsilonClass=new _Epsilon();
+        liste= new _ListeRemplie();
+        liste.initListe();
+        liste.sinCosRemplissage();
+        angle = f; /* l'angle en argument */
+        pi = piClass.getPi();
+        epsilon = epsilonClass.getEpsilon();
+        oppose = 1;
+        curr = liste.getA0();
+        if(angle < -pi){
+            while(angle < -pi){
+                angle = _fma(angle,2,pi);
+            }
+        }
+        if(angle > pi){
+            while(angle > pi) {
+                angle = _fma(angle,-2,pi);
+            }
+        }
+        /* angle est désormais dans [-pi, pi] */
+        if(-(pi / 2) < angle && angle < 0.0){
+            angle = -angle;
+            oppose = -1;
+        }
+        else if(-pi < angle && angle < -(pi / 2)){
+            angle = angle + pi;
+            oppose = -1;
+        }
+        else if(angle < pi && (pi / 2) < angle){
+            angle = pi - angle;
+            oppose = 1;
+        }
+        else{
+            oppose = 1;
+        }
+        angle = angle / 2;
+        X = 1.0;
+        Y = 0.0;
+
+        while(angle >= epsilon) {
+
+            while(angle < curr.contenu){
+                curr = curr.suivant;
+            }
+            res = X;
+            //X = X - (curr.valeur_k * Y);
+            X = _fma(X,-curr.valeur_k,Y);
+            //Y = Y + (curr.valeur_k * res);
+            Y = _fma(Y, curr.valeur_k, res);
+            angle = angle - curr.contenu;
+        }
+        petit_tan = Y / X;
+        _fma(1,petit_tan,petit_tan);
+        pre_resultat = (2 * petit_tan) / _fma(1,petit_tan,petit_tan);;
+        resultat = oppose * pre_resultat;
+        return resultat;
     }
     float cos(float f) {
-        println("cos(f) not yet implemented");
+        float angle;
+        float pi;
+        _ListeRemplie liste;
+        _Pi piClass;
+        _Epsilon epsilonClass;
+        _Liste curr;
+        float res;
+        float X;
+        float Y;
+        float epsilon;
+        int oppose;
+        float petit_tan;
+        float pre_resultat;
+        float resultat;
+        piClass=new _Pi();
+        epsilonClass=new _Epsilon();
+        liste= new _ListeRemplie();
+        liste.initListe();
+        liste.sinCosRemplissage();
+        angle = f; /* l'angle en argument */
+        pi = piClass.getPi();
+        epsilon = epsilonClass.getEpsilon();
+        oppose = 1;
+        curr = liste.getA0();
+        if(angle < -pi){//TODO optim
+            while(angle < -pi){
+                angle = _fma(angle,2,pi);
+            }
+        }
+        if(angle > pi){
+            while(angle > pi) {
+                angle = _fma(angle,-2,pi);
+            }
+        }
+        /* angle est désormais dans [-pi, pi] */
+        if(-(pi / 2) < angle && angle < 0.0){
+            angle = -angle;
+            oppose = 1;
+        }
+        else if(-pi < angle && angle < -(pi / 2)){
+            angle = angle + pi;
+            oppose = -1;
+        }
+        else if(angle < pi && (pi / 2) < angle){
+            angle = pi - angle;
+            oppose = -1;
+        }
+        else{
+            oppose = 1;
+        }
+        angle = angle / 2;
+        X = 1.0;
+        Y = 0.0;
+        while(angle >= epsilon) {
+            while(angle < curr.contenu){
+                curr = curr.suivant;
+            }
+            res = X;
+            X = _fma(X,-curr.valeur_k,Y);
+            Y = _fma(Y, curr.valeur_k, res);
+            angle = angle - curr.contenu;
+        }
+        petit_tan = Y / X;
+        pre_resultat = (_fma(1,-petit_tan,petit_tan)/ _fma(1,petit_tan,petit_tan));
+        resultat = oppose * pre_resultat;
+        return resultat;
     }
     float asin(float f) {
-        println("asin(f) not yet implemented");
+        float nombre;
+        float x;
+        float y;
+        float z;
+        float w;
+        float p2i;
+        float di;
+        int signx;
+        int sgn;
+        int i;
+        int r;
+        float ox;
+        _ListeRemplie liste;
+        _Liste curr;
+        nombre = f;
+        liste= new _ListeRemplie();
+        liste.initListe();
+        liste.arcSinRemplissage();
+        x = 1.0;
+        y = 0.0;
+        z = 0.0;
+        w = nombre;
+        p2i = 1.0;
+        curr=liste.getA0();
+        if((nombre > 0 && nombre > 1) || (nombre < 0 && nombre < -1)){
+            println("Erreur de domaine (le nombre doit appartenir à [-1, 1]");//TODO erreur ?
+        }
+        if(nombre == 0.0){
+            return 0.0;
+        }
+        i = 0;
+        while(i<74){
+            if(i < 16){
+                di = curr.contenu;
+            }
+            else{
+                di = 1 / p2i;
+            }
+            if(x < 0){
+                signx = -1;
+            }
+            else{
+                signx = 1;
+            }
+            if(y <= w){
+                sgn = signx;
+            }
+            else{
+                sgn = -signx;
+            }
+            if(sgn > 0){
+                r = 1;
+                while(r<3){
+                    ox =x;
+                    x = x - (y / p2i);
+                    y = y + (ox / p2i);
+                    z = z + di;
+                    r = r + 1;
+                }
+            }
+            else{
+                r = 1;
+                while(r<3){
+                    ox = x;
+                    x = x + (y / p2i);
+                    y = y - (ox / p2i);
+                    z = z - di;
+                    r = r  +1;
+                }
+            }
+            w = _fma(w,w,curr.valeur_k);
+            p2i = 2 * p2i;
+            curr = curr.suivant;
+            i = i + 1;
+        }
+        return z;
     }
     float atan(float f) {
-        println("atan(f) not yet implemented");
+        float nombre;
+        int signe;
+        int signe2;
+        float res;
+        float X;
+        float Y;
+        float angle_ajoute;
+        float epsilon;
+        float pi;
+        float grosse_somme;
+        _Pi piClass;
+        _Epsilon epsilonClass;
+        _ListeRemplie liste;
+        _Liste a0;
+        _Liste curr;
+        piClass=new _Pi();
+        epsilonClass=new _Epsilon();
+        liste= new _ListeRemplie();
+        liste.initListe();
+        liste.arcTanRemplissage();
+        nombre = f;
+        X = 1.0;
+        pi = piClass.getPi();
+        epsilon = epsilonClass.getEpsilon();
+        //epsilon = 1.0e-42;
+        a0=liste.getA0();
+        curr =new _Liste();
+        curr.init(1.0,a0,1.0);
+
+        if(nombre < 0.0){
+            nombre = -nombre;
+            signe = 1;
+            X = 1.0;
+            Y = nombre * signe;
+            grosse_somme = -(pi / 2);
+            res = X;
+            X = Y;
+            Y = -res;
+            while(((Y >= 0.0 && Y >= epsilon) || (Y <= 0.0 && Y <= epsilon))&& curr.suivant != null){
+                curr = curr.suivant;
+                if(Y > 0.0){
+                    signe2 = -1;
+                }
+                else{
+                    signe2 = 1;
+                }
+                angle_ajoute = signe2 * curr.contenu;
+                grosse_somme = grosse_somme + angle_ajoute;
+                res = X;
+                X = X - (signe2 * (curr.valeur_k) * Y);
+                Y = Y + (signe2 * (curr.valeur_k) * res);
+            }
+            return (grosse_somme * signe);
+        }
+        else if(nombre > 0.0){
+            signe = 1;
+            X = 1.0;
+            Y = nombre;
+            grosse_somme = -(pi / 2);
+            res = X;
+            X = Y;
+            Y = -res;
+            while(((Y >= 0.0 && Y >= epsilon) || (Y <= 0.0 && Y <= epsilon)) && (curr.suivant != null)){
+                curr = curr.suivant;
+                println(curr.contenu);
+                if(Y > 0.0){
+                    signe2 = -1;
+                }
+                else{
+                    signe2 = 1;
+                }
+                angle_ajoute = signe2 * curr.contenu;
+                grosse_somme = grosse_somme + angle_ajoute;
+                res = X;
+                X = X - (signe2 * (curr.valeur_k) * Y);
+                Y = Y + (signe2 * (curr.valeur_k) * res);
+            }
+            return(grosse_somme * -signe);
+        }
+        else{
+            return (0.0);
+        }
     }
     float ulp(float f) {
-        println("ulp(f) not yet implemented");
+        int exponent;
+        float ulp;
+        _ULP u;
+        float limiteNormalise;
+        u = new _ULP();
+        limiteNormalise = 1.0 - this._puissanceDe2(-23);
+        f = this._abs(f);
+        if (f <= limiteNormalise ) {
+            return limiteNormalise;
+        }
+        exponent= u._trouveExposant(f,this);
+        ulp = this._puissanceDe2(exponent-23);
+        return ulp;
     }
+
+    // a + b * c
+    float _fma(float a, float b, float c)
+        asm("    LOAD -3(LB), R1
+                LOAD -4(LB), R0
+                FMA -5(LB), R0
+                RTS");
+
+    // 2**i Uniquement pour i >= 0
+    int _powerOfTwoShift(int i)
+        asm("    LOAD #1, R0
+                LOAD -3(LB), R1
+                BRA user.shift.cond
+                user.shift.debut:
+                SHL R0
+                SUB #1, R1
+                user.shift.cond:
+                CMP #0, R1
+                BNE user.shift.debut
+                RTS");
+    //pour tout i
+    float _puissanceDe2(int exponent){//faire avec des shifts pour les positifs (asm) ? pour l'instant avec des multiplications répétés
+        float puissance = 1 ;
+        int i = 0;
+        if(exponent >= 0){
+            puissance = (float)(_powerOfTwoShift(exponent));
+        }else{
+            while(i> exponent){
+                puissance=puissance/2;
+                i = i - 1 ;
+            }
+        }
+        return puissance;
+    }
+    float _abs(float entree){
+        if (entree < 0.0){
+            return -entree;
+        }else {
+            return entree;
+        }
+    }
+
 }
 
 

@@ -1,0 +1,25 @@
+// Description :
+//    redéfinition d'un champ et d'une methode avec pas le même type
+//
+// Resultats :
+//		Ok
+
+class C{
+int x = 2;
+}
+
+class B extends C{
+float x = 0.5;
+}
+class A extends B{
+boolean x =true;
+}
+{
+A a = new A();
+C c = new C();
+B b = new B();
+
+boolean j = a.x;
+float f = b.x;
+int i = c.x;
+}

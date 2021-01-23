@@ -1,0 +1,11 @@
+// Description :
+//   	appel d'une methode sur un int
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10 : (3.71) Le membre gauche n'est pas de type 'class'
+
+{
+int a;
+a.b();
+}

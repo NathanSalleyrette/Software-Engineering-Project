@@ -1,29 +1,33 @@
 ---CODE_ASSEMBLEUR---
-	TSTO #1
+	TSTO #3
 	BOV pile_pleine
-	ADDSP #1
+	ADDSP #3
 ; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
 ; Main program
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.0
 Assign_False.0:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.0:
+	STORE R2, 3(GB)
 ; Beginning of main instructions:
-	LOAD 1(GB), R0
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ Assign_False.1
 	BRA Assign_False.1
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.1
 Assign_False.1:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.1:
-	LOAD 1(GB), R0
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.2
 	WSTR "t"
@@ -33,18 +37,17 @@ E_Sinon.2:
 	WSTR "f"
 	WNL
 E_Fin.2:
-	LOAD 1(GB), R0
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BNE Assign_False.3_Fin.3
 Assign_False.3_Fin.3:
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.3
 Assign_False.3:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.3:
-	LOAD 1(GB), R0
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.5
 	WSTR "t"
@@ -58,13 +61,12 @@ E_Fin.5:
 	BRA Assign_False.6
 Assign_False.6_Fin.6:
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.6
 Assign_False.6:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.6:
-	LOAD 1(GB), R0
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.8
 	WSTR "t"
@@ -76,13 +78,12 @@ E_Sinon.8:
 E_Fin.8:
 Assign_False.9_Fin.9:
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.9
 Assign_False.9:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.9:
-	LOAD 1(GB), R0
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.11
 	WSTR "t"
@@ -95,13 +96,12 @@ E_Fin.11:
 	BRA Assign_False.12
 Assign_False.12_Fin.12:
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.12
 Assign_False.12:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.12:
-	LOAD 1(GB), R0
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.14
 	WSTR "t"
@@ -114,13 +114,12 @@ E_Fin.14:
 	BRA Assign_False.15_Fin.15
 Assign_False.15_Fin.15:
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.15
 Assign_False.15:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.15:
-	LOAD 1(GB), R0
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.17
 	WSTR "t"
@@ -133,13 +132,12 @@ E_Fin.17:
 	WNL
 	BRA Assign_False.18
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.18
 Assign_False.18:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.18:
-	LOAD 1(GB), R0
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.19
 	WSTR "t"
@@ -151,13 +149,12 @@ E_Sinon.19:
 E_Fin.19:
 	BRA Assign_False.20
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.20
 Assign_False.20:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.20:
-	LOAD 1(GB), R0
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.21
 	WSTR "t"
@@ -170,13 +167,12 @@ E_Fin.21:
 	BRA Assign_False.22
 	BRA Assign_False.22
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.22
 Assign_False.22:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.22:
-	LOAD 1(GB), R0
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.23
 	WSTR "t"
@@ -187,13 +183,12 @@ E_Sinon.23:
 	WNL
 E_Fin.23:
 	LOAD #1, R2
-	STORE R2, 1(GB)
 	BRA Assign_Fin.24
 Assign_False.24:
 	LOAD #0, R2
-	STORE R2, 1(GB)
 Assign_Fin.24:
-	LOAD 1(GB), R0
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.25
 	WSTR "t"
@@ -204,6 +199,18 @@ E_Sinon.25:
 	WNL
 E_Fin.25:
 	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	BEQ Object.equals.true
+	LOAD #0, R0
+	BRA fin.Object.equals
+Object.equals.true:
+	LOAD #1, R0
+fin.Object.equals:
+	RTS
 ; Erreurs
 pile_pleine:
 	WSTR "Erreur : pile_pleine"

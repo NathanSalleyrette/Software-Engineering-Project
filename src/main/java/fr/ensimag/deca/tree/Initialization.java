@@ -35,7 +35,15 @@ public class Initialization extends AbstractInitialization {
     protected void verifyInitialization(DecacCompiler compiler, Type t,
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        this.setExpression(getExpression().verifyRValue(compiler, localEnv, currentClass, t));
+    	if (t.isClassOrNull()) {
+    		Type newClass = getExpression().verifyExpr(compiler, localEnv, currentClass);
+    		if ((!newClass.isSubTypeOf(t, getLocation())) && (t.getName() != newClass.getName()))
+    			throw new ContextualError(
+    					"(3.9) " + newClass.toString() + " n'est ni la même classe ni une sous-classe de " 
+    							+ t.toString(), this.getLocation());
+    	} else {
+    		this.setExpression(getExpression().verifyRValue(compiler, localEnv, currentClass, t));
+    	}
     }
 
 

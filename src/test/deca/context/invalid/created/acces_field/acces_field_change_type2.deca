@@ -1,0 +1,18 @@
+// Description :
+//   	acces champs sur sous_type avec changement de type static
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 17 :(3.65) x n'est pas un attribut de la classe A
+
+class A {}
+
+class B extends A {
+int x;
+}
+
+{
+B b = new B();
+A a = b;
+a.x;
+}

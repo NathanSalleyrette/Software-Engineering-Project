@@ -24,7 +24,7 @@ gen_exp_part () {
 	echo "// Resultats :" >&3
 	echo "//		Erreur contextuelle" >&3
 	echo "//    	Ligne 11: (3.33) Type gauche $args2. Type droit $args3 Type attendu: ‘boolean’" >&3
-	echo "">&3
+	echo "class A{}">&3
 	echo "{" >&3
 	echo "$args2 a;" >&3
 	echo "$args3 b;" >&3
@@ -36,12 +36,12 @@ gen_exp_part () {
 gen_exp() {
 	nom=$1
 	op=$2
-	gen_exp_part $nom "int" "int" "$op"
-	gen_exp_part $nom "float" "float" "$op"
 	gen_exp_part $nom "boolean" "float" "$op"
 	gen_exp_part $nom "boolean" "int" "$op"
 	gen_exp_part $nom "float" "boolean" "$op"
 	gen_exp_part $nom "int" "boolean" "$op"
+	gen_exp_part $nom "A" "boolean" "$op"
+	gen_exp_part $nom "boolean" "A" "$op"
 }
 
 

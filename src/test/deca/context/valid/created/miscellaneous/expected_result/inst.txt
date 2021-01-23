@@ -1,7 +1,13 @@
-DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:39) - verify program: start
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
 DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
 DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
-DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify program: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
 `> [7, 0] Program
    +> ListDeclClass [List with 0 elements]
    `> [7, 0] Main
@@ -22,16 +28,14 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:47) - verify progr
       |      `> [9, 6] Initialization
       |         `> [9, 8] Int (5)
       |            type: int
-      `> ListInst [List with 2 elements]
+      `> ListInst [List with 1 elements]
          []> [10, 2] Assign
-         ||  type: int
-         ||  +> [10, 0] Identifier (b)
-         ||  |  definition: variable defined at [9, 4], type=int
-         ||  `> [10, 6] Plus
-         ||     type: int
-         ||     +> [10, 4] Identifier (a)
-         ||     |  definition: variable defined at [8, 4], type=int
-         ||     `> [10, 8] Identifier (b)
-         ||        definition: variable defined at [9, 4], type=int
-         []> [11, 0] Identifier (b)
-             definition: variable defined at [9, 4], type=int
+             type: int
+             +> [10, 0] Identifier (b)
+             |  definition: variable defined at [9, 4], type=int
+             `> [10, 6] Plus
+                type: int
+                +> [10, 4] Identifier (a)
+                |  definition: variable defined at [8, 4], type=int
+                `> [10, 8] Identifier (b)
+                   definition: variable defined at [9, 4], type=int

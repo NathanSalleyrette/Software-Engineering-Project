@@ -1,0 +1,9 @@
+// Description :
+//    acces champs avec l'identificateur de champs manquant
+//
+// Resultats :
+//		Syntaxe error
+
+{
+int a = a.;
+}

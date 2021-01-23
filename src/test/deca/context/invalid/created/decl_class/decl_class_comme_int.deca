@@ -1,0 +1,10 @@
+// Description :
+//    new utilisé avec un identificateur de int
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 :(3.42) int n'est pas un type de classe
+
+{
+int b = new int();
+}

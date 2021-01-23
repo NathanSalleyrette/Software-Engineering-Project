@@ -1,0 +1,13 @@
+// Description :
+//		Programme qui test tout les cas valides de instanceof
+//
+// Resultats :
+//		Ok
+
+class A {
+}
+{
+A a;
+a instanceof A;
+null instanceof A;
+}

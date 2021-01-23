@@ -1,0 +1,65 @@
+class ULP {
+
+   float abs(float entree){
+        if (entree < 0.0){
+            return -entree;
+        }else {
+            return entree;
+        }
+    }
+    float puissanceDe2(int exponent){//faire avec des shifts pour les positifs (asm) ? pour l'instant avec des multiplications répétés
+        float puissance = 1 ;
+        int i = 0;
+        if(exponent >= 0){
+
+            while(i< exponent){
+                puissance=puissance*2;
+                i = i + 1 ;
+            }
+        }else{
+            while(i> exponent){
+                puissance=puissance/2;
+                i = i - 1 ;
+            }
+        }
+
+        return puissance;
+    }
+    int trouveExposant(float a, ULP u) {
+        float fractionPart;
+        int exponent;
+        if(a >= 1.0) {
+            exponent =0;
+            fractionPart =a/u.puissanceDe2(exponent);
+            while(fractionPart>=2.0){
+                exponent = exponent +1 ;
+                fractionPart =a/u.puissanceDe2(exponent);	
+            }
+        }else {
+            exponent =-1;
+            fractionPart =a/u.puissanceDe2(exponent);
+            while(fractionPart<1.0){
+                exponent = exponent -1 ;
+                fractionPart =a/u.puissanceDe2(exponent);
+            }
+
+        }
+        return exponent;
+    }
+    float monUlp(float entree,ULP u){
+        int exponent;
+        float ulp;
+        entree=u.abs(entree);
+        if(entree == 0.0){
+            return 0.0;
+        }
+        exponent=trouveExposant(entree, u);
+        ulp=puissanceDe2(exponent-23);
+        return ulp; 
+    }
+
+}
+{
+    ULP u = new ULP();
+    u.monUlp(1,u);
+}

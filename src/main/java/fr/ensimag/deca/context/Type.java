@@ -82,20 +82,25 @@ public abstract class Type {
     /**
      * Booléen indiquant si this est un sous-type de type1, ce qui est vrai dans deux cas:
      * - si type1 = float et this = int
-     * - si type1 est une classe et que this hérite à un certain degré de cette classe
+     * - si type1 est une classe et que this hérite à un certain degré de cette classe,
+     * ou que this est de type null
      * @param envType
      * @param type1
      * @return un booléen
      * @see fr.ensimag.deca.tree.abstractExp.verifyRvalue
      */
     public boolean isSubTypeOf(Type type1, Location loc) throws ContextualError{
-    	if ((type1.toString() == "float") && (this.toString() == "int")) {
+    	if ((type1.isFloat()) && (this.isInt())) {
     		return true;
-    	} else if ((type1.isClass()) && (this.isClass())){
-    			String nl = " n'est pas une classe";
-    			ClassType type1Class = type1.asClassType(type1.toString() + nl, loc);
-    			ClassType thisClass = this.asClassType(this.toString() + nl, loc);
-        		return thisClass.isSubClassOf(type1Class);
+    	} else if (type1.isClass()){
+    		if (this.isNull()) {
+    			return true;
+    		} else if (this.isClass()) {
+	    		String nl = " n'est pas une classe";
+	    		ClassType type1Class = type1.asClassType(type1.toString() + nl, loc);
+	    		ClassType thisClass = this.asClassType(this.toString() + nl, loc);
+	        	return thisClass.isSubClassOf(type1Class);
+    		}
     	}
     	return false;
     }

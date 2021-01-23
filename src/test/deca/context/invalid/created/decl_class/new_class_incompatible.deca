@@ -1,0 +1,15 @@
+// Description :
+//    creation d'un objet incompatible avec le type
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 14 :(3.9) La classe créée ne correspond pas à la classe déclarée
+
+class A{
+}
+class B{
+}
+
+{
+A a = new B();
+}

@@ -68,7 +68,7 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
     @Override
 	protected void codeGenInst(DecacCompiler compiler) {
         DVal dval = this.getRightOperand().dval(compiler);
-		if (dval != Register.getR(compiler.getCurrentRegister())) {
+		if (this.getRightOperand().isAtomic()) {
             // Le membre de droite est atomique (Identifier ou Litteral)
 			this.getLeftOperand().codeGenInst(compiler);
 			EvalExpr.mnemo(compiler, this, dval, Register.getR(compiler.getCurrentRegister()));
@@ -81,7 +81,7 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
 				EvalExpr.mnemo(compiler, this, Register.getR(compiler.getCurrentRegister()), Register.getR(compiler.getCurrentRegister()-1));
 				compiler.decrCurrentRegister();
 			} else {
-                // Plus de assez registre libre
+                // Plus assez de registres libres
                 compiler.incrNbTemp();
                 compiler.addInstruction(new PUSH(Register.getR(compiler.getCurrentRegister()))); // sauvegarde
                 this.getRightOperand().codeGenInst(compiler);
@@ -104,5 +104,10 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
         leftOperand.prettyPrint(s, prefix, false);
         rightOperand.prettyPrint(s, prefix, true);
     }
-
+    
+    public String typesOp() {
+    	return "(3.33) Types des opérandes : " +
+    			this.getLeftOperand().getType().toString() + ", " +
+    			this.getRightOperand().getType().toString();
+    }
 }

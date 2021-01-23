@@ -72,6 +72,22 @@ public abstract class AbstractExpr extends AbstractInst {
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError;
 
+    public boolean assignCompatible(Type typeLeft, Type typeRight) throws ContextualError{
+    	if (typeRight.isSubTypeOf(typeLeft, getLocation())) {
+    		return true;
+    	}
+    	if (typeLeft.isClass()) {
+    		if (typeLeft == typeRight) {
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	}
+    	if (typeLeft.sameType(typeRight)) {
+    		return true;
+    	}
+    	return false;
+    }
     /**
      * Verify the expression in right hand-side of (implicit) assignments 
      * 
@@ -88,9 +104,7 @@ public abstract class AbstractExpr extends AbstractInst {
             Type expectedType)
             throws ContextualError {
         Type type2 = verifyExpr(compiler, localEnv, currentClass);
-        if (expectedType.sameType(type2)) {
-        	return this;
-        } else if (type2.isSubTypeOf(expectedType, this.getLocation())){
+        if (assignCompatible(expectedType, type2)){
         	if ((expectedType.isFloat()) && (type2.isInt())) {
         		ConvFloat conv = new ConvFloat(this);
         		conv.verifyExpr(compiler, localEnv, currentClass);
@@ -101,7 +115,6 @@ public abstract class AbstractExpr extends AbstractInst {
         throw new ContextualError("(3.28) Les types " + expectedType.toString() +
         		" et " + type2.toString() + " sont incompatibles pour l'affectation", this.getLocation());        
     }
-    
     
     @Override
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
@@ -141,7 +154,9 @@ public abstract class AbstractExpr extends AbstractInst {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+        if (!type.isBoolean()) { // Pour un booleen l'appel de cette fonction est inutile (expression orpheline)
+            throw new UnsupportedOperationException("not yet implemented");
+        }
     }
     
      /**
@@ -156,6 +171,18 @@ public abstract class AbstractExpr extends AbstractInst {
     public DVal dval(DecacCompiler compiler) {
         return Register.getR(compiler.getCurrentRegister());
     };
+
+    /**
+     * Generate code to put the result of the expression in the current register
+     * @param compiler
+     */
+    public void codeGenExpr(DecacCompiler compiler) {
+        this.codeGenInst(compiler);
+    }
+
+    public void boolCodeExpr(DecacCompiler compiler, boolean branch, Label tag) {
+        this.boolCodeGen(compiler, branch, tag);
+    }
 
 
     @Override
@@ -173,5 +200,22 @@ public abstract class AbstractExpr extends AbstractInst {
             s.print(t);
             s.println();
         }
+    }
+    
+    /**
+     * Regarde si l'identifiant est dans la première profondeur,
+     * pour me permettre de regarder à l'intérieur d'un méthode uniquement...
+     * Réécrit dans Identifier et dans Selection (et peut-être dans this)
+     * Vaut false par défaut
+     */
+    public boolean isShallow(EnvironmentExp localEnv) {
+    	return false;
+    }
+
+    /**
+     * @return true if this is a Literal or an Identifier
+     */
+    public boolean isAtomic() {
+        return false;
     }
 }

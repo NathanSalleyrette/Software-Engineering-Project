@@ -1,0 +1,10 @@
+// Description :
+//		un this dans un main (version acces champs)
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 : (3.43) 'this' ne peut être utilisé dans le main
+
+{
+this;
+}

@@ -1,0 +1,24 @@
+// Description :
+//    untilisation d'une methode
+//
+// Resultats :
+//		Ok
+
+class B {
+int met(){
+this.a = null;
+a = this + this;}
+}
+class a {
+
+int met(B b){
+	met();
+	b.met();
+	this.met();
+}
+}
+
+{
+a A = new a();
+ int b = A.met();
+}

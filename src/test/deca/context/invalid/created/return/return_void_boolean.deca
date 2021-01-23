@@ -1,0 +1,12 @@
+// Description :
+//    return mauvais type : boolean, demandé void
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (2.7) Type de retour effectif : boolean, déclaré : void
+
+class A{
+void met(){
+return true;
+}
+}

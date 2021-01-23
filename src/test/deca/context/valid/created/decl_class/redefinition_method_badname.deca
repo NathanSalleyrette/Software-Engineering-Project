@@ -1,0 +1,13 @@
+// Description :
+//    redéfinition signature différent nom
+//
+// Resultats :
+//		Ok
+
+class A{
+void meth(int x){}
+}
+
+class B extends A{
+void meth(int y){}
+}

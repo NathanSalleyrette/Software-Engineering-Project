@@ -4,10 +4,14 @@
 // Resultats :
 //		Ok
 
+class A {}
+class B {}
 {
 int a;
 float b;
 boolean d;
+A x = new A();
+B y = new B();
 boolean c = 1 != 2;
 c = 0.5 != 2;
 c = 1 != 0.2;
@@ -33,4 +37,10 @@ c = d != false;
 c = true != d;
 c = false != d;
 c = d != d;
+
+c = x != x;
+c = y != x;
+c = x != y;
+c = null != x;
+c = x != null;
 }

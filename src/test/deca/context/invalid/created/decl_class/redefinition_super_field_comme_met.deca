@@ -1,0 +1,28 @@
+// Description :
+//   	redefinition 
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 13 : (2.6) met définit déjà un champ
+
+class A {
+int met;
+}
+
+class B extends A {
+int met(){}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

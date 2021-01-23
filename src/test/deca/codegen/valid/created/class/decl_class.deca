@@ -1,0 +1,26 @@
+// Description :
+//		Programme pour tester les classe
+//
+// Resultats :
+//		Ok
+
+class A{
+int a;
+boolean b;
+float c;
+
+void set(int a1, boolean b1, float c1){
+	a = a1;
+	b = b1;
+	c = c1;
+	}
+}
+
+{
+A a = new A();
+println(a.a, " ", a.c);
+if (a.a == 0 && !a.b && a.c == 0) {println("ok");} else {println("bouuh");}
+a.set(1, true, 3);
+println(a.a, " ", a.c);
+if (a.a == 1 && a.b && a.c == 3) {println("ok");} else {println("bouuh");}
+}

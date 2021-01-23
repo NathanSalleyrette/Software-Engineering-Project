@@ -4,7 +4,7 @@
 // Resultats :
 //		Erreur contextuelle
 //    	Ligne 11: (3.33) Type gauche boolean. Type droit float Type attendu: ‘boolean’
-
+class A{}
 {
 boolean a;
 float b;

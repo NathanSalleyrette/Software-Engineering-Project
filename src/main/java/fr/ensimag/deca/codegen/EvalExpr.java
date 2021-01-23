@@ -100,4 +100,22 @@ public class EvalExpr {
             Error.instanceError(compiler, "debordement_flottant");
         }
     }
+
+
+    /**
+     * Generate code to put the boolean value of expr into the current register
+     */
+    public static void boolInRegister(DecacCompiler compiler, AbstractExpr expr) {
+        Label faux = new Label("Assign_False." + compiler.getNbLabel());
+        Label fin = new Label("Assign_Fin." + compiler.getNbLabel());
+        expr.boolCodeExpr(compiler, false, faux);
+        // L'expression est vrai
+        compiler.addInstruction(new LOAD(1, Register.getR(compiler.getCurrentRegister())));
+        compiler.addInstruction(new BRA(fin));
+        // L'expression est fausse
+        compiler.addLabel(faux);
+        compiler.addInstruction(new LOAD(0, Register.getR(compiler.getCurrentRegister())));
+        compiler.addLabel(fin);
+        compiler.incrNbLabel();
+    }
 }

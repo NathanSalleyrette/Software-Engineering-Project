@@ -1,0 +1,12 @@
+// Description :
+//    juste des expression, le programme ne fait rien
+//
+// Resultats :
+//		Ok
+
+{
+boolean a = true;
+
+a && a || a;
+a == a != a;
+}

@@ -37,8 +37,8 @@ public abstract class AbstractOpExactCmp extends AbstractOpCmp {
     			this.setType(leftType);
         		return leftType;
         	}
-    		throw new ContextualError("(3.33) Opérandes de type " + leftType.toString() + ", " +
-    				rightType + ", attendu : (int|float, int|float) ou (class|null, class|null), ou (bool, bool)",
+    		throw new ContextualError(this.typesOp() +
+    				". Attendu : (int|float, int|float) ou (class|null, class|null), ou (bool, bool)",
     				this.getLocation());
     	}
     }

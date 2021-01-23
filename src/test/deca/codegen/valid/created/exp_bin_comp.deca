@@ -4,7 +4,9 @@
 // Resultats :
 //		Ok
 
+class B {}
 {
+B b = new B();
 boolean a = true;
 a = (1 == 2);
 if (a) {print("t");} else {print("f");}
@@ -18,4 +20,36 @@ a = (6 <= 0);
 if (a) {print("t");} else {print("f");}
 a = (20 >= 2);
 if (a) {print("t");} else {print("f");}
+a = (3.0 == 3);
+if (a) {print("t");} else {print("f");}
+a = (3.0 != 3);
+if (a) {print("t");} else {print("f");}
+a = (3.0 <= 3);
+if (a) {print("t");} else {print("f");}
+a = (3.0 >= 3);
+if (a) {print("t");} else {print("f");}
+a = (3.0 < 3);
+if (a) {print("t");} else {print("f");}
+a = (3.0 > 3);
+if (a) {print("t");} else {print("f");}
+
+
+a = (b != b);
+if (a) {print("t");} else {print("f");}
+a = (null != b);
+if (a) {print("t");} else {print("f");}
+a = (b != null);
+if (a) {print("t");} else {print("f");}
+a = (null != null);
+if (a) {print("t");} else {print("f");}
+
+a = (b == b);
+if (a) {print("t");} else {print("f");}
+a = (null == b);
+if (a) {print("t");} else {print("f");}
+a = (b == null);
+if (a) {print("t");} else {print("f");}
+a = (null == null);
+if (a) {print("t");} else {print("f");}
+
 }

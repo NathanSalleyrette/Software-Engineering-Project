@@ -1,0 +1,16 @@
+// Description :
+//    acces à un field sur l'identificateur
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 15 :(3.65) Le membre gauche n’est pas de type ‘classe’
+
+
+class A {
+int meth(){}
+}
+
+{
+A a = new A();
+(a.meth()).x;
+}

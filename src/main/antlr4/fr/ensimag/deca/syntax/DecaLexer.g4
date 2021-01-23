@@ -99,10 +99,10 @@ FLOAT : FLOATDEC | FLOATHEX;
 fragment STRING_CAR : ~('"' | '\\' | '\n');
 
 STRING : '"' (STRING_CAR | '\\"' | '\\\\')* '"'
-            { setText(getText().substring(getText().indexOf('"') + 1,
-            getText().lastIndexOf('"'))); };
+            { setText(getText().substring(1, getText().lastIndexOf('"'))); };
 
-MULTI_LINE_STRING : '"' (STRING_CAR | '\n' | '\\"' | '\\\\')* '"';
+MULTI_LINE_STRING : '"' (STRING_CAR | '\n' | '\\"' | '\\\\')* '"'
+            { setText(getText().substring(1, getText().lastIndexOf('"'))); };
 
 
 // Commentaires

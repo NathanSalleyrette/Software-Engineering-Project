@@ -1,0 +1,14 @@
+// Description :
+//		test utilisation null
+//
+// Resultats :
+//		Erreur de compilateur : déréferencement de null
+
+class B{
+int met;
+}
+
+{
+B b = null;
+b.met;
+}

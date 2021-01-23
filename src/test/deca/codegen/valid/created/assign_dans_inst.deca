@@ -1,0 +1,18 @@
+// Description :
+//    On met des x = y partout
+//
+// Resultats :
+//		Ok
+	
+
+{
+int x;
+int y = 3;
+boolean a;
+boolean b = false;
+boolean c = false;
+print(x =y);
+if (a = b) {}
+if (true && (c = true)){println("ok");}
+while(a = b) {}
+}

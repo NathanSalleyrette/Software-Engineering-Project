@@ -1,0 +1,10 @@
+// Description :
+//    test d'un int infinite
+//
+// Resultats :
+//		Erreur lexicographique
+//    	Ligne 9:  int trop grand
+
+{
+int a = -200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+}

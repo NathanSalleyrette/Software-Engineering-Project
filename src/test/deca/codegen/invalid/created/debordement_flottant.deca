@@ -1,0 +1,13 @@
+// Description :
+//		Programme pour tester le debordement de flottant
+//
+// Resultats :
+//		Erreur de compilation
+//		debordement_flottant
+
+
+{
+float x = 20;
+x = x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x+1;
+print(x);
+}

@@ -1,0 +1,18 @@
+// Description :
+//    une variable dans la methode n'est pas déclarée 
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 16 : (0.1) Identificateur x non défini
+
+class B {
+	int x;
+}
+
+
+class A {
+
+int met(){
+	return x;
+}
+}

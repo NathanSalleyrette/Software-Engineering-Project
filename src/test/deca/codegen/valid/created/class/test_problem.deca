@@ -1,0 +1,25 @@
+// Description :
+//		on redefinit equals 
+//
+// Resultats :
+//		Ok
+
+class B{
+	int getx() { return 1;}
+}
+
+class A extends B{
+	int getx() { return 1;}
+}
+
+
+
+
+{
+A a = new A();
+B x = (B)(a);
+
+println(x.getx());
+
+
+}

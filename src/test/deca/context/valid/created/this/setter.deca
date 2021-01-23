@@ -1,0 +1,13 @@
+// Description :
+//		un setter classique
+//
+// Resultats :
+//		Ok
+
+class A {
+int x;
+void setX(int x){
+	this.x=x;
+}
+
+}

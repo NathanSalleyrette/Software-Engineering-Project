@@ -1,0 +1,9 @@
+class A{
+    void m()
+        asm("WNL
+        RTS");
+}
+{
+    A a = new A();
+    a.m();
+}

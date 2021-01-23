@@ -1,0 +1,10 @@
+// Description :
+//    decl class, decl méthode ) manquant
+//
+// Resultats :
+//		Syntaxe error
+
+class A {
+	int a( {
+	}
+}

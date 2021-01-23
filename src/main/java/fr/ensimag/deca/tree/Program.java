@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.codegen.ClassCodeGen;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.Label;
@@ -37,11 +38,13 @@ public class Program extends AbstractProgram {
     @Override
     public void verifyProgram(DecacCompiler compiler) throws ContextualError {
         LOG.debug("verify program: start");      
-        // Passe 3
+        // Passe 1
         // Liste de déclaration de classes
-        /*this.getClasses().verifyListClass(compiler);
+        this.getClasses().verifyListClass(compiler);
+        // Passe 2
         this.getClasses().verifyListClassMembers(compiler);
-        this.getClasses().verifyListClassBody(compiler);*/
+        this.getClasses().verifyListClassBody(compiler);
+        // Passe 3
         // Main
         this.getMain().verifyMain(compiler);
         LOG.debug("verify program: end");
@@ -49,18 +52,24 @@ public class Program extends AbstractProgram {
 
     @Override
     public void codeGenProgram(DecacCompiler compiler) {
+        compiler.addComment("Construction des tables des méthodes");
+        // Passe 1
+        ClassCodeGen.buildTable(compiler, classes);
+        // Passe 2
         compiler.addComment("Main program");
         main.codeGenMain(compiler);
         compiler.addInstruction(new HALT());
         // Entête : TSTO + ADDSP
-        int nbGlobVar = main.getnbGlobVar();
-        compiler.addFirst(new Line(new ADDSP(nbGlobVar)));
+        int stackSize = main.getnbGlobVar() + compiler.getMethTableSize();
+        compiler.addFirst(new Line(new ADDSP(stackSize)));
         if (!compiler.getCompilerOptions().getNoCheck()) {
             Label pilePleine = new Label("pile_pleine");
             compiler.addError(pilePleine);
             compiler.addFirst(new Line(new BOV(pilePleine)));
-            compiler.addFirst(new Line(new TSTO(nbGlobVar + compiler.getMaxTemp())));
+            compiler.addFirst(new Line(new TSTO(stackSize + compiler.getMaxTemp())));
         }
+        compiler.reinitCounts();
+        ClassCodeGen.buildMethodsAndFields(compiler, classes);
         // Messages d'erreurs
         compiler.addComment("Erreurs");
         compiler.writeErrors();

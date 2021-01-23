@@ -1,0 +1,44 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
+`> [9, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [9, 0] DeclClass
+   |      +> Identifier (A)
+   |      |  definition: type defined at [9, 0], type=A
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 1 elements]
+   |      |  []> [10, 4] [visibility=PUBLIC] DeclField
+   |      |      +> [10, 0] Identifier (int)
+   |      |      |  definition: type (builtin), type=int
+   |      |      +> [10, 4] Identifier (x)
+   |      |      |  definition: field defined at [10, 4], type=int
+   |      |      `> NoInitialization
+   |      +> ListDeclMethod [List with 1 elements]
+   |      |  []> [11, 0] DeclMethod
+   |      |      +> [11, 0] Identifier (void)
+   |      |      |  definition: type (builtin), type=void
+   |      |      +> [11, 5] Identifier (setX)
+   |      |      |  definition: method defined at [11, 0], type=void
+   |      |      +> ListDeclParam [List with 1 elements]
+   |      |      |  []> [11, 10] DeclParam
+   |      |      |      +> [11, 10] Identifier (int)
+   |      |      |      |  definition: type (builtin), type=int
+   |      |      |      +> [11, 14] Identifier (x)
+   |      |      |      |  definition: variable defined at [11, 10], type=int
+   |      |      `> [11, 16] MethodBody
+   |      |         +> ListDeclVar [List with 0 elements]
+   |      |         `> ListInst [List with 1 elements]
+   |      |            []> [12, 2] Assign
+   |      |                type: int
+   |      |                +> [12, 1] Identifier (x)
+   |      |                |  definition: variable defined at [11, 10], type=int
+   |      |                `> [12, 3] Identifier (x)
+   |      |                   definition: variable defined at [11, 10], type=int
+   `> EmptyMain

@@ -1,0 +1,122 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
+`> [7, 0] Program
+   +> ListDeclClass [List with 4 elements]
+   |  []> [7, 0] DeclClass
+   |  ||  +> Identifier (A_prime)
+   |  ||  |  definition: type defined at [7, 0], type=A_prime
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 0 elements]
+   |  ||  +> ListDeclMethod [List with 0 elements]
+   |  []> [8, 0] DeclClass
+   |  ||  +> Identifier (B_prime)
+   |  ||  |  definition: type defined at [8, 0], type=B_prime
+   |  ||  +> Identifier (A_prime)
+   |  ||  |  definition: type defined at [7, 0], type=A_prime
+   |  ||  +> ListDeclField [List with 0 elements]
+   |  ||  +> ListDeclMethod [List with 0 elements]
+   |  []> [10, 0] DeclClass
+   |  ||  +> Identifier (A)
+   |  ||  |  definition: type defined at [10, 0], type=A
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 0 elements]
+   |  ||  +> ListDeclMethod [List with 1 elements]
+   |  ||  |  []> [11, 0] DeclMethod
+   |  ||  |      +> [11, 0] Identifier (A_prime)
+   |  ||  |      |  definition: type defined at [7, 0], type=A_prime
+   |  ||  |      +> [11, 8] Identifier (met)
+   |  ||  |      |  definition: method defined at [11, 0], type=A_prime
+   |  ||  |      +> ListDeclParam [List with 0 elements]
+   |  ||  |      `> [11, 13] MethodBody
+   |  ||  |         +> ListDeclVar [List with 0 elements]
+   |  ||  |         `> ListInst [List with 2 elements]
+   |  ||  |            []> [12, 0] Return
+   |  ||  |            ||  `> [12, 7] New
+   |  ||  |            ||     type: A_prime
+   |  ||  |            ||     `> [12, 11] Identifier (A_prime)
+   |  ||  |            ||        definition: type defined at [7, 0], type=A_prime
+   |  ||  |            []> [13, 0] Return
+   |  ||  |                `> [13, 7] New
+   |  ||  |                   type: B_prime
+   |  ||  |                   `> [13, 11] Identifier (B_prime)
+   |  ||  |                      definition: type defined at [8, 0], type=B_prime
+   |  []> [17, 0] DeclClass
+   |      +> Identifier (B)
+   |      |  definition: type defined at [17, 0], type=B
+   |      +> Identifier (A)
+   |      |  definition: type defined at [10, 0], type=A
+   |      +> ListDeclField [List with 0 elements]
+   |      +> ListDeclMethod [List with 1 elements]
+   |      |  []> [18, 0] DeclMethod
+   |      |      +> [18, 0] Identifier (B_prime)
+   |      |      |  definition: type defined at [8, 0], type=B_prime
+   |      |      +> [18, 8] Identifier (met)
+   |      |      |  definition: method defined at [18, 0], type=B_prime
+   |      |      +> ListDeclParam [List with 0 elements]
+   |      |      `> [19, 0] MethodBody
+   |      |         +> ListDeclVar [List with 0 elements]
+   |      |         `> ListInst [List with 1 elements]
+   |      |            []> [19, 1] Return
+   |      |                `> [19, 8] New
+   |      |                   type: B_prime
+   |      |                   `> [19, 12] Identifier (B_prime)
+   |      |                      definition: type defined at [8, 0], type=B_prime
+   `> [21, 0] Main
+      +> ListDeclVar [List with 4 elements]
+      |  []> [22, 2] DeclVar
+      |  ||  +> [22, 0] Identifier (A)
+      |  ||  |  definition: type defined at [10, 0], type=A
+      |  ||  +> [22, 2] Identifier (a)
+      |  ||  |  definition: variable defined at [22, 2], type=A
+      |  ||  `> [22, 4] Initialization
+      |  ||     `> [22, 6] New
+      |  ||        type: A
+      |  ||        `> [22, 10] Identifier (A)
+      |  ||           definition: type defined at [10, 0], type=A
+      |  []> [23, 2] DeclVar
+      |  ||  +> [23, 0] Identifier (B)
+      |  ||  |  definition: type defined at [17, 0], type=B
+      |  ||  +> [23, 2] Identifier (b)
+      |  ||  |  definition: variable defined at [23, 2], type=B
+      |  ||  `> [23, 4] Initialization
+      |  ||     `> [23, 6] New
+      |  ||        type: B
+      |  ||        `> [23, 10] Identifier (B)
+      |  ||           definition: type defined at [17, 0], type=B
+      |  []> [25, 8] DeclVar
+      |  ||  +> [25, 0] Identifier (A_prime)
+      |  ||  |  definition: type defined at [7, 0], type=A_prime
+      |  ||  +> [25, 8] Identifier (j)
+      |  ||  |  definition: variable defined at [25, 8], type=A_prime
+      |  ||  `> [25, 10] Initialization
+      |  ||     `> [25, 12] MethodCall
+      |  ||        type: A_prime
+      |  ||        +> [25, 12] Identifier (a)
+      |  ||        |  definition: variable defined at [22, 2], type=A
+      |  ||        +> [25, 14] Identifier (met)
+      |  ||        |  definition: method defined at [11, 0], type=A_prime
+      |  ||        `> ListExpr [List with 0 elements]
+      |  []> [26, 8] DeclVar
+      |      +> [26, 0] Identifier (A_prime)
+      |      |  definition: type defined at [7, 0], type=A_prime
+      |      +> [26, 8] Identifier (f)
+      |      |  definition: variable defined at [26, 8], type=A_prime
+      |      `> [26, 10] Initialization
+      |         `> [26, 12] MethodCall
+      |            type: B_prime
+      |            +> [26, 12] Identifier (b)
+      |            |  definition: variable defined at [23, 2], type=B
+      |            +> [26, 14] Identifier (met)
+      |            |  definition: method defined at [18, 0], type=B_prime
+      |            `> ListExpr [List with 0 elements]
+      `> ListInst [List with 0 elements]

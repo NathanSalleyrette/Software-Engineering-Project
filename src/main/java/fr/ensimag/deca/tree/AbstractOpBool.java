@@ -28,16 +28,12 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
     		this.setType(leftType);
     		return leftType;
     	}
-    	String coupableGauche = "(3.33) ";
-    	if (!leftType.isBoolean()) {
-    		coupableGauche = coupableGauche + "Type opérateur gauche " + leftType.toString();
-    	}
-    	String coupableDroit= "";
-    	if (!rightType.isBoolean()) {
-    		coupableDroit = " Type opérateur droit " + rightType.toString();
-    	}
-    	throw new ContextualError(coupableGauche + coupableDroit +
-    			", Type attendu: 'boolean'", this.getLocation());
+    	throw new ContextualError(this.typesOp() +
+    			". Type attendu: 'boolean'", this.getLocation());
     }
 
+	@Override
+	protected void codeGenInst(DecacCompiler compiler) {
+		// Vide, l'expression est appelée dans le vide
+	}
 }

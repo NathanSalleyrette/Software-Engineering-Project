@@ -1,5 +1,6 @@
 package fr.ensimag.deca.context;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import fr.ensimag.deca.tree.Location;
@@ -60,6 +61,14 @@ public class EnvironmentExp {
         return result;
     }
 
+    /** Retourne la définition du symbole dans l'environnement direct,
+     * ou null sinon
+     * @param key
+     * @return
+     */
+    public ExpDefinition getShallow(Symbol key) {
+    	return map.get(key);
+    }
     /**
      * Add the definition def associated to the symbol name in the environment.
      * 
@@ -84,4 +93,7 @@ public class EnvironmentExp {
         else map.put(name, def);
     }
 
+    public Collection<ExpDefinition> getValues() {
+        return map.values();
+    }
 }

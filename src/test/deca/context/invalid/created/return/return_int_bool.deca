@@ -1,0 +1,12 @@
+// Description :
+//    return mauvais type : bool, demandé int
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (2.7) Type de retour effectif : boolean, déclaré : int
+
+class A{
+int met(){
+return true;
+}
+}

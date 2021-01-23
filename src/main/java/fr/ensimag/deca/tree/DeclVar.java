@@ -50,14 +50,12 @@ public class DeclVar extends AbstractDeclVar {
     	Type varType = this.type.verifyType(compiler);
     	// On récupère le symbole du nom de la variable et on crée une ExpDefinition
     	Symbol nameSymb = this.varName.getName();
-    	TypeDefinition typeDef = compiler.getEnvType().get(varType.getName());
-    	type.setDefinition(typeDef);
     	VariableDefinition varDef = new VariableDefinition(varType, this.getLocation());
     	try {
     		localEnv.declare(nameSymb, varDef, getLocation());
     		varName.setDefinition(varDef);
     	} catch (DoubleDefException e) {
-    		throw new ContextualError("(3.17) La variable " + this.varName.toString() + " est déjà déclarée", this.getLocation());
+    		throw new ContextualError("(3.17) La variable " + this.varName.getName().toString() + " est déjà déclarée", this.getLocation());
     	}
     	// On vérifie l'initialisation ensuite
     	this.initialization.verifyInitialization(compiler, varType, localEnv, currentClass);

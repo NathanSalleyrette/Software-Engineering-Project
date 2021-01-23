@@ -50,16 +50,8 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
 			this.setType(rightType);
 			return rightType;
 		}
-    	String coupableGauche = "(3.33) ";
-    	if ((!leftType.isFloat()) && (!leftType.isInt())) {
-    		coupableGauche = coupableGauche + "L'opérande gauche est de type " + leftType.toString() + ".";
-    	}
-    	String coupableDroit = "";
-    	if ((!rightType.isFloat()) && (!rightType.isInt())) {
-    		coupableDroit = " L'opérande droite est de type " + rightType.toString() + ".";
-    	}
-    	throw new ContextualError(coupableGauche + coupableDroit +
-    			" Or les types des opérandes doivent être 'int' ou 'float' pour l'opérateur " + 
+    	throw new ContextualError(this.typesOp() +
+    			". Attendu 'int' ou 'float' pour l'opérateur " + 
     			this.getOperatorName(), this.getLocation());
 	}
 }

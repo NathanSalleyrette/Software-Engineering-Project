@@ -1,0 +1,10 @@
+// Description :
+//		un setter classique,mais ambigue
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 : (3.43) 'this' ne peut être utilisé dans le main
+
+{
+a();
+}

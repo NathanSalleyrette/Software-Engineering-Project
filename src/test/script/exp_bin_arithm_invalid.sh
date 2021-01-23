@@ -24,7 +24,7 @@ gen_exp_part () {
 	echo "// Resultats :" >&3
 	echo "//		Erreur contextuelle" >&3
 	echo "//    	Ligne 11: (3.33) L’opérande gauche est de type $args2, L’opérande droite est de type $args3. Or les types des opérandes doivent être ‘int’ ou ‘float’ pour l’opérateur $args4" >&3
-	echo "">&3
+	echo "class A{}">&3
 	echo "{" >&3
 	echo "$args2 a;" >&3
 	echo "$args3 b;" >&3
@@ -36,11 +36,12 @@ gen_exp_part () {
 gen_exp() {
 	nom=$1
 	op=$2
-	gen_exp_part $nom "boolean" "boolean" "$op"
-	gen_exp_part $nom "boolean" "float" "$op"
-	gen_exp_part $nom "boolean" "int" "$op"
+	gen_exp_part $nom "A" "boolean" "$op"
+	gen_exp_part $nom "boolean" "A" "$op"
 	gen_exp_part $nom "float" "boolean" "$op"
+	gen_exp_part $nom "float" "A" "$op"
 	gen_exp_part $nom "int" "boolean" "$op"
+	gen_exp_part $nom "int" "A" "$op"
 }
 
 

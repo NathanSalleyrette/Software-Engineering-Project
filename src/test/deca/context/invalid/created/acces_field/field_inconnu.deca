@@ -1,0 +1,14 @@
+// Description :
+//    acces à un field non existant
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 13 :(3.65) x n’est pas un attribut de la classe A
+
+class A{
+}
+
+{
+A a = new A();
+int b = a.x;
+}

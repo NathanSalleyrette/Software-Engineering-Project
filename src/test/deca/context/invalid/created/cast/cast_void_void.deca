@@ -1,0 +1,13 @@
+// Description :
+//    test cast entre un A et boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.39) Cast impossible de <type1> vers <type2>
+	
+
+class A {void met(){}}
+{
+A a = new A();
+(void)(a.met());
+}

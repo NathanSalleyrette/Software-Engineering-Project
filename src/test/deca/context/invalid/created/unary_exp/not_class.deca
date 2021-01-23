@@ -1,0 +1,11 @@
+// Description :
+//    test not avec une class
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 1: (3.37) Type opérande : A , attendu : boolean pour l’opérateur !
+
+class A{}
+{
+boolean a = !new A();
+}

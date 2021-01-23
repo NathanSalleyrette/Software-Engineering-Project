@@ -1,26 +1,20 @@
 package fr.ensimag.deca;
 
-import fr.ensimag.deca.context.TypeDefinition;
-import fr.ensimag.deca.context.IntType;
-import fr.ensimag.deca.context.FloatType;
 import fr.ensimag.deca.codegen.Error;
-import fr.ensimag.deca.context.BooleanType;
-import fr.ensimag.deca.context.VoidType;
-import fr.ensimag.deca.context.ContextualError;
+import fr.ensimag.deca.context.EnvironmentType;
 import fr.ensimag.deca.syntax.DecaLexer;
 import fr.ensimag.deca.syntax.DecaParser;
-import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tree.AbstractProgram;
-import fr.ensimag.deca.tree.Location;
 import fr.ensimag.deca.tree.LocationException;
 import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
 import fr.ensimag.ima.pseudocode.Instruction;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Line;
+import fr.ensimag.ima.pseudocode.InstructionStringLine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -48,7 +42,7 @@ import java.util.Map;
  * @author gl01
  * @date 01/01/2021
  */
-public class DecacCompiler {
+public class DecacCompiler implements Runnable{
     private static final Logger LOG = Logger.getLogger(DecacCompiler.class);
     
     /**
@@ -71,6 +65,9 @@ public class DecacCompiler {
     // Numerotation des labels générés : E_Fonction.nbLabel
     private int nbLabel;
 
+    // Taille de la table des méthodes dans la pile, utilisé pour y ajouter des éléments
+    private int methTableSize;
+
     public DecacCompiler(CompilerOptions compilerOptions, File source) {
         super();
         this.compilerOptions = compilerOptions;
@@ -81,6 +78,7 @@ public class DecacCompiler {
         errorMap = new HashMap<String, Label>();
         nbTemp = 0;
         maxTemp = 0;
+        methTableSize = 0;
     }
 
     public int getNbTemp() {
@@ -96,14 +94,22 @@ public class DecacCompiler {
         if (maxTemp < nbTemp) maxTemp = nbTemp;
     }
 
+    public void setNbTemp(int i) {
+        nbTemp = i;
+        if (maxTemp < nbTemp) maxTemp = nbTemp;
+    }
+
     public void decrNbTemp() {
         nbTemp--;
     }
 
-    public int getCurrentRegister() {
-        return currentRegister;
+    public void reinitCounts() {
+        nbTemp = 0;
+        maxTemp = 0;
+        maxRegister = getCurrentRegister();
     }
 
+    //
     public int getNbLabel() {
         return nbLabel;
     }
@@ -112,14 +118,30 @@ public class DecacCompiler {
         nbLabel++;
     }
 
+    //
+    public int getCurrentRegister() {
+        return currentRegister;
+    }
+
     public void decrCurrentRegister() {
         currentRegister--;
     }
 
     public void incrCurrentRegister() {
         currentRegister++;
+        if (currentRegister > maxRegister) maxRegister++;
     }
 
+    /**
+     * Maximum index of used registers
+     * Used to save registers in methods
+     */
+    private int maxRegister = getCurrentRegister();
+    public int getMaxRegister() {
+        return maxRegister;
+    }
+
+    //
     public void addError(Label label) {
         String key = label.toString();
         if (!errorMap.containsKey(key)) {
@@ -127,6 +149,30 @@ public class DecacCompiler {
         }
     }
 
+    //
+    public int getMethTableSize() {
+        return methTableSize;
+    }
+
+    public void incrMethTableSize() {
+        methTableSize++;
+    }
+
+    //
+    /**
+     * Boolean showing if the the method body being written has a return instruction
+     */
+    private boolean hasReturn = false;
+
+	public boolean hasReturn() {
+		return hasReturn;
+	}
+
+	public void setReturn(boolean bool) {
+		hasReturn = bool;
+    }
+    
+    //
     public SymbolTable getSymbTb() {
     	return this.symbTb;
     }
@@ -161,7 +207,8 @@ public class DecacCompiler {
      * @see fr.ensimag.ima.pseudocode.IMAProgram#addComment(java.lang.String)
      */
     public void addComment(String comment) {
-        program.addComment(comment);
+        if (!inMethod) program.addComment(comment);
+        else programBis.addComment(comment);
     }
 
     /**
@@ -169,7 +216,8 @@ public class DecacCompiler {
      * fr.ensimag.ima.pseudocode.IMAProgram#addLabel(fr.ensimag.ima.pseudocode.Label)
      */
     public void addLabel(Label label) {
-        program.addLabel(label);
+        if (!inMethod) program.addLabel(label);
+        else programBis.addLabel(label);
     }
 
     /**
@@ -177,7 +225,8 @@ public class DecacCompiler {
      * fr.ensimag.ima.pseudocode.IMAProgram#addInstruction(fr.ensimag.ima.pseudocode.Instruction)
      */
     public void addInstruction(Instruction instruction) {
-        program.addInstruction(instruction);
+        if (!inMethod) program.addInstruction(instruction);
+        else programBis.addInstruction(instruction);
     }
 
     /**
@@ -186,7 +235,8 @@ public class DecacCompiler {
      * java.lang.String)
      */
     public void addInstruction(Instruction instruction, String comment) {
-        program.addInstruction(instruction, comment);
+        if (!inMethod) program.addInstruction(instruction, comment);
+        else programBis.addInstruction(instruction, comment);
     }
 
     /**
@@ -203,7 +253,20 @@ public class DecacCompiler {
      * fr.ensimag.ima.pseudocode.IMAProgram#addFirst(fr.ensimag.ima.pseudocode.Line)
      */
     public void addFirst(Line l) {
-        program.addFirst(l);
+        if (!inMethod) program.addFirst(l);
+        else programBis.addFirst(l);
+    }
+    /**
+     * @see
+     * fr.ensimag.ima.pseudocode.IMAProgram#addFirst(fr.ensimag.ima.pseudocode.Line)
+     */
+    public void addInstructionString(String instruction) {
+        if (!inMethod) program.add(new InstructionStringLine(instruction));
+        else programBis.add(new InstructionStringLine(instruction));
+    }
+
+    public void append(IMAProgram p) {
+        program.append(p);
     }
     
     /**
@@ -221,7 +284,25 @@ public class DecacCompiler {
      */
     private final IMAProgram program = new IMAProgram();
  
+    /**
+     * A program for the instructions of methods
+     */
+    private IMAProgram programBis = new IMAProgram();
 
+    public void doneProgramBis() {
+        program.append(programBis);
+        inMethod = false;
+        programBis = new IMAProgram();
+    }
+
+    private boolean inMethod = false;
+
+
+	public void setInMethod(boolean bool) {
+        inMethod = bool;
+    }
+
+    public void run() {this.compile();}
     /**
      * Run the compiler (parse source file, generate code)
      *
@@ -335,82 +416,5 @@ public class DecacCompiler {
         DecaParser parser = new DecaParser(tokens);
         parser.setDecacCompiler(this);
         return parser.parseProgramAndManageErrors(err);
-    }
-    
-    /**
-     * Classe d'environnement des types, interne à DecacCompiler
-     * pour éviter les problèmes d'accès par différents fils
-     */
-    public static class EnvironmentType {
-    	
-    	private EnvironmentType parentEnvironment;
-    	
-    	private Map<Symbol, TypeDefinition> map;
-    	
-    	/**
-    	 * Constructeur appelé pour définir env_type_predef
-    	 * par le constructeur du DecacCompiler (il est donc
-    	 * déclaré privé)
-    	 * 
-    	 * @param table
-    	 * 		Table de symboles propre au DecacCompiler, que l'on
-    	 * va garnir
-    	 */
-    	private EnvironmentType(SymbolTable table) {
-    		Symbol INT = table.create("int");
-    		Symbol FLOAT = table.create("float");
-    		Symbol BOOLEAN = table.create("boolean");
-    		Symbol VOID = table.create("void");
-    		TypeDefinition intDef = new TypeDefinition(new IntType(INT), Location.BUILTIN);
-    		TypeDefinition floatDef = new TypeDefinition(new FloatType(FLOAT), Location.BUILTIN);
-    		TypeDefinition booleanDef = new TypeDefinition(new BooleanType(BOOLEAN), Location.BUILTIN);
-    		TypeDefinition voidDef = new TypeDefinition(new VoidType(VOID), Location.BUILTIN);
-    		this.map = new HashMap<Symbol, TypeDefinition>();
-    		this.map.put(INT, intDef);
-    		this.map.put(FLOAT, floatDef);
-    		this.map.put(BOOLEAN, booleanDef);
-    		this.map.put(VOID, voidDef);
-    		this.parentEnvironment = null; // Dieu que c'est laid
-    		// TODO: ce qui concerne le langage objet
-    	}
-    	
-    	public EnvironmentType(SymbolTable table, EnvironmentType parent) {
-    		this.parentEnvironment = parent;
-    		this.map = new HashMap<Symbol, TypeDefinition>();
-    	}
-    	
-    	public Map<Symbol, TypeDefinition> getMap() {
-    		return this.map;
-    	}
-    	
-    	public EnvironmentType getParentEnvironment() {
-    		return this.parentEnvironment;
-    	}
-    	/**
-         * Return the type of the symbol in the environment, or null if the
-         * symbol is undefined.
-         */
-        public TypeDefinition get(Symbol key) {
-            TypeDefinition result = map.get(key); // null if no such key
-
-            // Search in the parent dictionary after failure in current one
-            if (result == null && parentEnvironment != null) {
-                return parentEnvironment.get(key);
-            }
-            return result;
-        }
-        
-        /**
-         * Insère un nouveau couple (symbole, définition) dans la table
-         * @param key
-         * 		la clef (type Symbol)
-         * @param def
-         * 		la définition (type TypeDefinition)
-         */
-        public void put(Symbol key, TypeDefinition def) {
-        	if (this.get(key) == null) {
-        		this.getMap().put(key,  def);
-        	}
-        }
     }
 }

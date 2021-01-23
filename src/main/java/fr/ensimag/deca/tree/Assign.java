@@ -10,9 +10,15 @@ import fr.ensimag.deca.context.EnvironmentExp;
 
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.DVal;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 import fr.ensimag.ima.pseudocode.instructions.BRA;
+import fr.ensimag.ima.pseudocode.instructions.PUSH;
+import fr.ensimag.ima.pseudocode.instructions.POP;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
 
 /**
  * Assignment, i.e. lvalue = expr.
@@ -50,22 +56,43 @@ public class Assign extends AbstractBinaryExpr {
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
         if (this.getType().isBoolean()) {
-            Label faux = new Label("Assign_False." + compiler.getNbLabel());
-            Label fin = new Label("Assign_Fin." + compiler.getNbLabel());
-            this.getRightOperand().boolCodeGen(compiler, false, faux);
-            // L'expression est vrai
-            compiler.addInstruction(new LOAD(1, Register.getR(compiler.getCurrentRegister())));
-            EvalExpr.mnemo(compiler, this, this.getLeftOperand().dval(compiler), Register.getR(compiler.getCurrentRegister()));
-            compiler.addInstruction(new BRA(fin));
-            // L'expression est fausse
-            compiler.addLabel(faux);
-            compiler.addInstruction(new LOAD(0, Register.getR(compiler.getCurrentRegister())));
-            EvalExpr.mnemo(compiler, this, this.getLeftOperand().dval(compiler), Register.getR(compiler.getCurrentRegister()));
-            compiler.addLabel(fin);
-            compiler.incrNbLabel();
+            EvalExpr.boolInRegister(compiler, this.getRightOperand());
         } else {
             this.getRightOperand().codeGenInst(compiler);   
+        }
+        this.setLeftOperand(this.getLeftOperand().checkSelection());
+        if (!this.getLeftOperand().isSelection()) {
             EvalExpr.mnemo(compiler, this, this.getLeftOperand().dval(compiler), Register.getR(compiler.getCurrentRegister()));
+        } else {
+            // Il faut gérer les registres
+            DVal dVal = null;
+            if (compiler.getCurrentRegister() < compiler.getCompilerOptions().getRMAX()) {
+                compiler.incrCurrentRegister();
+                dVal = this.getLeftOperand().dval(compiler);
+				EvalExpr.mnemo(compiler, this, dVal, Register.getR(compiler.getCurrentRegister()-1));
+				compiler.decrCurrentRegister();
+			} else {
+                // Plus assez de registres libres
+                compiler.incrNbTemp();
+                compiler.addInstruction(new PUSH(Register.getR(compiler.getCurrentRegister()))); // sauvegarde
+                dVal = this.getLeftOperand().dval(compiler);
+                compiler.addInstruction(new POP(Register.R0)); // restauration, On peut utiliser R0 car aucune méthode ne peut être appelée ensuite
+                compiler.decrNbTemp();                         // Celà nous empêchait de faire un LOAD au lieu de PUSH/POP
+                EvalExpr.mnemo(compiler, this, dVal, Register.R0);
+            }
+            compiler.addInstruction(new LOAD(dVal, Register.getR(compiler.getCurrentRegister())));
+        }
+    }
+
+    @Override
+    protected void boolCodeGen(DecacCompiler compiler, boolean branch, Label tag) {
+        this.codeGenInst(compiler);
+        compiler.addInstruction(new LOAD(this.getLeftOperand().dval(compiler), Register.R0));
+        compiler.addInstruction(new CMP(0, Register.R0));
+        if (branch) {
+            compiler.addInstruction(new BNE(tag));
+        } else {
+            compiler.addInstruction(new BEQ(tag));
         }
     }
 

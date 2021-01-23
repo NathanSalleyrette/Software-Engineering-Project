@@ -1,0 +1,10 @@
+// Description :
+//    new utilisé avec un identificateur float
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 :(3.42) float n'est pas un type de classe
+
+{
+float b = new float();
+}

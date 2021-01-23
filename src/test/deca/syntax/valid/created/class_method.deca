@@ -1,0 +1,36 @@
+// Description :
+//		Deux classes, l'une extends l'autre
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	int field1 = 1;
+	float field1;
+	bool field2;
+	a a = a;
+	int met(int param1, bool param2, b b){
+	}
+	void met() asm("bla
+	bla");
+	
+	
+	int met2(){
+	bool var1 = true;
+	bool var2;
+	var2 = true && true;
+	return 1;
+	}
+	
+}
+
+class B {
+	int met2(){
+	println("redefinition de met2 dans A");
+	}
+	protected type field3, field4 = 3, field5 = a;
+	int met3(){
+	return a==b;
+	}
+}

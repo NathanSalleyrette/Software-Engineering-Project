@@ -28,15 +28,33 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
     	AbstractExpr rightOp = this.getRightOperand();
     	Type leftType = leftOp.verifyExpr(compiler, localEnv, currentClass);
     	Type rightType = rightOp.verifyExpr(compiler, localEnv, currentClass);
-        if (((leftType.isInt()) || (leftType.isFloat())) && ((rightType.isInt()) 
-        		|| rightType.isFloat())) {
-        			// Au moins je suis sûr de récupérer le type Boolean comme ça
-        			Type returnType = compiler.getEnvType().get(compiler.getSymbTb().create("boolean")).getType();
-        			this.setType(returnType);
-        			return returnType;
-        }  	
-        throw new ContextualError("(3.33) Opérandes de type " + leftType.toString() + ", " +
-        			rightType.toString() + ", attendu: 'int' ou 'float'", this.getLocation());
+    	// Au moins je suis sûr de récupérer le type Boolean comme ça
+		Type returnType = compiler.getEnvType().get(compiler.getSymbTb().create("boolean")).getType();
+		
+		if (leftType.isInt()) {
+			if (rightType.isFloat()) {
+				ConvFloat conv = new ConvFloat(leftOp);
+				this.setLeftOperand(conv);
+				conv.verifyExpr(compiler, localEnv, currentClass);
+				this.setType(returnType);
+    			return returnType;
+			} else if (rightType.isInt()) {
+				this.setType(returnType);
+    			return returnType;
+			}
+		} else if (leftType.isFloat()) {
+			if (rightType.isInt()) {
+				ConvFloat conv = new ConvFloat(rightOp);
+				conv.verifyExpr(compiler, localEnv, currentClass);
+				this.setRightOperand(conv);
+				this.setType(returnType);
+    			return returnType;
+			} else if (rightType.isFloat()) {
+				this.setType(returnType);
+    			return returnType;
+			}
+		}  	
+        throw new ContextualError(this.typesOp() + ". Attendu: 'int' ou 'float'", this.getLocation());
     }
 
     @Override

@@ -1,0 +1,50 @@
+// Description :
+//		Programme pour tester les fields des classes avec type statique et dynamiqye
+//
+// Resultats :
+//		Ok
+
+class B {
+int x = 1;
+int y = 2;
+boolean b = true;
+boolean b2 = true;
+float c = 0.5;
+float c2 = 0.5;
+B a;
+}
+class A extends B {
+int x = 3;
+float y = 0.6;
+int z = 42;
+boolean b2 = false;
+float c2 = 0.42;
+B a;
+}
+
+{
+A a = new A();
+
+B b = new A();
+B c = a;
+
+a.a = new A();
+b.a = new B();
+c.a = new A(); //il faut quand meme faire l'init car le champs n'est pas le meme que celui de a
+
+println(a.x, " ", a.y, " ", a.c, " ", a.a.x);
+
+if (a.x == 3 && a.a.x==1 && a.y == 0.6 && a.c == 0.5 && a.b == true && a.z == 42 && !a.b2 && a.c2 == 0.42){println("ok");}
+else {println("bouuuh");}
+
+println(b.x, " ", b.y, " ", b.c, " ", b.c2, " ", b.a.x);
+
+if (b.x == 1 && b.a.x == 1 && b.y == 2 && b.c == 0.5 && b.b && b.b2 && b.c2 == 0.5){println("ok");}
+else {println("bouuuh");}
+
+println(c.x, " ", c.y, " ", c.c, " ", c.c2, " ", c.a.x);
+
+if (c.x == 1 && c.a.x == 1 && c.y == 2 && c.c == 0.5 && c.b && c.b2 && c.c2 == 0.5){println("ok");}
+else {println("bouuuh");}
+
+}

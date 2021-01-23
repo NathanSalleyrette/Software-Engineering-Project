@@ -1,0 +1,9 @@
+// Description :
+//    decl class extends mal ecrit
+//
+// Resultats :
+//		Syntaxe error
+
+class A extend B {
+
+}
