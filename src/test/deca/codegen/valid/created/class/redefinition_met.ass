@@ -1,4 +1,4 @@
-	TSTO #8
+	TSTO #12
 	BOV pile_pleine
 	ADDSP #8
 ; start main program
@@ -25,6 +25,7 @@
 ; Main program
 ; Beginning of main instructions:
 	WSTR "2 ="
+; Appel de méthode ligne 26
 	ADDSP #1
 ; new ligne 26
 	NEW #3, R2
@@ -49,6 +50,7 @@
 	WINT
 	WNL
 	WSTR "1 ="
+; Appel de méthode ligne 27
 	ADDSP #1
 ; new ligne 27
 	NEW #2, R2
@@ -94,14 +96,14 @@ init.B:
 	LOAD -2(LB), R1
 	LOAD #0, R0
 	STORE R0, 1(R1)
-	LOAD -2(LB), R1
 	LOAD #1, R2
+	LOAD -2(LB), R1
 	STORE R2, 1(R1)
 	POP R2
 	RTS
 ; ---------- Code de la methode met dans la classe B ligne 9
 code.B.met:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2
@@ -126,7 +128,7 @@ fin.B.met:
 ; Classe A
 ; ---------- Initialisation des champs de A
 init.A:
-	TSTO #3
+	TSTO #4
 	BOV pile_pleine
 	PUSH R2
 	LOAD -2(LB), R1
@@ -135,14 +137,14 @@ init.A:
 	PUSH R1
 	BSR init.B
 	SUBSP #1
-	LOAD -2(LB), R1
 	LOAD #2, R2
+	LOAD -2(LB), R1
 	STORE R2, 2(R1)
 	POP R2
 	RTS
 ; ---------- Code de la methode met dans la classe A ligne 17
 code.A.met:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2

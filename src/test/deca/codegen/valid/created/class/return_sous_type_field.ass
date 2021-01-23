@@ -1,4 +1,4 @@
-	TSTO #11
+	TSTO #14
 	BOV pile_pleine
 	ADDSP #11
 ; start main program
@@ -36,6 +36,7 @@
 	STORE R2, 11(GB)
 ; Beginning of main instructions:
 	WSTR "0 = "
+; Appel de méthode ligne 28
 	ADDSP #1
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -51,6 +52,7 @@
 	LOAD 2(R2), R2
 	LOAD R2, R1
 	WINT
+; Appel de méthode ligne 28
 	ADDSP #1
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -67,6 +69,7 @@
 	LOAD R2, R1
 	WINT
 	WNL
+; Appel de méthode ligne 29
 	ADDSP #1
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -82,6 +85,7 @@
 	LOAD 1(R2), R0
 	CMP #0, R0
 	BEQ E_Sinon.0
+; Appel de méthode ligne 29
 	ADDSP #1
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -128,21 +132,22 @@ init.C:
 	STORE R0, 1(R1)
 	LOAD #0, R0
 	STORE R0, 2(R1)
-	LOAD -2(LB), R1
 	LOAD #1, R2
 	BRA Assign_Fin.1
 Assign_False.1:
 	LOAD #0, R2
 Assign_Fin.1:
+	LOAD -2(LB), R1
 	STORE R2, 1(R1)
 	LOAD #0, R2
+	LOAD -2(LB), R1
 	STORE R2, 2(R1)
 	POP R2
 	RTS
 ; Classe D
 ; ---------- Initialisation des champs de D
 init.D:
-	TSTO #3
+	TSTO #4
 	BOV pile_pleine
 	PUSH R2
 	LOAD -2(LB), R1
@@ -153,22 +158,23 @@ init.D:
 	PUSH R1
 	BSR init.C
 	SUBSP #1
-	LOAD -2(LB), R1
 	BRA Assign_False.2
 	LOAD #1, R2
 	BRA Assign_Fin.2
 Assign_False.2:
 	LOAD #0, R2
 Assign_Fin.2:
+	LOAD -2(LB), R1
 	STORE R2, 3(R1)
 	LOAD #1, R2
+	LOAD -2(LB), R1
 	STORE R2, 4(R1)
 	POP R2
 	RTS
 ; Classe A
 ; ---------- Code de la methode getc dans la classe A ligne 17
 code.A.getc:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2
@@ -190,7 +196,7 @@ fin.A.getc:
 	RTS
 ; ---------- Code de la methode getd dans la classe A ligne 20
 code.A.getd:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2

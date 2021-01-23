@@ -1,4 +1,4 @@
-	TSTO #14
+	TSTO #18
 	BOV pile_pleine
 	ADDSP #14
 ; start main program
@@ -62,6 +62,7 @@
 	POP R2
 	STORE R2, 14(GB)
 ; Beginning of main instructions:
+; Appel de méthode ligne 32
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -81,6 +82,7 @@ Assign_Fin.0:
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 33
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -101,6 +103,7 @@ Assign_Fin.1:
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 34
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -120,6 +123,7 @@ Assign_Fin.2:
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 35
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -139,6 +143,7 @@ Assign_Fin.3:
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 36
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -158,6 +163,7 @@ Assign_Fin.4:
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 37
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -178,6 +184,7 @@ Assign_Fin.5:
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 38
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -197,6 +204,7 @@ Assign_Fin.6:
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 39
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -216,6 +224,7 @@ Assign_Fin.7:
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 40
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -236,6 +245,7 @@ Assign_Fin.8:
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 41
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -256,6 +266,7 @@ Assign_Fin.9:
 	BSR 3(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 42
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -275,6 +286,7 @@ Assign_Fin.10:
 	BSR 3(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 43
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -294,6 +306,7 @@ Assign_Fin.11:
 	BSR 3(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 44
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -335,15 +348,15 @@ init.A:
 	LOAD -2(LB), R1
 	LOAD #0, R0
 	STORE R0, 1(R1)
-	LOAD -2(LB), R1
 	LOAD #1, R2
+	LOAD -2(LB), R1
 	STORE R2, 1(R1)
 	POP R2
 	RTS
 ; Classe B
 ; ---------- Initialisation des champs de B
 init.B:
-	TSTO #3
+	TSTO #4
 	BOV pile_pleine
 	PUSH R2
 	LOAD -2(LB), R1
@@ -352,8 +365,8 @@ init.B:
 	PUSH R1
 	BSR init.A
 	SUBSP #1
-	LOAD -2(LB), R1
 	LOAD #1, R2
+	LOAD -2(LB), R1
 	STORE R2, 2(R1)
 	POP R2
 	RTS

@@ -1,4 +1,4 @@
-	TSTO #17
+	TSTO #21
 	BOV pile_pleine
 	ADDSP #17
 ; start main program
@@ -56,6 +56,7 @@
 	STORE R2, 17(GB)
 ; Beginning of main instructions:
 	WSTR "1 = "
+; Appel de méthode ligne 32
 	ADDSP #2
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -72,6 +73,7 @@
 	WINT
 	WNL
 	WSTR "0 = "
+; Appel de méthode ligne 33
 	ADDSP #2
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -87,6 +89,7 @@
 	LOAD R2, R1
 	WINT
 	WNL
+; Appel de méthode ligne 34
 	ADDSP #2
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -100,6 +103,7 @@
 	SUBSP #2
 	CMP #0, R0
 	BEQ E_Sinon.0
+; Appel de méthode ligne 34
 	ADDSP #2
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -207,10 +211,11 @@ fin.D.x:
 ; Classe A
 ; ---------- Code de la methode getx dans la classe A ligne 19
 code.A.getx:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2
+; Appel de méthode ligne 20
 	ADDSP #1
 	LOAD -3(LB), R2
 	STORE R2, 0(SP)
@@ -231,10 +236,11 @@ fin.A.getx:
 	RTS
 ; ---------- Code de la methode getb dans la classe A ligne 22
 code.A.getb:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2
+; Appel de méthode ligne 23
 	ADDSP #1
 	LOAD -3(LB), R2
 	STORE R2, 0(SP)

@@ -1,4 +1,4 @@
-	TSTO #6
+	TSTO #9
 	BOV pile_pleine
 	ADDSP #6
 ; start main program
@@ -17,6 +17,7 @@
 	STORE R0, 5(GB)
 ; Main program
 ; Beginning of main instructions:
+; Appel de méthode ligne 12
 	ADDSP #1
 	LOAD 6(GB), R2
 	STORE R2, 0(SP)

@@ -1,4 +1,4 @@
-	TSTO #15
+	TSTO #19
 	BOV pile_pleine
 	ADDSP #15
 ; start main program
@@ -44,7 +44,9 @@
 	STORE R2, 15(GB)
 ; Beginning of main instructions:
 	WSTR "0 = "
+; Appel de méthode ligne 28
 	ADDSP #1
+; Appel de méthode ligne 28
 	ADDSP #1
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -67,7 +69,9 @@
 	WINT
 	WNL
 	WSTR "1 = "
+; Appel de méthode ligne 29
 	ADDSP #1
+; Appel de méthode ligne 29
 	ADDSP #1
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -89,7 +93,9 @@
 	LOAD R2, R1
 	WINT
 	WNL
+; Appel de méthode ligne 30
 	ADDSP #1
+; Appel de méthode ligne 30
 	ADDSP #1
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -109,7 +115,9 @@
 	SUBSP #1
 	CMP #0, R0
 	BEQ E_Sinon.0
+; Appel de méthode ligne 30
 	ADDSP #1
+; Appel de méthode ligne 30
 	ADDSP #1
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)

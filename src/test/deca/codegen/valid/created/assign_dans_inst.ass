@@ -1,6 +1,6 @@
-	TSTO #6
+	TSTO #7
 	BOV pile_pleine
-	ADDSP #6
+	ADDSP #7
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -18,6 +18,13 @@ Assign_False.0:
 	LOAD #0, R2
 Assign_Fin.0:
 	STORE R2, 6(GB)
+	BRA Assign_False.1
+	LOAD #1, R2
+	BRA Assign_Fin.1
+Assign_False.1:
+	LOAD #0, R2
+Assign_Fin.1:
+	STORE R2, 7(GB)
 ; Beginning of main instructions:
 	LOAD 4(GB), R2
 	STORE R2, 3(GB)
@@ -25,32 +32,44 @@ Assign_Fin.0:
 	WINT
 	LOAD 6(GB), R0
 	CMP #0, R0
-	BEQ Assign_False.2
+	BEQ Assign_False.3
 	LOAD #1, R2
-	BRA Assign_Fin.2
-Assign_False.2:
+	BRA Assign_Fin.3
+Assign_False.3:
 	LOAD #0, R2
-Assign_Fin.2:
+Assign_Fin.3:
 	STORE R2, 5(GB)
 	LOAD 5(GB), R0
 	CMP #0, R0
-	BEQ E_Fin.1
-E_Fin.1:
-	BRA E_Cond.3
-E_Debut.3:
-E_Cond.3:
+	BEQ E_Fin.2
+E_Fin.2:
+	LOAD #1, R2
+	BRA Assign_Fin.5
+Assign_False.5:
+	LOAD #0, R2
+Assign_Fin.5:
+	STORE R2, 7(GB)
+	LOAD 7(GB), R0
+	CMP #0, R0
+	BEQ E_Fin.4
+	WSTR "ok"
+	WNL
+E_Fin.4:
+	BRA E_Cond.6
+E_Debut.6:
+E_Cond.6:
 	LOAD 6(GB), R0
 	CMP #0, R0
-	BEQ Assign_False.4
+	BEQ Assign_False.7
 	LOAD #1, R2
-	BRA Assign_Fin.4
-Assign_False.4:
+	BRA Assign_Fin.7
+Assign_False.7:
 	LOAD #0, R2
-Assign_Fin.4:
+Assign_Fin.7:
 	STORE R2, 5(GB)
 	LOAD 5(GB), R0
 	CMP #0, R0
-	BNE E_Debut.3
+	BNE E_Debut.6
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)

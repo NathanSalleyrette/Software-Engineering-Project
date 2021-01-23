@@ -1,4 +1,4 @@
-	TSTO #19
+	TSTO #22
 	BOV pile_pleine
 	ADDSP #19
 ; start main program
@@ -52,6 +52,7 @@
 	BSR init.B
 	POP R2
 	STORE R2, 15(GB)
+; Appel de méthode ligne 40
 	ADDSP #1
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -63,6 +64,7 @@
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 16(GB)
+; Appel de méthode ligne 41
 	ADDSP #1
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -75,6 +77,7 @@
 	LOAD R0, R2
 	STORE R2, 17(GB)
 	BOV debordement_flottant
+; Appel de méthode ligne 42
 	ADDSP #1
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -92,6 +95,7 @@ Assign_False.0:
 	LOAD #0, R2
 Assign_Fin.0:
 	STORE R2, 18(GB)
+; Appel de méthode ligne 43
 	ADDSP #1
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -104,6 +108,7 @@ Assign_Fin.0:
 	LOAD R0, R2
 	STORE R2, 19(GB)
 ; Beginning of main instructions:
+; Appel de méthode ligne 44
 	ADDSP #1
 	LOAD 15(GB), R2
 	STORE R2, 0(SP)
@@ -170,8 +175,8 @@ init.B:
 	LOAD -2(LB), R1
 	LOAD #0x0.0p0, R0
 	STORE R0, 1(R1)
-	LOAD -2(LB), R1
 	LOAD #0x1.5p5, R2
+	LOAD -2(LB), R1
 	STORE R2, 1(R1)
 	POP R2
 	RTS
@@ -237,7 +242,7 @@ fin.B.metvoid:
 	RTS
 ; ---------- Code de la methode metB dans la classe B ligne 26
 code.B.metB:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2
@@ -267,13 +272,12 @@ init.A:
 ; Classe C
 ; ---------- Initialisation des champs de C
 init.C:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 	PUSH R2
 	LOAD -2(LB), R1
 	LOAD #null, R0
 	STORE R0, 1(R1)
-	LOAD -2(LB), R1
 ; new ligne 33
 	NEW #2, R2
 	BOV tas_plein
@@ -282,6 +286,7 @@ init.C:
 	PUSH R2
 	BSR init.A
 	POP R2
+	LOAD -2(LB), R1
 	STORE R2, 1(R1)
 	POP R2
 	RTS

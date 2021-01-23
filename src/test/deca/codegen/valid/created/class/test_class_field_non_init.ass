@@ -1,4 +1,4 @@
-	TSTO #9
+	TSTO #12
 	BOV pile_pleine
 	ADDSP #9
 ; start main program
@@ -60,16 +60,6 @@
 	LOAD 4(R2), R2
 	LOAD R2, R1
 	WFLOAT
-	WSTR " "
-	LOAD 7(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 9(R2), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 1(R2), R2
-	LOAD R2, R1
-	WINT
 	WNL
 	LOAD 7(GB), R2
 	CMP #null, R2
@@ -101,15 +91,6 @@
 	LOAD 8(R2), R2
 	CMP #0, R2
 	BNE E_Sinon.0
-	LOAD 7(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 9(R2), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 1(R2), R2
-	CMP #0, R2
-	BNE E_Sinon.0
 	WSTR "ok"
 	WNL
 	BRA E_Fin.0
@@ -137,15 +118,6 @@ E_Fin.0:
 	LOAD 4(R2), R2
 	LOAD R2, R1
 	WFLOAT
-	LOAD 8(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 5(R2), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 6(R2), R2
-	LOAD R2, R1
-	WINT
 	WNL
 	LOAD 8(GB), R2
 	CMP #null, R2
@@ -170,15 +142,6 @@ E_Fin.0:
 	BEQ dereferencement.null
 	LOAD 3(R2), R0
 	CMP #0, R0
-	BNE E_Sinon.1
-	LOAD 8(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 5(R2), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 6(R2), R2
-	CMP #0, R2
 	BNE E_Sinon.1
 	WSTR "ok"
 	WNL
@@ -232,15 +195,6 @@ E_Fin.1:
 	LOAD 3(R2), R0
 	CMP #0, R0
 	BNE E_Sinon.2
-	LOAD 9(GB), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 5(R2), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 6(R2), R2
-	CMP #0, R2
-	BNE E_Sinon.2
 	WSTR "ok"
 	WNL
 	BRA E_Fin.2
@@ -278,7 +232,7 @@ init.B:
 ; Classe A
 ; ---------- Initialisation des champs de A
 init.A:
-	TSTO #2
+	TSTO #3
 	BOV pile_pleine
 	LOAD -2(LB), R1
 	LOAD #0, R0

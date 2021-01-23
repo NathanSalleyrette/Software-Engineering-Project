@@ -1,4 +1,4 @@
-	TSTO #13
+	TSTO #17
 	BOV pile_pleine
 	ADDSP #13
 ; start main program
@@ -54,6 +54,7 @@
 	STORE R2, 13(GB)
 ; Beginning of main instructions:
 	WSTR "0 = "
+; Appel de méthode ligne 30
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -68,6 +69,7 @@
 	LOAD R0, R2
 	LOAD R2, R1
 	WINT
+; Appel de méthode ligne 30
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -83,6 +85,7 @@
 	LOAD R2, R1
 	WINT
 	WNL
+; Appel de méthode ligne 31
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -96,6 +99,7 @@
 	SUBSP #2
 	CMP #0, R0
 	BEQ E_Sinon.0
+; Appel de méthode ligne 31
 	ADDSP #2
 	LOAD 11(GB), R2
 	STORE R2, 0(SP)
@@ -140,21 +144,22 @@ init.C:
 	STORE R0, 1(R1)
 	LOAD #0, R0
 	STORE R0, 2(R1)
-	LOAD -2(LB), R1
 	LOAD #1, R2
 	BRA Assign_Fin.1
 Assign_False.1:
 	LOAD #0, R2
 Assign_Fin.1:
+	LOAD -2(LB), R1
 	STORE R2, 1(R1)
 	LOAD #0, R2
+	LOAD -2(LB), R1
 	STORE R2, 2(R1)
 	POP R2
 	RTS
 ; Classe D
 ; ---------- Initialisation des champs de D
 init.D:
-	TSTO #3
+	TSTO #4
 	BOV pile_pleine
 	PUSH R2
 	LOAD -2(LB), R1
@@ -165,15 +170,16 @@ init.D:
 	PUSH R1
 	BSR init.C
 	SUBSP #1
-	LOAD -2(LB), R1
 	BRA Assign_False.2
 	LOAD #1, R2
 	BRA Assign_Fin.2
 Assign_False.2:
 	LOAD #0, R2
 Assign_Fin.2:
+	LOAD -2(LB), R1
 	STORE R2, 3(R1)
 	LOAD #1, R2
+	LOAD -2(LB), R1
 	STORE R2, 4(R1)
 	POP R2
 	RTS

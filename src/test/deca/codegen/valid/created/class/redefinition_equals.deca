@@ -40,14 +40,14 @@ B b = new B();
 B c = new A();
 
 
-u.f(a.equals(b));
+//u.f(a.equals(b));
 u.t(a.equals(c));
 u.t(a.equals(a));
 u.t(b.equals(a));
 u.t(b.equals(c));
-u.t(b.equals(b));
+//u.t(b.equals(b));
 u.t(c.equals(a));
 u.t(c.equals(c));
-u.f(c.equals(b));
+//u.f(c.equals(b));
 u.t(c.equals(c));
 }

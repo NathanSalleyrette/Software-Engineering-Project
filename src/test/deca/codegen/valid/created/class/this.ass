@@ -1,4 +1,4 @@
-	TSTO #23
+	TSTO #27
 	BOV pile_pleine
 	ADDSP #23
 ; start main program
@@ -65,6 +65,7 @@
 	STORE R2, 21(GB)
 ; Beginning of main instructions:
 	WSTR "0="
+; Appel de méthode ligne 43
 	ADDSP #1
 	LOAD 20(GB), R2
 	STORE R2, 0(SP)
@@ -82,6 +83,7 @@
 	WINT
 	WNL
 	WSTR "0="
+; Appel de méthode ligne 44
 	ADDSP #1
 	LOAD 21(GB), R2
 	STORE R2, 0(SP)
@@ -99,6 +101,7 @@
 	WINT
 	WNL
 	WSTR "1="
+; Appel de méthode ligne 45
 	ADDSP #1
 	LOAD 21(GB), R2
 	STORE R2, 0(SP)
@@ -115,6 +118,7 @@
 	LOAD R2, R1
 	WINT
 	WNL
+; Appel de méthode ligne 46
 	ADDSP #2
 	LOAD 20(GB), R2
 	STORE R2, 0(SP)
@@ -127,6 +131,7 @@
 	BSR 3(R2)
 	SUBSP #2
 	LOAD R0, R2
+; Appel de méthode ligne 47
 	ADDSP #2
 	LOAD 21(GB), R2
 	STORE R2, 0(SP)
@@ -140,6 +145,7 @@
 	SUBSP #2
 	LOAD R0, R2
 	WSTR "5="
+; Appel de méthode ligne 48
 	ADDSP #1
 	LOAD 20(GB), R2
 	STORE R2, 0(SP)
@@ -157,6 +163,7 @@
 	WINT
 	WNL
 	WSTR "5="
+; Appel de méthode ligne 49
 	ADDSP #1
 	LOAD 21(GB), R2
 	STORE R2, 0(SP)
@@ -174,6 +181,7 @@
 	WINT
 	WNL
 	WSTR "1="
+; Appel de méthode ligne 50
 	ADDSP #1
 	LOAD 21(GB), R2
 	STORE R2, 0(SP)
@@ -193,6 +201,7 @@
 	LOAD 21(GB), R2
 	STORE R2, 22(GB)
 	WSTR "5="
+; Appel de méthode ligne 52
 	ADDSP #1
 	LOAD 22(GB), R2
 	STORE R2, 0(SP)
@@ -210,6 +219,7 @@
 	WINT
 	WNL
 	WSTR "1="
+; Appel de méthode ligne 53
 	ADDSP #1
 	LOAD 22(GB), R2
 	STORE R2, 0(SP)
@@ -229,6 +239,7 @@
 	LOAD 21(GB), R2
 	STORE R2, 23(GB)
 	WSTR "5="
+; Appel de méthode ligne 55
 	ADDSP #1
 	LOAD 23(GB), R2
 	STORE R2, 0(SP)
@@ -246,6 +257,7 @@
 	WINT
 	WNL
 	WSTR "A="
+; Appel de méthode ligne 58
 	ADDSP #1
 	LOAD 20(GB), R2
 	STORE R2, 0(SP)
@@ -257,6 +269,7 @@
 	SUBSP #1
 	LOAD R0, R2
 	WSTR "B="
+; Appel de méthode ligne 60
 	ADDSP #1
 	LOAD 21(GB), R2
 	STORE R2, 0(SP)
@@ -268,6 +281,7 @@
 	SUBSP #1
 	LOAD R0, R2
 	WSTR "B="
+; Appel de méthode ligne 62
 	ADDSP #1
 	LOAD 21(GB), R2
 	STORE R2, 0(SP)
@@ -279,6 +293,7 @@
 	SUBSP #1
 	LOAD R0, R2
 	WSTR "B="
+; Appel de méthode ligne 64
 	ADDSP #1
 	LOAD 23(GB), R2
 	STORE R2, 0(SP)
@@ -311,8 +326,8 @@ init.A:
 	LOAD -2(LB), R1
 	LOAD #0, R0
 	STORE R0, 1(R1)
-	LOAD -2(LB), R1
 	LOAD #0, R2
+	LOAD -2(LB), R1
 	STORE R2, 1(R1)
 	POP R2
 	RTS
@@ -347,16 +362,18 @@ code.A.add:
 	CMP #null, R3
 	BEQ dereferencement.null
 	STORE R2, 1(R3)
+	LOAD 1(R3), R2
 fin.A.add:
 	POP R3
 	POP R2
 	RTS
 ; ---------- Code de la methode rec dans la classe A ligne 13
 code.A.rec:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2
+; Appel de méthode ligne 14
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -394,10 +411,11 @@ fin.A.rec3:
 	RTS
 ; ---------- Code de la methode callrec3 dans la classe A ligne 24
 code.A.callrec3:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2
+; Appel de méthode ligne 25
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -414,7 +432,7 @@ fin.A.callrec3:
 ; Classe B
 ; ---------- Initialisation des champs de B
 init.B:
-	TSTO #3
+	TSTO #4
 	BOV pile_pleine
 	PUSH R2
 	LOAD -2(LB), R1
@@ -423,8 +441,8 @@ init.B:
 	PUSH R1
 	BSR init.A
 	SUBSP #1
-	LOAD -2(LB), R1
 	LOAD #1, R2
+	LOAD -2(LB), R1
 	STORE R2, 2(R1)
 	POP R2
 	RTS
@@ -445,10 +463,11 @@ fin.B.getB:
 	RTS
 ; ---------- Code de la methode rec dans la classe B ligne 32
 code.B.rec:
-	TSTO #1
+	TSTO #4
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2
+; Appel de méthode ligne 33
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)

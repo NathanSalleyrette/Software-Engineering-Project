@@ -1,4 +1,4 @@
-	TSTO #6
+	TSTO #9
 	BOV pile_pleine
 	ADDSP #6
 ; start main program
@@ -69,13 +69,13 @@ init.A:
 	STORE R0, 1(R1)
 	LOAD #0, R0
 	STORE R0, 2(R1)
-	LOAD -2(LB), R1
 	BRA Assign_False.1
 	LOAD #1, R2
 	BRA Assign_Fin.1
 Assign_False.1:
 	LOAD #0, R2
 Assign_Fin.1:
+	LOAD -2(LB), R1
 	STORE R2, 2(R1)
 	POP R2
 	RTS

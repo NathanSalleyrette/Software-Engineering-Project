@@ -6,6 +6,7 @@
 
 class A{
 int x = 1;
+A a;
 
 void met(A a){
 a = this;
@@ -36,6 +37,9 @@ c = b;
 c.x = 4;
 println(c.x);
 println(b.x);
+c.a = new A();
+println(c.a.x);
+println(b.a.x);
 
 
 }

@@ -41,8 +41,8 @@ init.A:
 	LOAD -2(LB), R1
 	LOAD #0, R0
 	STORE R0, 1(R1)
-	LOAD -2(LB), R1
 	LOAD #1, R2
+	LOAD -2(LB), R1
 	STORE R2, 1(R1)
 	POP R2
 	RTS

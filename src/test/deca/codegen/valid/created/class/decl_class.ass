@@ -1,4 +1,4 @@
-	TSTO #6
+	TSTO #12
 	BOV pile_pleine
 	ADDSP #6
 ; start main program
@@ -67,6 +67,7 @@ E_Sinon.0:
 	WSTR "bouuh"
 	WNL
 E_Fin.0:
+; Appel de méthode ligne 23
 	ADDSP #4
 	LOAD 6(GB), R2
 	STORE R2, 0(SP)
@@ -165,6 +166,7 @@ code.A.set:
 	CMP #null, R3
 	BEQ dereferencement.null
 	STORE R2, 1(R3)
+	LOAD 1(R3), R2
 	LOAD -4(LB), R0
 	CMP #0, R0
 	BEQ Assign_False.3
@@ -177,12 +179,14 @@ Assign_Fin.3:
 	CMP #null, R3
 	BEQ dereferencement.null
 	STORE R2, 2(R3)
+	LOAD 2(R3), R2
 	LOAD -5(LB), R2
 	LOAD -2(LB), R3
 	CMP #null, R3
 	BEQ dereferencement.null
 	STORE R2, 3(R3)
 	BOV debordement_flottant
+	LOAD 3(R3), R2
 fin.A.set:
 	POP R3
 	POP R2

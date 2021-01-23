@@ -1,4 +1,4 @@
-	TSTO #7
+	TSTO #11
 	BOV pile_pleine
 	ADDSP #7
 ; start main program
@@ -28,6 +28,7 @@
 	POP R2
 	STORE R2, 7(GB)
 ; Beginning of main instructions:
+; Appel de méthode ligne 25
 	ADDSP #2
 	LOAD 7(GB), R2
 	STORE R2, 0(SP)
@@ -41,6 +42,7 @@
 	SUBSP #2
 	LOAD R0, R2
 	WSTR "a.getX() = "
+; Appel de méthode ligne 26
 	ADDSP #1
 	LOAD 7(GB), R2
 	STORE R2, 0(SP)
@@ -104,6 +106,7 @@ code.A.setX:
 	CMP #null, R3
 	BEQ dereferencement.null
 	STORE R2, 1(R3)
+	LOAD 1(R3), R2
 fin.A.setX:
 	POP R3
 	POP R2

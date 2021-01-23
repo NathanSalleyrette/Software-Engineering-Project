@@ -1,0 +1,39 @@
+// Description :
+//		test instanceof
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	int x = 1;
+}
+
+class B extends A{
+	int x = 1;
+}
+
+class U {
+void t(boolean b){
+	print("t=");
+	if (b) {println("t");} else {println("f");}
+}
+void f(boolean b){
+	print("f=");
+	if (b) {println("t");} else {println("f");}
+}
+}
+
+{
+U u = new U();
+A a = new A();
+A faux_a = new B();
+B b = new B();
+u.f(a instanceof B);
+u.t(a instanceof A);
+u.t(b instanceof B);
+u.t(b instanceof A);
+u.t(faux_a instanceof A);
+u.t(faux_a instanceof B);
+
+}

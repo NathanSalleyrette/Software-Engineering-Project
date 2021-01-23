@@ -7,16 +7,19 @@
 
 class A{
 	int x;
+	protected y;
 }
 
 class B extends A{
-	protected int x;
 }
 
-class C {
+class C extends B {
 	protected int x;
 	int met(){
 		return x;
+	}
+	int gety(){
+	return y;
 	}
 }
 
@@ -25,5 +28,6 @@ A a = new B();
 C c = new C();
 a.x;
 c.met();
+c.gety();
 
 }

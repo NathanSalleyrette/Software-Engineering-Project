@@ -66,10 +66,10 @@ public class InstanceOf extends AbstractExpr{
 	
 	public void decompile(IndentPrintStream s) {
 		s.print("(");
-		this.type.decompile();
+		this.expr.decompile(s);
 		s.print(" instanceof ");
-		this.expr.decompile();
-		s.print(") ");
+		this.type.decompile(s);
+		s.print(")");
 	}
 	
 	public void iterChildren(TreeFunction f) {
