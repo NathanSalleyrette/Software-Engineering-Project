@@ -17,6 +17,26 @@ class Math {
     float ulp(float f) {
         println("ulp(f) not yet implemented");
     }
+
+    // a + b * c
+    float fma(float a, float b, float c)
+        asm("    LOAD -3(LB), R1
+    LOAD -4(LB), R0
+    FMA -5(LB), R0
+    RTS");
+
+    // 2**i
+    int powerOfTwo(int i)
+        asm("    LOAD #1, R0
+    LOAD -3(LB), R1
+    BRA user.shift.cond
+user.shift.debut:
+    SHL R0
+    SUB #1, R1
+user.shift.cond:
+    CMP #0, R1
+    BNE user.shift.debut
+    RTS");
 }
 
 
