@@ -176,7 +176,7 @@ public class ClassCodeGen {
                     DeclField f = (DeclField) iterFields.next();
                     AbstractExpr expr = f.getInitialization().getExpression();
                     if (expr != null) {
-                        if (!isFirst) isFirst = false;
+                        if (isFirst) isFirst = false;
                         // Initialization
                         if (!expr.getType().isBoolean()) {
                             expr.codeGenExpr(compiler);
