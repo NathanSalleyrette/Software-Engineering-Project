@@ -1,6 +1,6 @@
-	TSTO #10
+	TSTO #12
 	BOV pile_pleine
-	ADDSP #10
+	ADDSP #12
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -23,17 +23,21 @@
 	STORE R0, 8(GB)
 	LOAD code.Math.ulp, R0
 	STORE R0, 9(GB)
+	LOAD code.Math.fma, R0
+	STORE R0, 10(GB)
+	LOAD code.Math.powerOfTwo, R0
+	STORE R0, 11(GB)
 ; Main program
 ; new ligne 14
 	NEW #1, R2
 	BOV tas_plein
 	LEA 3(GB), R0
 	STORE R0, 0(R2)
-	STORE R2, 10(GB)
+	STORE R2, 12(GB)
 ; Beginning of main instructions:
 	WSTR "cos(0.0) = "
 	ADDSP #2
-	LOAD 10(GB), R2
+	LOAD 12(GB), R2
 	STORE R2, 0(SP)
 	LOAD #0x0.0p0, R2
 	STORE R2, -1(SP)
@@ -131,6 +135,24 @@ code.Math.ulp:
 fin.Math.ulp:
 	POP R2
 	RTS
+; ---------- Code de la methode fma dans la classe Math ligne 22
+code.Math.fma:
+    LOAD -3(LB), R1
+    LOAD -4(LB), R0
+    FMA -5(LB), R0
+    RTS
+; ---------- Code de la methode powerOfTwo dans la classe Math ligne 29
+code.Math.powerOfTwo:
+    LOAD #1, R0
+    LOAD -3(LB), R1
+    BRA user.shift.cond
+user.shift.debut:
+    SHL R0
+    SUB #1, R1
+user.shift.cond:
+    CMP #0, R1
+    BNE user.shift.debut
+    RTS
 ; Erreurs
 pile_pleine:
 	WSTR "Erreur : pile_pleine"

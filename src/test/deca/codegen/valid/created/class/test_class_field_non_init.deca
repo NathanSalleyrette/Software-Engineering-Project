@@ -9,11 +9,13 @@ int x;
 int y;
 boolean b;
 float c;
+A a;
 }
 class A extends B {
 int x;
 float y;
 int z;
+A a;
 }
 
 {
