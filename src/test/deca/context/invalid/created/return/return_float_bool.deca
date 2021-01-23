@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9: (2.7) Type de retour effectif : boolean déclaré : float
+//    	Ligne 10: (2.7) Type de retour effectif : boolean déclaré : float
 
 class A{
 float met(){

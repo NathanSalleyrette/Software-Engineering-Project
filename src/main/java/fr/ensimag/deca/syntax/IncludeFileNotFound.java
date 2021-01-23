@@ -22,7 +22,7 @@ public class IncludeFileNotFound extends DecaRecognitionException {
 
     @Override
     public String getMessage() {
-        return name + ": include file not found";
+        return getName() + ": include file not found";
     }
     
     private static final long serialVersionUID = -8541996188279897766L;

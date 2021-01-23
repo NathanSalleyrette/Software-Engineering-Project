@@ -5,15 +5,32 @@
 //		Ok
 
 class B {
-boolean x;}
+boolean y = false;}
 class A extends B {
-boolean y;}
+boolean y = true;}
+
+class U {
+void t(boolean b){
+	print("t=");
+	if (b) {println("t");} else {println("f");}
+}
+void f(boolean b){
+	print("f=");
+	if (b) {println("t");} else {println("f");}
+}
+}
 
 {
+U u = new U();
 A a = new A();
-B b = new B();
-a = (A)(b);
-a.y;
+A c;
+B b;
+u.t(a.y);
 b = (B)(a);
+u.f(b.y);
+c = (A)(b);
+u.t(c.y);
+u.t(c.equals(a));
+u.t(a.equals(c));
 
 }

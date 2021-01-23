@@ -1,0 +1,11 @@
+// Description :
+//    test instanceof entre un a et un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10 : (3.40) Type gauche : <>, attendu : 'class' ou 'null',  Type droit : <>, attendu : 'class'
+class A{}
+{
+A a;
+boolean c = a instanceof boolean;
+}

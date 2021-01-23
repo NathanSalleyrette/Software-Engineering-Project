@@ -29,9 +29,13 @@ return new B();
 
 }
 
+class A {int x;}
+class C {A a = new A();}
+
 
 
 {
+C o = new C();
 B a = new B();
 int i = a.metint();
 float f = a.metfloat();
@@ -40,4 +44,5 @@ B c = a.metB();
 a.metvoid();
 println(i, " ", f, " ", c.f);
 if (b){print("true");} else {println("false");}
+println(o.a.x);
 }

@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 9: (3.24) Le type de retour ne peut être ‘void’
+//    	Ligne 12: (3.24) Le type de retour ne peut être ‘void’
 
 
 class A {

@@ -1,17 +1,18 @@
 // Description :
-//		Programme pour tester le cast entre int et float
+//		verification des methodes
 //
 // Resultats :
 //		Ok
 
-class B {
-boolean x;}
-class A extends B {
-boolean y;}
+class A {int x;}
+class C {A a = new A();}
+
+
 
 {
-A a = new A();
-B b = new B();
-a = (A)(b);
-a.y;
+C o = new C();
+C c = new C();
+c.a = new A();
+println(c.a.x);
+println(o.a.x);
 }

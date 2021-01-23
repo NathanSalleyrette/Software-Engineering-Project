@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 13 : (3.17) Le type de l'identificateur ne peut être 'void'
+//    	Ligne 9 : (3.17) Le type de l'identificateur ne peut être 'void'
 
 class A{
 void met(void a){}

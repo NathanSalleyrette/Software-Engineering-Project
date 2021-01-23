@@ -45,8 +45,6 @@ gen_exp() {
 	gen_exp_part $nom "A" "boolean" "$op" "class A{}"
 	gen_exp_part $nom "int" "A" "$op" "class A{}"
 	gen_exp_part $nom "float" "A" "$op" "class A{}"
-	gen_exp_part $nom "boolean" "A" "$op" "class A{}"
-	gen_exp_part $nom "boolean" "int" "$op" ""
 	gen_exp_part $nom "float" "boolean" "$op" ""
 	gen_exp_part $nom "int" "boolean" "$op" ""
 	

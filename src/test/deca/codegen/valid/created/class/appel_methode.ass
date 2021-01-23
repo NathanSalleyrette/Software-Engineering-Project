@@ -1,6 +1,6 @@
-	TSTO #14
+	TSTO #19
 	BOV pile_pleine
-	ADDSP #14
+	ADDSP #19
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -23,8 +23,27 @@
 	STORE R0, 8(GB)
 	LOAD code.B.metB, R0
 	STORE R0, 9(GB)
+; Construction de la table des méthodes de A
+	LEA 1(GB), R0
+	STORE R0, 10(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 11(GB)
+; Construction de la table des méthodes de C
+	LEA 1(GB), R0
+	STORE R0, 12(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 13(GB)
 ; Main program
-; new ligne 35
+; new ligne 38
+	NEW #2, R2
+	BOV tas_plein
+	LEA 12(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.C
+	POP R2
+	STORE R2, 14(GB)
+; new ligne 39
 	NEW #2, R2
 	BOV tas_plein
 	LEA 3(GB), R0
@@ -32,9 +51,9 @@
 	PUSH R2
 	BSR init.B
 	POP R2
-	STORE R2, 10(GB)
+	STORE R2, 15(GB)
 	ADDSP #1
-	LOAD 10(GB), R2
+	LOAD 15(GB), R2
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -43,9 +62,9 @@
 	BSR 2(R2)
 	SUBSP #1
 	LOAD R0, R2
-	STORE R2, 11(GB)
+	STORE R2, 16(GB)
 	ADDSP #1
-	LOAD 10(GB), R2
+	LOAD 15(GB), R2
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -54,10 +73,10 @@
 	BSR 3(R2)
 	SUBSP #1
 	LOAD R0, R2
-	STORE R2, 12(GB)
+	STORE R2, 17(GB)
 	BOV debordement_flottant
 	ADDSP #1
-	LOAD 10(GB), R2
+	LOAD 15(GB), R2
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -72,9 +91,9 @@
 Assign_False.0:
 	LOAD #0, R2
 Assign_Fin.0:
-	STORE R2, 13(GB)
+	STORE R2, 18(GB)
 	ADDSP #1
-	LOAD 10(GB), R2
+	LOAD 15(GB), R2
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -83,10 +102,10 @@ Assign_Fin.0:
 	BSR 6(R2)
 	SUBSP #1
 	LOAD R0, R2
-	STORE R2, 14(GB)
+	STORE R2, 19(GB)
 ; Beginning of main instructions:
 	ADDSP #1
-	LOAD 10(GB), R2
+	LOAD 15(GB), R2
 	STORE R2, 0(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -95,22 +114,22 @@ Assign_Fin.0:
 	BSR 5(R2)
 	SUBSP #1
 	LOAD R0, R2
-	LOAD 11(GB), R2
+	LOAD 16(GB), R2
 	LOAD R2, R1
 	WINT
 	WSTR " "
-	LOAD 12(GB), R2
+	LOAD 17(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WSTR " "
-	LOAD 14(GB), R2
+	LOAD 19(GB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 1(R2), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
-	LOAD 13(GB), R0
+	LOAD 18(GB), R0
 	CMP #0, R0
 	BEQ E_Sinon.1
 	WSTR "true"
@@ -119,12 +138,22 @@ E_Sinon.1:
 	WSTR "false"
 	WNL
 E_Fin.1:
+	LOAD 14(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
 	HALT
 ; Classe Object
 ; ---------- Code de la méthode equals dans la classe Object (built in)
 code.Object.equals:
 	LOAD -2(LB), R1
-	CMP 1(LB), R1
+	CMP -3(LB), R1
 	BEQ Object.equals.true
 	LOAD #0, R0
 	BRA fin.Object.equals
@@ -226,6 +255,34 @@ code.B.metB:
 	WNL
 	ERROR
 fin.B.metB:
+	POP R2
+	RTS
+; Classe A
+; ---------- Initialisation des champs de A
+init.A:
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 1(R1)
+	RTS
+; Classe C
+; ---------- Initialisation des champs de C
+init.C:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R1
+	LOAD #null, R0
+	STORE R0, 1(R1)
+	LOAD -2(LB), R1
+; new ligne 33
+	NEW #2, R2
+	BOV tas_plein
+	LEA 10(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 1(R1)
 	POP R2
 	RTS
 ; Erreurs

@@ -137,9 +137,9 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
     	this.getClassName().prettyPrint(s, prefix, false);
-    	if (this.getSuperClass() != null) {
-	    	this.getSuperClass().prettyPrint(s, prefix, false);
-    	}
+    	
+	    this.getSuperClass().prettyPrint(s, prefix, false);
+    	
 	    this.listDeclField.prettyPrint(s, prefix, false);
 	    this.listDeclMethod.prettyPrint(s, prefix, false);
     }

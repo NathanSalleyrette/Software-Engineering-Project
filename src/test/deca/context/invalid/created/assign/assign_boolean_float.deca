@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 11: (3.28) Les types boolean et float sont incompatibles pour l’affectation
+//    	Ligne 12: (3.28) Les types boolean et float sont incompatibles pour l’affectation
 
 
 {

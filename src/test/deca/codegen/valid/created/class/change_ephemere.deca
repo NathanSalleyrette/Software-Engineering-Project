@@ -1,0 +1,41 @@
+// Description :
+//		changer un objet à l'interieur d'une methode + changer un objet = à un autre objet implique changement des deux
+//
+// Resultats :
+//		Ok
+
+class A{
+int x = 1;
+
+void met(A a){
+a = this;
+println(a.x);
+}
+}
+
+class U {
+void t(boolean b){
+	print("t=");
+	if (b) {println("t");} else {println("f");}
+}
+void f(boolean b){
+	print("f=");
+	if (b) {println("t");} else {println("f");}
+}
+}
+
+{
+A a = new A();
+A b = new A();
+A c;
+a.x = 4;
+println(b.x);
+a.met(b);
+println(b.x);
+c = b;
+c.x = 4;
+println(c.x);
+println(b.x);
+
+
+}

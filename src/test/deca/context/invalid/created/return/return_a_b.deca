@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 14:  (2.7) Type de retour effectif : B, déclaré : A
+//    	Ligne 16:  (2.7) Type de retour effectif : B, déclaré : A
 
 class A{}
 

@@ -1,0 +1,12 @@
+// Description :
+//    instance of
+//
+// Resultats :
+//		Ok
+
+class a {
+}
+
+{
+ a instanceof b;
+}

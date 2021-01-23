@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 11 : (0.1) Identificateur x non défini
+//    	Ligne 16 : (0.1) Identificateur x non défini
 
 class B {
 	int x;
