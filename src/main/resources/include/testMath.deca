@@ -1,0 +1,6 @@
+#include "Math.decah"
+{
+    Math m = new Math();
+    float f= m.ulp(1.0);
+    println(f);
+}
