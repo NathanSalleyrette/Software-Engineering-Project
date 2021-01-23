@@ -8,8 +8,13 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.NullOperand;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
 import fr.ensimag.ima.pseudocode.instructions.INT;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
 
 import java.io.PrintStream;
 
@@ -63,28 +68,31 @@ public class Cast extends AbstractExpr {
 	@Override
 	protected void codeGenInst(DecacCompiler compiler) {
 
-		compiler.addComment("Debut Cast  " + this.expr.getType() + " vers " + this.getType());
-		if(this.type.getType().sameType(this.expr.getType())) {//On cast vers le même type, on ne fait rien
-			this.expr.codeGenInst(compiler);
+		compiler.addComment("cast  " + this.expr.getType() + " vers " + this.getType() + " ligne " + this.getLocation().getLine());
+		this.expr.codeGenInst(compiler);
+		GPRegister reg = Register.getR(compiler.getCurrentRegister());
+		if (this.type.getType().isInt() && this.expr.getType().isFloat()) { // (int) <float>
+			compiler.addInstruction(new INT(reg, reg));
+
+		} else if (this.type.getType().isFloat() && this.expr.getType().isInt()) { // (float) <int>
+			compiler.addInstruction(new FLOAT(reg, reg));
+
+		} else if (!this.type.getType().sameType(this.expr.getType())) {
+			Label fin = new Label("Cast_Fin." + compiler.getNbLabel());
+			compiler.incrNbLabel();
+			compiler.addInstruction(new CMP(new NullOperand(), reg)); // Cast d'un object de valeur null
+			compiler.addInstruction(new BEQ(fin));
+			AbstractExpr condition = new InstanceOf(expr, type);
+			condition.setLocation(this.getLocation());
+			condition.boolCodeGen(compiler, true, fin);
+			// Le cast est impossible
+			Label impossibleCast = new Label("cast_impossible");
+			compiler.addInstruction(new BRA(impossibleCast));
+			compiler.addError(impossibleCast);
+			// Le cast est possible;		
+			compiler.addLabel(fin);
 		}
-		
-		else {
-			GPRegister r= Register.getR(2);
-			if(this.type.getType().isInt() && this.expr.getType().isFloat()) {
-				this.expr.codeGenInst(compiler);
-				
-				compiler.addInstruction(new INT(r, r));
-			}else 
-			if(this.type.getType().isFloat() && this.expr.getType().isInt()) {
-				this.expr.codeGenInst(compiler);
-				compiler.addInstruction(new FLOAT(r, r));
-			}
-			else 
-			{
-				throw new UnsupportedOperationException("Cast impossible");
-			}
-		}
-		compiler.addComment("Fin cast");;
+		// Si on cast vers le même type, on ne fait rien de plus
 	}
 	
 	public void iterChildren(TreeFunction f) {
