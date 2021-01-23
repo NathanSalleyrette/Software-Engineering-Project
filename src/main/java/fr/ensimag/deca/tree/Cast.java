@@ -15,6 +15,9 @@ import fr.ensimag.ima.pseudocode.instructions.INT;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.BEQ;
 import fr.ensimag.ima.pseudocode.instructions.BRA;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.PUSH;
+import fr.ensimag.ima.pseudocode.instructions.POP;
 
 import java.io.PrintStream;
 
@@ -84,6 +87,8 @@ public class Cast extends AbstractExpr {
 			compiler.addInstruction(new BEQ(fin));
 			AbstractExpr condition = new InstanceOf(expr, type);
 			condition.setLocation(this.getLocation());
+			compiler.incrNbTemp();
+			compiler.addInstruction(new PUSH(reg)); // Sauvegarde de la valeur de l'expression
 			condition.boolCodeGen(compiler, true, fin);
 			// Le cast est impossible
 			Label impossibleCast = new Label("cast_impossible");
@@ -91,6 +96,8 @@ public class Cast extends AbstractExpr {
 			compiler.addError(impossibleCast);
 			// Le cast est possible;		
 			compiler.addLabel(fin);
+			compiler.addInstruction(new POP(reg)); // Resauration de la valeur de l'expression
+			compiler.decrNbTemp();
 		}
 		// Si on cast vers le même type, on ne fait rien de plus
 	}
