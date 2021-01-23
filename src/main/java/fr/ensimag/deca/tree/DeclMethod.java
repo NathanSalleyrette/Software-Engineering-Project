@@ -150,6 +150,8 @@ public class DeclMethod extends AbstractDeclMethod  {
     void iterChildren(TreeFunction f) {
         type.iter(f);
         methodName.iter(f);
+        params.iterChildren(f); // Si pb remettre simplement iter
+        body.iter(f);
     }
     
     @Override
