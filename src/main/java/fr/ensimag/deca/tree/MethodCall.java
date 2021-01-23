@@ -110,8 +110,7 @@ public class MethodCall extends AbstractExpr{
 		for (int i = 0; i < sig.size(); i++) {
 			AbstractExpr param = this.params.getList().get(i);
 			param.verifyExpr(compiler, localEnv, currentClass);
-			if ((sig.paramNumber(i) != param.getType()) && 
-					(!param.getType().isSubTypeOf(sig.paramNumber(i), getLocation()))) {
+			if (!param.getType().isSubTypeOf(sig.paramNumber(i), getLocation())) {
 				throw new ContextualError(
 					"(3.74) La signature ne correspond pas aux paramètres", this.getLocation());
 			}

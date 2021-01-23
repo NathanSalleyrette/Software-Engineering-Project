@@ -37,7 +37,7 @@ public class Initialization extends AbstractInitialization {
             throws ContextualError {
     	if (t.isClassOrNull()) {
     		Type newClass = getExpression().verifyExpr(compiler, localEnv, currentClass);
-    		if ((!newClass.isSubTypeOf(t, getLocation())) && (t.getName() != newClass.getName()))
+    		if (!newClass.isSubTypeOf(t, getLocation()))
     			throw new ContextualError(
     					"(3.9) " + newClass.toString() + " n'est ni la même classe ni une sous-classe de " 
     							+ t.toString(), this.getLocation());
