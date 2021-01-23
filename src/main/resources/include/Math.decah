@@ -1,6 +1,29 @@
 // Grenoble INP - Ensimag projet GL -*- mode: java -*-
 // Library for class Math of Deca, coded in Deca
+class _ULP{
+    int _trouveExposant(float a, Math m) {
+        float fractionPart;
+        int exponent;
+        if(a >= 1.0) {
+            exponent =0;
+            fractionPart =a/m._puissanceDe2(exponent);
+            while(fractionPart>=2.0){
+                exponent = exponent +1 ;
+                fractionPart =a/m._puissanceDe2(exponent);
+            }
+        }else {
+            exponent =-1;
+            fractionPart =a/m._puissanceDe2(exponent);
+            while(fractionPart<1.0){
+                exponent = exponent -1 ;
+                fractionPart =a/m._puissanceDe2(exponent);
+            }
 
+        }
+        return exponent;
+    }
+
+}
 class Math {
     float sin(float f) {
         println("sin(f) not yet implemented");
@@ -15,28 +38,62 @@ class Math {
         println("atan(f) not yet implemented");
     }
     float ulp(float f) {
-        println("ulp(f) not yet implemented");
+        int exponent;
+        float ulp;
+        _ULP u;
+        float limiteNormalise;
+        u = new _ULP();
+        limiteNormalise = 1.0 - this._puissanceDe2(-23);
+        f = this._abs(f);
+        if (f <= limiteNormalise ) {
+            return limiteNormalise;
+        }
+        exponent= u._trouveExposant(f,this);
+        ulp = this._puissanceDe2(exponent-23);
+        return ulp;
     }
 
     // a + b * c
-    float fma(float a, float b, float c)
+    float _fma(float a, float b, float c)
         asm("    LOAD -3(LB), R1
-    LOAD -4(LB), R0
-    FMA -5(LB), R0
-    RTS");
+                LOAD -4(LB), R0
+                FMA -5(LB), R0
+                RTS");
 
-    // 2**i
-    int powerOfTwo(int i)
+    // 2**i Uniquement pour i >= 0
+    int _powerOfTwoShift(int i)
         asm("    LOAD #1, R0
-    LOAD -3(LB), R1
-    BRA user.shift.cond
-user.shift.debut:
-    SHL R0
-    SUB #1, R1
-user.shift.cond:
-    CMP #0, R1
-    BNE user.shift.debut
-    RTS");
+                LOAD -3(LB), R1
+                BRA user.shift.cond
+                user.shift.debut:
+                SHL R0
+                SUB #1, R1
+                user.shift.cond:
+                CMP #0, R1
+                BNE user.shift.debut
+                RTS");
+    //pour tout i 
+    float _puissanceDe2(int exponent){//faire avec des shifts pour les positifs (asm) ? pour l'instant avec des multiplications répétés
+        float puissance = 1 ;
+        int i = 0;
+        if(exponent >= 0){
+            puissance = (float)(_powerOfTwoShift(exponent));
+        }else{
+            while(i> exponent){
+                puissance=puissance/2;
+                i = i - 1 ;
+            }
+        }
+        return puissance;
+    }
+    float _abs(float entree){
+        if (entree < 0.0){
+            return -entree;
+        }else {
+            return entree;
+        }
+    }
+
 }
 
 
