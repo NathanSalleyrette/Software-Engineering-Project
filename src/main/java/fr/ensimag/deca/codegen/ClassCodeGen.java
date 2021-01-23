@@ -163,10 +163,15 @@ public class ClassCodeGen {
             int nbTSTO = 0;
             // Initialisation des champs hérités
             if (classDef.getSuperClass().getNumberOfFields() > 0) {
-                nbTSTO += 2;
+                compiler.incrNbTemp();
                 compiler.addInstruction(new PUSH(Register.R1));
+                compiler.incrNbTemp();
+                compiler.incrNbTemp();
                 compiler.addInstruction(new BSR(new LabelOperand(new Label("init." + class1.getSuperClass().getName()))));
+                compiler.decrNbTemp();
+                compiler.decrNbTemp();
                 compiler.addInstruction(new SUBSP(1));
+                compiler.decrNbTemp();
             }
             // Initialisation explicite des nouveaux champs
             isFirst = true; // Passe a false si il y a une initialisation explicite
@@ -251,6 +256,7 @@ public class ClassCodeGen {
                     if (nbVariables > 0) {
                         compiler.addFirst(new Line(new ADDSP(nbVariables)));
                     }
+                    nbTSTO += nbVariables + compiler.getMaxTemp();
                     if ((nbTSTO != 0) && !compiler.getCompilerOptions().getNoCheck()) {
                         Label pilePleine = new Label("pile_pleine");
                         compiler.addError(pilePleine);

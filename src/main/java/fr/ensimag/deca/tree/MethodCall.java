@@ -128,8 +128,10 @@ public class MethodCall extends AbstractExpr{
 
 	@Override
 	protected void codeGenInst(DecacCompiler compiler) {
+		compiler.addComment("Appel de méthode ligne " + this.getLocation().getLine());
 		int stackShift = params.size() + 1;
 		GPRegister reg = Register.getR(compiler.getCurrentRegister());
+		compiler.setNbTemp(compiler.getNbTemp() + stackShift);
 		compiler.addInstruction(new ADDSP(stackShift));
 		// On empile le paramètre implicite
 		obj.codeGenInst(compiler);
@@ -157,8 +159,13 @@ public class MethodCall extends AbstractExpr{
 		}
 		// On récupère l'adresse de la table des méthodes
 		compiler.addInstruction(new LOAD(new RegisterOffset(0, reg), reg));
+		compiler.incrNbTemp();
+		compiler.incrNbTemp();
 		compiler.addInstruction(new BSR(new RegisterOffset(meth.getMethodDefinition().getIndex(), reg)));
+		compiler.decrNbTemp();
+		compiler.decrNbTemp();
 		compiler.addInstruction(new SUBSP(stackShift));
+		compiler.setNbTemp(compiler.getNbTemp() - stackShift);
 		if (!meth.getMethodDefinition().getType().isBoolean()) { // Si cela renvoie un booleen sa valeur dans R0 suffit
 			compiler.addInstruction(new LOAD(Register.R0, reg));
 		}

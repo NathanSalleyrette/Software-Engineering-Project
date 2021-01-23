@@ -94,6 +94,11 @@ public class DecacCompiler implements Runnable{
         if (maxTemp < nbTemp) maxTemp = nbTemp;
     }
 
+    public void setNbTemp(int i) {
+        nbTemp = i;
+        if (maxTemp < nbTemp) maxTemp = nbTemp;
+    }
+
     public void decrNbTemp() {
         nbTemp--;
     }

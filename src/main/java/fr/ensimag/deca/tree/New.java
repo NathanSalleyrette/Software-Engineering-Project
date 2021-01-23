@@ -67,11 +67,17 @@ public class New extends AbstractExpr {
 		compiler.addInstruction(new STORE(Register.R0, new RegisterOffset(0, reg)));
 		if (newClass.getClassDefinition().getNumberOfFields() > 0) {
 			// Sauvegarde du registre
+			compiler.incrNbTemp();
 			compiler.addInstruction(new PUSH(reg));
 			// Initialisation des champs
+			compiler.incrNbTemp();
+			compiler.incrNbTemp();
 			compiler.addInstruction(new BSR(new LabelOperand(new Label("init." + newClass.getName()))));
+			compiler.decrNbTemp();
+			compiler.decrNbTemp();
 			// Restauration du registre
 			compiler.addInstruction(new POP(reg));
+			compiler.decrNbTemp();
 		}
 	}
 }
