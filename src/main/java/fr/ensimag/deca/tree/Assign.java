@@ -65,19 +65,22 @@ public class Assign extends AbstractBinaryExpr {
             EvalExpr.mnemo(compiler, this, this.getLeftOperand().dval(compiler), Register.getR(compiler.getCurrentRegister()));
         } else {
             // Il faut gérer les registres
+            DVal dVal = null;
             if (compiler.getCurrentRegister() < compiler.getCompilerOptions().getRMAX()) {
-				compiler.incrCurrentRegister();
-				EvalExpr.mnemo(compiler, this, this.getLeftOperand().dval(compiler), Register.getR(compiler.getCurrentRegister()-1));
+                compiler.incrCurrentRegister();
+                dVal = this.getLeftOperand().dval(compiler);
+				EvalExpr.mnemo(compiler, this, dVal, Register.getR(compiler.getCurrentRegister()-1));
 				compiler.decrCurrentRegister();
 			} else {
                 // Plus assez de registres libres
                 compiler.incrNbTemp();
                 compiler.addInstruction(new PUSH(Register.getR(compiler.getCurrentRegister()))); // sauvegarde
-                DVal dVal = this.getLeftOperand().dval(compiler);
+                dVal = this.getLeftOperand().dval(compiler);
                 compiler.addInstruction(new POP(Register.R0)); // restauration, On peut utiliser R0 car aucune méthode ne peut être appelée ensuite
                 compiler.decrNbTemp();                         // Celà nous empêchait de faire un LOAD au lieu de PUSH/POP
-				EvalExpr.mnemo(compiler, this, dVal, Register.R0);
+                EvalExpr.mnemo(compiler, this, dVal, Register.R0);
             }
+            compiler.addInstruction(new LOAD(dVal, Register.getR(compiler.getCurrentRegister())));
         }
     }
 
