@@ -241,7 +241,7 @@ public class ClassCodeGen {
                         compiler.addInstruction(new ERROR());
                     }
 
-                    compiler.addLabel(new Label(method.getName().getMethodDefinition().getLabel().toString().replaceFirst("code", "fin")));
+                    compiler.addLabel(compiler.getLabelReturn());
                     // POPS
                     for (int i = compiler.getMaxRegister(); i >= compiler.getCurrentRegister(); i--) {
                         compiler.addInstruction(new POP(Register.getR(i)));;

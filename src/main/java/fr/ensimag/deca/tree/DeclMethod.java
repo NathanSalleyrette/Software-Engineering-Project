@@ -172,10 +172,7 @@ public class DeclMethod extends AbstractDeclMethod  {
 				throw new UnsupportedOperationException("AbstractDeclParam should be a DeclParam");
 			}
 		}
+		compiler.setLabelReturn(new Label(this.getName().getMethodDefinition().getLabel().toString().replaceFirst("code", "fin")));
 		body.codeGenBody(compiler);
-		if (compiler.hasReturn()) {
-			compiler.addInstruction(new BRA(new Label(this.getName().getMethodDefinition().getLabel().toString().replaceFirst("code", "fin"))));
-			compiler.setReturn(false);
-		}
 	}
 }

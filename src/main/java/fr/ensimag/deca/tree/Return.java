@@ -41,7 +41,7 @@ public class Return extends AbstractInst {
             valeurRetour.codeGenInst(compiler);
         }
         compiler.addInstruction(new LOAD(Register.getR(compiler.getCurrentRegister()), Register.R0));
-        compiler.setReturn(true);
+        compiler.addInstruction(new BRA(compiler.getLabelReturn()));
     }
 
     @Override
