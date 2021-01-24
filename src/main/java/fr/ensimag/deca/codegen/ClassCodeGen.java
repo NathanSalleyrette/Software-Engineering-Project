@@ -292,12 +292,7 @@ public class ClassCodeGen {
     public static void equalsCodeGen(DecacCompiler compiler) {
         compiler.addInstruction(new LOAD(new RegisterOffset(-2, Register.LB), Register.R1));
         compiler.addInstruction(new CMP(new RegisterOffset(-3, Register.LB), Register.R1));
-        compiler.addInstruction(new BEQ(new Label("Object.equals.true")));
-        compiler.addInstruction(new LOAD(0, Register.R0));
-        compiler.addInstruction(new BRA(new Label("fin.Object.equals")));
-        compiler.addLabel(new Label("Object.equals.true"));
-        compiler.addInstruction(new LOAD(1, Register.R0));
-        compiler.addLabel(new Label("fin.Object.equals"));
+        compiler.addInstruction(new SEQ(Register.R0));
         compiler.addInstruction(new RTS());
     }
 }
