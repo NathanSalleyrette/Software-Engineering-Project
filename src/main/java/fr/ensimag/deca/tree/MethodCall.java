@@ -82,8 +82,6 @@ public class MethodCall extends AbstractExpr{
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
 			throws ContextualError {
 		Type objType = this.obj.verifyExpr(compiler, localEnv, currentClass);
-		if (objType == null) throw new ContextualError("(3.71) Le membre gauche n'a pas de type",
-				this.getLocation());
 		if (!objType.isClass()) throw new ContextualError("(3.71) Le membre gauche n'est pas de type 'class'",
 				this.getLocation());
 		ClassDefinition objDef = (ClassDefinition) compiler.getEnvType().get(objType.getName());
