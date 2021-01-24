@@ -4,22 +4,14 @@
 // Resultats :
 //		Ok
 
-class B{
-	int getx() { return 1;}
+class U {
+	float p;
+	void u(){
+		if (0 > p) {
+		}
+	}
 }
-
-class A extends B{
-	int getx() { return 1;}
-}
-
-
-
-
 {
-A a = new A();
-B x = (B)(a);
-
-println(x.getx());
-
-
+    U u = new U();
+   	u.u(); 
 }
