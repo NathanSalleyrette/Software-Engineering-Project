@@ -624,6 +624,9 @@ class _Pi{
     }
 }
 class Math {
+    void _Error()
+        asm("WNL
+                ERROR");
     float sin(float f) {
         float angle;
         float pi;
@@ -709,6 +712,8 @@ class Math {
         float Y;
         float epsilon;
         int oppose;
+        float k;
+        float a;
         float petit_tan;
         float pre_resultat;
         float resultat;
@@ -728,10 +733,17 @@ class Math {
             }
         }
         if(angle > pi){
-            while(angle > pi) {
-                angle = _fma(angle,-2,pi);
+            a=angle;
+            while(a > pi) {
+                k = pi * 2.0;
+                while(a > k * 2.0){
+                    k = k * 2.0;
+                }
+                a = a - k;     
             }
         }
+
+        angle=a;
         /* angle est désormais dans [-pi, pi] */
         if(-(pi / 2) < angle && angle < 0.0){
             angle = -angle;
@@ -791,7 +803,8 @@ class Math {
         p2i = 1.0;
         curr=liste.getA0();
         if((nombre > 0 && nombre > 1) || (nombre < 0 && nombre < -1)){
-            println("Erreur de domaine (le nombre doit appartenir à [-1, 1]");//TODO erreur ?
+            println("Erreur de domaine (le nombre doit appartenir à [-1, 1])");
+            this._Error();
         }
         if(nombre == 0.0){
             return 0.0;
