@@ -1,0 +1,15 @@
+// Description :
+//    acces à un field protegé, le meme field public existe dans une super class
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 14 :(3.65) L’attribut est protégé
+
+class A{
+protected int x;
+}
+
+class B {
+void met(A a){
+a.x;}
+}

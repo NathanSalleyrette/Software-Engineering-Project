@@ -6,10 +6,12 @@
 //    	Ligne 13 :(3.65) L’attribut est protégé
 
 
-
-class B{
+class A{
 	protected int x;
-	void met(B a){
+}
+class B extends A{
+
+	void met(A a){
 		a.x;
 	}
 }

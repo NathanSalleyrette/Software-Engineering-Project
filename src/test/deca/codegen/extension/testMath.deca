@@ -2,6 +2,6 @@
 {
     float f2;
     Math m = new Math();
-    f2 = m.sin(-67865.0);
+    f2 = m.cos(-67865.0);
     println(f2);
 }

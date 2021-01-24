@@ -1,0 +1,27 @@
+//	Description:
+//		Comparaison de valeur de reference de sin
+//
+//	Resultats:
+//		Ok
+
+#include "Math.decah"
+
+{
+ 	
+	Math m = new Math();
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	m.sin(0);
+   	//m.sin(0);
+
+}

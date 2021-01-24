@@ -22,23 +22,27 @@ class C extends B {
 	int gety(){
 	return y;
 	}
-	int getA(A a){
-		return a.y;
+	int getA(C c){
+		return c.y;
 	}
-	int getB(B a){
-		return a.z;
+	int getB(C c){
+		return c.z;
 	}
-	int getC(C a){
-		return a.x;
+	int getC(C c){
+		return c.x;
 	}
 	
 }
 
 {
 A a = new B();
+B b = new B();
 C c = new C();
-a.x;
+//a.x;
 c.met();
 c.gety();
+c.getA(c);
+c.getB(c);
+c.getC(c);
 
 }

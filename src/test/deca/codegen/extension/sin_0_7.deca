@@ -1,0 +1,41 @@
+//	Description:
+//		Comparaison de valeur de reference de sin
+//
+//	Resultats:
+//		Ok
+
+#include "Math.decah"
+
+class U {
+	float p = 0;
+	Math m = new Math();
+	void u(float f, float r){
+		float approch =  m.sin(f);
+		if ((approch - r)*(approch - r) > p*p) {
+		this.p = approch - r;
+		}
+		print(f, ": ");
+		printx(approch - r);
+		if (approch==r){print(" ok");}
+		println();
+
+	}
+}
+{
+ 	
+    U u = new U();
+    float pi = new _Pi().pi;
+   	u.u(0, 0);
+   	u.u(0.1, 0.09983341664682815);
+   	u.u(0.2, 0.198669330795061225);
+   	u.u(0.3, 0.29552020666133955);
+   	u.u(0.4, 0.3894183423086505); 
+   	u.u(0.5, 0.479425538604203); 
+   	u.u(0.6, 0.5646424733950354); 
+   	u.u(0.7, 0.644217687237691); 
+   	u.u(0.8, 0.7173560908995228);  
+   	u.u(0.9, 0.7833269096274834); 
+   	u.u(1.0, 0.8414709848078965); 
+   	println("precision max = ", u.p);
+
+}

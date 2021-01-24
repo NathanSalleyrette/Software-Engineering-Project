@@ -1,6 +1,6 @@
-	TSTO #38
+	TSTO #39
 	BOV pile_pleine
-	ADDSP #34
+	ADDSP #35
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -77,19 +77,19 @@
 	LOAD code.Math._powerOfTwoShift, R0
 	STORE R0, 31(GB)
 ; Main program
-; new ligne 14
+; new ligne 4
 	NEW #1, R2
 	BOV tas_plein
 	LEA 22(GB), R0
 	STORE R0, 0(R2)
-	STORE R2, 34(GB)
+	STORE R2, 35(GB)
 ; Beginning of main instructions:
-	WSTR "cos(0.0) = "
-; Appel de méthode ligne 15
+; Appel de méthode ligne 5
 	ADDSP #2
-	LOAD 34(GB), R2
+	LOAD 35(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x0.0p0, R2
+	LOAD #0x1.0919p16, R2
+	OPP #0x1.0919p16, R2
 	STORE R2, -1(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -98,6 +98,9 @@
 	BSR 4(R2)
 	SUBSP #2
 	LOAD R0, R2
+	STORE R2, 34(GB)
+	BOV debordement_flottant
+	LOAD 34(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL

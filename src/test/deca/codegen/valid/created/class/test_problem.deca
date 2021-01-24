@@ -5,10 +5,9 @@
 //		Ok
 
 class U {
-	float p;
-	void u(){
-		if (0 > p) {
-		}
+	int u(){
+		return 0;
+		println("aaah");
 	}
 }
 {
