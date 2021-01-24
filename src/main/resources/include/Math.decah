@@ -624,13 +624,21 @@ class _Pi{
     }
 }
 class Math {
+  _ListeRemplie _liste;
+  void _initListeMath(){
+      if(this._liste == null){
+       this._liste = new _ListeRemplie();
+       this._liste.initListe();
+      }
+  }
+
+
     void _Error()
         asm("WNL
                 ERROR");
     float sin(float f) {
         float angle;
         float pi;
-        _ListeRemplie liste;
         _Pi piClass;
         _Epsilon epsilonClass;
         _Liste curr;
@@ -644,14 +652,13 @@ class Math {
         float resultat;
         piClass=new _Pi();
         epsilonClass=new _Epsilon();
-        liste= new _ListeRemplie();
-        liste.initListe();
-        liste.sinCosRemplissage();
+        this._initListeMath();
+        _liste.sinCosRemplissage();
         angle = f; /* l'angle en argument */
         pi = piClass.getPi();
         epsilon = epsilonClass.getEpsilon();
         oppose = 1;
-        curr = liste.getA0();
+        curr = _liste.getA0();
         if(angle < -pi){
             while(angle < -pi){
                 angle = _fma(angle,2,pi);
@@ -703,7 +710,6 @@ class Math {
     float cos(float f) {
         float angle;
         float pi;
-        _ListeRemplie liste;
         _Pi piClass;
         _Epsilon epsilonClass;
         _Liste curr;
@@ -717,14 +723,13 @@ class Math {
         float resultat;
         piClass=new _Pi();
         epsilonClass=new _Epsilon();
-        liste= new _ListeRemplie();
-        liste.initListe();
-        liste.sinCosRemplissage();
+        this._initListeMath();
+        _liste.sinCosRemplissage();
         angle = f; /* l'angle en argument */
         pi = piClass.getPi();
         epsilon = epsilonClass.getEpsilon();
         oppose = 1;
-        curr = liste.getA0();
+        curr = _liste.getA0();
         if(angle < -pi){
             while(angle < -pi){
                 angle = _fma(angle,2,pi);
@@ -781,18 +786,16 @@ class Math {
         int i;
         int r;
         float ox;
-        _ListeRemplie liste;
         _Liste curr;
         nombre = f;
-        liste= new _ListeRemplie();
-        liste.initListe();
-        liste.arcSinRemplissage();
+        this._initListeMath();
+        _liste.arcSinRemplissage();
         x = 1.0;
         y = 0.0;
         z = 0.0;
         w = nombre;
         p2i = 1.0;
-        curr=liste.getA0();
+        curr=_liste.getA0();
         if((nombre > 0 && nombre > 1) || (nombre < 0 && nombre < -1)){
             println("Erreur de domaine (le nombre doit appartenir à [-1, 1])");
             this._Error();
@@ -860,20 +863,18 @@ class Math {
         float grosse_somme;
         _Pi piClass;
         _Epsilon epsilonClass;
-        _ListeRemplie liste;
         _Liste a0;
         _Liste curr;
         piClass=new _Pi();
         epsilonClass=new _Epsilon();
-        liste= new _ListeRemplie();
-        liste.initListe();
-        liste.arcTanRemplissage();
+        this._initListeMath();
+        _liste.arcTanRemplissage();
         nombre = f;
         X = 1.0;
         pi = piClass.getPi();
         epsilon = epsilonClass.getEpsilon();
         //epsilon = 1.0e-42;
-        a0=liste.getA0();
+        a0=_liste.getA0();
         curr =new _Liste();
         curr.init(1.0,a0,1.0);
 
