@@ -913,7 +913,6 @@ class Math {
             Y = -res;
             while(((Y >= 0.0 && Y >= epsilon) || (Y <= 0.0 && Y <= epsilon)) && (curr.suivant != null)){
                 curr = curr.suivant;
-                println(curr.contenu);
                 if(Y > 0.0){
                     signe2 = -1;
                 }
