@@ -85,7 +85,6 @@ Assign_Fin.1:
 	CMP #null, R3
 	BEQ dereferencement.null
 	STORE R2, 3(R3)
-	BOV debordement_flottant
 	LOAD 3(R3), R2
 	LOAD 5(GB), R2
 	CMP #null, R2
@@ -148,10 +147,6 @@ pile_pleine:
 	ERROR
 dereferencement.null:
 	WSTR "Erreur : dereferencement.null"
-	WNL
-	ERROR
-debordement_flottant:
-	WSTR "Erreur : debordement_flottant"
 	WNL
 	ERROR
 tas_plein:

@@ -1,0 +1,22 @@
+// Description :
+//		Programme pour tester les acces aux fields
+//
+// Resultats :
+//		Ok
+
+
+class A{
+int p;
+void a(){
+println( this.p - 0);
+println(0 - this.p);
+println( p - 0);
+println( 0 - p);
+}
+}
+
+{
+A a = new A();
+a.p;
+a.a();
+}

@@ -8,9 +8,10 @@ class U {
 	int u(){
 		return 0;
 		println("aaah");
+
 	}
 }
 {
     U u = new U();
-   	u.u(); 
+   	println(u.u()); 
 }

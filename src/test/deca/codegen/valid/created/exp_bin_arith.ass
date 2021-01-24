@@ -31,7 +31,6 @@
 	SUB R3, R2
 	FLOAT R2, R2
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
@@ -58,7 +57,6 @@
 	SUB #5, R2
 	FLOAT R2, R2
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
@@ -85,7 +83,6 @@
 	ADD #5, R2
 	FLOAT R2, R2
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
@@ -116,7 +113,6 @@
 	SUB #5, R2
 	FLOAT R2, R2
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
@@ -135,7 +131,6 @@
 	ADD #3, R2
 	FLOAT R2, R2
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
@@ -157,7 +152,6 @@
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 4(GB), R2
 	LOAD R2, R1
 	WFLOAT
@@ -178,7 +172,6 @@
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 4(GB), R2
 	LOAD R2, R1
 	WFLOAT
@@ -202,7 +195,6 @@
 	ADD R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 4(GB), R2
 	LOAD R2, R1
 	WFLOAT
@@ -222,7 +214,6 @@
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 4(GB), R2
 	LOAD R2, R1
 	WFLOAT
@@ -237,7 +228,6 @@
 	ADD R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 4(GB), R2
 	LOAD R2, R1
 	WFLOAT

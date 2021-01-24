@@ -18,13 +18,11 @@
 	LOAD #1, R2
 	FLOAT #1, R2
 	STORE R2, 6(GB)
-	BOV debordement_flottant
 	LOAD #1, R2
 	STORE R2, 5(GB)
 	LOAD #1, R2
 	FLOAT #1, R2
 	STORE R2, 6(GB)
-	BOV debordement_flottant
 	LOAD #1, R2
 	BRA Assign_Fin.0
 Assign_False.0:
@@ -51,10 +49,6 @@ code.Object.equals:
 ; Erreurs
 pile_pleine:
 	WSTR "Erreur : pile_pleine"
-	WNL
-	ERROR
-debordement_flottant:
-	WSTR "Erreur : debordement_flottant"
 	WNL
 	ERROR
 tas_plein:

@@ -1,6 +1,6 @@
-	TSTO #39
+	TSTO #43
 	BOV pile_pleine
-	ADDSP #35
+	ADDSP #38
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -78,31 +78,1127 @@
 	STORE R0, 30(GB)
 	LOAD code.Math._fma, R0
 	STORE R0, 31(GB)
+; Construction de la table des méthodes de U
+	LEA 1(GB), R0
+	STORE R0, 35(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 36(GB)
+	LOAD code.U.u, R0
+	STORE R0, 37(GB)
 ; Main program
-; new ligne 14
-	NEW #2, R2
+; new ligne 26
+	NEW #3, R2
 	BOV tas_plein
-	LEA 22(GB), R0
+	LEA 35(GB), R0
 	STORE R0, 0(R2)
 	PUSH R2
-	BSR init.Math
+	BSR init.U
 	POP R2
-	STORE R2, 35(GB)
+	STORE R2, 38(GB)
 ; Beginning of main instructions:
-	WSTR "cos(0.0) = "
-; Appel de méthode ligne 15
-	ADDSP #2
-	LOAD 35(GB), R2
+; Appel de méthode ligne 27
+	ADDSP #3
+	LOAD 38(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x0.0p0, R2
+	LOAD #0, R2
+	FLOAT #0, R2
 	STORE R2, -1(SP)
+	LOAD #0, R2
+	FLOAT #0, R2
+	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 5(R2)
-	SUBSP #2
+	BSR 2(R2)
+	SUBSP #3
 	LOAD R0, R2
+; Appel de méthode ligne 28
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.99999ap-4, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.98eaecp-4, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 29
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.99999ap-3, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.96dff2p-3, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 30
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.333334p-2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.2e9cdap-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 31
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.99999ap-2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.8ec3aep-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 32
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.0p-1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.eaee88p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 33
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.333334p-1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.2118d2p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 34
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.666666p-1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.49d6e6p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 35
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.99999ap-1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.6f494cp-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 36
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.ccccccp-1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.91103ap-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 37
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.0p0, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.aed548p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 38
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.19999ap0, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.c84c54p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 39
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.333334p0, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.dd343ap-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 40
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.4cccccp0, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.ed578p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 41
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.666666p0, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.f88cdep-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 42
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.8p0, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.feb7aap-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 43
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.99999ap0, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.ffc81cp-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 44
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.b33334p0, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.fbbb7ep-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 45
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.ccccccp0, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.f29c28p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 46
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.e66666p0, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.e48172p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 47
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.0p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.d18f6ep-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 48
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.0cccccp1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.b9f694p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 49
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.19999ap1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.9df33ep-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 50
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.266666p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.7dcd12p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 51
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.333334p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.59d65p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 52
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.4p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.326afp-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 53
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.4cccccp1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.07efccp-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 54
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.59999ap1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.b5a312p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 55
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.666666p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.570722p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 56
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.733334p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.e9fb8ep-3, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 57
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.8p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.210386p-3, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 58
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.8cccccp1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.54a0f8p-5, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 59
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.99999ap1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.de3374p-5, R2
+	OPP #0x1.de3374p-5, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 60
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.a66666p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.43102cp-3, R2
+	OPP #0x1.43102cp-3, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 61
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.b33334p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.05ac92p-2, R2
+	OPP #0x1.05ac92p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 62
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.cp1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.6733b8p-2, R2
+	OPP #0x1.6733b8p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 63
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.ccccccp1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.c52414p-2, R2
+	OPP #0x1.c52414p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 64
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.d9999ap1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.0f46aep-1, R2
+	OPP #0x1.0f46aep-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 65
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.e66666p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.39457p-1, R2
+	OPP #0x1.39457p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 66
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.f33334p1, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.6022e2p-1, R2
+	OPP #0x1.6022e2p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 67
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.0p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.837b9ep-1, R2
+	OPP #0x1.837b9ep-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 68
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.066666p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.a2f538p-1, R2
+	OPP #0x1.a2f538p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 69
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.0cccccp2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.be3f2ep-1, R2
+	OPP #0x1.be3f2ep-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 70
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.133334p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.d513b4p-1, R2
+	OPP #0x1.d513b4p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 71
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.19999ap2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.e73864p-1, R2
+	OPP #0x1.e73864p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 72
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.2p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.f47ed4p-1, R2
+	OPP #0x1.f47ed4p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 73
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.266666p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.fcc512p-1, R2
+	OPP #0x1.fcc512p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 74
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.2cccccp2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.fff5fp-1, R2
+	OPP #0x1.fff5fp-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 75
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.333334p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.fe094ap-1, R2
+	OPP #0x1.fe094ap-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 76
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.39999ap2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.f70408p-1, R2
+	OPP #0x1.f70408p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 77
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.4p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.eaf82p-1, R2
+	OPP #0x1.eaf82p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 78
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.466666p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.da0462p-1, R2
+	OPP #0x1.da0462p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 79
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.4cccccp2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.c4542cp-1, R2
+	OPP #0x1.c4542cp-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 80
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.533334p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.aa1ef6p-1, R2
+	OPP #0x1.aa1ef6p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 81
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.59999ap2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.8ba7cap-1, R2
+	OPP #0x1.8ba7cap-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 82
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.6p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.693c94p-1, R2
+	OPP #0x1.693c94p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 83
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.666666p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.433562p-1, R2
+	OPP #0x1.433562p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 84
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.6cccccp2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.19f374p-1, R2
+	OPP #0x1.19f374p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 85
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.733334p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.dbc0acp-2, R2
+	OPP #0x1.dbc0acp-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 86
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.79999ap2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.7ed986p-2, R2
+	OPP #0x1.7ed986p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 87
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.8p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.1e1f18p-2, R2
+	OPP #0x1.1e1f18p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 88
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.866666p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.75119ep-3, R2
+	OPP #0x1.75119ep-3, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 89
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.8cccccp2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.54558ep-4, R2
+	OPP #0x1.54558ep-4, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 90
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.933334p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.137a9cp-6, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 91
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.99999ap2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.dd62b2p-4, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 92
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.ap2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.b890d4p-3, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 93
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.a66666p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.3f04b2p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 94
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.acccccp2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.9e90fap-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 95
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.b33334p2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.f9f8dap-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 96
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.b9999ap2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.282942p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 97
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.cp2, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.50608cp-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+	WSTR "precision max = "
+	LOAD 38(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
@@ -137,6 +1233,7 @@ code._Liste.init:
 	CMP #null, R3
 	BEQ dereferencement.null
 	STORE R2, 1(R3)
+	BOV debordement_flottant
 	LOAD 1(R3), R2
 	LOAD -4(LB), R2
 	LOAD -2(LB), R3
@@ -149,6 +1246,7 @@ code._Liste.init:
 	CMP #null, R3
 	BEQ dereferencement.null
 	STORE R2, 3(R3)
+	BOV debordement_flottant
 	LOAD 3(R3), R2
 fin._Liste.init:
 	POP R3
@@ -185,6 +1283,7 @@ code._ULP._trouveExposant:
 	DIV R3, R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	BRA E_Cond.1
 E_Debut.1:
 	LOAD 2(LB), R2
@@ -207,6 +1306,7 @@ E_Debut.1:
 	DIV R3, R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 E_Cond.1:
 	LOAD 1(LB), R2
 	CMP #0x1.0p1, R2
@@ -233,6 +1333,7 @@ E_Sinon.0:
 	DIV R3, R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	BRA E_Cond.2
 E_Debut.2:
 	LOAD 2(LB), R2
@@ -255,6 +1356,7 @@ E_Debut.2:
 	DIV R3, R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 E_Cond.2:
 	LOAD 1(LB), R2
 	CMP #0x1.0p0, R2
@@ -8639,6 +9741,7 @@ code.Math.sin:
 	LOAD R0, R2
 	LOAD -3(LB), R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 ; Appel de méthode ligne 658
 	ADDSP #1
 	LOAD 3(LB), R2
@@ -8651,6 +9754,7 @@ code.Math.sin:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 2(LB)
+	BOV debordement_flottant
 ; Appel de méthode ligne 659
 	ADDSP #1
 	LOAD 4(LB), R2
@@ -8663,6 +9767,7 @@ code.Math.sin:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 9(LB)
+	BOV debordement_flottant
 	LOAD #1, R2
 	STORE R2, 10(LB)
 ; Appel de méthode ligne 661
@@ -8706,6 +9811,7 @@ E_Debut.5:
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 E_Cond.5:
 	LOAD 1(LB), R2
 	LOAD 2(LB), R3
@@ -8738,6 +9844,7 @@ E_Debut.7:
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 E_Cond.7:
 	LOAD 1(LB), R2
 	CMP 2(LB), R2
@@ -8757,6 +9864,7 @@ E_Fin.6:
 	LOAD 1(LB), R2
 	OPP 1(LB), R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 10(LB)
@@ -8779,6 +9887,7 @@ E_Sinon.8:
 	ADD 2(LB), R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 10(LB)
@@ -8798,6 +9907,7 @@ E_Sinon.9:
 	SUB 1(LB), R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #1, R2
 	STORE R2, 10(LB)
 	BRA E_Fin.10
@@ -8813,10 +9923,13 @@ E_Fin.8:
 	DIV R3, R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #0x1.0p0, R2
 	STORE R2, 7(LB)
+	BOV debordement_flottant
 	LOAD #0x0.0p0, R2
 	STORE R2, 8(LB)
+	BOV debordement_flottant
 	BRA E_Cond.11
 E_Debut.11:
 	BRA E_Cond.12
@@ -8827,6 +9940,9 @@ E_Debut.12:
 	LOAD 2(R2), R2
 	STORE R2, 5(LB)
 E_Cond.12:
+	LOAD 5(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
 	LOAD 1(LB), R2
 	LOAD 5(LB), R3
 	CMP #null, R3
@@ -8836,6 +9952,7 @@ E_Cond.12:
 	BLT E_Debut.12
 	LOAD 7(LB), R2
 	STORE R2, 6(LB)
+	BOV debordement_flottant
 ; Appel de méthode ligne 699
 	ADDSP #4
 	LOAD -2(LB), R2
@@ -8861,6 +9978,7 @@ E_Cond.12:
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 7(LB)
+	BOV debordement_flottant
 ; Appel de méthode ligne 701
 	ADDSP #4
 	LOAD -2(LB), R2
@@ -8882,6 +10000,10 @@ E_Cond.12:
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 8(LB)
+	BOV debordement_flottant
+	LOAD 5(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
 	LOAD 1(LB), R2
 	LOAD 5(LB), R3
 	CMP #null, R3
@@ -8890,6 +10012,7 @@ E_Cond.12:
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 E_Cond.11:
 	LOAD 1(LB), R2
 	CMP 9(LB), R2
@@ -8898,6 +10021,7 @@ E_Cond.11:
 	DIV 7(LB), R2
 	BOV debordement_flottant
 	STORE R2, 11(LB)
+	BOV debordement_flottant
 ; Appel de méthode ligne 705
 	ADDSP #4
 	LOAD -2(LB), R2
@@ -8941,11 +10065,13 @@ E_Cond.11:
 	DIV R3, R2
 	BOV debordement_flottant
 	STORE R2, 12(LB)
+	BOV debordement_flottant
 	LOAD 10(LB), R2
 	FLOAT 10(LB), R2
 	MUL 12(LB), R2
 	BOV debordement_flottant
 	STORE R2, 13(LB)
+	BOV debordement_flottant
 	LOAD 13(LB), R2
 	LOAD R2, R0
 	BRA fin.Math.sin
@@ -9011,6 +10137,7 @@ code.Math.cos:
 	LOAD R0, R2
 	LOAD -3(LB), R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 ; Appel de méthode ligne 729
 	ADDSP #1
 	LOAD 3(LB), R2
@@ -9023,6 +10150,7 @@ code.Math.cos:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 2(LB)
+	BOV debordement_flottant
 ; Appel de méthode ligne 730
 	ADDSP #1
 	LOAD 4(LB), R2
@@ -9035,6 +10163,7 @@ code.Math.cos:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 9(LB)
+	BOV debordement_flottant
 	LOAD #1, R2
 	STORE R2, 10(LB)
 ; Appel de méthode ligne 732
@@ -9078,6 +10207,7 @@ E_Debut.14:
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 E_Cond.14:
 	LOAD 1(LB), R2
 	LOAD 2(LB), R3
@@ -9110,6 +10240,7 @@ E_Debut.16:
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 E_Cond.16:
 	LOAD 1(LB), R2
 	CMP 2(LB), R2
@@ -9129,6 +10260,7 @@ E_Fin.15:
 	LOAD 1(LB), R2
 	OPP 1(LB), R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #1, R2
 	STORE R2, 10(LB)
 	BRA E_Fin.17
@@ -9150,6 +10282,7 @@ E_Sinon.17:
 	ADD 2(LB), R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 10(LB)
@@ -9169,6 +10302,7 @@ E_Sinon.18:
 	SUB 1(LB), R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 10(LB)
@@ -9185,10 +10319,13 @@ E_Fin.17:
 	DIV R3, R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #0x1.0p0, R2
 	STORE R2, 7(LB)
+	BOV debordement_flottant
 	LOAD #0x0.0p0, R2
 	STORE R2, 8(LB)
+	BOV debordement_flottant
 	BRA E_Cond.20
 E_Debut.20:
 	BRA E_Cond.21
@@ -9199,6 +10336,9 @@ E_Debut.21:
 	LOAD 2(R2), R2
 	STORE R2, 5(LB)
 E_Cond.21:
+	LOAD 5(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
 	LOAD 1(LB), R2
 	LOAD 5(LB), R3
 	CMP #null, R3
@@ -9208,6 +10348,7 @@ E_Cond.21:
 	BLT E_Debut.21
 	LOAD 7(LB), R2
 	STORE R2, 6(LB)
+	BOV debordement_flottant
 ; Appel de méthode ligne 767
 	ADDSP #4
 	LOAD -2(LB), R2
@@ -9233,6 +10374,7 @@ E_Cond.21:
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 7(LB)
+	BOV debordement_flottant
 ; Appel de méthode ligne 768
 	ADDSP #4
 	LOAD -2(LB), R2
@@ -9254,6 +10396,10 @@ E_Cond.21:
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 8(LB)
+	BOV debordement_flottant
+	LOAD 5(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
 	LOAD 1(LB), R2
 	LOAD 5(LB), R3
 	CMP #null, R3
@@ -9262,6 +10408,7 @@ E_Cond.21:
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 E_Cond.20:
 	LOAD 1(LB), R2
 	CMP 9(LB), R2
@@ -9270,6 +10417,7 @@ E_Cond.20:
 	DIV 7(LB), R2
 	BOV debordement_flottant
 	STORE R2, 11(LB)
+	BOV debordement_flottant
 ; Appel de méthode ligne 772
 	ADDSP #4
 	LOAD -2(LB), R2
@@ -9310,11 +10458,13 @@ E_Cond.20:
 	DIV R3, R2
 	BOV debordement_flottant
 	STORE R2, 12(LB)
+	BOV debordement_flottant
 	LOAD 10(LB), R2
 	FLOAT 10(LB), R2
 	MUL 12(LB), R2
 	BOV debordement_flottant
 	STORE R2, 13(LB)
+	BOV debordement_flottant
 	LOAD 13(LB), R2
 	LOAD R2, R0
 	BRA fin.Math.cos
@@ -9328,15 +10478,16 @@ fin.Math.cos:
 	RTS
 ; ---------- Code de la methode asin dans la classe Math ligne 776
 code.Math.asin:
-	TSTO #22
+	TSTO #21
 	BOV pile_pleine
-	ADDSP #14
+	ADDSP #13
 ; Sauvegarde des registres
 	PUSH R2
 	PUSH R3
 	LOAD -3(LB), R2
 	STORE R2, 1(LB)
-; Appel de méthode ligne 792
+	BOV debordement_flottant
+; Appel de méthode ligne 791
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9347,7 +10498,7 @@ code.Math.asin:
 	BSR 2(R2)
 	SUBSP #1
 	LOAD R0, R2
-; Appel de méthode ligne 793
+; Appel de méthode ligne 792
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -9363,15 +10514,20 @@ code.Math.asin:
 	LOAD R0, R2
 	LOAD #0x1.0p0, R2
 	STORE R2, 2(LB)
+	BOV debordement_flottant
 	LOAD #0x0.0p0, R2
 	STORE R2, 3(LB)
+	BOV debordement_flottant
 	LOAD #0x0.0p0, R2
 	STORE R2, 4(LB)
-	LOAD #0x1.0p0, R2
+	BOV debordement_flottant
+	LOAD 1(LB), R2
 	STORE R2, 5(LB)
+	BOV debordement_flottant
 	LOAD #0x1.0p0, R2
 	STORE R2, 6(LB)
-; Appel de méthode ligne 799
+	BOV debordement_flottant
+; Appel de méthode ligne 798
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -9385,7 +10541,7 @@ code.Math.asin:
 	BSR 6(R2)
 	SUBSP #1
 	LOAD R0, R2
-	STORE R2, 14(LB)
+	STORE R2, 13(LB)
 	LOAD 1(LB), R2
 	LOAD #0, R3
 	FLOAT #0, R3
@@ -9411,7 +10567,7 @@ E_Fin.22_Fin.23_Fin.23:
 E_Fin.22_Fin.23:
 	WSTR "Erreur de domaine (le nombre doit appartenir à [-1, 1])"
 	WNL
-; Appel de méthode ligne 802
+; Appel de méthode ligne 801
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9428,79 +10584,63 @@ E_Fin.22:
 	BNE E_Fin.25
 	LOAD #0x0.0p0, R2
 	LOAD R2, R0
-	BRA fin.Math.asin
 E_Fin.25:
-	LOAD 1(LB), R2
-	CMP #0x0.0p0, R2
-	BLE E_Fin.26
-	LOAD #1, R2
-	STORE R2, 10(LB)
-	LOAD 1(LB), R2
-	STORE R2, 5(LB)
-E_Fin.26:
-	LOAD 1(LB), R2
-	CMP #0x0.0p0, R2
-	BGE E_Fin.27
-	LOAD #1, R2
-	OPP #1, R2
-	STORE R2, 10(LB)
-	LOAD 1(LB), R2
-	OPP 1(LB), R2
-	STORE R2, 5(LB)
-E_Fin.27:
 	LOAD #0, R2
-	STORE R2, 11(LB)
-	BRA E_Cond.28
-E_Debut.28:
-	LOAD 11(LB), R2
+	STORE R2, 10(LB)
+	BRA E_Cond.26
+E_Debut.26:
+	LOAD 10(LB), R2
 	CMP #16, R2
-	BGE E_Sinon.29
-	LOAD 14(LB), R2
+	BGE E_Sinon.27
+	LOAD 13(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 1(R2), R2
 	STORE R2, 7(LB)
-	BRA E_Fin.29
-E_Sinon.29:
+	BOV debordement_flottant
+	BRA E_Fin.27
+E_Sinon.27:
 	LOAD #1, R2
 	FLOAT #1, R2
 	DIV 6(LB), R2
 	BOV debordement_flottant
 	STORE R2, 7(LB)
-E_Fin.29:
+	BOV debordement_flottant
+E_Fin.27:
 	LOAD 2(LB), R2
 	LOAD #0, R3
 	FLOAT #0, R3
 	CMP R3, R2
-	BGE E_Sinon.30
+	BGE E_Sinon.28
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 8(LB)
-	BRA E_Fin.30
-E_Sinon.30:
+	BRA E_Fin.28
+E_Sinon.28:
 	LOAD #1, R2
 	STORE R2, 8(LB)
-E_Fin.30:
+E_Fin.28:
 	LOAD 3(LB), R2
 	CMP 5(LB), R2
-	BGT E_Sinon.31
+	BGT E_Sinon.29
 	LOAD 8(LB), R2
 	STORE R2, 9(LB)
-	BRA E_Fin.31
-E_Sinon.31:
+	BRA E_Fin.29
+E_Sinon.29:
 	LOAD 8(LB), R2
 	OPP 8(LB), R2
 	STORE R2, 9(LB)
-E_Fin.31:
+E_Fin.29:
 	LOAD 9(LB), R2
 	CMP #0, R2
-	BLE E_Sinon.32
+	BLE E_Sinon.30
 	LOAD #1, R2
-	STORE R2, 12(LB)
-	BRA E_Cond.33
-E_Debut.33:
+	STORE R2, 11(LB)
+	BRA E_Cond.31
+E_Debut.31:
 	LOAD 2(LB), R2
-	STORE R2, 13(LB)
+	STORE R2, 12(LB)
+	BOV debordement_flottant
 	LOAD 2(LB), R2
 	LOAD 3(LB), R3
 	DIV 6(LB), R3
@@ -9508,32 +10648,36 @@ E_Debut.33:
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 2(LB)
+	BOV debordement_flottant
 	LOAD 3(LB), R2
-	LOAD 13(LB), R3
+	LOAD 12(LB), R3
 	DIV 6(LB), R3
 	BOV debordement_flottant
 	ADD R3, R2
 	BOV debordement_flottant
 	STORE R2, 3(LB)
+	BOV debordement_flottant
 	LOAD 4(LB), R2
 	ADD 7(LB), R2
 	BOV debordement_flottant
 	STORE R2, 4(LB)
-	LOAD 12(LB), R2
+	BOV debordement_flottant
+	LOAD 11(LB), R2
 	ADD #1, R2
-	STORE R2, 12(LB)
-E_Cond.33:
-	LOAD 12(LB), R2
+	STORE R2, 11(LB)
+E_Cond.31:
+	LOAD 11(LB), R2
 	CMP #3, R2
-	BLT E_Debut.33
-	BRA E_Fin.32
-E_Sinon.32:
+	BLT E_Debut.31
+	BRA E_Fin.30
+E_Sinon.30:
 	LOAD #1, R2
-	STORE R2, 12(LB)
-	BRA E_Cond.34
-E_Debut.34:
+	STORE R2, 11(LB)
+	BRA E_Cond.32
+E_Debut.32:
 	LOAD 2(LB), R2
-	STORE R2, 13(LB)
+	STORE R2, 12(LB)
+	BOV debordement_flottant
 	LOAD 2(LB), R2
 	LOAD 3(LB), R3
 	DIV 6(LB), R3
@@ -9541,26 +10685,29 @@ E_Debut.34:
 	ADD R3, R2
 	BOV debordement_flottant
 	STORE R2, 2(LB)
+	BOV debordement_flottant
 	LOAD 3(LB), R2
-	LOAD 13(LB), R3
+	LOAD 12(LB), R3
 	DIV 6(LB), R3
 	BOV debordement_flottant
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 3(LB)
+	BOV debordement_flottant
 	LOAD 4(LB), R2
 	SUB 7(LB), R2
 	BOV debordement_flottant
 	STORE R2, 4(LB)
-	LOAD 12(LB), R2
+	BOV debordement_flottant
+	LOAD 11(LB), R2
 	ADD #1, R2
-	STORE R2, 12(LB)
-E_Cond.34:
-	LOAD 12(LB), R2
+	STORE R2, 11(LB)
+E_Cond.32:
+	LOAD 11(LB), R2
 	CMP #3, R2
-	BLT E_Debut.34
-E_Fin.32:
-; Appel de méthode ligne 855
+	BLT E_Debut.32
+E_Fin.30:
+; Appel de méthode ligne 846
 	ADDSP #4
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9568,7 +10715,7 @@ E_Fin.32:
 	STORE R2, -1(SP)
 	LOAD 5(LB), R2
 	STORE R2, -2(SP)
-	LOAD 14(LB), R2
+	LOAD 13(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 3(R2), R2
@@ -9581,27 +10728,26 @@ E_Fin.32:
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 5(LB)
+	BOV debordement_flottant
 	LOAD #2, R2
 	FLOAT #2, R2
 	MUL 6(LB), R2
 	BOV debordement_flottant
 	STORE R2, 6(LB)
-	LOAD 14(LB), R2
+	BOV debordement_flottant
+	LOAD 13(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 2(R2), R2
-	STORE R2, 14(LB)
-	LOAD 11(LB), R2
-	ADD #1, R2
-	STORE R2, 11(LB)
-E_Cond.28:
-	LOAD 11(LB), R2
-	CMP #74, R2
-	BLT E_Debut.28
+	STORE R2, 13(LB)
 	LOAD 10(LB), R2
-	FLOAT 10(LB), R2
-	MUL 4(LB), R2
-	BOV debordement_flottant
+	ADD #1, R2
+	STORE R2, 10(LB)
+E_Cond.26:
+	LOAD 10(LB), R2
+	CMP #74, R2
+	BLT E_Debut.26
+	LOAD 4(LB), R2
 	LOAD R2, R0
 	BRA fin.Math.asin
 	WSTR "Erreur : sortie de la méthode sans return"
@@ -9611,7 +10757,7 @@ fin.Math.asin:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode atan dans la classe Math ligne 862
+; ---------- Code de la methode atan dans la classe Math ligne 853
 code.Math.atan:
 	TSTO #23
 	BOV pile_pleine
@@ -9620,7 +10766,7 @@ code.Math.atan:
 	PUSH R2
 	PUSH R3
 	PUSH R4
-; new ligne 877
+; new ligne 868
 	NEW #2, R2
 	BOV tas_plein
 	LEA 19(GB), R0
@@ -9629,7 +10775,7 @@ code.Math.atan:
 	BSR init._Pi
 	POP R2
 	STORE R2, 11(LB)
-; new ligne 878
+; new ligne 869
 	NEW #2, R2
 	BOV tas_plein
 	LEA 16(GB), R0
@@ -9638,7 +10784,7 @@ code.Math.atan:
 	BSR init._Epsilon
 	POP R2
 	STORE R2, 12(LB)
-; Appel de méthode ligne 879
+; Appel de méthode ligne 870
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9649,7 +10795,7 @@ code.Math.atan:
 	BSR 2(R2)
 	SUBSP #1
 	LOAD R0, R2
-; Appel de méthode ligne 880
+; Appel de méthode ligne 871
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -9665,9 +10811,11 @@ code.Math.atan:
 	LOAD R0, R2
 	LOAD -3(LB), R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #0x1.0p0, R2
 	STORE R2, 5(LB)
-; Appel de méthode ligne 883
+	BOV debordement_flottant
+; Appel de méthode ligne 874
 	ADDSP #1
 	LOAD 11(LB), R2
 	STORE R2, 0(SP)
@@ -9679,7 +10827,8 @@ code.Math.atan:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 9(LB)
-; Appel de méthode ligne 884
+	BOV debordement_flottant
+; Appel de méthode ligne 875
 	ADDSP #1
 	LOAD 12(LB), R2
 	STORE R2, 0(SP)
@@ -9691,7 +10840,8 @@ code.Math.atan:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 8(LB)
-; Appel de méthode ligne 886
+	BOV debordement_flottant
+; Appel de méthode ligne 877
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -9706,7 +10856,7 @@ code.Math.atan:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 13(LB)
-; new ligne 887
+; new ligne 878
 	NEW #4, R2
 	BOV tas_plein
 	LEA 3(GB), R0
@@ -9715,7 +10865,7 @@ code.Math.atan:
 	BSR init._Liste
 	POP R2
 	STORE R2, 14(LB)
-; Appel de méthode ligne 888
+; Appel de méthode ligne 879
 	ADDSP #4
 	LOAD 14(LB), R2
 	STORE R2, 0(SP)
@@ -9734,20 +10884,23 @@ code.Math.atan:
 	LOAD R0, R2
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
-	BGE E_Sinon.35
+	BGE E_Sinon.33
 	LOAD 1(LB), R2
 	OPP 1(LB), R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #1, R2
 	STORE R2, 2(LB)
 	LOAD #0x1.0p0, R2
 	STORE R2, 5(LB)
+	BOV debordement_flottant
 	LOAD 1(LB), R2
 	LOAD 2(LB), R3
 	FLOAT 2(LB), R3
 	MUL R3, R2
 	BOV debordement_flottant
 	STORE R2, 6(LB)
+	BOV debordement_flottant
 	LOAD 9(LB), R2
 	LOAD #2, R3
 	FLOAT #2, R3
@@ -9755,15 +10908,19 @@ code.Math.atan:
 	BOV debordement_flottant
 	OPP R2, R2
 	STORE R2, 10(LB)
+	BOV debordement_flottant
 	LOAD 5(LB), R2
 	STORE R2, 4(LB)
+	BOV debordement_flottant
 	LOAD 6(LB), R2
 	STORE R2, 5(LB)
+	BOV debordement_flottant
 	LOAD 4(LB), R2
 	OPP 4(LB), R2
 	STORE R2, 6(LB)
-	BRA E_Cond.36
-E_Debut.36:
+	BOV debordement_flottant
+	BRA E_Cond.34
+E_Debut.34:
 	LOAD 14(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
@@ -9771,15 +10928,18 @@ E_Debut.36:
 	STORE R2, 14(LB)
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BLE E_Sinon.37
+	BLE E_Sinon.35
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 3(LB)
-	BRA E_Fin.37
-E_Sinon.37:
+	BRA E_Fin.35
+E_Sinon.35:
 	LOAD #1, R2
 	STORE R2, 3(LB)
-E_Fin.37:
+E_Fin.35:
+	LOAD 14(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
 	LOAD 3(LB), R2
 	FLOAT 3(LB), R2
 	LOAD 14(LB), R3
@@ -9789,13 +10949,19 @@ E_Fin.37:
 	MUL R3, R2
 	BOV debordement_flottant
 	STORE R2, 7(LB)
+	BOV debordement_flottant
 	LOAD 10(LB), R2
 	ADD 7(LB), R2
 	BOV debordement_flottant
 	STORE R2, 10(LB)
+	BOV debordement_flottant
 	LOAD 5(LB), R2
 	STORE R2, 4(LB)
+	BOV debordement_flottant
 	LOAD 5(LB), R2
+	LOAD 14(LB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
 	LOAD 3(LB), R3
 	FLOAT 3(LB), R3
 	LOAD 14(LB), R4
@@ -9809,7 +10975,11 @@ E_Fin.37:
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 5(LB)
+	BOV debordement_flottant
 	LOAD 6(LB), R2
+	LOAD 14(LB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
 	LOAD 3(LB), R3
 	FLOAT 3(LB), R3
 	LOAD 14(LB), R4
@@ -9823,47 +10993,49 @@ E_Fin.37:
 	ADD R3, R2
 	BOV debordement_flottant
 	STORE R2, 6(LB)
-E_Cond.36:
+	BOV debordement_flottant
+E_Cond.34:
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BLT E_Debut.36_Fin.38_Fin.38_Fin.38
+	BLT E_Debut.34_Fin.36_Fin.36_Fin.36
 	LOAD 6(LB), R2
 	CMP 8(LB), R2
-	BGE E_Debut.36_Fin.38_Fin.38
-E_Debut.36_Fin.38_Fin.38_Fin.38:
+	BGE E_Debut.34_Fin.36_Fin.36
+E_Debut.34_Fin.36_Fin.36_Fin.36:
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BGT E_Debut.36_Fin.38
+	BGT E_Debut.34_Fin.36
 	LOAD 6(LB), R2
 	CMP 8(LB), R2
-	BGT E_Debut.36_Fin.38
-E_Debut.36_Fin.38_Fin.38:
+	BGT E_Debut.34_Fin.36
+E_Debut.34_Fin.36_Fin.36:
 	LOAD 14(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 2(R2), R2
 	LOAD #null, R3
 	CMP R3, R2
-	BNE E_Debut.36
-E_Debut.36_Fin.38:
+	BNE E_Debut.34
+E_Debut.34_Fin.36:
 	LOAD 10(LB), R2
 	LOAD 2(LB), R3
 	FLOAT 2(LB), R3
 	MUL R3, R2
 	BOV debordement_flottant
 	LOAD R2, R0
-	BRA fin.Math.atan
-	BRA E_Fin.35
-E_Sinon.35:
+	BRA E_Fin.33
+E_Sinon.33:
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
-	BLE E_Sinon.41
+	BLE E_Sinon.39
 	LOAD #1, R2
 	STORE R2, 2(LB)
 	LOAD #0x1.0p0, R2
 	STORE R2, 5(LB)
+	BOV debordement_flottant
 	LOAD 1(LB), R2
 	STORE R2, 6(LB)
+	BOV debordement_flottant
 	LOAD 9(LB), R2
 	LOAD #2, R3
 	FLOAT #2, R3
@@ -9871,31 +11043,45 @@ E_Sinon.35:
 	BOV debordement_flottant
 	OPP R2, R2
 	STORE R2, 10(LB)
+	BOV debordement_flottant
 	LOAD 5(LB), R2
 	STORE R2, 4(LB)
+	BOV debordement_flottant
 	LOAD 6(LB), R2
 	STORE R2, 5(LB)
+	BOV debordement_flottant
 	LOAD 4(LB), R2
 	OPP 4(LB), R2
 	STORE R2, 6(LB)
-	BRA E_Cond.42
-E_Debut.42:
+	BOV debordement_flottant
+	BRA E_Cond.40
+E_Debut.40:
 	LOAD 14(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 2(R2), R2
 	STORE R2, 14(LB)
+	LOAD 14(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BLE E_Sinon.43
+	BLE E_Sinon.41
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 3(LB)
-	BRA E_Fin.43
-E_Sinon.43:
+	BRA E_Fin.41
+E_Sinon.41:
 	LOAD #1, R2
 	STORE R2, 3(LB)
-E_Fin.43:
+E_Fin.41:
+	LOAD 14(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
 	LOAD 3(LB), R2
 	FLOAT 3(LB), R2
 	LOAD 14(LB), R3
@@ -9905,13 +11091,19 @@ E_Fin.43:
 	MUL R3, R2
 	BOV debordement_flottant
 	STORE R2, 7(LB)
+	BOV debordement_flottant
 	LOAD 10(LB), R2
 	ADD 7(LB), R2
 	BOV debordement_flottant
 	STORE R2, 10(LB)
+	BOV debordement_flottant
 	LOAD 5(LB), R2
 	STORE R2, 4(LB)
+	BOV debordement_flottant
 	LOAD 5(LB), R2
+	LOAD 14(LB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
 	LOAD 3(LB), R3
 	FLOAT 3(LB), R3
 	LOAD 14(LB), R4
@@ -9925,7 +11117,11 @@ E_Fin.43:
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 5(LB)
+	BOV debordement_flottant
 	LOAD 6(LB), R2
+	LOAD 14(LB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
 	LOAD 3(LB), R3
 	FLOAT 3(LB), R3
 	LOAD 14(LB), R4
@@ -9939,29 +11135,30 @@ E_Fin.43:
 	ADD R3, R2
 	BOV debordement_flottant
 	STORE R2, 6(LB)
-E_Cond.42:
+	BOV debordement_flottant
+E_Cond.40:
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BLT E_Debut.42_Fin.44_Fin.44_Fin.44
+	BLT E_Debut.40_Fin.42_Fin.42_Fin.42
 	LOAD 6(LB), R2
 	CMP 8(LB), R2
-	BGE E_Debut.42_Fin.44_Fin.44
-E_Debut.42_Fin.44_Fin.44_Fin.44:
+	BGE E_Debut.40_Fin.42_Fin.42
+E_Debut.40_Fin.42_Fin.42_Fin.42:
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BGT E_Debut.42_Fin.44
+	BGT E_Debut.40_Fin.42
 	LOAD 6(LB), R2
 	CMP 8(LB), R2
-	BGT E_Debut.42_Fin.44
-E_Debut.42_Fin.44_Fin.44:
+	BGT E_Debut.40_Fin.42
+E_Debut.40_Fin.42_Fin.42:
 	LOAD 14(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 2(R2), R2
 	LOAD #null, R3
 	CMP R3, R2
-	BNE E_Debut.42
-E_Debut.42_Fin.44:
+	BNE E_Debut.40
+E_Debut.40_Fin.42:
 	LOAD 10(LB), R2
 	LOAD 2(LB), R3
 	OPP 2(LB), R3
@@ -9969,14 +11166,13 @@ E_Debut.42_Fin.44:
 	MUL R3, R2
 	BOV debordement_flottant
 	LOAD R2, R0
-	BRA fin.Math.atan
-	BRA E_Fin.41
-E_Sinon.41:
+	BRA E_Fin.39
+E_Sinon.39:
 	LOAD #0x0.0p0, R2
 	LOAD R2, R0
+E_Fin.39:
+E_Fin.33:
 	BRA fin.Math.atan
-E_Fin.41:
-E_Fin.35:
 	WSTR "Erreur : sortie de la méthode sans return"
 	WNL
 	ERROR
@@ -9985,7 +11181,7 @@ fin.Math.atan:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode ulp dans la classe Math ligne 943
+; ---------- Code de la methode ulp dans la classe Math ligne 935
 code.Math.ulp:
 	TSTO #11
 	BOV pile_pleine
@@ -9993,14 +11189,14 @@ code.Math.ulp:
 ; Sauvegarde des registres
 	PUSH R2
 	PUSH R3
-; new ligne 948
+; new ligne 940
 	NEW #1, R2
 	BOV tas_plein
 	LEA 6(GB), R0
 	STORE R0, 0(R2)
 	STORE R2, 3(LB)
 	LOAD #0x1.0p0, R2
-; Appel de méthode ligne 949
+; Appel de méthode ligne 941
 	ADDSP #2
 	LOAD -2(LB), R3
 	STORE R3, 0(SP)
@@ -10017,7 +11213,8 @@ code.Math.ulp:
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(LB)
-; Appel de méthode ligne 950
+	BOV debordement_flottant
+; Appel de méthode ligne 942
 	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -10031,14 +11228,14 @@ code.Math.ulp:
 	SUBSP #2
 	LOAD R0, R2
 	STORE R2, -3(LB)
+	BOV debordement_flottant
 	LOAD -3(LB), R2
 	CMP 4(LB), R2
-	BGT E_Fin.47
+	BGT E_Fin.45
 	LOAD 4(LB), R2
 	LOAD R2, R0
-	BRA fin.Math.ulp
-E_Fin.47:
-; Appel de méthode ligne 954
+E_Fin.45:
+; Appel de méthode ligne 946
 	ADDSP #3
 	LOAD 3(LB), R2
 	STORE R2, 0(SP)
@@ -10054,7 +11251,7 @@ E_Fin.47:
 	SUBSP #3
 	LOAD R0, R2
 	STORE R2, 1(LB)
-; Appel de méthode ligne 955
+; Appel de méthode ligne 947
 	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -10069,6 +11266,7 @@ E_Fin.47:
 	SUBSP #2
 	LOAD R0, R2
 	STORE R2, 2(LB)
+	BOV debordement_flottant
 	LOAD 2(LB), R2
 	LOAD R2, R0
 	BRA fin.Math.ulp
@@ -10079,13 +11277,13 @@ fin.Math.ulp:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode _fma dans la classe Math ligne 960
+; ---------- Code de la methode _fma dans la classe Math ligne 952
 code.Math._fma:
     LOAD -3(LB), R1
                 LOAD -4(LB), R0
                 FMA -5(LB), R0
                 RTS
-; ---------- Code de la methode _powerOfTwoShift dans la classe Math ligne 967
+; ---------- Code de la methode _powerOfTwoShift dans la classe Math ligne 959
 code.Math._powerOfTwoShift:
     LOAD #1, R0
                 LOAD -3(LB), R1
@@ -10097,7 +11295,7 @@ code.Math._powerOfTwoShift:
                 CMP #0, R1
                 BNE user.shift.debut
                 RTS
-; ---------- Code de la methode _puissanceDe2 dans la classe Math ligne 979
+; ---------- Code de la methode _puissanceDe2 dans la classe Math ligne 971
 code.Math._puissanceDe2:
 	TSTO #8
 	BOV pile_pleine
@@ -10108,13 +11306,14 @@ code.Math._puissanceDe2:
 	LOAD #1, R2
 	FLOAT #1, R2
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD #0, R2
 	STORE R2, 2(LB)
 	LOAD -3(LB), R2
 	CMP #0, R2
-	BLT E_Sinon.48
-; cast  int vers float ligne 983
-; Appel de méthode ligne 983
+	BLT E_Sinon.46
+; cast  int vers float ligne 975
+; Appel de méthode ligne 975
 	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -10129,24 +11328,26 @@ code.Math._puissanceDe2:
 	LOAD R0, R2
 	FLOAT R2, R2
 	STORE R2, 1(LB)
-	BRA E_Fin.48
-E_Sinon.48:
-	BRA E_Cond.49
-E_Debut.49:
+	BOV debordement_flottant
+	BRA E_Fin.46
+E_Sinon.46:
+	BRA E_Cond.47
+E_Debut.47:
 	LOAD 1(LB), R2
 	LOAD #2, R3
 	FLOAT #2, R3
 	DIV R3, R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
+	BOV debordement_flottant
 	LOAD 2(LB), R2
 	SUB #1, R2
 	STORE R2, 2(LB)
-E_Cond.49:
+E_Cond.47:
 	LOAD 2(LB), R2
 	CMP -3(LB), R2
-	BGT E_Debut.49
-E_Fin.48:
+	BGT E_Debut.47
+E_Fin.46:
 	LOAD 1(LB), R2
 	LOAD R2, R0
 	BRA fin.Math._puissanceDe2
@@ -10157,7 +11358,7 @@ fin.Math._puissanceDe2:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode _abs dans la classe Math ligne 992
+; ---------- Code de la methode _abs dans la classe Math ligne 984
 code.Math._abs:
 	TSTO #1
 	BOV pile_pleine
@@ -10165,21 +11366,127 @@ code.Math._abs:
 	PUSH R2
 	LOAD -3(LB), R2
 	CMP #0x0.0p0, R2
-	BGE E_Sinon.50
+	BGE E_Sinon.48
 	LOAD -3(LB), R2
 	OPP -3(LB), R2
 	LOAD R2, R0
-	BRA fin.Math._abs
-	BRA E_Fin.50
-E_Sinon.50:
+	BRA E_Fin.48
+E_Sinon.48:
 	LOAD -3(LB), R2
 	LOAD R2, R0
+E_Fin.48:
 	BRA fin.Math._abs
-E_Fin.50:
 	WSTR "Erreur : sortie de la méthode sans return"
 	WNL
 	ERROR
 fin.Math._abs:
+	POP R2
+	RTS
+; Classe U
+; ---------- Initialisation des champs de U
+init.U:
+	TSTO #4
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R1
+	LOAD #0x0.0p0, R0
+	STORE R0, 1(R1)
+	LOAD #null, R0
+	STORE R0, 2(R1)
+	LOAD #0, R2
+	FLOAT #0, R2
+	LOAD -2(LB), R1
+	STORE R2, 1(R1)
+; new ligne 11
+	NEW #2, R2
+	BOV tas_plein
+	LEA 22(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.Math
+	POP R2
+	LOAD -2(LB), R1
+	STORE R2, 2(R1)
+	POP R2
+	RTS
+; ---------- Code de la methode u dans la classe U ligne 12
+code.U.u:
+	TSTO #8
+	BOV pile_pleine
+	ADDSP #1
+; Sauvegarde des registres
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Appel de méthode ligne 13
+	ADDSP #2
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 2(R2), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	BOV debordement_flottant
+	LOAD 1(LB), R2
+	SUB -4(LB), R2
+	BOV debordement_flottant
+	LOAD 1(LB), R3
+	SUB -4(LB), R3
+	BOV debordement_flottant
+	MUL R3, R2
+	BOV debordement_flottant
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	LOAD 1(R3), R3
+	LOAD -2(LB), R4
+	CMP #null, R4
+	BEQ dereferencement.null
+	LOAD 1(R4), R4
+	MUL R4, R3
+	BOV debordement_flottant
+	CMP R3, R2
+	BLE E_Fin.49
+	LOAD 1(LB), R2
+	SUB -4(LB), R2
+	BOV debordement_flottant
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 1(R3)
+	BOV debordement_flottant
+	LOAD 1(R3), R2
+E_Fin.49:
+	LOAD -3(LB), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR ": "
+	LOAD 1(LB), R2
+	SUB -4(LB), R2
+	BOV debordement_flottant
+	LOAD R2, R1
+	WFLOAT
+	LOAD 1(LB), R2
+	CMP -4(LB), R2
+	BNE E_Fin.50
+	WSTR " ok"
+E_Fin.50:
+	WNL
+fin.U.u:
+	POP R4
+	POP R3
 	POP R2
 	RTS
 ; Erreurs

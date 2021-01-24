@@ -1,6 +1,6 @@
-	TSTO #39
+	TSTO #43
 	BOV pile_pleine
-	ADDSP #35
+	ADDSP #38
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -78,31 +78,107 @@
 	STORE R0, 30(GB)
 	LOAD code.Math._fma, R0
 	STORE R0, 31(GB)
+; Construction de la table des méthodes de U
+	LEA 1(GB), R0
+	STORE R0, 35(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 36(GB)
+	LOAD code.U.u, R0
+	STORE R0, 37(GB)
 ; Main program
-; new ligne 14
-	NEW #2, R2
+; new ligne 25
+	NEW #3, R2
 	BOV tas_plein
-	LEA 22(GB), R0
+	LEA 35(GB), R0
 	STORE R0, 0(R2)
 	PUSH R2
-	BSR init.Math
+	BSR init.U
 	POP R2
-	STORE R2, 35(GB)
+	STORE R2, 38(GB)
 ; Beginning of main instructions:
-	WSTR "cos(0.0) = "
-; Appel de méthode ligne 15
-	ADDSP #2
-	LOAD 35(GB), R2
+; Appel de méthode ligne 29
+	ADDSP #3
+	LOAD 38(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x0.0p0, R2
+	LOAD #0x1.86ap16, R2
 	STORE R2, -1(SP)
+	LOAD #0x1.ffac38p-1, R2
+	OPP #0x1.ffac38p-1, R2
+	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 5(R2)
-	SUBSP #2
+	BSR 2(R2)
+	SUBSP #3
 	LOAD R0, R2
+; Appel de méthode ligne 30
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.388p13, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.e780e8p-1, R2
+	OPP #0x1.e780e8p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 31
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.f4p9, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.1ff026p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 32
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.9p6, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.b981dcp-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 33
+	ADDSP #3
+	LOAD 38(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.4p3, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.ad9ac8p-1, R2
+	OPP #0x1.ad9ac8p-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+	WSTR "precision max = "
+	LOAD 38(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
 	LOAD R2, R1
 	WFLOAT
 	WNL
@@ -9428,7 +9504,6 @@ E_Fin.22:
 	BNE E_Fin.25
 	LOAD #0x0.0p0, R2
 	LOAD R2, R0
-	BRA fin.Math.asin
 E_Fin.25:
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
@@ -9852,7 +9927,6 @@ E_Debut.36_Fin.38:
 	MUL R3, R2
 	BOV debordement_flottant
 	LOAD R2, R0
-	BRA fin.Math.atan
 	BRA E_Fin.35
 E_Sinon.35:
 	LOAD 1(LB), R2
@@ -9969,14 +10043,13 @@ E_Debut.42_Fin.44:
 	MUL R3, R2
 	BOV debordement_flottant
 	LOAD R2, R0
-	BRA fin.Math.atan
 	BRA E_Fin.41
 E_Sinon.41:
 	LOAD #0x0.0p0, R2
 	LOAD R2, R0
-	BRA fin.Math.atan
 E_Fin.41:
 E_Fin.35:
+	BRA fin.Math.atan
 	WSTR "Erreur : sortie de la méthode sans return"
 	WNL
 	ERROR
@@ -10036,7 +10109,6 @@ code.Math.ulp:
 	BGT E_Fin.47
 	LOAD 4(LB), R2
 	LOAD R2, R0
-	BRA fin.Math.ulp
 E_Fin.47:
 ; Appel de méthode ligne 954
 	ADDSP #3
@@ -10169,17 +10241,118 @@ code.Math._abs:
 	LOAD -3(LB), R2
 	OPP -3(LB), R2
 	LOAD R2, R0
-	BRA fin.Math._abs
 	BRA E_Fin.50
 E_Sinon.50:
 	LOAD -3(LB), R2
 	LOAD R2, R0
-	BRA fin.Math._abs
 E_Fin.50:
+	BRA fin.Math._abs
 	WSTR "Erreur : sortie de la méthode sans return"
 	WNL
 	ERROR
 fin.Math._abs:
+	POP R2
+	RTS
+; Classe U
+; ---------- Initialisation des champs de U
+init.U:
+	TSTO #4
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R1
+	LOAD #0x0.0p0, R0
+	STORE R0, 1(R1)
+	LOAD #null, R0
+	STORE R0, 2(R1)
+	LOAD #0, R2
+	FLOAT #0, R2
+	LOAD -2(LB), R1
+	STORE R2, 1(R1)
+; new ligne 10
+	NEW #2, R2
+	BOV tas_plein
+	LEA 22(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.Math
+	POP R2
+	LOAD -2(LB), R1
+	STORE R2, 2(R1)
+	POP R2
+	RTS
+; ---------- Code de la methode u dans la classe U ligne 11
+code.U.u:
+	TSTO #8
+	BOV pile_pleine
+	ADDSP #1
+; Sauvegarde des registres
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Appel de méthode ligne 12
+	ADDSP #2
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 2(R2), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 5(R2)
+	SUBSP #2
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	LOAD 1(LB), R2
+	SUB -4(LB), R2
+	BOV debordement_flottant
+	LOAD 1(LB), R3
+	SUB -4(LB), R3
+	BOV debordement_flottant
+	MUL R3, R2
+	BOV debordement_flottant
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	LOAD 1(R3), R3
+	LOAD -2(LB), R4
+	CMP #null, R4
+	BEQ dereferencement.null
+	LOAD 1(R4), R4
+	MUL R4, R3
+	BOV debordement_flottant
+	CMP R3, R2
+	BLE E_Fin.51
+	LOAD 1(LB), R2
+	SUB -4(LB), R2
+	BOV debordement_flottant
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 1(R3)
+	LOAD 1(R3), R2
+E_Fin.51:
+	LOAD -3(LB), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR ": "
+	LOAD 1(LB), R2
+	SUB -4(LB), R2
+	BOV debordement_flottant
+	LOAD R2, R1
+	WFLOAT
+	LOAD 1(LB), R2
+	CMP -4(LB), R2
+	BNE E_Fin.52
+	WSTR " ok"
+E_Fin.52:
+	WNL
+fin.U.u:
+	POP R4
+	POP R3
 	POP R2
 	RTS
 ; Erreurs
