@@ -95,7 +95,7 @@ public class EvalExpr {
             default :
                 throw new UnsupportedOperationException("unsupported operation");
         }
-        if (op.getType().isFloat() && !compiler.getCompilerOptions().getNoCheck()) {
+        if (op.getType().isFloat() && !op.getOperator().equals("=") &&!compiler.getCompilerOptions().getNoCheck()) {
             // Gestion des erreurs liés au calcul flottant
             Error.instanceError(compiler, "debordement_flottant");
         }
