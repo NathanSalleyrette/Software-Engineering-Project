@@ -94,7 +94,7 @@ public class MethodCall extends AbstractExpr{
 					methodName = compiler.getSymbTb().create("equals");
 			} else {
 				throw new ContextualError("(3.71) " + this.meth.getName().toString() + 
-					" n'est pas une méthode de la classe " + objType.toString(),
+					" n'est pas un membre de la classe " + objType.toString(),
 					this.getLocation());
 			}
 		}
