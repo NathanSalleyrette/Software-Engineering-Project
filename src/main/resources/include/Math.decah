@@ -712,8 +712,6 @@ class Math {
         float Y;
         float epsilon;
         int oppose;
-        float k;
-        float a;
         float petit_tan;
         float pre_resultat;
         float resultat;
@@ -727,23 +725,16 @@ class Math {
         epsilon = epsilonClass.getEpsilon();
         oppose = 1;
         curr = liste.getA0();
-        if(angle < -pi){//TODO optim
+        if(angle < -pi){
             while(angle < -pi){
                 angle = _fma(angle,2,pi);
             }
         }
         if(angle > pi){
-            a=angle;
-            while(a > pi) {
-                k = pi * 2.0;
-                while(a > k * 2.0){
-                    k = k * 2.0;
-                }
-                a = a - k;     
+            while(angle > pi) {
+                angle = _fma(angle,-2,pi);
             }
         }
-
-        angle=a;
         /* angle est désormais dans [-pi, pi] */
         if(-(pi / 2) < angle && angle < 0.0){
             angle = -angle;
