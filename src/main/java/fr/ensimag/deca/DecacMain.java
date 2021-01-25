@@ -38,7 +38,7 @@ public class DecacMain {
         }
         if (options.getSourceFiles().isEmpty()) {
             String help = "La syntaxe d'utilisation de l'exécutable decac est :\n"
-                        + "decac [[-p | -v] [-n] [-r X] [-d]* [-P] [-w] <fichier deca>...] | [-b]\n\n"
+                        + "decac [[-p | -v] [-n] [-r X] [-d]* [-P] <fichier deca>...] | [-b]\n\n"
                         + "La commande decac, sans argument, affiche les options disponibles. On peut appeler la commande\n"
                         + "decac avec un ou plusieurs fichiers sources Deca.\n\n"
                         + "Les options :\n"

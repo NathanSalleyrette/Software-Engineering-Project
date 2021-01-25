@@ -134,6 +134,6 @@ public class CompilerOptions {
     }
 
     protected void displayUsage() {
-        System.out.println("usage : decac [[-p | -v] [-n] [-r X] [-d]* [-P] [-w] <fichier deca>...] | [-b]");
+        System.out.println("usage : decac [[-p | -v] [-n] [-r X] [-d]* [-P] <fichier deca>...] | [-b]");
     }
 }
