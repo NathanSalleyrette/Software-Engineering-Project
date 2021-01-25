@@ -13,7 +13,7 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 public class ListDeclMethod extends TreeList<AbstractDeclMethod>{
 
 	@Override
-    public void decompile(IndentPrintStream s) { // TODO factoriser dans tree decompile ?
+    public void decompile(IndentPrintStream s) { 
         for (AbstractDeclMethod c : getList()) {
             c.decompile(s);
         }
@@ -39,7 +39,6 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod>{
     	Iterator<AbstractDeclMethod> iter = this.iterator();
     	while (iter.hasNext()) {
     		AbstractDeclMethod declMethod = iter.next();
-    		// TODO: nécessiterait un traitement d'erreur, quoiqu'elle n'échoie jamais
     		ClassDefinition currentClass = (ClassDefinition) compiler.getEnvType().get(className.getName());
     		EnvironmentExp localEnv = new EnvironmentExp(currentClass.getMembers());
     		declMethod.verifyDeclMethod(compiler, localEnv, currentClass);
@@ -52,7 +51,6 @@ public class ListDeclMethod extends TreeList<AbstractDeclMethod>{
     	Iterator<AbstractDeclMethod> iter = this.iterator();
     	while (iter.hasNext()) {
     		AbstractDeclMethod declMethod = iter.next();
-    		// TODO: nécessiterait un traitement d'erreur, quoiqu'elle n'échoie jamais
     		ClassDefinition currentClass = (ClassDefinition) compiler.getEnvType().get(className.getName());
     		EnvironmentExp localEnv = new EnvironmentExp(currentClass.getMembers());
     		declMethod.verifyBody(compiler, localEnv, currentClass, declMethod.getType());

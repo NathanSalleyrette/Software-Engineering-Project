@@ -186,7 +186,7 @@ class _ListeRemplie {
     _Liste a145;
 
 
-    void initListe(){//TODO different pour chaque fonction ??
+    void initListe(){
         a0 = new _Liste();
         a1 = new _Liste();
         a2 = new _Liste();
@@ -624,13 +624,13 @@ class _Pi{
     }
 }
 class Math {
-  _ListeRemplie _liste;
-  void _initListeMath(){
-      if(this._liste == null){
-       this._liste = new _ListeRemplie();
-       this._liste.initListe();
-      }
-  }
+    _ListeRemplie _liste;
+    void _initListeMath(){
+        if(this._liste == null){
+            this._liste = new _ListeRemplie();
+            this._liste.initListe();
+        }
+    }
 
 
     void _Error()

@@ -1,19 +1,6 @@
 #!/bin/sh
 # permet de générer le rapport jacoco
 # Ne fonctionne que si tout les tests passent
-# Donc vous pouvez commenter les tests qui ne fonctionne pas dans master-all-test.sh pour générer le rapport quand même.
-# De plus, mvn verify ne fonctionnera pas (mais le rapport sera quand même généré) tant que la couverture des tests est inférieure à 75%
-# Un mvn clean pourrait aussi aider dans certain cas comme toujours...
-# <rule>
-#     <element>BUNDLE</element>
-#     <limits>
-#         <limit>
-#             <counter>INSTRUCTION</counter>
-#             <value>COVEREDRATIO</value>
-#             <minimum>0.75</minimum> <!-- A FAIRE CHANGER ???-->
-#         </limit>
-#     </limits>
-# </rule>
 if ! [ -r pom.xml ]; then
 	cd "$(dirname "$0")"/../../../
 fi

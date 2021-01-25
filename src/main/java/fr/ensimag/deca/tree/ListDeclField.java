@@ -11,7 +11,7 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 public class ListDeclField extends TreeList<AbstractDeclField >{
 
 	@Override
-    public void decompile(IndentPrintStream s) { // TODO factoriser dans tree decompile ?
+    public void decompile(IndentPrintStream s) { 
         for (AbstractDeclField c : getList()) {
             c.decompile(s);
             s.println();

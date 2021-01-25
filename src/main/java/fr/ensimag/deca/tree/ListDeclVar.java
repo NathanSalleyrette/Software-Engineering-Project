@@ -16,7 +16,7 @@ import java.util.Iterator;
 public class ListDeclVar extends TreeList<AbstractDeclVar> {
 
     @Override
-    public void decompile(IndentPrintStream s) { // TODO factoriser dans tree decompile ?
+    public void decompile(IndentPrintStream s) { 
         for (AbstractDeclVar c : getList()) {
             c.decompile(s);
             s.println();
