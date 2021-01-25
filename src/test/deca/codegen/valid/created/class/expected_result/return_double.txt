@@ -9,22 +9,23 @@
 	STORE R0, 1(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 2(GB)
-; Construction de la table des méthodes de U
+; Construction de la table des méthodes de A
 	LEA 1(GB), R0
 	STORE R0, 3(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 4(GB)
-	LOAD code.U.u, R0
+	LOAD code.A.getc, R0
 	STORE R0, 5(GB)
 ; Main program
-; new ligne 15
+; new ligne 16
 	NEW #1, R2
 	BOV tas_plein
 	LEA 3(GB), R0
 	STORE R0, 0(R2)
 	STORE R2, 6(GB)
 ; Beginning of main instructions:
-; Appel de méthode ligne 16
+	WSTR "0 = "
+; Appel de méthode ligne 17
 	ADDSP #1
 	LOAD 6(GB), R2
 	STORE R2, 0(SP)
@@ -46,22 +47,23 @@ code.Object.equals:
 	CMP -3(LB), R1
 	SEQ R0
 	RTS
-; Classe U
-; ---------- Code de la methode u dans la classe U ligne 8
-code.U.u:
+; Classe A
+; ---------- Code de la methode getc dans la classe A ligne 8
+code.A.getc:
 	TSTO #1
 	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2
 	LOAD #0, R2
 	LOAD R2, R0
-	BRA fin.U.u
-	WSTR "aaah"
-	WNL
+	BRA fin.A.getc
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA fin.A.getc
 	WSTR "Erreur : sortie de la méthode sans return"
 	WNL
 	ERROR
-fin.U.u:
+fin.A.getc:
 	POP R2
 	RTS
 ; Erreurs
@@ -79,4 +81,4 @@ tas_plein:
 	ERROR
 ; end main program
 ---SORTIE MACHINE IMA---
-0
+0 = 0

@@ -3,7 +3,7 @@
 //
 // Resultats :
 //		Erreur contextuelle
-//    	Ligne 14 :  (3.9) A n'est ni la même classe ni une sous-classe de B
+//    	Ligne 14 :  (3.8) A n'est ni la même classe ni une sous-classe de B
 
 class A{
 }

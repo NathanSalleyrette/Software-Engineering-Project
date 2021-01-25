@@ -98,13 +98,90 @@
 	POP R2
 	STORE R2, 39(GB)
 ; Beginning of main instructions:
-; Appel de méthode ligne 31
+; Appel de méthode ligne 26
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
 	LOAD #0x1.2a05f2p33, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.bf098ap-1, R2
+	LOAD #0x1.f334c8p-2, R2
+	OPP #0x1.f334c8p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 27
+	ADDSP #3
+	LOAD 39(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.2a05f2p32, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.01eb16p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 28
+	ADDSP #3
+	LOAD 39(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.dcd65p29, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.1778cap-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 29
+	ADDSP #3
+	LOAD 39(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.dcd65p28, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.238976p-2, R2
+	OPP #0x1.238976p-2, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 30
+	ADDSP #3
+	LOAD 39(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.7d784p26, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.dcffcap-1, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 31
+	ADDSP #3
+	LOAD 39(GB), R2
+	STORE R2, 0(SP)
+	LOAD #0x1.7d784p25, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.a6bb2cp-1, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -117,10 +194,9 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.2a05f2p32, R2
+	LOAD #0x1.312dp23, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.ef7e44p-1, R2
-	OPP #0x1.ef7e44p-1, R2
+	LOAD #0x1.aea414p-2, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -133,9 +209,10 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.dcd65p29, R2
+	LOAD #0x1.312dp22, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.acff8cp-1, R2
+	LOAD #0x1.f3fd6p-1, R2
+	OPP #0x1.f3fd6p-1, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -148,10 +225,10 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.dcd65p28, R2
+	LOAD #0x1.e848p19, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.eacfa6p-1, R2
-	OPP #0x1.eacfa6p-1, R2
+	LOAD #0x1.6664b2p-2, R2
+	OPP #0x1.6664b2p-2, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -164,10 +241,9 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.7d784p26, R2
+	LOAD #0x1.e848p18, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.741b38p-2, R2
-	OPP #0x1.741b38p-2, R2
+	LOAD #0x1.6c32c4p-3, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -180,9 +256,9 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.7d784p25, R2
+	LOAD #0x1.86ap16, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.20dd2cp-1, R2
+	LOAD #0x1.24daaap-5, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -195,10 +271,10 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.312dp23, R2
+	LOAD #0x1.86ap15, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.d085bep-1, R2
-	OPP #0x1.d085bep-1, R2
+	LOAD #0x1.ffeb0ep-1, R2
+	OPP #0x1.ffeb0ep-1, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -211,10 +287,10 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.312dp22, R2
+	LOAD #0x1.388p13, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.b8fc42p-3, R2
-	OPP #0x1.b8fc42p-3, R2
+	LOAD #0x1.38f2fap-2, R2
+	OPP #0x1.38f2fap-2, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -227,9 +303,10 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.e848p19, R2
+	LOAD #0x1.388p12, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.df9dfap-1, R2
+	LOAD #0x1.f9d6bcp-1, R2
+	OPP #0x1.f9d6bcp-1, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -242,10 +319,9 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.e848p18, R2
+	LOAD #0x1.f4p9, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.f7d6d8p-1, R2
-	OPP #0x1.f7d6d8p-1, R2
+	LOAD #0x1.a75cc2p-1, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -258,10 +334,10 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.86ap16, R2
+	LOAD #0x1.f4p8, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.ffac38p-1, R2
-	OPP #0x1.ffac38p-1, R2
+	LOAD #0x1.deff92p-2, R2
+	OPP #0x1.deff92p-2, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -274,10 +350,10 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.86ap15, R2
+	LOAD #0x1.9p6, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.24e6a6p-6, R2
-	OPP #0x1.24e6a6p-6, R2
+	LOAD #0x1.03425cp-1, R2
+	OPP #0x1.03425cp-1, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -290,10 +366,10 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.388p13, R2
+	LOAD #0x1.9p5, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.e780e8p-1, R2
-	OPP #0x1.e780e8p-1, R2
+	LOAD #0x1.0cabfep-2, R2
+	OPP #0x1.0cabfep-2, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -306,86 +382,10 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
-	LOAD #0x1.388p12, R2
-	STORE R2, -1(SP)
-	LOAD #0x1.3cc2cap-3, R2
-	STORE R2, -2(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #3
-	LOAD R0, R2
-; Appel de méthode ligne 45
-	ADDSP #3
-	LOAD 39(GB), R2
-	STORE R2, 0(SP)
-	LOAD #0x1.f4p9, R2
-	STORE R2, -1(SP)
-	LOAD #0x1.1ff026p-1, R2
-	STORE R2, -2(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #3
-	LOAD R0, R2
-; Appel de méthode ligne 46
-	ADDSP #3
-	LOAD 39(GB), R2
-	STORE R2, 0(SP)
-	LOAD #0x1.f4p8, R2
-	STORE R2, -1(SP)
-	LOAD #0x1.c487e4p-1, R2
-	OPP #0x1.c487e4p-1, R2
-	STORE R2, -2(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #3
-	LOAD R0, R2
-; Appel de méthode ligne 47
-	ADDSP #3
-	LOAD 39(GB), R2
-	STORE R2, 0(SP)
-	LOAD #0x1.9p6, R2
-	STORE R2, -1(SP)
-	LOAD #0x1.b981dcp-1, R2
-	STORE R2, -2(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #3
-	LOAD R0, R2
-; Appel de méthode ligne 48
-	ADDSP #3
-	LOAD 39(GB), R2
-	STORE R2, 0(SP)
-	LOAD #0x1.9p5, R2
-	STORE R2, -1(SP)
-	LOAD #0x1.ee1006p-1, R2
-	STORE R2, -2(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 2(R2)
-	SUBSP #3
-	LOAD R0, R2
-; Appel de méthode ligne 49
-	ADDSP #3
-	LOAD 39(GB), R2
-	STORE R2, 0(SP)
 	LOAD #0x1.4p3, R2
 	STORE R2, -1(SP)
-	LOAD #0x1.ad9ac8p-1, R2
-	OPP #0x1.ad9ac8p-1, R2
+	LOAD #0x1.1689fp-1, R2
+	OPP #0x1.1689fp-1, R2
 	STORE R2, -2(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
@@ -10578,7 +10578,7 @@ code.U.u:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 6(R2)
+	BSR 5(R2)
 	SUBSP #2
 	LOAD R0, R2
 	STORE R2, 1(LB)

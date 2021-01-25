@@ -1,5 +1,3 @@
-	TSTO #16
-	BOV pile_pleine
 	ADDSP #12
 ; start main program
 ; Construction des tables des méthodes
@@ -24,17 +22,13 @@
 	STORE R2, 6(GB)
 	LOAD #0x0.0p0, R2
 	STORE R2, 7(GB)
-	BOV debordement_flottant
 	LOAD #0x1.0p0, R2
 	STORE R2, 8(GB)
-	BOV debordement_flottant
 	LOAD #0x1.0p0, R2
 	OPP #0x1.0p0, R2
 	STORE R2, 9(GB)
-	BOV debordement_flottant
 	LOAD #0x1.6fc2ecp-1, R2
 	STORE R2, 10(GB)
-	BOV debordement_flottant
 ; Beginning of main instructions:
 	BRA E_Cond.0
 E_Debut.0:
@@ -44,43 +38,32 @@ E_Debut.0:
 	STORE R2, 0(SP)
 	LOAD 7(GB), R2
 	ADD 8(GB), R2
-	BOV debordement_flottant
 	DIV #0x1.0p1, R2
-	BOV debordement_flottant
 	STORE R2, 11(GB)
-	BOV debordement_flottant
 	STORE R2, -1(SP)
 	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
 	LOAD 0(R2), R2
 	BSR 2(R2)
 	SUBSP #2
 	LOAD R0, R2
 	STORE R2, 12(GB)
-	BOV debordement_flottant
 	CMP #0x0.0p0, R2
 	BLE E_Sinon.1
 	LOAD 11(GB), R2
 	STORE R2, 8(GB)
-	BOV debordement_flottant
 	LOAD 12(GB), R2
 	STORE R2, 10(GB)
-	BOV debordement_flottant
 	BRA E_Fin.1
 E_Sinon.1:
 	LOAD 11(GB), R2
 	STORE R2, 7(GB)
-	BOV debordement_flottant
 	LOAD 12(GB), R2
 	STORE R2, 9(GB)
-	BOV debordement_flottant
 E_Fin.1:
 E_Cond.0:
 	LOAD 8(GB), R2
 	LOAD 7(GB), R3
 	ADD #0x1.0p-23, R3
-	BOV debordement_flottant
 	CMP R3, R2
 	BGE E_Debut.0
 	LOAD 7(GB), R2
@@ -102,8 +85,6 @@ code.Object.equals:
 ; Classe Polyexp
 ; ---------- Code de la methode pexp dans la classe Polyexp ligne 13
 code.Polyexp.pexp:
-	TSTO #8
-	BOV pile_pleine
 ; Sauvegarde des registres
 	PUSH R2
 	PUSH R3
@@ -122,52 +103,32 @@ code.Polyexp.pexp:
 	LOAD -3(LB), R8
 	LOAD #0x1.0p0, R9
 	DIV #0x1.3bp12, R9
-	BOV debordement_flottant
 	MUL R9, R8
-	BOV debordement_flottant
 	LOAD #0x1.0p0, R9
 	DIV #0x1.68p9, R9
-	BOV debordement_flottant
 	ADD R9, R8
-	BOV debordement_flottant
 	MUL R8, R7
-	BOV debordement_flottant
 	LOAD #0x1.0p0, R8
 	DIV #0x1.ep6, R8
-	BOV debordement_flottant
 	ADD R8, R7
-	BOV debordement_flottant
 	MUL R7, R6
-	BOV debordement_flottant
 	LOAD #0x1.0p0, R7
 	DIV #0x1.8p4, R7
-	BOV debordement_flottant
 	ADD R7, R6
-	BOV debordement_flottant
 	MUL R6, R5
-	BOV debordement_flottant
 	LOAD #0x1.0p0, R6
 	DIV #0x1.8p2, R6
-	BOV debordement_flottant
 	ADD R6, R5
-	BOV debordement_flottant
 	MUL R5, R4
-	BOV debordement_flottant
 	LOAD #0x1.0p0, R5
 	DIV #0x1.0p1, R5
-	BOV debordement_flottant
 	ADD R5, R4
-	BOV debordement_flottant
 	MUL R4, R3
-	BOV debordement_flottant
 	ADD #0x1.0p0, R3
-	BOV debordement_flottant
 	MUL R3, R2
-	BOV debordement_flottant
 	LOAD #1, R3
 	FLOAT #1, R3
 	SUB R3, R2
-	BOV debordement_flottant
 	LOAD R2, R0
 	BRA fin.Polyexp.pexp
 	WSTR "Erreur : sortie de la méthode sans return"
@@ -184,18 +145,6 @@ fin.Polyexp.pexp:
 	POP R2
 	RTS
 ; Erreurs
-pile_pleine:
-	WSTR "Erreur : pile_pleine"
-	WNL
-	ERROR
-dereferencement.null:
-	WSTR "Erreur : dereferencement.null"
-	WNL
-	ERROR
-debordement_flottant:
-	WSTR "Erreur : debordement_flottant"
-	WNL
-	ERROR
 tas_plein:
 	WSTR "Erreur : tas_plein"
 	WNL

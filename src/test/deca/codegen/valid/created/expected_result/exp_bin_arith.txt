@@ -32,7 +32,6 @@
 	SUB R3, R2
 	FLOAT R2, R2
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
@@ -59,7 +58,6 @@
 	SUB #5, R2
 	FLOAT R2, R2
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
@@ -86,7 +84,6 @@
 	ADD #5, R2
 	FLOAT R2, R2
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
@@ -117,7 +114,6 @@
 	SUB #5, R2
 	FLOAT R2, R2
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
@@ -136,7 +132,6 @@
 	ADD #3, R2
 	FLOAT R2, R2
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 3(GB), R2
 	LOAD R2, R1
 	WINT
@@ -158,7 +153,6 @@
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 4(GB), R2
 	LOAD R2, R1
 	WFLOAT
@@ -179,7 +173,6 @@
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 4(GB), R2
 	LOAD R2, R1
 	WFLOAT
@@ -203,7 +196,6 @@
 	ADD R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 4(GB), R2
 	LOAD R2, R1
 	WFLOAT
@@ -223,7 +215,6 @@
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 4(GB), R2
 	LOAD R2, R1
 	WFLOAT
@@ -238,7 +229,6 @@
 	ADD R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 	LOAD 4(GB), R2
 	LOAD R2, R1
 	WFLOAT
@@ -250,12 +240,7 @@
 code.Object.equals:
 	LOAD -2(LB), R1
 	CMP -3(LB), R1
-	BEQ Object.equals.true
-	LOAD #0, R0
-	BRA fin.Object.equals
-Object.equals.true:
-	LOAD #1, R0
-fin.Object.equals:
+	SEQ R0
 	RTS
 ; Erreurs
 division_par_zero:
