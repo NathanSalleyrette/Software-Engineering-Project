@@ -80,12 +80,7 @@
 code.Object.equals:
 	LOAD -2(LB), R1
 	CMP -3(LB), R1
-	BEQ Object.equals.true
-	LOAD #0, R0
-	BRA fin.Object.equals
-Object.equals.true:
-	LOAD #1, R0
-fin.Object.equals:
+	SEQ R0
 	RTS
 ; Classe B
 ; ---------- Initialisation des champs de B

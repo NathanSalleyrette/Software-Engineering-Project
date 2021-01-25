@@ -82,8 +82,6 @@ public class MethodCall extends AbstractExpr{
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
 			throws ContextualError {
 		Type objType = this.obj.verifyExpr(compiler, localEnv, currentClass);
-		if (objType == null) throw new ContextualError("(3.71) Le membre gauche n'a pas de type",
-				this.getLocation());
 		if (!objType.isClass()) throw new ContextualError("(3.71) Le membre gauche n'est pas de type 'class'",
 				this.getLocation());
 		ClassDefinition objDef = (ClassDefinition) compiler.getEnvType().get(objType.getName());
@@ -96,7 +94,7 @@ public class MethodCall extends AbstractExpr{
 					methodName = compiler.getSymbTb().create("equals");
 			} else {
 				throw new ContextualError("(3.71) " + this.meth.getName().toString() + 
-					" n'est pas une méthode de la classe " + objType.toString(),
+					" n'est pas un membre de la classe " + objType.toString(),
 					this.getLocation());
 			}
 		}
@@ -110,8 +108,7 @@ public class MethodCall extends AbstractExpr{
 		for (int i = 0; i < sig.size(); i++) {
 			AbstractExpr param = this.params.getList().get(i);
 			param.verifyExpr(compiler, localEnv, currentClass);
-			if ((sig.paramNumber(i) != param.getType()) && 
-					(!param.getType().isSubTypeOf(sig.paramNumber(i), getLocation()))) {
+			if (!param.getType().isSubTypeOf(sig.paramNumber(i), getLocation())) {
 				throw new ContextualError(
 					"(3.74) La signature ne correspond pas aux paramètres", this.getLocation());
 			}

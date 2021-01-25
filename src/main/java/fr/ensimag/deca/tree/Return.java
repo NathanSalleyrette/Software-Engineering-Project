@@ -41,7 +41,7 @@ public class Return extends AbstractInst {
             valeurRetour.codeGenInst(compiler);
         }
         compiler.addInstruction(new LOAD(Register.getR(compiler.getCurrentRegister()), Register.R0));
-        compiler.setReturn(true);
+        compiler.addInstruction(new BRA(compiler.getLabelReturn()));
     }
 
     @Override
@@ -52,8 +52,7 @@ public class Return extends AbstractInst {
     	if (instType.isVoid()) throw new ContextualError("(3.24) On ne peut retourner un type 'void'",
     			this.getLocation());
     	// On vérifie la compatibilité du type de retour
-    	if (((instType != returnType) &&
-    			(!instType.isSubTypeOf(returnType, getLocation())))) {
+    	if (!instType.isSubTypeOf(returnType, getLocation())) {
     		throw new ContextualError("(2.7) Type de retour effectif : " + instType.toString()+
     				", déclaré : " + returnType.toString(), this.getLocation());
     	}

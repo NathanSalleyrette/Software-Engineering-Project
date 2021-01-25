@@ -15,6 +15,22 @@ public class ImmediateInteger extends DVal {
     }
 
     @Override
+    public int powerOfTwo() {
+        int val = value;
+        int res = 0;
+        if (val <= 0) return -1;
+        while (val != 1) {
+            if (val % 2 == 0) {
+                res++;
+                val >>= 1;
+            } else {
+                return -1;
+            }
+        }
+        return res;
+    }
+
+    @Override
     public String toString() {
         return "#" + value;
     }

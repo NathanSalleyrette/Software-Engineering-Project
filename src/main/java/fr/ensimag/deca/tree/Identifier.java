@@ -277,6 +277,11 @@ public class Identifier extends AbstractIdentifier {
 
     @Override
     public boolean isAtomic() {
+        DVal dVal = this.getExpDefinition().getOperand();
+        if (dVal == null) {
+            // This is a field, or the context check whould have stop it
+            return false;
+        }
         return true;
     }
 

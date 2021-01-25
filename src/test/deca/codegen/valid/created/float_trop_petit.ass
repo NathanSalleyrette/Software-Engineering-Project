@@ -11,7 +11,6 @@
 ; Main program
 	LOAD #0x1.f4p9, R2
 	STORE R2, 3(GB)
-	BOV debordement_flottant
 	LOAD #0x1.0p0, R2
 	LOAD 3(GB), R3
 	MUL 3(GB), R3
@@ -51,7 +50,6 @@
 	MUL R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(GB)
-	BOV debordement_flottant
 ; Beginning of main instructions:
 	LOAD 4(GB), R2
 	LOAD R2, R1
@@ -62,12 +60,7 @@
 code.Object.equals:
 	LOAD -2(LB), R1
 	CMP -3(LB), R1
-	BEQ Object.equals.true
-	LOAD #0, R0
-	BRA fin.Object.equals
-Object.equals.true:
-	LOAD #1, R0
-fin.Object.equals:
+	SEQ R0
 	RTS
 ; Erreurs
 pile_pleine:

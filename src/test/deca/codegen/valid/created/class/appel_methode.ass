@@ -76,7 +76,6 @@
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 17(GB)
-	BOV debordement_flottant
 ; Appel de méthode ligne 42
 	ADDSP #1
 	LOAD 15(GB), R2
@@ -159,12 +158,7 @@ E_Fin.1:
 code.Object.equals:
 	LOAD -2(LB), R1
 	CMP -3(LB), R1
-	BEQ Object.equals.true
-	LOAD #0, R0
-	BRA fin.Object.equals
-Object.equals.true:
-	LOAD #1, R0
-fin.Object.equals:
+	SEQ R0
 	RTS
 ; Classe B
 ; ---------- Initialisation des champs de B
@@ -297,10 +291,6 @@ pile_pleine:
 	ERROR
 dereferencement.null:
 	WSTR "Erreur : dereferencement.null"
-	WNL
-	ERROR
-debordement_flottant:
-	WSTR "Erreur : debordement_flottant"
 	WNL
 	ERROR
 tas_plein:

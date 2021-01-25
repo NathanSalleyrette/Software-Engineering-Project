@@ -160,16 +160,16 @@ public class DecacCompiler implements Runnable{
 
     //
     /**
-     * Boolean showing if the the method body being written has a return instruction
+     * Label of the current method return instruction
      */
-    private boolean hasReturn = false;
+    private Label labelReturn;
 
-	public boolean hasReturn() {
-		return hasReturn;
+	public Label getLabelReturn() {
+		return labelReturn;
 	}
 
-	public void setReturn(boolean bool) {
-		hasReturn = bool;
+	public void setLabelReturn(Label label) {
+		labelReturn = label;
     }
     
     //

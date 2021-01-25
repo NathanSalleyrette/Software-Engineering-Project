@@ -35,10 +35,6 @@ public class InstanceOf extends AbstractExpr{
 		return expr;
 	}
 
-	public void setExpr(AbstractExpr expr) {
-		this.expr = expr;
-	}
-
 	public AbstractIdentifier getTypeIdentifier() {
 		return type;
 	}
@@ -50,7 +46,7 @@ public class InstanceOf extends AbstractExpr{
 	@Override
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
 			ClassDefinition currenClass) throws ContextualError {
-		Type exprType = expr.verifyExpr(compiler, localEnv, currenClass);
+		Type exprType = this.getExpr().verifyExpr(compiler, localEnv, currenClass);
 		Type comparedType = type.verifyType(compiler);
 		if (!exprType.isClassOrNull()) {
 			throw new ContextualError("(3.40) Type gauche : " + exprType.toString() +
@@ -66,7 +62,7 @@ public class InstanceOf extends AbstractExpr{
 	
 	public void decompile(IndentPrintStream s) {
 		s.print("(");
-		this.expr.decompile(s);
+		this.getExpr().decompile(s);
 		s.print(" instanceof ");
 		this.type.decompile(s);
 		s.print(")");
@@ -78,7 +74,7 @@ public class InstanceOf extends AbstractExpr{
 	}
 	
 	public void prettyPrintChildren(PrintStream s, String prefix) {
-		this.expr.prettyPrint(s, prefix, false);
+		this.getExpr().prettyPrint(s, prefix, false);
 		this.type.prettyPrint(s, prefix, true);
 	}
 	

@@ -44,13 +44,27 @@ public class EvalExpr {
                 compiler.addInstruction(new SUB(dval, reg));
                 break;
             case "*" :
-                compiler.addInstruction(new MUL(dval, reg));
+                int powMul = dval.powerOfTwo();
+                if (powMul < 0) {
+                    compiler.addInstruction(new MUL(dval, reg));
+                } else {
+                    for (int i = 0; i < powMul; i++) {
+                        compiler.addInstruction(new SHL(reg));
+                    }
+                }
                 break;
             case "/" :
                 if (op.getType().isInt()) {
-                    compiler.addInstruction(new QUO(dval, reg));
-                    if (!compiler.getCompilerOptions().getNoCheck()) {
-                        Error.instanceError(compiler, "division_par_zero");
+                    int powQuo = dval.powerOfTwo();
+                    if (powQuo < 0) {
+                        compiler.addInstruction(new QUO(dval, reg));
+                        if (!compiler.getCompilerOptions().getNoCheck()) {
+                            Error.instanceError(compiler, "division_par_zero");
+                        }
+                    } else {
+                        for (int i = 0; i < powQuo; i++) {
+                            compiler.addInstruction(new SHR(reg));
+                        }
                     }
                 } else {
                     compiler.addInstruction(new DIV(dval, reg));
@@ -58,9 +72,24 @@ public class EvalExpr {
                 break;
             case "%" :
                 // Reste entier
-                compiler.addInstruction(new REM(dval, reg));
-                if (!compiler.getCompilerOptions().getNoCheck()) {
-                    Error.instanceError(compiler, "division_par_zero");
+                int powRem = dval.powerOfTwo();
+                if (powRem < 0) {
+                    compiler.addInstruction(new REM(dval, reg));
+                    if (!compiler.getCompilerOptions().getNoCheck()) {
+                        Error.instanceError(compiler, "division_par_zero");
+                    }
+                } else { // Reste d'une division par une puissance de 2
+                    // On sauvegarde le dividende dans reg
+                    compiler.addInstruction(new LOAD(reg, Register.R1));
+                    // On calcule quotient * diviseur dans R1
+                    for (int i = 0; i < powRem; i++) {
+                        compiler.addInstruction(new SHR(Register.R1));
+                    }
+                    for (int i = 0; i < powRem; i++) {
+                        compiler.addInstruction(new SHL(Register.R1));
+                    }
+                    // On soustrait dans reg : on a le reste
+                    compiler.addInstruction(new SUB(Register.R1, reg));
                 }
                 break;
             case "=" :
@@ -95,7 +124,7 @@ public class EvalExpr {
             default :
                 throw new UnsupportedOperationException("unsupported operation");
         }
-        if (op.getType().isFloat() && !compiler.getCompilerOptions().getNoCheck()) {
+        if (op.getType().isFloat() && !op.getOperator().equals("=") &&!compiler.getCompilerOptions().getNoCheck()) {
             // Gestion des erreurs liés au calcul flottant
             Error.instanceError(compiler, "debordement_flottant");
         }

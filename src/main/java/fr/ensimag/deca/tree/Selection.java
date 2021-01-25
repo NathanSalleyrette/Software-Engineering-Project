@@ -59,25 +59,32 @@ public class Selection extends AbstractLValue{
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
 			throws ContextualError {
 		Type leftType = this.getObj().verifyExpr(compiler, localEnv, currentClass);
-		if (leftType == null) throw new ContextualError("(3.65) Le membre gauche n'a pas de type", this.getLocation());
 		ClassType objType = leftType.asClassType(
 				"(3.65) Le membre gauche n'est pas de type 'class'", this.getLocation());
 		ClassDefinition objDef = (ClassDefinition) compiler.getEnvType().get(objType.getName());
 		if (objDef.getMembers().get(this.getField().getName()) == null) {
 			throw new ContextualError("(3.65) " + this.getField().getName().toString() + 
-					" n'est pas un attribut de la classe " + objType.toString(),
+					" n'est pas un membre de la classe " + objType.toString(),
 					this.getLocation());
 		}
 		FieldDefinition fieldDef = 
 				objDef.getMembers().get(this.getField().getName()).asFieldDefinition(
-					"(3.65) le champ n'est pas un attribut de classe", this.getLocation());
+					"(3.65) " + this.getField().toString() + 
+					" est une méthode et non un champ", this.getLocation());
 		/* Si l'attribut est protégé, il faut qu'on soit dans la classe qui le contient
 		 * ou une de ses filles
 		 */
+		/*
 		if ((fieldDef.getVisibility() == Visibility.PROTECTED)
-				&& ((currentClass == null) || ((obj.isShallow(localEnv)) ||
-				((currentClass != fieldDef.getContainingClass()) 
+				&& ((currentClass == null) || ((obj.isShallow(localEnv))||
+				((currentClass != fieldDef.getContainingClass())
 				&& (!currentClass.getType().isSubClassOf(fieldDef.getContainingClass().getType())))))) {
+			throw new ContextualError("(3.65) L'attribut est protégé", this.getLocation());
+		}
+		*/
+		if ((fieldDef.getVisibility() == Visibility.PROTECTED) && ((currentClass == null) ||
+				(!currentClass.getType().isSubClassOf(fieldDef.getContainingClass().getType())
+						|| (!objType.isSubClassOf(currentClass.getType()))))) {
 			throw new ContextualError("(3.65) L'attribut est protégé", this.getLocation());
 		}
  		Type fieldType = this.getField().verifyExpr(compiler, objDef.getMembers(), objDef);

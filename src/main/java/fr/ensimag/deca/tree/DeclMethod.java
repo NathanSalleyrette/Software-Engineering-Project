@@ -93,8 +93,7 @@ public class DeclMethod extends AbstractDeclMethod  {
     	if (potentialSuperDef != null) {
     		superMethod = potentialSuperDef.asMethodDefinition("(2.6) " +
     				methodName.getName().toString() + " définit déjà un champ", getLocation());
-    		if ((methodType != superMethod.getType()) && 
-    				(!methodType.isSubTypeOf(superMethod.getType(), getLocation()))) {
+    		if (!methodType.isSubTypeOf(superMethod.getType(), getLocation())) {
     			throw new ContextualError("(2.7) La méthode retourne le type " + methodType.toString() +
     					" mais devrait retourner le type de sa super méthode " + 
     					superMethod.getType().toString() +" ou un sous-type", this.getLocation());
@@ -173,10 +172,7 @@ public class DeclMethod extends AbstractDeclMethod  {
 				throw new UnsupportedOperationException("AbstractDeclParam should be a DeclParam");
 			}
 		}
+		compiler.setLabelReturn(new Label(this.getName().getMethodDefinition().getLabel().toString().replaceFirst("code", "fin")));
 		body.codeGenBody(compiler);
-		if (compiler.hasReturn()) {
-			compiler.addInstruction(new BRA(new Label(this.getName().getMethodDefinition().getLabel().toString().replaceFirst("code", "fin"))));
-			compiler.setReturn(false);
-		}
 	}
 }

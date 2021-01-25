@@ -1,0 +1,111 @@
+	TSTO #2
+	BOV pile_pleine
+	ADDSP #2
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Main program
+; Beginning of main instructions:
+	WSTR "9 ="
+	LOAD #3, R2
+	MUL #3, R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "16 ="
+	LOAD #4, R2
+	SHL R2
+	SHL R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "64 ="
+	LOAD #4, R2
+	SHL R2
+	SHL R2
+	SHL R2
+	SHL R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "0 ="
+	LOAD #0, R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "0 ="
+	LOAD #1, R2
+	MUL #0, R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "1 ="
+	LOAD #25, R2
+	LOAD R2, R1
+	SHR R1
+	SHR R1
+	SHL R1
+	SHL R1
+	SUB R1, R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "2 ="
+	LOAD #18, R2
+	LOAD R2, R1
+	SHR R1
+	SHR R1
+	SHR R1
+	SHL R1
+	SHL R1
+	SHL R1
+	SUB R1, R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "2 ="
+	LOAD #18, R2
+	SHR R2
+	SHR R2
+	SHR R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "2.25 ="
+	LOAD #18, R2
+	FLOAT #18, R2
+	DIV #0x1.0p3, R2
+	BOV debordement_flottant
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	WSTR "4.5 ="
+	LOAD #9, R2
+	FLOAT #9, R2
+	DIV #0x1.0p1, R2
+	BOV debordement_flottant
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+debordement_flottant:
+	WSTR "Erreur : debordement_flottant"
+	WNL
+	ERROR
+; end main program

@@ -31,20 +31,8 @@ public class Cast extends AbstractExpr {
 		this.expr = expr;
 	}
 	
-	public AbstractIdentifier getTypeIdentifier() {
-		return this.type;
-	}
-	
 	public void setType(AbstractIdentifier type) {
 		this.type = type;
-	}
-
-	public AbstractExpr getExpr() {
-		return expr;
-	}
-
-	public void setExpr(AbstractExpr expr) {
-		this.expr = expr;
 	}
 
 	public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
@@ -91,9 +79,11 @@ public class Cast extends AbstractExpr {
 			compiler.addInstruction(new PUSH(reg)); // Sauvegarde de la valeur de l'expression
 			condition.boolCodeGen(compiler, true, fin);
 			// Le cast est impossible
-			Label impossibleCast = new Label("cast_impossible");
-			compiler.addInstruction(new BRA(impossibleCast));
-			compiler.addError(impossibleCast);
+			if (!compiler.getCompilerOptions().getNoCheck()) {
+				Label impossibleCast = new Label("cast_impossible");
+				compiler.addInstruction(new BRA(impossibleCast));
+				compiler.addError(impossibleCast);
+			}
 			// Le cast est possible;		
 			compiler.addLabel(fin);
 			compiler.addInstruction(new POP(reg)); // Resauration de la valeur de l'expression

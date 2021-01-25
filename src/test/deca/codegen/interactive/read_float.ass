@@ -1,7 +1,13 @@
-	TSTO #1
+	TSTO #3
 	BOV pile_pleine
-	ADDSP #1
+	ADDSP #3
 ; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
 ; Main program
 ; Beginning of main instructions:
 	WSTR "entrez une valeur pour x:"
@@ -9,22 +15,24 @@
 	RFLOAT
 	BOV io_error
 	LOAD R1, R2
-	STORE R2, 1(GB)
-	BOV debordement_flottant
+	STORE R2, 3(GB)
 	WSTR "valeur entrée: "
-	LOAD 1(GB), R2
+	LOAD 3(GB), R2
 	LOAD R2, R1
 	WFLOAT
 	WSTR ", tres bon choix !"
 	WNL
 	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
 ; Erreurs
 pile_pleine:
 	WSTR "Erreur : pile_pleine"
-	WNL
-	ERROR
-debordement_flottant:
-	WSTR "Erreur : debordement_flottant"
 	WNL
 	ERROR
 io_error:

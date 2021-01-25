@@ -90,6 +90,9 @@ public abstract class Type {
      * @see fr.ensimag.deca.tree.abstractExp.verifyRvalue
      */
     public boolean isSubTypeOf(Type type1, Location loc) throws ContextualError{
+    	if (this == type1) {
+    		return true;
+    	}
     	if ((type1.isFloat()) && (this.isInt())) {
     		return true;
     	} else if (type1.isClass()){

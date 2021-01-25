@@ -17,11 +17,9 @@
 	STORE R2, 4(GB)
 	LOAD #0x1.ccccccp1, R2
 	STORE R2, 5(GB)
-	BOV debordement_flottant
 	LOAD #0x1.ccccccp1, R2
 	OPP #0x1.ccccccp1, R2
 	STORE R2, 6(GB)
-	BOV debordement_flottant
 ; Beginning of main instructions:
 	LOAD 3(GB), R2
 	LOAD R2, R1
@@ -59,12 +57,10 @@
 	LOAD 3(GB), R2
 	FLOAT R2, R2
 	STORE R2, 5(GB)
-	BOV debordement_flottant
 ; cast  int vers float ligne 21
 	LOAD 4(GB), R2
 	FLOAT R2, R2
 	STORE R2, 6(GB)
-	BOV debordement_flottant
 	LOAD 5(GB), R2
 	LOAD R2, R1
 	WFLOAT
@@ -79,20 +75,11 @@
 code.Object.equals:
 	LOAD -2(LB), R1
 	CMP -3(LB), R1
-	BEQ Object.equals.true
-	LOAD #0, R0
-	BRA fin.Object.equals
-Object.equals.true:
-	LOAD #1, R0
-fin.Object.equals:
+	SEQ R0
 	RTS
 ; Erreurs
 pile_pleine:
 	WSTR "Erreur : pile_pleine"
-	WNL
-	ERROR
-debordement_flottant:
-	WSTR "Erreur : debordement_flottant"
 	WNL
 	ERROR
 ; end main program

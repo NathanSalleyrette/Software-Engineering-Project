@@ -11,6 +11,7 @@ class A{
 }
 
 class B extends A{
+protected int z;
 }
 
 class C extends B {
@@ -21,13 +22,27 @@ class C extends B {
 	int gety(){
 	return y;
 	}
+	int getA(C c){
+		return c.y;
+	}
+	int getB(C c){
+		return c.z;
+	}
+	int getC(C c){
+		return c.x;
+	}
+	
 }
 
 {
 A a = new B();
+B b = new B();
 C c = new C();
-a.x;
+//a.x;
 c.met();
 c.gety();
+c.getA(c);
+c.getB(c);
+c.getC(c);
 
 }
