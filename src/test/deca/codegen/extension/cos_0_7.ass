@@ -118,6 +118,21 @@
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
+	LOAD #0x1.6849b8p-47, R2
+	STORE R2, -1(SP)
+	LOAD #0x1.0p0, R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #3
+	LOAD R0, R2
+; Appel de méthode ligne 28
+	ADDSP #3
+	LOAD 39(GB), R2
+	STORE R2, 0(SP)
 	LOAD #0x1.99999ap-4, R2
 	STORE R2, -1(SP)
 	LOAD #0x1.fd713p-1, R2
@@ -129,7 +144,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 29
+; Appel de méthode ligne 30
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -144,7 +159,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 31
+; Appel de méthode ligne 32
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -159,7 +174,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 32
+; Appel de méthode ligne 33
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -174,7 +189,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 33
+; Appel de méthode ligne 34
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -189,7 +204,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 34
+; Appel de méthode ligne 35
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -204,7 +219,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 35
+; Appel de méthode ligne 36
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -219,7 +234,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 36
+; Appel de méthode ligne 37
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -234,7 +249,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 37
+; Appel de méthode ligne 38
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -249,7 +264,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 38
+; Appel de méthode ligne 39
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -264,7 +279,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 39
+; Appel de méthode ligne 40
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -279,7 +294,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 44
+; Appel de méthode ligne 45
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -294,7 +309,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 45
+; Appel de méthode ligne 46
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -309,7 +324,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 46
+; Appel de méthode ligne 47
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -324,7 +339,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 47
+; Appel de méthode ligne 48
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -339,7 +354,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 48
+; Appel de méthode ligne 49
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -354,7 +369,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 49
+; Appel de méthode ligne 50
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -369,7 +384,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 50
+; Appel de méthode ligne 51
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -384,7 +399,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 51
+; Appel de méthode ligne 52
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -399,7 +414,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 53
+; Appel de méthode ligne 54
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -414,7 +429,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 54
+; Appel de méthode ligne 55
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -429,7 +444,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 55
+; Appel de méthode ligne 56
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -444,7 +459,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 56
+; Appel de méthode ligne 57
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -459,7 +474,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 57
+; Appel de méthode ligne 58
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -474,7 +489,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 58
+; Appel de méthode ligne 59
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -489,7 +504,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 59
+; Appel de méthode ligne 60
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -504,7 +519,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 60
+; Appel de méthode ligne 61
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -519,7 +534,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 61
+; Appel de méthode ligne 62
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -534,7 +549,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 63
+; Appel de méthode ligne 64
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -549,7 +564,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 64
+; Appel de méthode ligne 65
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -564,7 +579,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 65
+; Appel de méthode ligne 66
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -579,7 +594,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 66
+; Appel de méthode ligne 67
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -594,7 +609,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 67
+; Appel de méthode ligne 68
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -609,7 +624,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 68
+; Appel de méthode ligne 69
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -625,7 +640,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 69
+; Appel de méthode ligne 70
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -641,7 +656,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 70
+; Appel de méthode ligne 71
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -657,7 +672,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 71
+; Appel de méthode ligne 72
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -673,7 +688,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 72
+; Appel de méthode ligne 73
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -689,7 +704,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 74
+; Appel de méthode ligne 75
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -705,7 +720,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 75
+; Appel de méthode ligne 76
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -721,7 +736,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 76
+; Appel de méthode ligne 77
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -737,7 +752,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 77
+; Appel de méthode ligne 78
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -753,7 +768,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 78
+; Appel de méthode ligne 79
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -769,7 +784,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 79
+; Appel de méthode ligne 80
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -785,7 +800,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 80
+; Appel de méthode ligne 81
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -801,7 +816,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 81
+; Appel de méthode ligne 82
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -817,7 +832,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 82
+; Appel de méthode ligne 83
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -833,7 +848,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 83
+; Appel de méthode ligne 84
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -849,7 +864,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 85
+; Appel de méthode ligne 86
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -865,7 +880,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 86
+; Appel de méthode ligne 87
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -881,7 +896,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 87
+; Appel de méthode ligne 88
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -897,7 +912,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 88
+; Appel de méthode ligne 89
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -913,7 +928,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 89
+; Appel de méthode ligne 90
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -929,7 +944,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 90
+; Appel de méthode ligne 91
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -945,7 +960,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 91
+; Appel de méthode ligne 92
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -961,7 +976,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 92
+; Appel de méthode ligne 93
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -977,7 +992,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 93
+; Appel de méthode ligne 94
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -993,7 +1008,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 94
+; Appel de méthode ligne 95
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1009,7 +1024,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 96
+; Appel de méthode ligne 97
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1025,7 +1040,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 97
+; Appel de méthode ligne 98
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1041,7 +1056,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 98
+; Appel de méthode ligne 99
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1057,7 +1072,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 99
+; Appel de méthode ligne 100
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1073,7 +1088,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 100
+; Appel de méthode ligne 101
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1089,7 +1104,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 101
+; Appel de méthode ligne 102
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1105,7 +1120,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 102
+; Appel de méthode ligne 103
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1121,7 +1136,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 103
+; Appel de méthode ligne 104
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1136,7 +1151,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 104
+; Appel de méthode ligne 105
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1151,7 +1166,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 105
+; Appel de méthode ligne 106
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1166,7 +1181,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 107
+; Appel de méthode ligne 108
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1181,7 +1196,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 108
+; Appel de méthode ligne 109
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1196,7 +1211,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 109
+; Appel de méthode ligne 110
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1211,7 +1226,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 110
+; Appel de méthode ligne 111
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1226,7 +1241,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 111
+; Appel de méthode ligne 112
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1241,7 +1256,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 112
+; Appel de méthode ligne 113
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1256,7 +1271,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 113
+; Appel de méthode ligne 114
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1271,7 +1286,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 114
+; Appel de méthode ligne 115
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1286,7 +1301,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 115
+; Appel de méthode ligne 116
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1301,7 +1316,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 116
+; Appel de méthode ligne 117
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1316,7 +1331,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 118
+; Appel de méthode ligne 119
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1331,7 +1346,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 119
+; Appel de méthode ligne 120
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1346,7 +1361,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 120
+; Appel de méthode ligne 121
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1361,7 +1376,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 121
+; Appel de méthode ligne 122
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1376,7 +1391,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 122
+; Appel de méthode ligne 123
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1391,7 +1406,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 123
+; Appel de méthode ligne 124
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1406,7 +1421,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 124
+; Appel de méthode ligne 125
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1421,7 +1436,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 125
+; Appel de méthode ligne 126
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1436,7 +1451,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 126
+; Appel de méthode ligne 127
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -1451,7 +1466,7 @@
 	BSR 2(R2)
 	SUBSP #3
 	LOAD R0, R2
-; Appel de méthode ligne 127
+; Appel de méthode ligne 128
 	ADDSP #3
 	LOAD 39(GB), R2
 	STORE R2, 0(SP)
@@ -10791,8 +10806,6 @@ code.Math.asin:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 14(LB)
-	WSTR "a"
-	WNL
 	LOAD 1(LB), R2
 	LOAD #0, R3
 	FLOAT #0, R3
@@ -10818,7 +10831,7 @@ E_Fin.18_Fin.19_Fin.19:
 E_Fin.18_Fin.19:
 	WSTR "Erreur de domaine (le nombre doit appartenir à [-1, 1])"
 	WNL
-; Appel de méthode ligne 813
+; Appel de méthode ligne 812
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -10830,24 +10843,14 @@ E_Fin.18_Fin.19:
 	SUBSP #1
 	LOAD R0, R2
 E_Fin.18:
-	WSTR "b"
-	WNL
-	LOAD 1(LB), R2
-	LOAD R2, R1
-	WFLOATX
-	WNL
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
 	BNE E_Fin.21
 	LOAD #1, R2
 	STORE R2, 10(LB)
-	WSTR "c"
-	WNL
 	LOAD #0x0.0p0, R2
 	LOAD R2, R0
 	BRA fin.Math.asin
-	WSTR "d"
-	WNL
 E_Fin.21:
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
@@ -10979,7 +10982,7 @@ E_Cond.30:
 	CMP #3, R2
 	BLT E_Debut.30
 E_Fin.28:
-; Appel de méthode ligne 871
+; Appel de méthode ligne 866
 	ADDSP #4
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -11030,7 +11033,7 @@ fin.Math.asin:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode atan dans la classe Math ligne 878
+; ---------- Code de la methode atan dans la classe Math ligne 873
 code.Math.atan:
 	TSTO #23
 	BOV pile_pleine
@@ -11039,7 +11042,7 @@ code.Math.atan:
 	PUSH R2
 	PUSH R3
 	PUSH R4
-; new ligne 893
+; new ligne 888
 	NEW #2, R2
 	BOV tas_plein
 	LEA 19(GB), R0
@@ -11048,7 +11051,7 @@ code.Math.atan:
 	BSR init._Pi
 	POP R2
 	STORE R2, 11(LB)
-; new ligne 894
+; new ligne 889
 	NEW #2, R2
 	BOV tas_plein
 	LEA 16(GB), R0
@@ -11057,7 +11060,7 @@ code.Math.atan:
 	BSR init._Epsilon
 	POP R2
 	STORE R2, 12(LB)
-; Appel de méthode ligne 895
+; Appel de méthode ligne 890
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -11068,7 +11071,7 @@ code.Math.atan:
 	BSR 2(R2)
 	SUBSP #1
 	LOAD R0, R2
-; Appel de méthode ligne 896
+; Appel de méthode ligne 891
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -11086,7 +11089,7 @@ code.Math.atan:
 	STORE R2, 1(LB)
 	LOAD #0x1.0p0, R2
 	STORE R2, 5(LB)
-; Appel de méthode ligne 899
+; Appel de méthode ligne 894
 	ADDSP #1
 	LOAD 11(LB), R2
 	STORE R2, 0(SP)
@@ -11098,7 +11101,7 @@ code.Math.atan:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 9(LB)
-; Appel de méthode ligne 900
+; Appel de méthode ligne 895
 	ADDSP #1
 	LOAD 12(LB), R2
 	STORE R2, 0(SP)
@@ -11110,7 +11113,7 @@ code.Math.atan:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 8(LB)
-; Appel de méthode ligne 902
+; Appel de méthode ligne 897
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -11125,7 +11128,7 @@ code.Math.atan:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 13(LB)
-; new ligne 903
+; new ligne 898
 	NEW #4, R2
 	BOV tas_plein
 	LEA 3(GB), R0
@@ -11134,7 +11137,7 @@ code.Math.atan:
 	BSR init._Liste
 	POP R2
 	STORE R2, 14(LB)
-; Appel de méthode ligne 904
+; Appel de méthode ligne 899
 	ADDSP #4
 	LOAD 14(LB), R2
 	STORE R2, 0(SP)
@@ -11404,7 +11407,7 @@ fin.Math.atan:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode ulp dans la classe Math ligne 959
+; ---------- Code de la methode ulp dans la classe Math ligne 954
 code.Math.ulp:
 	TSTO #11
 	BOV pile_pleine
@@ -11412,14 +11415,14 @@ code.Math.ulp:
 ; Sauvegarde des registres
 	PUSH R2
 	PUSH R3
-; new ligne 964
+; new ligne 959
 	NEW #1, R2
 	BOV tas_plein
 	LEA 6(GB), R0
 	STORE R0, 0(R2)
 	STORE R2, 3(LB)
 	LOAD #0x1.0p0, R2
-; Appel de méthode ligne 965
+; Appel de méthode ligne 960
 	ADDSP #2
 	LOAD -2(LB), R3
 	STORE R3, 0(SP)
@@ -11436,7 +11439,7 @@ code.Math.ulp:
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(LB)
-; Appel de méthode ligne 966
+; Appel de méthode ligne 961
 	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -11457,7 +11460,7 @@ code.Math.ulp:
 	LOAD R2, R0
 	BRA fin.Math.ulp
 E_Fin.43:
-; Appel de méthode ligne 970
+; Appel de méthode ligne 965
 	ADDSP #3
 	LOAD 3(LB), R2
 	STORE R2, 0(SP)
@@ -11473,7 +11476,7 @@ E_Fin.43:
 	SUBSP #3
 	LOAD R0, R2
 	STORE R2, 1(LB)
-; Appel de méthode ligne 971
+; Appel de méthode ligne 966
 	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -11498,13 +11501,13 @@ fin.Math.ulp:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode _fma dans la classe Math ligne 976
+; ---------- Code de la methode _fma dans la classe Math ligne 971
 code.Math._fma:
     LOAD -3(LB), R1
                 LOAD -4(LB), R0
                 FMA -5(LB), R0
                 RTS
-; ---------- Code de la methode _powerOfTwoShift dans la classe Math ligne 983
+; ---------- Code de la methode _powerOfTwoShift dans la classe Math ligne 978
 code.Math._powerOfTwoShift:
     LOAD #1, R0
                 LOAD -3(LB), R1
@@ -11516,7 +11519,7 @@ code.Math._powerOfTwoShift:
                 CMP #0, R1
                 BNE user.shift.debut
                 RTS
-; ---------- Code de la methode _puissanceDe2 dans la classe Math ligne 995
+; ---------- Code de la methode _puissanceDe2 dans la classe Math ligne 990
 code.Math._puissanceDe2:
 	TSTO #8
 	BOV pile_pleine
@@ -11532,8 +11535,8 @@ code.Math._puissanceDe2:
 	LOAD -3(LB), R2
 	CMP #0, R2
 	BLT E_Sinon.44
-; cast  int vers float ligne 999
-; Appel de méthode ligne 999
+; cast  int vers float ligne 994
+; Appel de méthode ligne 994
 	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -11576,7 +11579,7 @@ fin.Math._puissanceDe2:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode _abs dans la classe Math ligne 1008
+; ---------- Code de la methode _abs dans la classe Math ligne 1003
 code.Math._abs:
 	TSTO #1
 	BOV pile_pleine

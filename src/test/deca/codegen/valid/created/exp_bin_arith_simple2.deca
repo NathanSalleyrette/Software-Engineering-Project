@@ -1,0 +1,18 @@
+// Description :
+//    test des expressions binaire arithmétiques,
+//
+// Resultats :
+//		Ok
+
+{
+println("9 =", 3*3);
+println("16 =", 4*4);
+println("64 =", 4*16);
+println("0 =",0*1 );
+println("0 =",1*0 );
+println("1 =",25 % 4 );
+println("2 =", 18 % 8);
+println("2 =", 18 / 8);
+println("2.25 =", 18 / 8.0);
+println("4.5 =", 9 / 2.0);
+}

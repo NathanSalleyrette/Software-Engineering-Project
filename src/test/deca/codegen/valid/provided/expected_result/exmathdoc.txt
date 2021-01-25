@@ -1,7 +1,7 @@
 ---CODE_ASSEMBLEUR---
-	TSTO #39
+	TSTO #40
 	BOV pile_pleine
-	ADDSP #35
+	ADDSP #36
 ; start main program
 ; Construction des tables des méthodes
 ; Construction de la table des méthodes de Object
@@ -55,29 +55,31 @@
 ; Construction de la table des méthodes de Math
 	LEA 1(GB), R0
 	STORE R0, 22(GB)
-	LOAD code.Math._powerOfTwoShift, R0
+	LOAD code.Math._fma, R0
 	STORE R0, 32(GB)
-	LOAD code.Math._puissanceDe2, R0
+	LOAD code.Math._powerOfTwoShift, R0
 	STORE R0, 33(GB)
-	LOAD code.Math._abs, R0
+	LOAD code.Math._puissanceDe2, R0
 	STORE R0, 34(GB)
+	LOAD code.Math._abs, R0
+	STORE R0, 35(GB)
 	LOAD code.Object.equals, R0
 	STORE R0, 23(GB)
 	LOAD code.Math._initListeMath, R0
 	STORE R0, 24(GB)
 	LOAD code.Math._Error, R0
 	STORE R0, 25(GB)
-	LOAD code.Math.sin, R0
+	LOAD code.Math._rangeReduction, R0
 	STORE R0, 26(GB)
-	LOAD code.Math.cos, R0
+	LOAD code.Math.sin, R0
 	STORE R0, 27(GB)
-	LOAD code.Math.asin, R0
+	LOAD code.Math.cos, R0
 	STORE R0, 28(GB)
-	LOAD code.Math.atan, R0
+	LOAD code.Math.asin, R0
 	STORE R0, 29(GB)
-	LOAD code.Math.ulp, R0
+	LOAD code.Math.atan, R0
 	STORE R0, 30(GB)
-	LOAD code.Math._fma, R0
+	LOAD code.Math.ulp, R0
 	STORE R0, 31(GB)
 ; Main program
 ; new ligne 14
@@ -88,12 +90,12 @@
 	PUSH R2
 	BSR init.Math
 	POP R2
-	STORE R2, 35(GB)
+	STORE R2, 36(GB)
 ; Beginning of main instructions:
 	WSTR "cos(0.0) = "
 ; Appel de méthode ligne 15
 	ADDSP #2
-	LOAD 35(GB), R2
+	LOAD 36(GB), R2
 	STORE R2, 0(SP)
 	LOAD #0x0.0p0, R2
 	STORE R2, -1(SP)
@@ -101,7 +103,7 @@
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 5(R2)
+	BSR 6(R2)
 	SUBSP #2
 	LOAD R0, R2
 	LOAD R2, R1
@@ -180,7 +182,7 @@ code._ULP._trouveExposant:
 	CMP #null, R3
 	BEQ dereferencement.null
 	LOAD 0(R3), R3
-	BSR 11(R3)
+	BSR 12(R3)
 	SUBSP #2
 	LOAD R0, R3
 	DIV R3, R2
@@ -202,7 +204,7 @@ E_Debut.1:
 	CMP #null, R3
 	BEQ dereferencement.null
 	LOAD 0(R3), R3
-	BSR 11(R3)
+	BSR 12(R3)
 	SUBSP #2
 	LOAD R0, R3
 	DIV R3, R2
@@ -228,7 +230,7 @@ E_Sinon.0:
 	CMP #null, R3
 	BEQ dereferencement.null
 	LOAD 0(R3), R3
-	BSR 11(R3)
+	BSR 12(R3)
 	SUBSP #2
 	LOAD R0, R3
 	DIV R3, R2
@@ -250,7 +252,7 @@ E_Debut.2:
 	CMP #null, R3
 	BEQ dereferencement.null
 	LOAD 0(R3), R3
-	BSR 11(R3)
+	BSR 12(R3)
 	SUBSP #2
 	LOAD R0, R3
 	DIV R3, R2
@@ -8586,7 +8588,142 @@ fin.Math._initListeMath:
 code.Math._Error:
 WNL
                 ERROR
-; ---------- Code de la methode sin dans la classe Math ligne 639
+; ---------- Code de la methode _rangeReduction dans la classe Math ligne 640
+code.Math._rangeReduction:
+	TSTO #13
+	BOV pile_pleine
+	ADDSP #5
+; Sauvegarde des registres
+	PUSH R2
+	PUSH R3
+; new ligne 646
+	NEW #2, R2
+	BOV tas_plein
+	LEA 19(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init._Pi
+	POP R2
+	STORE R2, 5(LB)
+; Appel de méthode ligne 647
+	ADDSP #1
+	LOAD 5(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	LOAD #2, R2
+	FLOAT #2, R2
+	MUL 1(LB), R2
+	BOV debordement_flottant
+	STORE R2, 4(LB)
+	LOAD -3(LB), R2
+	DIV 4(LB), R2
+	BOV debordement_flottant
+	STORE R2, 2(LB)
+; cast  float vers int ligne 650
+	LOAD 2(LB), R2
+	INT R2, R2
+	FLOAT R2, R2
+	STORE R2, 3(LB)
+; Appel de méthode ligne 651
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 3(LB), R2
+	OPP 3(LB), R2
+	STORE R2, -2(SP)
+	LOAD 4(LB), R2
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 10(R2)
+	SUBSP #4
+	LOAD R0, R2
+	STORE R2, -3(LB)
+	LOAD -3(LB), R2
+	LOAD 1(LB), R3
+	OPP 1(LB), R3
+	CMP R3, R2
+	BGE E_Fin.4
+	BRA E_Cond.5
+E_Debut.5:
+; Appel de méthode ligne 654
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD #2, R2
+	FLOAT #2, R2
+	STORE R2, -2(SP)
+	LOAD 1(LB), R2
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 10(R2)
+	SUBSP #4
+	LOAD R0, R2
+	STORE R2, -3(LB)
+E_Cond.5:
+	LOAD -3(LB), R2
+	LOAD 1(LB), R3
+	OPP 1(LB), R3
+	CMP R3, R2
+	BLT E_Debut.5
+E_Fin.4:
+	LOAD -3(LB), R2
+	CMP 1(LB), R2
+	BLE E_Fin.6
+	BRA E_Cond.7
+E_Debut.7:
+; Appel de méthode ligne 659
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD #2, R2
+	OPP #2, R2
+	FLOAT R2, R2
+	STORE R2, -2(SP)
+	LOAD 1(LB), R2
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 10(R2)
+	SUBSP #4
+	LOAD R0, R2
+	STORE R2, -3(LB)
+E_Cond.7:
+	LOAD -3(LB), R2
+	CMP 1(LB), R2
+	BGT E_Debut.7
+E_Fin.6:
+	LOAD -3(LB), R2
+	LOAD R2, R0
+	BRA fin.Math._rangeReduction
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.Math._rangeReduction:
+	POP R3
+	POP R2
+	RTS
+; ---------- Code de la methode sin dans la classe Math ligne 665
 code.Math.sin:
 	TSTO #22
 	BOV pile_pleine
@@ -8595,7 +8732,7 @@ code.Math.sin:
 	PUSH R2
 	PUSH R3
 	PUSH R4
-; new ligne 653
+; new ligne 679
 	NEW #2, R2
 	BOV tas_plein
 	LEA 19(GB), R0
@@ -8604,7 +8741,7 @@ code.Math.sin:
 	BSR init._Pi
 	POP R2
 	STORE R2, 3(LB)
-; new ligne 654
+; new ligne 680
 	NEW #2, R2
 	BOV tas_plein
 	LEA 16(GB), R0
@@ -8613,7 +8750,7 @@ code.Math.sin:
 	BSR init._Epsilon
 	POP R2
 	STORE R2, 4(LB)
-; Appel de méthode ligne 655
+; Appel de méthode ligne 681
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -8624,7 +8761,7 @@ code.Math.sin:
 	BSR 2(R2)
 	SUBSP #1
 	LOAD R0, R2
-; Appel de méthode ligne 656
+; Appel de méthode ligne 682
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -8640,7 +8777,7 @@ code.Math.sin:
 	LOAD R0, R2
 	LOAD -3(LB), R2
 	STORE R2, 1(LB)
-; Appel de méthode ligne 658
+; Appel de méthode ligne 684
 	ADDSP #1
 	LOAD 3(LB), R2
 	STORE R2, 0(SP)
@@ -8652,7 +8789,7 @@ code.Math.sin:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 2(LB)
-; Appel de méthode ligne 659
+; Appel de méthode ligne 685
 	ADDSP #1
 	LOAD 4(LB), R2
 	STORE R2, 0(SP)
@@ -8666,7 +8803,7 @@ code.Math.sin:
 	STORE R2, 9(LB)
 	LOAD #1, R2
 	STORE R2, 10(LB)
-; Appel de méthode ligne 661
+; Appel de méthode ligne 687
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -8681,69 +8818,20 @@ code.Math.sin:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 5(LB)
-	LOAD 1(LB), R2
-	LOAD 2(LB), R3
-	OPP 2(LB), R3
-	CMP R3, R2
-	BGE E_Fin.4
-	BRA E_Cond.5
-E_Debut.5:
-; Appel de méthode ligne 664
-	ADDSP #4
+; Appel de méthode ligne 688
+	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
 	LOAD 1(LB), R2
 	STORE R2, -1(SP)
-	LOAD #2, R2
-	FLOAT #2, R2
-	STORE R2, -2(SP)
-	LOAD 2(LB), R2
-	STORE R2, -3(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 9(R2)
-	SUBSP #4
+	BSR 4(R2)
+	SUBSP #2
 	LOAD R0, R2
 	STORE R2, 1(LB)
-E_Cond.5:
-	LOAD 1(LB), R2
-	LOAD 2(LB), R3
-	OPP 2(LB), R3
-	CMP R3, R2
-	BLT E_Debut.5
-E_Fin.4:
-	LOAD 1(LB), R2
-	CMP 2(LB), R2
-	BLE E_Fin.6
-	BRA E_Cond.7
-E_Debut.7:
-; Appel de méthode ligne 669
-	ADDSP #4
-	LOAD -2(LB), R2
-	STORE R2, 0(SP)
-	LOAD 1(LB), R2
-	STORE R2, -1(SP)
-	LOAD #2, R2
-	OPP #2, R2
-	FLOAT R2, R2
-	STORE R2, -2(SP)
-	LOAD 2(LB), R2
-	STORE R2, -3(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 9(R2)
-	SUBSP #4
-	LOAD R0, R2
-	STORE R2, 1(LB)
-E_Cond.7:
-	LOAD 1(LB), R2
-	CMP 2(LB), R2
-	BGT E_Debut.7
-E_Fin.6:
 	LOAD 2(LB), R2
 	LOAD #2, R3
 	FLOAT #2, R3
@@ -8837,7 +8925,7 @@ E_Cond.12:
 	BLT E_Debut.12
 	LOAD 7(LB), R2
 	STORE R2, 6(LB)
-; Appel de méthode ligne 699
+; Appel de méthode ligne 717
 	ADDSP #4
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -8858,11 +8946,11 @@ E_Cond.12:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 9(R2)
+	BSR 10(R2)
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 7(LB)
-; Appel de méthode ligne 701
+; Appel de méthode ligne 719
 	ADDSP #4
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -8879,7 +8967,7 @@ E_Cond.12:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 9(R2)
+	BSR 10(R2)
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 8(LB)
@@ -8899,7 +8987,7 @@ E_Cond.11:
 	DIV 7(LB), R2
 	BOV debordement_flottant
 	STORE R2, 11(LB)
-; Appel de méthode ligne 705
+; Appel de méthode ligne 723
 	ADDSP #4
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -8914,14 +9002,14 @@ E_Cond.11:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 9(R2)
+	BSR 10(R2)
 	SUBSP #4
 	LOAD R0, R2
 	LOAD #2, R2
 	FLOAT #2, R2
 	MUL 11(LB), R2
 	BOV debordement_flottant
-; Appel de méthode ligne 706
+; Appel de méthode ligne 724
 	ADDSP #4
 	LOAD -2(LB), R3
 	STORE R3, 0(SP)
@@ -8936,7 +9024,7 @@ E_Cond.11:
 	CMP #null, R3
 	BEQ dereferencement.null
 	LOAD 0(R3), R3
-	BSR 9(R3)
+	BSR 10(R3)
 	SUBSP #4
 	LOAD R0, R3
 	DIV R3, R2
@@ -8958,7 +9046,7 @@ fin.Math.sin:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode cos dans la classe Math ligne 710
+; ---------- Code de la methode cos dans la classe Math ligne 728
 code.Math.cos:
 	TSTO #22
 	BOV pile_pleine
@@ -8967,7 +9055,7 @@ code.Math.cos:
 	PUSH R2
 	PUSH R3
 	PUSH R4
-; new ligne 724
+; new ligne 742
 	NEW #2, R2
 	BOV tas_plein
 	LEA 19(GB), R0
@@ -8976,7 +9064,7 @@ code.Math.cos:
 	BSR init._Pi
 	POP R2
 	STORE R2, 3(LB)
-; new ligne 725
+; new ligne 743
 	NEW #2, R2
 	BOV tas_plein
 	LEA 16(GB), R0
@@ -8985,7 +9073,7 @@ code.Math.cos:
 	BSR init._Epsilon
 	POP R2
 	STORE R2, 4(LB)
-; Appel de méthode ligne 726
+; Appel de méthode ligne 744
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -8996,7 +9084,7 @@ code.Math.cos:
 	BSR 2(R2)
 	SUBSP #1
 	LOAD R0, R2
-; Appel de méthode ligne 727
+; Appel de méthode ligne 745
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -9012,7 +9100,7 @@ code.Math.cos:
 	LOAD R0, R2
 	LOAD -3(LB), R2
 	STORE R2, 1(LB)
-; Appel de méthode ligne 729
+; Appel de méthode ligne 747
 	ADDSP #1
 	LOAD 3(LB), R2
 	STORE R2, 0(SP)
@@ -9024,7 +9112,7 @@ code.Math.cos:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 2(LB)
-; Appel de méthode ligne 730
+; Appel de méthode ligne 748
 	ADDSP #1
 	LOAD 4(LB), R2
 	STORE R2, 0(SP)
@@ -9038,7 +9126,7 @@ code.Math.cos:
 	STORE R2, 9(LB)
 	LOAD #1, R2
 	STORE R2, 10(LB)
-; Appel de méthode ligne 732
+; Appel de méthode ligne 750
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -9053,69 +9141,20 @@ code.Math.cos:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 5(LB)
-	LOAD 1(LB), R2
-	LOAD 2(LB), R3
-	OPP 2(LB), R3
-	CMP R3, R2
-	BGE E_Fin.13
-	BRA E_Cond.14
-E_Debut.14:
-; Appel de méthode ligne 735
-	ADDSP #4
+; Appel de méthode ligne 751
+	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
 	LOAD 1(LB), R2
 	STORE R2, -1(SP)
-	LOAD #2, R2
-	FLOAT #2, R2
-	STORE R2, -2(SP)
-	LOAD 2(LB), R2
-	STORE R2, -3(SP)
 	LOAD 0(SP), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 9(R2)
-	SUBSP #4
+	BSR 4(R2)
+	SUBSP #2
 	LOAD R0, R2
 	STORE R2, 1(LB)
-E_Cond.14:
-	LOAD 1(LB), R2
-	LOAD 2(LB), R3
-	OPP 2(LB), R3
-	CMP R3, R2
-	BLT E_Debut.14
-E_Fin.13:
-	LOAD 1(LB), R2
-	CMP 2(LB), R2
-	BLE E_Fin.15
-	BRA E_Cond.16
-E_Debut.16:
-; Appel de méthode ligne 740
-	ADDSP #4
-	LOAD -2(LB), R2
-	STORE R2, 0(SP)
-	LOAD 1(LB), R2
-	STORE R2, -1(SP)
-	LOAD #2, R2
-	OPP #2, R2
-	FLOAT R2, R2
-	STORE R2, -2(SP)
-	LOAD 2(LB), R2
-	STORE R2, -3(SP)
-	LOAD 0(SP), R2
-	CMP #null, R2
-	BEQ dereferencement.null
-	LOAD 0(R2), R2
-	BSR 9(R2)
-	SUBSP #4
-	LOAD R0, R2
-	STORE R2, 1(LB)
-E_Cond.16:
-	LOAD 1(LB), R2
-	CMP 2(LB), R2
-	BGT E_Debut.16
-E_Fin.15:
 	LOAD 2(LB), R2
 	LOAD #2, R3
 	FLOAT #2, R3
@@ -9123,21 +9162,21 @@ E_Fin.15:
 	BOV debordement_flottant
 	OPP R2, R2
 	CMP 1(LB), R2
-	BGE E_Sinon.17
+	BGE E_Sinon.13
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
-	BGE E_Sinon.17
+	BGE E_Sinon.13
 	LOAD 1(LB), R2
 	OPP 1(LB), R2
 	STORE R2, 1(LB)
 	LOAD #1, R2
 	STORE R2, 10(LB)
-	BRA E_Fin.17
-E_Sinon.17:
+	BRA E_Fin.13
+E_Sinon.13:
 	LOAD 2(LB), R2
 	OPP 2(LB), R2
 	CMP 1(LB), R2
-	BGE E_Sinon.18
+	BGE E_Sinon.14
 	LOAD 1(LB), R2
 	LOAD 2(LB), R3
 	LOAD #2, R4
@@ -9146,7 +9185,7 @@ E_Sinon.17:
 	BOV debordement_flottant
 	OPP R3, R3
 	CMP R3, R2
-	BGE E_Sinon.18
+	BGE E_Sinon.14
 	LOAD 1(LB), R2
 	ADD 2(LB), R2
 	BOV debordement_flottant
@@ -9154,18 +9193,18 @@ E_Sinon.17:
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 10(LB)
-	BRA E_Fin.18
-E_Sinon.18:
+	BRA E_Fin.14
+E_Sinon.14:
 	LOAD 1(LB), R2
 	CMP 2(LB), R2
-	BGE E_Sinon.19
+	BGE E_Sinon.15
 	LOAD 2(LB), R2
 	LOAD #2, R3
 	FLOAT #2, R3
 	DIV R3, R2
 	BOV debordement_flottant
 	CMP 1(LB), R2
-	BGE E_Sinon.19
+	BGE E_Sinon.15
 	LOAD 2(LB), R2
 	SUB 1(LB), R2
 	BOV debordement_flottant
@@ -9173,13 +9212,13 @@ E_Sinon.18:
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 10(LB)
-	BRA E_Fin.19
-E_Sinon.19:
+	BRA E_Fin.15
+E_Sinon.15:
 	LOAD #1, R2
 	STORE R2, 10(LB)
-E_Fin.19:
-E_Fin.18:
-E_Fin.17:
+E_Fin.15:
+E_Fin.14:
+E_Fin.13:
 	LOAD 1(LB), R2
 	LOAD #2, R3
 	FLOAT #2, R3
@@ -9190,26 +9229,26 @@ E_Fin.17:
 	STORE R2, 7(LB)
 	LOAD #0x0.0p0, R2
 	STORE R2, 8(LB)
-	BRA E_Cond.20
-E_Debut.20:
-	BRA E_Cond.21
-E_Debut.21:
+	BRA E_Cond.16
+E_Debut.16:
+	BRA E_Cond.17
+E_Debut.17:
 	LOAD 5(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 2(R2), R2
 	STORE R2, 5(LB)
-E_Cond.21:
+E_Cond.17:
 	LOAD 1(LB), R2
 	LOAD 5(LB), R3
 	CMP #null, R3
 	BEQ dereferencement.null
 	LOAD 1(R3), R3
 	CMP R3, R2
-	BLT E_Debut.21
+	BLT E_Debut.17
 	LOAD 7(LB), R2
 	STORE R2, 6(LB)
-; Appel de méthode ligne 767
+; Appel de méthode ligne 777
 	ADDSP #4
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9230,11 +9269,11 @@ E_Cond.21:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 9(R2)
+	BSR 10(R2)
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 7(LB)
-; Appel de méthode ligne 768
+; Appel de méthode ligne 778
 	ADDSP #4
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9251,7 +9290,7 @@ E_Cond.21:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 9(R2)
+	BSR 10(R2)
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 8(LB)
@@ -9263,15 +9302,15 @@ E_Cond.21:
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 1(LB)
-E_Cond.20:
+E_Cond.16:
 	LOAD 1(LB), R2
 	CMP 9(LB), R2
-	BGE E_Debut.20
+	BGE E_Debut.16
 	LOAD 8(LB), R2
 	DIV 7(LB), R2
 	BOV debordement_flottant
 	STORE R2, 11(LB)
-; Appel de méthode ligne 772
+; Appel de méthode ligne 782
 	ADDSP #4
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9287,10 +9326,10 @@ E_Cond.20:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 9(R2)
+	BSR 10(R2)
 	SUBSP #4
 	LOAD R0, R2
-; Appel de méthode ligne 772
+; Appel de méthode ligne 782
 	ADDSP #4
 	LOAD -2(LB), R3
 	STORE R3, 0(SP)
@@ -9305,7 +9344,7 @@ E_Cond.20:
 	CMP #null, R3
 	BEQ dereferencement.null
 	LOAD 0(R3), R3
-	BSR 9(R3)
+	BSR 10(R3)
 	SUBSP #4
 	LOAD R0, R3
 	DIV R3, R2
@@ -9327,7 +9366,7 @@ fin.Math.cos:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode asin dans la classe Math ligne 776
+; ---------- Code de la methode asin dans la classe Math ligne 786
 code.Math.asin:
 	TSTO #22
 	BOV pile_pleine
@@ -9337,7 +9376,7 @@ code.Math.asin:
 	PUSH R3
 	LOAD -3(LB), R2
 	STORE R2, 1(LB)
-; Appel de méthode ligne 792
+; Appel de méthode ligne 802
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9348,7 +9387,7 @@ code.Math.asin:
 	BSR 2(R2)
 	SUBSP #1
 	LOAD R0, R2
-; Appel de méthode ligne 793
+; Appel de méthode ligne 803
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -9372,7 +9411,7 @@ code.Math.asin:
 	STORE R2, 5(LB)
 	LOAD #0x1.0p0, R2
 	STORE R2, 6(LB)
-; Appel de méthode ligne 799
+; Appel de méthode ligne 809
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -9391,28 +9430,28 @@ code.Math.asin:
 	LOAD #0, R3
 	FLOAT #0, R3
 	CMP R3, R2
-	BLE E_Fin.22_Fin.23_Fin.23
+	BLE E_Fin.18_Fin.19_Fin.19
 	LOAD 1(LB), R2
 	LOAD #1, R3
 	FLOAT #1, R3
 	CMP R3, R2
-	BGT E_Fin.22_Fin.23
-E_Fin.22_Fin.23_Fin.23:
+	BGT E_Fin.18_Fin.19
+E_Fin.18_Fin.19_Fin.19:
 	LOAD 1(LB), R2
 	LOAD #0, R3
 	FLOAT #0, R3
 	CMP R3, R2
-	BGE E_Fin.22
+	BGE E_Fin.18
 	LOAD 1(LB), R2
 	LOAD #1, R3
 	OPP #1, R3
 	FLOAT R3, R3
 	CMP R3, R2
-	BGE E_Fin.22
-E_Fin.22_Fin.23:
+	BGE E_Fin.18
+E_Fin.18_Fin.19:
 	WSTR "Erreur de domaine (le nombre doit appartenir à [-1, 1])"
 	WNL
-; Appel de méthode ligne 802
+; Appel de méthode ligne 812
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9423,83 +9462,85 @@ E_Fin.22_Fin.23:
 	BSR 3(R2)
 	SUBSP #1
 	LOAD R0, R2
-E_Fin.22:
+E_Fin.18:
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
-	BNE E_Fin.25
+	BNE E_Fin.21
+	LOAD #1, R2
+	STORE R2, 10(LB)
 	LOAD #0x0.0p0, R2
 	LOAD R2, R0
 	BRA fin.Math.asin
-E_Fin.25:
+E_Fin.21:
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
-	BLE E_Fin.26
+	BLE E_Fin.22
 	LOAD #1, R2
 	STORE R2, 10(LB)
 	LOAD 1(LB), R2
 	STORE R2, 5(LB)
-E_Fin.26:
+E_Fin.22:
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
-	BGE E_Fin.27
+	BGE E_Fin.23
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 10(LB)
 	LOAD 1(LB), R2
 	OPP 1(LB), R2
 	STORE R2, 5(LB)
-E_Fin.27:
+E_Fin.23:
 	LOAD #0, R2
 	STORE R2, 11(LB)
-	BRA E_Cond.28
-E_Debut.28:
+	BRA E_Cond.24
+E_Debut.24:
 	LOAD 11(LB), R2
 	CMP #16, R2
-	BGE E_Sinon.29
+	BGE E_Sinon.25
 	LOAD 14(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 1(R2), R2
 	STORE R2, 7(LB)
-	BRA E_Fin.29
-E_Sinon.29:
+	BRA E_Fin.25
+E_Sinon.25:
 	LOAD #1, R2
 	FLOAT #1, R2
 	DIV 6(LB), R2
 	BOV debordement_flottant
 	STORE R2, 7(LB)
-E_Fin.29:
+E_Fin.25:
 	LOAD 2(LB), R2
 	LOAD #0, R3
 	FLOAT #0, R3
 	CMP R3, R2
-	BGE E_Sinon.30
+	BGE E_Sinon.26
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 8(LB)
-	BRA E_Fin.30
-E_Sinon.30:
+	BRA E_Fin.26
+E_Sinon.26:
 	LOAD #1, R2
 	STORE R2, 8(LB)
-E_Fin.30:
+E_Fin.26:
 	LOAD 3(LB), R2
 	CMP 5(LB), R2
-	BGT E_Sinon.31
+	BGT E_Sinon.27
 	LOAD 8(LB), R2
 	STORE R2, 9(LB)
-	BRA E_Fin.31
-E_Sinon.31:
+	BRA E_Fin.27
+E_Sinon.27:
 	LOAD 8(LB), R2
 	OPP 8(LB), R2
 	STORE R2, 9(LB)
-E_Fin.31:
+E_Fin.27:
 	LOAD 9(LB), R2
 	CMP #0, R2
-	BLE E_Sinon.32
+	BLE E_Sinon.28
 	LOAD #1, R2
 	STORE R2, 12(LB)
-	BRA E_Cond.33
-E_Debut.33:
+	BRA E_Cond.29
+E_Debut.29:
 	LOAD 2(LB), R2
 	STORE R2, 13(LB)
 	LOAD 2(LB), R2
@@ -9523,16 +9564,16 @@ E_Debut.33:
 	LOAD 12(LB), R2
 	ADD #1, R2
 	STORE R2, 12(LB)
-E_Cond.33:
+E_Cond.29:
 	LOAD 12(LB), R2
 	CMP #3, R2
-	BLT E_Debut.33
-	BRA E_Fin.32
-E_Sinon.32:
+	BLT E_Debut.29
+	BRA E_Fin.28
+E_Sinon.28:
 	LOAD #1, R2
 	STORE R2, 12(LB)
-	BRA E_Cond.34
-E_Debut.34:
+	BRA E_Cond.30
+E_Debut.30:
 	LOAD 2(LB), R2
 	STORE R2, 13(LB)
 	LOAD 2(LB), R2
@@ -9556,12 +9597,12 @@ E_Debut.34:
 	LOAD 12(LB), R2
 	ADD #1, R2
 	STORE R2, 12(LB)
-E_Cond.34:
+E_Cond.30:
 	LOAD 12(LB), R2
 	CMP #3, R2
-	BLT E_Debut.34
-E_Fin.32:
-; Appel de méthode ligne 855
+	BLT E_Debut.30
+E_Fin.28:
+; Appel de méthode ligne 866
 	ADDSP #4
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9578,7 +9619,7 @@ E_Fin.32:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 9(R2)
+	BSR 10(R2)
 	SUBSP #4
 	LOAD R0, R2
 	STORE R2, 5(LB)
@@ -9595,10 +9636,10 @@ E_Fin.32:
 	LOAD 11(LB), R2
 	ADD #1, R2
 	STORE R2, 11(LB)
-E_Cond.28:
+E_Cond.24:
 	LOAD 11(LB), R2
 	CMP #74, R2
-	BLT E_Debut.28
+	BLT E_Debut.24
 	LOAD 10(LB), R2
 	FLOAT 10(LB), R2
 	MUL 4(LB), R2
@@ -9612,7 +9653,7 @@ fin.Math.asin:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode atan dans la classe Math ligne 862
+; ---------- Code de la methode atan dans la classe Math ligne 873
 code.Math.atan:
 	TSTO #23
 	BOV pile_pleine
@@ -9621,7 +9662,7 @@ code.Math.atan:
 	PUSH R2
 	PUSH R3
 	PUSH R4
-; new ligne 877
+; new ligne 888
 	NEW #2, R2
 	BOV tas_plein
 	LEA 19(GB), R0
@@ -9630,7 +9671,7 @@ code.Math.atan:
 	BSR init._Pi
 	POP R2
 	STORE R2, 11(LB)
-; new ligne 878
+; new ligne 889
 	NEW #2, R2
 	BOV tas_plein
 	LEA 16(GB), R0
@@ -9639,7 +9680,7 @@ code.Math.atan:
 	BSR init._Epsilon
 	POP R2
 	STORE R2, 12(LB)
-; Appel de méthode ligne 879
+; Appel de méthode ligne 890
 	ADDSP #1
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -9650,7 +9691,7 @@ code.Math.atan:
 	BSR 2(R2)
 	SUBSP #1
 	LOAD R0, R2
-; Appel de méthode ligne 880
+; Appel de méthode ligne 891
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -9668,7 +9709,7 @@ code.Math.atan:
 	STORE R2, 1(LB)
 	LOAD #0x1.0p0, R2
 	STORE R2, 5(LB)
-; Appel de méthode ligne 883
+; Appel de méthode ligne 894
 	ADDSP #1
 	LOAD 11(LB), R2
 	STORE R2, 0(SP)
@@ -9680,7 +9721,7 @@ code.Math.atan:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 9(LB)
-; Appel de méthode ligne 884
+; Appel de méthode ligne 895
 	ADDSP #1
 	LOAD 12(LB), R2
 	STORE R2, 0(SP)
@@ -9692,7 +9733,7 @@ code.Math.atan:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 8(LB)
-; Appel de méthode ligne 886
+; Appel de méthode ligne 897
 	ADDSP #1
 	LOAD -2(LB), R2
 	CMP #null, R2
@@ -9707,7 +9748,7 @@ code.Math.atan:
 	SUBSP #1
 	LOAD R0, R2
 	STORE R2, 13(LB)
-; new ligne 887
+; new ligne 898
 	NEW #4, R2
 	BOV tas_plein
 	LEA 3(GB), R0
@@ -9716,7 +9757,7 @@ code.Math.atan:
 	BSR init._Liste
 	POP R2
 	STORE R2, 14(LB)
-; Appel de méthode ligne 888
+; Appel de méthode ligne 899
 	ADDSP #4
 	LOAD 14(LB), R2
 	STORE R2, 0(SP)
@@ -9735,7 +9776,7 @@ code.Math.atan:
 	LOAD R0, R2
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
-	BGE E_Sinon.35
+	BGE E_Sinon.31
 	LOAD 1(LB), R2
 	OPP 1(LB), R2
 	STORE R2, 1(LB)
@@ -9763,8 +9804,8 @@ code.Math.atan:
 	LOAD 4(LB), R2
 	OPP 4(LB), R2
 	STORE R2, 6(LB)
-	BRA E_Cond.36
-E_Debut.36:
+	BRA E_Cond.32
+E_Debut.32:
 	LOAD 14(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
@@ -9772,15 +9813,15 @@ E_Debut.36:
 	STORE R2, 14(LB)
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BLE E_Sinon.37
+	BLE E_Sinon.33
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 3(LB)
-	BRA E_Fin.37
-E_Sinon.37:
+	BRA E_Fin.33
+E_Sinon.33:
 	LOAD #1, R2
 	STORE R2, 3(LB)
-E_Fin.37:
+E_Fin.33:
 	LOAD 3(LB), R2
 	FLOAT 3(LB), R2
 	LOAD 14(LB), R3
@@ -9824,29 +9865,29 @@ E_Fin.37:
 	ADD R3, R2
 	BOV debordement_flottant
 	STORE R2, 6(LB)
-E_Cond.36:
+E_Cond.32:
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BLT E_Debut.36_Fin.38_Fin.38_Fin.38
+	BLT E_Debut.32_Fin.34_Fin.34_Fin.34
 	LOAD 6(LB), R2
 	CMP 8(LB), R2
-	BGE E_Debut.36_Fin.38_Fin.38
-E_Debut.36_Fin.38_Fin.38_Fin.38:
+	BGE E_Debut.32_Fin.34_Fin.34
+E_Debut.32_Fin.34_Fin.34_Fin.34:
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BGT E_Debut.36_Fin.38
+	BGT E_Debut.32_Fin.34
 	LOAD 6(LB), R2
 	CMP 8(LB), R2
-	BGT E_Debut.36_Fin.38
-E_Debut.36_Fin.38_Fin.38:
+	BGT E_Debut.32_Fin.34
+E_Debut.32_Fin.34_Fin.34:
 	LOAD 14(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 2(R2), R2
 	LOAD #null, R3
 	CMP R3, R2
-	BNE E_Debut.36
-E_Debut.36_Fin.38:
+	BNE E_Debut.32
+E_Debut.32_Fin.34:
 	LOAD 10(LB), R2
 	LOAD 2(LB), R3
 	FLOAT 2(LB), R3
@@ -9854,11 +9895,11 @@ E_Debut.36_Fin.38:
 	BOV debordement_flottant
 	LOAD R2, R0
 	BRA fin.Math.atan
-	BRA E_Fin.35
-E_Sinon.35:
+	BRA E_Fin.31
+E_Sinon.31:
 	LOAD 1(LB), R2
 	CMP #0x0.0p0, R2
-	BLE E_Sinon.41
+	BLE E_Sinon.37
 	LOAD #1, R2
 	STORE R2, 2(LB)
 	LOAD #0x1.0p0, R2
@@ -9879,8 +9920,8 @@ E_Sinon.35:
 	LOAD 4(LB), R2
 	OPP 4(LB), R2
 	STORE R2, 6(LB)
-	BRA E_Cond.42
-E_Debut.42:
+	BRA E_Cond.38
+E_Debut.38:
 	LOAD 14(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
@@ -9888,15 +9929,15 @@ E_Debut.42:
 	STORE R2, 14(LB)
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BLE E_Sinon.43
+	BLE E_Sinon.39
 	LOAD #1, R2
 	OPP #1, R2
 	STORE R2, 3(LB)
-	BRA E_Fin.43
-E_Sinon.43:
+	BRA E_Fin.39
+E_Sinon.39:
 	LOAD #1, R2
 	STORE R2, 3(LB)
-E_Fin.43:
+E_Fin.39:
 	LOAD 3(LB), R2
 	FLOAT 3(LB), R2
 	LOAD 14(LB), R3
@@ -9940,29 +9981,29 @@ E_Fin.43:
 	ADD R3, R2
 	BOV debordement_flottant
 	STORE R2, 6(LB)
-E_Cond.42:
+E_Cond.38:
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BLT E_Debut.42_Fin.44_Fin.44_Fin.44
+	BLT E_Debut.38_Fin.40_Fin.40_Fin.40
 	LOAD 6(LB), R2
 	CMP 8(LB), R2
-	BGE E_Debut.42_Fin.44_Fin.44
-E_Debut.42_Fin.44_Fin.44_Fin.44:
+	BGE E_Debut.38_Fin.40_Fin.40
+E_Debut.38_Fin.40_Fin.40_Fin.40:
 	LOAD 6(LB), R2
 	CMP #0x0.0p0, R2
-	BGT E_Debut.42_Fin.44
+	BGT E_Debut.38_Fin.40
 	LOAD 6(LB), R2
 	CMP 8(LB), R2
-	BGT E_Debut.42_Fin.44
-E_Debut.42_Fin.44_Fin.44:
+	BGT E_Debut.38_Fin.40
+E_Debut.38_Fin.40_Fin.40:
 	LOAD 14(LB), R2
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 2(R2), R2
 	LOAD #null, R3
 	CMP R3, R2
-	BNE E_Debut.42
-E_Debut.42_Fin.44:
+	BNE E_Debut.38
+E_Debut.38_Fin.40:
 	LOAD 10(LB), R2
 	LOAD 2(LB), R3
 	OPP 2(LB), R3
@@ -9971,13 +10012,13 @@ E_Debut.42_Fin.44:
 	BOV debordement_flottant
 	LOAD R2, R0
 	BRA fin.Math.atan
-	BRA E_Fin.41
-E_Sinon.41:
+	BRA E_Fin.37
+E_Sinon.37:
 	LOAD #0x0.0p0, R2
 	LOAD R2, R0
 	BRA fin.Math.atan
-E_Fin.41:
-E_Fin.35:
+E_Fin.37:
+E_Fin.31:
 	WSTR "Erreur : sortie de la méthode sans return"
 	WNL
 	ERROR
@@ -9986,7 +10027,7 @@ fin.Math.atan:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode ulp dans la classe Math ligne 943
+; ---------- Code de la methode ulp dans la classe Math ligne 954
 code.Math.ulp:
 	TSTO #11
 	BOV pile_pleine
@@ -9994,14 +10035,14 @@ code.Math.ulp:
 ; Sauvegarde des registres
 	PUSH R2
 	PUSH R3
-; new ligne 948
+; new ligne 959
 	NEW #1, R2
 	BOV tas_plein
 	LEA 6(GB), R0
 	STORE R0, 0(R2)
 	STORE R2, 3(LB)
 	LOAD #0x1.0p0, R2
-; Appel de méthode ligne 949
+; Appel de méthode ligne 960
 	ADDSP #2
 	LOAD -2(LB), R3
 	STORE R3, 0(SP)
@@ -10012,13 +10053,13 @@ code.Math.ulp:
 	CMP #null, R3
 	BEQ dereferencement.null
 	LOAD 0(R3), R3
-	BSR 11(R3)
+	BSR 12(R3)
 	SUBSP #2
 	LOAD R0, R3
 	SUB R3, R2
 	BOV debordement_flottant
 	STORE R2, 4(LB)
-; Appel de méthode ligne 950
+; Appel de méthode ligne 961
 	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -10028,18 +10069,18 @@ code.Math.ulp:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 12(R2)
+	BSR 13(R2)
 	SUBSP #2
 	LOAD R0, R2
 	STORE R2, -3(LB)
 	LOAD -3(LB), R2
 	CMP 4(LB), R2
-	BGT E_Fin.47
+	BGT E_Fin.43
 	LOAD 4(LB), R2
 	LOAD R2, R0
 	BRA fin.Math.ulp
-E_Fin.47:
-; Appel de méthode ligne 954
+E_Fin.43:
+; Appel de méthode ligne 965
 	ADDSP #3
 	LOAD 3(LB), R2
 	STORE R2, 0(SP)
@@ -10055,7 +10096,7 @@ E_Fin.47:
 	SUBSP #3
 	LOAD R0, R2
 	STORE R2, 1(LB)
-; Appel de méthode ligne 955
+; Appel de méthode ligne 966
 	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -10066,7 +10107,7 @@ E_Fin.47:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 11(R2)
+	BSR 12(R2)
 	SUBSP #2
 	LOAD R0, R2
 	STORE R2, 2(LB)
@@ -10080,13 +10121,13 @@ fin.Math.ulp:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode _fma dans la classe Math ligne 960
+; ---------- Code de la methode _fma dans la classe Math ligne 971
 code.Math._fma:
     LOAD -3(LB), R1
                 LOAD -4(LB), R0
                 FMA -5(LB), R0
                 RTS
-; ---------- Code de la methode _powerOfTwoShift dans la classe Math ligne 967
+; ---------- Code de la methode _powerOfTwoShift dans la classe Math ligne 978
 code.Math._powerOfTwoShift:
     LOAD #1, R0
                 LOAD -3(LB), R1
@@ -10098,7 +10139,7 @@ code.Math._powerOfTwoShift:
                 CMP #0, R1
                 BNE user.shift.debut
                 RTS
-; ---------- Code de la methode _puissanceDe2 dans la classe Math ligne 979
+; ---------- Code de la methode _puissanceDe2 dans la classe Math ligne 990
 code.Math._puissanceDe2:
 	TSTO #8
 	BOV pile_pleine
@@ -10113,9 +10154,9 @@ code.Math._puissanceDe2:
 	STORE R2, 2(LB)
 	LOAD -3(LB), R2
 	CMP #0, R2
-	BLT E_Sinon.48
-; cast  int vers float ligne 983
-; Appel de méthode ligne 983
+	BLT E_Sinon.44
+; cast  int vers float ligne 994
+; Appel de méthode ligne 994
 	ADDSP #2
 	LOAD -2(LB), R2
 	STORE R2, 0(SP)
@@ -10125,15 +10166,15 @@ code.Math._puissanceDe2:
 	CMP #null, R2
 	BEQ dereferencement.null
 	LOAD 0(R2), R2
-	BSR 10(R2)
+	BSR 11(R2)
 	SUBSP #2
 	LOAD R0, R2
 	FLOAT R2, R2
 	STORE R2, 1(LB)
-	BRA E_Fin.48
-E_Sinon.48:
-	BRA E_Cond.49
-E_Debut.49:
+	BRA E_Fin.44
+E_Sinon.44:
+	BRA E_Cond.45
+E_Debut.45:
 	LOAD 1(LB), R2
 	LOAD #2, R3
 	FLOAT #2, R3
@@ -10143,11 +10184,11 @@ E_Debut.49:
 	LOAD 2(LB), R2
 	SUB #1, R2
 	STORE R2, 2(LB)
-E_Cond.49:
+E_Cond.45:
 	LOAD 2(LB), R2
 	CMP -3(LB), R2
-	BGT E_Debut.49
-E_Fin.48:
+	BGT E_Debut.45
+E_Fin.44:
 	LOAD 1(LB), R2
 	LOAD R2, R0
 	BRA fin.Math._puissanceDe2
@@ -10158,7 +10199,7 @@ fin.Math._puissanceDe2:
 	POP R3
 	POP R2
 	RTS
-; ---------- Code de la methode _abs dans la classe Math ligne 992
+; ---------- Code de la methode _abs dans la classe Math ligne 1003
 code.Math._abs:
 	TSTO #1
 	BOV pile_pleine
@@ -10166,17 +10207,17 @@ code.Math._abs:
 	PUSH R2
 	LOAD -3(LB), R2
 	CMP #0x0.0p0, R2
-	BGE E_Sinon.50
+	BGE E_Sinon.46
 	LOAD -3(LB), R2
 	OPP -3(LB), R2
 	LOAD R2, R0
 	BRA fin.Math._abs
-	BRA E_Fin.50
-E_Sinon.50:
+	BRA E_Fin.46
+E_Sinon.46:
 	LOAD -3(LB), R2
 	LOAD R2, R0
 	BRA fin.Math._abs
-E_Fin.50:
+E_Fin.46:
 	WSTR "Erreur : sortie de la méthode sans return"
 	WNL
 	ERROR

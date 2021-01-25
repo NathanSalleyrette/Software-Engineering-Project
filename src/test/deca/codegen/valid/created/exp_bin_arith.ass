@@ -13,7 +13,8 @@
 	LOAD #1, R2
 	ADD #2, R2
 	LOAD #3, R3
-	MUL #4, R3
+	SHL R3
+	SHL R3
 	QUO #5, R3
 	BOV division_par_zero
 	REM #6, R3
@@ -23,7 +24,8 @@
 	LOAD #1, R2
 	ADD #2, R2
 	LOAD #3, R3
-	MUL #4, R3
+	SHL R3
+	SHL R3
 	QUO #5, R3
 	BOV division_par_zero
 	REM #6, R3
@@ -41,18 +43,18 @@
 	WNL
 	WNL
 	LOAD #1, R2
-	MUL #2, R2
+	SHL R2
 	LOAD #3, R3
-	QUO #4, R3
-	BOV division_par_zero
+	SHR R3
+	SHR R3
 	ADD R3, R2
 	SUB #5, R2
 	STORE R2, 3(GB)
 	LOAD #1, R2
-	MUL #2, R2
+	SHL R2
 	LOAD #3, R3
-	QUO #4, R3
-	BOV division_par_zero
+	SHR R3
+	SHR R3
 	ADD R3, R2
 	SUB #5, R2
 	FLOAT R2, R2
@@ -70,7 +72,8 @@
 	LOAD #2, R3
 	QUO #3, R3
 	BOV division_par_zero
-	MUL #4, R3
+	SHL R3
+	SHL R3
 	SUB R3, R2
 	ADD #5, R2
 	STORE R2, 3(GB)
@@ -78,7 +81,8 @@
 	LOAD #2, R3
 	QUO #3, R3
 	BOV division_par_zero
-	MUL #4, R3
+	SHL R3
+	SHL R3
 	SUB R3, R2
 	ADD #5, R2
 	FLOAT R2, R2
@@ -93,22 +97,22 @@
 	WNL
 	WNL
 	LOAD #1, R2
-	QUO #2, R2
-	BOV division_par_zero
+	SHR R2
 	REM #6, R2
 	BOV division_par_zero
 	LOAD #3, R3
-	MUL #4, R3
+	SHL R3
+	SHL R3
 	ADD R3, R2
 	SUB #5, R2
 	STORE R2, 3(GB)
 	LOAD #1, R2
-	QUO #2, R2
-	BOV division_par_zero
+	SHR R2
 	REM #6, R2
 	BOV division_par_zero
 	LOAD #3, R3
-	MUL #4, R3
+	SHL R3
+	SHL R3
 	ADD R3, R2
 	SUB #5, R2
 	FLOAT R2, R2
@@ -145,7 +149,8 @@
 	ADD #0x1.99999ap-3, R2
 	BOV debordement_flottant
 	LOAD #3, R3
-	MUL #4, R3
+	SHL R3
+	SHL R3
 	QUO #5, R3
 	BOV division_par_zero
 	FLOAT R3, R3
@@ -162,8 +167,8 @@
 	MUL #0x1.99999ap-3, R2
 	BOV debordement_flottant
 	LOAD #3, R3
-	QUO #4, R3
-	BOV division_par_zero
+	SHR R3
+	SHR R3
 	FLOAT R3, R3
 	ADD R3, R2
 	BOV debordement_flottant
@@ -205,7 +210,8 @@
 	DIV #0x1.99999ap-3, R2
 	BOV debordement_flottant
 	LOAD #3, R3
-	MUL #4, R3
+	SHL R3
+	SHL R3
 	FLOAT R3, R3
 	ADD R3, R2
 	BOV debordement_flottant
