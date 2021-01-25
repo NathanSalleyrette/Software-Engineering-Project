@@ -618,7 +618,7 @@ class _Epsilon{
     }
 }
 class _Pi{
-    float pi = 3.14159265358979323846264338327950288419716939937510;
+    float pi = 3.1415926535897932384626433832795028841971694;
     float getPi(){
         return this.pi;
     }
@@ -821,7 +821,7 @@ class Math {
         }
         if(nombre < 0.0){
             signe2 = -1;
-            w = -nombre;
+            w = - nombre;
         }
         i = 0;
         while(i<74){
