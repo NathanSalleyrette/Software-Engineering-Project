@@ -6,7 +6,7 @@ DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.ja
 DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
 DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
 DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
-DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:49) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:46) - verify Main: end
 DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
 `> [7, 0] Program
    +> ListDeclClass [List with 1 elements]

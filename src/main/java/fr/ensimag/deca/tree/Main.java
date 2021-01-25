@@ -36,12 +36,9 @@ public class Main extends AbstractMain {
     @Override
     protected void verifyMain(DecacCompiler compiler) throws ContextualError {
         LOG.debug("verify Main: start");
-        // A FAIRE: Appeler méthodes "verify*" de ListDeclVarSet et ListInst.
-        // Vous avez le droit de changer le profil fourni pour ces méthodes
-        // (mais ce n'est à priori pas nécessaire).
         // Passe 3
         // Les déclarations de variabes d'abord
-        EnvironmentExp emptyEnv = new EnvironmentExp(null); // Arrêtez-moi si je fais une bêtise
+        EnvironmentExp emptyEnv = new EnvironmentExp(null); 
         this.declVariables.verifyListDeclVariable(compiler, emptyEnv, null);
         // La liste d'instructions ensuite
         VoidType voidType = new VoidType(compiler.getSymbTb().create("void"));
