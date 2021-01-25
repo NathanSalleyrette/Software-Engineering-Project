@@ -72,9 +72,24 @@ public class EvalExpr {
                 break;
             case "%" :
                 // Reste entier
-                compiler.addInstruction(new REM(dval, reg));
-                if (!compiler.getCompilerOptions().getNoCheck()) {
-                    Error.instanceError(compiler, "division_par_zero");
+                int powRem = dval.powerOfTwo();
+                if (powRem < 0) {
+                    compiler.addInstruction(new REM(dval, reg));
+                    if (!compiler.getCompilerOptions().getNoCheck()) {
+                        Error.instanceError(compiler, "division_par_zero");
+                    }
+                } else { // Reste d'une division par une puissance de 2
+                    // On sauvegarde le dividende dans reg
+                    compiler.addInstruction(new LOAD(reg, Register.R1));
+                    // On calcule quotient * diviseur dans R1
+                    for (int i = 0; i < powRem; i++) {
+                        compiler.addInstruction(new SHR(Register.R1));
+                    }
+                    for (int i = 0; i < powRem; i++) {
+                        compiler.addInstruction(new SHL(Register.R1));
+                    }
+                    // On soustrait dans reg : on a le reste
+                    compiler.addInstruction(new SUB(Register.R1, reg));
                 }
                 break;
             case "=" :
