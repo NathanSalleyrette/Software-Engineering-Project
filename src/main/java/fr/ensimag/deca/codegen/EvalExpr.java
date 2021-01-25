@@ -44,13 +44,27 @@ public class EvalExpr {
                 compiler.addInstruction(new SUB(dval, reg));
                 break;
             case "*" :
-                compiler.addInstruction(new MUL(dval, reg));
+                int powMul = dval.powerOfTwo();
+                if (powMul < 0) {
+                    compiler.addInstruction(new MUL(dval, reg));
+                } else {
+                    for (int i = 0; i < powMul; i++) {
+                        compiler.addInstruction(new SHL(reg));
+                    }
+                }
                 break;
             case "/" :
                 if (op.getType().isInt()) {
-                    compiler.addInstruction(new QUO(dval, reg));
-                    if (!compiler.getCompilerOptions().getNoCheck()) {
-                        Error.instanceError(compiler, "division_par_zero");
+                    int powQuo = dval.powerOfTwo();
+                    if (powQuo < 0) {
+                        compiler.addInstruction(new QUO(dval, reg));
+                        if (!compiler.getCompilerOptions().getNoCheck()) {
+                            Error.instanceError(compiler, "division_par_zero");
+                        }
+                    } else {
+                        for (int i = 0; i < powQuo; i++) {
+                            compiler.addInstruction(new SHR(reg));
+                        }
                     }
                 } else {
                     compiler.addInstruction(new DIV(dval, reg));
