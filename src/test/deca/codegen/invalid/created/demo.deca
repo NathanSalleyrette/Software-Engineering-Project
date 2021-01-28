@@ -9,6 +9,7 @@ class A {
 	int getX(){
 		return x;
 	}
+}
 	
 {
 // a n'est pas initialisé
