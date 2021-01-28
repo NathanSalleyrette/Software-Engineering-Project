@@ -1,0 +1,20 @@
+// Description :
+//    test de demonstration
+//
+// Resultats :
+//		
+
+class A {
+
+	protected int x;
+	int getX(){
+		return x;
+	}
+}
+	
+{
+
+A a;
+a.getX();
+
+}

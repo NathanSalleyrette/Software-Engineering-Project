@@ -1,0 +1,28 @@
+// Description :
+//    test de demonstration
+//
+// Resultats :
+//		
+
+class A {
+
+	protected int x;
+	int getX(){
+		return x;
+	}
+}
+	
+{
+
+
+// a n'est pas déclaré 
+//A a;
+
+
+// le champs est protégé
+a.x; //
+
+// la methode est mal orthographiée et ne prend pas d'argument
+a.geX(0); // a.getX();
+
+}

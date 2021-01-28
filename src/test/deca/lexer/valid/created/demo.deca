@@ -1,0 +1,23 @@
+// Description :
+//    test de demonstration
+//
+// Resultats :
+//		
+
+
+clss A { 
+
+	protected int x;
+	
+	int getX(){
+		return x
+	}
+	
+	
+	
+	
+{
+	a = new A(;
+	a.x;
+	a.geX(0);
+}

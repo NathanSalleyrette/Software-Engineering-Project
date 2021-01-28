@@ -1,0 +1,41 @@
+// Description :
+//		test d'une avec des sous classe
+//
+// Resultats :
+//		Ok
+
+class Point_2D {
+	int x;
+	protected int y = 3;
+	
+	void setY(int y){
+		this.y = y;
+	}
+	
+	int getY(){
+		return y;
+	}
+	
+}
+
+class Point_3D extends Point_2D {
+	int y = 4; // redefinition du champs
+	int z;
+}
+
+{
+	Point_2D p1 = new Point_2D();
+	Point_3D p2 = new Point_3D();
+	
+	println(" p1 est un point en 2D, on regarde ses champs :");
+	println("x = ", p1.x, ", y = ", p1.getY());
+	println("on change les champs de p1 : x = 1, y = 2");
+	p1.x = 1;
+	p1.setY(2);
+	println("x = ", p1.x, ", y = ", p1.getY());
+	println(" p2 est un point en 3D, on regarde ses champs :");
+	println("x = ", p2.x, ", y = ", p2.y, ", z = ", p2.z);
+	println(" regardons ce qui se passe si on utilise la méthode héritée getY");
+	println("x = ", p2.x, ", y = ", p2.getY(), ", z = ", p2.z);
+	
+}

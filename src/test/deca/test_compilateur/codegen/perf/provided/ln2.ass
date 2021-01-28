@@ -1,0 +1,99 @@
+	ADDSP #8
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Main program
+	LOAD #0x0.0p0, R2
+	STORE R2, 3(GB)
+	LOAD #0x1.0p0, R2
+	STORE R2, 4(GB)
+	LOAD #0x1.0p0, R2
+	OPP #0x1.0p0, R2
+	STORE R2, 5(GB)
+	LOAD #0x1.6fc2ecp-1, R2
+	STORE R2, 6(GB)
+; Beginning of main instructions:
+	BRA E_Cond.0
+E_Debut.0:
+	LOAD 3(GB), R2
+	ADD 4(GB), R2
+	DIV #0x1.0p1, R2
+	STORE R2, 7(GB)
+	LOAD 7(GB), R2
+	LOAD 7(GB), R3
+	LOAD 7(GB), R4
+	LOAD 7(GB), R5
+	LOAD 7(GB), R6
+	LOAD 7(GB), R7
+	LOAD 7(GB), R8
+	LOAD #0x1.0p0, R9
+	DIV #0x1.3bp12, R9
+	MUL R9, R8
+	LOAD #0x1.0p0, R9
+	DIV #0x1.68p9, R9
+	ADD R9, R8
+	MUL R8, R7
+	LOAD #0x1.0p0, R8
+	DIV #0x1.ep6, R8
+	ADD R8, R7
+	MUL R7, R6
+	LOAD #0x1.0p0, R7
+	DIV #0x1.8p4, R7
+	ADD R7, R6
+	MUL R6, R5
+	LOAD #0x1.0p0, R6
+	DIV #0x1.8p2, R6
+	ADD R6, R5
+	MUL R5, R4
+	LOAD #0x1.0p0, R5
+	DIV #0x1.0p1, R5
+	ADD R5, R4
+	MUL R4, R3
+	ADD #0x1.0p0, R3
+	MUL R3, R2
+	LOAD #1, R3
+	FLOAT #1, R3
+	SUB R3, R2
+	STORE R2, 8(GB)
+	LOAD 8(GB), R2
+	CMP #0x0.0p0, R2
+	BLE E_Sinon.1
+	LOAD 7(GB), R2
+	STORE R2, 4(GB)
+	LOAD 8(GB), R2
+	STORE R2, 6(GB)
+	BRA E_Fin.1
+E_Sinon.1:
+	LOAD 7(GB), R2
+	STORE R2, 3(GB)
+	LOAD 8(GB), R2
+	STORE R2, 5(GB)
+E_Fin.1:
+E_Cond.0:
+	LOAD 4(GB), R2
+	LOAD 3(GB), R3
+	ADD #0x1.0p-23, R3
+	CMP R3, R2
+	BGE E_Debut.0
+	LOAD 3(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " = "
+	LOAD 3(GB), R2
+	LOAD R2, R1
+	WFLOATX
+	WNL
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Erreurs
+; end main program

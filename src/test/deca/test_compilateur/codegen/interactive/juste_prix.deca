@@ -36,5 +36,5 @@ class A {
     	println("Entrez une valeur 0 et 1000 maintenant!");
     	x = readInt();
     }
-    println("Bravo, la bonne valeur était 500 !");
+    println("Bravo, la bone valeur était 500 !");
 }

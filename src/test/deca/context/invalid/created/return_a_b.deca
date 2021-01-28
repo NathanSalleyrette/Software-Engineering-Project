@@ -1,0 +1,18 @@
+// Description :
+//    return mauvais type : B, demandé A
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 16:  (2.7) Type de retour effectif : B, déclaré : A
+
+class A{}
+
+class B{}
+
+class c{
+A met(){
+	//A b = new A();
+	B b = new B();
+	return b; 
+}
+}
