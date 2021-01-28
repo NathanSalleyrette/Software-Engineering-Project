@@ -1,0 +1,39 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:46) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
+`> [7, 0] Program
+   +> ListDeclClass [List with 2 elements]
+   |  []> [7, 0] DeclClass
+   |  ||  +> Identifier (B)
+   |  ||  |  definition: type defined at [7, 0], type=B
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 0 elements]
+   |  ||  +> ListDeclMethod [List with 0 elements]
+   |  []> [8, 0] DeclClass
+   |      +> Identifier (A)
+   |      |  definition: type defined at [8, 0], type=A
+   |      +> Identifier (B)
+   |      |  definition: type defined at [7, 0], type=B
+   |      +> ListDeclField [List with 0 elements]
+   |      +> ListDeclMethod [List with 0 elements]
+   `> [10, 0] Main
+      +> ListDeclVar [List with 1 elements]
+      |  []> [11, 2] DeclVar
+      |      +> [11, 0] Identifier (B)
+      |      |  definition: type defined at [7, 0], type=B
+      |      +> [11, 2] Identifier (b)
+      |      |  definition: variable defined at [11, 2], type=B
+      |      `> [11, 4] Initialization
+      |         `> [11, 6] New
+      |            type: A
+      |            `> [11, 10] Identifier (A)
+      |               definition: type defined at [8, 0], type=A
+      `> ListInst [List with 0 elements]

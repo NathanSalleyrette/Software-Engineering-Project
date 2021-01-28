@@ -1,0 +1,120 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:46) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
+`> [8, 0] Program
+   +> ListDeclClass [List with 2 elements]
+   |  []> [8, 0] DeclClass
+   |  ||  +> Identifier (A)
+   |  ||  |  definition: type defined at [8, 0], type=A
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 0 elements]
+   |  ||  +> ListDeclMethod [List with 1 elements]
+   |  ||  |  []> [9, 1] DeclMethod
+   |  ||  |      +> [9, 1] Identifier (int)
+   |  ||  |      |  definition: type (builtin), type=int
+   |  ||  |      +> [9, 5] Identifier (x)
+   |  ||  |      |  definition: method defined at [9, 1], type=int
+   |  ||  |      +> ListDeclParam [List with 0 elements]
+   |  ||  |      `> [9, 8] MethodBody
+   |  ||  |         +> ListDeclVar [List with 0 elements]
+   |  ||  |         `> ListInst [List with 0 elements]
+   |  []> [12, 0] DeclClass
+   |      +> Identifier (B)
+   |      |  definition: type defined at [12, 0], type=B
+   |      +> Identifier (A)
+   |      |  definition: type defined at [8, 0], type=A
+   |      +> ListDeclField [List with 0 elements]
+   |      +> ListDeclMethod [List with 1 elements]
+   |      |  []> [13, 1] DeclMethod
+   |      |      +> [13, 1] Identifier (int)
+   |      |      |  definition: type (builtin), type=int
+   |      |      +> [13, 5] Identifier (y)
+   |      |      |  definition: method defined at [13, 1], type=int
+   |      |      +> ListDeclParam [List with 0 elements]
+   |      |      `> [13, 8] MethodBody
+   |      |         +> ListDeclVar [List with 0 elements]
+   |      |         `> ListInst [List with 0 elements]
+   `> [16, 0] Main
+      +> ListDeclVar [List with 4 elements]
+      |  []> [17, 2] DeclVar
+      |  ||  +> [17, 0] Identifier (A)
+      |  ||  |  definition: type defined at [8, 0], type=A
+      |  ||  +> [17, 2] Identifier (vrai_a_typeA)
+      |  ||  |  definition: variable defined at [17, 2], type=A
+      |  ||  `> [17, 15] Initialization
+      |  ||     `> [17, 17] New
+      |  ||        type: A
+      |  ||        `> [17, 21] Identifier (A)
+      |  ||           definition: type defined at [8, 0], type=A
+      |  []> [18, 2] DeclVar
+      |  ||  +> [18, 0] Identifier (A)
+      |  ||  |  definition: type defined at [8, 0], type=A
+      |  ||  +> [18, 2] Identifier (vrai_b_typeA)
+      |  ||  |  definition: variable defined at [18, 2], type=A
+      |  ||  `> [18, 15] Initialization
+      |  ||     `> [18, 17] New
+      |  ||        type: B
+      |  ||        `> [18, 21] Identifier (B)
+      |  ||           definition: type defined at [12, 0], type=B
+      |  []> [19, 2] DeclVar
+      |  ||  +> [19, 0] Identifier (B)
+      |  ||  |  definition: type defined at [12, 0], type=B
+      |  ||  +> [19, 2] Identifier (vrai_b_typeB)
+      |  ||  |  definition: variable defined at [19, 2], type=B
+      |  ||  `> [19, 15] Initialization
+      |  ||     `> [19, 17] New
+      |  ||        type: B
+      |  ||        `> [19, 21] Identifier (B)
+      |  ||           definition: type defined at [12, 0], type=B
+      |  []> [20, 2] DeclVar
+      |      +> [20, 0] Identifier (A)
+      |      |  definition: type defined at [8, 0], type=A
+      |      +> [20, 2] Identifier (vrai_b_typeA_anc_typeB)
+      |      |  definition: variable defined at [20, 2], type=A
+      |      `> [20, 25] Initialization
+      |         `> [20, 27] Identifier (vrai_b_typeB)
+      |            definition: variable defined at [19, 2], type=B
+      `> ListInst [List with 5 elements]
+         []> [22, 0] MethodCall
+         ||  type: int
+         ||  +> [22, 0] Identifier (vrai_a_typeA)
+         ||  |  definition: variable defined at [17, 2], type=A
+         ||  +> [22, 13] Identifier (x)
+         ||  |  definition: method defined at [9, 1], type=int
+         ||  `> ListExpr [List with 0 elements]
+         []> [24, 0] MethodCall
+         ||  type: int
+         ||  +> [24, 0] Identifier (vrai_b_typeA)
+         ||  |  definition: variable defined at [18, 2], type=A
+         ||  +> [24, 13] Identifier (x)
+         ||  |  definition: method defined at [9, 1], type=int
+         ||  `> ListExpr [List with 0 elements]
+         []> [27, 0] MethodCall
+         ||  type: int
+         ||  +> [27, 0] Identifier (vrai_b_typeB)
+         ||  |  definition: variable defined at [19, 2], type=B
+         ||  +> [27, 13] Identifier (x)
+         ||  |  definition: method defined at [9, 1], type=int
+         ||  `> ListExpr [List with 0 elements]
+         []> [28, 0] MethodCall
+         ||  type: int
+         ||  +> [28, 0] Identifier (vrai_b_typeB)
+         ||  |  definition: variable defined at [19, 2], type=B
+         ||  +> [28, 13] Identifier (y)
+         ||  |  definition: method defined at [13, 1], type=int
+         ||  `> ListExpr [List with 0 elements]
+         []> [30, 0] MethodCall
+             type: int
+             +> [30, 0] Identifier (vrai_b_typeA_anc_typeB)
+             |  definition: variable defined at [20, 2], type=A
+             +> [30, 23] Identifier (x)
+             |  definition: method defined at [9, 1], type=int
+             `> ListExpr [List with 0 elements]

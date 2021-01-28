@@ -1,0 +1,151 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:46) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
+`> [8, 0] Program
+   +> ListDeclClass [List with 2 elements]
+   |  []> [8, 0] DeclClass
+   |  ||  +> Identifier (A)
+   |  ||  |  definition: type defined at [8, 0], type=A
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 0 elements]
+   |  ||  +> ListDeclMethod [List with 0 elements]
+   |  []> [9, 0] DeclClass
+   |      +> Identifier (B)
+   |      |  definition: type defined at [9, 0], type=B
+   |      +> Identifier (A)
+   |      |  definition: type defined at [8, 0], type=A
+   |      +> ListDeclField [List with 0 elements]
+   |      +> ListDeclMethod [List with 0 elements]
+   `> [10, 0] Main
+      +> ListDeclVar [List with 7 elements]
+      |  []> [11, 4] DeclVar
+      |  ||  +> [11, 0] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [11, 4] Identifier (a)
+      |  ||  |  definition: variable defined at [11, 4], type=int
+      |  ||  `> NoInitialization
+      |  []> [12, 6] DeclVar
+      |  ||  +> [12, 0] Identifier (float)
+      |  ||  |  definition: type (builtin), type=float
+      |  ||  +> [12, 6] Identifier (b)
+      |  ||  |  definition: variable defined at [12, 6], type=float
+      |  ||  `> NoInitialization
+      |  []> [13, 2] DeclVar
+      |  ||  +> [13, 0] Identifier (B)
+      |  ||  |  definition: type defined at [9, 0], type=B
+      |  ||  +> [13, 2] Identifier (type_dyn_B)
+      |  ||  |  definition: variable defined at [13, 2], type=B
+      |  ||  `> [13, 13] Initialization
+      |  ||     `> [13, 15] New
+      |  ||        type: B
+      |  ||        `> [13, 19] Identifier (B)
+      |  ||           definition: type defined at [9, 0], type=B
+      |  []> [14, 2] DeclVar
+      |  ||  +> [14, 0] Identifier (A)
+      |  ||  |  definition: type defined at [8, 0], type=A
+      |  ||  +> [14, 2] Identifier (type_dyn_A)
+      |  ||  |  definition: variable defined at [14, 2], type=A
+      |  ||  `> [14, 13] Initialization
+      |  ||     `> [14, 15] New
+      |  ||        type: A
+      |  ||        `> [14, 19] Identifier (A)
+      |  ||           definition: type defined at [8, 0], type=A
+      |  []> [15, 2] DeclVar
+      |  ||  +> [15, 0] Identifier (A)
+      |  ||  |  definition: type defined at [8, 0], type=A
+      |  ||  +> [15, 2] Identifier (type_stat_A)
+      |  ||  |  definition: variable defined at [15, 2], type=A
+      |  ||  `> [15, 14] Initialization
+      |  ||     `> [15, 16] Identifier (type_dyn_B)
+      |  ||        definition: variable defined at [13, 2], type=B
+      |  []> [16, 2] DeclVar
+      |  ||  +> [16, 0] Identifier (B)
+      |  ||  |  definition: type defined at [9, 0], type=B
+      |  ||  +> [16, 2] Identifier (caster_en_B)
+      |  ||  |  definition: variable defined at [16, 2], type=B
+      |  ||  `> NoInitialization
+      |  []> [17, 2] DeclVar
+      |      +> [17, 0] Identifier (A)
+      |      |  definition: type defined at [8, 0], type=A
+      |      +> [17, 2] Identifier (caster_en_A)
+      |      |  definition: variable defined at [17, 2], type=A
+      |      `> NoInitialization
+      `> ListInst [List with 7 elements]
+         []> [18, 12] Assign
+         ||  type: B
+         ||  +> [18, 0] Identifier (caster_en_B)
+         ||  |  definition: variable defined at [16, 2], type=B
+         ||  `> [18, 14] Cast
+         ||     type: B
+         ||     +> [18, 15] Identifier (B)
+         ||     |  definition: type defined at [9, 0], type=B
+         ||     `> [18, 18] Identifier (type_stat_A)
+         ||        definition: variable defined at [15, 2], type=A
+         []> [19, 12] Assign
+         ||  type: A
+         ||  +> [19, 0] Identifier (caster_en_A)
+         ||  |  definition: variable defined at [17, 2], type=A
+         ||  `> [19, 14] Cast
+         ||     type: A
+         ||     +> [19, 15] Identifier (A)
+         ||     |  definition: type defined at [8, 0], type=A
+         ||     `> [19, 18] Identifier (type_stat_A)
+         ||        definition: variable defined at [15, 2], type=A
+         []> [20, 12] Assign
+         ||  type: A
+         ||  +> [20, 0] Identifier (caster_en_A)
+         ||  |  definition: variable defined at [17, 2], type=A
+         ||  `> [20, 14] Cast
+         ||     type: A
+         ||     +> [20, 15] Identifier (A)
+         ||     |  definition: type defined at [8, 0], type=A
+         ||     `> [20, 18] Identifier (type_dyn_B)
+         ||        definition: variable defined at [13, 2], type=B
+         []> [21, 2] Assign
+         ||  type: int
+         ||  +> [21, 0] Identifier (a)
+         ||  |  definition: variable defined at [11, 4], type=int
+         ||  `> [21, 4] Cast
+         ||     type: int
+         ||     +> [21, 5] Identifier (int)
+         ||     |  definition: type (builtin), type=int
+         ||     `> [21, 10] Float (0.5)
+         ||        type: float
+         []> [22, 2] Assign
+         ||  type: float
+         ||  +> [22, 0] Identifier (b)
+         ||  |  definition: variable defined at [12, 6], type=float
+         ||  `> [22, 4] Cast
+         ||     type: float
+         ||     +> [22, 5] Identifier (float)
+         ||     |  definition: type (builtin), type=float
+         ||     `> [22, 12] Int (1)
+         ||        type: int
+         []> [23, 2] Assign
+         ||  type: int
+         ||  +> [23, 0] Identifier (a)
+         ||  |  definition: variable defined at [11, 4], type=int
+         ||  `> [23, 4] Cast
+         ||     type: int
+         ||     +> [23, 5] Identifier (int)
+         ||     |  definition: type (builtin), type=int
+         ||     `> [23, 10] Int (3)
+         ||        type: int
+         []> [24, 2] Assign
+             type: float
+             +> [24, 0] Identifier (b)
+             |  definition: variable defined at [12, 6], type=float
+             `> [24, 4] Cast
+                type: float
+                +> [24, 5] Identifier (float)
+                |  definition: type (builtin), type=float
+                `> [24, 12] Float (0.5)
+                   type: float

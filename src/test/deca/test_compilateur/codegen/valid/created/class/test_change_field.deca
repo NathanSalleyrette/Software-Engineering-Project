@@ -1,0 +1,24 @@
+// Description :
+//		Programme pour changer la valeur dans les champ des classes
+//
+// Resultats :
+//		Ok
+
+class B {
+int x;
+int y;
+float f;
+boolean b;
+}
+
+{
+B b = new B();
+print(b.x, " ", b.y, " ", b.f, " ");
+if (b.b) {println("true");} else {println("false");}
+b.x = 2;
+b.y = 3;
+b.b = true;
+b.f = 0.5;
+print(b.x, " ", b.y, " ", b.f, " ");
+if (b.b) {println("true");} else {println("false");}
+}

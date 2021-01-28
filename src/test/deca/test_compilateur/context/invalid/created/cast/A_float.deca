@@ -1,0 +1,11 @@
+// Description :
+//    test cast entre un A et float
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (3.39) Cast impossible de <type1> vers <type2>
+
+class A {}
+{
+(A)(0.5);
+}

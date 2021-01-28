@@ -1,0 +1,9 @@
+// Description :
+//    deux operateurs binaires mult (pas de puissance) à la suite
+//
+// Resultats :
+//		Syntaxe error
+
+{
+a = b**2;
+}

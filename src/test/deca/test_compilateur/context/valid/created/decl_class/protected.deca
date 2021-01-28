@@ -1,0 +1,48 @@
+// Description :
+//		test des acces
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	int x;
+	protected int  y;
+}
+
+class B extends A{
+protected int z;
+}
+
+class C extends B {
+	protected int x;
+	int met(){
+		return x;
+	}
+	int gety(){
+	return y;
+	}
+	int getA(C c){
+		return c.y;
+	}
+	int getB(C c){
+		return c.z;
+	}
+	int getC(C c){
+		return c.x;
+	}
+	
+}
+
+{
+A a = new B();
+B b = new B();
+C c = new C();
+//a.x;
+c.met();
+c.gety();
+c.getA(c);
+c.getB(c);
+c.getC(c);
+
+}

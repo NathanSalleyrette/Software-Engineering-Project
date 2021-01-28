@@ -1,0 +1,11 @@
+// Description :
+//   	appel d'une methode sur un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10 : (3.71) Le membre gauche n'est pas de type 'class'
+
+{
+boolean a;
+a.b();
+}

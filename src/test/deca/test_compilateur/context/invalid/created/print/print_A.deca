@@ -1,0 +1,12 @@
+// Description :
+//    test print avec un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11: (3.31) Les instances affichables peuvent être de type ‘int’, ‘float’, ‘string’
+
+class A{}
+{
+A a;
+print(a);
+}

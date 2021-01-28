@@ -1,0 +1,19 @@
+// Description :
+//		Programme pour tester les declarations sans initialisations
+//
+// Resultats :
+//		Erreur de compilation
+//		variable non defini
+
+
+{
+int a;
+int b;
+float f;
+boolean d;
+println(a);
+println(b);
+println(f);
+if (d) {print("ok");}
+
+}

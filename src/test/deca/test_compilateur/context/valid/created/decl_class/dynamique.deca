@@ -1,0 +1,31 @@
+// Description :
+//		on peut faire des allouement dynamique, A = B est possible mais pas B = A
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	int x;
+}
+
+class B extends A{
+	int y;
+}
+
+{
+A vrai_a_typeA = new A();
+A vrai_b_typeA = new B();
+B vrai_b_typeB = new B();
+A vrai_b_typeA_anc_typeB = vrai_b_typeB;
+
+vrai_a_typeA.x;
+
+vrai_b_typeA.x;
+
+vrai_b_typeB.x;
+vrai_b_typeB.y;
+
+vrai_b_typeA_anc_typeB.x;
+
+}

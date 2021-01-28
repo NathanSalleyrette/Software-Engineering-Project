@@ -1,0 +1,13 @@
+// Description :
+//		Programme pour tester le debordement de flottant
+//
+// Resultats :
+//		Erreur de compilation
+//		debordement_flottant
+
+
+{
+int x = 2;
+x = x*x*x*x*x*x*x*x*x*x *x*x*x*x*x*x*x*x*x*x *x*x*x*x*x*x*x*x*x*x *x*x+1;
+if (x == 1){print("ok");}else{print("bouuh");}
+}

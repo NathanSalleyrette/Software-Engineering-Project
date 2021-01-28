@@ -1,0 +1,10 @@
+// Description :
+//    new utilisé avec un identificateur void
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 :(3.42) void n'est pas un type de classe
+
+{
+int b = new void();
+}

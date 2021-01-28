@@ -1,0 +1,9 @@
+// Description :
+//    cast manque de la deuxième paire de parenthese
+//
+// Resultats :
+//		Syntaxe error
+
+{
+a = (a)a;
+}

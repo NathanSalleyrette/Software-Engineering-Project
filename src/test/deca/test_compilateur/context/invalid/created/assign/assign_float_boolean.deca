@@ -1,0 +1,13 @@
+// Description :
+//    test  assign entre un float et un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 12: (3.28) Les types float et boolean sont incompatibles pour l’affectation
+
+
+{
+float a = 0.5;
+boolean b;
+b = a;
+}

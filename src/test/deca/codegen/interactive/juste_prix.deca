@@ -1,0 +1,40 @@
+// Description :
+//		test interactif : petit programme qui fait deviner un chiffre
+//
+// Resultats :
+//		Ok
+
+
+class A {
+	protected int but = 500;
+	boolean but_atteint (int x){
+		return but == x;
+	}
+	void indice(int x){
+	if (x > 1000 || x < 0){
+	println(" on avait dit entre 0 et 1000 !");
+	} else {
+	print("c'est ");
+	if (but > x){
+		println("plus !");
+	}
+	else {
+		println("moins !");
+	}
+	}
+	}
+}
+	
+{
+	A a = new A();
+    int x;
+    boolean drapeau = false;
+    println("Entrez une valeur entre 0 et 1000 maintenant!");
+   	x = readInt();
+    while (!a.but_atteint(x)){
+    	a.indice(x);
+    	println("Entrez une valeur 0 et 1000 maintenant!");
+    	x = readInt();
+    }
+    println("Bravo, la bonne valeur était 500 !");
+}

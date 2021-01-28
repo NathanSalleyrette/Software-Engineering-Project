@@ -1,0 +1,11 @@
+// Description :
+//    acces à un field sur une variable float (qui n'est pas une classe)
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10 :(3.65) Le membre gauche n’est pas de type ‘classe’
+
+{
+float b = 0.5;
+b.x;
+}

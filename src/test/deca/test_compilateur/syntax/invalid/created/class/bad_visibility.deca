@@ -1,0 +1,10 @@
+// Description :
+//    decl class visibilité inconnue
+//
+// Resultats :
+//		Syntaxe error
+
+class A {
+private int a;
+
+}

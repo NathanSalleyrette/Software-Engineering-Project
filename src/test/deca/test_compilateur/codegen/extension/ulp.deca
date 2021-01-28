@@ -1,0 +1,49 @@
+//	Description:
+//		Comparaison de valeur de reference de ulp
+//
+//	Resultats:
+//		Ok
+
+#include "Math.decah"
+
+class U {
+	float p = 0;
+	Math m = new Math();
+	void u(float f, float r){
+		float approch =  m.ulp(f);
+		print(f, ": ");
+		if ((approch - r)*(approch - r) > this.p*this.p) {
+		p = approch - r;
+		}
+		print(approch - r);
+		if (approch==r){print(" ok");}
+		println();
+
+	}
+}
+{
+ 	
+    U u = new U();
+   	u.u(10000000.0, 1.0); 
+   	u.u(1000000.0, 0.0625); 
+   	u.u(100000.0, 0.0078125);
+   	u.u(10000.0, 9.765625E-4);  
+   	u.u(1000.0, 6.1035156E-5); 
+   	u.u(100.0, 7.6293945E-6); 
+   	u.u(10.0, 9.536743E-7); 
+   	u.u(1.0, 1.1920929E-7);  
+   	u.u(0.1, 7.4505806E-9);
+   	u.u(0.01, 9.313226E-10); 
+   	u.u(0.001, 1.1641532E-10);
+   	u.u(0.0001, 7.2759576E-12);
+   	u.u(0.00001, 9.094947E-13); 
+   	u.u(0.000001, 1.1368684E-13); 
+   	u.u(0.0000001, 7.1054274E-15); 
+   	u.u(0.00000001, 8.881784E-16); 
+   	u.u(0.000000001, 1.110223E-16); 
+   	u.u(0.0000000001, 6.938894E-18); 
+   	u.u(0.00000000001, 8.6736174E-19); 
+   	u.u(0.000000000001, 1.0842022E-19); 
+   	println("precision max = ", u.p);
+
+}

@@ -1,0 +1,36 @@
+	TSTO #2
+	BOV pile_pleine
+	ADDSP #2
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Main program
+; Beginning of main instructions:
+	LOAD #1, R2
+	CMP #0, R2
+	BLT E_Sinon.0
+	WSTR "ok"
+	WNL
+	BRA E_Fin.0
+E_Sinon.0:
+	WSTR "erreur"
+	WNL
+E_Fin.0:
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program

@@ -1,0 +1,89 @@
+---CODE_ASSEMBLEUR---
+	TSTO #29
+	BOV pile_pleine
+	ADDSP #29
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Main program
+	LOAD #2, R2
+	STORE R2, 28(GB)
+	LOAD 28(GB), R2
+	STORE R2, 27(GB)
+	STORE R2, 26(GB)
+	STORE R2, 25(GB)
+	STORE R2, 24(GB)
+	STORE R2, 23(GB)
+	STORE R2, 22(GB)
+	STORE R2, 21(GB)
+	STORE R2, 20(GB)
+	STORE R2, 19(GB)
+	STORE R2, 18(GB)
+	STORE R2, 17(GB)
+	STORE R2, 16(GB)
+	STORE R2, 15(GB)
+	STORE R2, 14(GB)
+	STORE R2, 13(GB)
+	STORE R2, 12(GB)
+	STORE R2, 11(GB)
+	STORE R2, 10(GB)
+	STORE R2, 9(GB)
+	STORE R2, 8(GB)
+	STORE R2, 7(GB)
+	STORE R2, 6(GB)
+	STORE R2, 5(GB)
+	STORE R2, 4(GB)
+	STORE R2, 3(GB)
+	STORE R2, 29(GB)
+; Beginning of main instructions:
+	LOAD 28(GB), R2
+	STORE R2, 27(GB)
+	STORE R2, 26(GB)
+	STORE R2, 25(GB)
+	STORE R2, 24(GB)
+	STORE R2, 23(GB)
+	STORE R2, 22(GB)
+	STORE R2, 21(GB)
+	STORE R2, 20(GB)
+	STORE R2, 19(GB)
+	STORE R2, 18(GB)
+	STORE R2, 17(GB)
+	STORE R2, 16(GB)
+	STORE R2, 15(GB)
+	STORE R2, 14(GB)
+	STORE R2, 13(GB)
+	STORE R2, 12(GB)
+	STORE R2, 11(GB)
+	STORE R2, 10(GB)
+	STORE R2, 9(GB)
+	STORE R2, 8(GB)
+	STORE R2, 7(GB)
+	STORE R2, 6(GB)
+	STORE R2, 5(GB)
+	STORE R2, 4(GB)
+	STORE R2, 3(GB)
+	STORE R2, 29(GB)
+	LOAD 29(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program
+---SORTIE MACHINE IMA---
+2

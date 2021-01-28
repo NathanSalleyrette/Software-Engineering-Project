@@ -1,0 +1,23 @@
+// Description :
+//    petit programme avec un while
+//
+// Resultats :
+//		Ok
+
+
+{
+int a = 0;
+while (a < 4){
+println(a);
+a = a + 1;
+}
+
+println();
+a = 0;
+
+while (a <= 4){
+println(a);
+a = a + 1;
+}
+
+}

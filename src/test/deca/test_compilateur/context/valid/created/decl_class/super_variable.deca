@@ -1,0 +1,15 @@
+// Description :
+//    utilisation d'un super field (protected) dans une methode
+//
+// Resultats :
+//		Ok
+
+class C{
+protected int a;
+}
+
+class B extends C{
+int met(){
+	return a;
+}
+}

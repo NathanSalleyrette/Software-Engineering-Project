@@ -1,0 +1,104 @@
+	TSTO #3
+	BOV pile_pleine
+	ADDSP #3
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Main program
+	LOAD #20, R2
+	FLOAT #20, R2
+	STORE R2, 3(GB)
+; Beginning of main instructions:
+	LOAD 3(GB), R2
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	MUL 3(GB), R2
+	BOV debordement_flottant
+	LOAD #1, R3
+	FLOAT #1, R3
+	ADD R3, R2
+	BOV debordement_flottant
+	STORE R2, 3(GB)
+	LOAD 3(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+debordement_flottant:
+	WSTR "Erreur : debordement_flottant"
+	WNL
+	ERROR
+; end main program

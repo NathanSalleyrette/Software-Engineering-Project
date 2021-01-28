@@ -1,0 +1,9 @@
+// Description :
+//    new ( manquant
+//
+// Resultats :
+//		Syntaxe error
+
+{
+new a);
+}

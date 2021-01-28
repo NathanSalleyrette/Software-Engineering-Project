@@ -1,0 +1,9 @@
+// Description :
+//    cast manque de la premiere parenthes )
+//
+// Resultats :
+//		Syntaxe error
+
+{
+a = (a(a);
+}

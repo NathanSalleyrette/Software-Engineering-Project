@@ -1,0 +1,404 @@
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de B
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+; Main program
+; new ligne 9
+	NEW #1, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	STORE R2, 5(GB)
+	LOAD #1, R2
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+Assign_Fin.0:
+	STORE R2, 6(GB)
+; Beginning of main instructions:
+	LOAD #1, R2
+	CMP #2, R2
+	BNE Assign_False.1
+	LOAD #1, R2
+	BRA Assign_Fin.1
+Assign_False.1:
+	LOAD #0, R2
+Assign_Fin.1:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.2
+	WSTR "t"
+	BRA E_Fin.2
+E_Sinon.2:
+	WSTR "f"
+E_Fin.2:
+	LOAD #1, R2
+	CMP #2, R2
+	BEQ Assign_False.3
+	LOAD #1, R2
+	BRA Assign_Fin.3
+Assign_False.3:
+	LOAD #0, R2
+Assign_Fin.3:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.4
+	WSTR "t"
+	BRA E_Fin.4
+E_Sinon.4:
+	WSTR "f"
+E_Fin.4:
+	LOAD #2, R2
+	CMP #3, R2
+	BGE Assign_False.5
+	LOAD #1, R2
+	BRA Assign_Fin.5
+Assign_False.5:
+	LOAD #0, R2
+Assign_Fin.5:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.6
+	WSTR "t"
+	BRA E_Fin.6
+E_Sinon.6:
+	WSTR "f"
+E_Fin.6:
+	LOAD #2, R2
+	CMP #3, R2
+	BLE Assign_False.7
+	LOAD #1, R2
+	BRA Assign_Fin.7
+Assign_False.7:
+	LOAD #0, R2
+Assign_Fin.7:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.8
+	WSTR "t"
+	BRA E_Fin.8
+E_Sinon.8:
+	WSTR "f"
+E_Fin.8:
+	LOAD #6, R2
+	CMP #0, R2
+	BGT Assign_False.9
+	LOAD #1, R2
+	BRA Assign_Fin.9
+Assign_False.9:
+	LOAD #0, R2
+Assign_Fin.9:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.10
+	WSTR "t"
+	BRA E_Fin.10
+E_Sinon.10:
+	WSTR "f"
+E_Fin.10:
+	LOAD #20, R2
+	CMP #2, R2
+	BLT Assign_False.11
+	LOAD #1, R2
+	BRA Assign_Fin.11
+Assign_False.11:
+	LOAD #0, R2
+Assign_Fin.11:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.12
+	WSTR "t"
+	BRA E_Fin.12
+E_Sinon.12:
+	WSTR "f"
+E_Fin.12:
+	LOAD #0x1.8p1, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
+	BNE Assign_False.13
+	LOAD #1, R2
+	BRA Assign_Fin.13
+Assign_False.13:
+	LOAD #0, R2
+Assign_Fin.13:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.14
+	WSTR "t"
+	BRA E_Fin.14
+E_Sinon.14:
+	WSTR "f"
+E_Fin.14:
+	LOAD #0x1.8p1, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
+	BEQ Assign_False.15
+	LOAD #1, R2
+	BRA Assign_Fin.15
+Assign_False.15:
+	LOAD #0, R2
+Assign_Fin.15:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.16
+	WSTR "t"
+	BRA E_Fin.16
+E_Sinon.16:
+	WSTR "f"
+E_Fin.16:
+	LOAD #0x1.8p1, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
+	BGT Assign_False.17
+	LOAD #1, R2
+	BRA Assign_Fin.17
+Assign_False.17:
+	LOAD #0, R2
+Assign_Fin.17:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.18
+	WSTR "t"
+	BRA E_Fin.18
+E_Sinon.18:
+	WSTR "f"
+E_Fin.18:
+	LOAD #0x1.8p1, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
+	BLT Assign_False.19
+	LOAD #1, R2
+	BRA Assign_Fin.19
+Assign_False.19:
+	LOAD #0, R2
+Assign_Fin.19:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.20
+	WSTR "t"
+	BRA E_Fin.20
+E_Sinon.20:
+	WSTR "f"
+E_Fin.20:
+	LOAD #0x1.8p1, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
+	BGE Assign_False.21
+	LOAD #1, R2
+	BRA Assign_Fin.21
+Assign_False.21:
+	LOAD #0, R2
+Assign_Fin.21:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.22
+	WSTR "t"
+	BRA E_Fin.22
+E_Sinon.22:
+	WSTR "f"
+E_Fin.22:
+	LOAD #0x1.8p1, R2
+	LOAD #3, R3
+	FLOAT #3, R3
+	CMP R3, R2
+	BLE Assign_False.23
+	LOAD #1, R2
+	BRA Assign_Fin.23
+Assign_False.23:
+	LOAD #0, R2
+Assign_Fin.23:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.24
+	WSTR "t"
+	BRA E_Fin.24
+E_Sinon.24:
+	WSTR "f"
+E_Fin.24:
+	LOAD 5(GB), R2
+	CMP 5(GB), R2
+	BEQ Assign_False.25
+	LOAD #1, R2
+	BRA Assign_Fin.25
+Assign_False.25:
+	LOAD #0, R2
+Assign_Fin.25:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.26
+	WSTR "t"
+	BRA E_Fin.26
+E_Sinon.26:
+	WSTR "f"
+E_Fin.26:
+	LOAD #null, R2
+	CMP 5(GB), R2
+	BEQ Assign_False.27
+	LOAD #1, R2
+	BRA Assign_Fin.27
+Assign_False.27:
+	LOAD #0, R2
+Assign_Fin.27:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.28
+	WSTR "t"
+	BRA E_Fin.28
+E_Sinon.28:
+	WSTR "f"
+E_Fin.28:
+	LOAD 5(GB), R2
+	LOAD #null, R3
+	CMP R3, R2
+	BEQ Assign_False.29
+	LOAD #1, R2
+	BRA Assign_Fin.29
+Assign_False.29:
+	LOAD #0, R2
+Assign_Fin.29:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.30
+	WSTR "t"
+	BRA E_Fin.30
+E_Sinon.30:
+	WSTR "f"
+E_Fin.30:
+	LOAD #null, R2
+	LOAD #null, R3
+	CMP R3, R2
+	BEQ Assign_False.31
+	LOAD #1, R2
+	BRA Assign_Fin.31
+Assign_False.31:
+	LOAD #0, R2
+Assign_Fin.31:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.32
+	WSTR "t"
+	BRA E_Fin.32
+E_Sinon.32:
+	WSTR "f"
+E_Fin.32:
+	LOAD 5(GB), R2
+	CMP 5(GB), R2
+	BNE Assign_False.33
+	LOAD #1, R2
+	BRA Assign_Fin.33
+Assign_False.33:
+	LOAD #0, R2
+Assign_Fin.33:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.34
+	WSTR "t"
+	BRA E_Fin.34
+E_Sinon.34:
+	WSTR "f"
+E_Fin.34:
+	LOAD #null, R2
+	CMP 5(GB), R2
+	BNE Assign_False.35
+	LOAD #1, R2
+	BRA Assign_Fin.35
+Assign_False.35:
+	LOAD #0, R2
+Assign_Fin.35:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.36
+	WSTR "t"
+	BRA E_Fin.36
+E_Sinon.36:
+	WSTR "f"
+E_Fin.36:
+	LOAD 5(GB), R2
+	LOAD #null, R3
+	CMP R3, R2
+	BNE Assign_False.37
+	LOAD #1, R2
+	BRA Assign_Fin.37
+Assign_False.37:
+	LOAD #0, R2
+Assign_Fin.37:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.38
+	WSTR "t"
+	BRA E_Fin.38
+E_Sinon.38:
+	WSTR "f"
+E_Fin.38:
+	LOAD #null, R2
+	LOAD #null, R3
+	CMP R3, R2
+	BNE Assign_False.39
+	LOAD #1, R2
+	BRA Assign_Fin.39
+Assign_False.39:
+	LOAD #0, R2
+Assign_Fin.39:
+	STORE R2, 6(GB)
+	LOAD 6(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.40
+	WSTR "t"
+	BRA E_Fin.40
+E_Sinon.40:
+	WSTR "f"
+E_Fin.40:
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Classe B
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Erreur : tas_plein"
+	WNL
+	ERROR
+; end main program

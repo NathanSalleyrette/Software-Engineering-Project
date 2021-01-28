@@ -1,0 +1,51 @@
+// Description :
+//		test sur this en tant que valeur de retour
+//
+// Resultats :
+//		Ok
+
+class A{ 
+int x = 1;
+A getA(){
+return this;
+}
+}
+
+class B extends A{
+int x = 2;
+A getA(){
+return this;
+}
+B getB(){
+return this;
+}
+}
+
+class U {
+void t(boolean b){
+	print("t=");
+	if (b) {println("t");} else {println("f");}
+}
+void f(boolean b){
+	print("f=");
+	if (b) {println("t");} else {println("f");}
+}
+}
+
+
+{
+A a = new A();
+A a3= new A();
+B b = new B();
+U u = new U();
+A a2 = a.getA();
+B b2 = b.getB();
+A c = b.getA();
+
+u.t(a2.equals(a));
+u.f(a3.equals(a));
+u.t(c.equals(b));
+u.t(b2.equals(b));
+
+
+}

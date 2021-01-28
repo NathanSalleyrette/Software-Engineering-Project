@@ -1,0 +1,12 @@
+// Description :
+//		Programme pour tester le debordement de flottant
+//
+// Resultats :
+//		Ok
+
+
+{
+float x = 1000.0;
+float f = (1.0/(x*x*x*x*x*x*x*x))*(1.0/(x*x*x*x*x*x*x*x));
+print(f);
+}

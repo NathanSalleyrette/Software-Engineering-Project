@@ -1,0 +1,160 @@
+---CODE_ASSEMBLEUR---
+	TSTO #8
+	BOV pile_pleine
+	ADDSP #5
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de B
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+; Main program
+; new ligne 15
+	NEW #5, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.B
+	POP R2
+	STORE R2, 5(GB)
+; Beginning of main instructions:
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 2(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 3(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " "
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 4(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.0
+	WSTR "true"
+	WNL
+	BRA E_Fin.0
+E_Sinon.0:
+	WSTR "false"
+	WNL
+E_Fin.0:
+	LOAD #2, R2
+	LOAD 5(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 1(R3)
+	LOAD 1(R3), R2
+	LOAD #3, R2
+	LOAD 5(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 2(R3)
+	LOAD 2(R3), R2
+	LOAD #1, R2
+	BRA Assign_Fin.1
+Assign_False.1:
+	LOAD #0, R2
+Assign_Fin.1:
+	LOAD 5(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 4(R3)
+	LOAD 4(R3), R2
+	LOAD #0x1.0p-1, R2
+	LOAD 5(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 3(R3)
+	LOAD 3(R3), R2
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 2(R2), R2
+	LOAD R2, R1
+	WINT
+	WSTR " "
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 3(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " "
+	LOAD 5(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 4(R2), R0
+	CMP #0, R0
+	BEQ E_Sinon.2
+	WSTR "true"
+	WNL
+	BRA E_Fin.2
+E_Sinon.2:
+	WSTR "false"
+	WNL
+E_Fin.2:
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Classe B
+; ---------- Initialisation des champs de B
+init.B:
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 1(R1)
+	STORE R0, 2(R1)
+	LOAD #0x0.0p0, R0
+	STORE R0, 3(R1)
+	LOAD #0, R0
+	STORE R0, 4(R1)
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+dereferencement.null:
+	WSTR "Erreur : dereferencement.null"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Erreur : tas_plein"
+	WNL
+	ERROR
+; end main program
+---SORTIE MACHINE IMA---
+0 0 0.00000e+00 false
+2 3 5.00000e-01 true

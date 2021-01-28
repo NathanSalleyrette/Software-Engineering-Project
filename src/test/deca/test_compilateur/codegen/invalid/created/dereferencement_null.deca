@@ -1,0 +1,14 @@
+// Description :
+//		test utilisation null
+//
+// Resultats :
+//		Erreur de compilateur : déréferencement de null
+
+class B{
+void met(){}
+}
+
+{
+B b = null;
+b.met();
+}

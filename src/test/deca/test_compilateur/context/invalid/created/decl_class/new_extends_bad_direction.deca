@@ -1,0 +1,15 @@
+// Description :
+//    creation d'un objet incompatible avec le type
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 14 :  (3.8) A n'est ni la même classe ni une sous-classe de B
+
+class A{
+}
+class B extends A{
+}
+
+{
+B a = new A();
+}

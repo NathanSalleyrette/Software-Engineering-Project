@@ -1,0 +1,52 @@
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de A
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+	LOAD code.A.met, R0
+	STORE R0, 5(GB)
+; Main program
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Classe A
+; ---------- Initialisation des champs de A
+init.A:
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 1(R1)
+	LOAD #0, R0
+	STORE R0, 2(R1)
+	LOAD #0x0.0p0, R0
+	STORE R0, 3(R1)
+	RTS
+; ---------- Code de la methode met dans la classe A ligne 12
+code.A.met:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+fin.A.met:
+	POP R2
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program

@@ -1,0 +1,11 @@
+// Description :
+//    return mauvais type : float, demandé int
+//
+// Resultats :
+//		Ok
+
+class A{
+float met(){
+return 1;
+}
+}

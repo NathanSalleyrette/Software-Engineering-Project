@@ -1,0 +1,10 @@
+// Description :
+//    test d'un float NaN
+//
+// Resultats :
+//		Erreur lexicographique
+//    	Ligne 9:  float trop petit
+
+{
+float a = 1.00000e-99;
+}

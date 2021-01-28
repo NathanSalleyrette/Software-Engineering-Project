@@ -1,0 +1,15 @@
+// Description :
+//    acces à un field protegé
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 14 :(3.65) L’attribut est protégé
+
+class A{
+ protected int x;
+}
+
+{
+A a = new A();
+int b = a.x;
+}

@@ -1,0 +1,36 @@
+// Description :
+//		Programme pour tester le cast entre int et float
+//
+// Resultats :
+//		Ok
+
+class B {
+boolean y = false;}
+class A extends B {
+boolean y = true;}
+
+class U {
+void t(boolean b){
+	print("t=");
+	if (b) {println("t");} else {println("f");}
+}
+void f(boolean b){
+	print("f=");
+	if (b) {println("t");} else {println("f");}
+}
+}
+
+{
+U u = new U();
+A a = new A();
+A c;
+B b;
+u.t(a.y);
+b = (B)(a);
+u.f(b.y);
+c = (A)(b);
+u.t(c.y);
+u.t(c.equals(a));
+u.t(a.equals(c));
+
+}

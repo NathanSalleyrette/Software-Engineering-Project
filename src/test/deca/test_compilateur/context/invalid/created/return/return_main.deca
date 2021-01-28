@@ -1,0 +1,11 @@
+// Description :
+//    return dans un main
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (2.7) Type de retour effectif : int, déclaré : void
+
+{
+int a;
+return a;
+}

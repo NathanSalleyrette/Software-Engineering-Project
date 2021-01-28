@@ -1,0 +1,17 @@
+// Description :
+//		on redefinit equals 
+//
+// Resultats :
+//		Ok
+
+class U {
+	int u(){
+		return 0;
+		println("aaah");
+
+	}
+}
+{
+    U u = new U();
+   	println(u.u()); 
+}

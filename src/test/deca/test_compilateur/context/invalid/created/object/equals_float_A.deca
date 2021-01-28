@@ -1,0 +1,12 @@
+// Description :
+//    test equals entre un float et un A
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11:  (3.71) Le membre gauche n'est pas de type 'class'
+class A{}
+{
+float a;
+A b;
+int c = a.equals(b);
+}

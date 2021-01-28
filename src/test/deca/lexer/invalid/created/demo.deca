@@ -1,0 +1,24 @@
+// Description :
+//    test de demonstration
+//
+// Resultats :
+//		
+
+
+clss A { 
+
+	//caractère non reconnu
+	protected int `@à%$+=&; //protected int x;
+	
+	int getX(){
+		return x
+	}
+	
+	
+	
+	
+{
+	a = new A(;
+	a.x;
+	a.geX(0);
+}

@@ -1,0 +1,437 @@
+	TSTO #20
+	BOV pile_pleine
+	ADDSP #14
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de A
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+; Construction de la table des méthodes de B
+	LEA 3(GB), R0
+	STORE R0, 5(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 6(GB)
+; Construction de la table des méthodes de U
+	LEA 1(GB), R0
+	STORE R0, 7(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 8(GB)
+	LOAD code.U.t, R0
+	STORE R0, 9(GB)
+	LOAD code.U.f, R0
+	STORE R0, 10(GB)
+; Main program
+; new ligne 28
+	NEW #1, R2
+	BOV tas_plein
+	LEA 7(GB), R0
+	STORE R0, 0(R2)
+	STORE R2, 11(GB)
+; new ligne 29
+	NEW #2, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 12(GB)
+; new ligne 30
+	NEW #3, R2
+	BOV tas_plein
+	LEA 5(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.B
+	POP R2
+	STORE R2, 13(GB)
+; new ligne 31
+	NEW #3, R2
+	BOV tas_plein
+	LEA 5(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.B
+	POP R2
+	STORE R2, 14(GB)
+; Beginning of main instructions:
+; Appel de méthode ligne 32
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 32
+	ADDSP #2
+	LOAD 12(GB), R2
+	STORE R2, 0(SP)
+	LOAD 14(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.0
+	LOAD #1, R2
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+Assign_Fin.0:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 33
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 33
+	ADDSP #2
+	LOAD 12(GB), R2
+	STORE R2, 0(SP)
+	LOAD 13(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.1
+	LOAD #1, R2
+	BRA Assign_Fin.1
+Assign_False.1:
+	LOAD #0, R2
+Assign_Fin.1:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 34
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 34
+	ADDSP #2
+	LOAD 14(GB), R2
+	STORE R2, 0(SP)
+	LOAD 12(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.2
+	LOAD #1, R2
+	BRA Assign_Fin.2
+Assign_False.2:
+	LOAD #0, R2
+Assign_Fin.2:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 35
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 35
+	ADDSP #2
+	LOAD 14(GB), R2
+	STORE R2, 0(SP)
+	LOAD 13(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.3
+	LOAD #1, R2
+	BRA Assign_Fin.3
+Assign_False.3:
+	LOAD #0, R2
+Assign_Fin.3:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 36
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 36
+	ADDSP #2
+	LOAD 13(GB), R2
+	STORE R2, 0(SP)
+	LOAD 12(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.4
+	LOAD #1, R2
+	BRA Assign_Fin.4
+Assign_False.4:
+	LOAD #0, R2
+Assign_Fin.4:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 37
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 37
+	ADDSP #2
+	LOAD 13(GB), R2
+	STORE R2, 0(SP)
+	LOAD 14(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.5
+	LOAD #1, R2
+	BRA Assign_Fin.5
+Assign_False.5:
+	LOAD #0, R2
+Assign_Fin.5:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 38
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 38
+	ADDSP #2
+	LOAD 12(GB), R2
+	STORE R2, 0(SP)
+	LOAD 12(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.6
+	LOAD #1, R2
+	BRA Assign_Fin.6
+Assign_False.6:
+	LOAD #0, R2
+Assign_Fin.6:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 39
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 39
+	ADDSP #2
+	LOAD 13(GB), R2
+	STORE R2, 0(SP)
+	LOAD 13(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.7
+	LOAD #1, R2
+	BRA Assign_Fin.7
+Assign_False.7:
+	LOAD #0, R2
+Assign_Fin.7:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 40
+	ADDSP #2
+	LOAD 11(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 40
+	ADDSP #2
+	LOAD 14(GB), R2
+	STORE R2, 0(SP)
+	LOAD 14(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.8
+	LOAD #1, R2
+	BRA Assign_Fin.8
+Assign_False.8:
+	LOAD #0, R2
+Assign_Fin.8:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Classe A
+; ---------- Initialisation des champs de A
+init.A:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 1(R1)
+	LOAD #1, R2
+	LOAD -2(LB), R1
+	STORE R2, 1(R1)
+	POP R2
+	RTS
+; Classe B
+; ---------- Initialisation des champs de B
+init.B:
+	TSTO #4
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 2(R1)
+	PUSH R1
+	BSR init.A
+	SUBSP #1
+	LOAD #1, R2
+	LOAD -2(LB), R1
+	STORE R2, 2(R1)
+	POP R2
+	RTS
+; Classe U
+; ---------- Code de la methode t dans la classe U ligne 17
+code.U.t:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "t="
+	LOAD -3(LB), R0
+	CMP #0, R0
+	BEQ E_Sinon.9
+	WSTR "t"
+	WNL
+	BRA E_Fin.9
+E_Sinon.9:
+	WSTR "f"
+	WNL
+E_Fin.9:
+fin.U.t:
+	POP R2
+	RTS
+; ---------- Code de la methode f dans la classe U ligne 21
+code.U.f:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "f="
+	LOAD -3(LB), R0
+	CMP #0, R0
+	BEQ E_Sinon.10
+	WSTR "t"
+	WNL
+	BRA E_Fin.10
+E_Sinon.10:
+	WSTR "f"
+	WNL
+E_Fin.10:
+fin.U.f:
+	POP R2
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+dereferencement.null:
+	WSTR "Erreur : dereferencement.null"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Erreur : tas_plein"
+	WNL
+	ERROR
+; end main program

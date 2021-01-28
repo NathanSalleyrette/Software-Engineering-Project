@@ -1,0 +1,15 @@
+// Description :
+//    redéfinition type retour pas sous_type
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 14 : (2.7) La méthode retourne le type boolean mais devrait retourner le type de sa super méthode int
+
+
+class A{
+int meth(){ return 1;}
+}
+
+class B extends A{
+boolean meth(){return true;}
+}

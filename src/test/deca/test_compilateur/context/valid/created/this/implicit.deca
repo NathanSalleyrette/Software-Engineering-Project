@@ -1,0 +1,26 @@
+// Description :
+//		acces explicit et implicit à une method/champs avec this
+//
+// Resultats :
+//		Ok
+
+class B{
+	int y;
+	void met(){}
+}
+
+class A extends B{
+int x;
+void met2(){}
+void setX(){
+	int a = this.x;
+	int b = x;
+	int c = this.y;
+	int d = y;
+	met();
+	this.met();
+	met2();
+	this.met2();
+}
+
+}

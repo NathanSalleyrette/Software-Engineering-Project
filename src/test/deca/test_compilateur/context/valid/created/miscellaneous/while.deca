@@ -1,0 +1,12 @@
+// Description :
+//		test sur le while
+//
+// Resultats :
+//		Ok
+
+
+{
+boolean a;
+while (a){
+}
+}

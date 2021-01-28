@@ -1,0 +1,15 @@
+// Description :
+//		un setter classique,mais ambigue
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 12: ??
+
+
+class A {
+int x;
+void setX(int x){
+	x=x;
+}
+
+}

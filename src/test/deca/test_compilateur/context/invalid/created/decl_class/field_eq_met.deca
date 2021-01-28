@@ -1,0 +1,11 @@
+// Description :
+//    met declarée deux fois
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10 : (2.4) L’identificateur neth est déjà défini
+
+class A{
+void meth(){}
+int meth;
+}

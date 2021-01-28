@@ -1,0 +1,10 @@
+// Description :
+//    new utilisé avec un identificateur boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 :(3.42) boolean n'est pas un type de classe
+
+{
+boolean b = new boolean();
+}

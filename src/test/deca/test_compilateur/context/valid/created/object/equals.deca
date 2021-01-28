@@ -1,0 +1,14 @@
+// Description :
+//		test de la methode equals
+//
+// Resultats :
+//		Ok
+
+
+class A{
+}
+{
+A a;
+a.equals(a);
+a.equals(null);
+} 

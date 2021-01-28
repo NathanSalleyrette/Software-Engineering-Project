@@ -1,0 +1,11 @@
+// Description :
+//    field a déclaré deux fois
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 9 :(2.4) L’identificateur a est déjà défini
+
+class A{
+int a;
+boolean a;
+}

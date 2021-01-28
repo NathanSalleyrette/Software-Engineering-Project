@@ -1,0 +1,9 @@
+// Description :
+//    acces champ avec le point manquant (un espace à la place)
+//
+// Resultats :
+//		Syntaxe error
+
+{
+int a = a b;
+}

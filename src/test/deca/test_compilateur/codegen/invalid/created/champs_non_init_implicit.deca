@@ -1,0 +1,24 @@
+// Description :
+//		Programme pour tester les fields des classes avec type statique et dynamiqye
+//
+// Resultats :
+//		Erreur duc compilateur : dereferencement de null
+
+class B {
+int x = 1;
+B a;
+}
+class A extends B {
+int x = 3;
+B a;
+}
+
+{
+A a = new A();
+B c = a;
+
+a.a = new A();
+
+c.a.x;
+
+}

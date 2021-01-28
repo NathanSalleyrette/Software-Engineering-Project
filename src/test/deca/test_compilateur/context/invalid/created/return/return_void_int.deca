@@ -1,0 +1,12 @@
+// Description :
+//    return mauvais type : int, demandé void
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (2.7) Type de retour effectif : int, déclaré : void
+
+class A{
+void met(){
+return 1;
+}
+}

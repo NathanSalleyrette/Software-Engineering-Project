@@ -1,0 +1,12 @@
+// Description :
+//    test equals entre un A et un boolean
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 11:  (3.74) La signature ne correspond pas aux paramètres
+class A{}
+{
+A a;
+boolean b;
+int c = a.equals(b);
+}

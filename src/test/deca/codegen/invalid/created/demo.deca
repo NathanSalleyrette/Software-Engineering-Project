@@ -1,0 +1,21 @@
+// Description :
+//    test de demonstration
+//
+// Resultats :
+//		
+
+class A {
+	protected int x; //protected int x = 5; 
+	int getX(){
+		return x;
+	}
+	
+{
+// a n'est pas initialisé
+A a; //A a = new A();
+
+println("le résultat attendu est 5."); //le champs n'est pas initialisé, ce n'est pas une erreur, mais le résulatat n'est pas celui attendu
+
+println(" les résultat obtenu est :", a.getX());
+
+}

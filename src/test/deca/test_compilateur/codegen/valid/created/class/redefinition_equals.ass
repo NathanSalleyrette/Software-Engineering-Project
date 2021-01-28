@@ -1,0 +1,553 @@
+	TSTO #26
+	BOV pile_pleine
+	ADDSP #20
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de B
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+	LOAD code.B.getx, R0
+	STORE R0, 5(GB)
+	LOAD code.B.gety, R0
+	STORE R0, 6(GB)
+	LOAD code.B.equals, R0
+	STORE R0, 7(GB)
+; Construction de la table des méthodes de A
+	LEA 3(GB), R0
+	STORE R0, 8(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 9(GB)
+	LOAD code.A.getx, R0
+	STORE R0, 10(GB)
+	LOAD code.A.gety, R0
+	STORE R0, 11(GB)
+	LOAD code.A.equals, R0
+	STORE R0, 12(GB)
+; Construction de la table des méthodes de U
+	LEA 1(GB), R0
+	STORE R0, 13(GB)
+	LOAD code.U.f, R0
+	STORE R0, 16(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 14(GB)
+	LOAD code.U.t, R0
+	STORE R0, 15(GB)
+; Main program
+; new ligne 37
+	NEW #1, R2
+	BOV tas_plein
+	LEA 13(GB), R0
+	STORE R0, 0(R2)
+	STORE R2, 17(GB)
+; new ligne 38
+	NEW #1, R2
+	BOV tas_plein
+	LEA 8(GB), R0
+	STORE R0, 0(R2)
+	STORE R2, 18(GB)
+; new ligne 39
+	NEW #1, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	STORE R2, 19(GB)
+; new ligne 40
+	NEW #1, R2
+	BOV tas_plein
+	LEA 8(GB), R0
+	STORE R0, 0(R2)
+	STORE R2, 20(GB)
+; Beginning of main instructions:
+; Appel de méthode ligne 44
+	ADDSP #2
+	LOAD 17(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 44
+	ADDSP #2
+	LOAD 18(GB), R2
+	STORE R2, 0(SP)
+	LOAD 20(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.0
+	LOAD #1, R2
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+Assign_Fin.0:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 45
+	ADDSP #2
+	LOAD 17(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 45
+	ADDSP #2
+	LOAD 18(GB), R2
+	STORE R2, 0(SP)
+	LOAD 18(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.1
+	LOAD #1, R2
+	BRA Assign_Fin.1
+Assign_False.1:
+	LOAD #0, R2
+Assign_Fin.1:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 46
+	ADDSP #2
+	LOAD 17(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 46
+	ADDSP #2
+	LOAD 19(GB), R2
+	STORE R2, 0(SP)
+	LOAD 18(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.2
+	LOAD #1, R2
+	BRA Assign_Fin.2
+Assign_False.2:
+	LOAD #0, R2
+Assign_Fin.2:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 47
+	ADDSP #2
+	LOAD 17(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 47
+	ADDSP #2
+	LOAD 19(GB), R2
+	STORE R2, 0(SP)
+	LOAD 20(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.3
+	LOAD #1, R2
+	BRA Assign_Fin.3
+Assign_False.3:
+	LOAD #0, R2
+Assign_Fin.3:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 49
+	ADDSP #2
+	LOAD 17(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 49
+	ADDSP #2
+	LOAD 20(GB), R2
+	STORE R2, 0(SP)
+	LOAD 18(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.4
+	LOAD #1, R2
+	BRA Assign_Fin.4
+Assign_False.4:
+	LOAD #0, R2
+Assign_Fin.4:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 50
+	ADDSP #2
+	LOAD 17(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 50
+	ADDSP #2
+	LOAD 20(GB), R2
+	STORE R2, 0(SP)
+	LOAD 20(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.5
+	LOAD #1, R2
+	BRA Assign_Fin.5
+Assign_False.5:
+	LOAD #0, R2
+Assign_Fin.5:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+; Appel de méthode ligne 52
+	ADDSP #2
+	LOAD 17(GB), R2
+	STORE R2, 0(SP)
+; Appel de méthode ligne 52
+	ADDSP #2
+	LOAD 20(GB), R2
+	STORE R2, 0(SP)
+	LOAD 20(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	CMP #0, R0
+	BEQ Assign_False.6
+	LOAD #1, R2
+	BRA Assign_Fin.6
+Assign_False.6:
+	LOAD #0, R2
+Assign_Fin.6:
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Classe B
+; ---------- Code de la methode getx dans la classe B ligne 8
+code.B.getx:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA fin.B.getx
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.B.getx:
+	POP R2
+	RTS
+; ---------- Code de la methode gety dans la classe B ligne 9
+code.B.gety:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA fin.B.gety
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.B.gety:
+	POP R2
+	RTS
+; ---------- Code de la methode equals dans la classe B ligne 10
+code.B.equals:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #1
+; Sauvegarde des registres
+	PUSH R2
+	PUSH R3
+; cast  Object vers A ligne 11
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ Cast_Fin.7
+	PUSH R2
+; instanceof ligne 11
+	LOAD -3(LB), R2
+	LEA 8(GB), R0
+	BRA InstanceOf_Cond.8
+InstanceOf_Debut.8:
+	LOAD 0(R2), R2
+	CMP R0, R2
+	BEQ InstanceOf_True.8
+InstanceOf_Cond.8:
+	CMP #null, R2
+	BNE InstanceOf_Debut.8
+	BRA InstanceOf_Fin.8
+InstanceOf_True.8:
+	BRA Cast_Fin.7
+InstanceOf_Fin.8:
+	BRA cast_impossible
+Cast_Fin.7:
+	POP R2
+	STORE R2, 1(LB)
+; Appel de méthode ligne 12
+	ADDSP #1
+	LOAD 1(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #1
+	LOAD R0, R2
+; Appel de méthode ligne 12
+	ADDSP #1
+	LOAD -2(LB), R3
+	STORE R3, 0(SP)
+	LOAD 0(SP), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	LOAD 0(R3), R3
+	BSR 2(R3)
+	SUBSP #1
+	LOAD R0, R3
+	CMP R3, R2
+	BNE Assign_False.9
+	LOAD #1, R2
+	BRA Assign_Fin.9
+Assign_False.9:
+	LOAD #0, R2
+Assign_Fin.9:
+	LOAD R2, R0
+	BRA fin.B.equals
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.B.equals:
+	POP R3
+	POP R2
+	RTS
+; Classe A
+; ---------- Code de la methode getx dans la classe A ligne 16
+code.A.getx:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA fin.A.getx
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.A.getx:
+	POP R2
+	RTS
+; ---------- Code de la methode gety dans la classe A ligne 17
+code.A.gety:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA fin.A.gety
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.A.gety:
+	POP R2
+	RTS
+; ---------- Code de la methode equals dans la classe A ligne 18
+code.A.equals:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #1
+; Sauvegarde des registres
+	PUSH R2
+	PUSH R3
+; cast  Object vers A ligne 19
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ Cast_Fin.10
+	PUSH R2
+; instanceof ligne 19
+	LOAD -3(LB), R2
+	LEA 8(GB), R0
+	BRA InstanceOf_Cond.11
+InstanceOf_Debut.11:
+	LOAD 0(R2), R2
+	CMP R0, R2
+	BEQ InstanceOf_True.11
+InstanceOf_Cond.11:
+	CMP #null, R2
+	BNE InstanceOf_Debut.11
+	BRA InstanceOf_Fin.11
+InstanceOf_True.11:
+	BRA Cast_Fin.10
+InstanceOf_Fin.11:
+	BRA cast_impossible
+Cast_Fin.10:
+	POP R2
+	STORE R2, 1(LB)
+; Appel de méthode ligne 20
+	ADDSP #1
+	LOAD 1(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #1
+	LOAD R0, R2
+; Appel de méthode ligne 20
+	ADDSP #1
+	LOAD -2(LB), R3
+	STORE R3, 0(SP)
+	LOAD 0(SP), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	LOAD 0(R3), R3
+	BSR 3(R3)
+	SUBSP #1
+	LOAD R0, R3
+	CMP R3, R2
+	BNE Assign_False.12
+	LOAD #1, R2
+	BRA Assign_Fin.12
+Assign_False.12:
+	LOAD #0, R2
+Assign_Fin.12:
+	LOAD R2, R0
+	BRA fin.A.equals
+	WSTR "Erreur : sortie de la méthode sans return"
+	WNL
+	ERROR
+fin.A.equals:
+	POP R3
+	POP R2
+	RTS
+; Classe U
+; ---------- Code de la methode t dans la classe U ligne 24
+code.U.t:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "t="
+	LOAD -3(LB), R0
+	CMP #0, R0
+	BEQ E_Sinon.13
+	WSTR "t"
+	WNL
+	BRA E_Fin.13
+E_Sinon.13:
+	WSTR "f"
+	WNL
+E_Fin.13:
+fin.U.t:
+	POP R2
+	RTS
+; ---------- Code de la methode f dans la classe U ligne 28
+code.U.f:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "f="
+	LOAD -3(LB), R0
+	CMP #0, R0
+	BEQ E_Sinon.14
+	WSTR "t"
+	WNL
+	BRA E_Fin.14
+E_Sinon.14:
+	WSTR "f"
+	WNL
+E_Fin.14:
+fin.U.f:
+	POP R2
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+dereferencement.null:
+	WSTR "Erreur : dereferencement.null"
+	WNL
+	ERROR
+cast_impossible:
+	WSTR "Erreur : cast_impossible"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Erreur : tas_plein"
+	WNL
+	ERROR
+; end main program

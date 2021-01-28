@@ -1,0 +1,78 @@
+	TSTO #3
+	BOV pile_pleine
+	ADDSP #3
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Main program
+; Beginning of main instructions:
+	LOAD #1, R2
+	BRA Assign_Fin.0
+Assign_False.0:
+	LOAD #0, R2
+Assign_Fin.0:
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.1
+	WSTR "a=true"
+	WNL
+	BRA E_Fin.1
+E_Sinon.1:
+	WSTR "a=false"
+	WNL
+E_Fin.1:
+	LOAD 3(GB), R0
+	CMP #0, R0
+	BNE Assign_False.2
+	LOAD #1, R2
+	BRA Assign_Fin.2
+Assign_False.2:
+	LOAD #0, R2
+Assign_Fin.2:
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.3
+	WSTR "a=true"
+	WNL
+	BRA E_Fin.3
+E_Sinon.3:
+	WSTR "a=false"
+	WNL
+E_Fin.3:
+	BRA Assign_False.4
+	LOAD #1, R2
+	BRA Assign_Fin.4
+Assign_False.4:
+	LOAD #0, R2
+Assign_Fin.4:
+	STORE R2, 3(GB)
+	LOAD 3(GB), R0
+	CMP #0, R0
+	BEQ E_Sinon.5
+	WSTR "a=true"
+	WNL
+	BRA E_Fin.5
+E_Sinon.5:
+	WSTR "a=false"
+	WNL
+E_Fin.5:
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+; end main program

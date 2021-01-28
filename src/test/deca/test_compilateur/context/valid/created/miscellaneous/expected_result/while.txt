@@ -1,0 +1,25 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:46) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
+`> [8, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [8, 0] Main
+      +> ListDeclVar [List with 1 elements]
+      |  []> [9, 8] DeclVar
+      |      +> [9, 0] Identifier (boolean)
+      |      |  definition: type (builtin), type=boolean
+      |      +> [9, 8] Identifier (a)
+      |      |  definition: variable defined at [9, 8], type=boolean
+      |      `> NoInitialization
+      `> ListInst [List with 1 elements]
+         []> [10, 0] While
+             +> [10, 7] Identifier (a)
+             |  definition: variable defined at [9, 8], type=boolean
+             `> ListInst [List with 0 elements]

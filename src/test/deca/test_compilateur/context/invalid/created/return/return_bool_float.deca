@@ -1,0 +1,12 @@
+// Description :
+//    return mauvais type : float, demandé bool
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 10: (2.7) Type de retour effectif : float, déclaré : boolean
+
+class A{
+boolean met(){
+return 0.5;
+}
+}

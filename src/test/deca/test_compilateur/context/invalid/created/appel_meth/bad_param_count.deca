@@ -1,0 +1,14 @@
+// Description :
+//   	appel d'une methode avec pas assez d'argument
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 13 :(3.74) Le nombre de paramètres ne correspond pas à celui de la méthode
+
+class A {
+void met(int param1, boolean param2){}
+}
+{
+A a = new A();
+a.met(1);
+}

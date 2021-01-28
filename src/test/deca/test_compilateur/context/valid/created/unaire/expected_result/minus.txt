@@ -1,0 +1,79 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:32) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:39) - verify class members: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassMembers(ListDeclClass.java:43) - verify class members: end
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:50) - verify class body: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClassBody(ListDeclClass.java:54) - verify class body: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:38) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:46) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:50) - verify program: end
+`> [7, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [7, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [8, 4] DeclVar
+      |  ||  +> [8, 0] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [8, 4] Identifier (a)
+      |  ||  |  definition: variable defined at [8, 4], type=int
+      |  ||  `> NoInitialization
+      |  []> [9, 6] DeclVar
+      |      +> [9, 0] Identifier (float)
+      |      |  definition: type (builtin), type=float
+      |      +> [9, 6] Identifier (b)
+      |      |  definition: variable defined at [9, 6], type=float
+      |      `> NoInitialization
+      `> ListInst [List with 6 elements]
+         []> [10, 2] Assign
+         ||  type: int
+         ||  +> [10, 0] Identifier (a)
+         ||  |  definition: variable defined at [8, 4], type=int
+         ||  `> [10, 4] UnaryMinus
+         ||     type: int
+         ||     `> [10, 5] Int (1)
+         ||        type: int
+         []> [11, 2] Assign
+         ||  type: int
+         ||  +> [11, 0] Identifier (a)
+         ||  |  definition: variable defined at [8, 4], type=int
+         ||  `> [11, 4] UnaryMinus
+         ||     type: int
+         ||     `> [11, 5] Identifier (a)
+         ||        definition: variable defined at [8, 4], type=int
+         []> [12, 2] Assign
+         ||  type: float
+         ||  +> [12, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> ConvFloat
+         ||     type: float
+         ||     `> [12, 4] UnaryMinus
+         ||        type: int
+         ||        `> [12, 5] Int (1)
+         ||           type: int
+         []> [13, 2] Assign
+         ||  type: float
+         ||  +> [13, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> [13, 4] UnaryMinus
+         ||     type: float
+         ||     `> [13, 5] Float (0.2)
+         ||        type: float
+         []> [14, 2] Assign
+         ||  type: float
+         ||  +> [14, 0] Identifier (b)
+         ||  |  definition: variable defined at [9, 6], type=float
+         ||  `> ConvFloat
+         ||     type: float
+         ||     `> [14, 4] UnaryMinus
+         ||        type: int
+         ||        `> [14, 5] Identifier (a)
+         ||           definition: variable defined at [8, 4], type=int
+         []> [15, 2] Assign
+             type: float
+             +> [15, 0] Identifier (b)
+             |  definition: variable defined at [9, 6], type=float
+             `> [15, 4] UnaryMinus
+                type: float
+                `> [15, 5] Identifier (b)
+                   definition: variable defined at [9, 6], type=float

@@ -1,0 +1,240 @@
+---CODE_ASSEMBLEUR---
+	TSTO #16
+	BOV pile_pleine
+	ADDSP #12
+; start main program
+; Construction des tables des méthodes
+; Construction de la table des méthodes de Object
+	LOAD #null, R0
+	STORE R0, 1(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 2(GB)
+; Construction de la table des méthodes de A
+	LEA 1(GB), R0
+	STORE R0, 3(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 4(GB)
+	LOAD code.A.met, R0
+	STORE R0, 5(GB)
+; Construction de la table des méthodes de U
+	LEA 1(GB), R0
+	STORE R0, 6(GB)
+	LOAD code.Object.equals, R0
+	STORE R0, 7(GB)
+	LOAD code.U.t, R0
+	STORE R0, 8(GB)
+	LOAD code.U.f, R0
+	STORE R0, 9(GB)
+; Main program
+; new ligne 29
+	NEW #3, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 10(GB)
+; new ligne 30
+	NEW #3, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	STORE R2, 11(GB)
+; Beginning of main instructions:
+	LOAD #4, R2
+	LOAD 10(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 1(R3)
+	LOAD 1(R3), R2
+	LOAD 11(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+; Appel de méthode ligne 34
+	ADDSP #2
+	LOAD 10(GB), R2
+	STORE R2, 0(SP)
+	LOAD 11(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	LOAD R0, R2
+	LOAD 11(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 11(GB), R2
+	STORE R2, 12(GB)
+	LOAD #4, R2
+	LOAD 12(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 1(R3)
+	LOAD 1(R3), R2
+	LOAD 12(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 11(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+; new ligne 40
+	NEW #3, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.A
+	POP R2
+	LOAD 12(GB), R3
+	CMP #null, R3
+	BEQ dereferencement.null
+	STORE R2, 2(R3)
+	LOAD 2(R3), R2
+	LOAD 12(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 2(R2), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 11(GB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 2(R2), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	HALT
+; Classe Object
+; ---------- Code de la méthode equals dans la classe Object (built in)
+code.Object.equals:
+	LOAD -2(LB), R1
+	CMP -3(LB), R1
+	SEQ R0
+	RTS
+; Classe A
+; ---------- Initialisation des champs de A
+init.A:
+	TSTO #1
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R1
+	LOAD #0, R0
+	STORE R0, 1(R1)
+	LOAD #null, R0
+	STORE R0, 2(R1)
+	LOAD #1, R2
+	LOAD -2(LB), R1
+	STORE R2, 1(R1)
+	POP R2
+	RTS
+; ---------- Code de la methode met dans la classe A ligne 11
+code.A.met:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	LOAD -2(LB), R2
+	STORE R2, -3(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement.null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+fin.A.met:
+	POP R2
+	RTS
+; Classe U
+; ---------- Code de la methode t dans la classe U ligne 18
+code.U.t:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "t="
+	LOAD -3(LB), R0
+	CMP #0, R0
+	BEQ E_Sinon.0
+	WSTR "t"
+	WNL
+	BRA E_Fin.0
+E_Sinon.0:
+	WSTR "f"
+	WNL
+E_Fin.0:
+fin.U.t:
+	POP R2
+	RTS
+; ---------- Code de la methode f dans la classe U ligne 22
+code.U.f:
+	TSTO #1
+	BOV pile_pleine
+; Sauvegarde des registres
+	PUSH R2
+	WSTR "f="
+	LOAD -3(LB), R0
+	CMP #0, R0
+	BEQ E_Sinon.1
+	WSTR "t"
+	WNL
+	BRA E_Fin.1
+E_Sinon.1:
+	WSTR "f"
+	WNL
+E_Fin.1:
+fin.U.f:
+	POP R2
+	RTS
+; Erreurs
+pile_pleine:
+	WSTR "Erreur : pile_pleine"
+	WNL
+	ERROR
+dereferencement.null:
+	WSTR "Erreur : dereferencement.null"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Erreur : tas_plein"
+	WNL
+	ERROR
+; end main program
+---SORTIE MACHINE IMA---
+1
+4
+1
+4
+4
+1
+1

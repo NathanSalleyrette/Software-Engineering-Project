@@ -1,0 +1,16 @@
+// Description :
+//   	appel d'une methode sur un int
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne 15 : (3.71) Le champ n'est pas une méthode
+
+class A {
+int x;
+}
+
+
+{
+A a = new A();
+a.x();
+}

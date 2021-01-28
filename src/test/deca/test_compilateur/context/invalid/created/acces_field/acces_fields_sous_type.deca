@@ -1,0 +1,17 @@
+// Description :
+//   	acces champs sur sous_type
+//
+// Resultats :
+//		Erreur contextuelle
+//    	Ligne  16 :(3.65) x n'est pas un attribut de la classe A
+
+class A {}
+
+class B extends A {
+int x;
+}
+
+{
+A a = new A();
+a.x;
+}

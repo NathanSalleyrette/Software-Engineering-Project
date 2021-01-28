@@ -1,0 +1,21 @@
+// Description :
+//		une classe simple
+//
+// Resultats :
+//		Ok
+
+
+class A{
+	int x;
+	int y;
+	int met(){
+	}
+	float met2(int arg1){
+		return 0.5;
+	}
+}
+
+{
+A a = new A();
+a.met2(1);
+}

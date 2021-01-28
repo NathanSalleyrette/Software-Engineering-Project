@@ -1,0 +1,42 @@
+// Description :
+//		verification des methodes, mais tout simple
+//
+// Resultats :
+//		Ok
+
+class B{
+	int y = 0;
+	protected int x = 1;
+	int getx(){
+	return x;}
+	void setx(int x){
+	this.x = x;
+	}
+}
+
+class A extends B{
+	int x = 2;
+	void setx(int y){
+	this.y = y;
+	}
+	int getxbis(){
+	return x;}
+}
+
+
+
+{
+A a = new A();
+B b = new B();
+B c = new A();
+println("111 = ", a.getx(), b.getx(),c.getx());
+println("000 = ", a.y, b.y, c.y);
+a.setx(4);
+b.setx(4);
+c.setx(4);
+println("044 = ", b.y, c.y, a.y);
+
+println("411 = ", b.getx(), c.getx(), a.getx());
+c = a;
+println("c = 14 =",c.getx(), c.y);
+}
