@@ -1,2 +1,2 @@
 # Software Engineering Project, Ensimag.
-gl01, 01/01/2021.
+GL Group 1, 01/01/2021.
